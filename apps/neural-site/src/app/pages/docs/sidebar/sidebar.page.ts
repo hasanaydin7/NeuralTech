@@ -77,6 +77,7 @@ export class SidebarPage {
   readonly appearance = inject(SiteAppearanceService);
 
   readonly shellOpen = signal(true);
+  readonly compositionOpen = signal(true);
   readonly hoverShellOpen = signal(false);
   readonly overlayOpen = signal(false);
   readonly lastState = signal('Desktop sidebar expanded.');
@@ -116,15 +117,21 @@ export class SidebarPage {
   ];
   readonly quickNavigation: readonly NeuralMenuEntry[] = [
     {
-      key: 'overview',
-      label: 'Overview',
-      iconClass: 'nt nt-home',
-    },
-    {
-      key: 'activity',
-      label: 'Activity',
-      iconClass: 'nt nt-activity',
-      badge: 4,
+      key: 'quick-links',
+      label: 'Quick links',
+      items: [
+        {
+          key: 'overview',
+          label: 'Overview',
+          iconClass: 'nt nt-home',
+        },
+        {
+          key: 'activity',
+          label: 'Activity',
+          iconClass: 'nt nt-activity',
+          badge: 4,
+        },
+      ],
     },
     { separator: true },
     {
@@ -195,9 +202,19 @@ import {
   NeuralSidebarMain,
   NeuralSidebarTrigger,
 } from '@neural-ng/core/sidebar';`;
-  readonly menuCompositionCode = `<neural-sidebar-content>
-  <neural-menu ariaLabel="Quick navigation" [items]="items" />
-</neural-sidebar-content>`;
+  readonly menuCompositionCode = `<neural-sidebar
+  id="mixed-navigation"
+  [(open)]="open"
+  collapseMode="icon"
+  iconMenu="flyout"
+>
+  <neural-sidebar-content>
+    <neural-menu ariaLabel="Quick navigation" [items]="quickItems" />
+    <neural-panel-menu ariaLabel="Workspace navigation" [items]="treeItems" />
+  </neural-sidebar-content>
+</neural-sidebar>
+
+<button [neuralSidebarTrigger]="'mixed-navigation'">Toggle navigation</button>`;
   readonly shellCode = `<neural-sidebar-layout>
   <neural-sidebar
     id="workspace-nav"
@@ -454,6 +471,7 @@ import {
     '--neural-sidebar-header-padding',
     '--neural-sidebar-content-padding',
     '--neural-sidebar-footer-padding',
+    '--neural-sidebar-menu-gap',
     '--neural-sidebar-floating-margin',
     '--neural-sidebar-inset-margin',
     '--neural-sidebar-duration',

@@ -6,6 +6,7 @@ const routes = [
   ['/docs/installation', 'Installation'],
   ['/docs/components/button', 'Button'],
   ['/docs/components/panel-menu', 'PanelMenu'],
+  ['/docs/components/sidebar', 'Sidebar'],
 ] as const;
 
 for (const [route, heading] of routes) {
@@ -105,6 +106,60 @@ test('keeps On this page sticky while document content scrolls', async ({
     .toBeGreaterThan(90);
   const after = await navigation.boundingBox();
   expect(Math.abs((after?.y ?? 0) - (stickyPosition?.y ?? 0))).toBeLessThan(8);
+});
+
+test('keeps Menu and PanelMenu aligned in one collapsible Sidebar', async ({
+  page,
+}) => {
+  await page.goto('/docs/components/sidebar');
+  const example = page.locator('#composition');
+  const sidebar = example.locator('#docs-mixed-navigation');
+  const menu = sidebar.locator('.neural-menu-root:not([data-popup="true"])');
+  const panelMenu = sidebar.locator('.neural-panel-menu-root');
+  const menuLabel = menu.locator(
+    '[data-key="overview"] .neural-menu-label-root',
+  );
+  const panelLabel = panelMenu.locator(
+    '[data-key="workspace"] .neural-panel-menu-label-root',
+  );
+  const toggle = example.getByRole('button', {
+    name: 'Collapse navigation',
+  });
+
+  await expect(menuLabel).toBeVisible();
+  await expect(panelLabel).toBeVisible();
+  await expect
+    .poll(() =>
+      panelMenu.evaluate((element) =>
+        getComputedStyle(element).marginBlockStart.trim(),
+      ),
+    )
+    .toBe('8px');
+  await toggle.click();
+  await expect(sidebar).toHaveAttribute('data-open', 'false');
+  await expect(menuLabel).toBeHidden();
+  await expect(panelLabel).toBeHidden();
+
+  const menuIcon = await menu
+    .locator('[data-key="overview"] .neural-menu-icon-root')
+    .boundingBox();
+  const panelIcon = await panelMenu
+    .locator('[data-key="workspace"] .neural-panel-menu-icon-root')
+    .boundingBox();
+  expect(menuIcon).not.toBeNull();
+  expect(panelIcon).not.toBeNull();
+  expect(
+    Math.abs(
+      (menuIcon?.x ?? 0) +
+        (menuIcon?.width ?? 0) / 2 -
+        ((panelIcon?.x ?? 0) + (panelIcon?.width ?? 0) / 2),
+    ),
+  ).toBeLessThan(1);
+
+  await example.getByRole('button', { name: 'Expand navigation' }).click();
+  await expect(sidebar).toHaveAttribute('data-open', 'true');
+  await expect(menuLabel).toBeVisible();
+  await expect(panelLabel).toBeVisible();
 });
 
 test('serves the optimized hero and a dedicated not-found experience', async ({

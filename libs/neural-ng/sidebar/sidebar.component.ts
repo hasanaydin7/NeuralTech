@@ -264,6 +264,7 @@ export class NeuralSidebarLayout {
       > .neural-panel-menu-item-root
       > .neural-panel-menu-label-root,
     .neural-sidebar-panel-root[data-mode='icon'][data-open='false']
+      .neural-menu-root:not([data-popup='true'])
       .neural-menu-label-root {
       width: 0;
       min-width: 0;
@@ -282,23 +283,41 @@ export class NeuralSidebarLayout {
       align-items: center;
       justify-content: flex-start;
     }
-    .neural-sidebar-panel-base .neural-panel-menu-base {
+    .neural-sidebar-panel-base
+      :where(
+        .neural-panel-menu-base,
+        .neural-menu-base:not([data-popup='true'])
+      ) {
       width: 100%;
       max-width: none;
+      min-width: 0;
       padding: 0;
       background: transparent;
       border: 0;
       border-radius: 0;
       box-shadow: none;
     }
-    .neural-sidebar-panel-base .neural-menu-base:not([data-popup='true']) {
+    .neural-sidebar-panel-base
+      neural-menu
+      + neural-panel-menu
+      > .neural-panel-menu-root,
+    .neural-sidebar-panel-base
+      neural-panel-menu
+      + neural-menu
+      > .neural-menu-root:not([data-popup='true']) {
+      margin-block-start: var(--neural-sidebar-menu-gap, 0.5rem);
+    }
+    .neural-sidebar-panel-root[data-mode='icon'][data-open='false']
+      .neural-menu-root:not([data-popup='true']),
+    .neural-sidebar-panel-root[data-mode='icon'][data-open='false']
+      .neural-menu-root:not([data-popup='true'])
+      :where(
+        .neural-menu-list-root,
+        .neural-menu-group-root,
+        .neural-menu-group-list-root
+      ) {
       width: 100%;
-      max-width: none;
-      padding: 0;
-      background: transparent;
-      border: 0;
-      border-radius: 0;
-      box-shadow: none;
+      min-width: 0;
     }
     .neural-sidebar-panel-root[data-mode='icon'][data-open='false']
       .neural-panel-menu-list-root
@@ -315,9 +334,15 @@ export class NeuralSidebarLayout {
       padding-inline: 0;
     }
     .neural-sidebar-panel-root[data-mode='icon'][data-open='false']
+      .neural-menu-root:not([data-popup='true'])
       .neural-menu-item-root {
       position: relative;
+      flex: 0 0 auto;
       width: var(
+        --neural-sidebar-rail-item-width,
+        calc(var(--neural-sidebar-icon-width, 3.5rem) - 1.5rem)
+      );
+      min-height: var(
         --neural-sidebar-rail-item-width,
         calc(var(--neural-sidebar-icon-width, 3.5rem) - 1.5rem)
       );
@@ -333,8 +358,10 @@ export class NeuralSidebarLayout {
       > .neural-panel-menu-item-root
       > .neural-panel-menu-meta-root,
     .neural-sidebar-panel-root[data-mode='icon'][data-open='false']
+      .neural-menu-root:not([data-popup='true'])
       .neural-menu-meta-root,
     .neural-sidebar-panel-root[data-mode='icon'][data-open='false']
+      .neural-menu-root:not([data-popup='true'])
       .neural-menu-group-label-root,
     .neural-sidebar-panel-root[data-mode='icon'][data-open='false']
       .neural-panel-menu-list-root
@@ -348,6 +375,7 @@ export class NeuralSidebarLayout {
       display: none;
     }
     .neural-sidebar-panel-root[data-mode='icon'][data-open='false']
+      .neural-menu-root:not([data-popup='true'])
       .neural-menu-separator-root {
       display: none;
     }
@@ -361,9 +389,9 @@ export class NeuralSidebarLayout {
         .neural-panel-menu-root,
         .neural-panel-menu-list-root,
         .neural-menu-root:not([data-popup='true']),
-        .neural-menu-list-root,
-        .neural-menu-group-root,
-        .neural-menu-group-list-root
+        .neural-menu-root:not([data-popup='true']) .neural-menu-list-root,
+        .neural-menu-root:not([data-popup='true']) .neural-menu-group-root,
+        .neural-menu-root:not([data-popup='true']) .neural-menu-group-list-root
       ) {
       overflow: visible;
     }
@@ -379,6 +407,7 @@ export class NeuralSidebarLayout {
       > .neural-panel-menu-item-container-root
       > .neural-panel-menu-item-root::after,
     .neural-sidebar-panel-root[data-mode='icon'][data-open='false']
+      .neural-menu-root:not([data-popup='true'])
       .neural-menu-item-root::after {
       position: absolute;
       z-index: var(--neural-sidebar-rail-label-z-index, 21);
@@ -421,6 +450,7 @@ export class NeuralSidebarLayout {
       > .neural-panel-menu-item-container-root
       > .neural-panel-menu-item-root::after,
     .neural-sidebar-panel-root[data-mode='icon'][data-open='false'][data-side='end']
+      .neural-menu-root:not([data-popup='true'])
       .neural-menu-item-root::after {
       inset-inline: auto
         calc(100% + var(--neural-sidebar-rail-label-offset, 0.625rem));
@@ -435,6 +465,7 @@ export class NeuralSidebarLayout {
         :focus-visible
       )::after,
     .neural-sidebar-panel-root[data-mode='icon'][data-open='false']
+      .neural-menu-root:not([data-popup='true'])
       .neural-menu-item-root:is(:hover, :focus-visible)::after {
       opacity: 1;
       transform: translateY(-50%) translateX(0);
@@ -693,7 +724,10 @@ export class NeuralSidebarLayout {
     }
     @media (prefers-reduced-motion: reduce) {
       :where(.neural-sidebar-panel-root),
-      :where(.neural-sidebar-panel-root) .neural-panel-menu-group-root {
+      :where(.neural-sidebar-panel-root) .neural-panel-menu-group-root,
+      :where(.neural-sidebar-panel-root)
+        .neural-menu-root:not([data-popup='true'])
+        .neural-menu-item-root {
         transition-duration: 0.01ms;
       }
     }

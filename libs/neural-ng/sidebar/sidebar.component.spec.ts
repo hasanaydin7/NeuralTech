@@ -308,19 +308,42 @@ describe('NeuralSidebar', () => {
     expect(document.activeElement).toBe(rootItem);
   });
 
-  it('composes an inline NeuralMenu with the collapsed icon rail', async () => {
+  it('keeps inline NeuralMenu and PanelMenu aligned through collapse and expand', async () => {
     const fixture = await createHost();
-    fixture.componentInstance.sidebar().close();
-    fixture.detectChanges();
-
     const menu = fixture.nativeElement.querySelector(
       '.neural-menu-root',
     ) as HTMLElement;
+    const panelMenu = fixture.nativeElement.querySelector(
+      '.neural-panel-menu-root',
+    ) as HTMLElement;
     const item = menu.querySelector('[data-key="search"]') as HTMLElement;
+    const label = item.querySelector('.neural-menu-label-root') as HTMLElement;
+    const meta = item.querySelector('.neural-menu-meta-root') as HTMLElement;
+    const groupLabel = menu.querySelector(
+      '.neural-menu-group-label-root',
+    ) as HTMLElement;
 
     expect(menu.classList).toContain('neural-menu-base');
+    expect(panelMenu.classList).toContain('neural-panel-menu-base');
+    expect(getComputedStyle(label).opacity).not.toBe('0');
+    expect(getComputedStyle(groupLabel).display).not.toBe('none');
+
+    fixture.componentInstance.sidebar().close();
+    fixture.detectChanges();
+
     expect(item.getAttribute('data-label')).toBe('Search');
-    expect(item.querySelector('.neural-menu-label-root')).not.toBeNull();
+    expect(label.textContent?.trim()).toBe('Search');
+    expect(meta.textContent).toContain('Ctrl K');
+    expect(groupLabel.textContent?.trim()).toBe('Account');
+
+    fixture.componentInstance.sidebar().show();
+    fixture.detectChanges();
+    expect(
+      (fixture.nativeElement.querySelector('aside') as HTMLElement).dataset[
+        'open'
+      ],
+    ).toBe('true');
+    expect(item.querySelector('.neural-menu-icon-root')).not.toBeNull();
   });
 
   it('keeps nested collapsed-rail groups as cascading flyouts', async () => {
@@ -374,13 +397,18 @@ describe('NeuralSidebar', () => {
     fixture.componentInstance.openOnHover.set(true);
     fixture.detectChanges();
     const panel = fixture.nativeElement.querySelector('aside') as HTMLElement;
+    const menuLabel = fixture.nativeElement.querySelector(
+      '[data-key="search"] .neural-menu-label-root',
+    ) as HTMLElement;
     expect(panel.dataset['openOnHover']).toBe('true');
+    expect(menuLabel.closest('aside')?.dataset['open']).toBe('false');
 
     panel.dispatchEvent(new PointerEvent('pointerenter'));
     fixture.detectChanges();
     expect(panel.dataset['open']).toBe('true');
     expect(panel.dataset['hoverExpanded']).toBe('true');
     expect(fixture.componentInstance.open()).toBe(false);
+    expect(menuLabel.closest('aside')?.dataset['open']).toBe('true');
     expect(latest(fixture.componentInstance.hoverChanges)?.expanded).toBe(true);
 
     const rootItem = fixture.nativeElement.querySelector(

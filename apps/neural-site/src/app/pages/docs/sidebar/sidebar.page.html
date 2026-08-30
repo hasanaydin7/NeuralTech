@@ -366,9 +366,10 @@
             <section id="composition" class="scroll-mt-28 pt-16">
               <h2 class="text-2xl font-black">Content composition</h2>
               <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
-                Project NeuralMenu for grouped commands or NeuralPanelMenu for
-                expandable navigation. Header and footer accept branding,
-                search, account controls or any application-specific content.
+                NeuralMenu and NeuralPanelMenu can share one Sidebar. Both adopt
+                the same width, icon-rail alignment, hover expansion and
+                responsive collapse state; PanelMenu keeps ownership of its
+                hierarchical flyouts.
               </p>
               <code-view
                 class="mt-6 block"
@@ -383,29 +384,55 @@
                   layoutClass="min-h-72 overflow-hidden rounded-2xl border border-[var(--site-border)]"
                 >
                   <neural-sidebar
-                    [open]="false"
+                    id="docs-mixed-navigation"
+                    [(open)]="compositionOpen"
                     [responsive]="false"
                     collapseMode="icon"
+                    iconMenu="flyout"
                     iconWidth="4rem"
                   >
                     <neural-sidebar-header>
-                      <span
-                        class="grid size-9 place-items-center rounded-xl bg-blue-500 font-black text-white"
-                        >N</span
-                      >
+                      <div class="flex min-w-0 items-center gap-3 font-black">
+                        <span
+                          class="grid size-9 shrink-0 place-items-center rounded-xl bg-blue-500 text-white"
+                          >N</span
+                        >
+                        <span neuralSidebarLabel>Mixed navigation</span>
+                      </div>
                     </neural-sidebar-header>
                     <neural-sidebar-content>
                       <neural-menu
                         ariaLabel="Quick navigation"
                         [items]="quickNavigation"
                       />
+                      <neural-panel-menu
+                        ariaLabel="Workspace navigation"
+                        [items]="navigation"
+                      />
                     </neural-sidebar-content>
                   </neural-sidebar>
                   <main
                     neuralSidebarMain
-                    class="grid place-items-center p-6 text-sm text-[var(--site-text-muted)]"
+                    class="grid content-center justify-items-center gap-4 p-6 text-center text-sm text-[var(--site-text-muted)]"
                   >
-                    NeuralMenu uses the same centered icon rail.
+                    <p>
+                      NeuralMenu above and NeuralPanelMenu below remain aligned
+                      in both Sidebar states.
+                    </p>
+                    <neural-button
+                      [neuralSidebarTrigger]="'docs-mixed-navigation'"
+                      [label]="
+                        compositionOpen()
+                          ? 'Collapse navigation'
+                          : 'Expand navigation'
+                      "
+                      [icon]="
+                        compositionOpen()
+                          ? 'nt nt-layout-sidebar-left-collapse'
+                          : 'nt nt-layout-sidebar-left-expand'
+                      "
+                      severity="secondary"
+                    />
                   </main>
                 </neural-sidebar-layout>
               </code-view>

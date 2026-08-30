@@ -1677,6 +1677,7 @@
   --neural-sidebar-header-padding: 0.75rem;
   --neural-sidebar-content-padding: 0.5rem 0.75rem;
   --neural-sidebar-footer-padding: 0.75rem;
+  --neural-sidebar-menu-gap: 0.5rem;
   --neural-sidebar-floating-margin: 0.75rem;
   --neural-sidebar-inset-margin: 0.5rem;
   --neural-sidebar-duration: 200ms;

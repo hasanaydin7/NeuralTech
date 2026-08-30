@@ -5,6 +5,8 @@
 - Compose navigation with `NeuralMenu` or `NeuralPanelMenu`; Sidebar does not duplicate menu item APIs.
 - `NeuralPanelMenu` becomes visually flush inside a styled Sidebar and automatically reduces to centered top-level icons in a collapsed icon rail.
 - `NeuralMenu` receives the same flush treatment and collapses flat actions into centered rail icons; import it separately from `@neural-ng/core/menu`.
+- `NeuralMenu` and `NeuralPanelMenu` may be projected together in one `neural-sidebar-content`; both follow the same expanded, collapsed, hover-expanded, responsive and RTL shell state.
+- Sidebar icon-rail styling applies only to inline `NeuralMenu`. A popup `NeuralMenu` projected anywhere inside Sidebar keeps its full overlay labels, metadata and geometry.
 - `iconMenu="flyout"` is the default: activating a parent rail icon opens its children beside the rail. Once the root flyout is open, hovering a nested parent opens the next logical-side flyout after `hoverOpenDelay`; deeper branches never expand the first panel vertically.
 - Closing or replacing a root flyout clears all descendant expansion keys. Reopening it starts collapsed rather than restoring stale nested flyouts. Escape, outside pointer interaction, or Angular navigation closes and resets the hierarchy.
 - `openOnHover` temporarily expands a collapsed desktop icon rail without mutating `open`. Tune `hoverOpenDelay` (100ms) and `hoverCloseDelay` (180ms); use `hoverChange` only for observing this temporary state.

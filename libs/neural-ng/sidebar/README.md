@@ -3,6 +3,8 @@
 Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.
 
 ```ts
+import { NeuralMenu } from '@neural-ng/core/menu';
+import { NeuralPanelMenu } from '@neural-ng/core/panel-menu';
 import { NeuralSidebar, NeuralSidebarContent, NeuralSidebarHeader, NeuralSidebarInitialFocus, NeuralSidebarLabel, NeuralSidebarLayout, NeuralSidebarMain, NeuralSidebarTrigger } from '@neural-ng/core/sidebar';
 ```
 
@@ -10,7 +12,10 @@ import { NeuralSidebar, NeuralSidebarContent, NeuralSidebarHeader, NeuralSidebar
 <neural-sidebar-layout>
   <neural-sidebar id="navigation" [(open)]="open" side="start" variant="inset" collapseMode="icon" openOnHover breakpoint="64rem" mobileMode="offcanvas">
     <neural-sidebar-header><span neuralSidebarLabel>Workspace</span></neural-sidebar-header>
-    <neural-sidebar-content><neural-panel-menu [items]="items" /></neural-sidebar-content>
+    <neural-sidebar-content>
+      <neural-menu ariaLabel="Quick navigation" [items]="quickItems" />
+      <neural-panel-menu ariaLabel="Workspace navigation" [items]="treeItems" />
+    </neural-sidebar-content>
   </neural-sidebar>
   <main neuralSidebarMain>
     <button #trigger="neuralSidebarTrigger" [neuralSidebarTrigger]="'navigation'" [attr.aria-label]="trigger.expanded() ? 'Collapse navigation' : 'Expand navigation'">
@@ -26,7 +31,10 @@ import { NeuralSidebar, NeuralSidebarContent, NeuralSidebarHeader, NeuralSidebar
 its action labels, metadata, group headings, and separators reduce to centered
 top-level icons; hover and keyboard focus expose each action label beside the
 rail. Import `NeuralMenu` independently from `@neural-ng/core/menu` and project
-it into `neural-sidebar-content` exactly like `NeuralPanelMenu`.
+it into `neural-sidebar-content` exactly like `NeuralPanelMenu`. Both menus may
+share the same content region: they use one width, menu gap, collapse state,
+hover expansion and responsive transition. Popup NeuralMenu instances remain
+independent and never inherit icon-rail clipping or label-hiding rules.
 
 Set `openOnHover` to temporarily expand a collapsed desktop icon rail without changing the controlled `open` model. `hoverOpenDelay` defaults to `100`ms and `hoverCloseDelay` to `180`ms. Focused content remains expanded until focus leaves, touch pointers are ignored, and `hoverChange` reports the temporary state. When hover expansion is disabled, focused or hovered rail items expose their label beside the rail; parent icons can still open their child flyout.
 
