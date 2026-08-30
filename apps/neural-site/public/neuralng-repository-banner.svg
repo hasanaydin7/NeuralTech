@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-labelledby="title desc">
+  <title id="title">NeuralNg</title>
+  <desc id="desc">AI-first Angular UI for humans and coding agents.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070b16" />
+      <stop offset="0.52" stop-color="#10182a" />
+      <stop offset="1" stop-color="#07121a" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee" />
+      <stop offset="0.52" stop-color="#8b5cf6" />
+      <stop offset="1" stop-color="#f472b6" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity=".24" />
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0" />
+    </radialGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="42" />
+    </filter>
+  </defs>
+
+  <rect width="1280" height="420" rx="36" fill="url(#background)" />
+  <circle cx="1080" cy="90" r="230" fill="url(#glow)" filter="url(#blur)" />
+  <path d="M-80 350C220 165 390 490 720 230S1110 120 1360 32" fill="none" stroke="url(#accent)" stroke-width="2" opacity=".55" />
+  <path d="M-100 384C240 180 420 520 748 258S1110 154 1370 58" fill="none" stroke="url(#accent)" stroke-width="36" opacity=".09" />
+
+  <g transform="translate(92 80)">
+    <rect width="72" height="72" rx="18" fill="#111827" stroke="#e5e7eb" stroke-width="5" />
+    <circle cx="25" cy="32" r="5" fill="#22d3ee" />
+    <path d="m50 18 3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#a78bfa" />
+    <path d="M24 49c8 7 17 7 25 0" fill="none" stroke="#f8fafc" stroke-width="4" stroke-linecap="round" />
+    <path d="M55 52v18l5-5 4 6 5-4-4-6 7-1z" fill="#f472b6" stroke="#111827" stroke-width="1.5" stroke-linejoin="round" />
+  </g>
+
+  <text x="190" y="130" fill="#f8fafc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="48" font-weight="800" letter-spacing="1">NeuralNg</text>
+  <text x="92" y="225" fill="#f8fafc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="54" font-weight="800">Interfaces for the agentic era.</text>
+  <text x="94" y="276" fill="#aab4c5" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24">AI-first, headless and Signal-native UI components for Angular 22+.</text>
+
+  <g transform="translate(94 324)" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" font-weight="600">
+    <rect width="126" height="42" rx="21" fill="#142536" stroke="#22d3ee" stroke-opacity=".45" />
+    <text x="25" y="27" fill="#67e8f9">51 components</text>
+    <rect x="142" width="134" height="42" rx="21" fill="#211b38" stroke="#a78bfa" stroke-opacity=".5" />
+    <text x="167" y="27" fill="#c4b5fd">Strictly typed</text>
+    <rect x="292" width="126" height="42" rx="21" fill="#2d1829" stroke="#f472b6" stroke-opacity=".45" />
+    <text x="318" y="27" fill="#f9a8d4">MIT licensed</text>
+  </g>
+</svg>
