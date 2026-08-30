@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="apps/neural-site/public/neuralng-repository-banner.svg" alt="NeuralNg — Interfaces for the agentic era" width="100%" />
+  <img src="apps/neural-site/public/neuralng-repository-banner.svg?v=3" alt="NeuralNg — Interfaces for the agentic era" width="100%" />
 
   <br />
 
