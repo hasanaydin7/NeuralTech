@@ -3,7 +3,6 @@
 
   <br />
 
-[![CI](https://github.com/hasanaydin7/NeuralTech/actions/workflows/ci.yml/badge.svg)](https://github.com/hasanaydin7/NeuralTech/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/@neural-ng/core?logo=npm&label=%40neural-ng%2Fcore)](https://www.npmjs.com/package/@neural-ng/core)
 [![Angular 22+](https://img.shields.io/badge/Angular-22%2B-DD0031?logo=angular)](https://angular.dev/)
 [![MIT](https://img.shields.io/badge/license-MIT-2563eb.svg)](./LICENSE)
