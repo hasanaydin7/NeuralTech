@@ -53,24 +53,65 @@ if (dryRun) {
     );
   }
 
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json; charset=utf-8' },
-    body: JSON.stringify({
-      host: new URL(siteOrigin).hostname,
-      key,
-      keyLocation,
-      urlList,
-    }),
+  const payload = JSON.stringify({
+    host: new URL(siteOrigin).hostname,
+    key,
+    keyLocation,
+    urlList,
   });
+  const retryDelays = [0, 5_000, 10_000, 20_000, 30_000];
+  let acceptedResponse;
 
-  if (!response.ok && response.status !== 202) {
-    throw new Error(
-      `IndexNow rejected the submission: HTTP ${response.status} ${await response.text()}`,
-    );
+  for (const [index, delay] of retryDelays.entries()) {
+    if (delay > 0) {
+      await new Promise((resolve) => setTimeout(resolve, delay));
+    }
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json; charset=utf-8' },
+        body: payload,
+      });
+      const responseBody = await response.text();
+
+      if (response.ok || response.status === 202) {
+        acceptedResponse = response;
+        break;
+      }
+
+      const retryable =
+        response.status === 429 ||
+        response.status >= 500 ||
+        (response.status === 403 &&
+          responseBody.includes('SiteVerificationNotCompleted'));
+      if (!retryable || index === retryDelays.length - 1) {
+        throw Object.assign(
+          new Error(
+            `IndexNow rejected the submission: HTTP ${response.status} ${responseBody}`,
+          ),
+          { retryable },
+        );
+      }
+
+      console.warn(
+        `IndexNow attempt ${index + 1} was not ready (HTTP ${response.status}); retrying.`,
+      );
+    } catch (error) {
+      if (error.retryable === false || index === retryDelays.length - 1) {
+        throw error;
+      }
+      console.warn(
+        `IndexNow attempt ${index + 1} failed (${error.message}); retrying.`,
+      );
+    }
+  }
+
+  if (!acceptedResponse) {
+    throw new Error('IndexNow did not accept the submission.');
   }
 
   console.log(
-    `Submitted ${urlList.length} NeuralNg URLs to IndexNow (HTTP ${response.status}).`,
+    `Submitted ${urlList.length} NeuralNg URLs to IndexNow (HTTP ${acceptedResponse.status}).`,
   );
 }

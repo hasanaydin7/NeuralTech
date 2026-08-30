@@ -75,5 +75,5 @@ jobs:
 
       - name: Notify IndexNow
         continue-on-error: true
-        timeout-minutes: 2
+        timeout-minutes: 3
         run: node tools/submit-indexnow.mjs
