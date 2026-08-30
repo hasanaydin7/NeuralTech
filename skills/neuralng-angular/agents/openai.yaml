@@ -1,0 +1,4 @@
+interface:
+  display_name: 'NeuralNg Angular'
+  short_description: 'Build Angular interfaces with NeuralNg'
+  default_prompt: 'Use $neuralng-angular to build this Angular interface with exact NeuralNg APIs.'

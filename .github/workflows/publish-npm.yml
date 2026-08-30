@@ -52,5 +52,50 @@ jobs:
       - name: Run MCP smoke test
         run: npm run mcp:smoke
 
+      - name: Check whether MCP version is new
+        id: mcp-release
+        shell: bash
+        run: |
+          MCP_VERSION="$(node -p "require('./libs/neural-mcp/package.json').version")"
+          echo "version=$MCP_VERSION" >> "$GITHUB_OUTPUT"
+          if npm view "@neural-ng/mcp-server@$MCP_VERSION" version >/dev/null 2>&1; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish new versions
         run: node tools/publish-packages.mjs
+
+      - name: Wait for MCP package availability
+        if: steps.mcp-release.outputs.publish == 'true'
+        shell: bash
+        run: |
+          for attempt in {1..12}; do
+            if npm view "@neural-ng/mcp-server@${{ steps.mcp-release.outputs.version }}" version >/dev/null 2>&1; then
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "@neural-ng/mcp-server@${{ steps.mcp-release.outputs.version }} did not become available in time." >&2
+          exit 1
+
+      - name: Install verified MCP publisher
+        if: steps.mcp-release.outputs.publish == 'true'
+        env:
+          MCP_PUBLISHER_VERSION: v1.8.1
+          MCP_PUBLISHER_SHA256: a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc
+        run: |
+          curl --fail --location --silent --show-error \
+            "https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}/mcp-publisher_linux_amd64.tar.gz" \
+            --output mcp-publisher.tar.gz
+          printf '%s  %s\n' "$MCP_PUBLISHER_SHA256" mcp-publisher.tar.gz | sha256sum --check --strict
+          tar -xzf mcp-publisher.tar.gz mcp-publisher
+          chmod +x mcp-publisher
+
+      - name: Publish MCP Registry metadata
+        if: steps.mcp-release.outputs.publish == 'true'
+        run: |
+          ./mcp-publisher validate libs/neural-mcp/server.json
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish libs/neural-mcp/server.json

@@ -76,8 +76,8 @@ for application configuration, theming and SSR setup.
 | [`@neural-ng/core`](https://www.npmjs.com/package/@neural-ng/core)             | 51 accessible Angular components, services, localization and tokens | `0.1.0-beta.6`  |
 | [`@neural-ng/editor`](https://www.npmjs.com/package/@neural-ng/editor)         | Structured, AI-native and collaboration-ready editor                | `0.1.0-beta.0`  |
 | [`@neural-ng/icons`](https://www.npmjs.com/package/@neural-ng/icons)           | 6,184 framework-independent `nt nt-*` CSS mask icons                | `0.1.0-beta.0`  |
-| [`@neural-ng/theme`](https://www.npmjs.com/package/@neural-ng/theme)           | Typed theme recipe compiler and Tailwind v4 bridge                  | `0.1.0-beta.3`  |
-| [`@neural-ng/mcp-server`](https://www.npmjs.com/package/@neural-ng/mcp-server) | Read-only component discovery and theme tooling for AI agents       | `0.1.0-beta.3`  |
+| [`@neural-ng/theme`](https://www.npmjs.com/package/@neural-ng/theme)           | Typed theme recipe compiler and Tailwind v4 bridge                  | `0.1.0-beta.4`  |
+| [`@neural-ng/mcp-server`](https://www.npmjs.com/package/@neural-ng/mcp-server) | Read-only component discovery and theme tooling for AI agents       | `0.1.0-beta.4`  |
 
 ## AI-agent workflow
 
@@ -93,6 +93,10 @@ The server supports bounded discovery and theme recipe operations without
 granting write access to your application. See the
 [MCP guide](https://neuralng.dev/docs/mcp-server) for client setup and
 available resources.
+
+Agent Skills-compatible clients can also install or upload the portable
+[`neuralng-angular` skill](./skills/neuralng-angular/SKILL.md). It teaches an
+agent to resolve versioned component contracts before generating Angular UI.
 
 ## Theming
 

@@ -17,9 +17,11 @@ Use exact secondary entry points such as `@neural-ng/core/button`. Do not invent
 
 ## Agent integration
 
+- Expanded context: https://neuralng.dev/llms-full.txt
 - npm package: https://www.npmjs.com/package/@neural-ng/core
 - MCP server: `npx -y @neural-ng/mcp-server`
 - GitHub repository: https://github.com/hasanaydin7/NeuralTech
+- Portable Agent Skill: https://github.com/hasanaydin7/NeuralTech/tree/main/skills/neuralng-angular
 - Package-level context: `@neural-ng/core/llms.txt`
 - Component context pattern: `@neural-ng/core/{component}/llms.txt`
 

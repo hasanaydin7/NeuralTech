@@ -13,7 +13,11 @@ assert(
   packageJson.name === '@neural-ng/mcp-server',
   'Unexpected package name.',
 );
-assert(packageJson.version === '0.1.0-beta.3', 'Unexpected package version.');
+assert(packageJson.version === '0.1.0-beta.4', 'Unexpected package version.');
+assert(
+  packageJson.mcpName === 'io.github.hasanaydin7/neuralng',
+  'Published MCP package must declare its verified registry name.',
+);
 assert(packageJson.type === 'module', 'MCP package must publish ESM.');
 assert(packageJson.license === 'MIT', 'MCP package must declare MIT.');
 assert(
@@ -39,12 +43,25 @@ for (const path of [
   'src/cli.js',
   'README.md',
   'llms.txt',
+  'server.json',
   'LICENSE',
 ]) {
   await access(join(packageRoot, path));
 }
 
 const api = await import(pathToFileURL(join(packageRoot, 'src/index.js')).href);
+const registryMetadata = await readJson('server.json');
+assert(
+  registryMetadata.name === packageJson.mcpName &&
+    registryMetadata.version === packageJson.version,
+  'Registry metadata must match the published MCP package.',
+);
+assert(
+  registryMetadata.packages?.[0]?.identifier === packageJson.name &&
+    registryMetadata.packages?.[0]?.version === packageJson.version &&
+    registryMetadata.packages?.[0]?.transport?.type === 'stdio',
+  'Registry npm transport metadata is incorrect.',
+);
 const components = api.listComponents();
 const triState = api.getComponentContract('neural-tri-state-checkbox');
 const autoComplete = api.getComponentContract('neural-auto-complete');

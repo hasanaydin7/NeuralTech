@@ -47,7 +47,12 @@ app.use((_req, res, next) => {
 app.get('/robots.txt', (req, res) => {
   res
     .type('text/plain')
-    .send(`User-agent: *\nAllow: /\nSitemap: ${siteOrigin(req)}/sitemap.xml\n`);
+    .send(
+      `User-agent: *\n` +
+        `Content-Signal: search=yes, ai-input=yes, ai-train=no\n` +
+        `Allow: /\n` +
+        `Sitemap: ${siteOrigin(req)}/sitemap.xml\n`,
+    );
 });
 
 app.get('/healthz', (_req, res) => {

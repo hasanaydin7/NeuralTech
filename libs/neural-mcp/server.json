@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.hasanaydin7/neuralng",
+  "title": "NeuralNg Component and Theme MCP Server",
+  "description": "Read-only discovery for NeuralNg Angular components, APIs, packages, icons and theme recipes.",
+  "version": "0.1.0-beta.4",
+  "websiteUrl": "https://neuralng.dev/docs/mcp-server",
+  "repository": {
+    "url": "https://github.com/hasanaydin7/NeuralTech",
+    "source": "github",
+    "subfolder": "libs/neural-mcp"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@neural-ng/mcp-server",
+      "version": "0.1.0-beta.4",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

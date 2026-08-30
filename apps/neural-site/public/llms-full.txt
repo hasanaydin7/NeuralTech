@@ -1,0 +1,83 @@
+# NeuralNg expanded agent context
+
+> NeuralNg is an MIT-licensed Angular 22+ UI library for human developers and coding agents. It publishes 51 documented components, 6,184 framework-independent icons, typed standalone APIs, Signal-native state, accessibility contracts, SSR-safe behavior, themes, component-level llms.txt files, and a read-only MCP server.
+
+Canonical project links:
+
+- Documentation: https://neuralng.dev
+- Installation: https://neuralng.dev/docs/installation
+- Component catalog: https://neuralng.dev/docs/components
+- AI-first workflow: https://neuralng.dev/docs/ai-first-workflow
+- MCP reference: https://neuralng.dev/docs/mcp-server
+- GitHub: https://github.com/hasanaydin7/NeuralTech
+- npm Core package: https://www.npmjs.com/package/@neural-ng/core
+
+## Package map
+
+- `@neural-ng/core`: Angular components, services, localization and theme tokens.
+- `@neural-ng/icons`: 6,184 `nt nt-*` CSS mask icons.
+- `@neural-ng/editor`: structured, AI-native and collaboration-ready editor.
+- `@neural-ng/theme`: compact recipe compiler, diagnostics and Tailwind v4 bridge.
+- `@neural-ng/mcp-server`: read-only component discovery and theme tooling over stdio.
+
+## Install
+
+```bash
+npm install @neural-ng/core @neural-ng/icons
+```
+
+```css
+@import '@neural-ng/icons/icons.css';
+@import '@neural-ng/core/themes/neutral.css';
+```
+
+Neutral is the recommended stable theme contract. Glass, Mist and Futuristic are experimental beta presets. An application may instead use `unstyled` and typed class slots.
+
+## Deterministic component workflow
+
+1. Confirm the application uses Angular 22+ and strict TypeScript.
+2. Search the component catalog by the required behavior, not by a guessed class name.
+3. Read the installed component's `README.md` and `llms.txt`, or resolve its MCP contract.
+4. Import the documented standalone declaration from its exact secondary entry point.
+5. Use the documented selector, inputs, models and outputs without inventing aliases or NgModules.
+6. Preserve native semantics, labels, keyboard behavior, focus handling and form state.
+7. Run the application's typecheck, unit tests and relevant browser or accessibility checks.
+
+The installed package is the source of truth for its version. Hosted docs may describe a newer beta.
+
+## MCP workflow
+
+Run the local stdio server:
+
+```bash
+npx -y @neural-ng/mcp-server
+```
+
+Recommended discovery sequence:
+
+1. Call `search_components` with the capability or problem statement.
+2. Call `get_component_contract` for the selected result.
+3. Read `neural://components/{id}/llms` for strict generation rules.
+4. Read `neural://components/{id}/readme` only when implementation detail is still needed.
+5. Use `recommend_components` for ambiguous compositions, then verify every returned contract.
+
+Theme tools create and validate compact recipes. They do not write consumer files or return the complete generated CSS graph through model context.
+
+## Non-negotiable rules
+
+- Do not invent selectors, inputs, outputs, CSS tokens, icon names or compatibility claims.
+- Do not import all components from a root barrel when a documented secondary entry point exists.
+- Do not replace native accessible behavior with click-only custom markup.
+- Do not add browser-global access that breaks SSR or deterministic hydration.
+- Do not silently choose an experimental theme for production-sensitive work.
+- Do not introduce an unrelated icon runtime when Neural Icons already provides the requested glyph.
+
+## Forms and styling
+
+Use the documented integration for Signal Forms, Reactive Forms or template-driven forms. Preserve disabled, readonly, required, invalid, touched and reset behavior. Native enhancer directives such as `input[neuralInput]` remain native elements and keep browser semantics.
+
+For styled applications, import one base theme once. For custom design systems, use component tokens, typed class slots or `unstyled`; Tailwind is optional, not required.
+
+## Portable skill
+
+The repository includes `skills/neuralng-angular/SKILL.md`. Install or upload that folder in an Agent Skills-compatible client when NeuralNg should be selected automatically for Angular interface tasks.

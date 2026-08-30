@@ -1,7 +1,8 @@
 {
   "name": "@neural-ng/mcp-server",
-  "version": "0.1.0-beta.3",
+  "version": "0.1.0-beta.4",
   "description": "Read-only MCP server for NeuralNg component and compact theme contracts.",
+  "mcpName": "io.github.hasanaydin7/neuralng",
   "type": "module",
   "license": "MIT",
   "repository": {
@@ -32,17 +33,19 @@
     },
     "./README.md": "./README.md",
     "./llms.txt": "./llms.txt",
+    "./server.json": "./server.json",
     "./package.json": "./package.json"
   },
   "files": [
     "src",
     "README.md",
     "llms.txt",
+    "server.json",
     "LICENSE"
   ],
   "dependencies": {
     "@modelcontextprotocol/server": "2.0.0",
-    "@neural-ng/theme": "0.1.0-beta.3",
+    "@neural-ng/theme": "0.1.0-beta.4",
     "zod": "^4.3.5"
   },
   "keywords": [

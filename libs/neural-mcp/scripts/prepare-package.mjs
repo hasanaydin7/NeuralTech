@@ -7,7 +7,12 @@ const sourceRoot = resolve(workspaceRoot, 'libs/neural-mcp');
 const outputRoot = resolve(workspaceRoot, 'dist/libs/neural-mcp');
 
 await mkdir(outputRoot, { recursive: true });
-for (const filename of ['package.json', 'README.md', 'llms.txt']) {
+for (const filename of [
+  'package.json',
+  'README.md',
+  'llms.txt',
+  'server.json',
+]) {
   await copyFile(join(sourceRoot, filename), join(outputRoot, filename));
 }
 await copyFile(join(workspaceRoot, 'LICENSE'), join(outputRoot, 'LICENSE'));
