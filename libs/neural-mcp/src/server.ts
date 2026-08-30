@@ -16,7 +16,7 @@ import {
 } from './theme.js';
 
 const SERVER_NAME = 'neural-ng';
-const SERVER_VERSION = '0.1.0-beta.4';
+const SERVER_VERSION = '0.1.0-beta.5';
 const serverPackageSpecifier = '@modelcontextprotocol/server';
 const stdioPackageSpecifier = '@modelcontextprotocol/server/stdio';
 const zodPackageSpecifier = 'zod/v4';

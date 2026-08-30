@@ -24,6 +24,21 @@
 All notable changes to NeuralNg are documented here. Beta APIs may change
 before the first stable release.
 
+## 0.1.0-beta.7 - 2026-08-31
+
+### Changed
+
+- Gave inline NeuralMenu the same expanded, collapsed, hover-expanded,
+  responsive and RTL Sidebar shell behavior as NeuralPanelMenu.
+- Allowed NeuralMenu and NeuralPanelMenu to share one Sidebar content region
+  with aligned icon rails and a tokenized navigation gap.
+
+### Fixed
+
+- Kept inline NeuralMenu items anchored throughout the Sidebar collapse
+  transition while leaving popup Menu geometry independent.
+- Improved dark-mode contrast across the Sidebar documentation examples.
+
 ## 0.1.0-beta.6 - 2026-08-30
 
 ### Added

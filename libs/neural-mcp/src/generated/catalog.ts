@@ -5,7 +5,7 @@ import type {
   NeuralThemeCatalogEntry,
 } from '../types.js';
 
-export const GENERATED_SOURCE_HASH = "161a2e57ffec74650917c1abcec087e2313d132c410c4a3dae9a1a1707d38114";
+export const GENERATED_SOURCE_HASH = "95d9e6cdf126cb7062816113a0621fa895cc2e6e68077ddb36607ca8f23fbb09";
 
 export const GENERATED_COMPONENTS = [
   {
@@ -2621,7 +2621,7 @@ export const GENERATED_COMPONENTS = [
 
 export const GENERATED_PACKAGE_CATALOG = {
   "packageName": "@neural-ng/core",
-  "version": "0.1.0-beta.6",
+  "version": "0.1.0-beta.7",
   "runtimeEntryPoints": [
     "@neural-ng/core",
     "@neural-ng/core/accordion",

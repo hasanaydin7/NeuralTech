@@ -13,7 +13,7 @@ assert(
   packageJson.name === '@neural-ng/mcp-server',
   'Unexpected package name.',
 );
-assert(packageJson.version === '0.1.0-beta.4', 'Unexpected package version.');
+assert(packageJson.version === '0.1.0-beta.5', 'Unexpected package version.');
 assert(
   packageJson.mcpName === 'io.github.hasanaydin7/neuralng',
   'Published MCP package must declare its verified registry name.',

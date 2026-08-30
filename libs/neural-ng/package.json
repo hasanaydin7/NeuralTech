@@ -1,6 +1,6 @@
 {
   "name": "@neural-ng/core",
-  "version": "0.1.0-beta.6",
+  "version": "0.1.0-beta.7",
   "description": "Angular 22+ UI components with typed, machine-readable contracts for AI coding agents.",
   "repository": {
     "type": "git",
