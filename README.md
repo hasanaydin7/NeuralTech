@@ -11,8 +11,9 @@
 
 </div>
 
-NeuralNg is an AI-first Angular component system built for both human developers
-and code-generating agents. It combines standalone, Signal-native APIs with
+NeuralNg is an Angular UI component system designed first for code-generating
+agents and fully usable by human developers. It combines standalone,
+Signal-native APIs with
 strict types, accessible native semantics, SSR-safe behavior, headless styling
 and tree-shakable secondary entry points.
 

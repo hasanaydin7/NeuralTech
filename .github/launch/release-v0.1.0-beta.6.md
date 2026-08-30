@@ -1,6 +1,6 @@
 # NeuralNg 0.1.0 Beta
 
-NeuralNg is now public: an AI-first, headless and Signal-native Angular 22+ UI system for human developers and coding agents.
+NeuralNg is now public: an AI-first, headless and Signal-native Angular 22+ UI system designed first for coding agents and fully usable by human developers.
 
 ## Highlights
 

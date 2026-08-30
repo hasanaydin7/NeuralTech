@@ -1,9 +1,10 @@
 # NeuralNg
 
-NeuralNg is an Angular UI component library designed for human developers and
-AI coding agents. It combines Angular 22+, Signals, standalone components,
-strict TypeScript, SSR, fine-grained secondary entry points, component-level
-`llms.txt` contracts, and a read-only MCP server for deterministic discovery.
+NeuralNg is an Angular UI component library designed first for AI coding agents
+and fully usable by human developers. It combines Angular 22+, Signals,
+standalone components, strict TypeScript, SSR, fine-grained secondary entry
+points, component-level `llms.txt` contracts, and a read-only MCP server for
+deterministic discovery.
 
 The project is in early development. Button, Card, Checkbox, RadioGroup,
 Switch, native Input and Textarea, localized InputNumber, accessible Field

@@ -1,6 +1,6 @@
 # NeuralNg expanded agent context
 
-> NeuralNg is an MIT-licensed Angular 22+ UI library for human developers and coding agents. It publishes 51 documented components, 6,184 framework-independent icons, typed standalone APIs, Signal-native state, accessibility contracts, SSR-safe behavior, themes, component-level llms.txt files, and a read-only MCP server.
+> NeuralNg is an MIT-licensed Angular 22+ UI library designed first for coding agents and fully usable by human developers. It publishes 51 documented components, 6,184 framework-independent icons, typed standalone APIs, Signal-native state, accessibility contracts, SSR-safe behavior, themes, component-level llms.txt files, and a read-only MCP server.
 
 Canonical project links:
 

@@ -1,6 +1,6 @@
 # NeuralNg
 
-> NeuralNg is an Angular 22+ UI component library designed for human developers and AI coding agents. It publishes typed standalone APIs, Signal-based state, accessibility contracts, component-level llms.txt files, and a read-only MCP server.
+> NeuralNg is an Angular 22+ UI component library designed first for AI coding agents and fully usable by human developers. It publishes typed standalone APIs, Signal-based state, accessibility contracts, component-level llms.txt files, and a read-only MCP server.
 
 Use exact secondary entry points such as `@neural-ng/core/button`. Do not invent selectors, inputs, outputs, aliases, or NgModules. Read the component documentation or MCP contract before generating code.
 

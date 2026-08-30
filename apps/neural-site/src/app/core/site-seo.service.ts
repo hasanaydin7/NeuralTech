@@ -12,7 +12,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 const HOME_DESCRIPTION =
-  'An Angular UI library built for AI coding agents and developers, with typed standalone components, Signals, accessibility, llms.txt contracts and MCP discovery.';
+  'An Angular UI library designed first for AI coding agents and fully usable by developers, with typed standalone components, Signals, accessibility, llms.txt contracts and MCP discovery.';
 
 export const SITE_ORIGIN = new InjectionToken<string>('NEURAL_SITE_ORIGIN', {
   providedIn: 'root',
