@@ -1,0 +1,51 @@
+export {
+  NEURAL_NG_CONFIG,
+  NeuralNgService,
+  provideNeuralNg,
+  type NeuralDensity,
+  type NeuralDirection,
+  type NeuralNgConfig,
+  type NeuralNgOptions,
+} from './neural-ng.config';
+export { NEURAL_FIELD_CONTEXT, type NeuralFieldContext } from './field-context';
+export {
+  NeuralTypeaheadController,
+  findNeuralTypeaheadOption,
+  findNextEnabledOption,
+  matchesNeuralOption,
+  normalizeNeuralOptionText,
+  readNeuralOptionPath,
+  resolveNeuralOption,
+  resolveNeuralVirtualRange,
+  type NeuralOptionFilterMode,
+  type NeuralOptionSourceConfig,
+  type NeuralResolvedOption,
+  type NeuralVirtualRange,
+  type NeuralVirtualRangeOptions,
+} from './option-utils';
+export {
+  NEURAL_EN_LOCALE,
+  NEURAL_LOCALE,
+  NeuralLocaleService,
+  formatNeuralMessage,
+  provideNeuralLocale,
+  resolveNeuralLocale,
+  type NeuralAutoCompleteMessages,
+  type NeuralCommonMessages,
+  type NeuralInputNumberMessages,
+  type NeuralInputMaskMessages,
+  type NeuralInputOtpMessages,
+  type NeuralLocale,
+  type NeuralLocaleMessages,
+  type NeuralMessageParameters,
+  type NeuralMultiSelectMessages,
+  type NeuralPaginatorMessages,
+  type NeuralPasswordMessages,
+  type NeuralFileUploadMessages,
+  type NeuralEditorMessages,
+  type NeuralResolvedLocale,
+  type NeuralTableMessages,
+  type NeuralTextDirection,
+} from './neural-locale';
+
+export const NEURAL_VERSION = '0.1.0-beta.0';

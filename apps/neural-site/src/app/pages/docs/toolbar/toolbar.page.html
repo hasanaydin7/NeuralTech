@@ -1,0 +1,630 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="toolbar-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Toolbar documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-toolbar"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-blue-500"
+                    >MISC</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-0.045em] sm:text-5xl"
+                >
+                  Toolbar
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  An accessible action surface with logical sections, responsive
+                  wrapping, semantic separators and RTL-aware roving keyboard
+                  focus.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    controls</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Roving
+                    focus</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Dynamic
+                    content safe</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Import
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import only the standalone Toolbar pieces used by the view.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="app.ts"
+                  language="typescript"
+                  [code]="importCode"
+                  [theme]="appearance.mode()"
+                />
+              </div>
+            </section>
+
+            <section id="composition" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                LOGICAL COMPOSITION
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Document actions
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Start, center and end express intent instead of physical left
+                and right positions. The toolbar delegates activation to the
+                projected Neural controls.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="document-actions.html"
+                  language="html"
+                  [code]="compositionCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="grid w-full gap-3">
+                    <neural-toolbar
+                      ariaLabel="Document actions"
+                      (focusChanged)="handleFocus($event)"
+                    >
+                      <neural-toolbar-start>
+                        <neural-button
+                          label="New"
+                          icon="nt nt-plus"
+                          severity="secondary"
+                          (clicked)="run('Created document')"
+                        />
+                        <neural-button
+                          label="Save"
+                          icon="nt nt-check"
+                          severity="secondary"
+                          (clicked)="run('Saved document')"
+                        />
+                      </neural-toolbar-start>
+                      <neural-toolbar-separator />
+                      <neural-toolbar-center>
+                        <input
+                          neuralInput
+                          type="search"
+                          aria-label="Search commands"
+                          placeholder="Search commands"
+                        />
+                      </neural-toolbar-center>
+                      <neural-toolbar-end>
+                        <neural-button
+                          label="Preview"
+                          icon="nt nt-eye"
+                          severity="secondary"
+                          (clicked)="run('Opened preview')"
+                        />
+                        <neural-button
+                          label="Publish"
+                          icon="nt nt-sparkles"
+                          (clicked)="run('Published document')"
+                        />
+                      </neural-toolbar-end>
+                    </neural-toolbar>
+                    <output
+                      class="text-xs text-[var(--site-text-muted)]"
+                      aria-live="polite"
+                    >
+                      {{ lastAction() }} · Focus: {{ focusedAction() }}
+                    </output>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="responsive" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Responsive wrapping
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Wrap is enabled by default, allowing projected action groups to
+                reflow without changing their semantic or keyboard order.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="responsive.html"
+                  language="html"
+                  [code]="responsiveCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="mx-auto w-full max-w-xl">
+                    <neural-toolbar ariaLabel="Responsive actions" wrap>
+                      <neural-toolbar-start>
+                        <neural-button
+                          label="Create"
+                          icon="nt nt-plus"
+                          severity="secondary"
+                        />
+                        <neural-button
+                          label="Duplicate"
+                          icon="nt nt-copy"
+                          severity="secondary"
+                        />
+                        <neural-button
+                          label="Archive"
+                          icon="nt nt-inbox"
+                          severity="secondary"
+                        />
+                      </neural-toolbar-start>
+                      <neural-toolbar-end>
+                        <neural-button label="Share" icon="nt nt-world" />
+                      </neural-toolbar-end>
+                    </neural-toolbar>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="vertical" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Vertical orientation
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Vertical mode changes layout, separator orientation and
+                navigation to Arrow Up and Arrow Down.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="vertical.html"
+                  language="html"
+                  [code]="verticalCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="mx-auto w-full max-w-xs">
+                    <neural-toolbar
+                      orientation="vertical"
+                      ariaLabel="Formatting actions"
+                    >
+                      <neural-toolbar-start>
+                        <neural-button
+                          label="Bold"
+                          icon="nt nt-edit"
+                          severity="secondary"
+                        />
+                        <neural-button
+                          label="Code"
+                          icon="nt nt-code"
+                          severity="secondary"
+                        />
+                        <neural-button
+                          label="Unavailable"
+                          icon="nt nt-lock"
+                          severity="secondary"
+                          [disabled]="true"
+                        />
+                      </neural-toolbar-start>
+                      <neural-toolbar-separator />
+                      <neural-toolbar-end>
+                        <neural-button
+                          label="Clear"
+                          icon="nt nt-trash"
+                          severity="secondary"
+                        />
+                      </neural-toolbar-end>
+                    </neural-toolbar>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="focus-policies" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Focus policies
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disable looping for bounded navigation. Disable roving focus
+                when a projected composite widget must retain full ownership of
+                its internal keyboard model.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="focus-policy.html"
+                  language="html"
+                  [code]="focusPolicyCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="grid w-full gap-5 sm:grid-cols-2">
+                    <div class="grid gap-2">
+                      <span class="text-sm font-bold">Bounded focus</span>
+                      <neural-toolbar
+                        [loop]="false"
+                        ariaLabel="Bounded actions"
+                      >
+                        <neural-toolbar-start>
+                          <neural-button
+                            ariaLabel="Previous"
+                            icon="nt nt-chevron-left"
+                            severity="secondary"
+                          />
+                          <neural-button
+                            ariaLabel="Next"
+                            icon="nt nt-chevron-right"
+                            severity="secondary"
+                          />
+                        </neural-toolbar-start>
+                      </neural-toolbar>
+                    </div>
+                    <div class="grid gap-2">
+                      <span class="text-sm font-bold">Native tab order</span>
+                      <neural-toolbar
+                        [rovingFocus]="false"
+                        ariaLabel="Native tab actions"
+                      >
+                        <neural-toolbar-start>
+                          <neural-button label="One" severity="secondary" />
+                          <neural-button label="Two" severity="secondary" />
+                        </neural-toolbar-start>
+                      </neural-toolbar>
+                    </div>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Unstyled and typed class slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Semantics, sections, separators and keyboard behavior remain
+                while the consumer owns the Toolbar surface.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="unstyled.html"
+                  language="html"
+                  [code]="unstyledCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <neural-toolbar
+                    preview-content
+                    unstyled
+                    ariaLabel="Agent actions"
+                    [classes]="headlessClasses"
+                  >
+                    <neural-toolbar-start>
+                      <neural-button
+                        label="Run agent"
+                        icon="nt nt-activity"
+                        severity="secondary"
+                      />
+                    </neural-toolbar-start>
+                    <neural-toolbar-separator />
+                    <neural-toolbar-center
+                      ><span>2 tasks ready</span></neural-toolbar-center
+                    >
+                    <neural-toolbar-end>
+                      <neural-button
+                        ariaLabel="Agent settings"
+                        icon="nt nt-settings"
+                        severity="secondary"
+                      />
+                    </neural-toolbar-end>
+                  </neural-toolbar>
+                </code-view>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                TOOLBAR
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Accessibility
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                A named toolbar composite with predictable tab entry and
+                directional navigation.
+              </p>
+            </header>
+            <div class="grid gap-10 pt-10">
+              <section id="role-name" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  Role and accessible name
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  The root exposes
+                  <code class="font-mono text-blue-500">role="toolbar"</code>
+                  and orientation. Supply a contextual
+                  <code class="font-mono text-blue-500">ariaLabel</code> or
+                  reference visible text with
+                  <code class="font-mono text-blue-500">ariaLabelledby</code>;
+                  the reference takes precedence.
+                </p>
+              </section>
+              <section id="keyboard" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  Keyboard model
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Tab enters one active control. Horizontal toolbars use Left
+                  and Right, vertical toolbars use Up and Down, while Home and
+                  End reach the logical edges. Projected controls retain Enter
+                  and Space activation.
+                </p>
+              </section>
+              <section id="disabled-controls" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  Disabled controls
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Native disabled and
+                  <code class="font-mono text-blue-500"
+                    >aria-disabled="true"</code
+                  >
+                  controls are skipped. A MutationObserver resynchronizes focus
+                  when projected controls are added, removed or disabled.
+                </p>
+              </section>
+              <section id="editable-controls" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  Editable controls
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Arrow handling is not intercepted while focus is inside an
+                  input, select, textarea or contenteditable element, preserving
+                  caret movement and native editing behavior.
+                </p>
+              </section>
+              <section id="rtl-lifecycle" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  RTL and lifecycle
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Horizontal arrow direction mirrors computed RTL direction. On
+                  destroy, observed nodes are disconnected and every
+                  consumer-provided tabindex is restored. Browser-only work is
+                  deferred, keeping SSR and hydration safe.
+                </p>
+              </section>
+            </div>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                TOOLBAR
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">API</h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                Five standalone composition primitives and one typed focus
+                event.
+              </p>
+            </header>
+            <section id="components" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">Components</h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of components; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl sm:grid sm:grid-cols-[14rem_14rem_1fr] sm:gap-4"
+                >
+                  <code class="font-mono font-bold text-blue-500"
+                    >{{ item[0] }}</code
+                  >
+                  <code class="mt-2 text-xs sm:mt-0">{{ item[1] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)] sm:mt-0">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Toolbar inputs
+              </h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] backdrop-blur-xl"
+              >
+                <table class="w-full min-w-[50rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase tracking-wider text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (item of inputs; track item[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{ item[0] }}
+                      </td>
+                      <td
+                        class="p-4 font-mono text-xs text-[var(--site-text-soft)]"
+                      >
+                        {{ item[1] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="section-inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Section inputs
+              </h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of sectionInputs; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl sm:grid sm:grid-cols-[11rem_8rem_6rem_1fr] sm:gap-4"
+                >
+                  <code class="font-mono font-bold text-blue-500"
+                    >{{ item[0] }}</code
+                  ><code class="mt-2 text-xs sm:mt-0">{{ item[1] }}</code
+                  ><code class="mt-2 text-xs sm:mt-0">{{ item[2] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)] sm:mt-0">
+                    {{ item[3] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="events" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">Events</h2>
+              <div
+                class="mt-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl sm:grid sm:grid-cols-[10rem_18rem_1fr] sm:gap-4"
+              >
+                <code class="font-mono font-bold text-blue-500"
+                  >focusChanged</code
+                >
+                <code class="mt-2 text-xs sm:mt-0"
+                  >NeuralToolbarFocusChange</code
+                >
+                <p class="mt-2 text-sm text-[var(--site-text-soft)] sm:mt-0">
+                  Emits the focused item index, HTMLElement and originating
+                  keyboard or focus event.
+                </p>
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Typed class slots
+              </h2>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                @for (slot of classSlots; track slot[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl"
+                >
+                  <code class="font-mono font-bold text-blue-500"
+                    >{{ slot[0] }}</code
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ slot[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="public-types" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Public types and compatibility
+              </h2>
+              <div
+                class="mt-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl"
+              >
+                <p class="font-mono text-sm text-blue-500">
+                  NeuralToolbarOrientation · NeuralToolbarClasses ·
+                  NeuralToolbarFocusChange
+                </p>
+                <p class="mt-4 text-sm leading-6 text-[var(--site-text-soft)]">
+                  Former
+                  <code class="font-mono">Toolbar*Component</code> exports
+                  remain deprecated aliases. New code uses the canonical
+                  <code class="font-mono">NeuralToolbar*</code> names.
+                </p>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                TOOLBAR
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Design tokens
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                Surface, spacing and semantic separator treatment are
+                independently tokenized.
+              </p>
+            </header>
+            <section id="tokens" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Design tokens
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Override tokens locally, at a product boundary or through a
+                generated Neural theme.
+              </p>
+              <site-design-token-list class="mt-6 block" [tokens]="tokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

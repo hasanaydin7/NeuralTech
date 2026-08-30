@@ -1,0 +1,59 @@
+# NeuralNg Tabs
+
+> Angular 22+ composable Signal tabs at `@neural-ng/core/tabs`.
+
+## Rules
+
+- Import `NeuralTabs`, `NeuralTabList`, `NeuralTab`, `NeuralTabPanels`, and
+  `NeuralTabPanel` from
+  `@neural-ng/core/tabs`; do not create a consumer NgModule.
+- Bind the active string/number value through the `value` model input.
+- Every `neural-tab` value must be unique and match one unique
+  `neural-tab-panel` value.
+- Place tabs inside `neural-tab-list` and panels inside `neural-tab-panels`.
+- Give each tab list an accessible name with `ariaLabel` or `ariaLabelledby`.
+- Use `iconClass="nt-user"` for a concise Neural Icons tab icon. The component
+  adds the `nt` base class when an `nt-*` class is present.
+- Project an `<i aria-hidden="true">` or other markup inside `neural-tab` when
+  the icon needs custom content. Do not set `iconClass` for the same icon.
+- Additional `iconClass` utility classes are preserved. Third-party icon
+  classes are not rewritten.
+- Core Tabs does not depend on `@neural-ng/icons`.
+- `activationMode="automatic"` selects on arrow-key focus. Use `manual` only
+  when panel activation should require Enter or Space.
+- Use `orientation="vertical"` only when the visual list is vertical; this
+  changes both ARIA orientation and keyboard keys.
+- `unstyled` removes visual classes, not structure, behavior, or ARIA.
+- Use `tabsClass`, child local class inputs, or typed `classes` slots for custom
+  styling. Do not query generated IDs for styling.
+- Horizontal overflow is built in. Constrain the Tabs container rather than
+  creating a second, non-semantic tab navigation control.
+- Preserve the `prefers-reduced-motion` behavior when overriding indicator or
+  panel-enter motion.
+- Development builds warn about duplicate and unmatched tab/panel values; fix
+  the composition rather than suppressing the warning.
+- Panel rendering is eager in the Beta release; do not invent a lazy input.
+
+## Canonical example
+
+```ts
+readonly activeTab = signal<string | number | null>('profile');
+```
+
+```html
+<neural-tabs [(value)]="activeTab">
+  <neural-tab-list ariaLabel="Account sections">
+    <neural-tab value="profile" iconClass="nt-user">Profile</neural-tab>
+    <neural-tab value="security">Security</neural-tab>
+    <neural-tab value="billing" disabled>Billing</neural-tab>
+  </neural-tab-list>
+  <neural-tab-panels>
+    <neural-tab-panel value="profile">Profile content</neural-tab-panel>
+    <neural-tab-panel value="security">Security content</neural-tab-panel>
+    <neural-tab-panel value="billing">Billing content</neural-tab-panel>
+  </neural-tab-panels>
+</neural-tabs>
+```
+
+Keyboard behavior follows the WAI-ARIA Tabs pattern: roving `tabindex`,
+orientation-aware arrows, Home/End, wrapping, and disabled-tab skipping.

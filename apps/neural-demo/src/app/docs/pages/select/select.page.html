@@ -1,0 +1,315 @@
+<article class="docs-page select-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Select</h1>
+    <p>
+      An accessible, Signal-first combobox with data-driven and declarative
+      options, keyboard navigation, dependent selections, and complete visual
+      ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="data-options">
+    <h2>Data options</h2>
+    <p>
+      Map object arrays with direct property names. Primitive arrays work
+      without mappings. Icons beginning with <code>nt-</code> automatically
+      receive the Neural Icons base class.
+    </p>
+    <div class="select-demo-surface">
+      <neural-field controlId="docs-city" fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>City</label>
+        <neural-select
+          [options]="cities"
+          optionLabel="name"
+          optionValue="id"
+          optionDisabled="unavailable"
+          optionIcon="iconClass"
+          [(value)]="selectedCityId"
+          placeholder="Select a city"
+          ariaLabel="City"
+          clearable
+          (selectionChange)="citySelected($event)"
+          (cleared)="cityCleared($event)"
+        />
+        <small neuralFieldHint>Bursa demonstrates a disabled option.</small>
+      </neural-field>
+      <output class="demo-status" aria-live="polite">
+        {{ eventStatus() }}
+      </output>
+    </div>
+    <app-code-example
+      label="Data-driven Select"
+      language="html"
+      [code]="dataCode"
+    />
+  </section>
+
+  <section id="forms">
+    <h2>Angular Forms</h2>
+    <p>
+      Select implements <code>FormValueControl&lt;TValue | null&gt;</code>. The
+      same nullable model works with Signal Forms, Reactive Forms, and
+      template-driven Forms. Programmatic writes update the selected option
+      without emitting <code>selectionChange</code>.
+    </p>
+    <div class="select-demo-surface forms-grid">
+      <div class="forms-example">
+        <strong>Signal Forms</strong>
+        <neural-select
+          ariaLabel="Signal form city"
+          [options]="formOptions"
+          [formField]="signalForm.city"
+        />
+        <output>Value: {{ formsModel().city }}</output>
+      </div>
+      <div class="forms-example">
+        <strong>Reactive Forms</strong>
+        <neural-select
+          ariaLabel="Reactive form city"
+          [options]="formOptions"
+          [formControl]="reactiveCity"
+        />
+        <output>Value: {{ reactiveCity.value }}</output>
+      </div>
+      <div class="forms-example">
+        <strong>Template-driven Forms</strong>
+        <neural-select
+          ariaLabel="Template form city"
+          [options]="formOptions"
+          name="templateCity"
+          [(ngModel)]="templateCity"
+        />
+        <output>Value: {{ templateCity }}</output>
+      </div>
+    </div>
+    <app-code-example
+      label="Angular Forms adapters"
+      language="html"
+      [code]="formsCode"
+    />
+  </section>
+
+  <section id="projected-options">
+    <h2>Declarative options</h2>
+    <p>
+      Use <code>neural-option</code> when an option needs custom projected
+      content. Its label remains explicit for selection display, typeahead, and
+      accessible text.
+    </p>
+    <div class="select-demo-surface">
+      <neural-select
+        [(value)]="projectedStatus"
+        ariaLabel="Release status"
+        placeholder="Select status"
+        clearable
+      >
+        <neural-option
+          value="ready"
+          label="Ready"
+          iconClass="nt-circle-check select-success-icon"
+        >
+          <span class="projected-option">
+            <strong>Ready to ship</strong>
+            <small>All checks passed</small>
+          </span>
+        </neural-option>
+        <neural-option value="review" label="In review" iconClass="nt-eye">
+          <span class="projected-option">
+            <strong>In review</strong>
+            <small>Waiting for approval</small>
+          </span>
+        </neural-option>
+        <neural-option
+          value="blocked"
+          label="Blocked"
+          iconClass="nt-alert-triangle"
+        >
+          <span class="projected-option">
+            <strong>Blocked</strong>
+            <small>Action is required</small>
+          </span>
+        </neural-option>
+      </neural-select>
+    </div>
+    <app-code-example
+      label="Projected options"
+      language="html"
+      [code]="projectedCode"
+    />
+  </section>
+
+  <section id="chained">
+    <h2>Chained Select</h2>
+    <p>
+      The first model computes the second options array. A user selection resets
+      the dependent value; remote data can use the same flow with the loading
+      state.
+    </p>
+    <div class="select-demo-surface chained-selects">
+      <neural-field controlId="chain-city" fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Province</label>
+        <neural-select
+          [options]="cities"
+          optionLabel="name"
+          optionValue="id"
+          optionDisabled="unavailable"
+          [(value)]="selectedCityId"
+          ariaLabel="Province"
+          placeholder="Select province"
+          (selectionChange)="citySelected($event)"
+          (cleared)="cityCleared($event)"
+          clearable
+        />
+      </neural-field>
+
+      <neural-field
+        controlId="chain-district"
+        [disabled]="!selectedCityId()"
+        fluid
+      >
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>District</label>
+        <neural-select
+          [options]="districts()"
+          optionLabel="name"
+          optionValue="id"
+          [(value)]="selectedDistrictId"
+          ariaLabel="District"
+          placeholder="Select district"
+          clearable
+        />
+        <small neuralFieldHint>
+          Select a province to enable its districts.
+        </small>
+      </neural-field>
+    </div>
+    <app-code-example
+      label="Signal chain"
+      language="typescript"
+      [code]="chainCode"
+    />
+  </section>
+
+  <section id="states">
+    <h2>States</h2>
+    <div class="select-demo-surface state-grid">
+      <neural-select
+        [options]="cities"
+        optionLabel="name"
+        optionValue="id"
+        placeholder="Disabled"
+        disabled
+      />
+      <neural-select
+        ariaLabel="Readonly city"
+        [options]="cities"
+        optionLabel="name"
+        optionValue="id"
+        [(value)]="readonlyCityId"
+        clearable
+        readonly
+      />
+      <neural-select
+        [options]="cities"
+        optionLabel="name"
+        optionValue="id"
+        placeholder="Loading"
+        loading
+        loadingLabel="Loading cities"
+      />
+      <neural-field controlId="invalid-city" invalid fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Required city</label>
+        <neural-select
+          [options]="cities"
+          optionLabel="name"
+          optionValue="id"
+          placeholder="Invalid field"
+        />
+      </neural-field>
+    </div>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and class slots</h2>
+    <p>
+      Headless mode retains combobox behavior and structural hooks while
+      removing every NeuralNg visual class.
+    </p>
+    <div class="select-demo-surface">
+      <neural-select
+        [options]="['signals', 'standalone', 'ssr']"
+        [(value)]="headlessValue"
+        ariaLabel="Architecture"
+        [classes]="headlessClasses"
+        unstyled
+      />
+    </div>
+    <app-code-example
+      label="Headless Select"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <section id="events">
+    <h2>Events</h2>
+    <div class="api-table-wrapper">
+      <table class="api-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Payload</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>valueChange</code></td>
+            <td>Selected value or null</td>
+            <td>Generated by the value model for two-way binding.</td>
+          </tr>
+          <tr>
+            <td><code>selectionChange</code></td>
+            <td>Value, previous value, source option, interaction source</td>
+            <td>User selection and dependent data flows.</td>
+          </tr>
+          <tr>
+            <td><code>cleared</code></td>
+            <td>Previous value</td>
+            <td>Explicit clear actions.</td>
+          </tr>
+          <tr>
+            <td><code>openChange</code></td>
+            <td>Boolean</td>
+            <td>Panel visibility changes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="accessibility">
+    <h2>Accessibility</h2>
+    <p>
+      DOM focus remains on the combobox while
+      <code>aria-activedescendant</code> identifies the active listbox option.
+      Arrow keys, Home, End, Enter, Space, Escape, Tab, typeahead, disabled
+      options, and Field-provided descriptions are supported. Readonly Selects
+      remain enabled and focusable, expose <code>aria-readonly="true"</code>,
+      and block pointer, keyboard, and clear mutations.
+    </p>
+  </section>
+</article>

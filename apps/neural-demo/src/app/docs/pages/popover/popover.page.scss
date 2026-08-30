@@ -1,0 +1,119 @@
+.popover-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.demo-surface {
+  padding: 1.25rem;
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+  background: var(--neural-color-surface);
+}
+
+.position-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0.75rem;
+}
+
+.demo-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.875rem;
+  color: var(--neural-color-text);
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.5rem;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  cursor: pointer;
+
+  &:hover,
+  &[aria-expanded='true'] {
+    color: var(--neural-color-primary);
+    border-color: var(--neural-color-primary);
+  }
+}
+
+.event-report {
+  color: var(--neural-color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.demo-account-popover-host {
+  --neural-popover-width: 18rem;
+  --neural-popover-padding: 0.375rem;
+}
+
+.demo-account-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem;
+  border-bottom: 1px solid var(--neural-color-border);
+
+  > span:last-child {
+    display: grid;
+  }
+
+  small {
+    color: var(--neural-color-text-muted);
+    font-size: 0.75rem;
+  }
+}
+
+.demo-avatar {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--neural-color-primary-contrast);
+  background: var(--neural-color-primary);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.demo-panel-action {
+  width: 100%;
+  padding: 0.625rem;
+  color: var(--neural-color-text);
+  background: transparent;
+  border: 0;
+  border-radius: 0.5rem;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--neural-color-surface-hover);
+  }
+}
+
+.demo-form-popover-host {
+  --neural-popover-width: min(20rem, calc(100vw - 1rem));
+}
+
+.demo-form-popover-host label {
+  display: grid;
+  gap: 0.375rem;
+  margin-block-end: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.demo-form-popover-host input {
+  min-height: 2.5rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--neural-color-text);
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.5rem;
+  font: inherit;
+}

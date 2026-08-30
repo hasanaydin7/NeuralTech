@@ -1,0 +1,597 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="confirm-dialog-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="ConfirmDialog documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-alert-triangle"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-amber-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-amber-400/20 bg-amber-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-amber-500"
+                    >FEEDBACK</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  ConfirmDialog
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A service-driven native confirmation surface with
+                  deterministic channels, signal results, guarded async actions
+                  and complete modal accessibility.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    top layer</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Signal
+                    references</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Async
+                    guards</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The standalone host and injectable service share one granular
+                entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="service-driven" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Service-driven confirmation</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Render the host once. Any descendant service consumer can open
+                it without owning a duplicate visible model.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="delete-workspace.ts"
+                language="typescript"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-5"
+                >
+                  <neural-button
+                    label="Delete workspace"
+                    icon="nt nt-trash"
+                    severity="error"
+                    (clicked)="confirmDelete()"
+                  /><output
+                    aria-live="polite"
+                    class="font-mono text-xs text-[var(--site-text-muted)]"
+                    >{{ lastResult() }}</output
+                  >
+                </div>
+              </code-view>
+              <neural-confirm-dialog (closed)="recordClose($event)" />
+            </section>
+
+            <section id="async-guard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Async action guard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                While an action is pending, buttons are disabled and the accept
+                action exposes <code>aria-busy</code>. Returning false
+                deliberately keeps the dialog open.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="publish.ts"
+                language="typescript"
+                [code]="asyncCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-5"
+                >
+                  <neural-button
+                    label="Publish release"
+                    icon="nt nt-sparkles"
+                    severity="primary"
+                    (clicked)="confirmPublish()"
+                  /><output
+                    aria-live="polite"
+                    class="font-mono text-xs text-[var(--site-text-muted)]"
+                    >{{ publishStatus() }}</output
+                  >
+                </div></code-view
+              >
+              <neural-confirm-dialog key="publish" defaultFocus="reject" />
+            </section>
+
+            <section id="keyed-hosts" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Independent keyed hosts</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Keys create deterministic channels for different layout regions
+                or policies. Requests only reach a host with the same normalized
+                key.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="channels.html"
+                language="html"
+                [code]="keyedCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap justify-center gap-3"
+                >
+                  <neural-button
+                    label="Default channel"
+                    severity="secondary"
+                    (clicked)="confirmKeyed('default')"
+                  /><neural-button
+                    label="Secondary channel"
+                    severity="secondary"
+                    (clicked)="confirmKeyed('secondary')"
+                  /></div
+              ></code-view>
+              <neural-confirm-dialog key="secondary" defaultFocus="none" />
+            </section>
+
+            <section id="replacement" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Latest same-key request wins</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                A new request replaces only the active request sharing its key.
+                The previous ref completes as <code>dismissed · replaced</code>;
+                no hidden queue accumulates.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="replacement.ts"
+                language="typescript"
+                [code]="replacementCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-5"
+                >
+                  <neural-button
+                    label="Replace request"
+                    (clicked)="demonstrateReplacement()"
+                  /><output
+                    aria-live="polite"
+                    class="font-mono text-xs text-[var(--site-text-muted)]"
+                    >{{ replacementStatus() }}</output
+                  >
+                </div></code-view
+              >
+              <neural-confirm-dialog key="replacement" />
+            </section>
+
+            <section id="options" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Per-request options</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Labels, icons, action visibility and dismissal policies can be
+                overridden per request without changing the host.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="options.ts"
+                language="typescript"
+                [code]="optionsCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="flex w-full justify-center">
+                  <neural-button
+                    label="Archive project"
+                    icon="nt nt-folders"
+                    severity="secondary"
+                    (clicked)="confirmOptions()"
+                  /></div
+              ></code-view>
+              <neural-confirm-dialog key="options" />
+            </section>
+
+            <section id="action-errors" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Action errors</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                A thrown async action emits <code>actionError</code>, returns
+                the dialog to an interactive state and leaves closing policy to
+                the application.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="errors.ts"
+                language="typescript"
+                [code]="errorCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-5"
+                >
+                  <neural-button
+                    label="Run protected action"
+                    severity="warning"
+                    (clicked)="confirmError()"
+                  /><output
+                    aria-live="polite"
+                    class="font-mono text-xs text-[var(--site-text-muted)]"
+                    >{{ errorStatus() }}</output
+                  >
+                </div></code-view
+              >
+              <neural-confirm-dialog
+                key="errors"
+                (actionError)="handleActionError($event)"
+              />
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Native dialog behavior, modal focus, ARIA links and service
+                state remain while every ConfirmDialog and inherited Dialog
+                visual class is removed.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="headless.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="flex w-full justify-center">
+                  <neural-button
+                    label="Open consumer dialog"
+                    severity="secondary"
+                    (clicked)="confirmHeadless()"
+                  /></div
+              ></code-view>
+              <neural-confirm-dialog
+                key="headless"
+                unstyled
+                [classes]="headlessClasses"
+              />
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Contract boundaries</h2>
+              <div class="mt-6 grid gap-4 md:grid-cols-3">
+                @for (item of [['Service','Owns active keyed requests and
+                refs.'],['Host','Owns modal rendering, focus and
+                actions.'],['Application','Owns business effects and error
+                messaging.']]; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">{{ item[0] }}</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">A real modal dialog</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                ConfirmDialog composes Neural Dialog rather than simulating
+                modal behavior with generic div elements.
+              </p>
+            </header>
+            <section id="native-modal" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Native top layer</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The underlying native dialog enters the browser top layer,
+                blocks background interaction and remains stable during page
+                scrolling.
+              </p>
+            </section>
+            <section id="naming" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Name and description</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The generated heading and message IDs wire
+                <code>aria-labelledby</code> and
+                <code>aria-describedby</code> automatically.
+              </p>
+            </section>
+            <section id="focus" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Focus policy and restoration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>defaultFocus</code> selects accept, reject or no action.
+                On close, focus returns to the element that opened the native
+                dialog.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Tab remains within the modal. Shift+Tab reverses focus order.
+                Escape follows the effective request or host policy.
+              </p>
+            </section>
+            <section id="busy-actions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Busy actions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Processing disables both choices, prevents duplicate invocation
+                and exposes busy state on the accepting action.
+              </p>
+            </section>
+            <section id="dismiss-policy" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Explicit dismissal policy</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Close button, Escape and backdrop dismissal are independent.
+                Destructive confirmations default to no close button and a
+                non-dismissible backdrop.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC API
+              </p>
+              <h1 class="mt-4 text-4xl font-black">ConfirmDialog contract</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                NeuralConfirmDialog is the canonical host and
+                NeuralConfirmationService is the canonical service token.
+              </p>
+            </header>
+            <section id="component-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Component inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[52rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of componentInputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="component-outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Component outputs</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of componentOutputs; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ms-3 font-mono text-xs">{{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="confirmation-input" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">NeuralConfirmationInput</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[52rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Option</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of confirmationInputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="service-api" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Service API</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of serviceMethods; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ms-3 font-mono text-xs">{{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+              <p class="mt-5 text-sm leading-6 text-[var(--site-text-soft)]">
+                <code>runAction</code> and <code>complete</code> are host
+                integration methods; ordinary consumers should use the returned
+                ref and <code>close()</code>.
+              </p>
+            </section>
+            <section id="reference" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Signal-backed reference</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of refMembers; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ms-3 font-mono text-xs">{{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="results" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Results and close reasons</h2>
+              <p class="mt-5 text-sm font-bold">Results</p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                @for (value of results; track value) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ value }}</code
+                >}
+              </div>
+              <p class="mt-7 text-sm font-bold">Close reasons</p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                @for (value of closeReasons; track value) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ value }}</code
+                >}
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of publicTypes; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">ConfirmDialog tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Component-specific sizing composes with the complete Dialog
+                surface token contract.
+              </p>
+            </header>
+            <section id="component-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Component tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="componentTokens"
+              />
+            </section>
+            <section id="dialog-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inherited Dialog tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="dialogTokens"
+              />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

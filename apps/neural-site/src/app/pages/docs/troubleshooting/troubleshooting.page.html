@@ -1,0 +1,251 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_20%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >GUIDE</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            Troubleshooting
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            Resolve common installation, styling, overlay, forms and rendering
+            problems from the symptom—without disabling the safety check that
+            exposed it.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Symptom
+              first</span
+            ><span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Public
+              fixes</span
+            ><span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Minimal
+              reproductions</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="start" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          START HERE
+        </p>
+        <h2 class="mt-3 text-2xl font-black">
+          Identify which layer is failing
+        </h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          @for (item of [['Compile error', 'Check the granular import, Angular
+          peer range and public type name.'], ['Rendered but unstyled', 'Check
+          global stylesheet imports, order and unstyled configuration.'],
+          ['Styled but misplaced', 'Check containing blocks, overflow, appendTo
+          and viewport collisions.'], ['Works in CSR only', 'Check browser
+          globals, initial values and server/client locale or direction.']];
+          track item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">{{ item[0] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[1] }}
+            </p>
+          </article>
+          }
+        </div>
+      </section>
+
+      <section id="imports" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Angular does not recognize the component
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Import the public symbol from its component entry point and add it to
+          the standalone host's <code>imports</code>. Do not guess a root-barrel
+          name or import an implementation file.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="shipping-form.ts"
+          language="typescript"
+          [code]="importCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="icons" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          An icon appears as a square or empty box
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          The class exists in markup but its mask rule is absent from the loaded
+          CSS. The curated stylesheet covers common application icons; less
+          common icons require their category or the complete catalog.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="styles.css"
+          language="css"
+          [code]="iconCode"
+          [theme]="appearance.mode()"
+        />
+        <p class="mt-4 text-sm text-[var(--site-text-muted)]">
+          Also confirm both classes are present: <code>nt nt-icon-name</code>.
+          Neural Icons are local package assets and do not require a network
+          request.
+        </p>
+      </section>
+
+      <section id="theme" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Components stay white, dark mode fails or primary does not change
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Load the Neutral theme globally before application overrides. Tailwind
+          users also load the bridge and bind the dark variant to
+          <code>data-neural-mode</code>. Confirm that global
+          <code>unstyled</code> was not enabled unintentionally.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="styles.css"
+          language="css"
+          [code]="themeCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="overlay" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          A popup is clipped, too narrow or behind another surface
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          A parent with <code>overflow: hidden</code>, a transformed containing
+          block or a competing top layer can constrain an inline panel. Use the
+          component's documented <code>appendTo="body"</code> support when the
+          panel must escape that layout. Do not solve ordinary clipping with
+          arbitrary global z-index escalation.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="overlay-fields.html"
+          language="html"
+          [code]="overlayCode"
+          [theme]="appearance.mode()"
+        />
+        <ul
+          class="mt-5 space-y-2 text-sm leading-6 text-[var(--site-text-soft)]"
+        >
+          <li>Keep trigger and panel in the same document.</li>
+          <li>Verify an ancestor is not scaled during opening.</li>
+          <li>Close overlays before destroying or replacing their trigger.</li>
+          <li>Test start/end positions in both LTR and RTL.</li>
+        </ul>
+      </section>
+
+      <section id="forms" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          The form value or state does not update
+        </h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          @for (item of [['Reactive Forms', 'Bind one FormControl and read its
+          value; do not bind a second model to the same control.'], ['Signal
+          Forms', 'Use the documented FormField contract and keep value
+          nullability aligned with the component.'], ['Template-driven',
+          'Provide a name inside a form and use two-way ngModel binding.'],
+          ['All approaches', 'Distinguish disabled, readonly, invalid and
+          pending; they are not interchangeable states.']]; track item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">{{ item[0] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[1] }}
+            </p>
+          </article>
+          }
+        </div>
+      </section>
+
+      <section id="ssr" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Hydration reports a mismatch</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Compare the server and first browser render before inspecting later
+          interaction. Locale, direction, selected values, generated collection
+          order and conditional branches must initially agree. Defer
+          localStorage, viewport measurement, current time and random values
+          until a browser render callback.
+        </p>
+      </section>
+
+      <section id="interaction" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Click, keyboard or focus behaves differently
+        </h2>
+        <ul
+          class="mt-6 grid gap-3 text-sm leading-6 text-[var(--site-text-soft)] sm:grid-cols-2"
+        >
+          <li class="rounded-xl border border-[var(--site-border)] p-4">
+            Check whether the control is disabled, readonly, loading or covered
+            by another layer.
+          </li>
+          <li class="rounded-xl border border-[var(--site-border)] p-4">
+            Use the documented key contract for the component orientation and
+            direction.
+          </li>
+          <li class="rounded-xl border border-[var(--site-border)] p-4">
+            Do not remove native focus outlines without an equivalent visible
+            indicator.
+          </li>
+          <li class="rounded-xl border border-[var(--site-border)] p-4">
+            When a modal closes, keep its trigger mounted so focus can be
+            restored.
+          </li>
+        </ul>
+      </section>
+
+      <section id="versions" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          npm reports an Angular peer conflict
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Install a NeuralNg release whose manifest includes your Angular major.
+          The current Core contract is Angular 22.x. Avoid
+          <code>--force</code> and <code>--legacy-peer-deps</code>; they hide
+          the compatibility error without making the runtime safe.
+        </p>
+      </section>
+
+      <section id="reproduction" class="scroll-mt-28 pb-12 pt-16">
+        <h2 class="text-2xl font-black">Prepare a useful reproduction</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Reduce the problem to one route and the smallest template that still
+          fails. Remove business data and credentials, but keep the rendering
+          mode, direction and styling mode that trigger the issue.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="issue.txt"
+          language="markup"
+          [code]="reportCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+    </div>
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

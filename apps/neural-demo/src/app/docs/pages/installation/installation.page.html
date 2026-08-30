@@ -1,0 +1,192 @@
+<article class="docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Getting Started</span>
+    <h1 class="docs-hero__title">Installation</h1>
+    <p class="docs-hero__description">
+      Install the complete NeuralNg suite in a clean Angular 22 application.
+      Core, Icons and Editor are browser dependencies. Theme Compiler and MCP
+      Server are Node development tools and never enter the browser bundle.
+    </p>
+  </header>
+
+  <section id="packages">
+    <h2>Install the five packages</h2>
+    <div class="api-table-wrapper">
+      <table class="api-table">
+        <thead>
+          <tr>
+            <th>Package</th>
+            <th>Install as</th>
+            <th>Responsibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&#64;neural-ng/core</code></td>
+            <td>dependency</td>
+            <td>Angular components, services and form contracts.</td>
+          </tr>
+          <tr>
+            <td><code>&#64;neural-ng/icons</code></td>
+            <td>dependency</td>
+            <td>Icon CSS, metadata and manifest assets.</td>
+          </tr>
+          <tr>
+            <td><code>&#64;neural-ng/editor</code></td>
+            <td>dependency</td>
+            <td>Structured Tiptap-based editor package.</td>
+          </tr>
+          <tr>
+            <td><code>&#64;neural-ng/theme</code></td>
+            <td>devDependency</td>
+            <td>
+              Compact recipe validation and complete Core + Editor theme
+              compilation.
+            </td>
+          </tr>
+          <tr>
+            <td><code>&#64;neural-ng/mcp-server</code></td>
+            <td>devDependency</td>
+            <td>Read-only component catalog and MCP discovery server.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <code-view
+      class="mt-2"
+      fileName="shell"
+      language="bash"
+      [code]="installCommand"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="local-packages">
+    <h2>Validate unpublished tarballs</h2>
+    <p>
+      Before the first registry release, run <code>npm pack</code> for all five
+      build outputs and install the resulting files into a project outside this
+      workspace. This detects hidden path aliases, missing exports and missing
+      package assets.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="PowerShell"
+      language="shell"
+      [code]="localTarballCommand"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="theme">
+    <h2>Create the application theme</h2>
+    <p>
+      The compact recipe is the canonical authoring source. It expands into the
+      complete Core and Editor token graph, Tailwind bridge, interchange JSON,
+      diagnostics and a generated theme-name type.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="shell"
+      language="bash"
+      [code]="themeCommands"
+      [theme]="resolvedMode()"
+    />
+    <code-view
+      class="mt-2"
+      fileName="neural.theme.json"
+      language="json"
+      [code]="themeRecipe"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="tailwind">
+    <h2>Connect Tailwind v4</h2>
+    <p>
+      Tailwind belongs to the consuming application. Generated theme CSS already
+      contains Core, Editor and the Neural Tailwind token bridge. Import Icons
+      separately and do not also import the Neutral theme files.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="shell"
+      language="bash"
+      [code]="tailwindInstall"
+      [theme]="resolvedMode()"
+    />
+    <code-view
+      class="mt-2"
+      fileName=".postcssrc.json"
+      language="json"
+      [code]="postcssConfig"
+      [theme]="resolvedMode()"
+    />
+    <code-view
+      class="mt-2"
+      fileName="src/styles.css"
+      language="css"
+      [code]="globalStyles"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="configuration">
+    <h2>Application providers</h2>
+    <p>
+      Most components need no provider. Register only the shared systems used by
+      the application, such as color mode, messages and Toast defaults.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="app.config.ts"
+      language="ts"
+      [code]="providerCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="mcp">
+    <h2>Connect the installed MCP Server</h2>
+    <p>
+      Run the executable from <code>devDependencies</code> with
+      <code>--no-install</code>. Do not import MCP Server from Angular code.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="mcp.json"
+      language="json"
+      [code]="mcpConfig"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="verify">
+    <h2>Verify the first integrated surface</h2>
+    <p>
+      Import public package entry points only. A successful production build and
+      browser interaction prove more than a workspace-local demo build.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="app.ts"
+      language="ts"
+      [code]="firstSurfaceCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="starter">
+    <h2>Official starter template</h2>
+    <p>
+      The repository includes <code>templates/neural-starter</code>, a clean
+      five-package Angular + Tailwind application with generated themes, Toast,
+      forms, Icons, Editor, MCP configuration and Playwright coverage.
+    </p>
+  </section>
+
+  <nav class="docs-page-next" aria-label="Next documentation page">
+    <span>Next</span>
+    <a routerLink="/docs/components/toast">Toast component →</a>
+  </nav>
+</article>

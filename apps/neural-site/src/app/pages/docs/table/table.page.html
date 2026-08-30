@@ -1,0 +1,1193 @@
+<article class="mx-auto max-w-[96rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="table-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Table documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-table"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-indigo-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-violet-500"
+                    >DATA</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Table
+                </h1>
+                <p
+                  class="mt-4 max-w-4xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  A native-table data engine for sorting, filtering, selection,
+                  editing, grouping, column layout, remote requests and
+                  versioned enterprise state.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    semantics</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Typed
+                    templates</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Remote
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import NeuralTable and only the template directives used by the
+                standalone consumer.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Basic table</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                A Table needs only a typed row collection and column model. It
+                renders a native table, keeps the source array immutable and
+                requires no module or wrapper markup.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="basic.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full overflow-hidden">
+                  <neural-table
+                    [value]="products.slice(0, 4)"
+                    [columns]="compactColumns"
+                    ariaLabel="Products"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="column-model" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed column model</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Column definitions carry field access, alignment and formatting
+                without hiding the row type from TypeScript.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="inventory.ts"
+                language="typescript"
+                [code]="columnCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="formatting" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Formatting and pipes</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Cell templates accept Angular's built-in and standalone custom
+                pipes. Formatting stays in the presentation layer, while Table
+                continues to sort and filter the original price, date and
+                inventory values.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="inventory.page.ts"
+                language="typescript"
+                [code]="formattingPipeCode"
+                [theme]="appearance.mode()"
+              />
+              <code-view
+                class="mt-5 block"
+                fileName="inventory.page.html"
+                language="html"
+                [code]="formattingCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full overflow-hidden">
+                  <neural-table
+                    [value]="products.slice(0, 4)"
+                    [columns]="formattingColumns"
+                    ariaLabel="Formatted product data"
+                  >
+                    <ng-template neuralTableCell="price" let-row="row">
+                      {{ $any(row).price | currency: "USD" : "symbol" : "1.2-2"
+                      : "en-US" }}
+                    </ng-template>
+                    <ng-template neuralTableCell="inventory" let-row="row">
+                      {{ $any(row).inventory | number: "1.0-0" }} units
+                    </ng-template>
+                    <ng-template neuralTableCell="releasedAt" let-row="row">
+                      {{ $any(row).releasedAt | date: "mediumDate" : undefined :
+                      "en-US" }}
+                    </ng-template>
+                    <ng-template neuralTableCell="status" let-row="row">
+                      {{ $any(row).status | availabilityLabel }}
+                    </ng-template>
+                  </neural-table>
+                </div>
+              </code-view>
+              <p
+                class="mt-4 rounded-2xl border border-blue-400/20 bg-blue-500/10 px-4 py-3 text-sm leading-6 text-[var(--site-text-soft)]"
+              >
+                <strong class="text-[var(--site-text)]">Type note:</strong>
+                Angular cannot infer a property type from the runtime column id
+                on a projected template. <code>$any(row)</code> is therefore
+                limited to the binding boundary; the Table value and column
+                definitions remain typed as <code>Product</code>.
+              </p>
+            </section>
+
+            <section id="interactive" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Interactive inventory</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The same client-side rows are globally filtered, filtered per
+                column, sorted and expanded without mutating the input array.
+              </p>
+              <div class="mt-6 flex flex-wrap items-end gap-3">
+                <label class="grid min-w-64 gap-2 text-sm font-bold"
+                  >Search products<input
+                    neuralInput
+                    placeholder="Name, category, status…"
+                    [value]="globalFilter()"
+                    (input)="globalFilter.set(inputValue($event))" /></label
+                ><neural-button
+                  label="Clear filters"
+                  variant="outlined"
+                  [disabled]="filters().length === 0 && !globalFilter()"
+                  (clicked)="filters.set([]); globalFilter.set('')"
+                />
+              </div>
+              <code-view
+                class="mt-5 block"
+                fileName="inventory.html"
+                language="html"
+                [code]="interactiveCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full overflow-hidden">
+                  <neural-table
+                    [value]="products"
+                    [columns]="columns"
+                    rowKey="id"
+                    [(filters)]="filters"
+                    [globalFilter]="globalFilter()"
+                    sortMode="multiple"
+                    [(expandedRowKeys)]="expandedRowKeys"
+                    striped
+                    hoverable
+                    stickyHeader
+                    scrollHeight="24rem"
+                    ariaLabel="Product inventory"
+                  >
+                    <ng-template neuralTableCell="status" let-value
+                      ><span
+                        class="inline-flex rounded-full border px-2.5 py-1 text-xs font-bold"
+                        [class]="statusClass($any(value))"
+                        >{{ value }}</span
+                      ></ng-template
+                    >
+                    <ng-template neuralTableExpansion let-row
+                      ><div class="p-4 text-sm text-[var(--site-text-soft)]">
+                        <strong class="text-[var(--site-text)]"
+                          >{{ $any(row).name }}</strong
+                        >
+                        — {{ $any(row).description }}
+                      </div></ng-template
+                    >
+                  </neural-table>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="variants" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Density and visual variants</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Density controls spacing independently from striped rows, hover
+                feedback and gridlines. Every combination still resolves through
+                Table tokens.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="variants.html"
+                language="html"
+                [code]="variantsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-6 overflow-hidden">
+                  <div>
+                    <p
+                      class="mb-3 text-xs font-black uppercase tracking-[.14em] text-[var(--site-text-muted)]"
+                    >
+                      Compact · striped · gridlines
+                    </p>
+                    <neural-table
+                      [value]="products.slice(0, 3)"
+                      [columns]="compactColumns"
+                      density="compact"
+                      striped
+                      hoverable
+                      gridlines
+                      ariaLabel="Compact products"
+                    />
+                  </div>
+                  <div>
+                    <p
+                      class="mb-3 text-xs font-black uppercase tracking-[.14em] text-[var(--site-text-muted)]"
+                    >
+                      Spacious · quiet rows
+                    </p>
+                    <neural-table
+                      [value]="products.slice(0, 3)"
+                      [columns]="compactColumns"
+                      density="spacious"
+                      [hoverable]="false"
+                      ariaLabel="Spacious products"
+                    />
+                  </div>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="pagination" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Paginator integration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Table owns client slicing while NeuralPaginator owns navigation,
+                its localized report and the NeuralSelect page-size control.
+                Both components bind the same Signal models.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="pagination.html"
+                language="html"
+                [code]="paginationCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full overflow-hidden">
+                  <neural-table
+                    [value]="products"
+                    [columns]="compactColumns"
+                    paginate
+                    [(pageIndex)]="pageIndex"
+                    [(pageSize)]="pageSize"
+                    ariaLabel="Paginated products"
+                  />
+                  <neural-paginator
+                    class="mt-4 block"
+                    [totalItems]="products.length"
+                    [(pageIndex)]="pageIndex"
+                    [(pageSize)]="pageSize"
+                    [pageSizeOptions]="[3, 5, 10]"
+                    rounded
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="selection" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Advanced selection</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Checkbox and radio controls, row clicks, Shift ranges, Ctrl/Meta
+                toggles, disabled-row callbacks and page/filtered/all scopes
+                share one key-safe model.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="selection.html"
+                language="html"
+                [code]="selectionCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-7 overflow-hidden">
+                  <div>
+                    <div class="mb-4 flex items-center justify-between gap-3">
+                      <p
+                        class="font-mono text-xs text-[var(--site-text-muted)]"
+                      >
+                        {{ eventStatus() }}
+                      </p>
+                      <neural-button
+                        label="Clear"
+                        size="small"
+                        variant="text"
+                        [disabled]="selection().length === 0"
+                        (clicked)="selection.set([]); selectionKeys.set([])"
+                      />
+                    </div>
+                    <neural-table
+                      [value]="products"
+                      [columns]="compactColumns"
+                      rowKey="id"
+                      selectionMode="multiple"
+                      selectionControl="checkbox"
+                      selectAllMode="filtered"
+                      [selectableRow]="selectableProduct"
+                      [(selection)]="selection"
+                      [(selectionKeys)]="selectionKeys"
+                      (selectionEvent)="selectionChanged($event)"
+                      ariaLabel="Selectable inventory"
+                    />
+                  </div>
+                  <div>
+                    <div class="mb-3 flex items-center justify-between gap-3">
+                      <p class="text-sm font-black">Single radio selection</p>
+                      <span class="text-xs text-[var(--site-text-muted)]">
+                        {{ singleSelectionLabel() }}
+                      </span>
+                    </div>
+                    <neural-table
+                      [value]="products.slice(0, 4)"
+                      [columns]="compactColumns"
+                      rowKey="id"
+                      selectionMode="single"
+                      selectionControl="radio"
+                      [(selection)]="singleSelection"
+                      [(selectionKeys)]="singleSelectionKeys"
+                      ariaLabel="Single product selection"
+                    />
+                  </div>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="expansion" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Expandable rows</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Stable row keys control disclosure state. The typed expansion
+                template receives the full row without replacing native table
+                semantics or keyboard behavior.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="expansion.html"
+                language="html"
+                [code]="expansionCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full overflow-hidden">
+                  <neural-table
+                    [value]="products.slice(0, 4)"
+                    [columns]="compactColumns"
+                    rowKey="id"
+                    [(expandedRowKeys)]="expandedRowKeys"
+                    ariaLabel="Expandable products"
+                  >
+                    <ng-template neuralTableExpansion let-row>
+                      <div class="p-4 text-sm text-[var(--site-text-soft)]">
+                        <strong class="text-[var(--site-text)]"
+                          >{{ $any(row).name }}</strong
+                        >
+                        — {{ $any(row).description }}
+                      </div>
+                    </ng-template>
+                  </neural-table>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="editing" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Cell and row editing</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Editable columns open typed drafts. Enter saves, Escape cancels
+                and Tab validates before moving. Row mode shares one draft and
+                supports asynchronous validation.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="editing.html"
+                language="html"
+                [code]="editingCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full overflow-hidden">
+                  <neural-table
+                    [value]="products.slice(0, 4)"
+                    [columns]="compactColumns"
+                    rowKey="id"
+                    editMode="cell"
+                    ariaLabel="Editable products"
+                    ><ng-template
+                      neuralTableEditor="name"
+                      let-value
+                      let-setValue="setValue"
+                      ><input
+                        neuralInput
+                        [value]="$any(value)"
+                        (input)="setValue(inputValue($event))"
+                        fluid /></ng-template
+                  ></neural-table>
+                  <p class="mt-3 text-xs text-[var(--site-text-muted)]">
+                    Click or press Enter on a product name. Enter saves; Escape
+                    cancels.
+                  </p>
+                </div>
+              </code-view>
+              <code-view
+                class="mt-6 block"
+                fileName="row-editing.html"
+                language="html"
+                [code]="rowEditingCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full overflow-hidden">
+                  <div class="mb-3 flex items-center justify-between gap-3">
+                    <p class="text-sm font-black">
+                      Row editing with Neural controls
+                    </p>
+                    <span class="text-xs text-[var(--site-text-muted)]"
+                      >{{ editStatus() }}</span
+                    >
+                  </div>
+                  <neural-table
+                    #rowTable
+                    [value]="editableProducts()"
+                    [columns]="editColumns"
+                    rowKey="id"
+                    editMode="row"
+                    ariaLabel="Row editable products"
+                    (rowEditSave)="saveRowEdit($event)"
+                    (rowEditCancel)="cancelRowEdit($event)"
+                  >
+                    <ng-template
+                      neuralTableEditor="name"
+                      let-value
+                      let-setValue="setValue"
+                      ><input
+                        neuralInput
+                        fluid
+                        aria-label="Product name"
+                        [value]="$any(value)"
+                        (input)="setValue(inputValue($event))"
+                    /></ng-template>
+                    <ng-template
+                      neuralTableEditor="category"
+                      let-value
+                      let-setValue="setValue"
+                      ><neural-select
+                        fluid
+                        appendTo="body"
+                        ariaLabel="Product category"
+                        optionLabel="label"
+                        optionValue="value"
+                        [options]="categoryOptions"
+                        [value]="$any(value)"
+                        (valueChange)="setValue($event)"
+                    /></ng-template>
+                    <ng-template
+                      neuralTableEditor="price"
+                      let-value
+                      let-setValue="setValue"
+                      ><neural-input-number
+                        fluid
+                        mode="currency"
+                        currency="USD"
+                        ariaLabel="Product price"
+                        [min]="1"
+                        [value]="$any(value)"
+                        (valueChange)="setValue($event)"
+                    /></ng-template>
+                    <ng-template
+                      neuralTableEditor="featured"
+                      let-value
+                      let-setValue="setValue"
+                      ><neural-checkbox
+                        ariaLabel="Featured product"
+                        [checked]="$any(value) ?? false"
+                        (checkedChange)="setValue($event)"
+                    /></ng-template>
+                    <ng-template
+                      neuralTableCell="actions"
+                      let-row="row"
+                      let-rowIndex="rowIndex"
+                    >
+                      <div class="flex justify-center gap-1">
+                        @if (rowTable.isRowEditing($any(row), rowIndex)) {
+                        <neural-button
+                          size="small"
+                          variant="text"
+                          ariaLabel="Save row"
+                          title="Save"
+                          (clicked)="rowTable.saveEdit($event)"
+                          ><i class="nt nt-check" aria-hidden="true"></i
+                        ></neural-button>
+                        <neural-button
+                          size="small"
+                          variant="text"
+                          severity="secondary"
+                          ariaLabel="Cancel row edit"
+                          title="Cancel"
+                          (clicked)="rowTable.cancelEdit($event)"
+                          ><i class="nt nt-x" aria-hidden="true"></i
+                        ></neural-button>
+                        } @else {
+                        <neural-button
+                          size="small"
+                          variant="text"
+                          severity="secondary"
+                          ariaLabel="Edit row"
+                          title="Edit"
+                          (clicked)="rowTable.startRowEdit($any(row), rowIndex, $event)"
+                          ><i class="nt nt-edit" aria-hidden="true"></i
+                        ></neural-button>
+                        }
+                      </div>
+                    </ng-template>
+                  </neural-table>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="layout" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Scroll and column layout</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Sticky edges, constrained scrolling, fit/expand resizing,
+                visibility and pointer/keyboard reordering remain controlled
+                models.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="layout.html"
+                language="html"
+                [code]="layoutCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full overflow-hidden">
+                  <div class="mb-4 flex flex-wrap items-center gap-3">
+                    <neural-select
+                      class="min-w-52"
+                      ariaLabel="Column resize mode"
+                      [options]="resizeModeOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      [value]="resizeMode()"
+                      (valueChange)="setResizeMode($event)"
+                    />
+                    <neural-button
+                      label="Show all columns"
+                      variant="outlined"
+                      size="small"
+                      (clicked)="hiddenColumnIds.set([])"
+                    />
+                  </div>
+                  <div class="mb-4 flex flex-wrap gap-4">
+                    @for (column of columns; track column.id) {
+                    <neural-checkbox
+                      [checked]="!hiddenColumnIds().includes(column.id)"
+                      (checkedChange)="setColumnVisible(column.id, $event)"
+                      >{{ column.header }}</neural-checkbox
+                    >
+                    }
+                  </div>
+                  <neural-table
+                    [value]="products"
+                    [columns]="columns"
+                    [(hiddenColumnIds)]="hiddenColumnIds"
+                    [(columnWidths)]="columnWidths"
+                    [(columnOrder)]="columnOrder"
+                    scrollHeight="20rem"
+                    stickyHeader
+                    stickyFooter
+                    resizableColumns
+                    reorderableColumns
+                    [columnResizeMode]="resizeMode()"
+                    density="compact"
+                    ariaLabel="Resizable inventory"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="headers" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Grouped headers and summaries</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Nested definitions resolve native colspan and rowspan from
+                visible leaf columns. Header/footer templates can replace any
+                resolved group.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="grouped-headers.html"
+                language="html"
+                [code]="headerCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full overflow-hidden">
+                  <neural-table
+                    [value]="products.slice(0, 4)"
+                    [columns]="columns"
+                    [headerGroups]="headerGroups"
+                    gridlines
+                    ariaLabel="Grouped product information"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="summaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Footer summaries</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Typed footer templates receive the processed rows, so totals,
+                averages, minimums and maximums stay aligned with the active
+                filter and can remain frozen with the table footer.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="summaries.html"
+                language="html"
+                [code]="summaryCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full overflow-hidden">
+                  <neural-table
+                    [value]="products"
+                    [columns]="columns"
+                    stickyFooter
+                    ariaLabel="Product totals"
+                  >
+                    <ng-template neuralTableFooter="price" let-rows="rows"
+                      ><strong
+                        >${{ sumRows($any(rows),
+                        'price').toLocaleString('en-US') }}</strong
+                      ></ng-template
+                    >
+                    <ng-template neuralTableFooter="inventory" let-rows="rows"
+                      ><strong
+                        >{{ sumRows($any(rows), 'inventory') }} units</strong
+                      ></ng-template
+                    >
+                  </neural-table>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="grouping" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Row grouping and aggregation</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Subheader and rowspan modes accept nested paths or callbacks.
+                Typed group contexts expose rows plus sum, average, minimum and
+                maximum helpers.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="grouping.html"
+                language="html"
+                [code]="groupCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-6 overflow-hidden">
+                  <neural-table
+                    [value]="products"
+                    [columns]="compactColumns"
+                    groupRowsBy="category"
+                    rowGroupMode="subheader"
+                    expandableRowGroups
+                    [(expandedRowGroupKeys)]="expandedGroups"
+                    ariaLabel="Products grouped by category"
+                    ><ng-template neuralTableGroupFooter let-rows="rows"
+                      ><span class="font-semibold text-[var(--site-text-muted)]"
+                        >{{ rows.length }} product(s)</span
+                      ></ng-template
+                    ></neural-table
+                  >
+                  <div>
+                    <p
+                      class="mb-3 text-xs font-black uppercase tracking-[.14em] text-[var(--site-text-muted)]"
+                    >
+                      Rowspan mode
+                    </p>
+                    <neural-table
+                      [value]="products"
+                      [columns]="compactColumns"
+                      groupRowsBy="category"
+                      rowGroupMode="rowspan"
+                      gridlines
+                      ariaLabel="Rowspan grouped products"
+                    />
+                  </div></div
+              ></code-view>
+            </section>
+
+            <section id="remote" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Remote data and enterprise state
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Remote mode never transforms supplied rows. Every request
+                carries a monotonic requestId; state can be serialized to URL
+                parameters or persisted through local, session or custom
+                adapters.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="remote.html"
+                language="html"
+                [code]="remoteCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full overflow-hidden">
+                  <neural-table
+                    dataMode="remote"
+                    [value]="products.slice(0, 3)"
+                    [totalItems]="137"
+                    [columns]="compactColumns"
+                    rowKey="id"
+                    paginate
+                    [(pageIndex)]="remotePageIndex"
+                    [(pageSize)]="remotePageSize"
+                    (stateChange)="remoteChanged($event)"
+                    ariaLabel="Remote products"
+                  />
+                  <neural-paginator
+                    class="mt-4 block"
+                    [totalItems]="137"
+                    [(pageIndex)]="remotePageIndex"
+                    [(pageSize)]="remotePageSize"
+                    [pageSizeOptions]="[3, 10, 25]"
+                    outlined
+                  />
+                  <p
+                    class="mt-3 font-mono text-xs text-[var(--site-text-muted)]"
+                  >
+                    {{ remoteStatus() }}
+                  </p>
+                </div></code-view
+              >
+              <code-view
+                class="mt-6 block"
+                fileName="table-state.ts"
+                language="typescript"
+                [code]="persistenceCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Loading, empty and error</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Message or skeleton loading, empty results and errors preserve
+                table geometry and each accepts a typed replacement template.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="states.html"
+                language="html"
+                [code]="stateCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-5">
+                  <neural-table
+                    loading
+                    loadingMode="skeleton"
+                    [loadingRows]="3"
+                    [value]="[]"
+                    [columns]="compactColumns"
+                    ariaLabel="Loading products"
+                  /><neural-table
+                    [value]="[]"
+                    [columns]="compactColumns"
+                    ariaLabel="Empty products"
+                  >
+                    <ng-template neuralTableEmpty>
+                      <tr>
+                        <td
+                          colspan="4"
+                          class="p-8 text-center text-sm text-[var(--site-text-muted)]"
+                        >
+                          No products match the current filters.
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </neural-table>
+                  <neural-table
+                    error="Inventory service is temporarily unavailable."
+                    [value]="[]"
+                    [columns]="compactColumns"
+                    ariaLabel="Product error"
+                  >
+                    <ng-template neuralTableError let-message="message">
+                      <tr>
+                        <td
+                          colspan="4"
+                          class="p-8 text-center text-sm font-semibold text-rose-500"
+                        >
+                          {{ message }}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </neural-table>
+                  <neural-table
+                    loading
+                    [value]="[]"
+                    [columns]="compactColumns"
+                    ariaLabel="Custom loading products"
+                  >
+                    <ng-template neuralTableLoading let-message="message">
+                      <tr>
+                        <td
+                          colspan="4"
+                          class="p-8 text-center text-sm font-semibold text-blue-500"
+                        >
+                          <i
+                            class="nt nt-loader-3 nt-spin mr-2"
+                            aria-hidden="true"
+                          ></i
+                          >{{ message }}
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </neural-table>
+                </div></code-view
+              >
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Native table markup, state hooks and interaction remain while
+                Tailwind owns every visible layer.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="w-full overflow-hidden rounded-2xl bg-slate-950 p-4"
+                >
+                  <neural-table
+                    unstyled
+                    [value]="products.slice(0, 3)"
+                    [columns]="compactColumns"
+                    [classes]="headlessClasses"
+                    ariaLabel="Headless products"
+                  /></div
+              ></code-view>
+            </section>
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Beta boundaries</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Table owns data presentation and interaction, not API transport
+                or virtualization. Bind VirtualScroller for very large flat
+                collections and keep remote fetching in application state.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Native table behavior</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                NeuralTable retains table, caption, thead, tbody, tfoot and
+                scoped header semantics instead of replacing them with a
+                synthetic grid role.
+              </p>
+            </header>
+            <section id="native" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Native semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use caption or ariaLabel/ariaLabelledby for a name and
+                ariaDescribedby for surrounding guidance. Grouped headers
+                resolve valid colspan, rowspan and scope relationships.
+              </p>
+            </section>
+            <section id="sorting-a11y" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Sorting and filtering</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Sortable headers use real buttons and aria-sort. Filter controls
+                receive column-specific labels and remain reachable in
+                predictable document order.
+              </p>
+            </section>
+            <section id="selection-a11y" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Selection keyboard model</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Selectable rows use roving tabindex. Arrow Up/Down and Home/End
+                move focus; Space or Enter selects. Disabled rows are skipped by
+                navigation and Shift ranges.
+              </p>
+            </section>
+            <section id="editing-a11y" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Editing keyboard model</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Enter starts or saves, Escape cancels, and Tab commits before
+                advancing to the next editable cell. Async validation retains
+                focus and exposes its error.
+              </p>
+            </section>
+            <section id="live-state" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Loading and live state</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                aria-busy communicates loading. Error and empty content remain
+                inside correctly spanned table rows; resize and reorder
+                announcements use localized labels.
+              </p>
+            </section>
+            <section id="ssr" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">SSR, hydration and cleanup</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Storage is browser-guarded. Pending filter timers, pointer
+                listeners, edit validation and persistence operations are
+                cancelled or invalidated during destruction.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Table API</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                The Beta contract includes the complete Alpha feature surface
+                and its typed helper APIs.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs and models</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[54rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (row of inputs; track row[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ row[0] }}</td>
+                      <td class="p-4 font-mono">{{ row[1] }}</td>
+                      <td class="p-4 font-mono">{{ row[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ row[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Outputs</h2>
+              <div class="mt-6 grid gap-3">
+                @for (row of outputs; track row[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ row[0] }}</code
+                  ><span
+                    class="ml-3 font-mono text-xs text-[var(--site-text-muted)]"
+                    >{{ row[1] }}</span
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ row[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="templates" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed templates</h2>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                @for (row of templates; track row[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ row[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ row[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public methods</h2>
+              <div class="mt-6 grid gap-3">
+                @for (row of methods; track row[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ row[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ row[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="columns" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Column contract</h2>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                @for (item of columnFields; track item) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 font-mono text-sm text-blue-500"
+                >
+                  {{ item }}
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of classSlots; track item) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 font-mono text-sm text-blue-500"
+                >
+                  {{ item }}
+                </div>
+                }
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of publicTypes; track item) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 text-sm text-[var(--site-text-soft)]"
+                >
+                  {{ item }}
+                </div>
+                }
+              </div>
+            </section>
+            <section id="utilities" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Pure utilities</h2>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                @for (item of utilities; track item) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 font-mono text-sm text-blue-500"
+                >
+                  {{ item }}
+                </div>
+                }
+              </div>
+            </section>
+            <section id="alias" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Legacy alias</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                TableComponent remains available for compatibility. New human
+                and AI-generated code should import NeuralTable.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Table tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Every production visual remains a CSS variable, while structural
+                markup and interaction stay stable.
+              </p>
+            </header>
+            <section id="surface-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Surfaces and content</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="surfaceTokens"
+              />
+            </section>
+            <section id="interaction-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Interaction and state</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="interactionTokens"
+              />
+            </section>
+            <section id="layout-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Layout, shadow and editing</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="layoutTokens"
+              />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

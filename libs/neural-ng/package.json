@@ -1,0 +1,390 @@
+{
+  "name": "@neural-ng/core",
+  "version": "0.1.0-beta.6",
+  "description": "Angular 22+ UI components with typed, machine-readable contracts for AI coding agents.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasanaydin7/NeuralTech.git",
+    "directory": "libs/neural-ng"
+  },
+  "homepage": "https://github.com/hasanaydin7/NeuralTech#readme",
+  "bugs": {
+    "url": "https://github.com/hasanaydin7/NeuralTech/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "angular",
+    "angular-ui-library",
+    "ai-agents",
+    "coding-agents",
+    "components",
+    "headless",
+    "llms",
+    "mcp",
+    "signals",
+    "ui"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/forms": "^22.0.0",
+    "@angular/router": "^22.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@angular/forms": {
+      "optional": true
+    },
+    "@angular/router": {
+      "optional": true
+    }
+  },
+  "sideEffects": [
+    "./themes/**/*.css"
+  ],
+  "exports": {
+    "./accordion/llms.txt": {
+      "default": "./accordion/llms.txt"
+    },
+    "./accordion/README.md": {
+      "default": "./accordion/README.md"
+    },
+    "./appearance/llms.txt": {
+      "default": "./appearance/llms.txt"
+    },
+    "./appearance/README.md": {
+      "default": "./appearance/README.md"
+    },
+    "./avatar/llms.txt": {
+      "default": "./avatar/llms.txt"
+    },
+    "./avatar/README.md": {
+      "default": "./avatar/README.md"
+    },
+    "./breadcrumb/llms.txt": {
+      "default": "./breadcrumb/llms.txt"
+    },
+    "./breadcrumb/README.md": {
+      "default": "./breadcrumb/README.md"
+    },
+    "./badge/llms.txt": {
+      "default": "./badge/llms.txt"
+    },
+    "./badge/README.md": {
+      "default": "./badge/README.md"
+    },
+    "./llms.txt": {
+      "default": "./llms.txt"
+    },
+    "./auto-complete/README.md": {
+      "default": "./auto-complete/README.md"
+    },
+    "./auto-complete/llms.txt": {
+      "default": "./auto-complete/llms.txt"
+    },
+    "./button/llms.txt": {
+      "default": "./button/llms.txt"
+    },
+    "./button/README.md": {
+      "default": "./button/README.md"
+    },
+    "./card/llms.txt": {
+      "default": "./card/llms.txt"
+    },
+    "./card/README.md": {
+      "default": "./card/README.md"
+    },
+    "./checkbox/llms.txt": {
+      "default": "./checkbox/llms.txt"
+    },
+    "./checkbox/README.md": {
+      "default": "./checkbox/README.md"
+    },
+    "./color-mode/llms.txt": {
+      "default": "./color-mode/llms.txt"
+    },
+    "./color-mode/README.md": {
+      "default": "./color-mode/README.md"
+    },
+    "./confirm-dialog/llms.txt": {
+      "default": "./confirm-dialog/llms.txt"
+    },
+    "./confirm-dialog/README.md": {
+      "default": "./confirm-dialog/README.md"
+    },
+    "./date-picker/llms.txt": {
+      "default": "./date-picker/llms.txt"
+    },
+    "./date-picker/README.md": {
+      "default": "./date-picker/README.md"
+    },
+    "./data-view/llms.txt": {
+      "default": "./data-view/llms.txt"
+    },
+    "./data-view/README.md": {
+      "default": "./data-view/README.md"
+    },
+    "./dialog/llms.txt": {
+      "default": "./dialog/llms.txt"
+    },
+    "./dialog/README.md": {
+      "default": "./dialog/README.md"
+    },
+    "./drawer/llms.txt": {
+      "default": "./drawer/llms.txt"
+    },
+    "./drawer/README.md": {
+      "default": "./drawer/README.md"
+    },
+    "./sidebar/llms.txt": {
+      "default": "./sidebar/llms.txt"
+    },
+    "./sidebar/README.md": {
+      "default": "./sidebar/README.md"
+    },
+    "./divider/llms.txt": {
+      "default": "./divider/llms.txt"
+    },
+    "./divider/README.md": {
+      "default": "./divider/README.md"
+    },
+    "./field/llms.txt": {
+      "default": "./field/llms.txt"
+    },
+    "./field/README.md": {
+      "default": "./field/README.md"
+    },
+    "./message/llms.txt": {
+      "default": "./message/llms.txt"
+    },
+    "./input/llms.txt": {
+      "default": "./input/llms.txt"
+    },
+    "./input/README.md": {
+      "default": "./input/README.md"
+    },
+    "./input-number/llms.txt": {
+      "default": "./input-number/llms.txt"
+    },
+    "./input-number/README.md": {
+      "default": "./input-number/README.md"
+    },
+    "./input-mask/llms.txt": {
+      "default": "./input-mask/llms.txt"
+    },
+    "./input-mask/README.md": {
+      "default": "./input-mask/README.md"
+    },
+    "./input-otp/llms.txt": {
+      "default": "./input-otp/llms.txt"
+    },
+    "./input-otp/README.md": {
+      "default": "./input-otp/README.md"
+    },
+    "./loading-overlay/llms.txt": {
+      "default": "./loading-overlay/llms.txt"
+    },
+    "./loading-overlay/README.md": {
+      "default": "./loading-overlay/README.md"
+    },
+    "./i18n/llms.txt": {
+      "default": "./i18n/llms.txt"
+    },
+    "./i18n/README.md": {
+      "default": "./i18n/README.md"
+    },
+    "./message/README.md": {
+      "default": "./message/README.md"
+    },
+    "./meter-group/llms.txt": {
+      "default": "./meter-group/llms.txt"
+    },
+    "./meter-group/README.md": {
+      "default": "./meter-group/README.md"
+    },
+    "./multi-select/llms.txt": {
+      "default": "./multi-select/llms.txt"
+    },
+    "./multi-select/README.md": {
+      "default": "./multi-select/README.md"
+    },
+    "./overlay/llms.txt": {
+      "default": "./overlay/llms.txt"
+    },
+    "./overlay/README.md": {
+      "default": "./overlay/README.md"
+    },
+    "./panel-menu/llms.txt": {
+      "default": "./panel-menu/llms.txt"
+    },
+    "./panel-menu/README.md": {
+      "default": "./panel-menu/README.md"
+    },
+    "./menu/llms.txt": {
+      "default": "./menu/llms.txt"
+    },
+    "./menu/README.md": {
+      "default": "./menu/README.md"
+    },
+    "./paginator/llms.txt": {
+      "default": "./paginator/llms.txt"
+    },
+    "./paginator/README.md": {
+      "default": "./paginator/README.md"
+    },
+    "./password/llms.txt": {
+      "default": "./password/llms.txt"
+    },
+    "./password/README.md": {
+      "default": "./password/README.md"
+    },
+    "./file-upload/llms.txt": {
+      "default": "./file-upload/llms.txt"
+    },
+    "./file-upload/README.md": {
+      "default": "./file-upload/README.md"
+    },
+    "./popover/llms.txt": {
+      "default": "./popover/llms.txt"
+    },
+    "./popover/README.md": {
+      "default": "./popover/README.md"
+    },
+    "./progress-bar/llms.txt": {
+      "default": "./progress-bar/llms.txt"
+    },
+    "./progress-bar/README.md": {
+      "default": "./progress-bar/README.md"
+    },
+    "./progress-spinner/llms.txt": {
+      "default": "./progress-spinner/llms.txt"
+    },
+    "./progress-spinner/README.md": {
+      "default": "./progress-spinner/README.md"
+    },
+    "./radio/llms.txt": {
+      "default": "./radio/llms.txt"
+    },
+    "./radio/README.md": {
+      "default": "./radio/README.md"
+    },
+    "./select/llms.txt": {
+      "default": "./select/llms.txt"
+    },
+    "./select/README.md": {
+      "default": "./select/README.md"
+    },
+    "./skeleton/llms.txt": {
+      "default": "./skeleton/llms.txt"
+    },
+    "./skeleton/README.md": {
+      "default": "./skeleton/README.md"
+    },
+    "./slider/llms.txt": {
+      "default": "./slider/llms.txt"
+    },
+    "./slider/README.md": {
+      "default": "./slider/README.md"
+    },
+    "./switch/llms.txt": {
+      "default": "./switch/llms.txt"
+    },
+    "./switch/README.md": {
+      "default": "./switch/README.md"
+    },
+    "./tabs/llms.txt": {
+      "default": "./tabs/llms.txt"
+    },
+    "./table/llms.txt": {
+      "default": "./table/llms.txt"
+    },
+    "./table/README.md": {
+      "default": "./table/README.md"
+    },
+    "./table/CHANGELOG.md": {
+      "default": "./table/CHANGELOG.md"
+    },
+    "./table/SIZE.md": {
+      "default": "./table/SIZE.md"
+    },
+    "./tabs/README.md": {
+      "default": "./tabs/README.md"
+    },
+    "./tag/llms.txt": {
+      "default": "./tag/llms.txt"
+    },
+    "./tag/README.md": {
+      "default": "./tag/README.md"
+    },
+    "./textarea/llms.txt": {
+      "default": "./textarea/llms.txt"
+    },
+    "./textarea/README.md": {
+      "default": "./textarea/README.md"
+    },
+    "./tooltip/llms.txt": {
+      "default": "./tooltip/llms.txt"
+    },
+    "./tooltip/README.md": {
+      "default": "./tooltip/README.md"
+    },
+    "./toast/llms.txt": {
+      "default": "./toast/llms.txt"
+    },
+    "./toast/README.md": {
+      "default": "./toast/README.md"
+    },
+    "./toolbar/llms.txt": {
+      "default": "./toolbar/llms.txt"
+    },
+    "./toolbar/README.md": {
+      "default": "./toolbar/README.md"
+    },
+    "./tree/llms.txt": {
+      "default": "./tree/llms.txt"
+    },
+    "./tree/README.md": {
+      "default": "./tree/README.md"
+    },
+    "./tree-select/llms.txt": {
+      "default": "./tree-select/llms.txt"
+    },
+    "./tree-select/README.md": {
+      "default": "./tree-select/README.md"
+    },
+    "./virtual-scroller/llms.txt": {
+      "default": "./virtual-scroller/llms.txt"
+    },
+    "./virtual-scroller/README.md": {
+      "default": "./virtual-scroller/README.md"
+    },
+    "./themes/neutral.css": {
+      "style": "./themes/neutral.css",
+      "default": "./themes/neutral.css"
+    },
+    "./themes/tailwind.css": {
+      "style": "./themes/tailwind.css",
+      "default": "./themes/tailwind.css"
+    },
+    "./themes/experimental/glass.css": {
+      "style": "./themes/experimental/glass.css",
+      "default": "./themes/experimental/glass.css"
+    },
+    "./themes/experimental/mist.css": {
+      "style": "./themes/experimental/mist.css",
+      "default": "./themes/experimental/mist.css"
+    },
+    "./themes/experimental/futuristic.css": {
+      "style": "./themes/experimental/futuristic.css",
+      "default": "./themes/experimental/futuristic.css"
+    },
+    "./LICENSE": {
+      "default": "./LICENSE"
+    },
+    "./THIRD_PARTY_NOTICES.md": {
+      "default": "./THIRD_PARTY_NOTICES.md"
+    }
+  },
+  "license": "MIT"
+}

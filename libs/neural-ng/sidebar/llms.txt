@@ -1,0 +1,23 @@
+# @neural-ng/core/sidebar
+
+- Import standalone symbols from `@neural-ng/core/sidebar`.
+- Sidebar owns application layout and responsive state; use Drawer for transient arbitrary panels.
+- Compose navigation with `NeuralMenu` or `NeuralPanelMenu`; Sidebar does not duplicate menu item APIs.
+- `NeuralPanelMenu` becomes visually flush inside a styled Sidebar and automatically reduces to centered top-level icons in a collapsed icon rail.
+- `NeuralMenu` receives the same flush treatment and collapses flat actions into centered rail icons; import it separately from `@neural-ng/core/menu`.
+- `iconMenu="flyout"` is the default: activating a parent rail icon opens its children beside the rail. Once the root flyout is open, hovering a nested parent opens the next logical-side flyout after `hoverOpenDelay`; deeper branches never expand the first panel vertically.
+- Closing or replacing a root flyout clears all descendant expansion keys. Reopening it starts collapsed rather than restoring stale nested flyouts. Escape, outside pointer interaction, or Angular navigation closes and resets the hierarchy.
+- `openOnHover` temporarily expands a collapsed desktop icon rail without mutating `open`. Tune `hoverOpenDelay` (100ms) and `hoverCloseDelay` (180ms); use `hoverChange` only for observing this temporary state.
+- Hover expansion ignores touch pointers and does not collapse while keyboard focus remains inside the Sidebar.
+- Without hover expansion, a top-level rail item exposes its `data-label` visually on hover or keyboard focus; parent icons continue to use the accessible child flyout.
+- Add `neuralSidebarLabel` to custom header/footer text that must disappear in icon mode; never hide the associated icon.
+- Use logical `side="start|end"` for RTL safety.
+- `collapseMode`: `icon`, `offcanvas`, or `none`. `mobileMode` defaults to `offcanvas` below `breakpoint="64rem"`.
+- Bind state with `[(open)]`; connect controls using `[neuralSidebarTrigger]="sidebarId"`.
+- Export the trigger as `#trigger="neuralSidebarTrigger"` and read `trigger.expanded()` when the control icon or label must reflect state.
+- `closeOnMobile` defaults to true so an expanded desktop shell does not become an open modal on narrow screens.
+- Open offcanvas navigation closes after Angular Router navigation by default; opt out with `closeOnNavigation="false"`.
+- Modal offcanvas mode locks background scrolling, traps focus, supports Escape/backdrop dismissal, and restores trigger focus. Set `blockScroll="false"` only for intentionally non-blocking overlays.
+- `showBackdrop` controls backdrop rendering only; `overlay`, `modal`, and `blockScroll` remain independent positioning, focus, and scrolling policies.
+- Apply `neuralSidebarInitialFocus` to the preferred first interactive control inside an offcanvas Sidebar.
+- `unstyled` and global unstyled retain structural classes. `classes` provides typed additive slots.

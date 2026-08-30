@@ -1,0 +1,564 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="tree-select-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="TreeSelect documentation sections"
+            ><span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)]"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span
+            ><neural-tab value="component" iconClass="nt nt-sitemap"
+              >Component</neural-tab
+            ><neural-tab value="accessibility" iconClass="nt nt-shield"
+              >Accessibility</neural-tab
+            ><neural-tab value="api" iconClass="nt nt-code">API</neural-tab
+            ><neural-tab value="tokens" iconClass="nt nt-settings"
+              >Token</neural-tab
+            ></neural-tab-list
+          >
+        </div>
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-8"
+            >
+              <div
+                class="absolute -right-20 -top-24 size-64 rounded-full bg-blue-500/15 blur-[80px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full bg-violet-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-violet-500"
+                    >FORMS</span
+                  ><span
+                    class="rounded-full bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  TreeSelect
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  A compact hierarchical form control composed from Neural Tree
+                  and the viewport-safe Popover foundation.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>All
+                    Angular Forms</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Single
+                    and multiple</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 text-[var(--site-text-soft)]">
+                Use the canonical standalone export from its granular entry
+                point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Mapped hierarchical options</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                All option mappings accept nested property paths. Disabled nodes
+                remain discoverable but cannot be selected.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="basic.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-lg py-5">
+                  <neural-field
+                    controlId="workspace-location"
+                    class="grid w-full gap-1.5"
+                    fluid
+                    ><label
+                      neuralFieldLabel
+                      for="workspace-location"
+                      class="text-sm font-semibold"
+                      >Workspace location</label
+                    ><neural-tree-select
+                      [options]="locations"
+                      optionLabel="name"
+                      optionValue="id"
+                      optionIcon="icon"
+                      optionDisabled="disabled"
+                      [(value)]="selected"
+                      treeSelectId="workspace-location"
+                      ariaLabel="Workspace location"
+                      fluid
+                      (selectionChange)="changed($event)"
+                    /><small
+                      neuralFieldHint
+                      class="text-xs text-[var(--site-text-muted)]"
+                      >Filter, expand and select with pointer or
+                      keyboard.</small
+                    ></neural-field
+                  ><output
+                    class="mt-3 block text-xs text-[var(--site-text-muted)]"
+                    aria-live="polite"
+                    >{{status()}}</output
+                  >
+                </div></code-view
+              >
+            </section>
+            <section id="multiple" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Multiple and checkbox selection
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Multiple values render removable chips. Checkbox mode also
+                derives partial parent state while keeping an immutable value
+                array.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="multiple.html"
+                language="html"
+                [code]="multipleCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="grid w-full gap-5 py-5 md:grid-cols-2"
+                >
+                  <div>
+                    <p class="mb-2 text-sm font-bold">Multiple</p>
+                    <neural-tree-select
+                      [options]="locations"
+                      optionLabel="name"
+                      optionValue="id"
+                      optionIcon="icon"
+                      selectionMode="multiple"
+                      [closeOnSelect]="false"
+                      [(value)]="multiple"
+                      ariaLabel="Multiple teams"
+                      fluid
+                    />
+                  </div>
+                  <div>
+                    <p class="mb-2 text-sm font-bold">Checkbox</p>
+                    <neural-tree-select
+                      [options]="locations"
+                      optionLabel="name"
+                      optionValue="id"
+                      optionIcon="icon"
+                      selectionMode="checkbox"
+                      [closeOnSelect]="false"
+                      [(value)]="multiple"
+                      ariaLabel="Deployment scopes"
+                      fluid
+                    />
+                  </div></div
+              ></code-view>
+            </section>
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Signal, reactive and template Forms
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                One typed value model works directly and through every Angular
+                Forms adapter.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="forms.html"
+                language="html"
+                [code]="formsCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="grid w-full gap-5 py-5 lg:grid-cols-3"
+                >
+                  <div>
+                    <p class="mb-2 text-sm font-bold">Signal Forms</p>
+                    <neural-tree-select
+                      [options]="locations"
+                      optionLabel="name"
+                      optionValue="id"
+                      [formField]="signalForm.location"
+                      [filter]="false"
+                      fluid
+                    /><small>{{display(formsModel().location)}}</small>
+                  </div>
+                  <div>
+                    <p class="mb-2 text-sm font-bold">Reactive Forms</p>
+                    <neural-tree-select
+                      [options]="locations"
+                      optionLabel="name"
+                      optionValue="id"
+                      [formControl]="reactiveLocation"
+                      [filter]="false"
+                      fluid
+                    /><small>{{display(reactiveLocation.value)}}</small>
+                  </div>
+                  <div>
+                    <p class="mb-2 text-sm font-bold">Template-driven</p>
+                    <neural-tree-select
+                      [options]="locations"
+                      optionLabel="name"
+                      optionValue="id"
+                      name="location"
+                      [(ngModel)]="templateLocation"
+                      [filter]="false"
+                      fluid
+                    /><small>{{display(templateLocation)}}</small>
+                  </div>
+                </div></code-view
+              >
+            </section>
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Loading, readonly, disabled and invalid
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Readonly remains focusable and opens for inspection; disabled
+                leaves the tab order. Field can supply required, invalid,
+                pending and fluid state.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="states.html"
+                language="html"
+                [code]="statesCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="grid w-full gap-4 py-5 md:grid-cols-3"
+                >
+                  <neural-tree-select
+                    loading
+                    [options]="locations"
+                    optionLabel="name"
+                    optionValue="id"
+                    fluid
+                  /><neural-tree-select
+                    readonly
+                    [options]="locations"
+                    optionLabel="name"
+                    optionValue="id"
+                    [(value)]="readonlyValue"
+                    fluid
+                  /><neural-tree-select
+                    disabled
+                    [options]="locations"
+                    optionLabel="name"
+                    optionValue="id"
+                    fluid
+                  /></div
+              ></code-view>
+            </section>
+            <section id="templates" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Typed node and value templates
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Node context exposes selection and hierarchy metadata; value
+                context exposes the typed value and resolved labels.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="templates.html"
+                language="html"
+                [code]="templatesCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-lg py-5">
+                  <neural-tree-select
+                    [options]="locations"
+                    optionLabel="name"
+                    optionValue="id"
+                    [(value)]="selected"
+                    fluid
+                    ><ng-template neuralTreeSelectValue let-labels="labels"
+                      ><span class="font-bold text-blue-500"
+                        >{{labels.join(' / ')}}</span
+                      ></ng-template
+                    ><ng-template
+                      neuralTreeSelectNode
+                      let-node
+                      let-level="level"
+                      ><span class="flex flex-1 justify-between gap-3"
+                        ><strong>{{node.label}}</strong
+                        ><small class="text-[var(--site-text-muted)]"
+                          >Level {{level}}</small
+                        ></span
+                      ></ng-template
+                    ></neural-tree-select
+                  >
+                </div></code-view
+              >
+            </section>
+            <section id="virtual" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Virtual hierarchy</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>virtualScroll</code> delegates large visible ranges to the
+                Tree foundation without changing the Forms contract.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="virtual.html"
+                language="html"
+                [code]="virtualCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Combobox semantics, top-layer positioning, filtering and Tree
+                behavior remain while Tailwind owns the surface.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-lg py-5">
+                  <neural-tree-select
+                    unstyled
+                    [classes]="headlessClasses"
+                    [options]="locations"
+                    optionLabel="name"
+                    optionValue="id"
+                    optionIcon="icon"
+                    selectionMode="multiple"
+                    [closeOnSelect]="false"
+                    [(value)]="headlessValue"
+                    ariaLabel="Headless scopes"
+                    fluid
+                  /></div
+              ></code-view>
+            </section>
+          </neural-tab-panel>
+          <neural-tab-panel value="accessibility" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                TREESELECT
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Accessibility</h1>
+            </header>
+            <section id="semantics" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Combobox and tree</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The trigger exposes combobox state and controls a top-layer Tree
+                with complete treeitem, group, expanded, selected and checked
+                semantics.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Enter, Space or Arrow Down opens; Escape closes. Inside the
+                panel, Tree owns arrows, Home/End, Enter/Space and typeahead.
+              </p>
+            </section>
+            <section id="readonly" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Readonly and disabled</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Readonly permits filtering and branch expansion but blocks value
+                mutation. Disabled prevents opening and removes the trigger from
+                sequential focus.
+              </p>
+            </section>
+            <section id="focus" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Focus and overlay</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Popover matches trigger width, remains viewport-aware and
+                restores focus. The filter receives focus only when enabled.
+              </p>
+            </section>
+            <section id="forms-ssr" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Forms, SSR and hydration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Stable generated IDs preserve hydration. Programmatic form
+                writes do not emit user selection events; touch occurs on blur
+                or panel close.
+              </p>
+            </section></neural-tab-panel
+          >
+          <neural-tab-panel value="api" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                TREESELECT
+              </p>
+              <h1 class="mt-3 text-4xl font-black">API</h1>
+            </header>
+            <section id="component-api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Component</h2>
+              <div
+                class="mt-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+              >
+                <code class="font-bold text-blue-500"
+                  >NeuralTreeSelect&lt;TOption,TValue&gt;</code
+                >
+                <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                  Standalone FormValueControl with selector neural-tree-select.
+                </p>
+              </div>
+            </section>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Models and inputs</h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                <table class="w-full min-w-[56rem] text-left text-sm">
+                  <thead class="border-b border-[var(--site-border)]">
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for(item of inputs;track item[0]){
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{item[0]}}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{item[1]}}</td>
+                      <td class="p-4 font-mono text-xs">{{item[2]}}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{item[3]}}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="events" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Events</h2>
+              <div class="mt-4 grid gap-3">
+                @for(item of events;track item[0]){
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">{{item[0]}}</code
+                  ><code class="ml-3 text-xs">{{item[1]}}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{item[2]}}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                @for(item of methods;track item[0]){
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">{{item[0]}}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{item[1]}}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="template-api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Typed templates</h2>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                @for(item of templates;track item[0]){
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">{{item[0]}}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{item[1]}}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-4 flex flex-wrap gap-2">
+                @for(slot of classSlots;track slot){<code
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-blue-500"
+                  >{{slot}}</code
+                >}
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                @for(type of types;track type){<code
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 font-bold text-blue-500"
+                  >{{type}}</code
+                >}
+              </div>
+            </section>
+            <section id="compatibility" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Compatibility alias</h2>
+              <p class="mt-3 text-[var(--site-text-soft)]">
+                <code>TreeSelectComponent</code> is deprecated. New human and
+                generated code must import <code>NeuralTreeSelect</code>.
+              </p>
+            </section></neural-tab-panel
+          >
+          <neural-tab-panel value="tokens" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                TREESELECT
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Design tokens</h1>
+              <p class="mt-4 text-[var(--site-text-soft)]">
+                TreeSelect deliberately exposes a compact component token layer
+                and inherits shared control, Tree and Popover tokens.
+              </p>
+            </header>
+            <section id="sizing-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="mb-5 text-2xl font-black">Sizing</h2>
+              <site-design-token-list [tokens]="sizingTokens" />
+            </section>
+            <section id="surface-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="mb-5 text-2xl font-black">Surface</h2>
+              <site-design-token-list [tokens]="surfaceTokens" /></section
+          ></neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

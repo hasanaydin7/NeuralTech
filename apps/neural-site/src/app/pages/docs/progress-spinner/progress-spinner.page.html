@@ -1,0 +1,543 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="progress-spinner-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="ProgressSpinner documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt nt-loader-quarter"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FEEDBACK</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  ProgressSpinner
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  Accessible indeterminate progress with semantic color,
+                  normalized motion, localized naming and complete visual
+                  ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>ARIA
+                    progressbar</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Reduced-motion safe</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the standalone component from its granular entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Basic indeterminate progress</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use a spinner when work is active but its completion percentage
+                is unknown.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="basic.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex min-h-24 w-full items-center justify-center"
+                >
+                  <neural-progress-spinner ariaLabel="Loading results" />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="variants" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Solid, multicolor, dynamic and dual
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Solid keeps one semantic severity. Multicolor cycles through
+                five semantic colors, while dynamicStroke grows and contracts
+                the visible arc. Dual adds a counter-rotating inner ring and
+                reverse flips both directions. Dual colors stay synchronized
+                unless syncDualColor is disabled.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="variant.html"
+                language="html"
+                [code]="variantCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex min-h-32 w-full flex-wrap items-center justify-center gap-10"
+                >
+                  <neural-progress-spinner
+                    size="large"
+                    variant="solid"
+                    severity="primary"
+                    ariaLabel="Solid loading indicator"
+                  />
+                  <neural-progress-spinner
+                    size="large"
+                    variant="multicolor"
+                    ariaLabel="AI is reasoning"
+                  />
+                  <neural-progress-spinner
+                    size="large"
+                    variant="multicolor"
+                    dynamicStroke
+                    ariaLabel="AI is reasoning with dynamic stroke"
+                  />
+                  <neural-progress-spinner
+                    size="large"
+                    dual
+                    severity="primary"
+                    ariaLabel="Dual loading indicator"
+                  />
+                  <neural-progress-spinner
+                    size="large"
+                    dual
+                    reverse
+                    variant="multicolor"
+                    dynamicStroke
+                    ariaLabel="Reversed dual loading indicator"
+                  />
+                  <neural-progress-spinner
+                    size="large"
+                    dual
+                    variant="multicolor"
+                    [syncDualColor]="false"
+                    ariaLabel="Independent dual color cycles"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="severities" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic severities</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Every severity follows the shared NeuralNg color contract,
+                including runtime primary changes.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="severity.html"
+                language="html"
+                [code]="severityCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-7 px-2 sm:px-8"
+                >
+                  <neural-progress-spinner
+                    severity="primary"
+                    ariaLabel="Primary task"
+                  /><neural-progress-spinner
+                    severity="secondary"
+                    ariaLabel="Secondary task"
+                  /><neural-progress-spinner
+                    severity="neutral"
+                    ariaLabel="Neutral task"
+                  /><neural-progress-spinner
+                    severity="info"
+                    ariaLabel="Information task"
+                  /><neural-progress-spinner
+                    severity="success"
+                    ariaLabel="Successful task"
+                  /><neural-progress-spinner
+                    severity="warning"
+                    ariaLabel="Warning task"
+                  /><neural-progress-spinner
+                    severity="error"
+                    ariaLabel="Failed task"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="sizes" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Sizes</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Human-readable size values keep the public API framework-neutral
+                and AI-friendly.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="sizes.html"
+                language="html"
+                [code]="sizeCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex min-h-28 w-full items-center justify-center gap-8"
+                >
+                  <neural-progress-spinner
+                    size="small"
+                    ariaLabel="Small task"
+                  /><neural-progress-spinner
+                    size="medium"
+                    ariaLabel="Medium task"
+                  /><neural-progress-spinner
+                    size="large"
+                    ariaLabel="Large task"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="labels" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Labels and accessible naming</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Visible text can describe the operation while ariaValueText
+                supplies more specific assistive status.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="label.html"
+                language="html"
+                [code]="labelCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex min-h-24 w-full items-center justify-center"
+                >
+                  <neural-progress-spinner
+                    label="Synchronizing workspace"
+                    ariaValueText="Waiting for the remote agent"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="motion" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Stroke and speed</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Stroke width and rotation duration are normalized to safe ranges
+                before rendering.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="motion.html"
+                language="html"
+                [code]="motionCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex min-h-24 w-full items-center justify-center gap-8"
+                >
+                  <neural-progress-spinner
+                    [strokeWidth]="3"
+                    [speed]="1200"
+                    severity="warning"
+                    ariaLabel="Connecting"
+                  /><neural-progress-spinner
+                    [strokeWidth]="7"
+                    [speed]="500"
+                    severity="primary"
+                    ariaLabel="Processing"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Progress semantics and structural hooks remain while consumer
+                classes own every visible decision.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="headless.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex min-h-28 w-full items-center justify-center"
+                >
+                  <neural-progress-spinner
+                    label="Agent is reasoning"
+                    unstyled
+                    spinnerClass="my-spinner"
+                    [classes]="headlessClasses"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Usage boundaries</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use ProgressSpinner for unknown-duration work, ProgressBar for
+                measurable completion, and LoadingOverlay only when interaction
+                must be blocked.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-3 text-4xl font-black">
+                Unknown progress, clearly announced
+              </h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                The visible arc is decorative; the containing progressbar
+                communicates the actual task state.
+              </p>
+            </header>
+            <section id="semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Indeterminate semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The root exposes <code>role="progressbar"</code> without
+                invented <code>aria-valuenow</code>, min or max attributes.
+              </p>
+            </section>
+            <section id="accessible-names" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Accessible names</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>ariaLabelledBy</code> takes precedence over
+                <code>ariaLabel</code>, then the explicit label, then the active
+                locale's common loading message.
+              </p>
+            </section>
+            <section id="value-descriptions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Value descriptions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>ariaValueText</code> can announce domain state such as
+                �Waiting for approval� without forcing that copy into the visual
+                layout.
+              </p>
+            </section>
+            <section id="reduced-motion" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Reduced motion</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Under <code>prefers-reduced-motion: reduce</code>, rotation
+                stops and a static arc continues to communicate activity
+                visually.
+              </p>
+            </section>
+            <section id="localization" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Localization</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                An unlabeled spinner resolves its accessible name from
+                <code>NeuralLocaleService.messages().common.loading</code> and
+                updates with the active locale.
+              </p>
+            </section>
+            <section id="ssr" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">SSR and hydration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Signal normalization and locale resolution avoid browser
+                globals, keeping server and client markup deterministic.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-3 text-4xl font-black">ProgressSpinner API</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                A small Signal input surface for semantic, indeterminate loading
+                feedback.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                @for (item of classSlots; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-5 grid gap-3">
+                @for (item of publicTypes; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 break-words font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="alias" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Legacy alias</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>ProgressSpinnerComponent</code> remains compatible. New
+                code should import <code>NeuralProgressSpinner</code>.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-3 text-4xl font-black">ProgressSpinner tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Every custom property below maps to a real spinner
+                implementation detail.
+              </p>
+            </header>
+            <section id="layout-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Layout and sizes</h2>
+              <site-design-token-list [tokens]="layoutTokens" />
+            </section>
+            <section id="surface-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Surface</h2>
+              <site-design-token-list [tokens]="surfaceTokens" />
+            </section>
+            <section id="severity-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Color and severity</h2>
+              <site-design-token-list [tokens]="severityTokens" />
+            </section>
+            <section id="label-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Label</h2>
+              <site-design-token-list [tokens]="labelTokens" />
+            </section>
+            <section id="motion-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Motion</h2>
+              <site-design-token-list [tokens]="motionTokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

@@ -1,0 +1,11 @@
+# NeuralNg Overlay
+
+Import from `@neural-ng/core/overlay`.
+
+- This is low-level infrastructure for floating NeuralNg components.
+- Prefer `neuralTooltip` for plain descriptive tooltips.
+- Placements: top, top-start, top-end, bottom, bottom-start, bottom-end, left,
+  right.
+- Always call `destroy()` on the returned position reference.
+- Positioning uses CSS Anchor Positioning when supported and a dependency-free
+  viewport-aware JavaScript fallback elsewhere.

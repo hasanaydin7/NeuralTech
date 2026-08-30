@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title">
+  <title id="title">Abstract portrait of Ada</title>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="28" fill="url(#background)"/>
+  <circle cx="80" cy="61" r="31" fill="#f8d9c4"/>
+  <path d="M45 62c0-26 16-43 37-43 24 0 38 17 38 43-9-6-18-15-22-26-12 15-29 23-53 26Z" fill="#172554"/>
+  <path d="M29 160c3-39 23-61 51-61s48 22 51 61H29Z" fill="#eef2ff"/>
+  <path d="M63 103h34l-6 23H69l-6-23Z" fill="#f8d9c4"/>
+  <circle cx="68" cy="63" r="3" fill="#172554"/>
+  <circle cx="92" cy="63" r="3" fill="#172554"/>
+  <path d="M69 79c7 6 15 6 22 0" fill="none" stroke="#9f4f43" stroke-linecap="round" stroke-width="3"/>
+</svg>

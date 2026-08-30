@@ -1,0 +1,106 @@
+{
+  "name": "neural-ng",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/neural-ng/src",
+  "prefix": "neural",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "manifestRootsToUpdate": ["dist/{projectRoot}"],
+      "currentVersionResolver": "git-tag",
+      "fallbackCurrentVersionResolver": "disk"
+    }
+  },
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "project": "libs/neural-ng/ng-package.json",
+        "tsConfig": "libs/neural-ng/tsconfig.lib.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/neural-ng/tsconfig.lib.prod.json"
+        },
+        "development": {}
+      }
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    },
+    "test": {
+      "executor": "@nx/angular:unit-test",
+      "options": {
+        "include": [
+          "../src/**/*.spec.ts",
+          "../accordion/**/*.spec.ts",
+          "../appearance/**/*.spec.ts",
+          "../avatar/**/*.spec.ts",
+          "../badge/**/*.spec.ts",
+          "../breadcrumb/**/*.spec.ts",
+          "../button/**/*.spec.ts",
+          "../card/**/*.spec.ts",
+          "../checkbox/**/*.spec.ts",
+          "../color-mode/**/*.spec.ts",
+          "../confirm-dialog/**/*.spec.ts",
+          "../date-picker/**/*.spec.ts",
+          "../data-view/**/*.spec.ts",
+          "../dialog/**/*.spec.ts",
+          "../drawer/**/*.spec.ts",
+          "../divider/**/*.spec.ts",
+          "../field/**/*.spec.ts",
+          "../input/**/*.spec.ts",
+          "../input-number/**/*.spec.ts",
+          "../input-mask/**/*.spec.ts",
+          "../input-otp/**/*.spec.ts",
+          "../loading-overlay/**/*.spec.ts",
+          "../i18n/**/*.spec.ts",
+          "../message/**/*.spec.ts",
+          "../meter-group/**/*.spec.ts",
+          "../multi-select/**/*.spec.ts",
+          "../menu/**/*.spec.ts",
+          "../overlay/**/*.spec.ts",
+          "../panel-menu/**/*.spec.ts",
+          "../paginator/**/*.spec.ts",
+          "../password/**/*.spec.ts",
+          "../file-upload/**/*.spec.ts",
+          "../popover/**/*.spec.ts",
+          "../progress-bar/**/*.spec.ts",
+          "../progress-spinner/**/*.spec.ts",
+          "../radio/**/*.spec.ts",
+          "../select/**/*.spec.ts",
+          "../skeleton/**/*.spec.ts",
+          "../sidebar/**/*.spec.ts",
+          "../slider/**/*.spec.ts",
+          "../switch/**/*.spec.ts",
+          "../table/**/*.spec.ts",
+          "../tabs/**/*.spec.ts",
+          "../tag/**/*.spec.ts",
+          "../textarea/**/*.spec.ts",
+          "../tooltip/**/*.spec.ts",
+          "../toast/**/*.spec.ts",
+          "../toolbar/**/*.spec.ts",
+          "../tree/**/*.spec.ts",
+          "../tree-select/**/*.spec.ts",
+          "../virtual-scroller/**/*.spec.ts"
+        ],
+        "watch": false
+      }
+    },
+    "package-test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "node libs/neural-ng/scripts/test-package.mjs"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

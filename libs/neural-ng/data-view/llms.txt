@@ -1,0 +1,20 @@
+# @neural-ng/core/data-view
+
+- Import `NeuralDataView` and template directives from this secondary entry point.
+- Never generate the deprecated `DataViewComponent` alias.
+- Always pass immutable `[value]` data.
+- Bind the collection to `[neuralDataViewListItem]` and `[neuralDataViewGridItem]` so Angular infers the item type.
+- Bind `[(layout)]` when the consumer can switch between list and grid.
+- Controlled models are `layout`, `first`, `rows`, `sortField`, and `sortOrder`.
+- Local mode performs stable nested-property sorting and slices the current page without mutating `value`.
+- Remote mode never sorts or slices. Pass the current server page as `value`, the complete count as `totalRecords`, and fetch from `stateChange` or `pageChange`.
+- `sortOrder` is `1` for ascending or `-1` for descending.
+- Use `trackBy` for stable identity and `sortComparator` for domain-specific sorting.
+- Typed templates: list item, grid item, header, footer, empty, and loading.
+- Item context includes `item`, `index`, `originalIndex`, `layout`, `first`, and `last`.
+- Loading and empty states replace collection content; do not expose stale items below them.
+- DataView is presentation-only. Do not invent selection, editing, filtering, fetching, or virtual scrolling inside it.
+- Compose controls in templates and use the separate VirtualScroller entry point for windowing.
+- Use `unstyled` or global `provideNeuralNg({ unstyled: true })` plus typed `classes` for headless visuals.
+- Preserve region, list/listitem, loading status, state attributes, and Paginator semantics.
+- Beta boundary: presentation, layout, paging, sorting, remote state, templates, loading/empty states, and visual ownership.

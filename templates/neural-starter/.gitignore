@@ -1,0 +1,5 @@
+/node_modules
+/dist
+/.angular
+/playwright-report
+/test-results

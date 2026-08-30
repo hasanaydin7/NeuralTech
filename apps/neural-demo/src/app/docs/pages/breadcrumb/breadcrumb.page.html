@@ -1,0 +1,85 @@
+<article class="docs-page breadcrumb-docs-page">
+  <neural-toast channel="breadcrumb-docs" position="bottom-end" />
+
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Navigation</span>
+    <h1 class="docs-hero__title">Breadcrumb</h1>
+    <p class="docs-hero__description">
+      Router-aware page trails with native semantics, responsive Menu overflow,
+      projected composition, and complete style ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <code-view class="mt-2" fileName="bread-crumb-example.ts" language="ts" [code]="importCode" [startLine]="1"
+      [showLineNumbers]="true" [wrap]="false" maxHeight="34rem" [preview]="false" [theme]="resolvedMode()">
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Data-driven trail</h2>
+    <p>
+      The last item becomes the current page automatically. Router links keep
+      SPA navigation while disabled locations remain readable but inert.
+    </p>
+    <code-view class="mt-2" fileName="bread-crumb-example.ts" language="ts" [code]="basicCode" [startLine]="1"
+      [showLineNumbers]="true" [wrap]="false" maxHeight="34rem" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content>
+        <neural-breadcrumb ariaLabel="Component documentation" [items]="items" (itemSelect)="select($event)" />
+        <small>Last event: {{ lastSelection() }}</small>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Responsive overflow</h2>
+    <p>
+      maxItems keeps the useful edges visible and moves middle locations into
+      the same accessible Menu foundation used elsewhere in NeuralNg.
+    </p>
+
+    <code-view class="mt-2" fileName="bread-crumb-example.ts" language="ts" [code]="overflowCode" [startLine]="1"
+      [showLineNumbers]="true" [wrap]="false" maxHeight="34rem" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content>
+        <neural-breadcrumb ariaLabel="Collapsed page trail" [items]="items" [maxItems]="3"
+          overflowLabel="More locations" (itemSelect)="select($event)" />
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Projected items and custom separator</h2>
+    <p>
+      Use projected sources when the trail reads more clearly in the template.
+    </p>
+    <code-view class="mt-2" fileName="bread-crumb-example.ts" language="ts" [code]="seperatorCode" [startLine]="1"
+      [showLineNumbers]="true" [wrap]="false" maxHeight="34rem" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content>
+        <neural-breadcrumb ariaLabel="Projected page trail">
+          <neural-breadcrumb-item key="home" label="Home" iconClass="nt-home" routerLink="/" />
+          <neural-breadcrumb-item key="guides" label="Guides" routerLink="/docs/guides/localization" />
+          <neural-breadcrumb-item key="localization" label="Localization" />
+          <ng-template neuralBreadcrumbSeparator>
+            <span class="breadcrumb-custom-separator">/</span>
+          </ng-template>
+        </neural-breadcrumb>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Semantics, routing, overflow, and structural hooks remain while all visual
+      ownership moves to consumer classes.
+    </p>
+    <code-view class="mt-2" fileName="bread-crumb-example.ts" language="ts" [code]="headlessCode" [startLine]="1"
+      [showLineNumbers]="true" [wrap]="false" maxHeight="34rem" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content>
+        <neural-breadcrumb ariaLabel="Headless page trail" unstyled [items]="items.slice(0, 4)"
+          [classes]="headlessClasses" />
+      </div>
+    </code-view>
+  </section>
+</article>

@@ -1,0 +1,51 @@
+/*
+ * Optional Tailwind CSS v4 bridge for NeuralNg primitive color tokens.
+ * Import this file from a Tailwind-processed stylesheet after `tailwindcss`.
+ */
+@theme inline {
+  --color-primary-50: var(--neural-color-primary-50);
+  --color-primary-100: var(--neural-color-primary-100);
+  --color-primary-200: var(--neural-color-primary-200);
+  --color-primary-300: var(--neural-color-primary-300);
+  --color-primary-400: var(--neural-color-primary-400);
+  --color-primary-500: var(--neural-color-primary-500);
+  --color-primary-600: var(--neural-color-primary-600);
+  --color-primary-700: var(--neural-color-primary-700);
+  --color-primary-800: var(--neural-color-primary-800);
+  --color-primary-900: var(--neural-color-primary-900);
+  --color-primary-950: var(--neural-color-primary-950);
+
+  --color-surface-0: var(--neural-color-surface-0);
+  --color-surface-50: var(--neural-color-surface-50);
+  --color-surface-100: var(--neural-color-surface-100);
+  --color-surface-200: var(--neural-color-surface-200);
+  --color-surface-300: var(--neural-color-surface-300);
+  --color-surface-400: var(--neural-color-surface-400);
+  --color-surface-500: var(--neural-color-surface-500);
+  --color-surface-600: var(--neural-color-surface-600);
+  --color-surface-700: var(--neural-color-surface-700);
+  --color-surface-800: var(--neural-color-surface-800);
+  --color-surface-900: var(--neural-color-surface-900);
+  --color-surface-950: var(--neural-color-surface-950);
+}
+
+/*
+ * Tailwind Preflight applies `font: inherit` to native controls. Re-apply the
+ * Button typography in the components layer so Preflight cannot inflate the
+ * control, while Tailwind utilities still retain final ownership.
+ */
+@layer components {
+  .neural-btn-base {
+    font-family: var(--neural-button-font-family, inherit);
+    font-size: var(--neural-button-font-size, 0.875rem);
+    line-height: var(--neural-button-line-height, 1.25);
+  }
+
+  .neural-btn-small-base {
+    font-size: var(--neural-button-small-font-size, 0.8125rem);
+  }
+
+  .neural-btn-large-base {
+    font-size: var(--neural-button-large-font-size, 1rem);
+  }
+}

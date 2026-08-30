@@ -1,0 +1,587 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="file-upload-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="FileUpload documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="
+                'translateX(calc(' +
+                selectedViewIndex() * 100 +
+                '% + ' +
+                selectedViewIndex() * 0.25 +
+                'rem))'
+              "
+            ></span>
+            <neural-tab value="component" iconClass="nt-file-text"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FORMS</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  FileUpload
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  Native file selection, drag and drop, immutable file arrays,
+                  deterministic validation events and one model for every
+                  Angular Forms API.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Immutable File arrays</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Drag and
+                    drop</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>HTTP
+                    agnostic</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical standalone control from its granular entry
+                point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="multiple" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Multiple files and Signal Forms
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The model is always <code>readonly File[]</code>. Multiple mode
+                appends accepted files without mutating the supplied array.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="application.html"
+                language="html"
+                [code]="multipleCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full max-w-2xl">
+                  <neural-field controlId="site-application-files" fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Supporting files</label>
+                    <neural-file-upload
+                      [formField]="applicationForm.attachments"
+                      accept=".pdf,image/*"
+                      [maxFileSize]="10 * 1024 * 1024"
+                      [maxFiles]="5"
+                      chooseIconClass="nt nt-file-text"
+                      removeIconClass="nt nt-x"
+                      clearIconClass="nt nt-trash"
+                      multiple
+                      fluid
+                      (selectionChange)="selectionChanged($event)"
+                    />
+                    <small neuralFieldHint
+                      >PDF or image, up to 10 MB each.</small
+                    >
+                  </neural-field>
+                  <output
+                    class="mt-3 block text-xs text-[var(--site-text-muted)]"
+                    aria-live="polite"
+                    >{{ eventStatus() }}</output
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="single" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Single-file mode</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Without <code>multiple</code>, the next accepted selection
+                replaces the previous file while preserving the array-shaped
+                model.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="avatar.html"
+                language="html"
+                [code]="singleCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full max-w-lg">
+                  <neural-file-upload
+                    ariaLabel="Profile image"
+                    accept="image/png,image/jpeg"
+                    [(value)]="avatar"
+                    chooseIconClass="nt nt-file-text"
+                    removeIconClass="nt nt-x"
+                    fluid
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Angular Forms</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Signal Forms, Reactive Forms and template-driven forms bind the
+                same immutable file-array contract.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="forms.html"
+                language="html"
+                [code]="formsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="grid w-full gap-6 lg:grid-cols-3 lg:items-start"
+                >
+                  <neural-field controlId="site-signal-upload" fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Signal Forms</label>
+                    <neural-file-upload
+                      [formField]="applicationForm.attachments"
+                      [showFileList]="false"
+                      fluid
+                    />
+                    <small neuralFieldHint
+                      >{{ application().attachments.length }} selected</small
+                    >
+                  </neural-field>
+                  <neural-field controlId="site-reactive-upload" fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Reactive Forms</label>
+                    <neural-file-upload
+                      [formControl]="reactiveFiles"
+                      [showFileList]="false"
+                      fluid
+                    />
+                    <small neuralFieldHint
+                      >{{ reactiveFiles.value.length }} selected</small
+                    >
+                  </neural-field>
+                  <neural-field controlId="site-template-upload" fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Template-driven</label>
+                    <neural-file-upload
+                      name="siteFiles"
+                      [(ngModel)]="templateFiles"
+                      [showFileList]="false"
+                      fluid
+                    />
+                    <small neuralFieldHint
+                      >{{ templateFiles.length }} selected</small
+                    >
+                  </neural-field>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="validation" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Client-side constraints</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>accept</code>, size, count and duplicate checks produce
+                deterministic rejection reasons. They improve UX but never
+                replace server validation.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="validation.html"
+                language="html"
+                [code]="validationCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full max-w-xl">
+                  <neural-file-upload
+                    ariaLabel="Validated release files"
+                    [(value)]="constrainedFiles"
+                    accept=".pdf,image/png"
+                    [maxFileSize]="2 * 1024 * 1024"
+                    [maxFiles]="3"
+                    [allowDuplicates]="false"
+                    chooseIconClass="nt nt-file-text"
+                    removeIconClass="nt nt-x"
+                    clearIconClass="nt nt-trash"
+                    multiple
+                    fluid
+                    (selectionChange)="selectionChanged($event)"
+                  />
+                  <output
+                    class="mt-3 block text-xs text-[var(--site-text-muted)]"
+                    aria-live="polite"
+                    >{{ eventStatus() }}</output
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Control states</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Readonly keeps the visible value inspectable while blocking
+                mutation; disabled follows Forms ownership. Invalid, required
+                and pending stay independent.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="states.html"
+                language="html"
+                [code]="statesCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-5 md:grid-cols-2">
+                  <neural-file-upload
+                    ariaLabel="Disabled upload"
+                    disabled
+                    fluid
+                  />
+                  <neural-file-upload
+                    ariaLabel="Readonly upload"
+                    readonly
+                    fluid
+                  />
+                  <neural-file-upload
+                    ariaLabel="Required invalid upload"
+                    required
+                    invalid
+                    fluid
+                  />
+                  <neural-file-upload
+                    ariaLabel="Pending upload"
+                    pending
+                    fluid
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="labels-icons" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Labels, icons and compact list ownership
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Every visible string can override the active locale and Neural
+                Icons can be assigned without custom projected markup.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="labels.html"
+                language="html"
+                [code]="labelsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full max-w-xl">
+                  <neural-file-upload
+                    ariaLabel="Release assets"
+                    chooseFilesLabel="Browse assets"
+                    dropFilesLabel="Drop release assets here"
+                    clearFilesLabel="Remove all"
+                    emptyFilesLabel="No release assets"
+                    chooseIconClass="nt nt-file-text"
+                    removeIconClass="nt nt-x"
+                    clearIconClass="nt nt-trash"
+                    multiple
+                    fluid
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="http-boundary" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Application-owned HTTP upload</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                FileUpload has no URL, headers, authentication, progress, retry
+                or chunking API. Build <code>FormData</code> and choose the
+                transport in application code.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="upload.ts"
+                language="typescript"
+                [code]="httpCode"
+                [theme]="appearance.mode()"
+              />
+              <div class="mt-5 flex flex-wrap items-center gap-4">
+                <neural-button
+                  label="Prepare FormData"
+                  icon="nt nt-file-text"
+                  severity="primary"
+                  (clicked)="prepareFormData()"
+                />
+                <output
+                  class="text-sm text-[var(--site-text-muted)]"
+                  aria-live="polite"
+                  >{{ uploadStatus() }}</output
+                >
+              </div>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Native chooser behavior, drag and drop, announcements and
+                immutable state remain while consumer classes own every visual
+                slot.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="headless.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full max-w-xl">
+                  <neural-file-upload
+                    ariaLabel="Headless PDF files"
+                    accept=".pdf"
+                    [(value)]="headlessFiles"
+                    [classes]="headlessClasses"
+                    multiple
+                    unstyled
+                    fluid
+                  />
+                </div>
+              </code-view>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-3 text-4xl font-black">FileUpload accessibility</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                A real hidden file input and real visible buttons preserve
+                browser semantics while the dropzone remains a drag target
+                rather than a fake control.
+              </p>
+            </header>
+            <section id="native-semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Native semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The native input retains <code>accept</code>,
+                <code>multiple</code>, <code>capture</code>,
+                <code>name</code> and FileList selection. The choose button
+                targets it through <code>aria-controls</code>.
+              </p>
+            </section>
+            <section id="names-status" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Names and status</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use Field composition, <code>ariaLabel</code> or
+                <code>ariaLabelledBy</code>. Selection summaries and localized
+                rejection messages are announced through a polite status region.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard behavior</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Choose, remove and clear are native buttons, preserving Tab,
+                Enter and Space. Focus returns to normal document order;
+                drag-and-drop is never the only input path.
+              </p>
+            </section>
+            <section id="security" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Security boundary</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Browser MIME metadata and client limits are untrusted hints.
+                Validate filename, size, content and authorization again on the
+                server; never execute or preview untrusted files without a
+                separate safe policy.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-3 text-4xl font-black">FileUpload API</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                The complete beta contract for selection, validation, state and
+                visual ownership.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[56rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono">{{ item[1] }}</td>
+                      <td class="p-4 font-mono">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="events" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Events</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[44rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Event</th>
+                      <th class="p-4">Payload</th>
+                      <th class="p-4">Meaning</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of events; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono">{{ item[1] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[2] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-sm text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+            <section id="value-contract" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Value and event contract</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Every mode uses <code>readonly File[]</code>. Programmatic
+                <code>clear()</code> and <code>reset()</code> do not impersonate
+                user actions. User selection emits one detailed event even when
+                all candidates are rejected.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN SYSTEM
+              </p>
+              <h1 class="mt-3 text-4xl font-black">FileUpload tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Dropzone, list, actions, focus, states and motion inherit the
+                active primary, surface and color mode.
+              </p>
+            </header>
+            <section id="design-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Design tokens</h2>
+              <site-design-token-list class="mt-6 block" [tokens]="tokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

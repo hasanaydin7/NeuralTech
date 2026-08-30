@@ -1,0 +1,57 @@
+# NeuralNg Color Mode
+
+> Optional Signal-based light/dark/system state from `@neural-ng/core/color-mode`.
+
+## Generation rules
+
+- Import only from `@neural-ng/core/color-mode`.
+- Prefer `@neural-ng/core/appearance` when the application also needs runtime
+  primary/surface palettes or direction. Never register both providers.
+- Register `provideNeuralColorMode()` in application providers when the library should initialize and manage mode.
+- Use `NeuralColorModeService.set('light' | 'dark' | 'system')` for changes.
+- Read `preference()` for the selected preference and `resolvedMode()` for the concrete light/dark result.
+- The library owns only `data-neural-mode` on `document.documentElement`.
+- Keep `data-neural-theme` independent; it identifies the visual theme family.
+- Do not generate an NgModule.
+- Do not assume Tailwind exists and do not mutate `.dark`.
+- The CSS themes work without this service when the application manages `data-neural-mode` itself.
+- Use `storageKey: null` when persistence is not wanted.
+- Account for first-paint mode in SSR applications with an application-owned CSP-compatible head script.
+
+## Canonical setup
+
+```ts
+import { ApplicationConfig } from '@angular/core';
+import { provideNeuralColorMode } from '@neural-ng/core/color-mode';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideNeuralColorMode({ defaultMode: 'system' })],
+};
+```
+
+```ts
+import { Component, inject } from '@angular/core';
+import { NeuralColorModeService } from '@neural-ng/core/color-mode';
+
+@Component({
+  selector: 'app-mode-picker',
+  template: `<button type="button" (click)="mode.set('dark')">Dark</button>`,
+})
+export class ModePicker {
+  readonly mode = inject(NeuralColorModeService);
+}
+```
+
+## Tailwind v4 opt-in
+
+```css
+@import 'tailwindcss';
+@import '@neural-ng/core/themes/neutral.css';
+@import '@neural-ng/core/themes/tailwind.css';
+
+@custom-variant dark (&:where([data-neural-mode='dark'], [data-neural-mode='dark'] *));
+```
+
+The bridge generates the full `primary-50..950` and `surface-0..950` Tailwind
+color utility namespaces from NeuralNg CSS variables. It is optional and must
+be processed by Tailwind CSS v4.

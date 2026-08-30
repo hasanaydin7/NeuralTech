@@ -1,0 +1,469 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="message-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Message documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-info-circle"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FEEDBACK</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Message
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  Inline feedback that belongs inside forms, cards, panels and
+                  normal page flow. It is immediate, accessible, theme-aware and
+                  independent from the global Message store.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Inline
+                    flow</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Seven
+                    severities</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                STANDALONE API
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The renderer and headless notification store share one granular
+                entry point but remain independent.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Basic inline feedback</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Unlike Toast, Message occupies layout space and stays exactly
+                where it is declared.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full">
+                  <neural-message
+                    severity="info"
+                    title="Workspace updated"
+                    message="Your settings are available to every team member."
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="severities" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic severities</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The full surface follows severity while primary and surface
+                palettes continue to work in light and dark mode.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="severity.html"
+                language="html"
+                [code]="severityCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-3">
+                  @for (severity of severities; track severity) {<neural-message
+                    [severity]="severity"
+                    [title]="severity"
+                    [message]="severity + ' inline feedback.'"
+                  />}
+                </div></code-view
+              >
+            </section>
+
+            <section id="variants" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Filled, outlined and simple</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use filled for prominent notices, outlined for quieter panels
+                and simple for compact field guidance.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="variants.html"
+                language="html"
+                [code]="variantCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-3">
+                  <neural-message
+                    variant="filled"
+                    severity="primary"
+                    message="Filled message"
+                  /><neural-message
+                    variant="outlined"
+                    severity="success"
+                    message="Outlined message"
+                  /><neural-message
+                    variant="simple"
+                    severity="error"
+                    message="Simple validation message"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="sizes" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Sizes and icons</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Automatic Neural Icons can be replaced, recolored through
+                ordinary classes or disabled.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="sizes.html"
+                language="html"
+                [code]="sizeCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-3">
+                  <neural-message
+                    size="small"
+                    message="Compact helper message"
+                  /><neural-message
+                    iconClass="nt nt-lock text-violet-500"
+                    title="Secure"
+                    message="Custom icon classes inherit normal CSS."
+                  /><neural-message
+                    [icon]="false"
+                    size="large"
+                    message="Large message without an icon"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="closable" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Controlled dismissal</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>visible</code> is a two-way Signal model. Closing emits
+                one semantic event; the consumer decides when it returns.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="closable.html"
+                language="html"
+                [code]="closeCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-4">
+                  @if (noticeVisible()) {<neural-message
+                    closable
+                    [(visible)]="noticeVisible"
+                    title="Draft restored"
+                    message="The local draft was recovered."
+                  />} @else {<neural-button
+                    label="Show message again"
+                    icon="nt nt-eye"
+                    outlined
+                    (clicked)="showNotice()"
+                  />}
+                </div></code-view
+              >
+            </section>
+
+            <section id="content" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Projected content and actions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Plain content stays in the message body. Mark controls with
+                <code>message-actions</code> to keep them in the trailing action
+                slot.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="rich.html"
+                language="html"
+                [code]="contentCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full">
+                  <neural-message
+                    severity="primary"
+                    title="New version available"
+                    >Review the changelog before upgrading.<neural-button
+                      message-actions
+                      label="Review"
+                      size="small"
+                      text
+                  /></neural-message></div
+              ></code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Unstyled removes NeuralNg’s visual layer while semantics, model,
+                dismissal and stable structural hooks remain.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full">
+                  <neural-message
+                    unstyled
+                    closable
+                    iconClass="nt nt-sparkles"
+                    title="Fully headless"
+                    message="Structural hooks and behavior remain."
+                    [classes]="headlessClasses"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Message, Toast and Message API
+              </h2>
+              <div class="mt-6 grid gap-4 md:grid-cols-3">
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <strong>Message</strong>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Inline, local and declarative. Best inside forms and
+                    component surfaces.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <strong>Toast</strong>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Floating renderer with positioning, timers, channels and
+                    swipe dismissal.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <strong>Message API</strong>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Headless Signal store used when application actions publish
+                    notifications.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-.04em]">
+                Meaningful feedback by default
+              </h1>
+              <p class="mt-4 text-[var(--site-text-soft)]">
+                Visual severity never replaces text. Live announcements and
+                close controls follow native semantics.
+              </p>
+            </header>
+            <section id="live-semantics" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Live semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Error uses <code>role="alert"</code> and assertive
+                announcements. Other severities use
+                <code>role="status"</code> and polite announcements. Set
+                <code>ariaLive="off"</code> for content already described by a
+                field.
+              </p>
+            </section>
+            <section id="dismissal" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Dismissal</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Closable messages expose a native button with a configurable
+                accessible label. Decorative icons are hidden from assistive
+                technology.
+              </p>
+            </section>
+            <section id="motion" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Motion and direction</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Logical layout mirrors in RTL. Enter and leave animation
+                durations collapse under reduced-motion preferences.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-.04em]">
+                Message API
+              </h1>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-5 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                <table class="w-full min-w-[56rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (item of inputs; track item[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{ item[0] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="events" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Models and events</h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of events; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid sm:grid-cols-[10rem_12rem_8rem_1fr] sm:gap-4"
+                >
+                  <code class="font-bold text-blue-500">{{ item[0] }}</code
+                  ><code class="text-xs">{{ item[1] }}</code
+                  ><code class="text-xs">{{ item[2] }}</code>
+                  <p class="text-sm text-[var(--site-text-soft)]">
+                    {{ item[3] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-4 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+            <section id="store-types" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Store type boundary</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>NeuralMessage</code> is the inline component.
+                <code>NeuralMessageRecord</code> is the immutable notification
+                record exposed by <code>NeuralMessageService</code>. The
+                explicit names prevent renderer and data contracts from being
+                confused.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                MESSAGE
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-.04em]">
+                Design tokens
+              </h1>
+              <p class="mt-4 text-[var(--site-text-soft)]">
+                Neutral, dark mode and experimental token packages share one
+                stable surface.
+              </p>
+            </header>
+            <section id="design-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Component tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="tokens"
+              /></section
+          ></neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

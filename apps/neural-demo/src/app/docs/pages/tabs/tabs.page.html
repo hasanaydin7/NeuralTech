@@ -1,0 +1,106 @@
+<article class="docs-page tabs-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Tabs</h1>
+    <p>
+      Composable Signal tabs with automatic or manual activation, horizontal and
+      vertical navigation, icon classes, and complete WAI-ARIA wiring.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="automatic">
+    <h2>Automatic activation</h2>
+    <div class="tabs-demo-surface">
+      <neural-tabs tabsId="docs-account-tabs" [(value)]="activeTab">
+        <neural-tab-list ariaLabel="Account sections">
+          <neural-tab value="overview" iconClass="nt-home">
+            Overview
+          </neural-tab>
+          <neural-tab value="profile" iconClass="nt-user"> Profile </neural-tab>
+          <neural-tab value="billing" iconClass="nt-credit-card">
+            Billing
+          </neural-tab>
+          <neural-tab value="disabled" disabled>Disabled</neural-tab>
+        </neural-tab-list>
+        <neural-tab-panels>
+          <neural-tab-panel value="overview">
+            <strong>Overview</strong>
+            <p>The selected Signal is {{ activeTab() }}.</p>
+          </neural-tab-panel>
+          <neural-tab-panel value="profile">
+            Profile settings and public account information.
+          </neural-tab-panel>
+          <neural-tab-panel value="billing">
+            Billing history and subscription controls.
+          </neural-tab-panel>
+          <neural-tab-panel value="disabled">
+            This content cannot be selected from the disabled tab.
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </neural-tabs>
+    </div>
+    <app-code-example
+      label="Composable Tabs"
+      language="html"
+      [code]="basicCode"
+    />
+  </section>
+
+  <section id="manual">
+    <h2>Vertical manual activation</h2>
+    <div class="tabs-demo-surface">
+      <neural-tabs
+        tabsId="docs-project-tabs"
+        orientation="vertical"
+        activationMode="manual"
+        [(value)]="manualTab"
+      >
+        <neural-tab-list ariaLabel="Project sections">
+          <neural-tab value="activity">Activity</neural-tab>
+          <neural-tab value="team">Team</neural-tab>
+          <neural-tab value="settings">Settings</neural-tab>
+        </neural-tab-list>
+        <neural-tab-panels>
+          <neural-tab-panel value="activity">Recent activity</neural-tab-panel>
+          <neural-tab-panel value="team">Team members</neural-tab-panel>
+          <neural-tab-panel value="settings">Project settings</neural-tab-panel>
+        </neural-tab-panels>
+      </neural-tabs>
+      <small>Move with Up/Down, then activate with Enter or Space.</small>
+    </div>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled typed slots</h2>
+    <div class="tabs-demo-surface">
+      <neural-tabs
+        tabsId="docs-headless-tabs"
+        unstyled
+        [(value)]="headlessTab"
+        [classes]="headlessClasses"
+      >
+        <neural-tab-list ariaLabel="Headless source">
+          <neural-tab value="markup">Markup</neural-tab>
+          <neural-tab value="styles">Styles</neural-tab>
+        </neural-tab-list>
+        <neural-tab-panels>
+          <neural-tab-panel value="markup"
+            >Semantic composition</neural-tab-panel
+          >
+          <neural-tab-panel value="styles"
+            >Consumer-owned visuals</neural-tab-panel
+          >
+        </neural-tab-panels>
+      </neural-tabs>
+    </div>
+  </section>
+</article>

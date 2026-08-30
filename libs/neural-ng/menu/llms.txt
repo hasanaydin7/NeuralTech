@@ -1,0 +1,34 @@
+# NeuralNg Menu AI Context
+
+Import canonical `NeuralMenu`, `NeuralMenuGroup`, `NeuralMenuItem`,
+`NeuralMenuSeparatorItem`, and `NeuralMenuTrigger` only from
+`@neural-ng/core/menu`. Legacy `*Component` and
+`*Directive` exports are deprecated compatibility aliases.
+
+Use `<neural-menu [items]="items">` for a flat inline command list. Use
+`<neural-menu #menu="neuralMenu" popup>` with
+`[neuralMenuTriggerFor]="menu"` for a popup command list.
+Prefer attaching the trigger to `NeuralButton`; the directive resolves its
+inner native button so ARIA and focus restoration stay on the interactive node.
+
+Rules:
+
+- Every action needs a stable unique `key` and a `label`.
+- Use either `[items]` or projected `neural-menu-item` children, not both.
+- Use `{ separator: true }` or `<neural-menu-separator />` for separators.
+- Use `{ key, label, items }` or `<neural-menu-group key="..." label="...">`
+  for non-interactive category headings. Group headings never receive focus.
+- Handle commands through `(itemSelect)`; do not invent `onMenuClick`.
+- Prefer `routerLink` for Angular SPA navigation and `href` for native or external navigation. Router items support queryParams, fragment, queryParamsHandling, preserveFragment, skipLocationChange, replaceUrl, state, and target.
+- `[(open)]` is optional controlled popup state and produces `openChange`.
+- `menuPosition` belongs on the trigger directive and defaults to
+  `bottom-start`.
+- Do not create a trigger for an inline Menu.
+- Do not generate nested groups or submenus. A Menu group only categorizes a
+  flat action sequence. Use PanelMenu for inline hierarchy and
+  reserve popup nesting for the future TieredMenu.
+- Prefer `iconClass="nt-user"`; NeuralNg adds the `nt` base class.
+- `unstyled` removes visual classes while preserving behavior and structural
+  hooks. Use typed `classes` slots for consumer styling.
+- Popup Menu uses the shared Overlay positioner and browser Popover top layer.
+- Preserve menu/menuitem semantics and built-in keyboard behavior.

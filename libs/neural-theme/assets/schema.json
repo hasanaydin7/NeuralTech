@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neural-ng.dev/schemas/theme-recipe-v1.json",
+  "title": "Neural theme recipe",
+  "description": "Compact authoring format compiled by @neural-ng/theme into complete Core and Editor tokens.",
+  "type": "object",
+  "required": ["name"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "extends": {
+      "enum": ["neutral", "glass", "mist", "futuristic"]
+    },
+    "description": {
+      "type": "string"
+    },
+    "color": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "primary": {
+          "type": "string"
+        },
+        "surface": {
+          "type": "string"
+        },
+        "info": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "success": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "warning": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "danger": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "error": {
+          "$ref": "#/$defs/hexColor"
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sans": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mono": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scale": {
+          "enum": ["compact", "default", "large"]
+        }
+      }
+    },
+    "shape": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "radius": {
+          "type": "string"
+        },
+        "border": {
+          "enum": ["none", "subtle", "default", "strong"]
+        }
+      }
+    },
+    "density": {
+      "enum": ["compact", "comfortable", "spacious"]
+    },
+    "elevation": {
+      "enum": ["none", "soft", "default", "strong"]
+    },
+    "motion": {
+      "enum": ["reduced", "fast", "default", "slow"]
+    },
+    "modes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "light": {
+          "$ref": "#/$defs/mode"
+        },
+        "dark": {
+          "oneOf": [
+            {
+              "const": "auto"
+            },
+            {
+              "$ref": "#/$defs/mode"
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/$defs/tokenValue"
+        }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^--neural-"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/tokenValue"
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tailwind": {
+          "type": "boolean"
+        },
+        "tokens": {
+          "type": "boolean"
+        },
+        "report": {
+          "type": "boolean"
+        },
+        "types": {
+          "type": "boolean"
+        }
+      }
+    },
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "colorAlgorithm": {
+          "const": "neural-oklch-v1"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "hexColor": {
+      "type": "string",
+      "pattern": "^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"
+    },
+    "tokenValue": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        }
+      ]
+    },
+    "mode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "primary": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "surface": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "surfaceHover": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "surfaceActive": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "text": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "textStrong": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "textMuted": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "border": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "borderHover": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "borderActive": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "info": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "success": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "warning": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "danger": {
+          "$ref": "#/$defs/hexColor"
+        },
+        "error": {
+          "$ref": "#/$defs/hexColor"
+        }
+      }
+    }
+  }
+}

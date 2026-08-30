@@ -1,0 +1,136 @@
+<article class="docs-page dialog-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Dialog</h1>
+    <p>
+      Native top-layer modal behavior with Signals state, deterministic close
+      reasons, focus management, composable sections, and typed headless slots.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Native modal</h2>
+    <p>
+      The first field receives focus and the trigger regains it after close.
+      Escape, backdrop, close button, and API dismissals remain distinguishable.
+    </p>
+    <div class="dialog-demo-row">
+      <neural-button (clicked)="profileDialog.show()">
+        Edit profile
+      </neural-button>
+      <span class="dialog-event-report" aria-live="polite">
+        Last close: {{ lastCloseReason() }}
+      </span>
+    </div>
+
+    <neural-dialog
+      #profileDialog
+      ariaLabelledby="profile-dialog-title"
+      ariaDescribedby="profile-dialog-description"
+      (closed)="lastCloseReason.set($event.reason)"
+    >
+      <neural-dialog-header>
+        <div>
+          <small>Account</small>
+          <h2 id="profile-dialog-title">Edit profile</h2>
+        </div>
+      </neural-dialog-header>
+      <neural-dialog-body>
+        <p id="profile-dialog-description">
+          Choose the display name shown across your Neural workspace.
+        </p>
+        <label for="dialog-display-name">Display name</label>
+        <input
+          id="dialog-display-name"
+          neuralInput
+          neuralDialogInitialFocus
+          value="Ada Lovelace"
+        />
+      </neural-dialog-body>
+      <neural-dialog-footer>
+        <neural-button (clicked)="profileDialog.close()">
+          Cancel
+        </neural-button>
+        <neural-button
+          buttonClass="dialog-primary-action"
+          (clicked)="profileDialog.close('api', 'saved')"
+        >
+          Save profile
+        </neural-button>
+      </neural-dialog-footer>
+    </neural-dialog>
+
+    <app-code-example
+      label="Dialog composition"
+      language="html"
+      [code]="basicCode"
+    />
+  </section>
+
+  <section id="controlled">
+    <h2>Controlled state and dismissal policy</h2>
+    <p>
+      Bind the model when application state owns visibility. This example
+      disables backdrop dismissal while preserving Escape and an explicit close
+      action.
+    </p>
+    <neural-button (clicked)="controlledOpen.set(true)">
+      Review release
+    </neural-button>
+    <neural-dialog
+      ariaLabelledby="controlled-dialog-title"
+      [open]="controlledOpen()"
+      [dismissibleBackdrop]="false"
+      (openChange)="controlledOpen.set($event)"
+    >
+      <neural-dialog-header>
+        <h2 id="controlled-dialog-title">Release checklist</h2>
+      </neural-dialog-header>
+      <neural-dialog-body>
+        The backdrop is intentionally non-dismissible. Escape remains available
+        for keyboard users.
+      </neural-dialog-body>
+      <neural-dialog-footer>
+        <neural-button (clicked)="controlledOpen.set(false)">
+          Done
+        </neural-button>
+      </neural-dialog-footer>
+    </neural-dialog>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Headless mode retains the native dialog behavior and structural hooks
+      while the consumer owns every visual class.
+    </p>
+    <neural-button (clicked)="headlessDialog.show()">
+      Open headless dialog
+    </neural-button>
+    <neural-dialog
+      #headlessDialog
+      ariaLabelledby="headless-dialog-title"
+      unstyled
+      [classes]="headlessClasses"
+    >
+      <neural-dialog-header>
+        <h2 id="headless-dialog-title">Consumer-owned canvas</h2>
+      </neural-dialog-header>
+      <neural-dialog-body>
+        No NeuralNg visual class is attached to this dialog or its sections.
+      </neural-dialog-body>
+      <neural-dialog-footer>
+        <button type="button" (click)="headlessDialog.close()">Close</button>
+      </neural-dialog-footer>
+    </neural-dialog>
+  </section>
+</article>

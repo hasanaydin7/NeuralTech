@@ -1,0 +1,529 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="card-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Card documentation sections"
+            ><span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span
+            ><neural-tab value="component" iconClass="nt-layout-board"
+              >Component</neural-tab
+            ><neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            ><neural-tab value="api" iconClass="nt-code">API</neural-tab
+            ><neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            ></neural-tab-list
+          >
+        </div>
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-violet-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-violet-500"
+                    >CONTENT</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Card
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A semantic content container with independently composable
+                  header, body and footer sections, native landmarks and
+                  complete visual ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    sections</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Composable</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Every section is standalone. Import only the sections present in
+                the template.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Basic composition</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Project a real heading and connect the article name with
+                <code>ariaLabelledby</code> when the card needs one.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full max-w-xl">
+                  <neural-card ariaLabelledby="site-workspace-title"
+                    ><neural-card-header
+                      ><div>
+                        <p
+                          class="text-xs font-black tracking-widest text-blue-500"
+                        >
+                          WORKSPACE
+                        </p>
+                        <h2
+                          id="site-workspace-title"
+                          class="mt-2 text-xl font-black"
+                        >
+                          Agent workspace
+                        </h2>
+                      </div>
+                      <i
+                        class="nt nt-sparkles text-xl text-blue-500"
+                        aria-hidden="true"
+                      ></i></neural-card-header
+                    ><neural-card-body
+                      ><p class="leading-7">
+                        Build, observe and ship autonomous workflows from one
+                        focused workspace.
+                      </p></neural-card-body
+                    ><neural-card-footer
+                      ><neural-button
+                        label="Open workspace"
+                        icon="nt nt-arrow-right"
+                        iconPosition="end"
+                        severity="primary" /></neural-card-footer
+                  ></neural-card></div
+              ></code-view>
+            </section>
+            <section id="optional" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Optional sections</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Header and footer are never required. A body-only region stays
+                compact and semantic.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="optionalCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full max-w-sm">
+                  <neural-card ariaLabel="Usage summary" role="region"
+                    ><neural-card-body
+                      ><div class="flex items-end justify-between gap-5">
+                        <div>
+                          <strong class="text-4xl font-black tracking-tight"
+                            >78%</strong
+                          >
+                          <p class="mt-2 text-sm">Monthly capacity</p>
+                        </div>
+                        <i
+                          class="nt nt-chart-bar text-3xl text-blue-500"
+                        ></i></div></neural-card-body
+                  ></neural-card></div
+              ></code-view>
+            </section>
+            <section id="roles" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic roles</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The root is always an article element. Add a role only when the
+                information architecture requires it.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="rolesCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-4 sm:grid-cols-2">
+                  @for (item of [['Default article','No explicit role'],['Named
+                  region','Important landmark'],['Related group','Grouped
+                  content'],['Presentation','Semantics intentionally removed']];
+                  track item[0]) {<neural-card
+                    [role]="$any(item[0] === 'Named region' ? 'region' : item[0] === 'Related group' ? 'group' : item[0] === 'Presentation' ? 'presentation' : null)"
+                    [ariaLabel]="item[0] === 'Default article' ? null : item[0]"
+                    ><neural-card-body
+                      ><strong>{{ item[0] }}</strong>
+                      <p class="mt-2 text-sm">
+                        {{ item[1] }}
+                      </p></neural-card-body
+                    ></neural-card
+                  >}
+                </div></code-view
+              >
+            </section>
+            <section id="rich" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Rich projected content</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Card does not invent media, title or action inputs. Images,
+                badges, menus and application layouts remain ordinary projected
+                composition.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="richCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full max-w-xl">
+                  <neural-card
+                    ariaLabelledby="site-agent-title"
+                    cardClass="overflow-hidden"
+                    ><div
+                      class="flex h-36 items-end bg-[radial-gradient(circle_at_75%_20%,color-mix(in_srgb,var(--neural-color-primary)_45%,transparent),transparent_38%),linear-gradient(135deg,var(--site-surface),color-mix(in_srgb,var(--site-surface)_55%,#111827))] p-5"
+                    >
+                      <span
+                        class="rounded-full border border-white/20 bg-black/20 px-3 py-1 text-xs font-black text-white backdrop-blur-xl"
+                        >ACTIVE</span
+                      >
+                    </div>
+                    <neural-card-header
+                      ><h2 id="site-agent-title" class="text-xl font-black">
+                        Research agent
+                      </h2>
+                      <i
+                        class="nt nt-cpu text-blue-500"
+                      ></i></neural-card-header
+                    ><neural-card-body
+                      >Rich projected content remains fully
+                      application-owned.</neural-card-body
+                    ></neural-card
+                  >
+                </div></code-view
+              >
+            </section>
+            <section id="grids" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Responsive Card grids</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Card owns its surface, not surrounding layout. CSS Grid or
+                Tailwind remains the correct owner of collection geometry.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="gridCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-4 md:grid-cols-3">
+                  @for (metric of
+                  [['Agents','24','nt-cpu'],['Runs','1,284','nt-activity'],['Success','98.7%','nt-circle-check']];
+                  track metric[0]) {<neural-card
+                    ><neural-card-body
+                      ><div class="flex items-start justify-between">
+                        <div>
+                          <p class="text-sm">{{ metric[0] }}</p>
+                          <strong class="mt-2 block text-3xl font-black"
+                            >{{ metric[1] }}</strong
+                          >
+                        </div>
+                        <i
+                          [class]="'nt ' + metric[2] + ' text-xl text-blue-500'"
+                        ></i></div></neural-card-body></neural-card
+                  >}
+                </div></code-view
+              >
+            </section>
+            <section id="classes" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Additive class ownership</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>cardClass</code>, typed slots and local section classes
+                compose without disabling the theme layer.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="classesCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Native structure, ARIA and structural hooks remain while every
+                NeuralNg visual class is removed.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full max-w-xl">
+                  <neural-card unstyled [classes]="headlessClasses"
+                    ><neural-card-header
+                      ><h2 class="font-black">Consumer surface</h2>
+                      <i
+                        class="nt nt-settings text-violet-300"
+                      ></i></neural-card-header
+                    ><neural-card-body
+                      >Every pixel in this Card is supplied through typed
+                      consumer classes.</neural-card-body
+                    ><neural-card-footer
+                      ><span class="text-sm font-bold text-violet-300"
+                        >Headless ownership</span
+                      ></neural-card-footer
+                    ></neural-card
+                  >
+                </div></code-view
+              >
+            </section>
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Component boundaries</h2>
+              <div class="mt-6 grid gap-4 md:grid-cols-3">
+                @for (item of [['Card','Owns semantic surface and section
+                composition.'],['Application','Owns headings, media, layout and
+                content.'],['Interactive components','Buttons and links own
+                activation and focus.']]; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">{{ item[0] }}</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">
+                Structure before decoration
+              </h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Card preserves native document semantics and never turns a whole
+                surface into an ambiguous control.
+              </p>
+            </header>
+            <section id="native-structure" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Native structure</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The root renders <code>article</code>; header and footer render
+                their corresponding native elements. Body is a neutral div so
+                consumer content determines its outline.
+              </p>
+            </section>
+            <section id="headings" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Real headings</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Project an <code>h2</code> or the heading level required by the
+                surrounding document. Card intentionally has no title input that
+                could flatten the page outline.
+              </p>
+            </section>
+            <section id="landmarks" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Named landmarks</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Ordinary cards need no role or name. Use
+                <code>role="region"</code> only for important content and
+                provide either <code>ariaLabel</code> or preferably
+                <code>ariaLabelledby</code>.
+              </p>
+            </section>
+            <section id="interaction" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Interaction belongs inside</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Card has no click output, tabindex or keyboard model. Use real
+                Neural Buttons and links inside it. Do not simulate a clickable
+                card with a generic click handler.
+              </p>
+            </section>
+            <section id="presentation" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Presentation role</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>presentation</code> deliberately removes root semantics.
+                Use it only when the surface is purely visual and its projected
+                descendants retain all required meaning.
+              </p>
+            </section>
+          </neural-tab-panel>
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC API
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Card contract</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Canonical symbols are NeuralCard, NeuralCardHeader,
+                NeuralCardBody and NeuralCardFooter. Card intentionally emits no
+                events.
+              </p>
+            </header>
+            <section id="card-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">NeuralCard inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[52rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of cardInputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="section-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Section inputs</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of sectionInputs; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ms-3 font-mono text-xs"
+                    >{{ item[1] }} · {{ item[2] }}</span
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[3] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of publicTypes; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Card tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Neutral responds to runtime surface and mode. Glass, Mist and
+                Futuristic override the same contract without changing markup.
+              </p>
+            </header>
+            <section id="root-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Root tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="rootTokens"
+              />
+            </section>
+            <section id="header-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Header tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="headerTokens"
+              />
+            </section>
+            <section id="body-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Body tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="bodyTokens"
+              />
+            </section>
+            <section id="footer-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Footer tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="footerTokens"
+              />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

@@ -1,0 +1,517 @@
+:where(.neural-date-picker-host) {
+  display: inline-block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+:where(.neural-date-picker-host-fluid) {
+  display: block;
+  width: 100%;
+}
+
+:where(.neural-date-picker-announcement-root) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:where(.neural-date-picker-root, .neural-date-picker-input-group-root) {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+:where(.neural-date-picker-input-group-root) {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+:where(.neural-date-picker-input-root) {
+  box-sizing: border-box;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+:where(.neural-date-picker-base) {
+  width: var(--neural-date-picker-width, auto);
+  color: var(--neural-date-picker-color, var(--neural-color-text, inherit));
+  font-family: inherit;
+}
+
+:where(.neural-date-picker-fluid-base) {
+  width: 100%;
+}
+
+:where(.neural-date-picker-input-base) {
+  width: 100%;
+  min-height: var(--neural-date-picker-min-height, 2.5rem);
+  padding: var(--neural-date-picker-padding, 0.625rem 5rem 0.625rem 0.75rem);
+  color: inherit;
+  background: var(
+    --neural-date-picker-background,
+    var(--neural-color-surface, Canvas)
+  );
+  border: var(
+    --neural-date-picker-border,
+    1px solid var(--neural-color-border, currentColor)
+  );
+  border-radius: var(--neural-date-picker-radius, 0.5rem);
+  box-shadow: var(--neural-date-picker-shadow, none);
+  font: inherit;
+  font-size: var(--neural-date-picker-font-size, 0.875rem);
+  cursor: pointer;
+  outline: none;
+}
+
+:where(.neural-date-picker-input-base:hover:not(:disabled)) {
+  border-color: var(--neural-color-border-hover, currentColor);
+}
+
+:where(.neural-date-picker-input-base:focus-visible) {
+  border-color: var(--neural-color-focus, currentColor);
+  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 15%, transparent);
+}
+
+:where(
+  .neural-date-picker-root[data-invalid='true'] .neural-date-picker-input-base
+) {
+  border-color: var(
+    --neural-date-picker-border-color-invalid,
+    var(--neural-color-error, currentColor)
+  );
+}
+
+:where(.neural-date-picker-root[data-disabled='true']) {
+  opacity: var(--neural-date-picker-disabled-opacity, 0.5);
+}
+
+:where(
+  .neural-date-picker-trigger-root,
+  .neural-date-picker-clear-root,
+  .neural-date-picker-navigation-root,
+  .neural-date-picker-day-root,
+  .neural-date-picker-month-toggle-root,
+  .neural-date-picker-year-toggle-root,
+  .neural-date-picker-year-root,
+  .neural-date-picker-month-root,
+  .neural-date-picker-period-root,
+  .neural-date-picker-footer-action-root
+) {
+  box-sizing: border-box;
+  display: inline-grid;
+  place-items: center;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+:where(.neural-date-picker-trigger-base, .neural-date-picker-clear-base) {
+  position: absolute;
+  inset-block: 0;
+  width: 2.5rem;
+  color: var(
+    --neural-date-picker-icon-color,
+    var(--neural-color-text-muted, currentColor)
+  );
+}
+
+:where(.neural-date-picker-trigger-base) {
+  inset-inline-end: 0;
+  border-inline-start: var(
+    --neural-date-picker-trigger-border,
+    1px solid var(--neural-color-border, currentColor)
+  );
+}
+
+:where(.neural-date-picker-clear-base) {
+  inset-inline-end: 2.5rem;
+}
+
+:where(
+  .neural-date-picker-trigger-base:hover:not(:disabled),
+  .neural-date-picker-clear-base:hover:not(:disabled)
+) {
+  color: var(
+    --neural-date-picker-icon-color-hover,
+    var(--neural-color-text, currentColor)
+  );
+}
+
+:where(
+  .neural-date-picker-trigger-base:focus-visible,
+  .neural-date-picker-clear-base:focus-visible,
+  .neural-date-picker-navigation-base:focus-visible,
+  .neural-date-picker-day-base:focus-visible,
+  .neural-date-picker-time-input-base:focus-visible,
+  .neural-date-picker-period-base:focus-visible
+) {
+  outline: var(
+    --neural-date-picker-focus-ring,
+    2px solid var(--neural-color-focus, currentColor)
+  );
+  outline-offset: -2px;
+}
+
+:where(.neural-date-picker-panel-base) {
+  --neural-popover-width: var(--neural-popover-trigger-width);
+  --neural-popover-min-width: var(--neural-popover-trigger-width);
+  --neural-popover-padding: var(--neural-date-picker-panel-padding, 0.75rem);
+  --neural-popover-color: var(
+    --neural-date-picker-panel-color,
+    var(--neural-color-text, inherit)
+  );
+  --neural-popover-background: var(
+    --neural-date-picker-panel-background,
+    var(--neural-color-surface, Canvas)
+  );
+  --neural-popover-border: var(
+    --neural-date-picker-panel-border,
+    1px solid var(--neural-color-border, currentColor)
+  );
+  --neural-popover-radius: var(--neural-date-picker-panel-radius, 0.75rem);
+  --neural-popover-shadow: var(
+    --neural-date-picker-panel-shadow,
+    0 16px 40px rgb(0 0 0 / 0.16)
+  );
+  backdrop-filter: var(--neural-date-picker-panel-backdrop-filter, none);
+}
+
+:where(.neural-date-picker-header-root) {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr) 2.25rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block-end: 0.625rem;
+}
+
+:where(.neural-date-picker-title-base) {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.3rem;
+  font-size: 0.925rem;
+  font-weight: 650;
+}
+
+:where(
+  .neural-date-picker-month-toggle-base,
+  .neural-date-picker-year-toggle-base
+) {
+  padding: 0.2rem 0.35rem;
+  color: var(--neural-primary-600, currentColor);
+  border-radius: 0.375rem;
+  font-weight: 700;
+}
+
+:where(
+  .neural-date-picker-month-toggle-base:focus-visible,
+  .neural-date-picker-year-toggle-base:focus-visible,
+  .neural-date-picker-year-input-base:focus-visible,
+  .neural-date-picker-year-base:focus-visible,
+  .neural-date-picker-month-base:focus-visible
+) {
+  outline: 2px solid var(--neural-color-focus, currentColor);
+  outline-offset: 1px;
+}
+
+:where(
+  .neural-date-picker-year-toggle-base:hover,
+  .neural-date-picker-year-toggle-base:focus-visible,
+  .neural-date-picker-month-toggle-base:hover,
+  .neural-date-picker-month-toggle-base:focus-visible,
+  .neural-date-picker-year-base:hover:not(:disabled),
+  .neural-date-picker-month-base:hover:not(:disabled)
+) {
+  background: var(--neural-color-surface-hover, transparent);
+}
+
+:where(.neural-date-picker-navigation-base) {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+}
+
+:where(.neural-date-picker-navigation-base:hover:not(:disabled)) {
+  background: var(--neural-color-surface-hover, transparent);
+}
+
+:where(.neural-date-picker-navigation-base:disabled) {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+:where(.neural-date-picker-weekdays-root, .neural-date-picker-week-root) {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: var(--neural-date-picker-grid-gap, 0.2rem);
+}
+
+:where(.neural-date-picker-weekdays-root) {
+  margin-block-end: 0.25rem;
+}
+
+:where(.neural-date-picker-row-week-numbers-base) {
+  grid-template-columns: minmax(2rem, 0.7fr) repeat(7, minmax(0, 1fr));
+}
+
+:where(
+  .neural-date-picker-weekday-base,
+  .neural-date-picker-week-number-header-base,
+  .neural-date-picker-week-number-base
+) {
+  display: grid;
+  place-items: center;
+  min-height: 1.75rem;
+  color: var(--neural-color-text-muted, currentColor);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+:where(.neural-date-picker-year-input-base) {
+  width: min(100%, 7rem);
+  padding: 0.4rem 0.55rem;
+  color: inherit;
+  background: var(--neural-color-surface, Canvas);
+  border: 1px solid var(--neural-color-border, currentColor);
+  border-radius: 0.5rem;
+  text-align: center;
+  font: inherit;
+}
+
+:where(
+  .neural-date-picker-year-grid-base,
+  .neural-date-picker-month-grid-base
+) {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+:where(.neural-date-picker-year-base, .neural-date-picker-month-base) {
+  display: grid;
+  place-items: center;
+  min-height: 2.75rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+:where(
+  .neural-date-picker-year-selected-base,
+  .neural-date-picker-month-selected-base
+) {
+  color: var(--neural-primary-contrast-color, white);
+  background: var(--neural-primary-500, var(--neural-color-focus, #2563eb));
+}
+
+:where(.neural-date-picker-weekday-base) {
+  color: var(
+    --neural-date-picker-weekday-color,
+    var(--neural-color-text-muted, currentColor)
+  );
+  font-weight: 600;
+}
+
+:where(
+  .neural-date-picker-week-number-header-base,
+  .neural-date-picker-week-number-base
+) {
+  font-size: 0.7rem;
+}
+
+:where(.neural-date-picker-day-base) {
+  aspect-ratio: 1;
+  min-width: 0;
+  border-radius: var(--neural-date-picker-day-radius, 0.5rem);
+}
+
+:where(
+  .neural-date-picker-day-base:hover:not(
+      :disabled,
+      .neural-date-picker-day-selected-base
+    )
+) {
+  background: var(
+    --neural-date-picker-day-background-hover,
+    var(--neural-color-surface-hover, transparent)
+  );
+}
+
+:where(.neural-date-picker-day-outside-base) {
+  color: var(
+    --neural-date-picker-day-color-outside,
+    var(--neural-color-text-muted, currentColor)
+  );
+  opacity: 0.58;
+}
+
+:where(.neural-date-picker-day-today-base) {
+  box-shadow: inset 0 0 0 1px
+    var(--neural-date-picker-today-color, var(--neural-color-focus));
+  font-weight: 650;
+}
+
+:where(.neural-date-picker-day-range-base) {
+  color: var(--neural-primary-800, inherit);
+  background: var(--neural-primary-100, var(--neural-color-surface-hover));
+}
+
+:where(.neural-date-picker-day-range-preview-base) {
+  background: color-mix(
+    in srgb,
+    var(--neural-primary-500, currentColor) 18%,
+    transparent
+  );
+}
+
+:where(.neural-date-picker-day-selected-base) {
+  color: var(
+    --neural-date-picker-day-color-selected,
+    var(--neural-primary-contrast-color, white)
+  );
+  background: var(
+    --neural-date-picker-day-background-selected,
+    var(--neural-primary-500, var(--neural-color-focus))
+  );
+  font-weight: 650;
+}
+
+:where(.neural-date-picker-day-disabled-base) {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+:where(.neural-date-picker-time-base) {
+  display: grid;
+  place-items: center;
+  padding-block: 0.75rem 0.15rem;
+  border-block-start: 1px solid var(--neural-color-border, currentColor);
+}
+
+:where(
+  .neural-date-picker-calendar-root[data-picker-mode='time']
+    .neural-date-picker-time-base
+) {
+  padding-block-start: 0.15rem;
+  border-block-start: 0;
+}
+
+:where(.neural-date-picker-time-group-base) {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+:where(.neural-date-picker-time-field-base) {
+  display: grid;
+  gap: 0.3rem;
+}
+
+:where(.neural-date-picker-time-label-base) {
+  color: var(--neural-color-text-muted, currentColor);
+  font-size: 0.6875rem;
+  font-weight: 650;
+  text-align: center;
+}
+
+:where(.neural-date-picker-time-input-base) {
+  box-sizing: border-box;
+  width: 3.25rem;
+  min-height: 2.5rem;
+  padding: 0.45rem;
+  color: var(--neural-color-text, inherit);
+  background: var(--neural-color-surface, Canvas);
+  border: 1px solid var(--neural-color-border, currentColor);
+  border-radius: 0.5rem;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  text-align: center;
+  outline: 0;
+}
+
+:where(.neural-date-picker-time-input-base[aria-invalid='true']) {
+  border-color: var(--neural-color-error, #dc2626);
+}
+
+:where(.neural-date-picker-time-separator-base) {
+  align-self: end;
+  display: grid;
+  place-items: center;
+  min-height: 2.5rem;
+  font-weight: 800;
+}
+
+:where(.neural-date-picker-period-base) {
+  align-self: end;
+  min-width: 3.25rem;
+  min-height: 2.5rem;
+  padding-inline: 0.65rem;
+  color: var(--neural-primary-700, var(--neural-color-focus, currentColor));
+  background: var(--neural-primary-50, transparent);
+  border: 1px solid var(--neural-primary-200, currentColor);
+  border-radius: 0.5rem;
+  font-weight: 750;
+}
+
+:where(.neural-date-picker-period-base:hover) {
+  background: var(--neural-primary-100, var(--neural-color-surface-hover));
+}
+
+:where(.neural-date-picker-footer-base) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-block-start: 0.75rem;
+  padding-block-start: 0.75rem;
+  border-block-start: 1px solid var(--neural-color-border, currentColor);
+}
+
+:where(.neural-date-picker-footer-action-base) {
+  min-height: 2.25rem;
+  padding-inline: 0.75rem;
+  color: var(--neural-primary-700, var(--neural-color-focus, currentColor));
+  background: transparent;
+  border: 1px solid
+    var(--neural-primary-200, var(--neural-color-border, currentColor));
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+:where(.neural-date-picker-footer-action-base:hover:not(:disabled)) {
+  color: var(--neural-primary-800, var(--neural-color-focus, currentColor));
+  background: var(
+    --neural-primary-50,
+    var(--neural-color-surface-hover, transparent)
+  );
+  border-color: var(
+    --neural-primary-400,
+    var(--neural-color-focus, currentColor)
+  );
+}
+
+:where(.neural-date-picker-footer-action-apply-base) {
+  color: var(--neural-primary-contrast-color, white);
+  background: var(--neural-primary-500, var(--neural-color-focus));
+  border-color: var(--neural-primary-500, var(--neural-color-focus));
+}
+
+:where(.neural-date-picker-footer-action-apply-base:hover:not(:disabled)) {
+  color: var(--neural-primary-contrast-color, white);
+  background: var(--neural-primary-600, var(--neural-primary-500));
+  border-color: var(--neural-primary-600, var(--neural-primary-500));
+}
+
+:where(.neural-date-picker-footer-action-base:disabled) {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

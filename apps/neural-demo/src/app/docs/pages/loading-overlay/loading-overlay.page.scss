@@ -1,0 +1,121 @@
+.loading-overlay-docs-page {
+  .loading-demo-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .loading-demo-block {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .loading-demo-content {
+    display: grid;
+    min-height: 10rem;
+    align-content: center;
+    justify-items: start;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: var(--neural-color-surface);
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0.75rem;
+  }
+
+  .loading-demo-content p {
+    margin: 0;
+  }
+
+  .loading-demo-content button {
+    padding: 0.5rem 0.75rem;
+    color: var(--neural-color-text);
+    background: var(--neural-color-surface-hover);
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0.5rem;
+  }
+}
+
+.docs-ai-loader {
+  display: grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0891b2, #7c3aed);
+  border-radius: 1rem;
+  box-shadow: 0 0 0 0 rgb(124 58 237 / 0.45);
+  font:
+    850 0.875rem/1 ui-monospace,
+    monospace;
+  animation: docs-ai-loader-pulse 1.2s ease-out infinite;
+}
+
+.docs-headless-loader {
+  display: block;
+  position: relative;
+}
+
+.docs-headless-loader__content {
+  opacity: 0.38;
+}
+
+.docs-headless-loader__backdrop {
+  background: rgb(15 23 42 / 0.68);
+  backdrop-filter: blur(3px);
+}
+
+.docs-headless-loader__panel {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  color: #f5f3ff;
+  background: #2e1065;
+  border: 1px solid #a855f7;
+  border-radius: 0.375rem;
+  box-shadow: 0 0 24px rgb(168 85 247 / 35%);
+}
+
+.docs-headless-loader__indicator {
+  display: inline-flex;
+}
+
+.docs-headless-loader__pulse {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background: #c084fc;
+  border-radius: 50%;
+  animation: docs-headless-loader-pulse 900ms ease-in-out infinite alternate;
+}
+
+.docs-headless-loader__label {
+  font:
+    800 0.8125rem/1.2 ui-monospace,
+    monospace;
+}
+
+@keyframes docs-ai-loader-pulse {
+  70% {
+    box-shadow: 0 0 0 0.75rem rgb(124 58 237 / 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(124 58 237 / 0);
+  }
+}
+
+@keyframes docs-headless-loader-pulse {
+  to {
+    opacity: 0.35;
+    transform: scale(0.72);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .docs-ai-loader,
+  .docs-headless-loader__pulse {
+    animation: none;
+  }
+}

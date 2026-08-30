@@ -1,0 +1,199 @@
+<article class="docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components</span>
+    <h1 class="docs-hero__title">Popover</h1>
+    <p class="docs-hero__description">
+      Place arbitrary Angular content in a non-modal, viewport-aware top-layer
+      panel. Popover composes the shared Overlay positioner without imposing
+      Menu or Dialog semantics.
+    </p>
+  </header>
+
+  <section>
+    <h2>Account panel</h2>
+    <p>
+      The trigger owns placement while Popover owns state, dismissal,
+      positioning, animation, and focus restoration.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [showLineNumbers]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="popover-demo-row">
+        <button
+          type="button"
+          class="demo-trigger"
+          [neuralPopoverTriggerFor]="accountPanel"
+          popoverPosition="bottom-end"
+        >
+          <i class="nt nt-user" aria-hidden="true"></i>
+          Account
+        </button>
+
+        <neural-popover
+          #accountPanel
+          class="demo-account-popover-host"
+          role="dialog"
+          ariaLabel="Account panel"
+          (opened)="handleOpened($event)"
+          (closed)="handleClosed($event)"
+        >
+          <div class="demo-account-summary">
+            <span class="demo-avatar" aria-hidden="true">NA</span>
+            <span>
+              <strong>Neural Admin</strong>
+              <small>admin&#64;neuralng.dev</small>
+            </span>
+          </div>
+          <button type="button" class="demo-panel-action">
+            Account settings
+          </button>
+          <button type="button" class="demo-panel-action" neuralPopoverClose>
+            Close panel
+          </button>
+        </neural-popover>
+
+        <span class="event-report">{{ lastEvent() }}</span>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Logical positions</h2>
+    <p>
+      Start and end follow the document direction. Flip and clamp keep the same
+      panel inside the viewport.
+    </p>
+    <div class="demo-surface position-grid">
+      @for (position of positions; track position) {
+      <button
+        type="button"
+        class="demo-trigger"
+        [neuralPopoverTriggerFor]="positionPanel"
+        [popoverPosition]="position"
+      >
+        {{ position }}
+      </button>
+      }
+      <neural-popover
+        #positionPanel
+        [showArrow]="true"
+        ariaLabel="Position preview"
+        (opened)="handleOpened($event)"
+      >
+        Requested position: <strong>{{ activePosition() }}</strong>
+      </neural-popover>
+    </div>
+  </section>
+
+  <section>
+    <h2>Controlled state</h2>
+    <p>
+      The open model supports application-owned state while trigger and
+      imperative APIs remain available.
+    </p>
+    <div class="demo-surface popover-demo-row">
+      <button
+        type="button"
+        class="demo-trigger"
+        [neuralPopoverTriggerFor]="controlledPanel"
+      >
+        Toggle controlled panel
+      </button>
+      <button
+        type="button"
+        class="demo-trigger"
+        (click)="controlledOpen.set(false)"
+      >
+        Close from state
+      </button>
+      <neural-popover
+        #controlledPanel
+        [(open)]="controlledOpen"
+        ariaLabel="Controlled panel"
+      >
+        Controlled state: <strong>{{ controlledOpen() }}</strong>
+      </neural-popover>
+    </div>
+  </section>
+
+  <section>
+    <h2>Initial focus</h2>
+    <p>
+      Focus stays on the disclosure trigger by default. Interactive form panels
+      can explicitly request their first meaningful control.
+    </p>
+    <code-view
+      fileName="profile.html"
+      language="html"
+      [code]="focusCode"
+      [preview]="true"
+      [showLineNumbers]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content>
+        <button
+          type="button"
+          class="demo-trigger"
+          [neuralPopoverTriggerFor]="focusPanel"
+          popoverFocusOnOpen="first"
+        >
+          Edit profile
+        </button>
+        <neural-popover
+          #focusPanel
+          class="demo-form-popover-host"
+          role="dialog"
+          ariaLabel="Edit profile"
+        >
+          <label>
+            Display name
+            <input neuralPopoverInitialFocus value="Neural Admin" />
+          </label>
+          <button type="button" class="demo-trigger" neuralPopoverClose>
+            Done
+          </button>
+        </neural-popover>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Structural hooks and all behavior remain while NeuralNg visual ownership
+      is removed.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [showLineNumbers]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content>
+        <button
+          type="button"
+          class="demo-trigger"
+          [neuralPopoverTriggerFor]="headlessPanel"
+        >
+          Open headless panel
+        </button>
+        <neural-popover
+          #headlessPanel
+          unstyled
+          popoverClass="fixed w-64 rounded-xl border border-primary-400 bg-primary-950 text-white shadow-xl"
+          [classes]="{ content: 'p-4' }"
+          ariaLabel="Headless panel"
+        >
+          Consumer-owned visual layer.
+        </neural-popover>
+      </div>
+    </code-view>
+  </section>
+</article>

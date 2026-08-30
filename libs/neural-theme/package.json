@@ -1,0 +1,67 @@
+{
+  "name": "@neural-ng/theme",
+  "version": "0.1.0-beta.3",
+  "description": "Compact, deterministic Core and Editor theme compiler for NeuralNg.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasanaydin7/NeuralTech.git",
+    "directory": "libs/neural-theme"
+  },
+  "homepage": "https://github.com/hasanaydin7/NeuralTech#readme",
+  "bugs": {
+    "url": "https://github.com/hasanaydin7/NeuralTech/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "bin": {
+    "neural-theme": "src/cli.js"
+  },
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./schema.json": "./schema.json",
+    "./presets/neutral.json": "./presets/neutral.json",
+    "./contracts/neutral.tokens.json": "./contracts/neutral.tokens.json",
+    "./README.md": "./README.md",
+    "./llms.txt": "./llms.txt",
+    "./package.json": "./package.json",
+    "./browser": {
+      "types": "./src/browser.d.ts",
+      "import": "./src/browser.js"
+    },
+    "./presets/glass.json": "./presets/glass.json",
+    "./presets/mist.json": "./presets/mist.json",
+    "./presets/futuristic.json": "./presets/futuristic.json",
+    "./presets/catalog.json": "./presets/catalog.json",
+    "./presets/quality-baseline.json": "./presets/quality-baseline.json"
+  },
+  "files": [
+    "src",
+    "assets",
+    "schema.json",
+    "presets",
+    "contracts",
+    "README.md",
+    "llms.txt",
+    "LICENSE"
+  ],
+  "keywords": [
+    "angular",
+    "design-tokens",
+    "headless",
+    "neural-ng",
+    "tailwind",
+    "theme"
+  ]
+}

@@ -1,0 +1,433 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_20%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >AI REFERENCE</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            MCP Server
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            Give coding agents deterministic access to NeuralNg component
+            contracts, package exports and compact theme recipes without placing
+            MCP runtime code in the Angular application.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+              >Read-only</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>stdio
+              transport</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>No network
+              access</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="architecture" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          DEVELOPMENT TOOLING
+        </p>
+        <h2 class="mt-3 text-2xl font-black">
+          Separate from the browser runtime
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          <code>@neural-ng/mcp-server</code> is a Node.js development package.
+          An MCP host starts it as a child process and exchanges JSON-RPC
+          messages over standard input/output. Your Angular bundle never imports
+          the server or its protocol dependencies.
+        </p>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          @for (item of [['MCP host', 'Starts the process, presents tools and
+          decides when to call them.'], ['NeuralNg server', 'Resolves a
+          committed catalog and runs deterministic read-only operations.'],
+          ['Angular project', 'Receives generated code through the agent, never
+          through the MCP process.']]; track item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">{{ item[0] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[1] }}
+            </p>
+          </article>
+          }
+        </div>
+        <div class="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+          <a
+            class="rounded-xl border border-[var(--site-border)] px-4 py-2 hover:bg-[var(--site-surface)]"
+            href="https://modelcontextprotocol.io/docs/getting-started/intro"
+            target="_blank"
+            rel="noreferrer"
+            >About Model Context Protocol</a
+          >
+        </div>
+      </section>
+
+      <section id="install" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Install and connect</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Node.js 24 is required by the alpha package. A project-local exact
+          version is recommended because the catalog, tool schemas and installed
+          component version should move together.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="terminal"
+          language="bash"
+          [code]="installCode"
+          [theme]="appearance.mode()"
+        />
+        <h3 class="mt-8 text-lg font-black">Generic client configuration</h3>
+        <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+          Place this object in the MCP configuration location expected by your
+          editor or agent host, then restart or reload its MCP connections.
+        </p>
+        <code-view
+          class="mt-5 block"
+          fileName="mcp.json"
+          language="json"
+          [code]="configCode"
+          [theme]="appearance.mode()"
+        />
+        <div
+          class="mt-5 rounded-2xl border border-amber-400/20 bg-amber-500/10 p-5 text-sm leading-6"
+        >
+          On Windows, a host that does not resolve command shims may require
+          <code>npx.cmd</code>. This is a client process-spawning difference,
+          not a NeuralNg configuration option.
+        </div>
+        <h3 class="mt-8 text-lg font-black">One-off evaluation</h3>
+        <code-view
+          class="mt-5 block"
+          fileName="terminal"
+          language="bash"
+          [code]="trialCode"
+          [theme]="appearance.mode()"
+        />
+        <p class="mt-3 text-sm leading-6 text-[var(--site-text-muted)]">
+          The process intentionally stays open while connected. Standard output
+          is reserved for protocol messages; fatal startup diagnostics go to
+          standard error.
+        </p>
+      </section>
+
+      <section id="component-tools" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Component discovery tools</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Discovery uses a generated local catalog. Search and recommendation
+          are deterministic text/intent matching; no second model or remote
+          service is invoked.
+        </p>
+        <div
+          class="mt-6 overflow-hidden rounded-2xl border border-[var(--site-border)]"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[48rem] text-left text-sm">
+              <thead class="bg-[var(--site-surface-soft)]">
+                <tr>
+                  <th class="px-5 py-4 font-black">Tool</th>
+                  <th class="px-5 py-4 font-black">Input</th>
+                  <th class="px-5 py-4 font-black">Purpose</th>
+                </tr>
+              </thead>
+              <tbody
+                class="divide-y divide-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                @for (row of componentTools; track row[0]) {
+                <tr>
+                  <th
+                    class="px-5 py-4 align-top font-mono text-[var(--neural-color-primary)]"
+                  >
+                    {{ row[0] }}
+                  </th>
+                  <td
+                    class="px-5 py-4 align-top font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ row[1] }}
+                  </td>
+                  <td class="px-5 py-4 align-top text-[var(--site-text-soft)]">
+                    {{ row[2] }}
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="mt-6 grid gap-8">
+          <div>
+            <h3 class="mb-3 font-black">Search</h3>
+            <code-view
+              fileName="arguments.json"
+              language="json"
+              [code]="searchCode"
+              [theme]="appearance.mode()"
+            />
+          </div>
+          <div>
+            <h3 class="mb-3 font-black">Contract</h3>
+            <code-view
+              fileName="arguments.json"
+              language="json"
+              [code]="contractCode"
+              [theme]="appearance.mode()"
+            />
+          </div>
+          <div>
+            <h3 class="mb-3 font-black">Recommend</h3>
+            <code-view
+              fileName="arguments.json"
+              language="json"
+              [code]="recommendCode"
+              [theme]="appearance.mode()"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="theme-tools" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Compact theme tools</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Theme tools operate on a small schema-versioned recipe rather than
+          sending the complete resolved Core and Editor token graph through
+          model context. Neutral is the release baseline; Glass, Mist and
+          Futuristic are experimental preview inputs.
+        </p>
+        <div
+          class="mt-6 overflow-hidden rounded-2xl border border-[var(--site-border)]"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[48rem] text-left text-sm">
+              <thead class="bg-[var(--site-surface-soft)]">
+                <tr>
+                  <th class="px-5 py-4 font-black">Tool</th>
+                  <th class="px-5 py-4 font-black">Input</th>
+                  <th class="px-5 py-4 font-black">Purpose</th>
+                </tr>
+              </thead>
+              <tbody
+                class="divide-y divide-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                @for (row of themeTools; track row[0]) {
+                <tr>
+                  <th
+                    class="px-5 py-4 align-top font-mono text-[var(--neural-color-primary)]"
+                  >
+                    {{ row[0] }}
+                  </th>
+                  <td
+                    class="px-5 py-4 align-top font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ row[1] }}
+                  </td>
+                  <td class="px-5 py-4 align-top text-[var(--site-text-soft)]">
+                    {{ row[2] }}
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="mt-6 grid gap-5 lg:grid-cols-2">
+          <div>
+            <h3 class="mb-3 font-black">Create</h3>
+            <code-view
+              fileName="arguments.json"
+              language="json"
+              [code]="createThemeCode"
+              [theme]="appearance.mode()"
+            />
+          </div>
+          <div>
+            <h3 class="mb-3 font-black">Edit</h3>
+            <code-view
+              fileName="arguments.json"
+              language="json"
+              [code]="editThemeCode"
+              [theme]="appearance.mode()"
+            />
+          </div>
+        </div>
+        <div
+          class="mt-5 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5 text-sm leading-6"
+        >
+          <code>compile_theme_recipe</code> returns validation, diagnostics,
+          summary, artifact byte sizes and integration instructions. It does not
+          write CSS. Use <code>npx neural-theme build</code> when the user
+          explicitly wants artifacts generated.
+        </div>
+      </section>
+
+      <section id="resources" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Resources are addressable context</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Resources expose package-wide catalogs and per-component documents.
+          Component URIs are generated for every public catalog entry, so the
+          list grows with the library while URI structure stays predictable.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="resource-uris.txt"
+          language="markup"
+          [code]="resourceCode"
+          [theme]="appearance.mode()"
+        />
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          @for (item of [['Contract', 'Small JSON: selector, entry point,
+          status, models, forms and related components.'], ['llms.txt', 'Compact
+          strict rules optimized for code generation.'], ['README', 'Long-form
+          examples, behavior, accessibility and migration guidance.']]; track
+          item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">{{ item[0] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[1] }}
+            </p>
+          </article>
+          }
+        </div>
+      </section>
+
+      <section id="workflow" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Token-efficient agent workflow</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Start narrow and expand context only when necessary. A contract
+          usually answers import and model questions; loading every README
+          before choosing a component wastes context and increases conflicting
+          guidance.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="agent-workflow.txt"
+          language="markup"
+          [code]="workflowCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="results" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Results and domain errors</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Successful tools return pretty-printed JSON in one text content block.
+          Invalid component references, malformed JSON and rejected theme values
+          return <code>isError: true</code> with a human-readable message.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="tool-result.json"
+          language="json"
+          [code]="resultCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="security" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Read-only security boundary</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Every tool declares <code>readOnlyHint: true</code>,
+          <code>destructiveHint: false</code>,
+          <code>idempotentHint: true</code> and
+          <code>openWorldHint: false</code>. These annotations help clients
+          describe risk; the implementation also enforces the boundary by
+          exposing no write or external I/O operation.
+        </p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          @for (item of [['No project writes', 'No path argument and no
+          arbitrary file reader.'], ['No shell execution', 'Tools cannot install
+          packages or run project commands.'], ['No network', 'Search and
+          recommendations use committed local data.'], ['Prototype-safe
+          patches', 'Theme edits accept bounded known paths and reject unsafe
+          keys.'], ['CSS validation', 'External URLs, declaration injection and
+          malformed aliases are rejected.'], ['Private process', 'stdio is a
+          single client-owned local process, not an HTTP endpoint.']]; track
+          item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">{{ item[0] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[1] }}
+            </p>
+          </article>
+          }
+        </div>
+        <p class="mt-4 text-sm leading-6 text-[var(--site-text-muted)]">
+          MCP annotations are descriptive hints, not a sandbox. Pin trusted
+          packages and let the client apply its own process, filesystem and
+          network controls.
+        </p>
+      </section>
+
+      <section id="versioning" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Keep package versions aligned</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          The generated catalog describes the version shipped inside the MCP
+          package. Pin the same NeuralNg prerelease family in the project and
+          restart the MCP process after upgrades so the agent does not reason
+          from an older contract.
+        </p>
+        <div
+          class="mt-5 rounded-2xl border border-amber-400/20 bg-amber-500/10 p-5 text-sm leading-6"
+        >
+          The current server is <strong>0.1.0-beta.0</strong> and requires Node
+          <strong>&gt;=24 &lt;25</strong>. Alpha tool names, result shapes and
+          catalog contents may still change; pin the exact version in shared
+          repositories.
+        </div>
+      </section>
+
+      <section id="troubleshooting" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Troubleshooting</h2>
+        <div
+          class="mt-6 overflow-hidden rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+        >
+          @for (item of [['Process exits immediately', 'Confirm Node 24, the
+          exact package version and the client working directory.'], ['No tools
+          appear', 'Reload MCP connections and inspect client logs plus server
+          stderr.'], ['Non-protocol stdout', 'Do not wrap the command with
+          scripts that print banners to stdout.'], ['Package not found',
+          'Install locally and use --no-install, or verify registry access for
+          the one-off command.'], ['Old component contract', 'Update the MCP
+          package and restart its process; catalogs are generated at package
+          build time.'], ['Theme recipe rejected', 'Read neural://themes/schema,
+          patch only known paths, then validate again.']]; track item[0]) {
+          <div
+            class="grid gap-1 border-b border-[var(--site-border)] p-5 last:border-0 sm:grid-cols-[13rem_1fr] sm:gap-5"
+          >
+            <h3 class="font-black">{{ item[0] }}</h3>
+            <p class="text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[1] }}
+            </p>
+          </div>
+          }
+        </div>
+      </section>
+    </div>
+
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

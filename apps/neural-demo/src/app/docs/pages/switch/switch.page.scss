@@ -1,0 +1,81 @@
+.switch-docs-page {
+  max-width: 58rem;
+}
+
+.switch-demo-surface {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+}
+
+.state-list {
+  gap: 1.25rem;
+}
+
+.state-label-switch {
+  --neural-switch-track-width: 3.5rem;
+  --neural-switch-thumb-translate: 2rem;
+
+  .neural-switch-on-label-base {
+    margin-inline-start: 0.2rem;
+  }
+
+  .neural-switch-off-label-base {
+    margin-inline-end: 0.1rem;
+  }
+}
+
+.docs-headless-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: fit-content;
+  color: var(--neural-color-text);
+  cursor: pointer;
+}
+
+.docs-headless-switch-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.docs-headless-switch-track {
+  position: relative;
+  width: 2.8rem;
+  height: 1.5rem;
+  background: #334155;
+  border: 1px solid #64748b;
+  border-radius: 999px;
+  transition: background-color 150ms ease;
+}
+
+.docs-headless-switch-checked {
+  background: #0369a1;
+  border-color: #38bdf8;
+}
+
+.docs-headless-switch-thumb {
+  position: absolute;
+  inset-block-start: 0.2rem;
+  inset-inline-start: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+  background: #e0f2fe;
+  border-radius: 50%;
+  transition: transform 150ms ease;
+}
+
+.docs-headless-switch-checked .docs-headless-switch-thumb {
+  transform: translateX(1.3rem);
+}
+
+.docs-headless-switch-label {
+  font-weight: 700;
+}

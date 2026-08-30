@@ -1,0 +1,10 @@
+<figure class="code-example">
+  <figcaption>
+    <span>{{ label() }}</span>
+    <span class="language">{{ language() }}</span>
+    <button type="button" (click)="copy()">
+      {{ copied() ? 'Copied' : 'Copy' }}
+    </button>
+  </figcaption>
+  <pre><code>{{ code() }}</code></pre>
+</figure>

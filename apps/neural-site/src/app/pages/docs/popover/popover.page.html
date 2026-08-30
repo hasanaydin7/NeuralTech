@@ -1,0 +1,656 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="popover-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Popover documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt nt-message-2"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-cyan-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-cyan-500"
+                    >OVERLAY</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Popover
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  Arbitrary Angular content in a non-modal, trigger-anchored top
+                  layer with viewport-aware placement and deterministic focus
+                  restoration.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    top layer</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Logical
+                    positions</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+                    safe</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import only the standalone primitive and directives used by the
+                template.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Account panel</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The trigger owns disclosure semantics while Popover owns state,
+                positioning, dismissal and restoration.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-col items-center gap-3"
+                >
+                  <neural-button
+                    [neuralPopoverTriggerFor]="accountPanel"
+                    popoverPosition="bottom-end"
+                    label="Account"
+                    icon="nt nt-user"
+                    severity="primary"
+                  />
+                  <span class="text-xs text-[var(--site-text-muted)]"
+                    >{{ lastEvent() }}</span
+                  >
+                </div>
+              </code-view>
+              <neural-popover
+                #accountPanel
+                role="dialog"
+                ariaLabel="Account panel"
+                (opened)="handleOpened($event)"
+                (closed)="handleClosed($event)"
+                ><div class="w-64">
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="grid size-11 place-items-center rounded-full bg-blue-500/15 font-black text-blue-500"
+                      >NA</span
+                    ><span
+                      ><strong class="block">Neural Admin</strong
+                      ><small class="text-[var(--site-text-muted)]"
+                        >admin&#64;neuralng.dev</small
+                      ></span
+                    >
+                  </div>
+                  <div class="my-4 h-px bg-[var(--site-border)]"></div>
+                  <button
+                    class="w-full cursor-pointer rounded-xl px-3 py-2 text-left text-sm font-bold hover:bg-blue-500/10"
+                  >
+                    Account settings</button
+                  ><button
+                    neuralPopoverClose
+                    class="mt-1 w-full cursor-pointer rounded-xl px-3 py-2 text-left text-sm font-bold text-red-500 hover:bg-red-500/10"
+                  >
+                    Close panel
+                  </button>
+                </div></neural-popover
+              >
+            </section>
+
+            <section id="positions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Logical positions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Start and end follow writing direction. The shared positioner
+                flips and clamps the panel inside the viewport.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="positions.html"
+                language="html"
+                [code]="positionsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto grid min-h-64 w-full max-w-md grid-cols-3 items-center gap-3 px-2 sm:px-6"
+                >
+                  <neural-button
+                    label="top-start"
+                    outlined
+                    buttonClass="w-full"
+                    [neuralPopoverTriggerFor]="positionPanel"
+                    popoverPosition="top-start"
+                  />
+                  <neural-button
+                    label="top"
+                    outlined
+                    buttonClass="w-full"
+                    [neuralPopoverTriggerFor]="positionPanel"
+                    popoverPosition="top"
+                  />
+                  <neural-button
+                    label="top-end"
+                    outlined
+                    buttonClass="w-full"
+                    [neuralPopoverTriggerFor]="positionPanel"
+                    popoverPosition="top-end"
+                  />
+                  <neural-button
+                    label="left"
+                    outlined
+                    buttonClass="w-full"
+                    [neuralPopoverTriggerFor]="positionPanel"
+                    popoverPosition="left"
+                  />
+                  <div
+                    class="grid place-items-center text-center text-[.65rem] font-black uppercase tracking-[.14em] text-[var(--site-text-muted)]"
+                    aria-hidden="true"
+                  >
+                    Anchor map
+                  </div>
+                  <neural-button
+                    label="right"
+                    outlined
+                    buttonClass="w-full"
+                    [neuralPopoverTriggerFor]="positionPanel"
+                    popoverPosition="right"
+                  />
+                  <neural-button
+                    label="bottom-start"
+                    outlined
+                    buttonClass="w-full"
+                    [neuralPopoverTriggerFor]="positionPanel"
+                    popoverPosition="bottom-start"
+                  />
+                  <neural-button
+                    label="bottom"
+                    outlined
+                    buttonClass="w-full"
+                    [neuralPopoverTriggerFor]="positionPanel"
+                    popoverPosition="bottom"
+                  />
+                  <neural-button
+                    label="bottom-end"
+                    outlined
+                    buttonClass="w-full"
+                    [neuralPopoverTriggerFor]="positionPanel"
+                    popoverPosition="bottom-end"
+                  />
+                </div>
+              </code-view>
+              <neural-popover
+                #positionPanel
+                showArrow
+                ariaLabel="Position preview"
+                (opened)="handleOpened($event)"
+                ><span class="text-sm"
+                  >Requested: <strong>{{ activePosition() }}</strong></span
+                ></neural-popover
+              >
+            </section>
+
+            <section id="controlled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Controlled state</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Two-way bind the Signal model when application state must remain
+                authoritative.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="controlled.html"
+                language="html"
+                [code]="controlledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full items-center justify-center gap-3"
+                >
+                  <neural-button
+                    label="Toggle controlled"
+                    [neuralPopoverTriggerFor]="controlledPanel"
+                  /><span class="text-sm text-[var(--site-text-muted)]"
+                    >{{ controlledOpen() ? 'Open' : 'Closed' }}</span
+                  >
+                </div></code-view
+              ><neural-popover
+                #controlledPanel
+                [(open)]="controlledOpen"
+                ariaLabel="Controlled panel"
+                >The application owns this open state.</neural-popover
+              >
+            </section>
+
+            <section id="focus" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Focus workflow</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Focus remains on the trigger by default. Interactive disclosures
+                can explicitly focus the first meaningful field.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="focus.html"
+                language="html"
+                [code]="focusCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="flex w-full justify-center">
+                  <neural-button
+                    label="Edit profile"
+                    icon="nt nt-edit"
+                    [neuralPopoverTriggerFor]="focusPanel"
+                    popoverFocusOnOpen="first"
+                  /></div></code-view
+              ><neural-popover
+                #focusPanel
+                role="dialog"
+                ariaLabel="Edit profile"
+                ><label class="block text-sm font-bold"
+                  >Display name<input
+                    neuralPopoverInitialFocus
+                    value="Neural Admin"
+                    class="mt-2 block w-64 rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 outline-none focus:border-blue-500" /></label
+                ><neural-button
+                  class="mt-4 block"
+                  label="Done"
+                  neuralPopoverClose
+                  severity="primary"
+              /></neural-popover>
+            </section>
+
+            <section id="dismiss" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Dismiss policy</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Outside pointer and Escape dismissal are independent. A close
+                directive provides an explicit path.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="policy.html"
+                language="html"
+                [code]="policyCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+            <section id="trigger-width" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Trigger width</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>matchTriggerWidth</code> keeps select-like disclosure
+                surfaces aligned without measuring in consumer code.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="width.html"
+                language="html"
+                [code]="widthCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex min-h-36 w-full items-center justify-center px-4"
+                >
+                  <neural-button
+                    buttonClass="w-80 justify-between"
+                    label="Filter agents"
+                    icon="nt nt-chevron-down"
+                    iconPosition="end"
+                    [neuralPopoverTriggerFor]="widthPanel"
+                  /></div></code-view
+              ><neural-popover
+                #widthPanel
+                matchTriggerWidth
+                ariaLabel="Agent filters"
+                ><div class="grid gap-3 text-sm">
+                  <strong>Agent filters</strong
+                  ><neural-checkbox [checked]="true"
+                    >Available now</neural-checkbox
+                  ><neural-checkbox>Supports tools</neural-checkbox>
+                </div></neural-popover
+              >
+            </section>
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                All behavior and structural hooks remain while Tailwind owns the
+                visual layer.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="headless.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="flex w-full justify-center">
+                  <neural-button
+                    label="Open headless"
+                    outlined
+                    [neuralPopoverTriggerFor]="headlessPanel"
+                  /></div></code-view
+              ><neural-popover
+                #headlessPanel
+                unstyled
+                showArrow
+                [classes]="headlessClasses"
+                ariaLabel="Headless panel"
+                ><p class="font-black text-cyan-300">Consumer-owned surface</p>
+                <p class="mt-2 text-sm text-slate-400">
+                  Semantics, positioning and dismissal remain intact.
+                </p></neural-popover
+              >
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Non-modal by design</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Popover preserves native disclosure behavior without inventing
+                menu semantics or trapping focus.
+              </p>
+            </header>
+            <section id="trigger-contract" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Trigger contract</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use a native interactive trigger. The directive synchronizes
+                <code>aria-controls</code> and <code>aria-expanded</code>.
+              </p>
+            </section>
+            <section id="roles" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Roles and labels</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>dialog</code> and <code>region</code> are opt-in because
+                arbitrary disclosure content needs no universal role. Name
+                either role through <code>ariaLabel</code> or
+                <code>ariaLabelledby</code>.
+              </p>
+            </section>
+            <section id="focus-lifecycle" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Focus lifecycle</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Default opening keeps trigger focus. Explicit and Escape closes
+                restore it; outside pointer dismissal preserves the newly
+                selected target.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Enter or Space activates a native button trigger. Escape closes
+                only the topmost eligible Popover.
+              </p>
+            </section>
+            <section id="top-layer" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Top layer and RTL</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Native Popover avoids clipping, so no
+                <code>appendTo="body"</code> input is needed. Logical start/end
+                placements mirror under RTL.
+              </p>
+            </section>
+            <section id="ssr" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">SSR and hydration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The server renders deterministic closed markup. Top-layer and
+                positioner work begins only in the browser.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Popover API</h1>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Component inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[46rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="trigger-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Trigger inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[46rem] text-left text-sm">
+                  <tbody>
+                    @for (item of triggerInputs; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Outputs</h2>
+              <div class="mt-5 grid gap-3">
+                @for (item of outputs; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ml-3 text-xs font-mono">{{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Imperative methods</h2>
+              <div class="mt-5 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ml-3 text-xs font-mono">→ {{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="directives" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Directives</h2>
+              <div class="mt-5 grid gap-3 sm:grid-cols-3">
+                <div class="rounded-xl border border-[var(--site-border)] p-4">
+                  <code class="text-blue-500">NeuralPopoverTrigger</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    Disclosure and ARIA synchronization.
+                  </p>
+                </div>
+                <div class="rounded-xl border border-[var(--site-border)] p-4">
+                  <code class="text-blue-500">NeuralPopoverClose</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    Explicit in-panel close action.
+                  </p>
+                </div>
+                <div class="rounded-xl border border-[var(--site-border)] p-4">
+                  <code class="text-blue-500">NeuralPopoverInitialFocus</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    Preferred initial focus target.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-5 grid gap-3 sm:grid-cols-3">
+                @for (item of classSlots; track item[0]) {
+                <div class="rounded-xl border border-[var(--site-border)] p-4">
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-5 grid gap-3">
+                @for (item of publicTypes; track item[0]) {
+                <div class="rounded-xl border border-[var(--site-border)] p-4">
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 break-words font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="aliases" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Legacy aliases</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>PopoverComponent</code>,
+                <code>PopoverTriggerDirective</code>,
+                <code>PopoverCloseDirective</code> and
+                <code>PopoverInitialFocusDirective</code> remain compatible. New
+                code should use the concise Neural-prefixed exports.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Popover tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Component-scoped custom properties preserve theme ownership
+                without closing the headless escape hatch.
+              </p>
+            </header>
+            <section id="sizing-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Sizing</h2>
+              <site-design-token-list [tokens]="sizingTokens" />
+            </section>
+            <section id="surface-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Surface</h2>
+              <site-design-token-list [tokens]="surfaceTokens" />
+            </section>
+            <section id="arrow-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Arrow</h2>
+              <site-design-token-list [tokens]="arrowTokens" />
+            </section>
+            <section id="motion-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Motion</h2>
+              <site-design-token-list [tokens]="motionTokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

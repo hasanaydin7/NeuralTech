@@ -1,0 +1,193 @@
+/* NeuralNg neutral: Editor-specific tokens. Import after the matching @neural-ng/core theme. */
+:where(:root, [data-neural-theme='neutral']) {
+  --neural-editor-width: 42rem;
+  --neural-editor-min-height: 16rem;
+  --neural-editor-max-height: 42rem;
+  --neural-editor-color: var(--neural-color-text);
+  --neural-editor-color-readonly: var(--neural-color-text-muted);
+  --neural-editor-background: var(--neural-color-surface);
+  --neural-editor-content-background: var(--neural-color-surface);
+  --neural-editor-content-color: var(--neural-color-text);
+  --neural-editor-border: 1px solid var(--neural-color-border);
+  --neural-editor-border-color-focus: var(--neural-color-focus);
+  --neural-editor-border-color-invalid: var(--neural-color-error);
+  --neural-editor-radius: 0.75rem;
+  --neural-editor-shadow: 0 1px 2px rgb(var(--neural-color-shadow) / 0.06);
+  --neural-editor-shadow-focus: 0 0 0 3px
+    color-mix(in srgb, var(--neural-color-focus) 15%, transparent);
+  --neural-editor-shadow-invalid: 0 0 0 1px
+    color-mix(in srgb, var(--neural-color-error) 22%, transparent);
+  --neural-editor-font-family: inherit;
+  --neural-editor-font-size: 0.9375rem;
+  --neural-editor-line-height: 1.65;
+  --neural-editor-content-padding: 1rem 1.125rem;
+  --neural-editor-caret-color: var(--neural-color-primary);
+  --neural-editor-placeholder-color: var(--neural-color-text-muted);
+  --neural-editor-placeholder-opacity: 0.7;
+  --neural-editor-heading-color: var(--neural-color-text-strong);
+  --neural-editor-blockquote-color: var(--neural-color-text-muted);
+  --neural-editor-blockquote-border: 3px solid var(--neural-color-border);
+  --neural-editor-inline-code-background: var(--neural-color-surface-hover);
+  --neural-editor-code-block-color: var(--neural-color-text);
+  --neural-editor-code-block-background: var(--neural-color-surface-hover);
+  --neural-editor-link-color: var(--neural-color-primary);
+  --neural-editor-rule-border: 1px solid var(--neural-color-border);
+  --neural-editor-selection-background: color-mix(
+    in srgb,
+    var(--neural-color-primary) 25%,
+    transparent
+  );
+  --neural-editor-toolbar-gap: 0.25rem;
+  --neural-editor-toolbar-padding: 0.5rem;
+  --neural-editor-toolbar-background: var(--neural-color-surface-subtle);
+  --neural-editor-toolbar-border: 1px solid var(--neural-color-border);
+  --neural-editor-toolbar-button-size: 2rem;
+  --neural-editor-toolbar-button-color: var(--neural-color-text-muted);
+  --neural-editor-toolbar-button-background: transparent;
+  --neural-editor-toolbar-button-background-hover: var(
+    --neural-color-surface-hover
+  );
+  --neural-editor-toolbar-button-color-hover: var(--neural-color-text-strong);
+  --neural-editor-toolbar-button-background-active: color-mix(
+    in srgb,
+    var(--neural-color-primary) 14%,
+    transparent
+  );
+  --neural-editor-toolbar-button-color-active: var(--neural-color-primary);
+  --neural-editor-toolbar-button-radius: 0.4rem;
+  --neural-editor-toolbar-separator-color: var(--neural-color-border);
+  --neural-editor-toolbar-menu-color: var(--neural-color-text);
+  --neural-editor-toolbar-menu-background: var(--neural-color-surface);
+  --neural-editor-toolbar-menu-border: 1px solid var(--neural-color-border);
+  --neural-editor-toolbar-menu-radius: 0.5rem;
+  --neural-editor-toolbar-menu-shadow: 0 12px 28px
+    rgb(var(--neural-color-shadow) / 0.16);
+  --neural-editor-toolbar-color-swatch-border: 1px solid
+    var(--neural-color-border);
+  --neural-editor-task-checkbox-accent: var(--neural-color-primary);
+  --neural-editor-table-cell-border: 1px solid var(--neural-color-border);
+  --neural-editor-table-header-background: var(--neural-color-surface-subtle);
+  --neural-editor-table-selection-background: var(--neural-color-primary);
+  --neural-editor-link-input-background: var(--neural-color-surface);
+  --neural-editor-link-input-border: 1px solid var(--neural-color-border);
+  --neural-editor-link-input-radius: 0.4rem;
+  --neural-editor-link-action-color: var(--neural-color-text-strong);
+  --neural-editor-link-action-background: var(--neural-color-surface);
+  --neural-editor-link-action-border: 1px solid var(--neural-color-border);
+  --neural-editor-link-action-radius: 0.4rem;
+  --neural-editor-context-menu-z-index: 1100;
+  --neural-editor-context-menu-color: var(--neural-color-text);
+  --neural-editor-context-menu-background: var(--neural-color-surface);
+  --neural-editor-context-menu-border: 1px solid var(--neural-color-border);
+  --neural-editor-context-menu-radius: 0.625rem;
+  --neural-editor-context-menu-shadow: 0 14px 34px
+    rgb(var(--neural-color-shadow) / 0.2);
+  --neural-editor-context-menu-button-color: var(--neural-color-text-muted);
+  --neural-editor-context-menu-button-color-active: var(--neural-color-primary);
+  --neural-editor-context-menu-button-background-active: color-mix(
+    in srgb,
+    var(--neural-color-primary) 14%,
+    transparent
+  );
+  --neural-editor-context-menu-button-radius: 0.4rem;
+  --neural-editor-image-radius: 0.6rem;
+  --neural-editor-image-selection-outline: 2px solid var(--neural-color-focus);
+  --neural-editor-mention-color: var(--neural-color-primary);
+  --neural-editor-mention-background: color-mix(
+    in srgb,
+    var(--neural-color-primary) 12%,
+    transparent
+  );
+  --neural-editor-suggestion-z-index: 1200;
+  --neural-editor-suggestion-color: var(--neural-color-text);
+  --neural-editor-suggestion-background: var(--neural-color-surface);
+  --neural-editor-suggestion-border: 1px solid var(--neural-color-border);
+  --neural-editor-suggestion-radius: 0.625rem;
+  --neural-editor-suggestion-shadow: 0 16px 36px
+    rgb(var(--neural-color-shadow) / 0.22);
+  --neural-editor-suggestion-item-color: var(--neural-color-text-muted);
+  --neural-editor-suggestion-item-color-active: var(--neural-color-text-strong);
+  --neural-editor-suggestion-item-background-active: var(
+    --neural-color-surface-hover
+  );
+  --neural-editor-command-palette-z-index: 1250;
+  --neural-editor-command-palette-backdrop: rgb(0 0 0 / 0.42);
+  --neural-editor-command-palette-background: var(--neural-color-surface);
+  --neural-editor-command-palette-border: 1px solid var(--neural-color-border);
+  --neural-editor-command-palette-radius: 0.75rem;
+  --neural-editor-command-palette-shadow: 0 24px 64px
+    rgb(var(--neural-color-shadow) / 0.3);
+  --neural-editor-command-palette-input-background: var(
+    --neural-color-surface-subtle
+  );
+  --neural-editor-command-palette-input-border: 1px solid
+    var(--neural-color-border);
+  --neural-editor-ai-review-z-index: 1300;
+  --neural-editor-ai-review-color: var(--neural-color-text);
+  --neural-editor-ai-review-muted-color: var(--neural-color-text-muted);
+  --neural-editor-ai-review-background: var(--neural-color-surface);
+  --neural-editor-ai-review-border: 1px solid var(--neural-color-border);
+  --neural-editor-ai-review-radius: 0.75rem;
+  --neural-editor-ai-review-shadow: 0 24px 64px rgb(0 0 0 / 0.24);
+  --neural-editor-ai-review-button-color: var(--neural-color-text);
+  --neural-editor-ai-review-button-background: transparent;
+  --neural-editor-ai-review-button-border: 1px solid var(--neural-color-border);
+  --neural-editor-ai-addition-background: color-mix(
+    in srgb,
+    var(--neural-color-success, #16a34a) 18%,
+    transparent
+  );
+  --neural-editor-ai-addition-border-color: var(
+    --neural-color-success,
+    #16a34a
+  );
+  --neural-editor-ai-deletion-background: color-mix(
+    in srgb,
+    var(--neural-color-danger, #dc2626) 16%,
+    transparent
+  );
+  --neural-editor-ai-deletion-border-color: var(--neural-color-danger, #dc2626);
+  --neural-editor-ai-update-border-color: var(--neural-color-primary);
+  --neural-editor-ai-selected-outline: 2px solid var(--neural-color-primary);
+  --neural-editor-footer-gap: 0.75rem;
+  --neural-editor-footer-padding: 0.4rem 0.75rem;
+  --neural-editor-footer-color: var(--neural-color-text-muted);
+  --neural-editor-footer-background: var(--neural-color-surface-subtle);
+  --neural-editor-footer-border: 1px solid var(--neural-color-border);
+  --neural-editor-footer-font-size: 0.75rem;
+  --neural-editor-focus-ring: 2px solid var(--neural-color-focus);
+  --neural-editor-focus-ring-offset: 2px;
+  --neural-editor-disabled-opacity: 0.5;
+  --neural-editor-transition:
+    color 150ms ease, background-color 150ms ease, border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+:where(:root, [data-neural-theme='neutral'], [data-neural-theme='neutral'] *) {
+  --neural-editor-collaboration-border: 1px solid var(--neural-color-border);
+  --neural-editor-collaboration-input-border: 1px solid
+    var(--neural-color-border);
+  --neural-editor-collaboration-button-border: 1px solid
+    var(--neural-color-border);
+  --neural-editor-collaboration-button-background: var(--neural-color-surface);
+  --neural-editor-collaboration-item-border: 1px solid
+    var(--neural-color-border);
+  --neural-editor-comment-background: color-mix(
+    in srgb,
+    var(--neural-color-warning) 14%,
+    transparent
+  );
+  --neural-editor-comment-border-color: var(--neural-color-warning);
+  --neural-editor-tracked-insertion-color: var(--neural-color-success);
+  --neural-editor-tracked-insertion-background: color-mix(
+    in srgb,
+    var(--neural-color-success) 16%,
+    transparent
+  );
+  --neural-editor-tracked-deletion-color: var(--neural-color-error);
+  --neural-editor-tracked-deletion-background: color-mix(
+    in srgb,
+    var(--neural-color-error) 14%,
+    transparent
+  );
+}

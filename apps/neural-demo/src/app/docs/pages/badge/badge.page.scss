@@ -1,0 +1,65 @@
+.badge-docs-page {
+  .demo-surface {
+    gap: 1rem;
+  }
+}
+
+.badge-anchor-demo {
+  align-items: center;
+}
+
+.badge-anchor-demo__icon,
+.badge-anchor-demo__avatar {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--neural-color-text-strong);
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 50%;
+}
+
+.badge-anchor-demo__icon {
+  font: inherit;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+.badge-anchor-demo__avatar {
+  font-weight: 800;
+}
+
+.badge-anchor-demo__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding-inline: 1rem;
+  color: var(--neural-color-text-strong);
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: var(--neural-radius-md);
+  font-weight: 700;
+}
+
+.docs-headless-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.7rem;
+  color: #f0fdfa;
+  background: #115e59;
+  border: 2px solid #2dd4bf;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #2dd4bf 18%, transparent);
+  font: 800 0.75rem/1 ui-monospace, monospace;
+}
+
+.docs-headless-badge__content {
+  display: inline-flex;
+  gap: 0.25rem;
+}

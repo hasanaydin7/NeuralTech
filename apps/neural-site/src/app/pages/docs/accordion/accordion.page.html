@@ -1,0 +1,578 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="accordion-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Accordion documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-list"
+              >Component</neural-tab
+            ><neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            ><neural-tab value="api" iconClass="nt-code">API</neural-tab
+            ><neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >CONTENT</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Accordion
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  Data-driven or fully composable disclosure groups with
+                  controlled Signals state, deterministic ARIA relationships and
+                  complete visual ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    buttons</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+                    safe</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use the concise canonical class names from the granular entry
+                point. Import only the declarations your template uses.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="data-driven" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Data-driven FAQ</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Property mappings turn immutable object arrays into concise text
+                panels. Disabled items remain visible and cannot be expanded.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="data-accordion.html"
+                language="html"
+                [code]="dataCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="mx-auto grid w-full max-w-2xl gap-3"
+                >
+                  <neural-accordion
+                    accordionId="site-faq"
+                    [items]="faqs"
+                    itemLabel="question"
+                    itemValue="id"
+                    itemContent="answer"
+                    itemDisabled="disabled"
+                    [(value)]="openFaq"
+                    (panelChange)="panelChanged($event)"
+                  /><output
+                    class="text-xs text-[var(--site-text-muted)]"
+                    aria-live="polite"
+                    >{{ lastEvent() }}</output
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="composition" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Projected composition</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Panel, header and content declarations accept arbitrary Angular
+                content. Do not combine projected panels with a non-empty data
+                array.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="projected-accordion.html"
+                language="html"
+                [code]="compositionCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-2xl">
+                  <neural-accordion
+                    accordionId="site-projected"
+                    [(value)]="openFaq"
+                    ><neural-accordion-panel value="signals"
+                      ><neural-accordion-header
+                        ><span class="flex items-center gap-2"
+                          ><i class="nt nt-settings text-blue-500"></i>Signals
+                          architecture</span
+                        ></neural-accordion-header
+                      ><neural-accordion-content
+                        ><div class="grid gap-2">
+                          <strong>Controlled state</strong
+                          ><span class="text-[var(--site-text-soft)]"
+                            >The model can be shared with routes, stores and
+                            generated interfaces.</span
+                          >
+                        </div></neural-accordion-content
+                      ></neural-accordion-panel
+                    ><neural-accordion-panel value="headless"
+                      ><neural-accordion-header
+                        ><span class="flex items-center gap-2"
+                          ><i class="nt nt-code text-blue-500"></i>Headless
+                          ownership</span
+                        ></neural-accordion-header
+                      ><neural-accordion-content
+                        >Projected content may contain any Angular component or
+                        template.</neural-accordion-content
+                      ></neural-accordion-panel
+                    ></neural-accordion
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="multiple" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Multiple panels</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                In multiple mode the controlled value is an array and each
+                enabled panel toggles independently.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="multiple.html"
+                language="html"
+                [code]="multipleCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-2xl">
+                  <neural-accordion
+                    accordionId="site-multiple"
+                    multiple
+                    [(value)]="openSections"
+                    ><neural-accordion-panel value="architecture"
+                      ><neural-accordion-header
+                        >Architecture</neural-accordion-header
+                      ><neural-accordion-content
+                        >Standalone declarations and Signals
+                        state.</neural-accordion-content
+                      ></neural-accordion-panel
+                    ><neural-accordion-panel value="accessibility"
+                      ><neural-accordion-header
+                        >Accessibility</neural-accordion-header
+                      ><neural-accordion-content
+                        >Native buttons, regions and deterministic
+                        relationships.</neural-accordion-content
+                      ></neural-accordion-panel
+                    ><neural-accordion-panel value="tokens"
+                      ><neural-accordion-header
+                        >Design tokens</neural-accordion-header
+                      ><neural-accordion-content
+                        >Semantic surfaces respond to primary, surface and color
+                        mode.</neural-accordion-content
+                      ></neural-accordion-panel
+                    ></neural-accordion
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="collapsible" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Non-collapsible single mode</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Set
+                <code class="font-mono text-blue-500">collapsible=false</code>
+                when one single-mode panel must always remain expanded. It has
+                no effect in multiple mode.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="collapsible.html"
+                language="html"
+                [code]="collapsibleCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-2xl">
+                  <neural-accordion
+                    accordionId="site-required"
+                    [collapsible]="false"
+                    [(value)]="nonCollapsibleValue"
+                    ><neural-accordion-panel value="required"
+                      ><neural-accordion-header
+                        >Always one open</neural-accordion-header
+                      ><neural-accordion-content
+                        >Clicking the active header cannot collapse the final
+                        open panel.</neural-accordion-content
+                      ></neural-accordion-panel
+                    ><neural-accordion-panel value="alternative"
+                      ><neural-accordion-header
+                        >Alternative panel</neural-accordion-header
+                      ><neural-accordion-content
+                        >Selecting this panel closes the previous
+                        one.</neural-accordion-content
+                      ></neural-accordion-panel
+                    ></neural-accordion
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="disabled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Disabled group and panel</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disable the entire group or only one projected panel. Disabled
+                headers use native button state and keyboard navigation skips
+                them.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="disabled.html"
+                language="html"
+                [code]="disabledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-5 md:grid-cols-2">
+                  <div>
+                    <p class="mb-2 text-sm font-bold">Disabled panel</p>
+                    <neural-accordion accordionId="site-disabled-panel"
+                      ><neural-accordion-panel value="available"
+                        ><neural-accordion-header
+                          >Available</neural-accordion-header
+                        ><neural-accordion-content
+                          >This panel works.</neural-accordion-content
+                        ></neural-accordion-panel
+                      ><neural-accordion-panel value="locked" disabled
+                        ><neural-accordion-header
+                          >Locked</neural-accordion-header
+                        ><neural-accordion-content
+                          >Unavailable content.</neural-accordion-content
+                        ></neural-accordion-panel
+                      ></neural-accordion
+                    >
+                  </div>
+                  <div>
+                    <p class="mb-2 text-sm font-bold">Disabled group</p>
+                    <neural-accordion accordionId="site-disabled-group" disabled
+                      ><neural-accordion-panel value="account"
+                        ><neural-accordion-header
+                          >Account</neural-accordion-header
+                        ><neural-accordion-content
+                          >Group content.</neural-accordion-content
+                        ></neural-accordion-panel
+                      ></neural-accordion
+                    >
+                  </div>
+                </div></code-view
+              >
+            </section>
+
+            <section id="events" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Controlled model and semantic event
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>valueChange</code> powers two-way binding.
+                <code>panelChange</code> adds panel identity, expanded state,
+                previous/next model and keyboard or pointer source.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="events.ts"
+                language="typescript"
+                [code]="eventsCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Unstyled mode preserves disclosure semantics, inert collapsed
+                content, focus movement and structural hooks while Tailwind owns
+                every visible class.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-2xl">
+                  <neural-accordion
+                    accordionId="site-headless"
+                    unstyled
+                    [classes]="headlessClasses"
+                    [(value)]="headlessValue"
+                    ><neural-accordion-panel value="semantic"
+                      ><neural-accordion-header
+                        >Semantic core</neural-accordion-header
+                      ><neural-accordion-content
+                        >NeuralNg owns behavior; consumer classes own
+                        presentation.</neural-accordion-content
+                      ></neural-accordion-panel
+                    ><neural-accordion-panel value="classes"
+                      ><neural-accordion-header
+                        >Typed classes</neural-accordion-header
+                      ><neural-accordion-content
+                        >Every visual layer has an explicit typed
+                        slot.</neural-accordion-content
+                      ></neural-accordion-panel
+                    ></neural-accordion
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Resolution rules and intentional boundaries
+              </h2>
+              <div
+                class="mt-3 grid gap-3 leading-7 text-[var(--site-text-soft)]"
+              >
+                <p>
+                  Data content is escaped plain text.
+                  <code>itemValue</code> must resolve to a unique string or
+                  number; invalid values fall back to the stable render index
+                  and duplicate values produce a development warning.
+                </p>
+                <p>
+                  Use either <code>[items]</code> or projected panels. When both
+                  are present, data items are authoritative and development mode
+                  reports the mixed source.
+                </p>
+                <p>
+                  Local <code>unstyled</code> and application-wide
+                  <code>provideNeuralNg(&#123; unstyled: true &#125;)</code>
+                  preserve the same structural, keyboard and ARIA contract.
+                  Programmatic model writes update expansion without emitting
+                  the user-only <code>panelChange</code>.
+                </p>
+                <p>
+                  Remote loading, errors and rich content belong inside
+                  projected panels. The Beta contract does not pretend to
+                  lazy-instantiate collapsed templates; a future lazy API will
+                  require an explicit lifecycle contract.
+                </p>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false"
+            ><header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">
+                Accessible disclosure groups
+              </h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                No custom role imitates a button; every header trigger is a real
+                native button.
+              </p>
+            </header>
+            <section id="semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantics and relationships</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Headers expose <code>aria-expanded</code> and
+                <code>aria-controls</code>. Content regions use
+                <code>aria-labelledby</code>; collapsed content is both
+                <code>aria-hidden</code> and inert.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Enter and Space use native button activation. Arrow Down/Up wrap
+                between enabled headers. Home and End focus the first and last
+                enabled header.
+              </p>
+            </section>
+            <section id="focus" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Focus</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Toggling content never steals focus. Disabled headers leave
+                navigation and deterministic SSR-safe IDs preserve relationships
+                through hydration.
+              </p>
+            </section>
+            <section id="motion" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Motion</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Content and chevron transitions use component tokens and
+                collapse to effectively immediate changes under
+                <code>prefers-reduced-motion</code>.
+              </p>
+            </section></neural-tab-panel
+          >
+
+          <neural-tab-panel value="api" [focusable]="false"
+            ><header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Accordion API</h1>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Accordion inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[44rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Outputs</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of outputs; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ml-3 font-mono text-xs">{{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="panel-api" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Panel API</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[38rem] text-left text-sm">
+                  <tbody>
+                    @for (item of panelInputs; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="child-api" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Header and content API</h2>
+              <div class="mt-6 grid gap-2">
+                @for (item of childInputs; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ml-3 text-xs"
+                    >{{ item[1] }} · {{ item[2] }}</span
+                  >
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section></neural-tab-panel
+          >
+
+          <neural-tab-panel value="tokens" [focusable]="false"
+            ><header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Accordion tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Neutral tokens respond to the selected primary palette, surface
+                palette and resolved light/dark mode without changing the
+                component contract.
+              </p>
+            </header>
+            <section id="tokens" class="scroll-mt-28 pt-16">
+              <site-design-token-list [tokens]="tokens" /></section
+          ></neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

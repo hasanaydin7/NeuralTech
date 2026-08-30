@@ -1,0 +1,436 @@
+.table-docs-page {
+  max-width: 68rem;
+
+  .table-demo {
+    display: grid;
+    gap: 0;
+    min-width: 0;
+    margin-top: 1rem;
+  }
+
+  .table-demo > neural-table + neural-paginator {
+    margin-top: -1px;
+    padding: 0.75rem 1rem;
+    background: var(--neural-color-surface);
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0 0 0.875rem 0.875rem;
+  }
+
+  .table-demo > neural-table:has(+ neural-paginator) {
+    --neural-table-radius: 0.875rem 0.875rem 0 0;
+  }
+
+  .table-toolbar,
+  .table-state-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .table-toolbar label {
+    display: grid;
+    gap: 0.35rem;
+    min-width: min(100%, 20rem);
+    color: var(--neural-color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .table-toolbar input {
+    padding: 0.65rem 0.8rem;
+    color: var(--neural-color-text);
+    background: var(--neural-color-surface);
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0.55rem;
+    font: inherit;
+  }
+
+  .table-toolbar__summary {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .table-toolbar__summary > span {
+    color: var(--neural-color-text-muted);
+    font-size: 0.85rem;
+    font-weight: 650;
+    white-space: nowrap;
+  }
+
+  .table-layout-demo {
+    display: grid;
+    gap: 0.85rem;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .table-selection-demo {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .table-selection-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 0.75rem;
+    padding: 0.85rem;
+    background: color-mix(
+      in srgb,
+      var(--neural-color-surface-hover) 72%,
+      transparent
+    );
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0.75rem;
+  }
+
+  .table-selection-toolbar > div {
+    display: grid;
+    gap: 0.15rem;
+    margin-inline-end: auto;
+  }
+
+  .table-selection-toolbar > div span,
+  .table-selection-status,
+  .table-selection-variants section > span {
+    color: var(--neural-color-text-muted);
+    font-size: 0.78rem;
+  }
+
+  .table-selection-toolbar label {
+    display: grid;
+    gap: 0.25rem;
+    color: var(--neural-color-text-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .table-selection-toolbar select {
+    min-height: 2.5rem;
+    padding: 0.45rem 2rem 0.45rem 0.65rem;
+    color: var(--neural-color-text);
+    background: var(--neural-color-surface);
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0.5rem;
+    font: inherit;
+  }
+
+  .table-selection-surface {
+    display: grid;
+    min-width: 0;
+  }
+
+  .table-selection-surface > neural-table + neural-paginator {
+    margin-top: -1px;
+    padding: 0.7rem 1rem;
+    background: var(--neural-color-surface);
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0 0 0.875rem 0.875rem;
+  }
+
+  .table-selection-surface > neural-table {
+    --neural-table-radius: 0.875rem 0.875rem 0 0;
+  }
+
+.table-selection-status {
+    min-height: 1.25rem;
+    margin: 0;
+  }
+
+  .table-selection-variants {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 23rem), 1fr));
+    gap: 1rem;
+  }
+
+  .table-selection-variants section {
+    display: grid;
+    align-content: start;
+    gap: 0.65rem;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .table-selection-variants h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .table-order-demo,
+  .table-group-demo,
+  .table-row-group-demo {
+    display: grid;
+    gap: 0.85rem;
+    min-width: 0;
+  }
+
+  .docs-table-group-toggle {
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    gap: 0.55rem;
+    padding: 0;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+  }
+
+  .docs-table-group-toggle > span {
+    margin-inline-start: auto;
+    color: var(--neural-color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .docs-table-group-summary {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.3rem;
+  }
+
+  .table-enterprise-demo,
+  .table-request-demo,
+  .table-skeleton-demo {
+    display: grid;
+    min-width: 0;
+    gap: 0.875rem;
+  }
+
+  .table-query-output {
+    display: block;
+    max-block-size: 5rem;
+    padding: 0.75rem;
+    overflow: auto;
+    color: var(--neural-color-text-muted);
+    background: color-mix(
+      in srgb,
+      var(--neural-color-surface-muted) 76%,
+      transparent
+    );
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0.625rem;
+    font-size: 0.75rem;
+    overflow-wrap: anywhere;
+  }
+
+  .table-order-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .table-order-toolbar > span {
+    min-width: 0;
+    color: var(--neural-color-text-muted);
+    font-size: 0.8rem;
+    font-weight: 650;
+  }
+
+  .table-order-toolbar code {
+    color: var(--neural-color-text);
+    overflow-wrap: anywhere;
+  }
+
+  .table-group-heading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .table-column-chooser {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .table-column-chooser label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 2.25rem;
+    padding: 0.4rem 0.65rem;
+    color: var(--neural-color-text-muted);
+    background: var(--neural-color-surface);
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 650;
+    cursor: pointer;
+  }
+
+  .table-column-chooser input {
+    accent-color: var(--neural-color-focus);
+  }
+
+  .table-column-chooser select {
+    color: inherit;
+    background: transparent;
+    border: 0;
+    font: inherit;
+    font-weight: 700;
+  }
+
+  .product-expansion {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .product-expansion span {
+    color: var(--neural-color-text-muted);
+  }
+
+  .docs-product-code {
+    font:
+      600 0.78rem/1.4 ui-monospace,
+      'SFMono-Regular',
+      Consolas,
+      monospace;
+    letter-spacing: 0.015em;
+  }
+
+  .docs-product-name {
+    color: var(--neural-color-text-strong);
+    font-weight: 650;
+  }
+
+  .docs-table-custom-state {
+    padding: 2.5rem 1rem;
+    color: var(--neural-color-text-muted);
+    text-align: center;
+  }
+
+  .docs-table-custom-state i {
+    margin-inline-end: 0.4rem;
+  }
+
+  .docs-table-custom-state.is-error {
+    color: var(--neural-color-error);
+  }
+}
+
+.table-edit-demo {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.table-edit-panel {
+  display: grid;
+  min-width: 0;
+  gap: 0.875rem;
+  padding: 1rem;
+  background: color-mix(
+    in srgb,
+    var(--neural-color-surface) 94%,
+    transparent
+  );
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.875rem;
+}
+
+.table-edit-panel > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.table-edit-panel > header h3,
+.table-edit-panel > header p {
+  margin: 0;
+}
+
+.table-edit-panel > header p,
+.table-edit-panel > header > span {
+  color: var(--neural-color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.table-edit-panel > header p {
+  margin-top: 0.25rem;
+}
+
+.table-row-edit-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.table-edit-action .neural-btn-root {
+  inline-size: 2rem;
+  min-inline-size: 2rem;
+  block-size: 2rem;
+  min-block-size: 2rem;
+  padding: 0;
+}
+
+.table-edit-panel neural-input-number,
+.table-edit-panel neural-select {
+  min-width: 9rem;
+}
+
+@media (max-width: 720px) {
+  .table-edit-panel {
+    padding: 0.75rem;
+  }
+
+  .table-edit-panel > header {
+    display: grid;
+  }
+}
+
+.docs-headless-table {
+  display: block;
+  color: #e0f2fe;
+}
+
+.docs-headless-table__scroll {
+  overflow: auto;
+  border: 1px solid #0891b2;
+  border-radius: 0.25rem;
+  background: #082f49;
+}
+
+.docs-headless-table__table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.docs-headless-table__header,
+.docs-headless-table__cell {
+  padding: 0.75rem;
+  border-bottom: 1px solid #155e75;
+  text-align: start;
+}
+
+.docs-headless-table .docs-product-name {
+  color: inherit;
+}
+
+.docs-headless-table__header {
+  color: #67e8f9;
+  font: 700 0.75rem/1.2 ui-monospace, monospace;
+  text-transform: uppercase;
+}
+
+.docs-headless-table__row:hover .docs-headless-table__cell {
+  background: #0e4b64;
+}
+
+.docs-headless-table__row--selected .docs-headless-table__cell {
+  background: #164e63;
+}

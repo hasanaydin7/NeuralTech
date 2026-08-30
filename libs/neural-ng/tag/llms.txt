@@ -1,0 +1,16 @@
+NeuralNg Tag rules
+
+- Import only from `@neural-ng/core/tag`.
+- Import NeuralTag. TagComponent is a deprecated compatibility alias.
+- Use Tag for classification or textual status; use Badge for contextual counts.
+- Prefer `value` for plain text and projection for custom Angular markup.
+- Severities: `primary`, `secondary`, `neutral`, `info`, `success`, `warning`, `error`.
+- Sizes: `small`, `medium`, `large`; `rounded` defaults to true.
+- `iconClass` prepends an icon. Decorative icons need no accessible label.
+- `removable` creates a native button and emits `removed`.
+- `removed` carries `{ value, originalEvent }`; update the owning collection.
+- Do not expect Tag to remove itself after emitting.
+- Override the generated remove name with `removeLabel` when context requires it.
+- `disabled` prevents removal and exposes `aria-disabled`.
+- `unstyled` removes visual classes, not structural hooks.
+- Typed slots: `root`, `icon`, `label`, `content`, `removeButton`, `removeIcon`.

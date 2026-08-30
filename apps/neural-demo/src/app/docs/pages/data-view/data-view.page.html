@@ -1,0 +1,214 @@
+<article class="docs-page data-view-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Sprint 4</span>
+    <h1 class="docs-hero__title">DataView</h1>
+    <p class="docs-hero__description">
+      Present the same immutable collection as a polished list or responsive
+      grid with typed templates, stable local sorting, remote state, and
+      Paginator composition.
+    </p>
+  </header>
+  <section>
+    <h2>Import</h2>
+    <p>Import only the tree-shakable secondary entry point.</p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Product catalog</h2>
+    <p>
+      The header owns layout and sort controls while DataView owns deterministic
+      presentation and paging.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="data-view-demo">
+        <neural-data-view
+          [value]="products"
+          [(layout)]="layout"
+          [(first)]="first"
+          [(rows)]="rows"
+          [(sortField)]="sortField"
+          [(sortOrder)]="sortOrder"
+          [trackBy]="productTrackBy"
+          ariaLabel="Product catalog"
+        >
+          <ng-template neuralDataViewHeader
+            ><div class="data-view-toolbar">
+              <div>
+                <strong>Product catalog</strong
+                ><small>{{ products.length }} curated items</small>
+              </div>
+              <label
+                >Sort<select (change)="updateSort($event)">
+                  <option value="name:1">Name A–Z</option>
+                  <option value="price:1">Price low to high</option>
+                  <option value="price:-1">Price high to low</option>
+                  <option value="stock:-1">Stock high to low</option>
+                </select></label
+              >
+              <div class="layout-switch" role="group" aria-label="Data layout">
+                <neural-button
+                  severity="secondary"
+                  [attr.aria-pressed]="layout() === 'list'"
+                  ariaLabel="List layout"
+                  (clicked)="setLayout('list')"
+                  ><i class="nt nt-list" aria-hidden="true"></i></neural-button
+                ><neural-button
+                  severity="secondary"
+                  [attr.aria-pressed]="layout() === 'grid'"
+                  ariaLabel="Grid layout"
+                  (clicked)="setLayout('grid')"
+                  ><i class="nt nt-layout-grid" aria-hidden="true"></i
+                ></neural-button>
+              </div></div
+          ></ng-template>
+          <ng-template
+            [neuralDataViewListItem]="products"
+            let-product
+            let-index="originalIndex"
+            ><div class="product-row">
+              <span class="product-visual"
+                ><i class="nt {{ product.icon }}" aria-hidden="true"></i
+              ></span>
+              <div class="product-copy">
+                <small>{{ product.category }}</small
+                ><strong>{{ product.name }}</strong
+                ><span>{{ product.description }}</span>
+              </div>
+              <div class="product-meta">
+                <strong>{{ product.price | currency }}</strong
+                ><neural-tag [severity]="stockSeverity(product)"
+                  >{{ stockLabel(product) }}</neural-tag
+                ><small>#{{ index + 1 }}</small>
+              </div>
+            </div></ng-template
+          >
+          <ng-template [neuralDataViewGridItem]="products" let-product
+            ><div class="product-card">
+              <span class="product-visual product-visual--grid"
+                ><i class="nt {{ product.icon }}" aria-hidden="true"></i></span
+              ><small>{{ product.category }}</small>
+              <h3>{{ product.name }}</h3>
+              <p>{{ product.description }}</p>
+              <footer>
+                <strong>{{ product.price | currency }}</strong
+                ><neural-tag [severity]="stockSeverity(product)"
+                  >{{ stockLabel(product) }}</neural-tag
+                >
+              </footer>
+            </div></ng-template
+          >
+        </neural-data-view>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Remote state</h2>
+    <p>
+      Remote mode never sorts or slices supplied records; every page action
+      emits one serializable request state.
+    </p>
+    <code-view
+      fileName="remote.html"
+      language="html"
+      [code]="remoteCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+      ><div preview-content class="data-view-demo">
+        <neural-data-view
+          dataMode="remote"
+          [value]="remoteItems()"
+          [totalRecords]="240"
+          [rows]="3"
+          [pageSizeOptions]="[]"
+          ariaLabel="Remote products"
+          (pageChange)="handleRemotePage($event)"
+          ><ng-template [neuralDataViewListItem]="remoteItems()" let-product
+            ><div class="remote-row">
+              <i class="nt {{ product.icon }}" aria-hidden="true"></i
+              ><strong>{{ product.name }}</strong
+              ><span>{{ product.category }}</span>
+            </div></ng-template
+          ></neural-data-view
+        ><output class="demo-status">{{ remoteStatus() }}</output>
+      </div></code-view
+    >
+  </section>
+
+  <section>
+    <h2>Loading and empty</h2>
+    <p>
+      Loading reserves stable space; empty content can be replaced through a
+      typed state template.
+    </p>
+    <code-view
+      fileName="states.html"
+      language="html"
+      [code]="statesCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+      ><div preview-content class="data-view-state-grid">
+        <neural-data-view
+          [value]="[]"
+          [paginator]="false"
+          loading
+          ariaLabel="Loading products"
+        /><neural-data-view
+          [value]="[]"
+          [paginator]="false"
+          ariaLabel="Empty products"
+          ><ng-template neuralDataViewEmpty let-label
+            ><div class="custom-empty">
+              <i class="nt nt-package-off" aria-hidden="true"></i
+              ><strong>{{ label }}</strong
+              ><span>Try changing your catalog filters.</span>
+            </div></ng-template
+          ></neural-data-view
+        >
+      </div></code-view
+    >
+  </section>
+
+  <section>
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Region, list semantics, paging state, and typed contexts remain while
+      every NeuralNg visual class is removed.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+      ><div preview-content class="data-view-demo">
+        <neural-data-view
+          [value]="products.slice(0, 3)"
+          [rows]="3"
+          [pageSizeOptions]="[]"
+          unstyled
+          [classes]="headlessClasses"
+          ariaLabel="Headless products"
+          ><ng-template [neuralDataViewListItem]="products" let-product
+            ><div class="headless-product">
+              <span>{{ product.id }}</span><strong>{{ product.name }}</strong
+              ><small>{{ product.category }}</small>
+            </div></ng-template
+          ></neural-data-view
+        >
+      </div></code-view
+    >
+  </section>
+</article>

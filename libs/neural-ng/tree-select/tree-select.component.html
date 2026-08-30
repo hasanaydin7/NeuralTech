@@ -1,0 +1,235 @@
+<div
+  [class]="rootClass()"
+  [attr.data-open]="open() ? 'true' : null"
+  [attr.data-disabled]="effectiveDisabled() ? 'true' : null"
+  [attr.data-readonly]="effectiveReadonly() ? 'true' : null"
+  [attr.data-invalid]="effectiveInvalid() ? 'true' : null"
+>
+  <div
+    #anchor
+    role="combobox"
+    aria-haspopup="tree"
+    [id]="controlId()"
+    [class]="triggerClass()"
+    [attr.tabindex]="effectiveDisabled() ? -1 : 0"
+    [attr.aria-label]="ariaLabel() || dropdownLabel()"
+    [attr.aria-controls]="panelId"
+    [attr.aria-expanded]="open()"
+    [attr.aria-disabled]="effectiveDisabled()"
+    [attr.aria-readonly]="effectiveReadonly()"
+    [attr.aria-required]="effectiveRequired()"
+    [attr.aria-invalid]="effectiveInvalid()"
+    [attr.aria-busy]="
+      loading() || pending() || field?.pending() ? 'true' : null
+    "
+    (click)="togglePanel($event)"
+    (blur)="handleTriggerBlur()"
+    (keydown)="handleTriggerKeydown($event)"
+  >
+    <div
+      [class]="
+        classFor(
+          'value',
+          'neural-tree-select-value-root',
+          'neural-tree-select-value-base'
+        )
+      "
+    >
+      @if (loading()) {
+        <span
+          [class]="
+            classFor(
+              'loading',
+              'neural-tree-select-loading-root',
+              'neural-tree-select-loading-base'
+            )
+          "
+          ><i class="nt nt-loader-3 nt-spin" aria-hidden="true"></i
+          >{{ loadingLabel() }}</span
+        >
+      } @else if (!hasValue()) {
+        <span
+          [class]="
+            classFor(
+              'placeholder',
+              'neural-tree-select-placeholder-root',
+              'neural-tree-select-placeholder-base'
+            )
+          "
+          >{{ placeholder() }}</span
+        >
+      } @else if (valueTemplate(); as template) {
+        <ng-container
+          [ngTemplateOutlet]="template.templateRef"
+          [ngTemplateOutletContext]="valueTemplateContext()"
+        />
+      } @else if (selectionMode() === 'single') {
+        <span>{{ summaryLabel() }}</span>
+      } @else {
+        <span
+          [class]="
+            classFor(
+              'chipList',
+              'neural-tree-select-chip-list-root',
+              'neural-tree-select-chip-list-base'
+            )
+          "
+        >
+          @for (entry of selectedEntries(); track entry.key) {
+            <span
+              [class]="
+                classFor(
+                  'chip',
+                  'neural-tree-select-chip-root',
+                  'neural-tree-select-chip-base'
+                )
+              "
+              >{{ entry.label
+              }}<button
+                type="button"
+                [class]="
+                  classFor(
+                    'chipRemove',
+                    'neural-tree-select-chip-remove-root',
+                    'neural-tree-select-chip-remove-base'
+                  )
+                "
+                [disabled]="effectiveDisabled() || effectiveReadonly()"
+                [attr.aria-label]="'Remove ' + entry.label"
+                (click)="remove(entry.key, $event)"
+              >
+                <i class="nt nt-x" aria-hidden="true"></i></button
+            ></span>
+          }
+        </span>
+      }
+    </div>
+    @if (clearable() && hasValue()) {
+      <button
+        type="button"
+        [class]="
+          classFor(
+            'clearButton',
+            'neural-tree-select-clear-root',
+            'neural-tree-select-clear-base'
+          )
+        "
+        [disabled]="effectiveDisabled() || effectiveReadonly()"
+        [attr.aria-label]="clearLabel()"
+        (click)="clear($event)"
+      >
+        <i class="nt nt-x" aria-hidden="true"></i>
+      </button>
+    }
+    <span
+      [class]="
+        classFor(
+          'dropdownButton',
+          'neural-tree-select-dropdown-root',
+          'neural-tree-select-dropdown-base'
+        )
+      "
+      aria-hidden="true"
+      ><i class="nt nt-chevron-down"></i
+    ></span>
+  </div>
+</div>
+
+<neural-popover
+  #treePopover
+  position="bottom-start"
+  [offset]="4"
+  [matchTriggerWidth]="true"
+  [restoreFocus]="true"
+  [role]="null"
+  [popoverId]="panelId"
+  [unstyled]="effectiveUnstyled()"
+  [classes]="{ content: panelClass() }"
+  (opened)="handleOpened()"
+  (closed)="handleClosed()"
+>
+  @if (filter()) {
+    <div
+      [class]="
+        classFor(
+          'header',
+          'neural-tree-select-header-root',
+          'neural-tree-select-header-base'
+        )
+      "
+    >
+      <i class="nt nt-search" aria-hidden="true"></i
+      ><input
+        #filterElement
+        type="search"
+        autocomplete="off"
+        [class]="
+          classFor(
+            'filter',
+            'neural-tree-select-filter-root',
+            'neural-tree-select-filter-base'
+          )
+        "
+        [value]="filterValue()"
+        [placeholder]="filterPlaceholder()"
+        (input)="updateFilter($event)"
+      />
+    </div>
+  }
+  @if (loading()) {
+    <div
+      role="status"
+      [class]="
+        classFor(
+          'loading',
+          'neural-tree-select-loading-root',
+          'neural-tree-select-loading-base'
+        )
+      "
+    >
+      <i class="nt nt-loader-3 nt-spin" aria-hidden="true"></i
+      >{{ loadingLabel() }}
+    </div>
+  } @else {
+    <neural-tree
+      [value]="nodes()"
+      [(expandedKeys)]="expandedKeys"
+      [(selectionKeys)]="selectionKeys"
+      [filterValue]="filterValue()"
+      [selectionMode]="selectionMode()"
+      [selectableNode]="
+        effectiveDisabled() || effectiveReadonly() ? blockTreeSelection : null
+      "
+      [emptyLabel]="emptyLabel()"
+      [ariaLabel]="ariaLabel() || dropdownLabel()"
+      [unstyled]="effectiveUnstyled()"
+      [compact]="true"
+      [virtualScroll]="virtualScroll()"
+      [treeClass]="classes().tree || ''"
+      (nodeSelect)="handleTreeSelection($event)"
+      (nodeUnselect)="handleTreeSelection($event)"
+    >
+      @if (nodeTemplate(); as template) {
+        <ng-template
+          neuralTreeNode
+          let-node
+          let-item="item"
+          let-selected="selected"
+          let-partial="partial"
+          let-expanded="expanded"
+          let-level="level"
+          ><ng-container
+            [ngTemplateOutlet]="template.templateRef"
+            [ngTemplateOutletContext]="{
+              $implicit: node,
+              item,
+              selected,
+              partial,
+              expanded,
+              level,
+            }"
+        /></ng-template>
+      }
+    </neural-tree>
+  }
+</neural-popover>

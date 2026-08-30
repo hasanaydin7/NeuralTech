@@ -1,0 +1,127 @@
+<article class="docs-page meter-group-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>MeterGroup</h1>
+    <p>
+      Multiple scalar measurements inside a known range, with independently
+      accessible meters, flexible labels, custom colors and icons, vertical
+      layout, and complete headless ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Live storage usage</h2>
+    <p>
+      Every segment references its visible label. Updating the Signal changes
+      both the visual allocation and bounded meter value.
+    </p>
+    <div class="demo-surface meter-demo-stack" data-testid="meter-group-basic">
+      <neural-meter-group
+        [items]="storage()"
+        ariaLabel="Storage usage"
+        [valueFormatter]="gigabytes"
+      />
+      <neural-button iconClass="nt nt-plus" (clicked)="addMediaUsage()">
+        Add media usage
+      </neural-button>
+    </div>
+    <app-code-example label="Basic" language="html" [code]="basicCode" />
+  </section>
+
+  <section id="colors">
+    <h2>Explicit colors and label position</h2>
+    <p>
+      Item colors override the six-color theme palette. Labels can lead or
+      follow the meters without changing their accessible relationship.
+    </p>
+    <div class="demo-surface meter-demo-stack" data-testid="meter-group-colors">
+      <neural-meter-group
+        [items]="channels"
+        labelPosition="start"
+        ariaLabel="Traffic channels"
+      />
+    </div>
+  </section>
+
+  <section id="vertical">
+    <h2>Vertical orientation</h2>
+    <p>
+      The meter stack changes axis independently from the label orientation.
+      Icons remain decorative because each meter references the text label.
+    </p>
+    <div
+      class="demo-surface meter-vertical-surface"
+      data-testid="meter-group-vertical"
+    >
+      <neural-meter-group
+        [items]="verticalItems"
+        orientation="vertical"
+        labelPosition="end"
+        labelOrientation="vertical"
+        ariaLabel="Runtime resources"
+      />
+    </div>
+    <app-code-example
+      label="Vertical layout"
+      language="html"
+      [code]="layoutCode"
+    />
+  </section>
+
+  <section id="range">
+    <h2>Custom range and formatting</h2>
+    <p>
+      Values use a shared range while the formatter controls visible text only.
+      Item <code>valueText</code> remains the assistive description.
+    </p>
+    <div class="demo-surface" data-testid="meter-group-range">
+      <neural-meter-group
+        [items]="channels"
+        [max]="200"
+        [valueFormatter]="gigabytes"
+        ariaLabel="Allocated capacity"
+      />
+    </div>
+    <app-code-example
+      label="Custom range"
+      language="html"
+      [code]="customRangeCode"
+    />
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Meter semantics, visible percentages, label relationships, and structural
+      hooks remain while consumer classes own every visual detail.
+    </p>
+    <div class="demo-surface" data-testid="meter-group-headless">
+      <neural-meter-group
+        [items]="channels"
+        unstyled
+        meterGroupClass="docs-headless-meter-group--custom"
+        [classes]="headlessClasses"
+        ariaLabel="Headless channels"
+      />
+    </div>
+    <app-code-example
+      label="Headless MeterGroup"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <footer class="docs-page-next">
+    <span>Next component</span>
+    <a href="/docs/components/paginator">Paginator →</a>
+  </footer>
+</article>

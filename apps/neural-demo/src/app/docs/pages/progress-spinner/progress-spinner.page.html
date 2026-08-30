@@ -1,0 +1,129 @@
+<article class="docs-page progress-spinner-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>ProgressSpinner</h1>
+    <p>
+      Accessible indeterminate SVG progress with localized defaults,
+      configurable motion and stroke, semantic colors, and complete headless
+      ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Localized default</h2>
+    <p>
+      The empty form receives its accessible name from the active locale. Use a
+      specific label when the loading task needs more context.
+    </p>
+    <div class="demo-surface progress-spinner-row" data-testid="spinner-basic">
+      <neural-progress-spinner />
+      <neural-progress-spinner ariaLabel="Loading search results" />
+    </div>
+    <app-code-example label="Basic" language="html" [code]="basicCode" />
+  </section>
+
+  <section id="sizes">
+    <h2>Sizes</h2>
+    <div class="demo-surface progress-spinner-row" data-testid="spinner-sizes">
+      <neural-progress-spinner size="small" ariaLabel="Small spinner" />
+      <neural-progress-spinner ariaLabel="Medium spinner" />
+      <neural-progress-spinner size="large" ariaLabel="Large spinner" />
+    </div>
+  </section>
+
+  <section id="severities">
+    <h2>Semantic severities</h2>
+    <div
+      class="demo-surface progress-spinner-row"
+      data-testid="spinner-severities"
+    >
+      <neural-progress-spinner severity="primary" ariaLabel="Primary task" />
+      <neural-progress-spinner
+        severity="secondary"
+        ariaLabel="Secondary task"
+      />
+      <neural-progress-spinner severity="neutral" ariaLabel="Neutral task" />
+      <neural-progress-spinner severity="info" ariaLabel="Information task" />
+      <neural-progress-spinner severity="success" ariaLabel="Successful task" />
+      <neural-progress-spinner severity="warning" ariaLabel="Warning task" />
+      <neural-progress-spinner severity="error" ariaLabel="Failed task" />
+    </div>
+  </section>
+
+  <section id="label">
+    <h2>Visible and assistive labels</h2>
+    <p>
+      A visible label can stay concise while <code>ariaValueText</code>
+      describes the current task state in more detail.
+    </p>
+    <div class="demo-surface progress-spinner-row" data-testid="spinner-label">
+      <neural-progress-spinner
+        size="large"
+        severity="success"
+        label="Uploading..."
+        ariaValueText="Preparing file 3 of 8"
+      />
+    </div>
+    <app-code-example label="Task labels" language="html" [code]="labelCode" />
+  </section>
+
+  <section id="motion">
+    <h2>Stroke and speed</h2>
+    <p>
+      Speed is a rotation duration in milliseconds. Rotation stops automatically
+      when reduced motion is requested.
+    </p>
+    <div class="demo-surface progress-spinner-row" data-testid="spinner-motion">
+      <neural-progress-spinner
+        [strokeWidth]="2"
+        [speed]="600"
+        ariaLabel="Fast thin spinner"
+      />
+      <neural-progress-spinner
+        [strokeWidth]="6"
+        [speed]="1200"
+        severity="warning"
+        ariaLabel="Slow thick spinner"
+      />
+    </div>
+    <app-code-example label="Motion" language="html" [code]="motionCode" />
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Progress semantics and the SVG structure remain while consumer classes own
+      sizing, stroke, color, and motion.
+    </p>
+    <div
+      class="demo-surface progress-spinner-row"
+      data-testid="spinner-headless"
+    >
+      <neural-progress-spinner
+        unstyled
+        spinnerClass="docs-headless-spinner--custom"
+        [classes]="headlessClasses"
+        label="Building"
+      />
+    </div>
+    <app-code-example
+      label="Headless ProgressSpinner"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <footer class="docs-page-next">
+    <span>Next component</span>
+    <a href="/docs/components/radio">Radio →</a>
+  </footer>
+</article>

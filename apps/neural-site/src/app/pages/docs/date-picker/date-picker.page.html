@@ -1,0 +1,951 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="date-picker-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="DatePicker documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-calendar-event"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-20 -top-24 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FORMS</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  DatePicker
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A timezone-safe date, range, multiple, month, year, time and
+                  datetime control with localized parsing, accessible grid
+                  navigation and typed Angular Forms integration.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Serializable values</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Locale +
+                    RTL</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Signal
+                    Forms ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical standalone component from its granular
+                secondary entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Basic date selection</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The model is a plain <code>NeuralDateParts</code> object. It
+                survives SSR, JSON serialization and hydration without an
+                implicit timezone conversion.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="delivery.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-md">
+                  <label
+                    class="mb-2 block text-sm font-bold"
+                    for="delivery-date"
+                    >Delivery date</label
+                  >
+                  <neural-date-picker
+                    datePickerId="delivery-date"
+                    [(value)]="deliveryDate"
+                    [today]="today"
+                    placeholder="Choose delivery date"
+                    ariaLabel="Delivery date"
+                    clearable
+                    fluid
+                    (selectionChange)="selectionLabel($event)"
+                  />
+                  <p class="mt-3 text-sm text-[var(--site-text-muted)]">
+                    Model: <code>{{ formatDate(deliveryDate()) }}</code>
+                  </p>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="calendar-views" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Day, month and year views</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The day header moves into month and year selection. Dedicated
+                picker modes expose the same navigation for month-only and
+                year-only workflows; week numbers and adjacent days are opt-in.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="views.html"
+                language="html"
+                [code]="viewsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto grid w-full max-w-4xl gap-5 lg:grid-cols-3"
+                >
+                  <div class="grid gap-2 text-sm font-bold">
+                    <span>Date + ISO weeks</span>
+                    <neural-date-picker
+                      [(value)]="calendarDate"
+                      [today]="today"
+                      [firstDayOfWeek]="1"
+                      showWeekNumbers
+                      showOtherMonths
+                      selectOtherMonths
+                      fluid
+                    />
+                  </div>
+                  <div class="grid gap-2 text-sm font-bold">
+                    <span>Month</span>
+                    <neural-date-picker
+                      pickerMode="month"
+                      [(value)]="monthValue"
+                      [today]="today"
+                      fluid
+                    />
+                  </div>
+                  <div class="grid gap-2 text-sm font-bold">
+                    <span>Year</span>
+                    <neural-date-picker
+                      pickerMode="year"
+                      [(value)]="yearValue"
+                      [today]="today"
+                      fluid
+                    />
+                  </div>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="selection" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Single, range and multiple</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Range retains an incomplete start and previews the interval on
+                hover. Multiple selection toggles immutable date entries and can
+                keep the overlay open.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="selection.html"
+                language="html"
+                [code]="selectionCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto grid w-full max-w-3xl items-start gap-5 md:grid-cols-2"
+                >
+                  <div class="grid content-start gap-2 text-sm font-bold">
+                    <span>Travel period</span>
+                    <neural-date-picker
+                      selectionMode="range"
+                      [(value)]="rangeValue"
+                      [today]="today"
+                      [dateFilter]="bookingFilter"
+                      placeholder="Start – end"
+                      fluid
+                    />
+                    <small class="font-normal text-[var(--site-text-muted)]"
+                      >{{ formatRange(rangeValue()) }}</small
+                    >
+                  </div>
+                  <div class="grid content-start gap-2 text-sm font-bold">
+                    <span>Available days</span>
+                    <neural-date-picker
+                      selectionMode="multiple"
+                      [(value)]="multipleValue"
+                      [today]="today"
+                      [closeOnSelect]="false"
+                      clearable
+                      fluid
+                    />
+                    <small class="font-normal text-[var(--site-text-muted)]"
+                      >{{ multipleValue()?.length ?? 0 }} selected</small
+                    >
+                  </div>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="constraints" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Availability and calendar constraints
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Bounds, blocked dates, weekdays and predicates compose into one
+                deterministic disabled state. This demo blocks weekends, two
+                explicit dates, and days 13 and 21.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="constraints.html"
+                language="html"
+                [code]="constraintsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-md">
+                  <neural-date-picker
+                    [(value)]="constrainedDate"
+                    [today]="today"
+                    [minDate]="minDate"
+                    [maxDate]="maxDate"
+                    [disabledDays]="[0, 6]"
+                    [disabledDates]="blockedDates"
+                    [dateFilter]="bookingFilter"
+                    showOtherMonths
+                    selectOtherMonths
+                    placeholder="Choose an available weekday"
+                    clearable
+                    fluid
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="footer-actions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Immediate and draft actions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Today and Clear commit immediately by default. Apply/Cancel can
+                hold ordinary date selections in a draft; time modes always use
+                the draft model.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="footer.html"
+                language="html"
+                [code]="footerCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-md">
+                  <neural-date-picker
+                    selectionMode="range"
+                    [(value)]="approvalRange"
+                    [today]="today"
+                    showApplyActions
+                    [showQuickActions]="false"
+                    placeholder="Select and apply a range"
+                    fluid
+                  />
+                  <p class="mt-3 text-sm text-[var(--site-text-muted)]">
+                    Committed: {{ formatRange(approvalRange()) }}
+                  </p>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="time" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Time and datetime</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use 12/24-hour display, optional seconds and independent step
+                sizes. Datetime bounds validate the complete draft before it is
+                committed.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="time.html"
+                language="html"
+                [code]="timeCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto grid w-full max-w-3xl items-start gap-5 md:grid-cols-2"
+                >
+                  <div class="grid content-start gap-2 text-sm font-bold">
+                    <span>Meeting time</span>
+                    <neural-date-picker
+                      pickerMode="time"
+                      [(value)]="timeValue"
+                      [hourFormat]="12"
+                      [minuteStep]="15"
+                      showSeconds
+                      fluid
+                    />
+                    <small class="font-normal text-[var(--site-text-muted)]"
+                      >{{ formatTime(timeValue()) }}</small
+                    >
+                  </div>
+                  <div class="grid content-start gap-2 text-sm font-bold">
+                    <span>Release window</span>
+                    <neural-date-picker
+                      pickerMode="datetime"
+                      [(value)]="dateTimeValue"
+                      [today]="today"
+                      [minuteStep]="15"
+                      [minDateTime]="minDateTime"
+                      [maxDateTime]="maxDateTime"
+                      fluid
+                    />
+                  </div>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="localization" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Localization and week ownership
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Runtime locale controls labels, strict display format, month and
+                weekday names, direction and default week start. A component
+                override never mutates the application locale. Use
+                <code>provideNeuralNg(&#123; locale &#125;)</code> for the
+                application default, or bind <code>[locale]</code> for an
+                isolated runtime override.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="locale.html"
+                language="html"
+                [code]="localeCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto grid w-full max-w-2xl gap-5"
+                >
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <div class="grid gap-2 text-sm font-bold">
+                      <span>Locale</span>
+                      <neural-select
+                        [options]="localeOptions"
+                        optionLabel="label"
+                        optionValue="value"
+                        [(value)]="localeChoice"
+                        ariaLabel="DatePicker locale"
+                        appendTo="body"
+                        fluid
+                      />
+                    </div>
+                    <div class="grid gap-2 text-sm font-bold">
+                      <span>First day of week</span>
+                      <neural-select
+                        [options]="weekStartOptions"
+                        optionLabel="label"
+                        optionValue="value"
+                        [(value)]="weekStartChoice"
+                        ariaLabel="First day of week"
+                        appendTo="body"
+                        fluid
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="mx-auto grid w-full max-w-md gap-2 text-sm font-bold"
+                  >
+                    <span>Localized DatePicker</span>
+                    <neural-date-picker
+                      [locale]="activeLocale()"
+                      [firstDayOfWeek]="firstDayOverride()"
+                      [(value)]="localizedDate"
+                      [today]="today"
+                      clearable
+                      fluid
+                    />
+                    <small class="font-normal text-[var(--site-text-muted)]">
+                      {{ activeLocale().code }} · {{
+                      activeLocale().direction.toUpperCase() }} · week starts {{
+                      effectiveFirstDayLabel() }}
+                    </small>
+                  </div>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">All three Angular Forms APIs</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The same typed value contract works with Reactive Forms,
+                template-driven forms and Angular Signal Forms without a second
+                state store or compatibility wrapper.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="forms.html"
+                language="html"
+                [code]="formsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto grid w-full max-w-4xl gap-5 lg:grid-cols-3"
+                >
+                  <div class="grid gap-2 text-sm font-bold">
+                    <span>Reactive Forms</span>
+                    <neural-date-picker
+                      [formControl]="reactiveDate"
+                      [today]="today"
+                      fluid
+                    />
+                  </div>
+                  <div class="grid gap-2 text-sm font-bold">
+                    <span>NgModel</span>
+                    <neural-date-picker
+                      name="templateDate"
+                      [(ngModel)]="templateDate"
+                      [today]="today"
+                      fluid
+                    />
+                  </div>
+                  <div class="grid gap-2 text-sm font-bold">
+                    <span>Signal Forms</span>
+                    <neural-date-picker
+                      [formField]="dateForm.delivery"
+                      [today]="today"
+                      fluid
+                    />
+                  </div>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="templates" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed templates</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Day, header, footer and all three navigation icon templates
+                expose guarded contexts while the component retains behavior.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="templates.html"
+                language="html"
+                [code]="templatesCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-md">
+                  <neural-date-picker
+                    [(value)]="templatedDate"
+                    [today]="today"
+                    fluid
+                  >
+                    <ng-template
+                      neuralDatePickerDay
+                      let-day
+                      let-selected="selected"
+                    >
+                      <span class="inline-flex items-center gap-1"
+                        >{{ day.date.day }} @if (selected) {
+                        <i class="nt nt-check text-[.65rem]"></i> }</span
+                      >
+                    </ng-template>
+                    <ng-template
+                      neuralDatePickerTriggerIcon
+                      let-className="className"
+                    >
+                      <i [class]="className + ' nt-calendar-event'"></i>
+                    </ng-template>
+                  </neural-date-picker>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="events" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic events</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Model synchronization remains separate from user intent and
+                overlay/view lifecycle events.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="events.html"
+                language="html"
+                [code]="eventsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-md">
+                  <neural-date-picker
+                    [(value)]="eventDate"
+                    [today]="today"
+                    clearable
+                    fluid
+                    (opened)="track('opened')"
+                    (closed)="track('closed')"
+                    (selected)="track('selected', $event)"
+                    (cleared)="track('cleared', $event)"
+                    (viewChanged)="track('viewChanged', $event)"
+                    (monthChanged)="track('monthChanged', $event)"
+                    (yearChanged)="track('yearChanged', $event)"
+                    (invalidInput)="track('invalidInput', $event)"
+                  />
+                  <p
+                    class="mt-3 break-all text-sm text-[var(--site-text-muted)]"
+                  >
+                    {{ lastEvent() }}
+                  </p>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Unstyled and typed class slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Unstyled removes NeuralNg visual classes but preserves
+                structural hooks, ARIA, keyboard behavior and overlay ownership.
+                This deliberately distinct example proves consumer ownership.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="headless.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-md">
+                  <neural-date-picker
+                    [(value)]="headlessDate"
+                    [today]="today"
+                    unstyled
+                    [classes]="headlessClasses"
+                    fluid
+                  />
+                </div>
+              </code-view>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <span class="text-xs font-black tracking-[.16em] text-blue-500"
+                >ACCESSIBILITY</span
+              >
+              <h1 class="mt-4 text-4xl font-black tracking-[-.04em]">
+                A calendar operable without a pointer
+              </h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                DatePicker follows the dialog/grid interaction model, preserves
+                focus ownership and exposes localized full-date announcements.
+              </p>
+            </header>
+            <section id="semantic-model" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic model</h2>
+              <div class="mt-5 grid gap-4 md:grid-cols-2">
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">Trigger</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    <code>aria-haspopup="dialog"</code>, expanded state and the
+                    stable panel relationship remain on the input.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">Calendar</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Native grid, row and gridcell roles use roving tabindex.
+                    Full weekday and date names remain available to assistive
+                    technology.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard contract</h2>
+              <div
+                class="mt-5 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[38rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Key</th>
+                      <th class="p-4">Behavior</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    <tr>
+                      <td class="p-4 font-bold">Arrow keys</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        Move by day/week; time fields step their active unit.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="p-4 font-bold">Home / End</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        Move to the locale-aware start/end of the current week.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="p-4 font-bold">Page Up / Down</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        Move one month; Shift moves one year.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="p-4 font-bold">Enter / Space</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        Select the active value.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="p-4 font-bold">Escape</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        Cancel the draft, close and restore focus.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="focus-overlay" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Focus and overlay</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The shared Popover foundation uses the browser top layer,
+                matches trigger width, flips/clamps inside the viewport and
+                restores focus on dismissal. Destroying the control releases
+                listeners and pending focus work.
+              </p>
+            </section>
+            <section id="locale-rtl" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Locale and RTL</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Month/day names, messages, strict date format and week start
+                come from NeuralLocaleService or a component override. RTL
+                reverses logical horizontal navigation without changing the
+                serialized value model.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <span class="text-xs font-black tracking-[.16em] text-blue-500"
+                >PUBLIC CONTRACT</span
+              >
+              <h1 class="mt-4 text-4xl font-black tracking-[-.04em]">
+                DatePicker API
+              </h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Canonical export: <code>NeuralDatePicker</code>.
+                <code>DatePickerComponent</code> remains a deprecated
+                compatibility alias.
+              </p>
+            </header>
+            <section id="models" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Models</h2>
+              <div
+                class="mt-5 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[42rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Model</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    <tr>
+                      <td class="p-4 font-bold">value</td>
+                      <td class="p-4">
+                        <code
+                          >NeuralDatePickerValue&lt;TMode, TPickerMode&gt;</code
+                        >
+                      </td>
+                      <td class="p-4"><code>null</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The complete input surface is grouped by responsibility.
+              </p>
+              <div class="mt-5 grid gap-4 md:grid-cols-2">
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">Mode and availability</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    <code>selectionMode</code>, <code>pickerMode</code>,
+                    <code>minDate</code>, <code>maxDate</code>,
+                    <code>minDateTime</code>, <code>maxDateTime</code>,
+                    <code>disabledDates</code>, <code>disabledDays</code>,
+                    <code>dateFilter</code>, <code>isDateDisabled</code>.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">Calendar and time</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    <code>today</code>, <code>firstDayOfWeek</code>,
+                    <code>showOtherMonths</code>,
+                    <code>selectOtherMonths</code>,
+                    <code>showWeekNumbers</code>, <code>showSeconds</code>,
+                    <code>hourFormat</code>, <code>hourStep</code>,
+                    <code>minuteStep</code>, <code>secondStep</code>.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">Commit behavior</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    <code>closeOnSelect</code>, <code>footerActions</code>,
+                    <code>showQuickActions</code>,
+                    <code>showApplyActions</code>, <code>clearable</code>.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">Form and DOM</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    <code>disabled</code>, <code>readonly</code>,
+                    <code>required</code>, <code>invalid</code>,
+                    <code>pending</code>, <code>touched</code>,
+                    <code>dirty</code>, <code>name</code>,
+                    <code>datePickerId</code>, <code>ariaLabel</code>,
+                    <code>placeholder</code>, <code>locale</code>,
+                    <code>fluid</code>.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 md:col-span-2"
+                >
+                  <h3 class="font-black">Visual ownership</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    <code>unstyled</code>, <code>datePickerClass</code>,
+                    <code>iconClass</code>, <code>clearIconClassName</code>,
+                    <code>previousIconClass</code>, <code>nextIconClass</code>,
+                    <code>classes</code>.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section id="outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Outputs</h2>
+              <div class="mt-5 flex flex-wrap gap-2">
+                @for (item of ['valueChange', 'selectionChange', 'selected',
+                'cleared', 'openChange', 'opened', 'closed', 'viewChanged',
+                'monthChanged', 'yearChanged', 'invalidInput', 'touch']; track
+                item) {
+                <code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-sm"
+                  >{{ item }}</code
+                >
+                }
+              </div>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                <code>valueChange</code> synchronizes the model. Semantic
+                outputs describe explicit user intent and do not fire for
+                unrelated programmatic writes.
+              </p>
+            </section>
+            <section id="template-api" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed template directives</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>neuralDatePickerDay</code>,
+                <code>neuralDatePickerHeader</code>,
+                <code>neuralDatePickerFooter</code>,
+                <code>neuralDatePickerTriggerIcon</code>,
+                <code>neuralDatePickerPreviousIcon</code> and
+                <code>neuralDatePickerNextIcon</code>.
+              </p>
+            </section>
+            <section id="utilities" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Timezone-safe utilities</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The entry point exports strict parsing/formatting, comparison,
+                clamping, calendar construction, ISO week, native Date boundary
+                conversion and date/time arithmetic helpers. Use
+                <code>parseNeuralLocaleDate</code> instead of browser-dependent
+                <code>Date.parse</code>.
+              </p>
+            </section>
+            <section id="forms-api" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Forms contract</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>NeuralDatePicker</code> implements
+                <code>FormValueControl</code>. Disabled, readonly, required,
+                invalid, pending, touched and dirty state can flow through
+                Angular Forms; do not add another CVA or mirror the value.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <span class="text-xs font-black tracking-[.16em] text-blue-500"
+                >DESIGN SYSTEM</span
+              >
+              <h1 class="mt-4 text-4xl font-black tracking-[-.04em]">
+                DatePicker tokens
+              </h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Component variables fall back to semantic NeuralNg primary,
+                surface, border, text and focus tokens.
+              </p>
+            </header>
+            <section id="tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Design tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="['--neural-date-picker-width',
+                '--neural-date-picker-min-height',
+                '--neural-date-picker-padding',
+                '--neural-date-picker-font-size', '--neural-date-picker-color',
+                '--neural-date-picker-background',
+                '--neural-date-picker-border', '--neural-date-picker-radius',
+                '--neural-date-picker-shadow',
+                '--neural-date-picker-focus-ring',
+                '--neural-date-picker-icon-color',
+                '--neural-date-picker-icon-color-hover',
+                '--neural-date-picker-trigger-border',
+                '--neural-date-picker-panel-padding',
+                '--neural-date-picker-panel-color',
+                '--neural-date-picker-panel-background',
+                '--neural-date-picker-panel-border',
+                '--neural-date-picker-panel-radius',
+                '--neural-date-picker-panel-shadow',
+                '--neural-date-picker-panel-backdrop-filter',
+                '--neural-date-picker-grid-gap',
+                '--neural-date-picker-weekday-color',
+                '--neural-date-picker-day-radius',
+                '--neural-date-picker-day-background-hover',
+                '--neural-date-picker-day-background-selected',
+                '--neural-date-picker-day-color-selected',
+                '--neural-date-picker-day-color-outside',
+                '--neural-date-picker-today-color',
+                '--neural-date-picker-disabled-opacity',
+                '--neural-date-picker-border-color-invalid']"
+              />
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>NeuralDatePickerClasses</code> covers
+                root/input/trigger/panel, announcements, every calendar view,
+                week/day states, range states, time fields and footer actions.
+                Explicit aliases <code>trigger</code> and
+                <code>rangeStart/Middle/End</code> remain supported.
+              </p>
+            </section>
+            <section id="cascade" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Cascade order</h2>
+              <div
+                class="mt-5 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-6 font-mono text-sm leading-8"
+              >
+                Structural hooks → component tokens → Neutral theme →
+                Glass/Futuristic token overrides → consumer classes
+              </div>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Global
+                <code>provideNeuralNg(&#123; unstyled: true &#125;)</code>,
+                Field-owned unstyled mode and component
+                <code>unstyled</code> all retain behavior and structural
+                <code>*-root</code> hooks.
+              </p>
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

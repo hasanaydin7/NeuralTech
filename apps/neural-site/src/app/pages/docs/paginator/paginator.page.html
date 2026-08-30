@@ -1,0 +1,522 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="paginator-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Paginator documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="
+                'translateX(calc(' +
+                selectedViewIndex() * 100 +
+                '% + ' +
+                selectedViewIndex() * 0.25 +
+                'rem))'
+              "
+            ></span>
+            <neural-tab value="component" iconClass="nt-list-numbers"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-blue-500"
+                    >DATA</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-0.045em] sm:text-5xl"
+                >
+                  Paginator
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A controlled Signal paginator with deterministic page windows,
+                  localized range reports, complete user events and native
+                  navigation semantics.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Zero-based model</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Localized report</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Import
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical standalone component from its granular
+                entry point. The legacy
+                <code class="text-blue-500">PaginatorComponent</code> export is
+                retained only as a compatibility alias.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="app.ts"
+                  language="typescript"
+                  [code]="importCode"
+                  [theme]="appearance.mode()"
+                />
+              </div>
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Basic pagination
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Bind both models when page navigation also controls a visible
+                collection. The event range is directly compatible with
+                <code class="text-blue-500">slice(startIndex, endIndex)</code>.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="products.html"
+                  language="html"
+                  [code]="basicCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="w-full space-y-5">
+                    <div class="grid gap-2 sm:grid-cols-2">
+                      @for (item of visibleItems(); track item.id) {
+                      <div
+                        class="flex items-center justify-between rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-3"
+                      >
+                        <div>
+                          <p class="text-sm font-bold">{{ item.name }}</p>
+                          <p class="mt-1 text-xs text-[var(--site-text-muted)]">
+                            {{ item.category }}
+                          </p>
+                        </div>
+                        <span class="font-mono text-xs text-blue-500"
+                          >#{{ item.id }}</span
+                        >
+                      </div>
+                      }
+                    </div>
+                    <neural-paginator
+                      [totalItems]="items.length"
+                      [(pageIndex)]="pageIndex"
+                      [(pageSize)]="pageSize"
+                      [pageSizeOptions]="[5, 10, 20]"
+                      (pageChange)="handlePageChange($event)"
+                    />
+                    <p
+                      class="text-center text-xs text-[var(--site-text-muted)]"
+                    >
+                      {{ lastEvent() }}
+                    </p>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="window" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Stable page window
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Large collections retain their useful edges and compress the
+                middle range with non-interactive ellipsis markers.
+                <code class="text-blue-500">pageLinkCount</code> is normalized
+                to at least five.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="window.html"
+                  language="html"
+                  [code]="windowCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="w-full">
+                    <neural-paginator
+                      [totalItems]="420"
+                      [(pageIndex)]="compactPage"
+                      [pageSize]="10"
+                      [pageLinkCount]="5"
+                    />
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="report" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Report and local labels
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The global locale supplies every label by default. A component
+                may override the report and any accessible label without
+                mutating application-wide messages.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="locale.html"
+                  language="html"
+                  [code]="reportCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="w-full">
+                    <neural-paginator
+                      [totalItems]="96"
+                      [(pageIndex)]="localizedPage"
+                      reportTemplate="Showing {start}–{end} of {total} workflows · page {page}/{pageCount}"
+                      [labels]="{
+                        navigation: 'Workflow pages',
+                        previousPage: 'Previous workflows',
+                        nextPage: 'Next workflows',
+                        page: 'Workflow page {page}',
+                      }"
+                    />
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Visibility and states
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                First/last controls and the report are independently optional.
+                Disabled state reaches buttons and the page-size selector; an
+                empty collection produces no invalid page buttons.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="states.html"
+                  language="html"
+                  [code]="statesCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="grid w-full gap-7">
+                    <div>
+                      <p class="mb-3 text-sm font-bold">Compact controls</p>
+                      <neural-paginator
+                        [totalItems]="72"
+                        [showFirstLast]="false"
+                        [showReport]="false"
+                      />
+                    </div>
+                    <div>
+                      <p class="mb-3 text-sm font-bold">Disabled</p>
+                      <neural-paginator
+                        [totalItems]="72"
+                        [pageSizeOptions]="[10, 20]"
+                        disabled
+                      />
+                    </div>
+                    <div>
+                      <p class="mb-3 text-sm font-bold">Empty collection</p>
+                      <neural-paginator [totalItems]="0" />
+                    </div>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="variants" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Visual variants
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Rounded controls provide a circular navigation language while
+                the outlined variant removes visible button borders and resting
+                backgrounds. It adds a primary-tinted surface only on hover and
+                identifies the active page with the primary foreground. Both
+                variants preserve sizing and focus feedback, and they can be
+                combined.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="variants.html"
+                  language="html"
+                  [code]="variantsCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="grid w-full gap-7">
+                    <div>
+                      <p class="mb-3 text-sm font-bold">Rounded</p>
+                      <neural-paginator
+                        [totalItems]="96"
+                        [showReport]="false"
+                        rounded
+                      />
+                    </div>
+                    <div>
+                      <p class="mb-3 text-sm font-bold">Borderless outlined</p>
+                      <neural-paginator
+                        [totalItems]="96"
+                        [showReport]="false"
+                        outlined
+                      />
+                    </div>
+                    <div>
+                      <p class="mb-3 text-sm font-bold">Combined</p>
+                      <neural-paginator
+                        [totalItems]="96"
+                        [showReport]="false"
+                        rounded
+                        outlined
+                      />
+                    </div>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Unstyled and typed classes
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Headless mode removes all NeuralNg visual classes while native
+                structure, state normalization, localization, events and ARIA
+                remain intact.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="headless.html"
+                  language="html"
+                  [code]="unstyledCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="w-full">
+                    <neural-paginator
+                      unstyled
+                      [totalItems]="180"
+                      [(pageIndex)]="headlessPage"
+                      [pageSizeOptions]="[10, 20, 50]"
+                      [classes]="headlessClasses"
+                    />
+                  </div>
+                </code-view>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 backdrop-blur-[30px] sm:p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Native pagination model</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Paginator uses a labelled navigation landmark, native list and
+                button semantics, a current-page marker and polite range
+                announcements.
+              </p>
+            </header>
+            <section id="landmark" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Landmark and structure</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The root is a <code class="text-blue-500">nav</code> labelled by
+                the active locale. Page controls live in a native unordered
+                list; ellipses are presentation-only and never enter the tab
+                order.
+              </p>
+            </section>
+            <section id="announcements" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Current page and report</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The selected button exposes
+                <code class="text-blue-500">aria-current="page"</code>. The
+                range report uses
+                <code class="text-blue-500">aria-live="polite"</code> and
+                <code class="text-blue-500">aria-atomic="true"</code> so
+                navigation updates are announced as one message.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard behavior</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Tab follows normal document order. Enter and Space activate the
+                focused native button. The composed NeuralSelect adds its
+                standard listbox navigation, typeahead and Escape behavior.
+                Boundary controls are genuinely disabled.
+              </p>
+            </section>
+            <section id="localized-labels" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Localized labels</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                First, previous, next, last, page and page-size labels resolve
+                from <code class="text-blue-500">NeuralLocaleService</code>. The
+                <code class="text-blue-500">labels</code> input merges a partial
+                local override over those messages.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 backdrop-blur-[30px] sm:p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                API
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Public contract</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Signal models remain controlled; semantic events are emitted
+                only after direct user interaction.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs and models</h2>
+              <div
+                class="mt-5 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[46rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="events" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Events</h2>
+              <div class="mt-5 grid gap-3">
+                @for (item of outputs; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <div class="flex flex-wrap items-center gap-3">
+                    <code class="text-blue-500">{{ item[0] }}</code>
+                    <span
+                      class="font-mono text-xs text-[var(--site-text-muted)]"
+                      >{{ item[1] }}</span
+                    >
+                  </div>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                @for (slot of classSlots; track slot[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ slot[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ slot[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="page-state" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">NeuralPageChange</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The payload contains
+                <code class="text-blue-500">pageIndex</code>,
+                <code class="text-blue-500">pageSize</code>,
+                <code class="text-blue-500">pageCount</code>,
+                <code class="text-blue-500">totalItems</code>,
+                <code class="text-blue-500">startIndex</code> and
+                <code class="text-blue-500">endIndex</code>. Start is inclusive
+                and end is exclusive.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 backdrop-blur-[30px] sm:p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Paginator tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Every documented variable below is verified against the shipped
+                Neutral theme and the component’s real CSS usage.
+              </p>
+            </header>
+            <section id="design-tokens" class="scroll-mt-28 pt-16">
+              <site-design-token-list [tokens]="tokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

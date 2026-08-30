@@ -1,0 +1,56 @@
+# @neural-ng/mcp-server
+
+Read-only NeuralNg MCP server for component contracts and compact theme recipes.
+
+RUN
+npx -y @neural-ng/mcp-server
+
+COMPONENT TOOLS
+- search_components: search selectors, entry points, README and llms.txt text.
+- get_component_contract: resolve exact public selector/model/form contracts.
+- recommend_components: deterministic component recommendations for a UI goal.
+
+THEME TOOLS
+- create_theme_recipe: create a sparse recipe from high-level decisions.
+- validate_theme_recipe: validate compact JSON against schema and token contract.
+- edit_theme_recipe: apply safe dotted set/unset changes and revalidate.
+- diff_theme_recipes: return only changed compact recipe paths.
+- get_component_theme_contract: read one component's supported theme properties.
+- compile_theme_recipe: return summary, diagnostics and artifact sizes, not full CSS.
+
+RESOURCES
+- neural://catalog
+- neural://package/exports
+- neural://themes/catalog
+- neural://themes/schema
+- neural://themes/presets
+- neural://themes/presets/neutral
+- neural://themes/presets/glass
+- neural://themes/presets/mist
+- neural://themes/presets/futuristic
+- neural://themes/ai-guide
+- neural://components/{id}/contract
+- neural://components/{id}/readme
+- neural://components/{id}/llms
+
+THEME RULES
+- Choose neutral, glass, mist, or futuristic as the compact recipe base.
+- Work on the compact recipe; do not emit or request all 1,348 resolved tokens.
+- Read only the target component theme contract before adding component overrides.
+- Prefer detail=names. Request defaults only when values are required.
+- Validate every created or edited recipe.
+- Use diff_theme_recipes instead of repeating unchanged recipe fields.
+- Use `npx neural-theme build` to write CSS, tokens, reports and type artifacts.
+
+GENERAL RULES
+- Treat MCP results as read-only package documentation and deterministic tooling.
+- Import components from the exact entryPoint returned by the contract.
+- Use returned selectors and model names; do not invent aliases.
+- The server does not edit projects, execute shell commands, install packages,
+  access the network or read arbitrary filesystem paths.
+
+THEME QUALITY AND MIGRATION
+- Prefer presets with quality=release unless the user explicitly requests preview styling.
+- Neutral is release quality; Glass, Mist, and Futuristic are experimental preview presets.
+- Theme validation rejects declaration injection, external CSS URLs and malformed aliases.
+- MCP does not rewrite legacy recipes. Use neural-theme migrate or migrateThemeRecipe() first.

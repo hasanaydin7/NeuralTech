@@ -1,0 +1,54 @@
+.textarea-docs-page {
+  max-width: 58rem;
+}
+
+.textarea-demo-surface {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+
+  > label,
+  .resize-grid label,
+  .state-grid label {
+    display: grid;
+    gap: 0.45rem;
+    color: var(--neural-color-text-strong);
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+}
+
+.resize-grid,
+.state-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.docs-headless-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 7rem;
+  padding: 0.9rem 1rem;
+  color: #e0f2fe;
+  caret-color: #7dd3fc;
+  background: #082f49;
+  border: 1px solid #0ea5e9;
+  border-radius: 0.8rem;
+  font: inherit;
+  resize: vertical;
+}
+
+.docs-headless-textarea:focus-visible {
+  outline: 2px solid #7dd3fc;
+  outline-offset: 2px;
+}
+
+@media (max-width: 42rem) {
+  .resize-grid,
+  .state-grid {
+    grid-template-columns: 1fr;
+  }
+}

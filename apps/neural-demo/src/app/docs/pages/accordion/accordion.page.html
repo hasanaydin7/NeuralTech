@@ -1,0 +1,102 @@
+<article class="docs-page accordion-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components</span>
+    <h1 class="docs-hero__title">Accordion</h1>
+    <p class="docs-hero__description">
+      Data-driven or composable disclosure panels with Signals state, complete
+      ARIA relationships, keyboard navigation, and typed headless slots.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <code-view class="mt-2" fileName="app.ts" language="ts" [code]="importCode" [startLine]="1" [showLineNumbers]="true"
+      [wrap]="false" maxHeight="34rem" [preview]="false" [theme]="resolvedMode()">
+    </code-view>
+  </section>
+
+  <section id="data">
+    <h2>Data-driven FAQ</h2>
+    <p>
+      Property accessors keep simple text collections concise. The disabled
+      panel remains visible but cannot be expanded.
+    </p>
+    <code-view class="mt-2" fileName="accordion-example.ts" language="ts" [code]="dataCode" [startLine]="1"
+      [showLineNumbers]="true" [wrap]="false" maxHeight="34rem" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content>
+        <neural-accordion accordionId="docs-faq" [items]="faqs" itemLabel="question" itemValue="id" itemContent="answer"
+          itemDisabled="disabled" [(value)]="openFaq" (panelChange)="changePanel($event)" />
+        <small class="accordion-event-report" aria-live="polite">
+          Last event: {{ lastEvent() }}
+        </small>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="multiple">
+    <h2>Composable multiple panels</h2>
+    <p>
+      Projected sections accept arbitrary Angular content. Arrow keys move
+      between enabled headers; Home and End jump to the boundaries.
+    </p>
+    <div class="accordion-demo-surface">
+      
+    </div>
+    <code-view class="mt-2" fileName="accordion-example.ts" language="ts" [code]="compositionCode" [startLine]="1"
+      [showLineNumbers]="true" [wrap]="false" maxHeight="34rem" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content>
+        <neural-accordion accordionId="docs-architecture" multiple [(value)]="openSections">
+        <neural-accordion-panel value="architecture">
+          <neural-accordion-header>Architecture</neural-accordion-header>
+          <neural-accordion-content>
+            Standalone entry points, Signals state, and SSR-safe deterministic
+            IDs.
+          </neural-accordion-content>
+        </neural-accordion-panel>
+        <neural-accordion-panel value="accessibility">
+          <neural-accordion-header>Accessibility</neural-accordion-header>
+          <neural-accordion-content>
+            Native buttons connect to inert collapsed regions through
+            aria-controls and aria-labelledby.
+          </neural-accordion-content>
+        </neural-accordion-panel>
+        <neural-accordion-panel value="tokens">
+          <neural-accordion-header>Design tokens</neural-accordion-header>
+          <neural-accordion-content>
+            Semantic component tokens inherit light and dark values from the
+            active theme.
+          </neural-accordion-content>
+        </neural-accordion-panel>
+      </neural-accordion>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Structural expansion and accessibility remain while the consumer owns the
+      complete visual layer.
+    </p>
+    <code-view class="mt-2" fileName="accordion-example.ts" language="ts" [code]="headlessCode" [startLine]="1"
+      [showLineNumbers]="true" [wrap]="false" maxHeight="34rem" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content>
+        <neural-accordion accordionId="docs-headless-accordion" unstyled [classes]="headlessClasses"
+        [(value)]="headlessValue">
+        <neural-accordion-panel value="semantic">
+          <neural-accordion-header>Semantic core</neural-accordion-header>
+          <neural-accordion-content>
+            NeuralNg keeps the behavior; this page supplies every visible style.
+          </neural-accordion-content>
+        </neural-accordion-panel>
+        <neural-accordion-panel value="classes">
+          <neural-accordion-header>Consumer classes</neural-accordion-header>
+          <neural-accordion-content>
+            Typed slots make generated class ownership explicit.
+          </neural-accordion-content>
+        </neural-accordion-panel>
+      </neural-accordion>
+      </div>
+    </code-view>
+  </section>
+</article>

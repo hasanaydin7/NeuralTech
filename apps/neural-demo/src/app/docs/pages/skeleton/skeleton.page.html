@@ -1,0 +1,124 @@
+<article class="docs-page skeleton-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Skeleton</h1>
+    <p>
+      Decorative loading placeholders with CSS-length sizing, three shapes,
+      pulse or wave motion, reduced-motion safety, and complete headless
+      ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Basic lines</h2>
+    <p>
+      The default rounded skeleton fills its container. Width and height accept
+      any valid CSS length.
+    </p>
+    <div class="demo-surface skeleton-stack" data-testid="skeleton-basic">
+      <neural-skeleton />
+      <neural-skeleton width="72%" />
+      <neural-skeleton width="45%" />
+    </div>
+    <app-code-example label="Basic" language="html" [code]="basicCode" />
+  </section>
+
+  <section id="shapes">
+    <h2>Shapes and dimensions</h2>
+    <div class="demo-surface skeleton-row" data-testid="skeleton-shapes">
+      <neural-skeleton shape="circle" size="3rem" />
+      <neural-skeleton shape="rounded" width="10rem" height="4rem" />
+      <neural-skeleton
+        shape="rectangle"
+        width="10rem"
+        height="4rem"
+        borderRadius="0"
+      />
+    </div>
+    <app-code-example label="Shapes" language="html" [code]="shapesCode" />
+  </section>
+
+  <section id="animation">
+    <h2>Motion</h2>
+    <p>
+      Pulse is calm by default, wave emphasizes active fetching, and none is
+      available for completely static placeholders. Reduced-motion preferences
+      stop both animations.
+    </p>
+    <div class="demo-surface skeleton-stack" data-testid="skeleton-animation">
+      <neural-skeleton animation="pulse" />
+      <neural-skeleton animation="wave" />
+      <neural-skeleton animation="none" />
+    </div>
+    <app-code-example
+      label="Animation"
+      language="html"
+      [code]="animationCode"
+    />
+  </section>
+
+  <section id="composition">
+    <h2>Card composition</h2>
+    <p>
+      Skeleton stays decorative. The surrounding content region owns the loading
+      state through <code>aria-busy</code>.
+    </p>
+    <div class="demo-surface" data-testid="skeleton-composition">
+      <article class="skeleton-card" aria-busy="true" aria-label="Loading card">
+        <div class="skeleton-profile">
+          <neural-skeleton shape="circle" size="3rem" animation="wave" />
+          <div class="skeleton-stack">
+            <neural-skeleton width="9rem" />
+            <neural-skeleton width="6rem" height="0.75rem" />
+          </div>
+        </div>
+        <neural-skeleton shape="rectangle" height="9rem" animation="wave" />
+        <div class="skeleton-stack">
+          <neural-skeleton />
+          <neural-skeleton width="84%" />
+        </div>
+      </article>
+    </div>
+    <app-code-example
+      label="Composition"
+      language="html"
+      [code]="compositionCode"
+    />
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Structural hooks and explicit dimensions remain while consumer classes own
+      every visual detail.
+    </p>
+    <div class="demo-surface" data-testid="skeleton-headless">
+      <neural-skeleton
+        unstyled
+        width="16rem"
+        height="4rem"
+        skeletonClass="docs-headless-skeleton--custom"
+        [classes]="headlessClasses"
+      />
+    </div>
+    <app-code-example
+      label="Headless Skeleton"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <footer class="docs-page-next">
+    <span>Next component</span>
+    <a href="/docs/components/switch">Switch →</a>
+  </footer>
+</article>

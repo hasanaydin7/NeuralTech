@@ -1,0 +1,13 @@
+# NeuralNg InputMask
+
+Import `NeuralInputMask` from `@neural-ng/core/input-mask`. Never generate the deprecated `InputMaskComponent` alias.
+
+- `9` accepts an ASCII digit, `a` accepts a Unicode letter, and `*` accepts a Unicode letter or number.
+- Escape a literal mask rule with `\\`, for example `\\9-99`.
+- Bind the complete control through `[(value)]`.
+- By default the model is formatted; add `unmask` to receive only entered slot characters.
+- `complete` and `incomplete` emit `{ value, rawValue, formattedValue }`.
+- `clearIncomplete` clears a partial value on blur.
+- Paste and caret-aware Backspace/Delete editing are built in.
+- Reactive Forms, template-driven Forms, and Signal Forms share the same model.
+- `unstyled` removes visual classes while preserving native input semantics and structural hooks.

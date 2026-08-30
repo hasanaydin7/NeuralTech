@@ -1,0 +1,32 @@
+[Unit]
+Description=NeuralNg documentation site
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=neuralng-deploy
+Group=neuralng-deploy
+WorkingDirectory=/opt/neuralng/current
+ExecStart=/opt/neuralng/node/bin/node server/server.mjs
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=4010
+Environment=NEURAL_SITE_ORIGIN=https://neuralng.dev
+Environment=NG_ALLOWED_HOSTS=neuralng.dev,www.neuralng.dev,127.0.0.1,localhost
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=20
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+ProtectHome=true
+RestrictSUIDSGID=true
+StandardOutput=append:/opt/neuralng/logs/service.log
+StandardError=append:/opt/neuralng/logs/service.log
+
+[Install]
+WantedBy=multi-user.target

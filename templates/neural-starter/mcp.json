@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "neural-ng": {
+      "command": "npx",
+      "args": ["--no-install", "neural-ng-mcp"]
+    }
+  }
+}

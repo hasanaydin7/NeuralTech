@@ -1,0 +1,20 @@
+NeuralNg Breadcrumb rules
+
+- Import `NeuralBreadcrumb`, `NeuralBreadcrumbItemComponent`, and `NeuralBreadcrumbSeparatorTemplate` only from `@neural-ng/core/breadcrumb`.
+- Add only the canonical runtime symbols used by the template directly to standalone component imports.
+- Never generate deprecated `BreadcrumbComponent`, `BreadcrumbItemComponent`, or `BreadcrumbSeparatorTemplate` aliases in new code.
+- Every item needs a stable `key` and visible `label`.
+- Prefer `routerLink` for Angular routes and `href` for document navigation.
+- The last item is current by default; use `current` only to override it.
+- `maxItems >= 2` collapses middle items into an accessible NeuralNg Menu.
+- `overflowLabel` labels the trigger and provides its hover/focus Tooltip.
+- `overflowTooltipDelay` defaults to `100` milliseconds.
+- Use either `[items]` or `<neural-breadcrumb-item>` children, never both.
+- Customize separators with `separatorIconClass` or
+  `<ng-template neuralBreadcrumbSeparator>`.
+- `itemSelect` emits `{ key, item, originalEvent }`.
+- `unstyled` removes visual classes, not semantics or structural hooks.
+- `routerLink` accepts a string, command array, or UrlTree and composes with `queryParams`, `fragment`, `queryParamsHandling`, `preserveFragment`, `skipLocationChange`, `replaceUrl`, `state`, and `target`.
+- `href` retains native `target` and `rel` behavior.
+- Do not add custom arrow-key handlers; visible items retain native link behavior and overflow delegates to Neural Menu.
+- Current maturity is Beta. Do not invent route construction, history, authorization, page-title, or tooltip APIs.

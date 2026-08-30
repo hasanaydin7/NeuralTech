@@ -1,0 +1,120 @@
+<article class="docs-page menu-docs-page">
+  <neural-toast channel="menu-docs" position="bottom-end" />
+
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Menu</h1>
+    <p>
+      A flat command list that works inline or as a native top-layer popup.
+      Logical Overlay positioning, deterministic Signals, and complete keyboard
+      behavior are built in.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="inline">
+    <h2>Inline commands</h2>
+    <p>
+      Data items support Neural Icons, badges, shortcuts, links, disabled
+      commands, and separators without turning Menu into a navigation tree.
+    </p>
+    <div class="menu-demo-layout">
+      <neural-menu
+        menuId="docs-inline-menu"
+        ariaLabel="Workspace actions"
+        [items]="items"
+        (itemSelect)="select($event)"
+      />
+      <div class="menu-demo-report" aria-live="polite">
+        <span>Last command: {{ lastSelection() }}</span>
+        <span>Arrow keys wrap and typeahead skips disabled commands.</span>
+      </div>
+    </div>
+    <app-code-example label="Inline Menu" language="html" [code]="inlineCode" />
+  </section>
+
+  <section id="popup">
+    <h2>Popup trigger</h2>
+    <p>
+      The directive owns trigger ARIA, focus transfer, logical positioning,
+      outside dismissal, and focus restoration after Escape.
+    </p>
+    <div class="menu-popup-stage">
+      <button
+        type="button"
+        class="menu-demo-trigger"
+        [neuralMenuTriggerFor]="accountMenu"
+        menuPosition="bottom-start"
+      >
+        Open account menu
+      </button>
+      <span>Open state: {{ popupOpen() }}</span>
+
+      <neural-menu
+        #accountMenu="neuralMenu"
+        menuId="docs-account-menu"
+        ariaLabel="Account commands"
+        popup
+        [items]="items"
+        [(open)]="popupOpen"
+        (itemSelect)="select($event)"
+      />
+    </div>
+    <app-code-example label="Popup Menu" language="html" [code]="popupCode" />
+  </section>
+
+  <section id="projected">
+    <h2>Projected structure</h2>
+    <p>
+      Use projected items when commands are more readable in the template.
+      Data and projected sources deliberately remain mutually exclusive.
+    </p>
+    <div class="menu-demo-layout">
+      <neural-menu ariaLabel="Developer actions" (itemSelect)="select($event)">
+        <neural-menu-item key="inspect" label="Inspect" iconClass="nt-eye" />
+        <neural-menu-item key="copy" label="Copy" iconClass="nt-copy" />
+        <neural-menu-separator />
+        <neural-menu-item
+          key="delete"
+          label="Delete"
+          iconClass="nt-trash"
+          disabled
+        />
+      </neural-menu>
+    </div>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Semantics, keyboard behavior, structural hooks, and popup positioning
+      remain while all visual ownership moves to consumer classes.
+    </p>
+    <div class="menu-demo-layout">
+      <neural-menu
+        ariaLabel="Headless commands"
+        unstyled
+        [items]="items"
+        [classes]="headlessClasses"
+        (itemSelect)="select($event)"
+      />
+    </div>
+  </section>
+
+  <section id="boundary">
+    <h2>Component boundary</h2>
+    <p>
+      Menu is flat. PanelMenu owns inline hierarchy; future TieredMenu,
+      ContextMenu, Menubar, and MegaMenu components will build on the same
+      command and Overlay foundations without overloading this API.
+    </p>
+  </section>
+</article>

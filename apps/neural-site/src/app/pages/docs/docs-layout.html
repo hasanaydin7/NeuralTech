@@ -1,0 +1,883 @@
+<div class="fixed bottom-5 left-5 z-[60] lg:hidden">
+  <neural-button
+    [label]="sidebarOpen() ? 'Close menu' : 'Components'"
+    [icon]="sidebarOpen() ? 'nt nt-x' : 'nt nt-menu'"
+    severity="primary"
+    rounded
+    [attr.aria-expanded]="sidebarOpen()"
+    aria-controls="docs-component-sidebar"
+    (clicked)="toggleSidebar()"
+  />
+</div>
+
+@if (sidebarOpen()) {
+<button
+  type="button"
+  class="fixed inset-x-0 bottom-0 top-[4.5rem] z-40 cursor-default bg-slate-950/45 backdrop-blur-[3px] lg:hidden"
+  aria-label="Close component navigation"
+  (click)="closeSidebar()"
+></button>
+}
+
+<div
+  class="mx-auto grid min-h-[calc(100vh-4.5rem)] max-w-[100rem] lg:grid-cols-[17rem_minmax(0,1fr)]"
+>
+  <aside
+    id="docs-component-sidebar"
+    class="fixed bottom-0 left-0 top-[4.5rem] z-50 w-[min(20rem,calc(100vw-3rem))] overflow-y-auto overscroll-contain border-r border-[var(--site-border)] bg-[color-mix(in_srgb,var(--site-canvas)_92%,transparent)] px-5 py-7 shadow-[20px_0_60px_rgba(2,6,23,.18)] backdrop-blur-[28px] transition-[transform,visibility] duration-300 ease-[cubic-bezier(.22,1,.36,1)] lg:sticky lg:top-[4.5rem] lg:z-auto lg:h-[calc(100dvh-4.5rem)] lg:w-auto lg:translate-x-0 lg:self-start lg:overflow-y-auto lg:bg-transparent lg:py-10 lg:shadow-none lg:backdrop-blur-none lg:visible lg:pointer-events-auto"
+    [class.-translate-x-full]="!sidebarOpen()"
+    [class.invisible]="!sidebarOpen()"
+    [class.pointer-events-none]="!sidebarOpen()"
+    [attr.tabindex]="sidebarOpen() ? 0 : -1"
+    (keydown.escape)="closeSidebar()"
+  >
+    <div>
+      <div class="mb-7 px-3">
+        <span class="text-[0.65rem] font-black tracking-[0.16em] text-blue-500"
+          >DOCUMENTATION</span
+        >
+        <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+          Public component contracts
+        </p>
+      </div>
+      <nav class="[&_i]:!text-current" aria-label="NeuralNg documentation">
+        <h2
+          class="px-3 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[var(--site-text-muted)]"
+        >
+          Get Started
+        </h2>
+        <a
+          routerLink="/docs/installation"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-2 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-books text-blue-500"></i>Installation</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-components"></i>Components Overview</span
+          >
+        </a>
+        <a
+          routerLink="/docs/icons"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-sparkles text-blue-500"></i>Icons</span
+          >
+        </a>
+        <a
+          routerLink="/docs/ai-first-workflow"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-ai-agent"></i>AI-First Workflow</span
+          >
+        </a>
+        <h2
+          class="mt-8 px-3 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[var(--site-text-muted)]"
+        >
+          Guides
+        </h2>
+        <a
+          routerLink="/docs/configuration"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-settings"></i>Configuration</span
+          >
+        </a>
+        <a
+          routerLink="/docs/theming"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-adjustments-horizontal"></i>Theming</span
+          >
+        </a>
+        <a
+          routerLink="/docs/localization"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-world"></i>Localization</span
+          >
+        </a>
+        <a
+          routerLink="/docs/accessibility"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-shield-check"></i>Accessibility</span
+          >
+        </a>
+        <a
+          routerLink="/docs/ssr-hydration"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-server"></i>SSR &amp; Hydration</span
+          >
+        </a>
+        <a
+          routerLink="/docs/forms-integration"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-list-details"></i>Forms Integration</span
+          >
+        </a>
+        <a
+          routerLink="/docs/performance-bundling"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-chart-bar"></i>Performance &amp; Bundling</span
+          >
+        </a>
+        <a
+          routerLink="/docs/testing"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-circle-check"></i>Testing</span
+          >
+        </a>
+        <a
+          routerLink="/docs/troubleshooting"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-alert-circle"></i>Troubleshooting</span
+          >
+        </a>
+        <a
+          routerLink="/docs/mcp-server"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-api"></i>MCP Server</span
+          >
+        </a>
+        <a
+          routerLink="/docs/versioning-compatibility"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-versions"></i>Versioning &amp; Compatibility</span
+          >
+        </a>
+        <h2
+          class="mt-8 px-3 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[var(--site-text-muted)]"
+        >
+          Components
+        </h2>
+        <h3
+          class="mt-5 px-3 text-[0.6rem] font-black uppercase tracking-[0.18em] text-[var(--site-text-muted)]"
+        >
+          Navigation
+        </h3>
+        <a
+          routerLink="/docs/components/breadcrumb"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-arrow-right text-blue-500"></i>Breadcrumb</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/menu"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-menu text-blue-500"></i>Menu</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/panel-menu"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-menu-3 text-blue-500"></i>PanelMenu</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/sidebar"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-layout-sidebar-left-collapse text-blue-500"></i
+            >Sidebar</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <h3
+          class="mt-5 px-3 text-[0.6rem] font-black uppercase tracking-[0.18em] text-[var(--site-text-muted)]"
+        >
+          Content
+        </h3>
+        <a
+          routerLink="/docs/components/accordion"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-list text-blue-500"></i>Accordion</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/tabs"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-tabs text-blue-500"></i>Tabs</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/card"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-layout-board text-blue-500"></i>Card</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <h3
+          class="mt-5 px-3 text-[0.6rem] font-black uppercase tracking-[0.18em] text-[var(--site-text-muted)]"
+        >
+          Data
+        </h3>
+        <a
+          routerLink="/docs/components/data-view"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-layout-grid text-blue-500"></i>DataView</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/tree"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-binary-tree text-blue-500"></i>Tree</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/tree-select"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-sitemap text-blue-500"></i>TreeSelect</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/virtual-scroller"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-list-details text-blue-500"></i
+            >VirtualScroller</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/table"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-table text-blue-500"></i>Table</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/paginator"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-list-numbers text-blue-500"></i>Paginator</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <h3
+          class="mt-5 px-3 text-[0.6rem] font-black uppercase tracking-[0.18em] text-[var(--site-text-muted)]"
+        >
+          Button
+        </h3>
+        <a
+          routerLink="/docs/components/button"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-components text-blue-500"></i>Button</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <h3
+          class="mt-5 px-3 text-[0.6rem] font-black uppercase tracking-[0.18em] text-[var(--site-text-muted)]"
+        >
+          Forms
+        </h3>
+        <a
+          routerLink="/docs/components/auto-complete"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-search text-blue-500"></i>AutoComplete</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/checkbox"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-check text-blue-500"></i>Checkbox</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/field"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-file-text text-blue-500"></i>Field</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/input"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-edit text-blue-500"></i>Input</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/textarea"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-align-left text-blue-500"></i>Textarea</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/radio"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-circle-dot text-blue-500"></i>Radio</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/slider"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-adjustments-horizontal text-blue-500"></i
+            >Slider</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/switch"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-toggle-right text-blue-500"></i>Switch</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/file-upload"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-file-text text-blue-500"></i>FileUpload</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/input-mask"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-regex text-blue-500"></i>InputMask</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/password"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-password-fingerprint text-blue-500"></i
+            >Password</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/input-number"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-arrows-sort text-blue-500"></i>InputNumber</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/input-otp"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-lock text-blue-500"></i>InputOtp</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/editor"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-codeblock text-blue-500"></i>Editor</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/select"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-chevron-down text-blue-500"></i>Select</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/multi-select"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-chevrons-down text-blue-500"></i>MultiSelect</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/date-picker"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-calendar-event text-blue-500"></i>DatePicker</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <h3
+          class="mt-5 px-3 text-[0.6rem] font-black uppercase tracking-[0.18em] text-[var(--site-text-muted)]"
+        >
+          Overlay
+        </h3>
+        <a
+          routerLink="/docs/components/loading-overlay"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-loader-3 text-blue-500"></i>LoadingOverlay</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/popover"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-message-2 text-blue-500"></i>Popover</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/tooltip"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-tooltip text-blue-500"></i>Tooltip</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/dialog"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-browser text-blue-500"></i>Dialog</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/drawer"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-layout-sidebar-right text-blue-500"></i
+            >Drawer</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/confirm-dialog"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-alert-triangle text-blue-500"></i
+            >ConfirmDialog</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <h3
+          class="mt-5 px-3 text-[0.6rem] font-black uppercase tracking-[0.18em] text-[var(--site-text-muted)]"
+        >
+          Feedback
+        </h3>
+        <a
+          routerLink="/docs/components/message"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-info-circle text-blue-500"></i>Message</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/toast"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-bell text-blue-500"></i>Toast</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/progress-bar"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-progress text-blue-500"></i>ProgressBar</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/progress-spinner"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-loader-quarter text-blue-500"></i
+            >ProgressSpinner</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/skeleton"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-placeholder text-blue-500"></i>Skeleton</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <h3
+          class="mt-5 px-3 text-[0.6rem] font-black uppercase tracking-[0.18em] text-[var(--site-text-muted)]"
+        >
+          Misc
+        </h3>
+        <a
+          routerLink="/docs/components/avatar"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-user text-blue-500"></i>Avatar</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/badge"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-circle-check text-blue-500"></i>Badge</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/tag"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-tag text-blue-500"></i>Tag</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/toolbar"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-toolbar text-blue-500"></i>Toolbar</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/meter-group"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-chart-bar text-blue-500"></i>MeterGroup</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+        <a
+          routerLink="/docs/components/divider"
+          routerLinkActive="!border-blue-400/25 !bg-blue-500/10 !text-[var(--site-text)]"
+          class="mt-1 flex cursor-pointer items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-bold text-[var(--site-text-soft)] transition duration-200 hover:translate-x-0.5 hover:border-[var(--site-border)] hover:bg-[var(--site-surface)] hover:text-[var(--site-text)]"
+        >
+          <span class="flex items-center gap-2.5"
+            ><i class="nt nt-minus text-blue-500"></i>Divider</span
+          >
+          <span
+            class="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[0.58rem] font-black tracking-wider text-emerald-500"
+            >BETA</span
+          >
+        </a>
+      </nav>
+      <div
+        class="mt-8 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4 backdrop-blur-2xl"
+      >
+        <div class="flex items-center gap-2 text-sm font-bold">
+          <i class="nt nt-sparkles text-blue-500"></i>AI context
+        </div>
+        <p class="mt-2 text-xs leading-5 text-[var(--site-text-muted)]">
+          Every public page maps to a machine-readable component contract.
+        </p>
+      </div>
+    </div>
+  </aside>
+
+  <div class="min-w-0">
+    <router-outlet />
+  </div>
+</div>

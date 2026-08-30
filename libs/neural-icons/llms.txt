@@ -1,0 +1,44 @@
+# Neural Icons
+
+> Optional framework-independent SVG mask icons for NeuralNg using CSS classes.
+
+## Rules
+
+- Install `@neural-ng/icons` separately from `@neural-ng/core`.
+- Import `@neural-ng/icons/icons.css` once for the curated 67-icon set.
+- Use `outline.css`, `filled.css`, `all.css`, `brands.css`, or a
+  `categories/{name}.css` entry point only when that larger set is required.
+- Filled category entry points use `categories/filled/{name}.css`.
+- Read `@neural-ng/icons/metadata.json` for names, styles, categories, and
+  inventory counts; do not scrape generated CSS.
+- Render icons with `class="nt nt-{name}"`; do not generate a NeuralIconComponent.
+- Filled icons use `class="nt nt-filled-{name}"` and never override outline icons.
+- Add `aria-hidden="true"` to decorative icons.
+- Put the accessible name on an icon-only button or link, not on the icon.
+- Icons inherit `color` and use `1em` dimensions.
+- Use `nt-spin` only with an icon class such as `nt-spinner`.
+- Use `nt-spin-reverse` for whole-icon counter-clockwise motion.
+- Use `nt-spin-dual` for counter-rotating layers. The only native layered icon
+  is currently `loader-3`; other icons fall back to a whole-icon spin.
+- Customize motion with `--nt-spin-duration` and
+  `--nt-spin-inner-duration`. Never disable reduced-motion handling.
+- NeuralNg components must remain compatible with other icon libraries.
+- Strict Content Security Policy deployments must permit `data:` in the
+  effective `img-src` directive because SVG masks are embedded in CSS.
+
+## Canonical examples
+
+```html
+<i class="nt nt-user" aria-hidden="true"></i>
+
+<neural-button ariaLabel="Open profile">
+  <i class="nt nt-user" aria-hidden="true"></i>
+</neural-button>
+
+<i class="nt nt-spinner nt-spin" aria-hidden="true"></i>
+<i class="nt nt-loader-3 nt-spin-dual" aria-hidden="true"></i>
+```
+
+The curated icon list and aliases are in `manifest.json`. The full inventory
+is generated directly from the pinned `@tabler/icons` package; do not hand-edit
+generated CSS.

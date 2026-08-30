@@ -1,0 +1,228 @@
+# @neural-ng/editor
+
+Import canonical `NeuralEditor` from `@neural-ng/editor`. `EditorComponent` is
+a deprecated compatibility alias. The selector remains `<neural-editor>`.
+
+## Public API boundary
+
+- Treat `API_FREEZE.md` as the authoritative standalone package contract.
+- Import only from `@neural-ng/editor`. Never deep-import source files.
+- Use `NeuralEditor`, the exported template directives, public types,
+  constants, serializers, pure helpers, and `NeuralEditorController`.
+- Internal toolbar, menu, review, and collaboration-panel renderer components
+  are not public API. Customize through class slots and template directives.
+- Do not use raw Tiptap/ProseMirror operation or tracked-change helpers. Use the
+  controller methods so revisions, events, forms, and collaboration rules stay
+  consistent.
+
+## Canonical rules
+
+- Install only `@neural-ng/editor`. Tiptap, ProseMirror, Floating UI, Yjs, and the required NeuralNg core runtime are package-managed dependencies.
+- Install a realtime collaboration transport/provider separately only when collaboration is enabled.
+- Import `NeuralEditor` from `@neural-ng/editor`.
+- Bind only `NeuralEditorDocument` JSON to `[(value)]`, `[formField]`,
+  `[formControl]`, or `[(ngModel)]`. Never bind HTML or Markdown strings and
+  never create a string-or-JSON value union.
+- The empty value is a `doc` containing an empty paragraph. Do not use `null` as
+  the normal empty state.
+- Treat editor values as immutable. Do not mutate node, mark, attribute, or
+  content arrays in place.
+
+## Beta schema, identity, menus, AI review, and collaboration
+
+- Text alignment is stored on paragraph or heading attributes as `textAlign`.
+- Text color is stored in a `textStyle` mark with a `color` attribute.
+- Highlight is stored in a `highlight` mark and may include a `color` attribute.
+- Tasks use `taskList` and `taskItem`; task state is the boolean `checked`
+  attribute on `taskItem`.
+- Tables use `table`, `tableRow`, `tableHeader`, and `tableCell` nodes.
+- Images use an `image` node. Persist a stable HTTP(S) URL and optional alt,
+  title, width, and height attributes. Never persist File objects, blob URLs,
+  or temporary object URLs.
+- Mentions use `mention` nodes with stable `id` and `label` attributes. Provider-only
+  metadata is not persisted. Do not copy avatars, permissions, or mutable profile
+  objects into editor JSON.
+- Do not invent HTML-only state that cannot be represented by the configured
+  JSON schema.
+
+## Commands
+
+- Use the `NeuralEditorController` from `editorReady` for all programmatic
+  edits. Do not query, replace, or mutate the `contenteditable` DOM.
+- Use `setTextAlign()`, `setTextColor()`, `setHighlight()`,
+  `toggleTaskList()`, `insertTable()`, `insertImage()`, and menu controller
+  methods for Alpha 2.3 features.
+- Table row, column, merge, split, header, and delete commands are contextual;
+  call `controller.can(command)` before presenting a custom enabled action.
+- Use `toolbarItems` for the built-in toolbar or project
+  `ng-template[neuralEditorToolbar]` with `let-editor` for a custom toolbar.
+- Built-in color and table menus use NeuralNg Popover in the browser top layer. Do not replace them with native `details`, custom absolute-positioned panels, or `appendTo="body"` logic. Only one auto popover remains open at a time.
+- Use `(imageInsertRequest)` to open FileUpload or an application media picker.
+  Upload outside Editor, then call `event.controller.insertImage()` with the
+  persistent URL. Editor must not send HTTP requests.
+- BubbleMenu appears for a text or image selection. FloatingMenu appears for an
+  empty paragraph. Link editing uses the same contextual bubble layer so only
+  one contextual menu is active.
+- Context menus append to `body` by default. Use `menuAppendTo="editor"` or a
+  concrete HTMLElement only when the containing stacking context is required.
+- Customize menus with `neuralEditorBubbleMenu`, `neuralEditorFloatingMenu`,
+  and `neuralEditorLinkPopover` templates. Use the supplied controller and link
+  context callbacks; do not access the raw Tiptap instance or position menus
+  manually.
+- `textColors` and `highlightColors` configure UI palettes only. They do not
+  constrain externally loaded JSON; validate allowed values in application and
+  server code when a restricted palette is required.
+
+## Node identity and structured operations
+
+- Node IDs are enabled by default. Canonical JSON stores the configured
+  `nodeIdAttribute` (`neuralId` by default) on identified nodes.
+- Keep node IDs stable and unique. Do not derive IDs from array indexes,
+  document positions, visible text, or mutable labels.
+- Use `identifiedNodeTypes` and `nodeIdGenerator` only as initialization-time
+  configuration. Disable `enableNodeIds` only when no operation, AI review,
+  comment, or collaboration layer will address nodes.
+- Prefer `controller.getNodeById()` and `controller.getNodeIdAt()` over walking
+  the `contenteditable` DOM or assuming ProseMirror positions remain stable.
+- Create batches with `controller.createOperationBatch()`. It captures the
+  current document-only revision. Validate with `validateOperations()` and
+  apply with `applyOperations()`.
+- Supported operation types are `insert`, `replace`, `delete`, and
+  `update-node`. Prefer `{ nodeId }` targets. Use `{ from, to }` only for a
+  captured selection range from the same base revision.
+- Operation batches are atomic. Never apply operations one by one in
+  application code. One invalid target, node, attribute, or schema placement
+  rejects the whole batch without partial changes.
+- Treat `status: 'conflict'` as a required rebase/retry boundary. Never force a
+  stale batch onto a newer document or silently replace its `baseRevision`.
+- Inserted operation content cannot choose internal node IDs. Compatible
+  single-node replacements preserve the target ID by default. The protected ID
+  attribute cannot be changed with `update-node`.
+- Listen to `operationsApplied`, `operationsRejected`, and `operationConflict`
+  for application side effects. The form model changes only after a successful
+  atomic dispatch.
+- `editorDocumentToHtml()` omits node IDs by default. Use
+  `{ includeNodeIds: true }` only for diagnostics or explicit round trips.
+  Persist canonical JSON, not generated HTML, as the addressable source.
+- Use `editorDocumentWithNodeIds()` to migrate legacy JSON before storing or
+  sending it to an AI operation service.
+
+## Slash, mention, and command-palette behavior
+
+- Type `/` in a paragraph for the slash menu. Configure static commands through
+  `slashCommands` or use `slashCommandProvider`; a provider replaces default
+  filtering for that request.
+- Enable mentions with `mentionProvider`. It may return synchronously or
+  asynchronously. Honor the provider context `AbortSignal` and discard stale
+  network work when it aborts.
+- Press `Ctrl+K`/`Cmd+K` or call `controller.openCommandPalette()` for global
+  editor commands. Configure `commandPaletteItems`; do not create document-wide
+  key listeners in application code.
+- Listen to `commandExecuted` and `mentionSelected` only for user-action side
+  effects. The canonical model still changes through normal editor transactions.
+- Use `neuralEditorSlashMenu`, `neuralEditorMentionMenu`, and
+  `neuralEditorCommandPalette` for custom rendering. Use the supplied signals,
+  selection callbacks, and close callbacks. Do not access Tiptap plugin state or
+  manually mount/reposition overlays.
+- Suggestion and context overlays are mutually coordinated. Keep
+  `menuAppendTo="body"` unless a deliberate editor-local stacking context is
+  required.
+- Slash commands and palette items execute local controller operations. They do
+  not imply HTTP, AI, upload, or persistence behavior.
+
+## AI request and review rules
+
+- NeuralNg Editor does not call AI providers. Use `controller.requestAi()` and
+  handle `(aiRequest)` in application code.
+- Send the request's structured document, selection snapshot, stable node IDs,
+  schema version, and base revision to the application-owned AI service. Do not
+  scrape the `contenteditable` DOM and do not send generated HTML as the
+  canonical source.
+- AI services must return `NeuralEditorAiProposal` values containing only
+  supported structured operations. Never return raw executable JavaScript,
+  mutate the editor directly, or inject unsanitized HTML.
+- Call `controller.previewAiProposal()` before applying a proposal. Preview uses
+  ephemeral ProseMirror decorations and must not change `[(value)]`.
+- Apply changes only after explicit user approval with
+  `controller.acceptAiProposal()`. Reject with `rejectAiProposal()`; rejection
+  removes decorations and leaves the canonical JSON unchanged.
+- Respect `baseRevision`. Treat `aiOperationConflict` as a required rebase or
+  fresh-request boundary. Never replace a stale proposal's revision with the
+  current revision.
+- A normal document edit invalidates the active preview. Do not keep stale
+  visual suggestions visible after user edits.
+- Use `(aiProposalPreviewed)`, `(aiProposalAccepted)`,
+  `(aiProposalRejected)`, `(aiOperationConflict)`, and
+  `(aiRequestCancelled)` for side effects and analytics.
+- Customize the review UI with `ng-template[neuralEditorAiReview]`. Use the
+  supplied callbacks and signals; do not mount another overlay, duplicate
+  accept/reject state, or apply operations outside the controller.
+- The default review UI follows `menuAppendTo`, supports mobile layout, and is
+  part of the shared overlay coordination model.
+
+## Conversion and persistence
+
+- Use `editorDocumentFromHtml()` to import HTML and
+  `editorDocumentToHtml()`/`editorDocumentToText()` for derived output.
+- The default serializers understand the current Beta schema, including images and mentions. Pass the
+  exact custom extension set when the document contains additional nodes or
+  marks.
+- Save documents in application code and persist a schema version beside
+  long-lived JSON.
+- Editor does not save data, upload files, call AI models, open collaboration
+  connections, or perform backend sanitization.
+
+## Security
+
+- JSON is not a security boundary. Validate document structure, links, colors,
+  table attributes, pasted content, and custom node attributes on the server.
+- Sanitize generated HTML for its final destination.
+- Never treat client-side toolbar palettes or schema checks as authorization or
+  backend validation.
+
+## Integration
+
+- `extensions` are initialization-time in the alpha API and append to the
+  defaults with top-level last-write-wins behavior.
+- To replace StarterKit or the default schema, disable
+  `includeDefaultExtensions` and provide every required extension.
+- `readonly` keeps content readable and selectable while blocking edits.
+  `disabled` also removes the editor from normal keyboard interaction.
+- Use `unstyled` or global unstyled mode for headless rendering. Structural
+  classes and ARIA relationships remain.
+
+## Collaboration, comments, tracked changes, and snapshots
+
+Use `NeuralEditorCollaborationConfig` with an application-owned `Y.Doc`.
+NeuralNg does not create a collaboration backend, room, token, or provider.
+The optional provider must expose the small structural provider contract.
+
+When collaboration is enabled, the Yjs document is the live source of truth.
+Do not initialize the editor with remote content before the provider has synced.
+Do not bind autosave logic to every remote update without throttling and origin
+checks. Collaboration disables StarterKit history and uses Yjs collaboration
+undo/redo.
+Treat `collaboration.document`, `provider`, `field`, and `fragment` as
+initialization-only. Recreate the Editor when the room or field changes.
+
+Pass `collaborationUser` with stable `id`, `name`, and `color` values. Presence
+comes from provider awareness and is ephemeral. Never persist awareness state as
+canonical editor content.
+
+Use `enableComments` for inline plain-text comment threads. Thread data is stored
+in the configured Yjs comments map when collaboration is active. Authentication,
+permissions, notifications, moderation, and server persistence belong to the
+application.
+
+Use `trackedChangesMode="suggesting"` to record local text insertions and
+deletions as review marks. Remote collaboration transactions are deliberately
+ignored. Alpha 4 tracked changes are not an audit log and do not cover every
+possible structural or formatting edit.
+
+Use `[(snapshots)]` for portable JSON checkpoints. Snapshot creation does not
+upload or persist anything. Save snapshots in application code. For exact CRDT
+history or compliance-grade versioning, use a backend/provider history system.
+
+Never combine independent Yjs documents for the same room. Never seed content on
+an unsynchronized collaborative document. Do not mutate `Y.Doc` content and the
+Editor `value` independently.

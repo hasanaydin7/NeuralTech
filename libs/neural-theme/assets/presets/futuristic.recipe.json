@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schema.json",
+  "schemaVersion": 1,
+  "name": "futuristic",
+  "extends": "futuristic",
+  "modes": {
+    "dark": "auto"
+  },
+  "output": {
+    "tailwind": true,
+    "tokens": true,
+    "report": true,
+    "types": true
+  },
+  "generator": {
+    "colorAlgorithm": "neural-oklch-v1"
+  }
+}

@@ -1,0 +1,797 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="dialog-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Dialog documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-browser"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-20 -top-24 size-72 rounded-full bg-violet-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-violet-500"
+                    >OVERLAY</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Dialog
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A native top-layer dialog primitive with controlled Signals,
+                  deterministic close reasons, focus restoration, localized
+                  controls and complete visual ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    dialog</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Focus
+                    safe</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+                    safe</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical standalone primitive and only the semantic
+                sections used by the view.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="native-modal" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Native modal composition</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The browser top layer supplies modal containment. Initial focus
+                moves to the input and returns to the opener after every close.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="profile.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-5"
+                >
+                  <neural-button
+                    label="Edit profile"
+                    icon="nt nt-edit"
+                    (clicked)="profileDialog.show()"
+                  />
+                  <output
+                    aria-live="polite"
+                    class="font-mono text-xs text-[var(--site-text-muted)]"
+                    >{{ lastClose() }}</output
+                  >
+                </div>
+              </code-view>
+              <neural-dialog
+                #profileDialog
+                ariaLabelledby="site-profile-dialog-title"
+                ariaDescribedby="site-profile-dialog-description"
+                (opened)="lifecycle.set('Opened')"
+                (closed)="recordClose($event)"
+              >
+                <neural-dialog-header>
+                  <div>
+                    <span
+                      class="text-xs font-black tracking-widest text-blue-500"
+                      >ACCOUNT</span
+                    >
+                    <h2
+                      id="site-profile-dialog-title"
+                      class="mt-1 text-xl font-black"
+                    >
+                      Edit profile
+                    </h2>
+                  </div>
+                </neural-dialog-header>
+                <neural-dialog-body>
+                  <p
+                    id="site-profile-dialog-description"
+                    class="m-0 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Choose the public display name shown in your workspace.
+                  </p>
+                  <label
+                    for="site-dialog-name"
+                    class="mb-2 mt-5 block text-sm font-bold"
+                    >Display name</label
+                  >
+                  <input
+                    id="site-dialog-name"
+                    neuralInput
+                    neuralDialogInitialFocus
+                    value="Ada Lovelace"
+                    fluid
+                  />
+                </neural-dialog-body>
+                <neural-dialog-footer>
+                  <neural-button
+                    label="Cancel"
+                    outlined
+                    (clicked)="profileDialog.close('api')"
+                  />
+                  <neural-button
+                    label="Save profile"
+                    icon="nt nt-check"
+                    (clicked)="profileDialog.close('api', 'saved')"
+                  />
+                </neural-dialog-footer>
+              </neural-dialog>
+            </section>
+
+            <section id="controlled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Controlled state and policy</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Bind <code>open</code> when application state owns visibility.
+                This review cannot be dismissed by Escape or the backdrop.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="controlled.html"
+                language="html"
+                [code]="controlledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex justify-center">
+                  <neural-button
+                    label="Review release"
+                    icon="nt nt-eye"
+                    outlined
+                    (clicked)="controlledOpen.set(true)"
+                  />
+                </div>
+              </code-view>
+              <neural-dialog
+                ariaLabelledby="site-controlled-dialog-title"
+                [open]="controlledOpen()"
+                [closeOnEscape]="false"
+                [dismissibleBackdrop]="false"
+                (openChange)="controlledOpen.set($event)"
+              >
+                <neural-dialog-header
+                  ><h2
+                    id="site-controlled-dialog-title"
+                    class="text-xl font-black"
+                  >
+                    Release review
+                  </h2></neural-dialog-header
+                >
+                <neural-dialog-body>
+                  <p class="m-0 leading-7 text-[var(--site-text-soft)]">
+                    An explicit action is required. Background interaction
+                    remains inert.
+                  </p>
+                </neural-dialog-body>
+                <neural-dialog-footer
+                  ><neural-button
+                    label="Review complete"
+                    icon="nt nt-check"
+                    (clicked)="controlledOpen.set(false)"
+                /></neural-dialog-footer>
+              </neural-dialog>
+            </section>
+
+            <section id="non-modal" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Non-modal surface</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Set <code>modal="false"</code> to use native
+                <code>show()</code>. The page remains interactive and no modal
+                backdrop is created.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="non-modal.html"
+                language="html"
+                [code]="nonModalCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex justify-center">
+                  <neural-button
+                    label="Open task details"
+                    icon="nt nt-browser"
+                    outlined
+                    (clicked)="nonModalOpen.set(true)"
+                  />
+                </div>
+              </code-view>
+              <neural-dialog
+                ariaLabelledby="site-nonmodal-title"
+                [modal]="false"
+                [open]="nonModalOpen()"
+                (openChange)="nonModalOpen.set($event)"
+              >
+                <neural-dialog-header
+                  ><h2 id="site-nonmodal-title" class="text-xl font-black">
+                    Agent task details
+                  </h2></neural-dialog-header
+                >
+                <neural-dialog-body
+                  ><p class="m-0 leading-7 text-[var(--site-text-soft)]">
+                    This surface does not make the surrounding document inert.
+                  </p></neural-dialog-body
+                >
+                <neural-dialog-footer
+                  ><neural-button
+                    label="Done"
+                    (clicked)="nonModalOpen.set(false)"
+                /></neural-dialog-footer>
+              </neural-dialog>
+            </section>
+
+            <section id="responsive" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Viewport-safe fluid width</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>fluid</code> fills the safe viewport width while the
+                native surface retains its maximum height and internal
+                scrolling.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="responsive.html"
+                language="html"
+                [code]="responsiveCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex justify-center">
+                  <neural-button
+                    label="Open responsive dialog"
+                    icon="nt nt-browser"
+                    outlined
+                    (clicked)="responsiveDialog.show()"
+                  />
+                </div>
+              </code-view>
+              <neural-dialog
+                #responsiveDialog
+                fluid
+                showFullScreenButton
+                ariaLabelledby="site-responsive-title"
+              >
+                <neural-dialog-header
+                  ><h2 id="site-responsive-title" class="text-xl font-black">
+                    Responsive workspace
+                  </h2></neural-dialog-header
+                >
+                <neural-dialog-body
+                  ><p class="m-0 leading-7 text-[var(--site-text-soft)]">
+                    The dialog remains two rem units inside every viewport edge.
+                  </p></neural-dialog-body
+                >
+                <neural-dialog-footer
+                  ><neural-button
+                    label="Close"
+                    (clicked)="responsiveDialog.close()"
+                /></neural-dialog-footer>
+              </neural-dialog>
+            </section>
+
+            <section id="full-screen" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Full-screen workspace</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>full</code> creates a borderless
+                <code>100vw × 100dvh</code> surface for focused editors,
+                onboarding and immersive workflows. Content scroll remains owned
+                by the native dialog.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="full-screen.html"
+                language="html"
+                [code]="fullCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex justify-center">
+                  <neural-button
+                    label="Open full screen"
+                    icon="nt nt-browser"
+                    outlined
+                    (clicked)="fullDialog.show()"
+                  />
+                </div>
+              </code-view>
+              <neural-dialog
+                #fullDialog
+                full
+                showFullScreenButton
+                ariaLabelledby="site-full-dialog-title"
+              >
+                <neural-dialog-header>
+                  <div>
+                    <span
+                      class="text-xs font-black tracking-widest text-blue-500"
+                      >FOCUSED MODE</span
+                    >
+                    <h2
+                      id="site-full-dialog-title"
+                      class="mt-1 text-xl font-black"
+                    >
+                      Agent workspace
+                    </h2>
+                  </div>
+                </neural-dialog-header>
+                <neural-dialog-body>
+                  <div
+                    class="grid min-h-[calc(100dvh-9rem)] place-items-center rounded-2xl bg-[var(--neural-color-surface-ground)] p-8 text-center"
+                  >
+                    <div class="max-w-md">
+                      <i
+                        class="nt nt-sparkles text-4xl text-[var(--neural-color-primary)]"
+                        aria-hidden="true"
+                      ></i>
+                      <h3 class="mt-4 text-2xl font-black">
+                        The full viewport is yours
+                      </h3>
+                      <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                        Use this mode for immersive workflows, not ordinary
+                        confirmations or short forms.
+                      </p>
+                    </div>
+                  </div>
+                </neural-dialog-body>
+                <neural-dialog-footer>
+                  <neural-button
+                    label="Exit full screen"
+                    icon="nt nt-x"
+                    (clicked)="fullDialog.close()"
+                  />
+                </neural-dialog-footer>
+              </neural-dialog>
+            </section>
+
+            <section id="lifecycle" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Lifecycle and close intent</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>opened</code> reports entry into the top layer. Every
+                close includes its source and optional native return value.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="events.html"
+                language="html"
+                [code]="lifecycleCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex flex-wrap items-center justify-center gap-5"
+                >
+                  <neural-button
+                    label="Track lifecycle"
+                    icon="nt nt-activity"
+                    outlined
+                    (clicked)="lifecycleDialog.show()"
+                  />
+                  <output
+                    aria-live="polite"
+                    class="font-mono text-xs text-[var(--site-text-muted)]"
+                    >{{ lifecycle() }}</output
+                  >
+                </div>
+              </code-view>
+              <neural-dialog
+                #lifecycleDialog
+                ariaLabel="Lifecycle example"
+                (opened)="lifecycle.set('Opened')"
+                (closed)="recordClose($event)"
+              >
+                <neural-dialog-body
+                  ><p class="m-0">
+                    Close this surface through any enabled dismissal path.
+                  </p></neural-dialog-body
+                >
+                <neural-dialog-footer
+                  ><neural-button
+                    label="Return saved"
+                    (clicked)="lifecycleDialog.close('api', 'saved')"
+                /></neural-dialog-footer>
+              </neural-dialog>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Unstyled and typed class slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Headless mode removes Dialog visual classes while preserving the
+                native top layer, structural hooks, focus and close behavior.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="headless.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex justify-center">
+                  <neural-button
+                    label="Open consumer dialog"
+                    icon="nt nt-settings"
+                    outlined
+                    (clicked)="headlessDialog.show()"
+                  />
+                </div>
+              </code-view>
+              <neural-dialog
+                #headlessDialog
+                unstyled
+                [classes]="headlessClasses"
+                ariaLabelledby="site-headless-dialog-title"
+              >
+                <neural-dialog-header
+                  ><h2
+                    id="site-headless-dialog-title"
+                    class="text-xl font-black"
+                  >
+                    Consumer-owned canvas
+                  </h2></neural-dialog-header
+                >
+                <neural-dialog-body
+                  >No NeuralNg visual class controls this cyan
+                  surface.</neural-dialog-body
+                >
+                <neural-dialog-footer
+                  ><neural-button
+                    label="Close"
+                    severity="secondary"
+                    (clicked)="headlessDialog.close()"
+                /></neural-dialog-footer>
+              </neural-dialog>
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Intentional boundaries</h2>
+              <div
+                class="mt-4 grid gap-3 leading-7 text-[var(--site-text-soft)]"
+              >
+                <p>
+                  Dialog is a composable primitive. Confirmation workflows
+                  belong to <code>NeuralConfirmDialog</code> and
+                  <code>NeuralConfirmationService</code>.
+                </p>
+                <p>
+                  Dragging, resizing and maximization are not implied by modal
+                  semantics and are excluded from the Beta contract.
+                </p>
+                <p>
+                  Nested popups should use their own top-layer or
+                  <code>appendTo="body"</code> contract rather than escaping
+                  with arbitrary z-index values.
+                </p>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <span class="text-xs font-black tracking-[.16em] text-blue-500"
+                >ACCESSIBILITY</span
+              >
+              <h1 class="mt-4 text-4xl font-black">
+                A real dialog, not a simulated overlay
+              </h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Native semantics, browser focus containment and deterministic
+                application policy work as one contract.
+              </p>
+            </header>
+            <section id="native-semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Native semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The host renders a real <code>&lt;dialog&gt;</code>. Modal mode
+                uses <code>showModal()</code>, enters the browser top layer,
+                exposes <code>aria-modal="true"</code> and makes the remaining
+                document inert.
+              </p>
+            </section>
+            <section id="accessible-name" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Accessible name and description
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Prefer <code>ariaLabelledby</code> pointing to a visible
+                heading. Use <code>ariaLabel</code> only when no visible heading
+                exists, and connect supporting copy through
+                <code>ariaDescribedby</code>.
+              </p>
+            </section>
+            <section id="focus-lifecycle" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Focus lifecycle</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>neuralDialogInitialFocus</code> targets the most useful
+                first control after opening. Native modal focus remains
+                contained and the exact opener regains focus after closing.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <strong>Tab / Shift+Tab</strong>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Navigate native focus order inside a modal.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <strong>Escape</strong>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Closes only when policy allows and reports
+                    <code>escape</code>.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section id="dismiss-policy" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Dismiss policy</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                When Escape or backdrop dismissal is disabled, always provide an
+                obvious keyboard-operable action.
+                <code>closable="false"</code> must never create a dead end.
+              </p>
+            </section>
+            <section id="ssr" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">SSR and hydration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The server emits a closed dialog. Browser-only top-layer,
+                active-element and focus calls run after hydration; an initially
+                true model opens safely when the native element exists.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <span class="text-xs font-black tracking-[.16em] text-blue-500"
+                >API</span
+              >
+              <h1 class="mt-4 text-4xl font-black">Dialog contract</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Every runtime declaration is canonical:
+                <code>NeuralDialog</code>, <code>NeuralDialogHeader</code>,
+                <code>NeuralDialogBody</code>, <code>NeuralDialogFooter</code>,
+                and <code>NeuralDialogInitialFocus</code>. Previous
+                <code>Dialog*</code> names remain only as deprecated aliases.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-5 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[46rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Outputs</h2>
+              <div class="mt-5 grid gap-3">
+                @for (item of outputs; track item[0]) {
+                <div
+                  class="grid gap-2 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid-cols-[9rem_12rem_1fr]"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><code class="text-xs">{{ item[1] }}</code
+                  ><span class="text-sm text-[var(--site-text-soft)]"
+                    >{{ item[2] }}</span
+                  >
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Imperative methods</h2>
+              <div class="mt-5 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="sections" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic sections</h2>
+              <div class="mt-5 grid gap-3">
+                @for (item of sections; track item[0]) {
+                <div
+                  class="grid gap-2 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid-cols-[14rem_10rem_1fr]"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><code class="text-xs">{{ item[1] }}</code
+                  ><span class="text-sm text-[var(--site-text-soft)]"
+                    >{{ item[2] }}</span
+                  >
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                @for (item of classSlots; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-5 grid gap-3">
+                @for (item of publicTypes; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 break-words font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <span class="text-xs font-black tracking-[.16em] text-blue-500"
+                >DESIGN TOKENS</span
+              >
+              <h1 class="mt-4 text-4xl font-black">Dialog tokens</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Structural base → component tokens → active theme → consumer
+                classes remains the stable cascade.
+              </p>
+            </header>
+            <section id="surface-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Surface and backdrop</h2>
+              <site-design-token-list
+                class="mt-5 block"
+                [tokens]="surfaceTokens"
+              />
+            </section>
+            <section id="layout-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Layout and sections</h2>
+              <site-design-token-list
+                class="mt-5 block"
+                [tokens]="layoutTokens"
+              />
+            </section>
+            <section id="close-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Close control and focus</h2>
+              <site-design-token-list
+                class="mt-5 block"
+                [tokens]="closeTokens"
+              />
+            </section>
+            <section id="motion-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Motion</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Reduced-motion preferences collapse transition duration
+                automatically.
+              </p>
+              <site-design-token-list
+                class="mt-5 block"
+                [tokens]="motionTokens"
+              />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

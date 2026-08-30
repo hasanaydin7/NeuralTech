@@ -1,0 +1,477 @@
+.date-picker-demo {
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 32rem);
+}
+
+.date-picker-demo--row {
+  grid-template-columns: minmax(14rem, 1fr) auto;
+  align-items: end;
+  width: min(100%, 42rem);
+}
+
+.date-picker-demo__field {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+  color: var(--neural-color-text);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.date-picker-demo__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  color: var(--neural-color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.date-picker-demo__meta code {
+  color: var(--neural-color-text);
+}
+
+.date-picker-keyboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.75rem;
+}
+
+.date-picker-locale-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(100%, 42rem);
+}
+
+.date-picker-view-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(100%, 46rem);
+}
+
+.date-picker-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(100%, 46rem);
+}
+
+.date-parser-demo {
+  display: grid;
+  gap: 0.5rem;
+  width: min(100%, 24rem);
+  color: var(--neural-color-text);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.date-parser-demo input {
+  min-height: 2.5rem;
+  padding-inline: 0.75rem;
+  color: var(--neural-color-text);
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.5rem;
+  font: inherit;
+  outline: 0;
+}
+
+.date-parser-demo input:focus-visible {
+  border-color: var(--neural-color-focus);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--neural-color-focus) 18%, transparent);
+}
+
+.headless-date-picker-note {
+  display: inline-flex;
+  margin-block-end: 0.65rem;
+  padding: 0.25rem 0.55rem;
+  color: var(--neural-primary-700);
+  background: var(--neural-primary-100);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.headless-date-picker-showcase {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  padding-block: 1rem;
+}
+
+.date-picker-keyboard-grid span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--neural-color-text-muted);
+}
+
+kbd {
+  padding: 0.15rem 0.4rem;
+  color: var(--neural-color-text);
+  background: var(--neural-color-surface-hover);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.35rem;
+  box-shadow: 0 1px 0 var(--neural-color-border);
+  font: inherit;
+  font-size: 0.75rem;
+}
+
+:host ::ng-deep .headless-date-picker {
+  width: min(100%, 22rem);
+  filter: drop-shadow(0 12px 24px rgb(8 47 73 / 0.2));
+}
+
+:host ::ng-deep .headless-date-picker__group {
+  position: relative;
+  display: flex;
+}
+
+:host ::ng-deep .headless-date-picker__input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 5.5rem 0.75rem 1rem;
+  color: #ecfeff;
+  background: #083344;
+  border: 1px solid #22d3ee;
+  border-radius: 0.7rem;
+  outline: none;
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  box-shadow: inset 0 0 0 1px rgb(34 211 238 / 0.08);
+}
+
+:host ::ng-deep .headless-date-picker__trigger,
+:host ::ng-deep .headless-date-picker__clear {
+  position: absolute;
+  inset-block: 0;
+  width: 2.75rem;
+  color: #a5f3fc;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+:host ::ng-deep .headless-date-picker__trigger {
+  inset-inline-end: 0;
+  border-inline-start: 1px solid rgb(34 211 238 / 0.35);
+}
+
+:host ::ng-deep .headless-date-picker__clear {
+  inset-inline-end: 2.75rem;
+}
+
+:host ::ng-deep .headless-date-picker__trigger:hover,
+:host ::ng-deep .headless-date-picker__clear:hover {
+  color: white;
+  background: rgb(34 211 238 / 0.12);
+}
+
+:host ::ng-deep .headless-date-picker__panel {
+  position: fixed;
+  z-index: 1100;
+  width: var(--neural-popover-trigger-width, 22rem);
+  padding: 0.85rem;
+  color: #ecfeff;
+  background: #155e75;
+  border: 1px solid #22d3ee;
+  border-radius: 0.7rem;
+  box-shadow: 0 20px 45px rgb(8 47 73 / 0.35);
+}
+
+:host ::ng-deep .headless-date-picker__calendar {
+  display: grid;
+  gap: 0.25rem;
+}
+
+:host ::ng-deep .headless-date-picker__header,
+:host ::ng-deep .headless-date-picker__weekdays,
+:host ::ng-deep .headless-date-picker__week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.2rem;
+}
+
+:host ::ng-deep .headless-date-picker__header {
+  grid-template-columns: 2rem 1fr 2rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+:host ::ng-deep .headless-date-picker__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+:host ::ng-deep .headless-date-picker__year-toggle {
+  padding: 0.2rem 0.35rem;
+  color: #67e8f9;
+  background: transparent;
+  border: 0;
+  border-radius: 0.35rem;
+  font: inherit;
+  font-weight: 750;
+}
+
+:host ::ng-deep .headless-date-picker__month-toggle {
+  padding: 0.2rem 0.35rem;
+  color: #ecfeff;
+  background: transparent;
+  border: 0;
+  border-radius: 0.35rem;
+  font: inherit;
+  font-weight: 750;
+}
+
+:host ::ng-deep .headless-date-picker__navigation,
+:host ::ng-deep .headless-date-picker__day {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 0.45rem;
+}
+
+:host ::ng-deep .headless-date-picker__navigation:hover,
+:host ::ng-deep .headless-date-picker__day:hover {
+  color: white;
+  background: rgb(34 211 238 / 0.16);
+}
+
+:host ::ng-deep .headless-date-picker__year-grid,
+:host ::ng-deep .headless-date-picker__month-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+:host ::ng-deep .headless-date-picker__year,
+:host ::ng-deep .headless-date-picker__month-option {
+  min-height: 2.5rem;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 0.45rem;
+  font: inherit;
+}
+
+:host ::ng-deep .headless-date-picker__year:hover,
+:host ::ng-deep .headless-date-picker__month-option:hover {
+  background: rgb(34 211 238 / 0.16);
+}
+
+:host ::ng-deep .headless-date-picker__year--selected,
+:host ::ng-deep .headless-date-picker__month-option--selected {
+  color: #083344;
+  background: #67e8f9;
+  font-weight: 800;
+}
+
+:host ::ng-deep .headless-date-picker__year--disabled,
+:host ::ng-deep .headless-date-picker__month-option--disabled {
+  opacity: 0.3;
+}
+
+:host ::ng-deep .headless-date-picker__year-input {
+  width: 6.5rem;
+  padding: 0.4rem;
+  color: inherit;
+  background: transparent;
+  border: 1px solid #22d3ee;
+  border-radius: 0.4rem;
+  text-align: center;
+  font: inherit;
+}
+
+:host ::ng-deep .headless-date-picker__weekday {
+  padding-block: 0.35rem;
+  color: #a5f3fc;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+:host ::ng-deep .headless-date-picker__week-number {
+  display: grid;
+  place-items: center;
+  color: #67e8f9;
+  font-size: 0.7rem;
+  font-weight: 750;
+}
+
+:host ::ng-deep .headless-date-picker__placeholder {
+  min-height: 2rem;
+}
+
+:host ::ng-deep .headless-date-picker__day--outside {
+  opacity: 0.45;
+}
+
+:host ::ng-deep .headless-date-picker__day--today {
+  outline: 1px solid #67e8f9;
+}
+
+:host ::ng-deep .headless-date-picker__day--selected {
+  color: #083344;
+  background: #67e8f9;
+  font-weight: 800;
+}
+
+:host ::ng-deep .headless-date-picker__day--disabled {
+  opacity: 0.25;
+}
+
+.date-picker-template-showcase {
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 24rem);
+}
+
+.date-picker-forms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.date-picker-forms-grid label,
+.date-picker-event-demo {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.date-picker-forms-grid label > span {
+  color: var(--neural-color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.date-picker-event-demo {
+  width: min(100%, 32rem);
+}
+
+.date-picker-event-demo output {
+  min-height: 2.5rem;
+  padding: 0.65rem 0.75rem;
+  overflow-wrap: anywhere;
+  color: var(--neural-color-text-muted);
+  background: var(--neural-color-surface-hover);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.5rem;
+  font-family: var(--neural-font-family-mono);
+  font-size: 0.75rem;
+}
+
+:host ::ng-deep .template-day {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.date-picker-quality-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0.75rem;
+}
+
+.date-picker-quality-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 3.25rem;
+  padding: 0.8rem 0.9rem;
+  color: var(--neural-color-text);
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+}
+
+.date-picker-quality-item i {
+  display: grid;
+  flex: 0 0 1.5rem;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--neural-color-primary-contrast);
+  background: var(--neural-color-primary);
+  border-radius: 50%;
+}
+
+:host ::ng-deep .template-day__dot {
+  position: absolute;
+  inset-block-end: 0.2rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  background: currentColor;
+  border-radius: 50%;
+}
+
+:host ::ng-deep .template-icon {
+  font-size: 1.05em;
+}
+
+:host ::ng-deep .template-header-action {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--neural-color-text);
+  background: transparent;
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+:host ::ng-deep .template-header-action:hover {
+  background: var(--neural-color-surface-hover);
+}
+
+:host ::ng-deep .template-header-title {
+  align-self: center;
+  text-align: center;
+}
+
+:host ::ng-deep .template-footer-action {
+  min-height: 2.25rem;
+  padding-inline: 0.75rem;
+  color: var(--neural-color-text);
+  background: transparent;
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.5rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+:host ::ng-deep .template-footer-action--primary {
+  margin-inline-start: auto;
+  color: var(--neural-color-primary-contrast);
+  background: var(--neural-color-primary);
+  border-color: var(--neural-color-primary);
+}
+
+@media (max-width: 40rem) {
+  .date-picker-demo--row,
+  .date-picker-locale-grid,
+  .date-picker-view-grid,
+  .date-picker-selection-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .date-picker-forms-grid {
+    grid-template-columns: 1fr;
+  }
+}

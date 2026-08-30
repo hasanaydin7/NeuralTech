@@ -1,0 +1,23 @@
+# NeuralNg InputNumber context
+
+Import canonical `NeuralInputNumber` from `@neural-ng/core/input-number`. Never generate the deprecated `InputNumberComponent` alias.
+
+- Bind `[(value)]` as `number | null`; never bind a localized string.
+- The component implements Angular 22 `FormValueControl<number | null>`.
+- `mode` is `decimal` by default or `currency`; set `currency` to an ISO 4217
+  code when currency mode is used.
+- Formatting and parsing follow `NeuralLocaleService`. The optional `locale`
+  input overrides only this component.
+- `min`, `max`, and positive `step` control bounds and stepping.
+- With `[formField]`, configure `min` and `max` in the Signal Forms schema;
+  Angular owns those contract inputs and rejects duplicate template bindings.
+- `ArrowUp`/`ArrowDown` step; bounded `Home`/`End` jump; Enter and blur commit.
+- Letters and malformed numeric characters are rejected during input. Do not
+  add a second consumer-side key filter.
+- `valueCommit` is optional and reports `{ value, previousValue, source }`.
+- Native accessibility is a text input with `role="spinbutton"` and ARIA value
+  metadata.
+- Use `unstyled` for headless mode. Structural classes remain; visual classes
+  are removed. Typed `classes` slots can style every rendered element.
+- Inside `neural-field`, id, disabled, readonly, required, invalid,
+  aria-describedby, and fluid state are inherited.

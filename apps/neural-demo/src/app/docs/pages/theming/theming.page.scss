@@ -1,0 +1,96 @@
+.palette-block {
+  margin-block-start: 1.5rem;
+}
+
+.palette-block h3 {
+  margin-block-end: 0.75rem;
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+}
+
+.palette__step {
+  display: grid;
+  min-height: 5.5rem;
+  align-content: end;
+  gap: 0.125rem;
+  padding: 0.75rem;
+}
+
+.palette__step span {
+  font-size: var(--neural-font-size-xs);
+  opacity: 0.72;
+}
+
+.runtime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+  background: var(--neural-color-surface);
+}
+
+.runtime-grid h3 {
+  margin-block: 0 0.75rem;
+}
+
+.runtime-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.direction-preview {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block-start: 1rem;
+  padding: 1rem;
+  border-inline-start: 0.25rem solid var(--neural-color-primary);
+  border-radius: 0.5rem;
+  background: var(--neural-color-surface-hover);
+}
+
+@media (max-width: 40rem) {
+  .direction-preview {
+    flex-direction: column;
+  }
+}
+
+.theme-studio-callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: color-mix(in srgb, var(--neural-color-primary) 8%, var(--neural-color-surface));
+  border: 1px solid color-mix(in srgb, var(--neural-color-primary) 28%, var(--neural-color-border));
+  border-radius: 1rem;
+}
+
+.theme-studio-callout h2,
+.theme-studio-callout p {
+  margin: 0;
+}
+
+.theme-studio-callout p {
+  margin-top: 0.35rem;
+  color: var(--neural-color-text-muted);
+}
+
+.theme-studio-callout a {
+  flex: 0 0 auto;
+  padding: 0.65rem 0.9rem;
+  color: var(--neural-color-primary-contrast);
+  background: var(--neural-color-primary);
+  border-radius: 0.65rem;
+  font-weight: 800;
+  text-decoration: none;
+}

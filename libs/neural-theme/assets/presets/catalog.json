@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "presets": [
+    {
+      "id": "neutral",
+      "label": "Neutral",
+      "description": "Balanced product surfaces and accessible defaults for general applications.",
+      "stability": "stable",
+      "quality": {
+        "status": "release",
+        "minimumPrimarySurfaceContrast": 3,
+        "allowedDiagnosticCodes": []
+      },
+      "primary": "#2563eb",
+      "surface": "slate",
+      "density": "comfortable",
+      "radius": "medium",
+      "elevation": "soft",
+      "motion": "default"
+    },
+    {
+      "id": "glass",
+      "label": "Glass",
+      "description": "Layered translucent surfaces, soft depth, and indigo emphasis.",
+      "stability": "experimental",
+      "quality": {
+        "status": "preview",
+        "minimumPrimarySurfaceContrast": 3,
+        "allowedDiagnosticCodes": [
+          "contrast.primary.light",
+          "contrast.primary.dark"
+        ]
+      },
+      "primary": "#4f46e5",
+      "surface": "slate",
+      "density": "comfortable",
+      "radius": "large",
+      "elevation": "strong",
+      "motion": "default"
+    },
+    {
+      "id": "mist",
+      "label": "Mist",
+      "description": "Calm translucent layers, desaturated teal focus, and restrained depth for long sessions.",
+      "stability": "experimental",
+      "quality": {
+        "status": "preview",
+        "minimumPrimarySurfaceContrast": 3,
+        "allowedDiagnosticCodes": []
+      },
+      "primary": "#4f747b",
+      "surface": "slate",
+      "density": "comfortable",
+      "radius": "large",
+      "elevation": "soft",
+      "motion": "default"
+    },
+    {
+      "id": "futuristic",
+      "label": "Futuristic",
+      "description": "High-contrast cyan surfaces, magenta actions, and precise geometry.",
+      "stability": "experimental",
+      "quality": {
+        "status": "preview",
+        "minimumPrimarySurfaceContrast": 3,
+        "allowedDiagnosticCodes": [
+          "contrast.primary.light",
+          "contrast.primary.dark"
+        ]
+      },
+      "primary": "#c026d3",
+      "surface": "#06b6d4",
+      "density": "comfortable",
+      "radius": "small",
+      "elevation": "strong",
+      "motion": "fast"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+<article class="docs-page input-number-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>InputNumber</h1>
+    <p>
+      A localized numeric spinbutton with Signal Forms, exact decimal stepping,
+      currency formatting, accessible keyboard behavior, and headless class
+      slots.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Signal Forms</h2>
+    <p>
+      The model remains a number while the visible value follows the active
+      locale. Arrow keys and the buttons share the same step logic.
+    </p>
+    <div class="number-demo-surface">
+      <neural-field controlId="quantity" fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Quantity</label>
+        <neural-input-number
+          ariaLabel="Quantity"
+          [formField]="orderForm.quantity"
+          (valueCommit)="showCommit($event)"
+        />
+        <small neuralFieldHint>Choose between 1 and 20 items.</small>
+      </neural-field>
+      <output class="demo-status" aria-live="polite">
+        Model: {{ order().quantity }} · Last commit: {{ lastCommit() }}
+      </output>
+    </div>
+    <app-code-example
+      label="FormValueControl"
+      language="html"
+      [code]="signalFormsCode"
+    />
+  </section>
+
+  <section id="locale">
+    <h2>Locale and currency</h2>
+    <p>
+      This demo switches the global locale signal. Both parsing and formatting
+      update; the stored values do not.
+    </p>
+    <div class="number-demo-surface number-demo-row">
+      <button type="button" class="docs-action" (click)="switchLocale()">
+        Switch to {{ locale.code() === 'tr-TR' ? 'English' : 'Türkçe' }}
+      </button>
+      <neural-input-number
+        ariaLabel="Price"
+        mode="currency"
+        currency="TRY"
+        [minFractionDigits]="2"
+        [maxFractionDigits]="2"
+        [formField]="orderForm.price"
+      />
+      <neural-input-number
+        ariaLabel="US discount"
+        locale="en-US"
+        [step]="0.1"
+        [formField]="orderForm.discount"
+      />
+      <output class="demo-status">
+        {{ locale.code() }} · price model: {{ order().price }} · local override:
+        {{ order().discount }}
+      </output>
+    </div>
+    <app-code-example label="Currency" language="html" [code]="currencyCode" />
+  </section>
+
+  <section id="states">
+    <h2>States</h2>
+    <div class="number-demo-surface number-demo-grid">
+      <div class="number-state">
+        <span>Without buttons</span>
+        <neural-input-number
+          ariaLabel="Without buttons"
+          [showButtons]="false"
+          [value]="8"
+        />
+      </div>
+      <div class="number-state">
+        <span>Disabled</span>
+        <neural-input-number ariaLabel="Disabled value" disabled [value]="3" />
+      </div>
+      <div class="number-state">
+        <span>Readonly</span>
+        <neural-input-number ariaLabel="Readonly value" readonly [value]="5" />
+      </div>
+      <div class="number-state">
+        <span>Invalid</span>
+        <neural-input-number ariaLabel="Invalid value" invalid [value]="99" />
+      </div>
+    </div>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and class slots</h2>
+    <p>
+      Headless mode keeps behavior, semantics, and structural hooks while the
+      application owns every visual class.
+    </p>
+    <div class="number-demo-surface">
+      <neural-input-number
+        ariaLabel="Custom numeric control"
+        unstyled
+        [classes]="headlessClasses"
+        [formField]="orderForm.custom"
+      />
+    </div>
+    <app-code-example
+      label="Headless InputNumber"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <section id="api">
+    <h2>Core API</h2>
+    <div class="api-table-wrapper">
+      <table class="api-table">
+        <thead>
+          <tr>
+            <th>Input / output</th>
+            <th>Default</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>value</code></td>
+            <td>null</td>
+            <td>A two-way <code>number | null</code> model.</td>
+          </tr>
+          <tr>
+            <td><code>mode</code></td>
+            <td>decimal</td>
+            <td>Decimal or ISO currency formatting.</td>
+          </tr>
+          <tr>
+            <td><code>locale</code></td>
+            <td>global</td>
+            <td>Overrides the active locale for this control.</td>
+          </tr>
+          <tr>
+            <td><code>min / max / step</code></td>
+            <td>— / — / 1</td>
+            <td>Bounds and keyboard/button step behavior.</td>
+          </tr>
+          <tr>
+            <td><code>valueCommit</code></td>
+            <td>—</td>
+            <td>Reports value, previous value, and interaction source.</td>
+          </tr>
+          <tr>
+            <td><code>unstyled / classes</code></td>
+            <td>false / {{ '{}' }}</td>
+            <td>Transfers complete visual ownership to the consumer.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</article>

@@ -1,0 +1,181 @@
+html {
+  min-width: 20rem;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--neural-color-text);
+  background-color: var(--neural-color-surface-active);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--neural-color-focus);
+  outline-offset: 2px;
+}
+
+/* Consumer CSS overrides NeuralNg's zero-specificity internal selectors. */
+.demo-accent-button {
+  color: #1e1b4b;
+  background: linear-gradient(135deg, #a5b4fc, #f0abfc);
+  border: 2px solid #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.demo-unstyled-button {
+  padding: 0.75rem 1.25rem;
+  color: #111827;
+  background: #fbbf24;
+  border: 2px solid #fef3c7;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.demo-unstyled-button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* Full visual ownership of <neural-toast unstyled>. */
+.demo-headless-message {
+  gap: 0.75rem;
+  padding: 1rem;
+  color: #ecfccb;
+  background: #1a2e05;
+  border: 2px dashed #84cc16;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 35%);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.demo-headless-message .neural-toast-close-root {
+  padding: 0;
+  color: #d9f99d;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.field-lab,
+.input-lab {
+  text-align: start;
+
+  > p,
+  small,
+  output {
+    color: var(--neural-color-text-muted);
+  }
+}
+
+.field-demo-grid,
+.input-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+
+  > section {
+    display: grid;
+    align-content: start;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0.75rem;
+  }
+
+  h3 {
+    margin: 0 0 0.25rem;
+  }
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+}
+
+.field-demo-grid > section {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+}
+
+.input-error {
+  color: var(--neural-color-error) !important;
+}
+
+.demo-headless-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  color: #e0f2fe;
+  caret-color: #7dd3fc;
+  background: #082f49;
+  border: 2px dashed #38bdf8;
+  border-radius: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.demo-headless-input:focus-visible {
+  outline: 2px solid #7dd3fc;
+  outline-offset: 2px;
+}
+
+.demo-headless-field {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  color: #dcfce7;
+  background: #052e16;
+  border: 2px dashed #4ade80;
+  border-radius: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.demo-headless-field-label {
+  color: #bbf7d0;
+  font-weight: 700;
+}
+
+.demo-headless-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.75rem;
+  color: #f0fdf4;
+  background: #14532d;
+  border: 1px solid #86efac;
+  border-radius: 0.25rem;
+  font: inherit;
+  resize: vertical;
+}
+
+.demo-headless-textarea:focus-visible {
+  outline: 2px solid #bbf7d0;
+  outline-offset: 2px;
+}
+
+.demo-headless-field-hint {
+  color: #86efac;
+}

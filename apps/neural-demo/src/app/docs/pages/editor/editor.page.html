@@ -1,0 +1,540 @@
+<article class="docs-page editor-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · AI-native foundation</span>
+    <h1 class="docs-hero__title">Editor</h1>
+    <p class="docs-hero__description">
+      Tiptap 3 and ProseMirror editing with structured JSON form values,
+      Signal Forms, typed commands, advanced rich-text nodes, and a strict
+      application-owned persistence boundary.
+    </p>
+  </header>
+
+  <section>
+    <h2>Import</h2>
+    <p>Install and import the standalone `@neural-ng/editor` package.</p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Structured value and Signal Forms</h2>
+    <p>
+      The canonical model is always <code>NeuralEditorDocument</code>. HTML and
+      plain text are derived outputs, never alternate model modes.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="editor-demo">
+        <neural-field controlId="docs-article-body" fluid>
+          <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+          <label neuralFieldLabel>Article body</label>
+          <neural-editor
+            [formField]="articleForm.body"
+            placeholder="Write the article…"
+            [maxCharacters]="5000"
+            showCharacterCount
+            showWordCount
+            fluid
+            (editorReady)="controller.set($event)"
+            (editorUpdate)="editorUpdated($event)"
+          />
+          <small neuralFieldHint>
+            Persist JSON with a schema version; render sanitized derived HTML.
+          </small>
+        </neural-field>
+        <output class="demo-status" aria-live="polite">
+          {{ updateStatus() }}
+        </output>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Alignment, colors, tasks, and tables</h2>
+    <p>
+      Alpha 2.1 stores formatting and document structure directly in the JSON
+      schema. Table actions become available when the selection is inside a
+      table.
+    </p>
+    <code-view
+      fileName="advanced-editor.html"
+      language="html"
+      [code]="advancedCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="editor-demo">
+        <neural-editor
+          [(value)]="advancedDocument"
+          fluid
+          (editorReady)="advancedController.set($event)"
+        />
+        <div class="editor-actions">
+          <button
+            type="button"
+            (click)="advancedController()?.setTextAlign('center')"
+          >
+            Center
+          </button>
+          <button
+            type="button"
+            (click)="advancedController()?.setTextColor('#2563eb')"
+          >
+            Blue text
+          </button>
+          <button
+            type="button"
+            (click)="advancedController()?.setHighlight('#fef08a')"
+          >
+            Highlight
+          </button>
+          <button
+            type="button"
+            (click)="advancedController()?.toggleTaskList()"
+          >
+            Tasks
+          </button>
+          <button
+            type="button"
+            (click)="advancedController()?.insertTable()"
+          >
+            Insert table
+          </button>
+        </div>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Slash commands, mentions, and command palette</h2>
+    <p>
+      Type <code>/</code> for block commands, <code>@</code> for application
+      mentions, or press <code>Ctrl/Cmd+K</code> for the command palette. All
+      editor overlays share one coordination layer and append to
+      <code>body</code> by default.
+    </p>
+    <code-view
+      fileName="suggestions.html"
+      language="html"
+      [code]="suggestionsCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="editor-demo">
+        <neural-editor
+          [(value)]="suggestionDocument"
+          [mentionProvider]="mentionProvider"
+          menuAppendTo="body"
+          fluid
+          (editorReady)="suggestionController.set($event)"
+          (commandExecuted)="editorCommandExecuted($event)"
+          (mentionSelected)="editorMentionSelected($event)"
+        >
+          <ng-template
+            neuralEditorMentionMenu
+            let-items="items"
+            let-activeIndex="activeIndex"
+            let-loading="loading"
+            let-select="select"
+            let-setActiveIndex="setActiveIndex"
+            let-optionId="optionId"
+          >
+            <div class="editor-custom-suggestion">
+              @if (loading()) {
+                <div class="editor-custom-suggestion__state" role="status">
+                  Loading people…
+                </div>
+              } @else {
+                @for (item of items(); track item.id; let index = $index) {
+                  <button
+                    type="button"
+                    role="option"
+                    [id]="optionId(index)"
+                    [attr.aria-selected]="activeIndex() === index"
+                    (pointerdown)="$event.preventDefault()"
+                    (mouseenter)="setActiveIndex(index)"
+                    (click)="select(index)"
+                  >
+                    <strong>{{ item.label }}</strong>
+                    <small>{{ item.description }}</small>
+                  </button>
+                } @empty {
+                  <div class="editor-custom-suggestion__state" role="status">
+                    No people found.
+                  </div>
+                }
+              }
+            </div>
+          </ng-template>
+        </neural-editor>
+
+        <div class="editor-actions">
+          <button
+            type="button"
+            (click)="suggestionController()?.openCommandPalette()"
+          >
+            Open command palette
+          </button>
+        </div>
+        <output class="demo-status" aria-live="polite">
+          {{ suggestionStatus() }}
+        </output>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Stable node IDs and structured operations</h2>
+    <p>
+      Alpha 3.2 assigns stable IDs to addressable nodes. Operation batches use
+      the current document revision, validate the complete transaction, and
+      either apply atomically or return a conflict/rejection without partial
+      changes.
+    </p>
+    <code-view
+      fileName="structured-operations.ts"
+      language="typescript"
+      [code]="operationsCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="editor-demo">
+        <neural-editor
+          [(value)]="operationDocument"
+          fluid
+          (editorReady)="operationController.set($event)"
+          (operationConflict)="editorOperationConflict($event)"
+        />
+        <div class="editor-actions">
+          <button type="button" (click)="applyStructuredRewrite()">
+            Apply atomic rewrite
+          </button>
+        </div>
+        <output class="demo-status" aria-live="polite">
+          {{ operationStatus() }}
+        </output>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>AI request, diff preview, and explicit review</h2>
+    <p>
+      NeuralNg emits a structured request and never calls a model directly.
+      Application code returns node-addressed operations. Preview decorations
+      leave the form value unchanged until the user explicitly accepts them.
+    </p>
+    <code-view
+      fileName="ai-review.ts"
+      language="typescript"
+      [code]="aiCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="editor-demo">
+        <neural-editor
+          [(value)]="aiDocument"
+          menuAppendTo="body"
+          fluid
+          (editorReady)="aiController.set($event)"
+          (aiRequest)="handleAiRequest($event)"
+          (aiProposalAccepted)="aiProposalAccepted($event)"
+          (aiProposalRejected)="aiProposalRejected($event)"
+          (aiOperationConflict)="aiProposalConflict($event)"
+        >
+          <ng-template
+            neuralEditorAiReview
+            let-review="review"
+            let-controller="controller"
+            let-previous="previous"
+            let-next="next"
+            let-accept="accept"
+            let-reject="reject"
+          >
+            @if (review(); as current) {
+              <div class="editor-ai-review-demo">
+                <strong>{{ current.proposal.summary || 'AI proposal' }}</strong>
+                <span>
+                  {{ current.activeOperationIndex + 1 }} / {{ current.operationCount }}
+                </span>
+                <button type="button" (click)="previous()">Previous</button>
+                <button type="button" (click)="next()">Next</button>
+                <button type="button" (click)="reject()">Reject</button>
+                <button type="button" (click)="accept()">Accept</button>
+              </div>
+            }
+          </ng-template>
+        </neural-editor>
+        <div class="editor-actions">
+          <button type="button" (click)="requestAiRewrite()">
+            Rewrite with AI
+          </button>
+          <button
+            type="button"
+            [disabled]="!aiController()?.aiReview()"
+            (click)="aiController()?.rejectAiProposal()"
+          >
+            Clear preview
+          </button>
+        </div>
+        <output class="demo-status" aria-live="polite">
+          {{ aiStatus() }}
+        </output>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Yjs collaboration and review</h2>
+    <p>
+      Alpha 4 accepts an application-owned Yjs document. These two editors
+      share the same document and comments map without a network provider; a
+      production application supplies its own provider, room, authentication,
+      and update persistence.
+    </p>
+    <code-view
+      fileName="collaboration.ts"
+      language="typescript"
+      [code]="collaborationCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="editor-demo">
+        <div class="editor-collaboration-demo">
+          <div>
+            <strong>Ada</strong>
+            <neural-editor
+              [(value)]="collaborationAliceDocument"
+              [collaboration]="collaborationConfig"
+              [collaborationUser]="collaborationAlice"
+              enableComments
+              trackedChangesMode="suggesting"
+              enableSnapshots
+              [(snapshots)]="collaborationSnapshots"
+              fluid
+              (collaborationStatusChange)="collaborationChanged($event)"
+            />
+          </div>
+          <div>
+            <strong>Grace</strong>
+            <neural-editor
+              [(value)]="collaborationGraceDocument"
+              [collaboration]="collaborationConfig"
+              [collaborationUser]="collaborationGrace"
+              enableComments
+              trackedChangesMode="suggesting"
+              enableSnapshots
+              [(snapshots)]="collaborationSnapshots"
+              fluid
+            />
+          </div>
+        </div>
+        <output class="demo-status" aria-live="polite">
+          {{ collaborationStatus() }}
+        </output>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Image insertion with FileUpload</h2>
+    <p>
+      Editor requests an image, application code uploads it, and the controller
+      inserts only the persistent URL. File objects and temporary object URLs
+      never become part of the JSON document.
+    </p>
+    <code-view
+      fileName="image-upload.html"
+      language="html"
+      [code]="imageCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="editor-demo">
+        <neural-editor
+          [(value)]="advancedDocument"
+          fluid
+          (imageInsertRequest)="openImageInsert($event)"
+        />
+
+        @if (pendingImageRequest()) {
+          <div class="editor-image-insert" role="dialog" aria-label="Insert image">
+            <neural-file-upload
+              accept="image/*"
+              [multiple]="false"
+              [value]="imageFiles()"
+              (selectionChange)="imageSelected($event)"
+              fluid
+            />
+            <label>
+              Persistent image URL
+              <input
+                type="url"
+                [value]="imageUrl()"
+                placeholder="https://cdn.example.com/image.png"
+                (input)="setImageUrl($event)"
+              />
+            </label>
+            <div class="editor-actions">
+              <button
+                type="button"
+                [disabled]="!imageUrl().trim()"
+                (click)="insertUploadedImage()"
+              >
+                Insert uploaded image
+              </button>
+              <button type="button" (click)="cancelImageInsert()">Cancel</button>
+            </div>
+          </div>
+        }
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Bubble, floating, and link menus</h2>
+    <p>
+      Menus use Floating UI and append to <code>body</code> by default, so they
+      are not clipped by the editor surface. Select text for the bubble menu or
+      focus an empty paragraph for the floating menu.
+    </p>
+    <code-view
+      fileName="context-menus.html"
+      language="html"
+      [code]="contextMenuCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="editor-demo">
+        <neural-editor
+          [(value)]="contextDocument"
+          menuAppendTo="body"
+          fluid
+        >
+          <ng-template neuralEditorBubbleMenu let-editor>
+            <button type="button" (click)="editor.toggleBold()">Bold</button>
+            <button type="button" (click)="editor.toggleItalic()">Italic</button>
+            <button type="button" (click)="editor.openLinkPopover()">Link</button>
+          </ng-template>
+
+          <ng-template neuralEditorFloatingMenu let-editor>
+            <button type="button" (click)="editor.toggleHeading(2)">H2</button>
+            <button type="button" (click)="editor.toggleTaskList()">Task</button>
+            <button type="button" (click)="editor.requestImageInsert()">Image</button>
+          </ng-template>
+
+          <ng-template
+            neuralEditorLinkPopover
+            let-href="href"
+            let-setHref="setHref"
+            let-apply="apply"
+            let-remove="remove"
+            let-close="close"
+          >
+            <div class="editor-custom-link-popover">
+              <input
+                type="url"
+                [value]="href()"
+                placeholder="https://example.com"
+                (input)="setHref(inputValue($event))"
+              />
+              <button type="button" (click)="apply()">Apply</button>
+              <button type="button" (click)="remove()">Remove</button>
+              <button type="button" (click)="close()">Close</button>
+            </div>
+          </ng-template>
+        </neural-editor>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Custom toolbar</h2>
+    <p>
+      Replace the default toolbar while keeping the same typed controller and
+      document model.
+    </p>
+    <code-view
+      fileName="custom-toolbar.html"
+      language="html"
+      [code]="toolbarCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="editor-demo">
+        <neural-editor [(value)]="customDocument" fluid>
+          <ng-template neuralEditorToolbar let-editor>
+            <button type="button" (click)="editor.toggleBold()">Bold</button>
+            <button type="button" (click)="editor.setTextAlign('center')">
+              Center
+            </button>
+            <button type="button" (click)="editor.toggleTaskList()">
+              Tasks
+            </button>
+            <button type="button" (click)="editor.insertTable()">
+              Table
+            </button>
+            <button type="button" (click)="editor.clearFormatting()">
+              Clear
+            </button>
+          </ng-template>
+        </neural-editor>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Persistence and derived HTML</h2>
+    <p>
+      Editor does not save, upload, sanitize, call AI services, or connect to a
+      collaboration provider. Application code owns those operations.
+    </p>
+    <code-view
+      fileName="persistence.ts"
+      language="typescript"
+      [code]="serializerCode"
+      [theme]="resolvedMode()"
+    />
+    <div class="editor-actions">
+      <button type="button" (click)="captureHtml()">Generate HTML preview</button>
+    </div>
+    @if (htmlPreview()) {
+      <pre class="editor-html-preview"><code>{{ htmlPreview() }}</code></pre>
+    }
+  </section>
+
+  <section>
+    <h2>Unstyled and typed class slots</h2>
+    <p>
+      Structural hooks and editor semantics remain while consumer classes own
+      the complete visual layer, including palette and table menus.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="editor-demo">
+        <neural-editor
+          [(value)]="headlessDocument"
+          [classes]="headlessClasses"
+          ariaLabel="Headless editor"
+          showCharacterCount
+          unstyled
+          fluid
+        />
+      </div>
+    </code-view>
+  </section>
+</article>

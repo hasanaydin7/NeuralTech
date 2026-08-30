@@ -1,0 +1,528 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-toast
+    channel="site-toast-docs"
+    [position]="position()"
+    showProgress
+    ariaLabel="Toast documentation notifications"
+  />
+  <neural-toast
+    channel="billing-docs"
+    position="bottom-end"
+    showProgress
+    ariaLabel="Billing notifications"
+  />
+  <neural-toast
+    channel="unstyled-docs"
+    position="bottom-start"
+    unstyled
+    [icon]="false"
+    ariaLabel="Unstyled notifications"
+    messageClass="grid grid-cols-[auto_minmax(0,1fr)_auto] items-start gap-3 overflow-hidden rounded-2xl border border-violet-400/30 bg-slate-950 p-4 text-white shadow-2xl"
+  >
+    <ng-template neuralToastTemplate let-message let-dismiss="dismiss">
+      <i
+        class="nt nt-sparkles mt-0.5 text-xl text-violet-300"
+        aria-hidden="true"
+      ></i>
+      <div class="grid min-w-0 gap-1">
+        <strong class="text-sm font-black">{{ message.title }}</strong>
+        <span class="text-sm leading-6 text-slate-300"
+          >{{ message.message }}</span
+        >
+      </div>
+      <neural-button
+        text
+        rounded
+        size="small"
+        icon="nt nt-x"
+        ariaLabel="Dismiss notification"
+        buttonClass="!size-8 !min-h-8 !p-0 !text-white"
+        (clicked)="dismiss()"
+      />
+    </ng-template>
+  </neural-toast>
+
+  <neural-tabs
+    tabsId="toast-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Toast documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-bell"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-blue-500"
+                    >FEEDBACK</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-0.045em] sm:text-5xl"
+                >
+                  Toast
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A channel-based notification outlet with complete severity
+                  surfaces, logical positioning, accessible announcements and
+                  deterministic lifetimes.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Signal
+                    Message API</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+                    safe</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Swipe
+                    and pause</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Import and providers
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Register the Message API once, then place a Toast outlet where
+                that channel should render.
+              </p>
+              <code-view
+                class="mt-6 block"
+                label="Setup"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Basic notification
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The service owns messages; the outlet owns presentation,
+                placement, timers and dismissal.
+              </p>
+              <code-view
+                class="mt-6 block"
+                label="Basic"
+                language="typescript"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex flex-wrap items-center gap-3">
+                  <neural-button
+                    label="Save changes"
+                    icon="nt nt-check"
+                    severity="success"
+                    (clicked)="show('success')"
+                  />
+                  <neural-button
+                    label="Clear"
+                    severity="secondary"
+                    text
+                    (clicked)="clear()"
+                  />
+                  <span class="text-sm text-[var(--site-text-muted)]"
+                    >{{ lastEvent() }}</span
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="severity" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Complete severity surfaces
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Severity colors the background, border, content, icon, close
+                control and progress treatment—not only one edge.
+              </p>
+              <code-view
+                class="mt-6 block"
+                label="Severity"
+                language="typescript"
+                [code]="severityCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex flex-wrap gap-2">
+                  @for (severity of severities; track severity) {
+                  <neural-button
+                    [label]="severity"
+                    [severity]="severity"
+                    size="small"
+                    (clicked)="show(severity)"
+                  />
+                  }
+                </div>
+              </code-view>
+            </section>
+
+            <section id="positions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Logical positions
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Start and end follow document direction. Middle positions use
+                the same accessible outlet and cleanup behavior.
+              </p>
+              <code-view
+                class="mt-6 block"
+                label="Position"
+                language="html"
+                [code]="positionCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex flex-wrap items-end gap-3">
+                  <div class="grid min-w-56 gap-2 text-sm font-bold">
+                    <span>Outlet position</span>
+                    <neural-select
+                      [options]="positions"
+                      [value]="position()"
+                      ariaLabel="Toast outlet position"
+                      appendTo="body"
+                      fluid
+                      (valueChange)="setPosition($event)"
+                    />
+                  </div>
+                  <neural-button
+                    label="Show at position"
+                    severity="info"
+                    (clicked)="show('info')"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="lifetime" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Lifetime, progress and pause
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Finite messages share one timer with the progress bar. Hover and
+                focus pause both. Use
+                <code class="font-mono text-blue-500">duration: null</code> for
+                persistent work.
+              </p>
+              <code-view
+                class="mt-6 block"
+                label="Lifetime"
+                language="typescript"
+                [code]="lifetimeCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex flex-wrap gap-2">
+                  <neural-button
+                    label="5 second toast"
+                    severity="primary"
+                    (clicked)="show('primary')"
+                  />
+                  <neural-button
+                    label="Persistent warning"
+                    severity="warning"
+                    outlined
+                    (clicked)="show('warning', true)"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="show-progress" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Show progress
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Enable
+                <code class="font-mono text-blue-500">showProgress</code> to
+                expose the remaining lifetime visually. The indicator pauses and
+                resumes with the message timer.
+              </p>
+              <code-view
+                class="mt-6 block"
+                label="Show progress"
+                language="typescript"
+                [code]="progressCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex flex-wrap items-center gap-3">
+                  <neural-button
+                    label="Show progress toast"
+                    icon="nt nt-loader-3"
+                    severity="info"
+                    (clicked)="show('info')"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="icons" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">Icons</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Automatic Neural Icons follow severity. Disable them with
+                <code class="font-mono text-blue-500">icon=false</code> or
+                replace all with
+                <code class="font-mono text-blue-500">iconClass</code>.
+              </p>
+              <code-view
+                class="mt-6 block"
+                label="Icons"
+                language="html"
+                [code]="iconCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content>
+                  <neural-button
+                    label="Show icon example"
+                    icon="nt nt-sparkles"
+                    severity="primary"
+                    (clicked)="showIconDemo()"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="channels" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Independent channels
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Route notifications to independent outlets such as global,
+                billing or uploads without coupling feature code to
+                presentation.
+              </p>
+              <code-view
+                class="mt-6 block"
+                label="Channels"
+                language="typescript"
+                [code]="channelCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex flex-wrap gap-2">
+                  <neural-button
+                    label="Send to billing"
+                    icon="nt nt-credit-card"
+                    severity="warning"
+                    (clicked)="showChannel()"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Unstyled and class ownership
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Unstyled mode retains channels, timers, live regions, swipe and
+                structural hooks while every visual class moves to the consumer.
+              </p>
+              <code-view
+                class="mt-6 block"
+                label="Unstyled"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex flex-wrap gap-2">
+                  <neural-button
+                    label="Show unstyled toast"
+                    icon="nt nt-sparkles"
+                    severity="primary"
+                    (clicked)="showUnstyled()"
+                  />
+                </div>
+              </code-view>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                TOAST
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Accessibility
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-lg leading-8 text-[var(--site-text-soft)]"
+              >
+                Stable live regions announce messages without moving keyboard
+                focus or duplicating screen-reader output.
+              </p>
+            </header>
+            <div class="grid gap-10 pt-10">
+              <section id="live-regions" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Live regions</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Regular notifications use one polite status region. Warning
+                  and error messages use an assertive alert region. Visible
+                  cards themselves do not duplicate these roles.
+                </p>
+              </section>
+              <section id="interaction" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Interaction and focus</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Toast never steals focus. Dismiss buttons have localized
+                  accessible labels, keyboard focus rings and pause the active
+                  timer while focused.
+                </p>
+              </section>
+              <section id="motion" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Motion and touch</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Swipe dismissal preserves vertical scrolling. Reduced-motion
+                  preferences collapse enter, leave and reset durations without
+                  removing state transitions.
+                </p>
+              </section>
+            </div>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                TOAST
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">API</h1>
+              <p
+                class="mt-4 max-w-3xl text-lg leading-8 text-[var(--site-text-soft)]"
+              >
+                Outlet configuration stays separate from the serializable
+                message contract.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Toast inputs</h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] backdrop-blur-xl"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase tracking-wider text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (item of inputs; track item[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{ item[0] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="message-api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Message API</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code class="font-mono text-blue-500">notify()</code> returns a
+                reference with id, closed and closeReason Signals plus
+                dismiss(). The service also exposes dismiss(id) and
+                clear(channel?). Message payloads accept severity, title,
+                message, channel, duration, dismissible and data.
+              </p>
+            </section>
+            <section id="position-api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Position union</h2>
+              <div class="mt-4 flex flex-wrap gap-2">
+                @for (item of positions; track item) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ item }}</code
+                >}
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                TOAST
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Design tokens
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-lg leading-8 text-[var(--site-text-soft)]"
+              >
+                Severity surfaces derive from semantic color tokens while
+                preserving theme and consumer overrides.
+              </p>
+            </header>
+            <section id="tokens" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Toast tokens</h2>
+              <site-design-token-list class="mt-6 block" [tokens]="tokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

@@ -1,0 +1,53 @@
+<div class="docs-shell">
+  <button
+    type="button"
+    class="docs-menu-button"
+    aria-controls="docs-navigation"
+    [attr.aria-expanded]="navigationOpen()"
+    (click)="navigationOpen.update((open) => !open)"
+  >
+    Documentation menu
+  </button>
+
+  <aside
+    id="docs-navigation"
+    class="docs-sidebar"
+    [class.open]="navigationOpen()"
+  >
+    <nav aria-label="Documentation">
+      @for (group of navigation; track group.label) {
+      <section>
+        <h2>{{ group.label }}</h2>
+        <ul>
+          @for (item of group.items; track item.label) {
+          <li>
+            @if (item.route) {
+            <a
+              [routerLink]="item.route"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              (click)="closeNavigation()"
+            >
+              <span>{{ item.label }}</span>
+              @if (item.status === 'alpha') {
+              <small>Alpha</small>
+              }
+            </a>
+            } @else {
+            <span class="planned">
+              <span>{{ item.label }}</span>
+              <small>Soon</small>
+            </span>
+            }
+          </li>
+          }
+        </ul>
+      </section>
+      }
+    </nav>
+  </aside>
+
+  <div class="docs-content">
+    <router-outlet />
+  </div>
+</div>

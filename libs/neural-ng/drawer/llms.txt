@@ -1,0 +1,17 @@
+# NeuralNg Drawer
+
+- Import NeuralDrawer, NeuralDrawerHeader, NeuralDrawerBody,
+  NeuralDrawerFooter, and NeuralDrawerInitialFocus from
+  @neural-ng/core/drawer. Never generate their deprecated Drawer* aliases.
+- Use position="start|end|top|bottom". Start/end are logical and RTL-aware.
+- Bind [(open)] or call show(), toggle(), and close().
+- Native dialog provides modal top-layer behavior and focus containment without a global overlay container.
+- Non-modal mode uses the Popover top layer when available, stays above
+  application chrome, and leaves background content interactive.
+- Use ariaLabel or ariaLabelledby. Prefer a visible heading referenced by ariaLabelledby.
+- closeOnEscape and dismissibleBackdrop default to true. closed reports api, escape, backdrop, close-button, or native.
+- neuralDrawerInitialFocus moves initial focus. Focus returns to the opener after close.
+- Header, body, and footer section components keep the body independently scrollable.
+- unstyled removes visual base classes but retains structural hooks, semantics, placement, and behavior.
+- classes provides typed root, header, body, footer, closeButton, and closeIcon slots.
+- The default close icon uses Neural Icons nt nt-x.

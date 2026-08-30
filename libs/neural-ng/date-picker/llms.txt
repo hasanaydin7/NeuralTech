@@ -1,0 +1,62 @@
+# @neural-ng/core/date-picker
+
+Angular 22+ standalone, Signal-first DatePicker and TimePicker.
+STATUS: beta
+
+IMPORT
+import { NeuralDatePicker } from '@neural-ng/core/date-picker';
+- NeuralDatePicker is canonical. DatePickerComponent is deprecated compatibility only.
+
+BASIC
+<neural-date-picker [(value)]="date" />
+
+VALUE RULES
+- Never use JavaScript Date as the component model.
+- Use NeuralDateParts: { year, month, day }.
+- Use NeuralTimeParts: { hour, minute, second, millisecond }.
+- Use NeuralDateTimeParts: { date, time }.
+- selectionMode="range" uses NeuralDateRange.
+- selectionMode="multiple" uses readonly NeuralDateParts[].
+- pickerMode is date, month, year, time, or datetime.
+
+FORMS
+- DatePicker implements FormValueControl.
+- Use [formControl], [(ngModel)], or [formField] directly.
+- Do not add a ControlValueAccessor wrapper or second value store.
+- Preserve disabled, readonly, required, invalid, touched, dirty, and touch.
+
+EVENTS
+- valueChange is model synchronization.
+- selectionChange and selected describe user selection.
+- cleared contains the previous value.
+- opened and closed describe rendered panel lifecycle.
+- viewChanged, monthChanged, and yearChanged describe navigation.
+- invalidInput reports field, raw input, and format/range reason.
+- Do not invent onSelect, onChange, onDateSelect, or onClose outputs.
+
+CONSTRAINTS
+- Compose minDate, maxDate, disabledDates, disabledDays, dateFilter, and
+  isDateDisabled. Do not pre-filter the rendered calendar externally.
+- Today and Clear commit immediately unless unavailable.
+- showApplyActions enables draft Apply/Cancel behavior.
+- Time and datetime always use a draft.
+
+LOCALE AND ACCESSIBILITY
+- Prefer NeuralLocaleService; use [locale] only for a component override.
+- firstDayOfWeek may explicitly override the locale.
+- Preserve dialog/grid semantics, roving tabindex, keyboard navigation, focus
+  restoration, aria-live view announcements, full weekday labels, and RTL.
+- Use parseNeuralLocaleDate for deterministic text parsing. Do not use
+  Date.parse or browser-dependent parsing.
+
+OVERLAY
+- Do not add appendTo="body". DatePicker uses NeuralNg Popover and the browser
+  top layer without moving Angular-owned DOM.
+- Keep SSR closed and browser positioning hydration-safe.
+
+HEADLESS
+- unstyled removes visual *-base classes, never structural *-root hooks.
+- Use NeuralDatePickerClasses for typed slots.
+- Preserve structural -> component tokens -> theme -> consumer class order.
+- Use the six exported neuralDatePicker* typed template directives for custom
+  day, header, footer, trigger, previous, and next rendering.

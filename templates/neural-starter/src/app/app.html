@@ -1,0 +1,78 @@
+<neural-toast showProgress />
+
+<main
+  class="min-h-screen bg-surface-50 px-5 py-10 text-surface-900 dark:bg-surface-950 dark:text-surface-50"
+>
+  <section class="mx-auto grid max-w-6xl gap-8">
+    <header
+      class="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-surface-200 bg-surface-0 p-6 shadow-sm dark:border-surface-800 dark:bg-surface-900"
+    >
+      <div>
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-primary-600"
+        >
+          Four-package consumer template
+        </p>
+        <h1 class="mt-2 text-4xl font-bold">Neural Starter</h1>
+        <p class="mt-2 max-w-2xl text-surface-600 dark:text-surface-300">
+          Core, Icons, Editor, Theme Compiler and MCP Server installed through
+          public package entry points.
+        </p>
+      </div>
+      <div class="flex gap-3">
+        <neural-button (clicked)="toggleMode()">
+          <i class="nt nt-moon" aria-hidden="true"></i>
+          Toggle mode
+        </neural-button>
+        <neural-button severity="primary" (clicked)="showToast()">
+          <i class="nt nt-bell" aria-hidden="true"></i>
+          Test toast
+        </neural-button>
+      </div>
+    </header>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      <section
+        class="rounded-3xl border border-surface-200 bg-surface-0 p-6 dark:border-surface-800 dark:bg-surface-900"
+      >
+        <h2 class="text-xl font-semibold">Forms contracts</h2>
+        <div class="mt-5 grid gap-4">
+          <neural-checkbox [(checked)]="notifications"
+            >Email notifications</neural-checkbox
+          >
+          <neural-tri-state-checkbox [(value)]="inheritedPermission"
+            >Inherit workspace permission</neural-tri-state-checkbox
+          >
+          <neural-switch [(checked)]="compactMode"
+            >Compact navigation</neural-switch
+          >
+          <neural-radio-group
+            [options]="plans"
+            optionLabel="label"
+            optionValue="value"
+            [(value)]="plan"
+          />
+        </div>
+      </section>
+
+      <section
+        class="rounded-3xl border border-surface-200 bg-surface-0 p-6 dark:border-surface-800 dark:bg-surface-900"
+      >
+        <h2 class="text-xl font-semibold">Structured editor</h2>
+        <p class="mt-2 text-sm text-surface-600 dark:text-surface-300">
+          The canonical value is structured JSON, not HTML.
+        </p>
+        <div class="mt-5">
+          <neural-editor
+            [(value)]="document"
+            ariaLabel="Starter document"
+            placeholder="Write something…"
+            showWordCount
+            showCharacterCount
+            fluid
+          />
+        </div>
+      </section>
+    </div>
+  </section>
+</main>

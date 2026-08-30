@@ -1,0 +1,253 @@
+<article class="docs-page badge-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components</span>
+    <h1 class="docs-hero__title">Badge</h1>
+    <p class="docs-hero__description">
+      Compact semantic indicators for counts, statuses, and custom metadata,
+      with numeric caps, accessible dots, live updates, and a fully headless
+      class contract.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <code-view
+      class="mt-2"
+      fileName="badge-example.ts"
+      language="ts"
+      [code]="importCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="false"
+      [theme]="resolvedMode()"
+    >
+    </code-view>
+  </section>
+
+  <section id="values">
+    <h2>Values and Numeric Caps</h2>
+    <p class="docs-hero__description">
+      Values above <code>max</code> stay compact visually while assistive
+      technology receives the real number.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="badge-example.html"
+      language="html"
+      [code]="countCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="flex gap-2!" data-testid="badge-values">
+        <neural-badge value="New" />
+        <neural-badge [value]="8" severity="info" />
+        <neural-badge [value]="128" [max]="99" severity="error" />
+        <neural-badge [value]="0" severity="neutral" />
+        <neural-badge [value]="-2" severity="warning" />
+      </div>
+    </code-view>
+  </section>
+
+  <section id="severities">
+    <h2>Semantic Severities</h2>
+    <code-view
+      class="mt-2"
+      fileName="badge-example.html"
+      language="html"
+      [code]="semanticCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="flex gap-2" data-testid="badge-severities">
+        <neural-badge value="Neutral" />
+        <neural-badge value="Primary" severity="primary" />
+        <neural-badge value="Secondary" severity="secondary" />
+        <neural-badge value="Info" severity="info" />
+        <neural-badge value="Success" severity="success" />
+        <neural-badge value="Warning" severity="warning" />
+        <neural-badge value="Error" severity="error" />
+      </div>
+    </code-view>
+  </section>
+
+  <section id="sizes">
+    <h2>Sizes, Dots, and Projected Content</h2>
+    <p class="docs-hero__description">
+      Dot badges require an accessible label when meaningful. Leave
+      <code>value</code> empty to project icons or richer inline content.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="badge-example.html"
+      language="html"
+      [code]="dotCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="flex justify-center items-center gap-2!"
+        data-testid="badge-variants"
+      >
+        <neural-badge value="SM" size="small" />
+        <neural-badge value="MD" />
+        <neural-badge value="LG" size="large" />
+        <neural-badge
+          dot
+          size="small"
+          severity="success"
+          ariaLabel="Service online"
+        />
+        <neural-badge dot severity="warning" ariaLabel="Action pending" />
+        <neural-badge severity="success">
+          <i class="nt nt-check" aria-hidden="true"></i>
+          Verified
+        </neural-badge>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="live">
+    <h2>Live counter</h2>
+    <p class="docs-hero__description">
+      Opt into polite announcements only when a changing count is relevant to
+      the user.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="badge-example.ts"
+      language="ts"
+      [code]="liveCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="flex justify-center items-center gap-2">
+        <neural-button class="w-full" (clicked)="increment()"
+          >Add notification</neural-button
+        >
+        <neural-badge
+          [value]="notifications()"
+          [max]="99"
+          severity="info"
+          ariaLive="polite"
+        />
+        <span>Real count: {{ notifications() }}</span>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="anchors">
+    <h2>Badge directive</h2>
+    <p class="docs-hero__description">
+      Attach the same Badge implementation to any suitable anchor. Logical
+      corners follow the writing direction and do not change the anchor's
+      layout.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="badge-example.ts"
+      language="ts"
+      [code]="directiveCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="flex justify-center items-center gap-4"
+        data-testid="badge-directive"
+      >
+        <button
+          class="badge-anchor-demo__icon"
+          type="button"
+          aria-label="Notifications, 8 unread"
+          [neuralBadge]="8"
+          neuralBadgePosition="top-end"
+          neuralBadgeSeverity="error"
+        >
+          <i class="nt nt-bell" aria-hidden="true"></i>
+        </button>
+
+        <span
+          class="badge-anchor-demo__avatar"
+          aria-label="NeuralNg profile, online"
+          neuralBadge=""
+          neuralBadgeDot
+          neuralBadgePosition="bottom-end"
+          neuralBadgeSeverity="success"
+          neuralBadgeAriaLabel="Online"
+        >
+          NN
+        </span>
+
+        <span
+          class="badge-anchor-demo__label"
+          [neuralBadge]="3"
+          neuralBadgePosition="end"
+          neuralBadgeSeverity="info"
+        >
+          Messages
+        </span>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and Typed Slots</h2>
+    <p class="docs-hero__description">
+      Semantics and structural hooks remain while all visual ownership moves to
+      consumer classes.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="badge-example.ts"
+      language="ts"
+      [code]="headlessCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="flex justify-center items-center gap-4"
+        data-testid="badge-headless"
+      >
+        <neural-badge
+          value="AI"
+          unstyled
+          badgeClass="docs-headless-badge--custom"
+          [classes]="headlessClasses"
+        />
+      </div>
+    </code-view>
+  </section>
+
+  <footer class="docs-page-next">
+    <span>Next Component</span>
+    <a href="/docs/components/button">Button →</a>
+  </footer>
+</article>

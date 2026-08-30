@@ -1,0 +1,23 @@
+NeuralNg LoadingOverlay rules
+
+- Import canonical `NeuralLoadingOverlay` only from `@neural-ng/core/loading-overlay`; `LoadingOverlayComponent` is a deprecated alias.
+- Import canonical `NeuralLoadingIndicator` from the same entry point only when a custom indicator template is used; `LoadingIndicatorDirective` is a deprecated alias.
+- Add imported standalone declarations directly to component imports.
+- LoadingOverlay owns blocking, backdrop, timing, focus, and scroll behavior; ProgressSpinner owns only the visual indeterminate indicator.
+- Container scope wraps and blocks only projected content.
+- Viewport scope uses native dialog top-layer behavior and can lock document scroll.
+- Bind active to application state; do not imperatively remove overlay DOM.
+- Provide a task-specific label when "Loading" is not sufficient.
+- The label defaults to the active locale common loading message.
+- delay defaults to 150ms and prevents short-operation flashes.
+- minimumDuration defaults to 300ms and prevents visible flicker.
+- aria-busy begins immediately, even while visual rendering is delayed.
+- blockInteraction defaults to true. Set it false only when continued interaction is safe.
+- Escape never dismisses a loading operation.
+- Do not create a close button or dismissible backdrop.
+- Use spinnerSize and spinnerSeverity for the built-in ProgressSpinner.
+- Use `<ng-template neuralLoadingIndicator>` for a custom indicator.
+- Custom indicators receive polite status semantics; avoid duplicate live regions.
+- `unstyled` removes visual classes while blocking and structural behavior remain.
+- Slots: root, content, backdrop, panel, indicator, label.
+- Global unstyled mode is `provideNeuralNg({ unstyled: true })`.

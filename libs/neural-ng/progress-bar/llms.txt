@@ -1,0 +1,20 @@
+NeuralNg ProgressBar rules
+
+- Import NeuralProgressBar only from `@neural-ng/core/progress-bar`.
+- Add NeuralProgressBar directly to standalone component imports.
+- Determinate mode is the default and uses numeric value, min, and max inputs.
+- Value and bufferValue are clamped to the effective range.
+- bufferValue never renders behind value.
+- Use mode="indeterminate" when the completion value is unknown.
+- Indeterminate mode intentionally omits aria-valuemin, aria-valuemax, and aria-valuenow.
+- Always give an unlabeled ProgressBar ariaLabel or ariaLabelledBy.
+- Use label for visual text and ariaValueText for a localized or descriptive accessible value.
+- showValue=false hides only the visual label; it does not remove progress semantics.
+- Sizes: `small`, `medium`, `large`.
+- Severities: primary, secondary, neutral, info, success, warning, error.
+- striped adds stripes; animated moves them when motion preferences allow.
+- Reduced-motion preferences disable all ProgressBar animation and transitions.
+- `unstyled` removes visual classes while structural hooks remain.
+- Slots: root, track, buffer, value, label.
+- Global unstyled mode is `provideNeuralNg({ unstyled: true })`.
+- ProgressBar is for linear progress. Do not treat it as ProgressSpinner.

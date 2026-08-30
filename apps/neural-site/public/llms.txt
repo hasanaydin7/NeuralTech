@@ -1,0 +1,33 @@
+# NeuralNg
+
+> NeuralNg is an Angular 22+ UI component library designed for human developers and AI coding agents. It publishes typed standalone APIs, Signal-based state, accessibility contracts, component-level llms.txt files, and a read-only MCP server.
+
+Use exact secondary entry points such as `@neural-ng/core/button`. Do not invent selectors, inputs, outputs, aliases, or NgModules. Read the component documentation or MCP contract before generating code.
+
+## Start here
+
+- [Installation](/docs/installation): Install the core package, optional icons, and a theme.
+- [Component catalog](/docs/components): Find components by capability and package entry point.
+- [AI-first workflow](/docs/ai-first-workflow): Give coding agents deterministic NeuralNg context.
+- [MCP server reference](/docs/mcp-server): Discover exact selectors, imports, APIs, README files, and llms.txt resources.
+- [Forms integration](/docs/forms-integration): Use Signal Forms, Reactive Forms, or template-driven forms correctly.
+- [Accessibility](/docs/accessibility): Understand native semantics, keyboard behavior, focus, and ARIA contracts.
+- [SSR and hydration](/docs/ssr-hydration): Generate server-safe Angular interfaces.
+- [Theming](/docs/theming): Use the neutral theme or own the visual layer with unstyled components.
+
+## Agent integration
+
+- npm package: https://www.npmjs.com/package/@neural-ng/core
+- MCP server: `npx -y @neural-ng/mcp-server`
+- GitHub repository: https://github.com/hasanaydin7/NeuralTech
+- Package-level context: `@neural-ng/core/llms.txt`
+- Component context pattern: `@neural-ng/core/{component}/llms.txt`
+
+## Core rules
+
+- Target Angular 22+ and strict TypeScript.
+- Import standalone components from their documented secondary entry points.
+- Prefer native semantics and visible accessible names.
+- Preserve documented keyboard, focus, form, overlay, SSR, and hydration behavior.
+- Import a NeuralNg theme explicitly unless the application uses unstyled components.
+- Treat documentation and MCP results as the source of truth for the installed version.

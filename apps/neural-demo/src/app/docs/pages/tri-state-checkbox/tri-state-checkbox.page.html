@@ -1,0 +1,286 @@
+<article class="docs-page tri-state-checkbox-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Forms Foundation</span>
+    <h1 class="docs-hero__title">TriStateCheckbox</h1>
+    <p class="docs-hero__description">
+      A standalone nullable checkbox control for explicit yes, no, and inherited
+      states, with native mixed semantics, Angular Forms integration, and full
+      visual ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <code-view
+      fileName="app.ts"
+      language="ts"
+      [code]="importCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Basic</h2>
+    <p class="docs-hero__description">
+      Bind the nullable <code>value</code> model. User interaction cycles
+      <code>false → true → null → false</code>; <code>null</code> is the mixed
+      state.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="tri-state-checkbox-example.ts"
+      language="ts"
+      [code]="basicCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="tri-state-demo-stack"
+        data-testid="tri-state-basic"
+      >
+        <neural-tri-state-checkbox
+          [(value)]="permission"
+          (stateChange)="stateChanged($event)"
+        >
+          Inherit permission from parent
+        </neural-tri-state-checkbox>
+        <output class="demo-status" aria-live="polite">
+          value: {{ formatValue(permission()) }} · {{ eventStatus() }}
+        </output>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="forms">
+    <h2>Angular Forms</h2>
+    <p class="docs-hero__description">
+      TriStateCheckbox implements <code>FormValueControl&lt;boolean | null&gt;</code>.
+      Signal Forms, Reactive Forms, and template-driven forms all use the same
+      nullable value contract.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="tri-state-checkbox-forms.html"
+      language="html"
+      [code]="formsCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="tri-state-demo-stack"
+        data-testid="tri-state-forms"
+      >
+        <neural-tri-state-checkbox [formField]="signalForm.permission">
+          Signal permission
+        </neural-tri-state-checkbox>
+        <neural-tri-state-checkbox [formControl]="reactivePermission">
+          Reactive permission
+        </neural-tri-state-checkbox>
+        <neural-tri-state-checkbox
+          name="templatePermission"
+          [(ngModel)]="templatePermission"
+        >
+          Template permission
+        </neural-tri-state-checkbox>
+        <output class="demo-status" aria-live="polite">
+          forms: {{ formatValue(formsModel().permission) }} ·
+          {{ formatValue(reactivePermission.value) }} ·
+          {{ formatValue(templatePermission) }}
+        </output>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="states">
+    <h2>States and Field</h2>
+    <p class="docs-hero__description">
+      Disabled removes interaction. Readonly keeps the native input focusable
+      while blocking mutation. Field can provide accessible state and
+      descriptions.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="tri-state-checkbox-states.html"
+      language="html"
+      [code]="statesCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="tri-state-demo-stack"
+        data-testid="tri-state-states"
+      >
+        <neural-tri-state-checkbox [value]="null" disabled>
+          Mixed and disabled
+        </neural-tri-state-checkbox>
+        <neural-tri-state-checkbox [value]="null" readonly>
+          Mixed and readonly
+        </neural-tri-state-checkbox>
+        <neural-field controlId="inherited-access" required invalid fluid>
+          <neural-tri-state-checkbox [value]="null">
+            Inherited access
+          </neural-tri-state-checkbox>
+          <small neuralFieldHint>Choose an explicit access policy.</small>
+          <small neuralFieldError>Access policy is required.</small>
+        </neural-field>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled</h2>
+    <p>
+      Remove NeuralNg visuals while retaining the native checkbox, mixed state,
+      focus behavior, structural classes, and typed consumer class slots.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="tri-state-checkbox-headless.ts"
+      language="ts"
+      [code]="headlessCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="tri-state-demo-stack"
+        data-testid="tri-state-headless"
+      >
+        <neural-tri-state-checkbox
+          [(value)]="headlessValue"
+          [classes]="headlessClasses"
+          unstyled
+        >
+          Custom visual ownership
+        </neural-tri-state-checkbox>
+        <output class="demo-status" aria-live="polite">
+          value: {{ formatValue(headlessValue()) }}
+        </output>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="migration">
+    <h2>Migration from the combined alpha API</h2>
+    <p>
+      Tri-state data no longer binds to Checkbox's boolean
+      <code>checked</code> model. Use the dedicated component and its nullable
+      <code>value</code> model.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="migration.html"
+      language="html"
+      [code]="migrationCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="accessibility">
+    <h2>Accessibility</h2>
+    <p>
+      The component preserves a real <code>&lt;input type="checkbox"&gt;</code>.
+      Mixed state synchronizes the native <code>indeterminate</code> property
+      with <code>aria-checked="mixed"</code>. Label activation, Space, focus,
+      required, disabled, and form behavior remain native.
+    </p>
+  </section>
+
+  <section id="api">
+    <h2>API</h2>
+    <div class="api-table-wrapper">
+      <table class="api-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>value</code></td>
+            <td><code>boolean | null</code></td>
+            <td><code>false</code></td>
+            <td>Authoritative nullable model; null represents mixed.</td>
+          </tr>
+          <tr>
+            <td><code>disabled</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Disable the native input and remove interaction.</td>
+          </tr>
+          <tr>
+            <td><code>readonly</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Keep focus while blocking value changes.</td>
+          </tr>
+          <tr>
+            <td><code>required</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Expose native and accessible required state.</td>
+          </tr>
+          <tr>
+            <td><code>unstyled</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Remove NeuralNg visual classes.</td>
+          </tr>
+          <tr>
+            <td><code>valueChange</code></td>
+            <td><code>boolean | null</code></td>
+            <td>—</td>
+            <td>Generated model output for two-way binding.</td>
+          </tr>
+          <tr>
+            <td><code>stateChange</code></td>
+            <td><code>NeuralTriStateCheckboxChange</code></td>
+            <td>—</td>
+            <td>Detailed event emitted only after user interaction.</td>
+          </tr>
+          <tr>
+            <td><code>touch</code></td>
+            <td><code>void</code></td>
+            <td>—</td>
+            <td>Emitted when the native input blurs.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="docs-page-next">
+    <span>Next Component</span>
+    <a href="/docs/components/card">Card →</a>
+  </footer>
+</article>

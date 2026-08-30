@@ -1,0 +1,461 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="skeleton-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Skeleton documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-placeholder"
+              >Component</neural-tab
+            ><neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            ><neural-tab value="api" iconClass="nt-code">API</neural-tab
+            ><neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FEEDBACK</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Skeleton
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  Decorative loading placeholders with CSS-native dimensions,
+                  three geometries, calm motion and complete headless ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Decorative semantics</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Reduced-motion safe</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+                    safe</span
+                  >
+                </div>
+              </div>
+            </header>
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical standalone component from its granular
+                entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Basic text placeholders</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The rounded default fills its container. Width and height accept
+                CSS length strings instead of framework-specific size shortcuts.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="basic.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="mx-auto flex w-full max-w-2xl flex-col gap-4"
+                >
+                  <neural-skeleton /><neural-skeleton
+                    width="72%"
+                  /><neural-skeleton width="45%" height="0.75rem" /></div
+              ></code-view>
+            </section>
+            <section id="shapes" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Shapes and dimensions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Circle uses one size value; rectangle and rounded variants use
+                independent dimensions. borderRadius can override any chosen
+                shape.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="shapes.html"
+                language="html"
+                [code]="shapesCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex min-h-28 w-full flex-wrap items-center justify-center gap-6"
+                >
+                  <neural-skeleton shape="circle" size="3rem" /><neural-skeleton
+                    shape="rounded"
+                    width="10rem"
+                    height="4rem"
+                  /><neural-skeleton
+                    shape="rectangle"
+                    width="10rem"
+                    height="4rem"
+                  /><neural-skeleton
+                    width="10rem"
+                    height="4rem"
+                    borderRadius="1.5rem"
+                  /></div
+              ></code-view>
+            </section>
+            <section id="motion" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Pulse, wave and none</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Pulse is the calm default, wave communicates active fetching and
+                none creates a completely static placeholder.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="motion.html"
+                language="html"
+                [code]="motionCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="mx-auto flex w-full max-w-2xl flex-col gap-5"
+                >
+                  <div>
+                    <p
+                      class="mb-2 text-xs font-bold text-[var(--site-text-muted)]"
+                    >
+                      Pulse
+                    </p>
+                    <neural-skeleton animation="pulse" />
+                  </div>
+                  <div>
+                    <p
+                      class="mb-2 text-xs font-bold text-[var(--site-text-muted)]"
+                    >
+                      Wave
+                    </p>
+                    <neural-skeleton animation="wave" />
+                  </div>
+                  <div>
+                    <p
+                      class="mb-2 text-xs font-bold text-[var(--site-text-muted)]"
+                    >
+                      None
+                    </p>
+                    <neural-skeleton animation="none" />
+                  </div></div
+              ></code-view>
+            </section>
+            <section id="composition" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Content-aware composition</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Match the final layout to avoid content shift. The surrounding
+                region—not each decorative bar—owns aria-busy and its stable
+                name.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="profile.html"
+                language="html"
+                [code]="compositionCode"
+                [theme]="appearance.mode()"
+                preview
+                ><article
+                  preview-content
+                  aria-busy="true"
+                  aria-label="Loading profile"
+                  class="mx-auto w-full max-w-xl rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <div class="flex items-center gap-4">
+                    <neural-skeleton
+                      shape="circle"
+                      size="3rem"
+                      animation="wave"
+                    />
+                    <div class="flex-1 space-y-2">
+                      <neural-skeleton width="9rem" /><neural-skeleton
+                        width="6rem"
+                        height="0.75rem"
+                      />
+                    </div>
+                  </div>
+                  <neural-skeleton
+                    class="mt-5 block"
+                    shape="rectangle"
+                    height="9rem"
+                    animation="wave"
+                  />
+                  <div class="mt-5 space-y-3">
+                    <neural-skeleton /><neural-skeleton width="84%" />
+                  </div></article
+              ></code-view>
+            </section>
+            <section id="static" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Static placeholders</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use animation="none" in dense views, snapshots or products where
+                motion would distract. Dimensions and theme surface remain
+                unchanged.
+              </p>
+            </section>
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Structural clipping and explicit dimensions remain while
+                consumer classes own the root and effect.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex min-h-28 w-full items-center justify-center"
+                >
+                  <neural-skeleton
+                    unstyled
+                    width="18rem"
+                    height="5rem"
+                    skeletonClass="my-skeleton"
+                    [classes]="headlessClasses"
+                  /></div
+              ></code-view>
+            </section>
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Usage boundaries</h2>
+              <div class="mt-6 grid gap-4 md:grid-cols-3">
+                @for (item of [['Skeleton','Represents visual geometry while
+                content is unavailable.'],['Region','Owns aria-busy, a stable
+                accessible name and replacement
+                timing.'],['LoadingOverlay','Blocks interaction when the entire
+                surface must wait.']]; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">{{ item[0] }}</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+          <neural-tab-panel value="accessibility" [focusable]="false"
+            ><header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Silent placeholders</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Skeletons never compete with the content they temporarily
+                represent.
+              </p>
+            </header>
+            <section id="decorative" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Decorative semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Every skeleton is aria-hidden=true and has no role. Screen
+                readers do not announce every visual line or card shape.
+              </p>
+            </section>
+            <section id="busy-region" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Busy regions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Place aria-busy=true on the smallest meaningful region being
+                refreshed and preserve its accessible name across loading and
+                loaded states.
+              </p>
+            </section>
+            <section id="announcements" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Stable announcements</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Do not add a live region to each skeleton. If status narration
+                is necessary, provide one concise status outside the decorative
+                placeholders.
+              </p>
+            </section>
+            <section id="reduced-motion" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Reduced motion</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Both pulse and wave animations stop automatically when
+                prefers-reduced-motion requests reduced movement.
+              </p>
+            </section>
+            <section id="ssr" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">SSR and hydration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Rendering is declarative and browser-global free. Explicit
+                dimensions produce the same server and client geometry.
+              </p>
+            </section></neural-tab-panel
+          >
+          <neural-tab-panel value="api" [focusable]="false"
+            ><header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC API
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Skeleton contracts</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                A deliberately small API keeps generated loading layouts
+                predictable.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[52rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                @for (item of classSlots; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of publicTypes; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="alias" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Legacy alias</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                SkeletonComponent remains a deprecated compatibility alias. New
+                code and AI-generated examples use NeuralSkeleton.
+              </p>
+            </section></neural-tab-panel
+          >
+          <neural-tab-panel value="tokens" [focusable]="false"
+            ><header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Skeleton tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Themes change the placeholder surface and motion without
+                changing component markup.
+              </p>
+            </header>
+            <section id="surface-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Surface and shape</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="surfaceTokens"
+              />
+            </section>
+            <section id="pulse-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Pulse</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="pulseTokens"
+              />
+            </section>
+            <section id="wave-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Wave</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="waveTokens"
+              /></section
+          ></neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

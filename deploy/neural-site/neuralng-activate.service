@@ -1,0 +1,6 @@
+[Unit]
+Description=Activate the verified NeuralNg release
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl restart neuralng.service

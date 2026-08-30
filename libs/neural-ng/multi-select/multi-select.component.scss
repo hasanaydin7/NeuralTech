@@ -1,0 +1,281 @@
+:where(.neural-multi-select-host) {
+  display: inline-block;
+  min-width: 0;
+  max-width: 100%;
+}
+:where(.neural-multi-select-host-fluid) {
+  display: block;
+  width: 100%;
+}
+:where(.neural-multi-select-root),
+:where(.neural-multi-select-trigger-root) {
+  box-sizing: border-box;
+  min-width: 0;
+}
+:where(.neural-multi-select-trigger-root) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+:where(.neural-multi-select-value-root) {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+:where(.neural-multi-select-chip-list-root) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+:where(.neural-multi-select-chip-root) {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+}
+:where(.neural-multi-select-chip-label-root) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+:where(.neural-multi-select-chip-remove-root),
+:where(.neural-multi-select-clear-root),
+:where(.neural-multi-select-dropdown-root),
+:where(.neural-multi-select-select-all-root) {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+:where(.neural-multi-select-list-root) {
+  max-height: var(--neural-multi-select-panel-max-height, 18rem);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+:where(.neural-multi-select-virtual-spacer) {
+  width: 1px;
+  pointer-events: none;
+}
+
+:where(.neural-multi-select-base) {
+  width: var(--neural-multi-select-width, auto);
+  color: var(--neural-multi-select-color, var(--neural-color-text));
+  font-family: inherit;
+}
+:where(.neural-multi-select-trigger-base) {
+  min-height: var(--neural-control-height, 2.5rem);
+  padding-inline-start: 0.55rem;
+  color: inherit;
+  background: var(
+    --neural-multi-select-background,
+    var(--neural-color-surface)
+  );
+  border: var(
+    --neural-multi-select-border,
+    1px solid var(--neural-color-border)
+  );
+  border-radius: var(--neural-multi-select-radius, 0.625rem);
+  box-shadow: 0 1px 2px rgb(var(--neural-color-shadow) / 0.04);
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+:where(.neural-multi-select-trigger-base:focus-visible),
+:where(
+  .neural-multi-select-root[data-open='true'] .neural-multi-select-trigger-base
+) {
+  outline: 0;
+  border-color: var(--neural-color-focus);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--neural-color-focus) 18%, transparent);
+}
+:where(
+  .neural-multi-select-root[data-invalid='true']
+    .neural-multi-select-trigger-base
+) {
+  border-color: var(--neural-color-error);
+}
+:where(.neural-multi-select-root[data-disabled='true']) {
+  opacity: 0.6;
+  pointer-events: none;
+}
+:where(.neural-multi-select-value-base) {
+  padding: 0.4rem 0;
+}
+:where(.neural-multi-select-placeholder-base) {
+  color: var(--neural-color-text-muted);
+}
+:where(.neural-multi-select-chip-base) {
+  gap: 0.15rem;
+  min-height: 1.75rem;
+  padding-inline-start: 0.6rem;
+  color: var(--neural-color-primary);
+  background: color-mix(
+    in srgb,
+    var(--neural-color-primary) 11%,
+    var(--neural-color-surface)
+  );
+  border: 1px solid
+    color-mix(in srgb, var(--neural-color-primary) 22%, transparent);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+}
+:where(.neural-multi-select-chip-remove-base) {
+  width: 1.65rem;
+  height: 1.65rem;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+:where(.neural-multi-select-chip-remove-base:hover) {
+  background: color-mix(in srgb, currentColor 12%, transparent);
+}
+:where(.neural-multi-select-clear-base),
+:where(.neural-multi-select-dropdown-base) {
+  align-self: stretch;
+  min-width: var(--neural-control-height, 2.5rem);
+  padding: 0;
+  color: var(--neural-color-text-muted);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+:where(.neural-multi-select-clear-base:hover) {
+  color: var(--neural-color-text-strong);
+  background: var(--neural-color-surface-hover);
+}
+:where(.neural-multi-select-panel-base) {
+  overflow: hidden;
+  padding: 0;
+  color: var(--neural-color-text);
+  background: var(
+    --neural-multi-select-panel-background,
+    var(--neural-color-surface)
+  );
+  border-radius: 0.75rem;
+}
+:where(.neural-multi-select-header-base) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem;
+  border-bottom: 1px solid var(--neural-color-border);
+}
+:where(.neural-multi-select-filter-wrap-root) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1;
+}
+:where(.neural-multi-select-filter-wrap-root > .nt) {
+  position: absolute;
+  inset-inline-start: 0.7rem;
+  color: var(--neural-color-text-muted);
+  pointer-events: none;
+}
+:where(.neural-multi-select-filter-base) {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 2.25rem;
+  padding: 0.45rem 0.7rem 0.45rem 2.15rem;
+  color: inherit;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.5rem;
+  outline: 0;
+  font: inherit;
+}
+:where(.neural-multi-select-filter-base:focus) {
+  border-color: var(--neural-color-focus);
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--neural-color-focus) 16%, transparent);
+}
+:where(.neural-multi-select-select-all-base) {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+:where(.neural-multi-select-option-base) {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 2.65rem;
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+}
+:where(.neural-multi-select-option-active-base) {
+  color: var(--neural-color-text-strong);
+  background: var(--neural-color-surface-hover);
+}
+:where(.neural-multi-select-option-selected-base) {
+  color: var(--neural-color-primary);
+  background: color-mix(
+    in srgb,
+    var(--neural-color-primary) 9%,
+    var(--neural-color-surface)
+  );
+}
+:where(.neural-multi-select-option-disabled-base) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+:where(.neural-multi-select-checkbox-base) {
+  display: inline-grid;
+  place-items: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+  color: white;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.3rem;
+  font-size: 0.75rem;
+}
+:where(.neural-multi-select-checkbox-base[data-checked='true']),
+:where(.neural-multi-select-checkbox-base[data-indeterminate='true']) {
+  background: var(--neural-color-primary);
+  border-color: var(--neural-color-primary);
+}
+:where(.neural-multi-select-checkbox-indeterminate) {
+  width: 0.5rem;
+  height: 0.125rem;
+  background: currentColor;
+  border-radius: 999px;
+}
+:where(.neural-multi-select-group-base) {
+  padding: 0.7rem 0.75rem 0.35rem;
+  color: var(--neural-color-text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+:where(.neural-multi-select-empty-base),
+:where(.neural-multi-select-loading-base) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  color: var(--neural-color-text-muted);
+  text-align: center;
+}
+:where(.neural-multi-select-footer-base) {
+  padding: 0.65rem 0.75rem;
+  border-top: 1px solid var(--neural-color-border);
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(.neural-multi-select-trigger-base) {
+    transition-duration: 0.01ms !important;
+  }
+}

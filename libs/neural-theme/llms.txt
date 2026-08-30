@@ -1,0 +1,84 @@
+# @neural-ng/theme
+
+PURPOSE
+Compile a small Neural theme recipe into complete @neural-ng/core and
+@neural-ng/editor CSS tokens, Tailwind bridge tokens, interchange JSON,
+diagnostics, and a generated theme-name type.
+
+INSTALL
+npm install -D @neural-ng/theme
+
+COMMANDS
+npx neural-theme init
+npx neural-theme init --preset glass
+npx neural-theme init --preset mist
+npx neural-theme init --preset futuristic
+npx neural-theme validate
+npx neural-theme build
+npx neural-theme build --config company.theme.json --out-dir src/styles/generated
+npx neural-theme migrate --config legacy.theme.json --out neural.theme.json
+
+AUTHORING RULES
+- Use neural.theme.json as the canonical sparse authoring format.
+- Set name in lowercase kebab-case.
+- extends must be neutral, glass, mist, or futuristic. Glass, Mist, and Futuristic are experimental baselines.
+- Prefer color.primary, color.surface, typography, shape, density, elevation,
+  and motion over exact component token overrides.
+- Use components.<component>.<camelCaseTokenSuffix> only for sparse overrides.
+- Use tokens.--neural-* only for advanced exact overrides.
+- Override values must not contain semicolons, control characters, url(),
+  @import, expression(), javascript:, or malformed token aliases.
+- Use {color.primary}, {color.surface.50}, {button.radius}, or
+  {components.button.radius} for aliases.
+- Never generate the full 1,000+ token graph in a prompt. Let the compiler
+  expand the compact recipe.
+- Do not import Core neutral.css or Editor neutral.css together with generated
+  theme CSS. The generated CSS already contains both contracts.
+- Keep @neural-ng/theme as a dev dependency. Angular visual tooling may import
+  only @neural-ng/theme/browser; never import the Node entry point into a browser
+  bundle.
+
+OUTPUT
+<name>.css
+<name>.tokens.json
+<name>.report.json
+<name>.d.ts
+
+PROGRAMMATIC API
+compileTheme
+migrateThemeRecipe
+validateThemeRecipe
+loadThemeRecipe
+writeThemeArtifacts
+buildThemeFromFile
+loadThemeContract
+getComponentThemeContract
+listThemeComponents
+
+
+BROWSER STUDIO API
+import from @neural-ng/theme/browser
+compileTheme(recipe, { scope: 'theme', includeTailwind: false })
+validateThemeRecipe(recipe)
+getComponentThemeContract(component)
+listThemeComponents()
+listThemePresets()
+getThemePreset()
+
+THEME STUDIO
+/docs/tools/theme-studio
+- Uses the same generated contract and resolver as the CLI.
+- Applies generated CSS only inside data-neural-theme scope.
+- Supports compact recipe edit/import, built-in preset selection, component-scoped overrides, light/dark preview and artifact export.
+- Imports legacy preview recipes through migrateThemeRecipe and exposes bounded undo/redo history.
+
+MCP THEME WORKFLOW
+- Use @neural-ng/mcp-server compact recipe tools for AI-assisted authoring.
+- Keep edits sparse and component-scoped.
+- Validate before build.
+- Do not move full generated CSS or the 1,348-token graph through model context.
+
+QUALITY GATE
+- Neutral is release quality; Glass, Mist, and Futuristic are preview quality.
+- Run npx nx run neural-theme:quality-check before release.
+- Review CSS/token/report hash changes before updating presets/quality-baseline.json.

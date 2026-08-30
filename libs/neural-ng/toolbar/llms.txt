@@ -1,0 +1,15 @@
+# @neural-ng/core/toolbar
+
+- Import NeuralToolbar, NeuralToolbarStart, NeuralToolbarCenter, NeuralToolbarEnd, and NeuralToolbarSeparator from `@neural-ng/core/toolbar`. Toolbar*Component names are deprecated compatibility aliases.
+- Use one `neural-toolbar` with start, center, and end projected sections.
+- Add `neural-toolbar-separator` between related action groups.
+- Always provide a meaningful `ariaLabel` or `ariaLabelledby`.
+- Orientation is `horizontal` by default; use `vertical` when controls stack.
+- Arrow keys follow orientation. Horizontal ArrowLeft/ArrowRight mirror in RTL. Home/End move to edges.
+- Roving focus skips disabled and aria-disabled controls and restores consumer tabindex values on destroy.
+- focusChanged emits index, element, and nativeEvent after pointer, Tab, or directional focus changes.
+- Editable input, select, textarea, and contenteditable controls retain their native arrow-key behavior.
+- ariaLabelledby takes precedence over ariaLabel when both are supplied.
+- wrap and loop default to true; rovingFocus defaults to true.
+- Set `rovingFocus="false"` only when embedded controls require their own composite keyboard model.
+- Set `unstyled` or global NeuralNg unstyled and use typed root, start, center, end, and separator classes for consumer visuals.

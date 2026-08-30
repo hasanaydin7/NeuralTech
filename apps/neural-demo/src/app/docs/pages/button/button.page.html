@@ -1,0 +1,349 @@
+<article class="docs-page button-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components</span>
+    <h1 class="docs-hero__title">Button</h1>
+    <p class="docs-hero__description">
+      A standalone action primitive with native button semantics, Signal inputs,
+      modern output, loading feedback, and full visual ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <code-view
+      fileName="app.ts"
+      language="ts"
+      [code]="importCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="severities">
+    <h2>Semantic severities</h2>
+    <p class="docs-hero__description">
+      Primary and secondary actions share the same semantic palette contract as
+      the other status-aware components.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="button-example.html"
+      language="html"
+      [code]="severityCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="flex flex-wrap gap-2">
+        <neural-button severity="primary">Primary</neural-button>
+        <neural-button severity="secondary">Secondary</neural-button>
+        <neural-button severity="neutral">Neutral</neural-button>
+        <neural-button severity="info">Info</neural-button>
+        <neural-button severity="success">Success</neural-button>
+        <neural-button severity="warning">Warning</neural-button>
+        <neural-button severity="error">Error</neural-button>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="basic">
+    <h2>Basic</h2>
+    <p class="docs-hero__description">
+      Project button content and listen to the typed
+      <code>clicked</code>
+      output.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="button-example.ts"
+      language="ts"
+      [code]="basicCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="flex flex-col gap-2">
+        <neural-button (clicked)="noteClick()">Save Changes</neural-button>
+      </div>
+      <output
+        preview-content
+        class="demo-status flex justify-center"
+        aria-live="polite"
+      >
+        {{ eventStatus() }}
+      </output>
+    </code-view>
+  </section>
+
+  <section id="badge">
+    <h2>Badge integration</h2>
+    <p>
+      Button composes the real Badge component. Place counts or short indicators
+      at the logical start or end without rebuilding Badge markup.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="button-example.ts"
+      language="ts"
+      [code]="badgeInline"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="flex gap-2" data-testid="button-badges">
+        <neural-button
+          [badge]="128"
+          [badgeMax]="99"
+          badgePosition="start"
+          badgeSeverity="info"
+        >
+          Inbox
+        </neural-button>
+        <neural-button [badge]="12" badgePosition="end" badgeSeverity="error">
+          Notifications
+        </neural-button>
+        <neural-button [badge]="0" badgePosition="end" badgeSeverity="success">
+          Completed
+        </neural-button>
+      </div>
+    </code-view>
+
+    <h3>Corner notifications</h3>
+    <p>
+      Corner positions float over icon buttons without changing their layout.
+      Start and end follow the document writing direction.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="button-example.ts"
+      language="ts"
+      [code]="badgeOutline"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="flex gap-2"
+        data-testid="button-corner-badges"
+      >
+        <neural-button
+          ariaLabel="Top start: 3 notifications"
+          [badge]="3"
+          badgePosition="top-start"
+          badgeSeverity="error"
+          buttonClass="button-badge-icon-demo"
+        >
+          <i class="nt nt-bell" aria-hidden="true"></i>
+        </neural-button>
+        <neural-button
+          ariaLabel="Top end: 8 notifications"
+          [badge]="8"
+          badgePosition="top-end"
+          badgeSeverity="error"
+          buttonClass="button-badge-icon-demo"
+        >
+          <i class="nt nt-bell" aria-hidden="true"></i>
+        </neural-button>
+        <neural-button
+          ariaLabel="Bottom start: 2 notifications"
+          [badge]="2"
+          badgePosition="bottom-start"
+          badgeSeverity="info"
+          buttonClass="button-badge-icon-demo"
+        >
+          <i class="nt nt-bell" aria-hidden="true"></i>
+        </neural-button>
+        <neural-button
+          ariaLabel="Bottom end: 5 notifications"
+          [badge]="5"
+          badgePosition="bottom-end"
+          badgeSeverity="info"
+          buttonClass="button-badge-icon-demo"
+        >
+          <i class="nt nt-bell" aria-hidden="true"></i>
+        </neural-button>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="states">
+    <h2>Disabled and loading</h2>
+    <p class="docs-hero__description">
+      Disabled actions retain native disabled behavior. Loading actions expose
+      busy state and replace their visible label with
+      <code> loadingLabel </code>
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="button-example.ts"
+      language="ts"
+      [code]="stateCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="flex gap-2">
+        <neural-button [disabled]="true">Disabled</neural-button>
+        <neural-button [loading]="true" loadingLabel="Saving"
+          >Save</neural-button
+        >
+      </div>
+    </code-view>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled</h2>
+    <p>
+      Remove the visual base while retaining the native button, disabled and
+      loading behavior, and structural class.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="button-example.ts"
+      language="ts"
+      [code]="headlessCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="flex gap-2">
+        <neural-button
+          [unstyled]="true"
+          buttonClass="docs-headless-button"
+          (clicked)="noteClick()"
+        >
+          Complete Setup
+        </neural-button>
+      </div>
+      <output
+        preview-content
+        class="demo-status flex justify-center"
+        aria-live="polite"
+      >
+        {{ eventStatus() }}
+      </output>
+    </code-view>
+  </section>
+
+  <section id="accessibility">
+    <h2>Accessibility</h2>
+    <p>
+      Button renders a real <code>&lt;button&gt;</code>, preserving Enter and
+      Space activation, focus behavior, form type, and native disabled
+      semantics. Loading adds <code>aria-busy</code> and prevents activation.
+    </p>
+  </section>
+
+  <section id="api">
+    <h2>API</h2>
+    <div class="api-table-wrapper">
+      <table class="api-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>type</code></td>
+            <td><code>button | submit | reset</code></td>
+            <td><code>button</code></td>
+            <td>Native button type.</td>
+          </tr>
+          <tr>
+            <td><code>severity</code></td>
+            <td><code>NeuralButtonSeverity</code></td>
+            <td><code>neutral</code></td>
+            <td>
+              Semantic visual intent, including primary and secondary actions.
+            </td>
+          </tr>
+          <tr>
+            <td><code>disabled</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Disable interaction.</td>
+          </tr>
+          <tr>
+            <td><code>loading</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Expose a busy, non-interactive state.</td>
+          </tr>
+          <tr>
+            <td><code>loadingLabel</code></td>
+            <td><code>string</code></td>
+            <td><code>Loading</code></td>
+            <td>Visible and accessible loading text.</td>
+          </tr>
+          <tr>
+            <td><code>badge</code></td>
+            <td><code>string | number | null</code></td>
+            <td><code>null</code></td>
+            <td>Badge value composed inside the button.</td>
+          </tr>
+          <tr>
+            <td><code>badgePosition</code></td>
+            <td><code>start | end</code></td>
+            <td><code>end</code></td>
+            <td>Logical Badge position.</td>
+          </tr>
+          <tr>
+            <td><code>badgeSeverity</code></td>
+            <td><code>NeuralBadgeSeverity</code></td>
+            <td><code>neutral</code></td>
+            <td>Badge semantic color.</td>
+          </tr>
+          <tr>
+            <td><code>badgeMax</code></td>
+            <td><code>number | null</code></td>
+            <td><code>null</code></td>
+            <td>Numeric visual cap while preserving the real value.</td>
+          </tr>
+          <tr>
+            <td><code>unstyled</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Remove NeuralNg visual classes.</td>
+          </tr>
+          <tr>
+            <td><code>clicked</code></td>
+            <td><code>MouseEvent</code></td>
+            <td>—</td>
+            <td>Modern Angular output for successful activation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="docs-page-next">
+    <span>Next Component</span>
+    <a href="/docs/components/checkbox">Checkbox →</a>
+  </footer>
+</article>

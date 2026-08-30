@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+@import '@neural-ng/icons/icons.css';
+@import './styles/generated/starter.css';
+
+@custom-variant dark (&:where([data-neural-mode='dark'], [data-neural-mode='dark'] *));
+
+html {
+  color-scheme: light;
+}
+
+html[data-neural-mode='dark'] {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+}

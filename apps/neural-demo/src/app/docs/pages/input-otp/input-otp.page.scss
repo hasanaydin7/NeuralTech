@@ -1,0 +1,52 @@
+.input-otp-demo {
+  display: grid;
+  gap: 0.75rem;
+  width: min(100%, 34rem);
+  margin-inline: auto;
+}
+
+.input-otp-demo--rows {
+  justify-items: start;
+  gap: 1.5rem;
+}
+
+.docs-otp-headless {
+  width: 100%;
+  color: #e0f2fe;
+  font:
+    700 1rem/1 ui-monospace,
+    monospace;
+}
+
+.docs-otp-headless__group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 1rem;
+  background: #07111f;
+  border: 1px solid #164e63;
+  border-radius: 0.75rem;
+}
+
+.docs-otp-headless__input {
+  width: 2.9rem;
+  height: 3.2rem;
+  padding: 0;
+  color: inherit;
+  background: #0c1b2e;
+  border: 1px solid #38bdf8;
+  border-radius: 0.4rem;
+  outline: none;
+  font: inherit;
+  text-align: center;
+}
+
+.docs-otp-headless__input:focus {
+  border-color: #a5f3fc;
+  box-shadow: 0 0 0 3px rgb(34 211 238 / 22%);
+}
+
+.docs-otp-headless__separator {
+  color: #22d3ee;
+}

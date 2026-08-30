@@ -1,0 +1,172 @@
+:where(.neural-auto-complete-host) {
+  display: inline-block;
+  min-width: 0;
+  max-width: 100%;
+}
+:where(.neural-auto-complete-host-fluid) {
+  display: block;
+  width: 100%;
+}
+:where(.neural-auto-complete-root),
+:where(.neural-auto-complete-input-group-root) {
+  box-sizing: border-box;
+  min-width: 0;
+}
+:where(.neural-auto-complete-input-group-root) {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  width: 100%;
+}
+:where(.neural-auto-complete-input-root) {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+}
+:where(.neural-auto-complete-clear-root),
+:where(.neural-auto-complete-dropdown-root),
+:where(.neural-auto-complete-loading-indicator-root) {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+:where(.neural-auto-complete-loading-indicator-root) {
+  align-self: stretch;
+  width: var(--neural-control-height, 2.5rem);
+}
+:where(.neural-auto-complete-list-root) {
+  max-height: var(--neural-auto-complete-panel-max-height, 18rem);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+:where(.neural-auto-complete-base) {
+  width: var(--neural-auto-complete-width, auto);
+  color: var(--neural-auto-complete-color, var(--neural-color-text));
+  font-family: var(--neural-auto-complete-font-family, inherit);
+}
+:where(.neural-auto-complete-input-group-base) {
+  border: var(
+    --neural-auto-complete-border,
+    1px solid var(--neural-color-border)
+  );
+  border-radius: var(--neural-auto-complete-radius, 0.625rem);
+  background: var(
+    --neural-auto-complete-background,
+    var(--neural-color-surface)
+  );
+  box-shadow: var(
+    --neural-auto-complete-shadow,
+    0 1px 2px rgb(var(--neural-color-shadow) / 0.04)
+  );
+  backdrop-filter: var(--neural-auto-complete-backdrop-filter, none);
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+:where(.neural-auto-complete-input-group-base:focus-within) {
+  border-color: var(--neural-color-focus);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--neural-color-focus) 18%, transparent);
+}
+:where(
+  .neural-auto-complete-root[data-invalid='true']
+    .neural-auto-complete-input-group-base
+) {
+  border-color: var(--neural-color-error);
+}
+:where(.neural-auto-complete-input-base) {
+  min-height: var(--neural-control-height, 2.5rem);
+  padding: var(--neural-control-padding-block, 0.625rem)
+    var(--neural-control-padding-inline, 1rem);
+  color: inherit;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font: inherit;
+}
+:where(.neural-auto-complete-input-base::placeholder) {
+  color: var(--neural-color-text-muted);
+}
+
+/* The composite control owns the visible focus ring. This intentionally
+ * outranks application-wide `input:focus-visible` rules. */
+.neural-auto-complete-input-root:focus,
+.neural-auto-complete-input-root:focus-visible {
+  outline: none;
+  outline-offset: 0;
+}
+:where(.neural-auto-complete-clear-base),
+:where(.neural-auto-complete-dropdown-base) {
+  min-width: var(--neural-control-height, 2.5rem);
+  padding: 0;
+  color: var(--neural-color-text-muted);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+:where(.neural-auto-complete-loading-indicator-base) {
+  color: var(--neural-color-text-muted);
+}
+:where(.neural-auto-complete-clear-base:hover),
+:where(.neural-auto-complete-dropdown-base:hover) {
+  color: var(--neural-color-text-strong);
+  background: var(--neural-color-surface-hover);
+}
+:where(.neural-auto-complete-panel-base) {
+  overflow: hidden;
+  padding: 0.375rem;
+  color: var(--neural-auto-complete-panel-color, var(--neural-color-text));
+  background: var(
+    --neural-auto-complete-panel-background,
+    var(--neural-color-surface)
+  );
+  border-radius: var(--neural-auto-complete-panel-radius, 0.625rem);
+  backdrop-filter: var(--neural-auto-complete-backdrop-filter, none);
+}
+:where(.neural-auto-complete-list-base) {
+  display: grid;
+  gap: 0.125rem;
+}
+:where(.neural-auto-complete-option-base) {
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.45rem;
+  color: var(--neural-color-text);
+  cursor: pointer;
+}
+:where(.neural-auto-complete-option-active-base) {
+  background: var(--neural-color-surface-hover);
+  color: var(--neural-color-text-strong);
+}
+:where(.neural-auto-complete-option-selected-base) {
+  background: color-mix(
+    in srgb,
+    var(--neural-color-primary) 12%,
+    var(--neural-color-surface)
+  );
+  color: var(--neural-color-primary);
+}
+:where(.neural-auto-complete-option-disabled-base) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+:where(.neural-auto-complete-group-base) {
+  padding: 0.625rem 0.75rem 0.35rem;
+  color: var(--neural-color-text-muted);
+  font-size: var(--neural-font-size-xs, 0.75rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+:where(.neural-auto-complete-empty-base),
+:where(.neural-auto-complete-loading-base) {
+  padding: 1rem;
+  color: var(--neural-color-text-muted);
+  text-align: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(.neural-auto-complete-input-group-base) {
+    transition-duration: 0.01ms !important;
+  }
+}

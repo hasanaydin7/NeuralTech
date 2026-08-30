@@ -1,0 +1,73 @@
+{
+  "$schemaVersion": 1,
+  "packages": [
+    {
+      "name": "@neural-ng/core",
+      "manifest": "libs/neural-ng/package.json",
+      "installKind": "dependency",
+      "docsRoute": "/docs/getting-started/installation"
+    },
+    {
+      "name": "@neural-ng/icons",
+      "manifest": "libs/neural-icons/package.json",
+      "installKind": "dependency",
+      "docsRoute": "/docs/getting-started/icons"
+    },
+    {
+      "name": "@neural-ng/editor",
+      "manifest": "libs/neural-editor/package.json",
+      "installKind": "dependency",
+      "docsRoute": "/docs/components/editor"
+    },
+    {
+      "name": "@neural-ng/theme",
+      "manifest": "libs/neural-theme/package.json",
+      "installKind": "devDependency",
+      "docsRoute": "/docs/getting-started/installation"
+    },
+    {
+      "name": "@neural-ng/mcp-server",
+      "manifest": "libs/neural-mcp/package.json",
+      "installKind": "devDependency",
+      "docsRoute": "/docs/getting-started/installation"
+    }
+  ],
+  "starter": {
+    "root": "templates/neural-starter",
+    "requiredFiles": [
+      "package.json",
+      "angular.json",
+      ".postcssrc.json",
+      "neural.theme.json",
+      "mcp.json",
+      "src/styles.css",
+      "src/app/app.config.ts",
+      "src/app/app.ts",
+      "src/app/app.html",
+      "e2e/starter.spec.ts"
+    ]
+  },
+  "pilots": [
+    {
+      "id": "toast",
+      "entryPoint": "@neural-ng/core/toast",
+      "route": "/docs/components/toast",
+      "page": "apps/neural-demo/src/app/docs/pages/toast/toast.page.html",
+      "controller": "apps/neural-demo/src/app/docs/pages/toast/toast.page.ts",
+      "readme": "libs/neural-ng/toast/README.md",
+      "llms": "libs/neural-ng/toast/llms.txt",
+      "requiredSections": [
+        "import",
+        "setup",
+        "basic",
+        "severity",
+        "lifetime",
+        "channels",
+        "configuration",
+        "unstyled",
+        "accessibility",
+        "api"
+      ]
+    }
+  ]
+}

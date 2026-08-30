@@ -1,0 +1,41 @@
+# NeuralNg PanelMenu
+
+Import `NeuralPanelMenu`, `NeuralPanelMenuItem`, and
+`NeuralPanelMenuSeparator` from `@neural-ng/core/panel-menu`. Use standalone
+imports. Legacy `*Component` names are compatibility aliases only.
+
+PanelMenu is an inline Accordion + Tree hierarchy. It is not a Sidebar/Drawer
+and it is not a popup Menu. Do not generate a trigger button, popup input, or
+Overlay integration for PanelMenu.
+
+Prefer `[items]` for data and projected `neural-panel-menu-item` children for a
+declarative hierarchy. Never combine both sources. Every item requires a
+unique stable `key`.
+
+Bind `[(expandedKeys)]` as `readonly string[]`. Root expansion is exclusive by
+default; add `multiple` when multiple roots may remain open.
+
+Use `itemSelect` for enabled leaf actions and `itemToggle` for branch state.
+Do not run a leaf command when a branch is toggled. Do not invent `onNodeClick`
+or `activeIndex`.
+
+Items support label, iconClass, badge, shortcut, disabled, href, routerLink,
+queryParams, fragment, queryParamsHandling, preserveFragment,
+skipLocationChange, replaceUrl, state, target, rel, itemClass, and recursive
+items. Use `href` for native navigation and `routerLink` for Angular SPA
+navigation. Separators use `{ separator: true }`.
+
+Keep the built-in tree/treeitem/group semantics and keyboard behavior. Provide
+ariaLabel or ariaLabelledby. Use `unstyled` and typed `classes` for headless
+rendering.
+
+Canonical example:
+
+```html
+<neural-panel-menu
+  ariaLabel="Workspace"
+  [items]="items"
+  [(expandedKeys)]="expandedKeys"
+  (itemSelect)="run($event.key)"
+/>
+```

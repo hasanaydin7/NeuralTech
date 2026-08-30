@@ -1,0 +1,111 @@
+.docs-shell {
+  display: grid;
+  grid-template-columns: 17rem minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  width: min(90rem, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.docs-sidebar {
+  position: sticky;
+  top: 4.25rem;
+  align-self: start;
+  overflow-y: auto;
+  height: calc(100vh - 4.25rem);
+  padding: 2rem 1rem 3rem 0;
+  border-inline-end: 1px solid var(--neural-color-border);
+
+  section + section {
+    margin-top: 1.5rem;
+  }
+
+  h2 {
+    margin: 0 0 0.45rem;
+    color: var(--neural-color-text-muted);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  ul {
+    display: grid;
+    gap: 0.15rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a,
+  .planned {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.55rem 0.65rem;
+    color: var(--neural-color-text-muted);
+    border-radius: 0.45rem;
+    font-size: 0.84rem;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a.active {
+    color: var(--neural-color-text);
+    background: var(--neural-color-surface-hover);
+  }
+
+  .planned {
+    opacity: 0.6;
+  }
+
+  small {
+    color: var(--neural-color-info);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+}
+
+.docs-content {
+  min-width: 0;
+  padding: clamp(2rem, 5vw, 4rem) 0 6rem;
+}
+
+.docs-menu-button {
+  display: none;
+}
+
+@media (max-width: 54rem) {
+  .docs-shell {
+    display: block;
+  }
+
+  .docs-menu-button {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.7rem 0.9rem;
+    color: var(--neural-color-text);
+    background: var(--neural-color-surface);
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0.5rem;
+    font: inherit;
+    text-align: start;
+  }
+
+  .docs-sidebar {
+    position: static;
+    display: none;
+    height: auto;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background: var(--neural-color-surface);
+    border: 1px solid var(--neural-color-border);
+    border-radius: 0.75rem;
+
+    &.open {
+      display: block;
+    }
+  }
+}

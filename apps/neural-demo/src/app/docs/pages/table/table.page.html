@@ -1,0 +1,985 @@
+<article class="docs-page table-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Table</h1>
+    <p>
+      A native, signal-first data table with stable client transforms, remote
+      state events, selection, expansion, typed templates, localized states, and
+      full headless ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <code-view
+      fileName="component.ts"
+      language="ts"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="interactive">
+    <h2>Interactive inventory</h2>
+    <p>
+      Search globally or filter individual columns, then sort, select, expand,
+      and page the same client-side data. The Paginator stays an independent
+      visual component bound to Table state.
+    </p>
+    <div class="table-toolbar">
+      <label>
+        <span>Search products</span>
+        <input
+          type="search"
+          [value]="query()"
+          (input)="updateQuery($event)"
+          placeholder="Name, category, status..."
+        />
+      </label>
+      <div class="table-toolbar__summary">
+        <span>{{ selectedProducts().length }} selected</span>
+        <neural-button
+          severity="secondary"
+          [disabled]="columnFilters().length === 0 && !query()"
+          (clicked)="clearInventoryFilters(inventoryTable)"
+        >
+          Clear filters
+        </neural-button>
+      </div>
+    </div>
+    <div class="table-demo" data-testid="table-interactive">
+      <neural-table
+        #inventoryTable
+        [value]="products"
+        [columns]="columns"
+        rowKey="id"
+        selectionMode="multiple"
+        [(selection)]="selectedProducts"
+        [(expandedRowKeys)]="expandedKeys"
+        [(filters)]="columnFilters"
+        [globalFilter]="query()"
+        [paginate]="true"
+        [(pageIndex)]="pageIndex"
+        [pageSize]="pageSize()"
+        striped
+        hoverable
+        stickyHeader
+        ariaLabel="Product inventory"
+      >
+        <ng-template neuralTableCell="status" let-row="row">
+          <neural-tag
+            [value]="$any(row).status"
+            [severity]="severity($any(row).status)"
+            size="small"
+          />
+        </ng-template>
+        <ng-template neuralTableExpansion let-row>
+          <div class="product-expansion">
+            <strong>{{ $any(row).name }}</strong>
+            <span>{{ $any(row).description }}</span>
+          </div>
+        </ng-template>
+      </neural-table>
+      <neural-paginator
+        [totalItems]="inventoryTable.resolvedTotalItems()"
+        [(pageIndex)]="pageIndex"
+        [(pageSize)]="pageSize"
+        [pageSizeOptions]="[4, 8]"
+      />
+    </div>
+    <code-view
+      fileName="table-example.html"
+      language="html"
+      [code]="basicCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="advanced-selection">
+    <h2>Advanced selection</h2>
+    <p>
+      Click rows directly, extend the selection with Ctrl/Meta, select ranges
+      with Shift, or move through selectable rows with Arrow keys. Out-of-stock
+      products remain visible but cannot be selected.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="advanced-selection.html"
+      language="html"
+      [code]="advancedSelectionCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+      maxHeight="46rem"
+    >
+      <div
+        preview-content
+        class="table-selection-demo"
+        data-testid="table-advanced-selection"
+      >
+        <div class="table-selection-toolbar">
+          <div>
+            <strong>{{ advancedSelectedProducts().length }} selected</strong>
+            <span
+              >Keys: {{ advancedSelectionKeys().join(', ') || 'none' }}</span
+            >
+          </div>
+          <label>
+            <span>Select all</span>
+            <select
+              aria-label="Select all mode"
+              [value]="advancedSelectAllMode()"
+              (change)="updateAdvancedSelectAllMode($event)"
+            >
+              <option value="page">Current page</option>
+              <option value="filtered">Filtered rows</option>
+              <option value="all">All rows</option>
+            </select>
+          </label>
+          <neural-button
+            severity="secondary"
+            [disabled]="advancedSelectedProducts().length === 0"
+            (clicked)="clearAdvancedSelection()"
+          >
+            Clear selection
+          </neural-button>
+        </div>
+
+        <div class="table-selection-surface">
+          <neural-table
+            #advancedSelectionTable
+            [value]="products"
+            [columns]="columns"
+            rowKey="id"
+            selectionMode="multiple"
+            selectionControl="checkbox"
+            [selectableRow]="isSelectableProduct"
+            [selectAllMode]="advancedSelectAllMode()"
+            [(selection)]="advancedSelectedProducts"
+            [(selectionKeys)]="advancedSelectionKeys"
+            [paginate]="true"
+            [(pageIndex)]="advancedPageIndex"
+            [pageSize]="advancedPageSize()"
+            (selectionEvent)="recordAdvancedSelection($event)"
+            striped
+            ariaLabel="Advanced product selection"
+          >
+            <ng-template neuralTableCell="status" let-row="row">
+              <neural-tag
+                [value]="$any(row).status"
+                [severity]="severity($any(row).status)"
+                size="small"
+              />
+            </ng-template>
+          </neural-table>
+          <neural-paginator
+            [totalItems]="products.length"
+            [(pageIndex)]="advancedPageIndex"
+            [(pageSize)]="advancedPageSize"
+            [pageSizeOptions]="[4, 8]"
+          />
+        </div>
+        <p class="table-selection-status" role="status">
+          {{ advancedSelectionStatus() }}
+        </p>
+
+        <div class="table-selection-variants">
+          <section>
+            <h3>Single radio</h3>
+            <neural-table
+              [value]="products.slice(0, 3)"
+              [columns]="compactColumns"
+              rowKey="id"
+              selectionMode="single"
+              selectionControl="radio"
+              [(selection)]="radioSelection"
+              ariaLabel="Single product selection"
+            />
+          </section>
+          <section data-testid="table-remote-selection">
+            <h3>Remote keys only</h3>
+            <neural-table
+              dataMode="remote"
+              [value]="remoteRows()"
+              [columns]="remoteColumns"
+              rowKey="id"
+              selectionMode="multiple"
+              selectAllMode="all"
+              [selectAllKeys]="allProductKeys"
+              [(selectionKeys)]="remoteSelectionKeys"
+              ariaLabel="Remote key selection"
+            />
+            <span
+              >Selected keys: {{ remoteSelectionKeys().join(', ') || 'none'
+              }}</span
+            >
+          </section>
+        </div>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="editing">
+    <h2>Cell and row editing</h2>
+    <p>
+      Editors keep an immutable draft and emit typed save contracts. Validation
+      may be synchronous or asynchronous; rejected drafts stay open with an
+      accessible error message.
+    </p>
+    <code-view
+      fileName="editable-table.html"
+      language="html"
+      [code]="editingCode"
+      [theme]="resolvedMode()"
+      preview
+      maxHeight="64rem"
+    >
+      <div preview-content class="table-edit-demo" data-testid="table-editing">
+        <section class="table-edit-panel" data-testid="table-cell-edit">
+          <header>
+            <div>
+              <h3>Cell editing</h3>
+              <p>Click a cell, or use Enter, Escape, and Tab.</p>
+            </div>
+            <span>Async validation · 450ms</span>
+          </header>
+          <neural-table
+            #cellEditTable
+            [value]="editableProducts()"
+            [columns]="cellEditColumns"
+            rowKey="id"
+            editMode="cell"
+            [editValidator]="validateTableEdit"
+            striped
+            ariaLabel="Cell editable products"
+            (cellEditComplete)="applyCellEdit($event)"
+            (cellEditCancel)="cancelCellEdit($event)"
+          >
+            <ng-template
+              neuralTableEditor="name"
+              let-value
+              let-setValue="setValue"
+              let-loading="loading"
+            >
+              <input
+                neuralInput
+                fluid
+                aria-label="Product name"
+                [value]="$any(value)"
+                [disabled]="loading"
+                (input)="setValue($any($event.target).value)"
+              />
+            </ng-template>
+            <ng-template
+              neuralTableEditor="category"
+              let-value
+              let-setValue="setValue"
+              let-loading="loading"
+            >
+              <neural-select
+                fluid
+                appendTo="body"
+                ariaLabel="Product category"
+                optionLabel="label"
+                optionValue="value"
+                [options]="categoryOptions"
+                [value]="$any(value)"
+                [disabled]="loading"
+                (valueChange)="setValue($event)"
+              />
+            </ng-template>
+            <ng-template
+              neuralTableEditor="price"
+              let-value
+              let-setValue="setValue"
+              let-loading="loading"
+            >
+              <neural-input-number
+                fluid
+                mode="currency"
+                currency="USD"
+                ariaLabel="Product price"
+                [min]="1"
+                [max]="2000"
+                [value]="$any(value)"
+                [disabled]="loading"
+                (valueChange)="setValue($event)"
+              />
+            </ng-template>
+            <ng-template
+              neuralTableEditor="featured"
+              let-value
+              let-setValue="setValue"
+              let-loading="loading"
+            >
+              <neural-checkbox
+                ariaLabel="Featured product"
+                [checked]="$any(value) ?? false"
+                [disabled]="loading"
+                (checkedChange)="setValue($event)"
+              />
+            </ng-template>
+            <ng-template
+              neuralTableCell="actions"
+              let-row="row"
+              let-rowIndex="rowIndex"
+            >
+              @if (cellEditTable.isEditingRow($any(row), rowIndex)) {
+              <div class="table-row-edit-actions">
+                <neural-button
+                  class="table-edit-action"
+                  size="small"
+                  ariaLabel="Save cell edit"
+                  title="Save"
+                  (clicked)="cellEditTable.saveEdit($event)"
+                >
+                  <i class="nt nt-check" aria-hidden="true"></i>
+                </neural-button>
+                <neural-button
+                  class="table-edit-action"
+                  size="small"
+                  severity="secondary"
+                  ariaLabel="Cancel cell edit"
+                  title="Cancel"
+                  (clicked)="cellEditTable.cancelEdit($event)"
+                >
+                  <i class="nt nt-x" aria-hidden="true"></i>
+                </neural-button>
+              </div>
+              }
+            </ng-template>
+          </neural-table>
+          <output class="demo-status" aria-live="polite">
+            {{ cellEditStatus() }}
+          </output>
+        </section>
+
+        <section class="table-edit-panel" data-testid="table-row-edit">
+          <header>
+            <div>
+              <h3>Row editing</h3>
+              <p>All editable cells share one draft and one validation pass.</p>
+            </div>
+          </header>
+          <neural-table
+            #rowEditTable
+            [value]="editableProducts()"
+            [columns]="rowEditColumns"
+            rowKey="id"
+            editMode="row"
+            [editValidator]="validateTableEdit"
+            ariaLabel="Row editable products"
+            (rowEditSave)="applyRowEdit($event)"
+            (rowEditCancel)="cancelRowEdit($event)"
+          >
+            <ng-template
+              neuralTableEditor="name"
+              let-value
+              let-setValue="setValue"
+              let-loading="loading"
+            >
+              <input
+                neuralInput
+                fluid
+                aria-label="Row product name"
+                [value]="$any(value)"
+                [disabled]="loading"
+                (input)="setValue($any($event.target).value)"
+              />
+            </ng-template>
+            <ng-template
+              neuralTableEditor="category"
+              let-value
+              let-setValue="setValue"
+            >
+              <neural-select
+                fluid
+                appendTo="body"
+                ariaLabel="Row product category"
+                optionLabel="label"
+                optionValue="value"
+                [options]="categoryOptions"
+                [value]="$any(value)"
+                (valueChange)="setValue($event)"
+              />
+            </ng-template>
+            <ng-template
+              neuralTableEditor="price"
+              let-value
+              let-setValue="setValue"
+            >
+              <neural-input-number
+                fluid
+                mode="currency"
+                currency="USD"
+                ariaLabel="Row product price"
+                [min]="1"
+                [max]="2000"
+                [value]="$any(value)"
+                (valueChange)="setValue($event)"
+              />
+            </ng-template>
+            <ng-template
+              neuralTableEditor="featured"
+              let-value
+              let-setValue="setValue"
+            >
+              <neural-checkbox
+                ariaLabel="Row featured product"
+                [checked]="$any(value) ?? false"
+                (checkedChange)="setValue($event)"
+              />
+            </ng-template>
+            <ng-template
+              neuralTableCell="actions"
+              let-row="row"
+              let-rowIndex="rowIndex"
+            >
+              <div class="table-row-edit-actions">
+                @if (rowEditTable.isRowEditing($any(row), rowIndex)) {
+                <neural-button
+                  class="table-edit-action"
+                  size="small"
+                  ariaLabel="Save row edit"
+                  title="Save"
+                  (clicked)="rowEditTable.saveEdit($event)"
+                >
+                  <i class="nt nt-check" aria-hidden="true"></i>
+                </neural-button>
+                <neural-button
+                  class="table-edit-action"
+                  size="small"
+                  severity="secondary"
+                  ariaLabel="Cancel row edit"
+                  title="Cancel"
+                  (clicked)="rowEditTable.cancelEdit($event)"
+                >
+                  <i class="nt nt-x" aria-hidden="true"></i>
+                </neural-button>
+                } @else {
+                <neural-button
+                  class="table-edit-action"
+                  size="small"
+                  severity="secondary"
+                  ariaLabel="Edit row"
+                  title="Edit"
+                  (clicked)="
+                      rowEditTable.startRowEdit($any(row), rowIndex, $event)
+                    "
+                >
+                  <i class="nt nt-edit" aria-hidden="true"></i>
+                </neural-button>
+                }
+              </div>
+            </ng-template>
+          </neural-table>
+          <output class="demo-status" aria-live="polite">
+            {{ rowEditStatus() }}
+          </output>
+        </section>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="layout">
+    <h2>Scroll and column sizing</h2>
+    <p>
+      A constrained scroll surface keeps both header rows visible. Drag the
+      right edge of the column you want to resize, focus it and press the arrow
+      keys, or double-click it to auto-size. Visibility and pixel widths remain
+      controlled Signal models.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="table-layout-example.html"
+      language="html"
+      [code]="layoutCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+      maxHeight="42rem"
+    >
+      <div preview-content class="table-layout-demo" data-testid="table-layout">
+        <div class="table-column-chooser" aria-label="Visible columns">
+          <label>
+            <span>Resize mode</span>
+            <select
+              aria-label="Resize mode"
+              [value]="layoutResizeMode()"
+              (change)="updateLayoutResizeMode($event)"
+            >
+              <option value="expand">Expand</option>
+              <option value="fit">Fit</option>
+            </select>
+          </label>
+          @for (column of layoutColumns; track column.id) {
+          <label>
+            <input
+              type="checkbox"
+              [checked]="!layoutHiddenColumnIds().includes(column.id)"
+              [attr.aria-label]="column.header + ' column'"
+              (change)="
+                  setLayoutColumnVisibility(layoutTable, column.id, $event)
+                "
+            />
+            <span>{{ column.header }}</span>
+          </label>
+          }
+          <neural-button
+            severity="secondary"
+            (clicked)="layoutTable.showAllColumns()"
+          >
+            Show all
+          </neural-button>
+        </div>
+        <neural-table
+          #layoutTable
+          [value]="products"
+          [columns]="layoutColumns"
+          scrollHeight="21rem"
+          stickyHeader
+          resizableColumns
+          [columnResizeMode]="layoutResizeMode()"
+          [(columnWidths)]="layoutColumnWidths"
+          [(hiddenColumnIds)]="layoutHiddenColumnIds"
+          striped
+          ariaLabel="Resizable product inventory"
+          (columnResize)="recordColumnResize($event)"
+        >
+          <ng-template neuralTableCell="status" let-row="row">
+            <neural-tag
+              [value]="$any(row).status"
+              [severity]="severity($any(row).status)"
+              size="small"
+            />
+          </ng-template>
+        </neural-table>
+        <output class="demo-status" aria-live="polite">
+          {{ layoutStatus() }}
+        </output>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="column-ordering">
+    <h2>Reorderable columns</h2>
+    <p>
+      A controlled order model keeps drag, keyboard, resize, and visibility
+      state deterministic. Sticky columns can only move inside their own logical
+      region.
+    </p>
+    <code-view
+      fileName="reorderable-table.html"
+      language="html"
+      [code]="reorderCode"
+      [theme]="resolvedMode()"
+      preview
+      maxHeight="38rem"
+    >
+      <div preview-content class="table-order-demo" data-testid="table-reorder">
+        <div class="table-order-toolbar">
+          <span>
+            Order:
+            <code>{{ reorderColumnOrder().join(' → ') }}</code>
+          </span>
+          <neural-button severity="secondary" (clicked)="resetColumnOrder()">
+            Reset order
+          </neural-button>
+        </div>
+        <neural-table
+          [value]="products.slice(0, 5)"
+          [columns]="reorderColumns"
+          reorderableColumns
+          resizableColumns
+          columnResizeMode="expand"
+          [(columnOrder)]="reorderColumnOrder"
+          [(columnWidths)]="reorderColumnWidths"
+          striped
+          ariaLabel="Reorderable product columns"
+          (columnReorder)="recordColumnReorder($event)"
+        >
+          <ng-template neuralTableCell="status" let-row="row">
+            <neural-tag
+              [value]="$any(row).status"
+              [severity]="severity($any(row).status)"
+              size="small"
+            />
+          </ng-template>
+        </neural-table>
+        <output class="demo-status" aria-live="polite">
+          {{ reorderStatus() }}
+        </output>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="row-grouping">
+    <h2>Row grouping and aggregation</h2>
+    <p>
+      Group rows by a field or accessor, keep expansion state controlled, and
+      calculate typed summaries without mutating the supplied collection.
+    </p>
+    <code-view
+      fileName="row-grouping.html"
+      language="html"
+      [code]="rowGroupingCode"
+      [theme]="resolvedMode()"
+      preview
+      maxHeight="48rem"
+    >
+      <div
+        preview-content
+        class="table-row-group-demo"
+        data-testid="table-row-grouping"
+      >
+        <neural-table
+          [value]="groupedProducts"
+          [columns]="rowGroupColumns"
+          rowKey="id"
+          groupRowsBy="category"
+          rowGroupMode="subheader"
+          expandableRowGroups
+          [(expandedRowGroupKeys)]="expandedCategoryGroups"
+          scrollHeight="25rem"
+          stickyHeader
+          stickyFooter
+          striped
+          ariaLabel="Products grouped by category"
+        >
+          <ng-template
+            neuralTableGroupHeader
+            let-category
+            let-rows="rows"
+            let-expanded="expanded"
+            let-toggle="toggle"
+          >
+            <button
+              type="button"
+              class="docs-table-group-toggle"
+              [attr.aria-expanded]="expanded"
+              (click)="toggle($event)"
+            >
+              <i
+                class="nt"
+                [class.nt-chevron-down]="expanded"
+                [class.nt-chevron-right]="!expanded"
+                aria-hidden="true"
+              ></i>
+              <strong>{{ category }}</strong>
+              <span>{{ rows.length }} products</span>
+            </button>
+          </ng-template>
+          <ng-template
+            neuralTableGroupFooter
+            let-category
+            let-aggregate="aggregate"
+          >
+            <span class="docs-table-group-summary">
+              {{ category }}:
+              <strong>
+                ${{ $any(aggregate)('price', 'sum').toLocaleString('en-US') }}
+              </strong>
+              total ·
+              <strong
+                >{{ $any(aggregate)('inventory', 'average').toFixed(1)
+                }}</strong
+              >
+              average stock · price range
+              <strong>
+                ${{ $any(aggregate)('price', 'min') }}–${{
+                $any(aggregate)('price', 'max') }}
+              </strong>
+            </span>
+          </ng-template>
+          <ng-template neuralTableFooter="name">
+            Frozen grand summary
+          </ng-template>
+          <ng-template neuralTableFooter="price" let-rows="rows">
+            {{ totalPrice($any(rows)) }}
+          </ng-template>
+          <ng-template neuralTableFooter="inventory" let-rows="rows">
+            {{ totalInventory($any(rows)) }} units
+          </ng-template>
+        </neural-table>
+      </div>
+    </code-view>
+
+    <h3>Row span and nested properties</h3>
+    <p>
+      The grouping field can be a nested path. In rowspan mode the first
+      matching column receives native table rowspan semantics.
+    </p>
+    <code-view
+      fileName="rowspan-table.html"
+      language="html"
+      [code]="rowSpanCode"
+      [theme]="resolvedMode()"
+      preview
+      maxHeight="38rem"
+    >
+      <div
+        preview-content
+        class="table-row-group-demo"
+        data-testid="table-rowspan"
+      >
+        <neural-table
+          [value]="groupedProducts"
+          [columns]="rowGroupColumns"
+          groupRowsBy="supplier.region"
+          rowGroupMode="rowspan"
+          gridlines
+          ariaLabel="Products grouped by nested supplier region"
+        />
+      </div>
+    </code-view>
+  </section>
+
+  <section id="grouped-headers">
+    <h2>Grouped headers and summaries</h2>
+    <p>
+      Nested groups resolve native colgroup semantics from visible leaf columns.
+      Hiding a column recalculates every colspan without mutating the group
+      definition.
+    </p>
+    <code-view
+      fileName="grouped-table.html"
+      language="html"
+      [code]="groupedCode"
+      [theme]="resolvedMode()"
+      preview
+      maxHeight="42rem"
+    >
+      <div preview-content class="table-group-demo" data-testid="table-grouped">
+        <div class="table-column-chooser" aria-label="Grouped visible columns">
+          @for (column of groupedColumns; track column.id) {
+          <label>
+            <input
+              type="checkbox"
+              [checked]="!groupedHiddenColumnIds().includes(column.id)"
+              [attr.aria-label]="'Grouped ' + column.header + ' column'"
+              (change)="toggleGroupedColumn(column.id, $event)"
+            />
+            <span>{{ column.header }}</span>
+          </label>
+          }
+        </div>
+        <neural-table
+          [value]="products.slice(0, 5)"
+          [columns]="groupedColumns"
+          [headerGroups]="productHeaderGroups"
+          [footerGroups]="productFooterGroups"
+          [(hiddenColumnIds)]="groupedHiddenColumnIds"
+          striped
+          ariaLabel="Grouped product summary"
+        >
+          <ng-template neuralTableHeaderGroup="identity" let-group>
+            <span class="table-group-heading">
+              <i class="nt nt-user" aria-hidden="true"></i>
+              {{ group.header }}
+            </span>
+          </ng-template>
+          <ng-template neuralTableCell="status" let-row="row">
+            <neural-tag
+              [value]="$any(row).status"
+              [severity]="severity($any(row).status)"
+              size="small"
+            />
+          </ng-template>
+          <ng-template
+            neuralTableFooterGroup="visible-totals"
+            let-colspan="colspan"
+          >
+            Current visible totals · {{ colspan }} columns
+          </ng-template>
+          <ng-template neuralTableFooter="price" let-rows="rows">
+            {{ totalPrice($any(rows)) }}
+          </ng-template>
+          <ng-template neuralTableFooter="inventory" let-rows="rows">
+            {{ totalInventory($any(rows)) }} units
+          </ng-template>
+        </neural-table>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="enterprise-state">
+    <h2>State and enterprise workflows</h2>
+    <p>
+      A versioned JSON snapshot covers query state, column layout, selection,
+      and expansion. Persistence starts after hydration, so server and client
+      render the same initial table.
+    </p>
+    <code-view
+      fileName="persistent-table.html"
+      language="html"
+      [code]="enterpriseStateCode"
+      [theme]="resolvedMode()"
+      preview
+      maxHeight="44rem"
+    >
+      <app-table-enterprise-state-demo
+        preview-content
+        [products]="products"
+        [columns]="compactColumns"
+      />
+    </code-view>
+
+    <h3>Remote request identity</h3>
+    <p>
+      Every state request receives a monotonically increasing ID. Consumers can
+      reject a late response before it replaces newer remote data.
+    </p>
+    <code-view
+      fileName="remote-request.ts"
+      language="typescript"
+      [code]="requestIdentityCode"
+      [theme]="resolvedMode()"
+      preview
+      maxHeight="32rem"
+    >
+      <app-table-request-identity-demo
+        preview-content
+        [products]="products"
+        [columns]="compactColumns"
+      />
+    </code-view>
+
+    <h3>Loading skeleton rows</h3>
+    <p>
+      Skeleton mode preserves the table geometry while data loads. Custom
+      loading templates still take precedence.
+    </p>
+    <code-view
+      fileName="table-skeleton.html"
+      language="html"
+      [code]="skeletonCode"
+      [theme]="resolvedMode()"
+      preview
+      maxHeight="30rem"
+    >
+      <div
+        preview-content
+        class="table-skeleton-demo"
+        data-testid="table-loading-skeleton"
+      >
+        <neural-table
+          [columns]="compactColumns"
+          loading
+          loadingMode="skeleton"
+          [loadingRows]="5"
+          ariaLabel="Loading product skeleton"
+        />
+      </div>
+    </code-view>
+  </section>
+
+  <section id="states">
+    <h2>Loading, empty, and error</h2>
+    <p>
+      State precedence is loading, error, then empty. Every state is localized
+      and can be replaced by its typed template.
+    </p>
+    <div class="table-state-actions">
+      <neural-button severity="secondary" (clicked)="showLoading()">
+        Loading
+      </neural-button>
+      <neural-button severity="secondary" (clicked)="showError()">
+        Error
+      </neural-button>
+      <neural-button severity="secondary" (clicked)="resetState()">
+        Data
+      </neural-button>
+    </div>
+    <div class="table-demo" data-testid="table-states">
+      <neural-table
+        [value]="products.slice(0, 2)"
+        [columns]="compactColumns"
+        [loading]="loading()"
+        [error]="error()"
+        ariaLabel="Table state example"
+      >
+        <ng-template neuralTableLoading let-message="message">
+          <tr>
+            <td class="docs-table-custom-state" colspan="3">
+              <i class="nt nt-loader-3 nt-spin" aria-hidden="true"></i>
+              {{ message }}
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template neuralTableError let-message="message">
+          <tr>
+            <td class="docs-table-custom-state is-error" colspan="3">
+              {{ message }}
+            </td>
+          </tr>
+        </ng-template>
+      </neural-table>
+      <neural-table
+        [value]="[]"
+        [columns]="compactColumns"
+        ariaLabel="Empty products"
+      >
+        <ng-template neuralTableEmpty>
+          <tr>
+            <td class="docs-table-custom-state" colspan="3">
+              No products match this view.
+            </td>
+          </tr>
+        </ng-template>
+      </neural-table>
+    </div>
+  </section>
+
+  <section id="remote">
+    <h2>Remote data</h2>
+    <p>
+      Remote mode never sorts, filters, or pages the supplied rows. User actions
+      emit one serializable state contract for an API request. This demo applies
+      that contract to an in-memory collection to simulate the response returned
+      by a backend.
+    </p>
+    <div class="table-demo" data-testid="table-remote">
+      <neural-table
+        dataMode="remote"
+        [value]="remoteRows()"
+        [columns]="remoteColumns"
+        [totalItems]="remoteTotal()"
+        [(filters)]="remoteFilters"
+        [pageSize]="3"
+        ariaLabel="Remote products"
+        (stateChange)="recordRemoteState($event)"
+      />
+      <p class="demo-status">Last request: {{ remoteEvent() }}</p>
+    </div>
+    <code-view
+      fileName="remote-table.html"
+      language="html"
+      [code]="remoteCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and class slots</h2>
+    <p>
+      Native semantics and structural hooks remain while every NeuralNg visual
+      class is removed.
+    </p>
+    <div class="table-demo" data-testid="table-headless">
+      <neural-table
+        [value]="products.slice(0, 3)"
+        [columns]="compactColumns"
+        rowKey="id"
+        selectionMode="single"
+        unstyled
+        tableClass="docs-headless-table--custom"
+        [classes]="headlessClasses"
+        ariaLabel="Headless products"
+      />
+    </div>
+    <code-view
+      fileName="headless-table.html"
+      language="html"
+      [code]="headlessCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+</article>

@@ -1,0 +1,635 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="checkbox-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Checkbox documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-check"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-emerald-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FORMS</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Checkbox
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  Native binary and tri-state controls with separate type-safe
+                  models, complete Angular Forms support and consumer-owned
+                  visuals.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    input</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Signal
+                    Forms ready</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Mixed
+                    state</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Both standalone contracts ship from the granular Checkbox entry
+                point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="binary" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Binary model</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>checked</code> is always boolean. Projected text activates
+                the real native checkbox through its wrapping label.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="binaryCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-8"
+                >
+                  <neural-checkbox
+                    [(checked)]="accepted"
+                    (stateChange)="recordBinary($event)"
+                    >I accept the terms</neural-checkbox
+                  >
+                  <output
+                    class="rounded-full border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-1.5 text-xs font-bold"
+                    >{{ accepted() ? 'Accepted' : 'Not accepted' }}</output
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="tri-state" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Tri-state model</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The dedicated control cycles
+                <code>false → true → null → false</code>. Null is the single
+                authoritative mixed state.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="triStateCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-8"
+                >
+                  <neural-tri-state-checkbox
+                    [(value)]="permission"
+                    (stateChange)="recordTriState($event)"
+                    >Inherit workspace permission</neural-tri-state-checkbox
+                  >
+                  <output
+                    class="rounded-full border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-1.5 text-xs font-bold"
+                    >Value: {{ permission() === null ? 'null (mixed)' :
+                    permission() }}</output
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">States</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disabled, readonly, invalid and pending remain distinct so forms
+                and assistive technology receive the correct contract.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="states.html"
+                language="html"
+                [code]="statesCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="grid w-full gap-5 sm:grid-cols-2 lg:grid-cols-3"
+                >
+                  <neural-checkbox [checked]="true">Checked</neural-checkbox>
+                  <neural-checkbox>Unchecked</neural-checkbox>
+                  <neural-checkbox [checked]="true" disabled
+                    >Disabled</neural-checkbox
+                  >
+                  <neural-checkbox [checked]="true" readonly
+                    >Readonly</neural-checkbox
+                  >
+                  <neural-checkbox invalid>Invalid</neural-checkbox>
+                  <neural-checkbox pending>Pending validation</neural-checkbox>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Angular Forms</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                One native contract works with Signal Forms, Reactive Forms and
+                template-driven forms without a legacy value accessor wrapper.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="forms.html"
+                language="html"
+                [code]="formsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-6 md:grid-cols-3">
+                  <div
+                    class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                  >
+                    <p
+                      class="mb-4 text-xs font-black tracking-widest text-blue-500"
+                    >
+                      SIGNAL FORMS
+                    </p>
+                    <neural-checkbox [formField]="signalForm.updates"
+                      >Product updates</neural-checkbox
+                    >
+                    <p class="mt-3 text-xs text-[var(--site-text-muted)]">
+                      {{ signalModel().updates }}
+                    </p>
+                  </div>
+                  <div
+                    class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                  >
+                    <p
+                      class="mb-4 text-xs font-black tracking-widest text-blue-500"
+                    >
+                      REACTIVE FORMS
+                    </p>
+                    <neural-checkbox [formControl]="reactiveControl"
+                      >Security alerts</neural-checkbox
+                    >
+                    <p class="mt-3 text-xs text-[var(--site-text-muted)]">
+                      {{ reactiveControl.value }}
+                    </p>
+                  </div>
+                  <div
+                    class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                  >
+                    <p
+                      class="mb-4 text-xs font-black tracking-widest text-blue-500"
+                    >
+                      NGMODEL
+                    </p>
+                    <neural-checkbox name="digest" [(ngModel)]="templateValue"
+                      >Weekly digest</neural-checkbox
+                    >
+                    <p class="mt-3 text-xs text-[var(--site-text-muted)]">
+                      {{ templateValue }}
+                    </p>
+                  </div>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="events" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic events</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>stateChange</code> fires only for a user action and
+                includes previous state plus the native event. Programmatic
+                model writes remain silent.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="events.html"
+                language="html"
+                [code]="eventsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-6"
+                >
+                  <neural-checkbox
+                    [(checked)]="accepted"
+                    (stateChange)="recordBinary($event)"
+                    >Emit binary event</neural-checkbox
+                  >
+                  <neural-tri-state-checkbox
+                    [(value)]="permission"
+                    (stateChange)="recordTriState($event)"
+                    >Emit tri-state event</neural-tri-state-checkbox
+                  >
+                  <output
+                    aria-live="polite"
+                    class="w-full text-center font-mono text-xs text-[var(--site-text-muted)]"
+                    >{{ directEvent() }}</output
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="field" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Field composition</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Inside Neural Field, Checkbox inherits control id, descriptions,
+                required, invalid, pending, disabled, readonly, fluid and
+                unstyled state.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="field.html"
+                language="html"
+                [code]="fieldCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="classes" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Additive class ownership</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Convenience classes and typed state slots merge with the theme
+                layer; ordinary classes never erase the component appearance.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="classes.html"
+                language="html"
+                [code]="classesCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The native input, projected label, state and structural hooks
+                stay intact while all NeuralNg visual classes are removed.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-col items-center justify-center gap-3"
+                >
+                  <neural-checkbox
+                    unstyled
+                    [(checked)]="headlessChecked"
+                    [classes]="headlessClasses"
+                    >Consumer-owned checkbox</neural-checkbox
+                  >
+                  <output
+                    class="font-mono text-xs text-[var(--site-text-muted)]"
+                    >checked: {{ headlessChecked() }}</output
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Contract boundaries</h2>
+              <div class="mt-6 grid gap-4 md:grid-cols-3">
+                @for (item of [['Binary','Owns boolean checked
+                state.'],['Tri-state','Owns boolean or null
+                value.'],['Application','Owns business validation and
+                persistence.']]; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">{{ item[0] }}</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Native behavior first</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Checkbox retains browser focus, label activation, validation,
+                form submission and keyboard behavior.
+              </p>
+            </header>
+            <section id="native-semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Native semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Both controls render a real <code>input[type=checkbox]</code>.
+                No synthetic checkbox role or keyboard emulation is required.
+              </p>
+            </section>
+            <section id="names" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Accessible names</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Prefer visible projected label text. Use
+                <code>ariaLabel</code> only when the visual design has no text
+                label.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Tab focuses the native input and Space changes its value.
+                Readonly remains focusable but blocks mutation; disabled is
+                removed from focus.
+              </p>
+            </section>
+            <section id="mixed-state" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Mixed state</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                TriState maps null to the native
+                <code>indeterminate</code> property and
+                <code>aria-checked="mixed"</code>. Binary Checkbox also accepts
+                a presentation-only <code>indeterminate</code> input for
+                collection controls while its model remains boolean.
+              </p>
+            </section>
+            <section id="disabled-readonly" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Disabled versus readonly</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disabled prevents focus and native submission. Readonly is an
+                accessible NeuralNg behavior that preserves focus and the
+                current value.
+              </p>
+            </section>
+            <section id="field-state" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Field state</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Descriptions are joined through <code>aria-describedby</code>;
+                invalid, required and pending map to their corresponding ARIA
+                attributes.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC API
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Checkbox contracts</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Canonical symbols are NeuralCheckbox and NeuralTriStateCheckbox.
+                Their value models remain deliberately separate.
+              </p>
+            </header>
+            <section id="binary-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Binary inputs</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                NeuralCheckbox implements <code>FormCheckboxControl</code> and
+                accepts the shared inputs below.
+              </p>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[52rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of sharedInputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="tri-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Tri-state inputs</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                NeuralTriStateCheckbox implements
+                <code>FormValueControl&lt;boolean | null&gt;</code>, accepts
+                every shared input, and extends <code>classes</code> with
+                <code>mixedControl</code>.
+              </p>
+            </section>
+            <section id="models" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Models</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of models; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ms-3 font-mono text-xs"
+                    >{{ item[1] }} · {{ item[2] }}</span
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[3] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="api-events" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Events</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of events; track item[0] + item[1]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ms-3 font-mono text-xs">{{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ms-3 font-mono text-xs">{{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Binary slots
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                @for (slot of binarySlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+              <p class="mt-7 leading-7 text-[var(--site-text-soft)]">
+                Tri-state slots
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                @for (slot of triStateSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of publicTypes; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Checkbox tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Neutral is the reference layer; Glass, Mist and Futuristic
+                override the same component contract.
+              </p>
+            </header>
+            <section id="layout-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Layout and typography</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="layoutTokens"
+              />
+            </section>
+            <section id="state-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Color and state</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="stateTokens"
+              />
+            </section>
+            <section id="motion-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Motion</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="motionTokens"
+              />
+              <p class="mt-5 text-sm leading-6 text-[var(--site-text-soft)]">
+                Reduced-motion preferences collapse transitions automatically.
+              </p>
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

@@ -1,0 +1,415 @@
+@import 'tailwindcss' source('./app');
+@import '../../../libs/neural-ng/themes/tailwind.css';
+@import '../../../libs/neural-editor/themes/neutral.css';
+
+@custom-variant dark (&:where([data-neural-mode='dark'], [data-neural-mode='dark'] *));
+
+@theme {
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'SF Pro Display', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+  --color-brand-950: #172554;
+}
+
+@layer base {
+  :root {
+    --site-primary-base: #3b82f6;
+    --neural-color-primary-50: color-mix(
+      in srgb,
+      var(--site-primary-base) 7%,
+      white
+    );
+    --neural-color-primary-100: color-mix(
+      in srgb,
+      var(--site-primary-base) 14%,
+      white
+    );
+    --neural-color-primary-200: color-mix(
+      in srgb,
+      var(--site-primary-base) 28%,
+      white
+    );
+    --neural-color-primary-300: color-mix(
+      in srgb,
+      var(--site-primary-base) 48%,
+      white
+    );
+    --neural-color-primary-400: color-mix(
+      in srgb,
+      var(--site-primary-base) 74%,
+      white
+    );
+    --neural-color-primary-500: var(--site-primary-base);
+    --neural-color-primary-600: color-mix(
+      in srgb,
+      var(--site-primary-base) 86%,
+      black
+    );
+    --neural-color-primary-700: color-mix(
+      in srgb,
+      var(--site-primary-base) 72%,
+      black
+    );
+    --neural-color-primary-800: color-mix(
+      in srgb,
+      var(--site-primary-base) 58%,
+      black
+    );
+    --neural-color-primary-900: color-mix(
+      in srgb,
+      var(--site-primary-base) 42%,
+      black
+    );
+    --neural-color-primary-950: color-mix(
+      in srgb,
+      var(--site-primary-base) 28%,
+      black
+    );
+
+    --neural-color-surface-0: #ffffff;
+    --neural-color-surface-50: #f8fafc;
+    --neural-color-surface-100: #f1f5f9;
+    --neural-color-surface-200: #e2e8f0;
+    --neural-color-surface-300: #cbd5e1;
+    --neural-color-surface-400: #94a3b8;
+    --neural-color-surface-500: #64748b;
+    --neural-color-surface-600: #475569;
+    --neural-color-surface-700: #334155;
+    --neural-color-surface-800: #1e293b;
+    --neural-color-surface-900: #0f172a;
+    --neural-color-surface-950: #020617;
+
+    --site-canvas: color-mix(
+      in srgb,
+      var(--neural-color-surface-50) 92%,
+      var(--neural-color-primary-50)
+    );
+    --site-canvas-elevated: color-mix(
+      in srgb,
+      var(--neural-color-surface-0) 78%,
+      transparent
+    );
+    --site-surface: color-mix(
+      in srgb,
+      var(--neural-color-surface-0) 68%,
+      transparent
+    );
+    --site-surface-strong: color-mix(
+      in srgb,
+      var(--neural-color-surface-0) 90%,
+      transparent
+    );
+    --site-border: color-mix(
+      in srgb,
+      var(--neural-color-surface-950) 9%,
+      transparent
+    );
+    --site-border-strong: color-mix(
+      in srgb,
+      var(--neural-color-primary-600) 22%,
+      transparent
+    );
+    --site-text: var(--neural-color-surface-900);
+    --site-text-soft: var(--neural-color-surface-600);
+    --site-text-muted: color-mix(
+      in srgb,
+      var(--neural-color-surface-600) 82%,
+      white
+    );
+    --site-glow: color-mix(
+      in srgb,
+      var(--neural-color-primary-600) 16%,
+      transparent
+    );
+    --site-shimmer-base: rgba(100, 116, 139, 0.32);
+    --site-shimmer-soft: rgba(71, 85, 105, 0.52);
+    --site-shimmer-mid: rgba(51, 65, 85, 0.82);
+    --site-shimmer-hot: rgba(15, 23, 42, 0.96);
+    --site-overlay-border: rgba(15, 23, 42, 0.12);
+
+    --neural-color-primary: var(--neural-color-primary-600);
+    --neural-color-primary-hover: var(--neural-color-primary-700);
+    --neural-color-primary-active: var(--neural-color-primary-800);
+    --neural-color-primary-contrast: var(--neural-color-surface-0);
+    --neural-color-text: var(--neural-color-surface-900);
+    --neural-color-text-strong: var(--neural-color-surface-950);
+    --neural-color-text-muted: var(--neural-color-surface-600);
+    --neural-color-surface: color-mix(
+      in srgb,
+      var(--neural-color-surface-0) 82%,
+      transparent
+    );
+    --neural-color-surface-hover: var(--neural-color-surface-50);
+    --neural-color-surface-active: var(--neural-color-surface-100);
+    --neural-color-border: color-mix(
+      in srgb,
+      var(--neural-color-surface-950) 12%,
+      transparent
+    );
+    --neural-color-border-hover: color-mix(
+      in srgb,
+      var(--neural-color-primary-600) 35%,
+      transparent
+    );
+    --neural-color-border-active: color-mix(
+      in srgb,
+      var(--neural-color-primary-600) 55%,
+      transparent
+    );
+    --neural-color-info: #0ea5e9;
+    --neural-color-success: #16a34a;
+    --neural-color-warning: #f59e0b;
+    --neural-color-error: #ef4444;
+    --neural-button-color: var(--neural-color-text);
+    --neural-button-color-hover: var(--neural-color-text-strong);
+    --neural-button-color-active: var(--neural-color-text-strong);
+    --neural-button-background: var(--neural-color-surface);
+    --neural-button-background-hover: var(--neural-color-surface-hover);
+    --neural-button-background-active: var(--neural-color-surface-active);
+    --neural-button-border-color: var(--neural-color-border);
+    --neural-button-border-color-hover: var(--neural-color-border-hover);
+    --neural-button-border-color-active: var(--neural-color-border-active);
+    --neural-button-radius: 0.8rem;
+    --neural-button-padding: 0.5rem 0.875rem;
+    --neural-button-font-weight: 650;
+    --neural-button-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    --neural-button-shadow-hover: 0 12px 30px rgba(37, 99, 235, 0.18);
+    --neural-button-transition: 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    --neural-button-focus-ring: 3px solid rgba(59, 130, 246, 0.32);
+
+    --neural-badge-border: 1px solid transparent;
+    --neural-badge-radius: 0.45rem;
+    --neural-badge-rounded-radius: 999px;
+    --neural-badge-shadow: 0 1px 2px rgba(15, 23, 42, 0.14);
+    --neural-badge-primary-color: var(--neural-color-primary-contrast);
+    --neural-badge-primary-background: var(--neural-color-primary);
+    --neural-badge-secondary-color: var(--neural-color-text);
+    --neural-badge-secondary-background: var(--neural-color-surface-active);
+    --neural-badge-secondary-border-color: var(--neural-color-border);
+    --neural-badge-neutral-color: var(--neural-color-text-strong);
+    --neural-badge-neutral-background: var(--neural-color-surface-active);
+    --neural-badge-neutral-border-color: var(--neural-color-border);
+    --neural-badge-info-color: #ffffff;
+    --neural-badge-info-background: var(--neural-color-info);
+    --neural-badge-success-color: #ffffff;
+    --neural-badge-success-background: var(--neural-color-success);
+    --neural-badge-warning-color: #422006;
+    --neural-badge-warning-background: var(--neural-color-warning);
+    --neural-badge-error-color: #ffffff;
+    --neural-badge-error-background: var(--neural-color-error);
+    --neural-badge-anchor-offset: -0.5rem;
+    --neural-badge-anchor-z-index: 1;
+  }
+
+  [data-neural-mode='dark'] {
+    --site-canvas: color-mix(
+      in srgb,
+      var(--neural-color-surface-950) 94%,
+      var(--neural-color-primary-950)
+    );
+    --site-canvas-elevated: color-mix(
+      in srgb,
+      var(--neural-color-surface-900) 76%,
+      transparent
+    );
+    --site-surface: color-mix(
+      in srgb,
+      var(--neural-color-surface-900) 56%,
+      transparent
+    );
+    --site-surface-strong: color-mix(
+      in srgb,
+      var(--neural-color-surface-900) 86%,
+      transparent
+    );
+    --site-border: color-mix(
+      in srgb,
+      var(--neural-color-surface-400) 12%,
+      transparent
+    );
+    --site-border-strong: color-mix(
+      in srgb,
+      var(--neural-color-primary-400) 30%,
+      transparent
+    );
+    --site-text: var(--neural-color-surface-50);
+    --site-text-soft: var(--neural-color-surface-300);
+    --site-text-muted: color-mix(
+      in srgb,
+      var(--neural-color-surface-400) 88%,
+      black
+    );
+    --site-glow: color-mix(
+      in srgb,
+      var(--neural-color-primary-500) 20%,
+      transparent
+    );
+    --site-shimmer-base: rgba(148, 163, 184, 0.2);
+    --site-shimmer-soft: rgba(203, 213, 225, 0.46);
+    --site-shimmer-mid: rgba(226, 232, 240, 0.78);
+    --site-shimmer-hot: rgba(255, 255, 255, 0.98);
+    --site-overlay-border: rgba(148, 163, 184, 0.2);
+
+    --neural-color-primary: var(--neural-color-primary-400);
+    --neural-color-primary-hover: var(--neural-color-primary-300);
+    --neural-color-primary-active: var(--neural-color-primary-500);
+    --neural-color-primary-contrast: var(--neural-color-primary-950);
+    --neural-color-text: var(--neural-color-surface-100);
+    --neural-color-text-strong: var(--neural-color-surface-0);
+    --neural-color-text-muted: var(--neural-color-surface-400);
+    --neural-color-surface: color-mix(
+      in srgb,
+      var(--neural-color-surface-900) 82%,
+      transparent
+    );
+    --neural-color-surface-hover: color-mix(
+      in srgb,
+      var(--neural-color-surface-800) 72%,
+      transparent
+    );
+    --neural-color-surface-active: color-mix(
+      in srgb,
+      var(--neural-color-surface-700) 70%,
+      transparent
+    );
+    --neural-color-border: color-mix(
+      in srgb,
+      var(--neural-color-surface-400) 18%,
+      transparent
+    );
+    --neural-color-border-hover: color-mix(
+      in srgb,
+      var(--neural-color-primary-400) 46%,
+      transparent
+    );
+    --neural-color-border-active: color-mix(
+      in srgb,
+      var(--neural-color-primary-400) 68%,
+      transparent
+    );
+    --neural-button-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --neural-button-shadow-hover: 0 16px 36px rgba(37, 99, 235, 0.28);
+  }
+
+  body {
+    @apply bg-[var(--site-canvas)] font-sans text-[var(--site-text)] transition-colors duration-300;
+  }
+}
+
+@keyframes neural-doc-panel-soft-in {
+  from {
+    opacity: 0.7;
+    transform: translateY(0.1875rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@property --site-silver-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes site-silver-border-travel {
+  to {
+    --site-silver-angle: 360deg;
+  }
+}
+
+.site-silver-flow {
+  position: relative;
+  isolation: isolate;
+  border-color: transparent !important;
+}
+
+.site-silver-flow::before {
+  position: absolute;
+  z-index: 2;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--site-silver-angle),
+    var(--site-shimmer-base) 0deg 212deg,
+    var(--site-shimmer-soft) 232deg,
+    var(--site-shimmer-mid) 252deg,
+    var(--site-shimmer-hot) 270deg,
+    var(--site-shimmer-mid) 288deg,
+    var(--site-shimmer-base) 310deg 360deg
+  );
+  content: '';
+  pointer-events: none;
+  animation: site-silver-border-travel 3.4s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.site-appearance-popover {
+  --neural-popover-width: min(20.5rem, calc(100vw - 1rem));
+  --neural-popover-min-width: 0;
+  --neural-popover-max-width: 20.5rem;
+  --neural-popover-max-height: min(31rem, calc(100dvh - 5.5rem));
+  --neural-popover-padding: 0.9rem;
+  --neural-popover-color: var(--site-text);
+  --neural-popover-background: color-mix(
+    in srgb,
+    var(--site-canvas) 98%,
+    transparent
+  );
+  --neural-popover-border: 1px solid var(--site-overlay-border);
+  --neural-popover-radius: 1.15rem;
+  --neural-popover-shadow:
+    0 24px 70px rgba(2, 6, 23, 0.2), inset 0 1px rgba(255, 255, 255, 0.34);
+  --neural-switch-track-background-checked: var(--neural-color-primary-500);
+  --neural-switch-track-background-checked-hover: var(
+    --neural-color-primary-600
+  );
+  --neural-switch-track-border-color-checked: var(--neural-color-primary-500);
+  --neural-switch-track-border-color-focus: var(--neural-color-primary-500);
+  --neural-switch-thumb-background-checked: var(
+    --neural-color-primary-contrast
+  );
+  overflow: hidden !important;
+  backdrop-filter: blur(30px) saturate(150%);
+}
+
+.site-appearance-popover > .neural-popover-content-root {
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+.site-palette-selected {
+  outline: 2px solid var(--site-text);
+  outline-offset: 2px;
+}
+
+.site-silver-flow:focus-visible::before,
+.site-silver-flow:hover::before {
+  filter: brightness(1.2);
+  animation-duration: 1.8s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-silver-flow::before {
+    background: rgba(203, 213, 225, 0.52);
+    animation: none;
+  }
+}

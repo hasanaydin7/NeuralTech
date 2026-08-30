@@ -1,0 +1,26 @@
+# NeuralNg Tooltip
+
+Import `NeuralTooltip` from `@neural-ng/core/tooltip`.
+
+Preferred usage:
+
+```html
+<button neuralTooltip="Delete account">Delete</button>
+```
+
+Rules:
+
+- `neuralTooltip` accepts plain descriptive text, not HTML.
+- Default position is `top`; default delays are 300 ms show and 80 ms hide.
+- Supported positions: top, top-start, top-end, bottom, bottom-start,
+  bottom-end, left, right.
+- Tooltip opens on hover or focus and closes on leave, blur, or Escape.
+- Do not place interactive content inside a tooltip.
+- Use `tooltipClass` for one root class and `classes` for typed root/content/
+  arrow slots.
+- `unstyled` removes NeuralNg visual classes. Structural classes and behavior
+  remain. Global `provideNeuralNg({ unstyled: true })` is also respected.
+- Existing `aria-describedby` tokens are preserved.
+- Wrap a native disabled control in a focusable element if it needs a tooltip.
+- `TooltipDirective` is a deprecated compatibility alias; generate
+  `NeuralTooltip` imports in new code.

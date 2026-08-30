@@ -1,0 +1,97 @@
+<article class="docs-page confirm-dialog-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Sprint 2</span>
+    <h1 class="docs-hero__title">ConfirmDialog</h1>
+    <p class="docs-hero__description">
+      A service-driven native confirmation surface with signal results, async
+      action guards, keyed hosts, localization, and complete headless ownership.
+    </p>
+  </header>
+
+  <section>
+    <h2>Import</h2>
+    <p>
+      The component and service share one tree-shakable secondary entry point.
+    </p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Service-driven confirmation</h2>
+    <p>
+      Render the host once, then open confirmations from any injected service
+      consumer.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="confirm-demo-row">
+        <neural-button severity="error" (clicked)="confirmDelete()">
+          <i class="nt nt-trash" aria-hidden="true"></i>Delete workspace
+        </neural-button>
+        <output aria-live="polite">Last result: {{ lastResult() }}</output>
+      </div>
+    </code-view>
+    <neural-confirm-dialog
+      (closed)="lastResult.set($event.result + ' · ' + $event.reason)"
+    />
+  </section>
+
+  <section>
+    <h2>Async guard and keyed host</h2>
+    <p>
+      Async actions show a busy state. Returning false intentionally keeps the
+      confirmation open.
+    </p>
+    <code-view
+      fileName="publish.ts"
+      language="typescript"
+      [code]="asyncCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="confirm-demo-row">
+        <neural-button (clicked)="confirmPublish()">
+          <i class="nt nt-sparkles" aria-hidden="true"></i>Publish release
+        </neural-button>
+        <output aria-live="polite">{{ asyncStatus() }}</output>
+      </div>
+    </code-view>
+    <neural-confirm-dialog key="publish" defaultFocus="reject" />
+  </section>
+
+  <section>
+    <h2>Unstyled and typed class slots</h2>
+    <p>
+      Native modal behavior and structural hooks remain while every visual class
+      moves to the consumer.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="confirm-demo-row">
+        <neural-button severity="secondary" (clicked)="confirmHeadless()"
+          >Open headless confirmation</neural-button
+        >
+      </div>
+    </code-view>
+    <neural-confirm-dialog
+      key="headless"
+      unstyled
+      [classes]="headlessClasses"
+    />
+  </section>
+</article>

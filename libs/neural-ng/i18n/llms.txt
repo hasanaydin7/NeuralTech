@@ -1,0 +1,29 @@
+# NeuralNg Localization
+
+IMPORTS
+import { NeuralLocaleService, type NeuralLocale } from '@neural-ng/core/i18n';
+import { neuralEn } from '@neural-ng/core/locales/en';
+import { neuralTr } from '@neural-ng/core/locales/tr';
+
+RULES
+- Configure the initial locale with provideNeuralNg({ locale }).
+- English is the fallback locale.
+- Official complete locale entry points: en, tr, de, fr, es, pt-br, ar, zh-cn.
+- Import the exact locale entry point; never import a locale registry or every
+  locale eagerly.
+- Locale packs are tree-shakable secondary entry points.
+- Switch at runtime with inject(NeuralLocaleService).use(locale).
+- Do not read navigator.language during component rendering or hydration.
+- Use the same initial locale on server and browser.
+- Component label and locale inputs override global locale messages.
+- Partial custom messages deep-merge over English.
+- Message interpolation is plain text; do not place HTML in locale messages.
+- With provideNeuralNg({ direction: 'auto' }), NeuralNg follows the active
+  locale and applies html[dir]. Explicit ltr or rtl configuration wins.
+
+CONFIG EXAMPLE
+providers: [provideNeuralNg({ locale: neuralTr })]
+
+RUNTIME EXAMPLE
+readonly neuralLocale = inject(NeuralLocaleService);
+this.neuralLocale.use(neuralEn);

@@ -1,0 +1,277 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/libs/neural-ng",
+  "assets": [
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "llms.txt",
+    {
+      "glob": "llms.txt",
+      "input": "accordion",
+      "output": "accordion"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "appearance",
+      "output": "appearance"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "avatar",
+      "output": "avatar"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "breadcrumb",
+      "output": "breadcrumb"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "badge",
+      "output": "badge"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "button",
+      "output": "button"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "auto-complete",
+      "output": "auto-complete"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "card",
+      "output": "card"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "checkbox",
+      "output": "checkbox"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "color-mode",
+      "output": "color-mode"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "confirm-dialog",
+      "output": "confirm-dialog"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "date-picker",
+      "output": "date-picker"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "data-view",
+      "output": "data-view"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "dialog",
+      "output": "dialog"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "drawer",
+      "output": "drawer"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "divider",
+      "output": "divider"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "field",
+      "output": "field"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "input",
+      "output": "input"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "input-number",
+      "output": "input-number"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "input-mask",
+      "output": "input-mask"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "input-otp",
+      "output": "input-otp"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "loading-overlay",
+      "output": "loading-overlay"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "i18n",
+      "output": "i18n"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "message",
+      "output": "message"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "meter-group",
+      "output": "meter-group"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "multi-select",
+      "output": "multi-select"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "menu",
+      "output": "menu"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "overlay",
+      "output": "overlay"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "panel-menu",
+      "output": "panel-menu"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "paginator",
+      "output": "paginator"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "password",
+      "output": "password"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "file-upload",
+      "output": "file-upload"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "popover",
+      "output": "popover"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "progress-bar",
+      "output": "progress-bar"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "progress-spinner",
+      "output": "progress-spinner"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "radio",
+      "output": "radio"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "select",
+      "output": "select"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "skeleton",
+      "output": "skeleton"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "sidebar",
+      "output": "sidebar"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "slider",
+      "output": "slider"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "switch",
+      "output": "switch"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "tabs",
+      "output": "tabs"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "table",
+      "output": "table"
+    },
+    {
+      "glob": "{README,CHANGELOG,SIZE}.md",
+      "input": "table",
+      "output": "table"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "tag",
+      "output": "tag"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "textarea",
+      "output": "textarea"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "tooltip",
+      "output": "tooltip"
+    },
+    {
+      "glob": "llms.txt",
+      "input": "toast",
+      "output": "toast"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "toolbar",
+      "output": "toolbar"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "tree",
+      "output": "tree"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "tree-select",
+      "output": "tree-select"
+    },
+    {
+      "glob": "{README.md,llms.txt}",
+      "input": "virtual-scroller",
+      "output": "virtual-scroller"
+    },
+    {
+      "glob": "**/*.css",
+      "input": "themes",
+      "output": "themes"
+    }
+  ],
+  "lib": {
+    "entryFile": "src/index.ts"
+  }
+}

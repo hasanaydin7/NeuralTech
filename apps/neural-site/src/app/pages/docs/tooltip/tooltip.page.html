@@ -1,0 +1,594 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="tooltip-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Tooltip documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt nt-tooltip"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-blue-500"
+                    >OVERLAY</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-0.045em] sm:text-5xl"
+                >
+                  Tooltip
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A concise, non-interactive description layer with logical
+                  placement, intent-aware delays and deterministic accessible
+                  ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Hover
+                    and focus</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Viewport
+                    aware</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+                    safe</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Import
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the standalone directive from the granular Tooltip entry
+                point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Descriptive action
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Hover or focus the action. Tooltip augments the visible label;
+                it never replaces the control's accessible name.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="basic.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex w-full justify-center py-6">
+                  <neural-button
+                    label="Account settings"
+                    icon="nt nt-settings"
+                    neuralTooltip="Manage profile, security and preferences"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="positions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Logical positions
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Eight placements share the global overlay positioner. Start and
+                end mirror under RTL; collisions flip or clamp inside the
+                viewport.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="positions.html"
+                language="html"
+                [code]="positionsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto grid min-h-64 w-full max-w-xl grid-cols-3 items-center gap-3 px-3"
+                >
+                  @for (position of positions; track $index) { @if (position; as
+                  placement) {
+                  <neural-button
+                    [label]="placement"
+                    [neuralTooltip]="'Position: ' + placement"
+                    [tooltipPosition]="placement"
+                    [showDelay]="100"
+                    outlined
+                    buttonClass="w-full"
+                  />
+                  } @else {
+                  <span
+                    aria-hidden="true"
+                    class="text-center text-[0.65rem] font-black uppercase tracking-[0.14em] text-[var(--site-text-muted)]"
+                    >Anchor map</span
+                  >
+                  } }
+                </div>
+              </code-view>
+            </section>
+
+            <section id="delays" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Intent delays and disabled state
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Opening and closing delays are independent. Disabled state
+                prevents activation and immediately removes an open tooltip.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="delays.html"
+                language="html"
+                [code]="delaysCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-3 py-5"
+                >
+                  <neural-button
+                    label="700ms delay"
+                    neuralTooltip="Appears after intent is clear"
+                    [showDelay]="700"
+                    [hideDelay]="150"
+                    [tooltipDisabled]="tooltipDisabled()"
+                  />
+                  <neural-button
+                    [label]="tooltipDisabled() ? 'Enable tooltip' : 'Disable tooltip'"
+                    severity="secondary"
+                    (clicked)="toggleTooltipDisabled()"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="dynamic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Reactive content
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Signal input changes update both visible content and the active
+                accessible description without recreating consumer state.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="dynamic.html"
+                language="html"
+                [code]="dynamicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-3 py-5"
+                >
+                  <neural-button
+                    label="Agent status"
+                    icon="nt nt-activity"
+                    [neuralTooltip]="dynamicText()"
+                    [showDelay]="100"
+                  />
+                  <neural-button
+                    label="Change status"
+                    severity="secondary"
+                    (clicked)="cycleDynamicText()"
+                  />
+                  <span class="text-xs text-[var(--site-text-muted)]"
+                    >{{ dynamicText() }}</span
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="imperative" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Imperative visibility
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Template export exposes show, hide and readonly visible state
+                for guided experiences while hover and focus remain available.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="imperative.html"
+                language="html"
+                [code]="imperativeCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-3 py-5"
+                >
+                  <neural-button
+                    #manual="neuralTooltip"
+                    label="Tooltip target"
+                    neuralTooltip="Controlled through the directive API"
+                  />
+                  <neural-button
+                    label="Show"
+                    severity="secondary"
+                    (clicked)="manual.show()"
+                  />
+                  <neural-button
+                    label="Hide"
+                    severity="secondary"
+                    (clicked)="manual.hide(true)"
+                  />
+                  <span class="text-xs text-[var(--site-text-muted)]"
+                    >{{ manual.visible() ? 'Visible' : 'Hidden' }}</span
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="disabled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Disabled native controls
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disabled controls cannot receive focus. Put the explanation on a
+                focusable wrapper and include the reason in its accessible name.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="disabled.html"
+                language="html"
+                [code]="disabledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex w-full justify-center py-5">
+                  <span
+                    tabindex="0"
+                    class="inline-flex rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                    neuralTooltip="Permission is required"
+                    aria-label="Unavailable action: Permission is required"
+                  >
+                    <neural-button
+                      label="Deploy"
+                      icon="nt nt-lock"
+                      [disabled]="true"
+                    />
+                  </span>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Unstyled and typed slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Positioning, top-layer behavior and ARIA stay active while
+                Tailwind owns the root, content and arrow surfaces.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex w-full justify-center py-6">
+                  <span
+                    neuralTooltip="Consumer-owned tooltip surface"
+                    tooltipPosition="right"
+                    unstyled
+                    [classes]="headlessClasses"
+                    ><neural-button label="Headless tooltip" outlined
+                  /></span>
+                </div>
+              </code-view>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                TOOLTIP
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Accessibility
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                A supplemental description announced from the trigger without
+                stealing focus or accepting interaction.
+              </p>
+            </header>
+            <div class="grid gap-10 pt-10">
+              <section id="description" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Description ownership</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  The floating host uses
+                  <code class="text-blue-500">role="tooltip"</code>. While
+                  visible, its stable ID is merged into the actual interactive
+                  trigger's <code class="text-blue-500">aria-describedby</code>;
+                  existing tokens are preserved and restored on close.
+                </p>
+              </section>
+              <section id="keyboard" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Keyboard</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Keyboard focus opens the description after
+                  <code class="text-blue-500">showDelay</code>. Escape dismisses
+                  immediately and stops only the active Tooltip dismissal event.
+                  Trigger activation also closes the surface.
+                </p>
+              </section>
+              <section id="pointer-focus" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">
+                  Pointer and focus continuity
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Moving between pointer and keyboard intent does not flicker
+                  the overlay. It remains visible while either hover or focus
+                  ownership is active, then honors
+                  <code class="text-blue-500">hideDelay</code>.
+                </p>
+              </section>
+              <section id="content-rules" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Content rules</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Tooltip accepts plain, concise, non-interactive text. It must
+                  not contain buttons, links, forms or essential instructions.
+                  Use Popover for rich or interactive disclosure content.
+                </p>
+              </section>
+              <section id="rtl-viewport" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">RTL and viewport safety</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Logical start/end follow computed writing direction. The
+                  shared positioner flips insufficient placements, clamps the
+                  result and keeps the arrow aligned with the resolved anchor.
+                </p>
+              </section>
+              <section id="ssr-cleanup" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">SSR and lifecycle cleanup</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Server rendering creates no floating DOM. Timers, position
+                  observers, application views, generated nodes and temporary
+                  ARIA tokens are removed deterministically on destroy.
+                </p>
+              </section>
+            </div>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                TOOLTIP
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">API</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                One standalone attribute directive, typed logical positions and
+                three visual class slots.
+              </p>
+            </header>
+            <section id="directive" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Directive</h2>
+              <div
+                class="mt-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid sm:grid-cols-[13rem_13rem_1fr] sm:gap-4"
+              >
+                <code class="font-bold text-blue-500">NeuralTooltip</code
+                ><code class="mt-2 text-xs sm:mt-0">[neuralTooltip]</code>
+                <p class="mt-2 text-sm text-[var(--site-text-soft)] sm:mt-0">
+                  Owns trigger events, accessible description linkage, renderer
+                  lifecycle and positioning.
+                </p>
+              </div>
+            </section>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                <table class="w-full min-w-[50rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase tracking-wider text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (item of inputs; track item[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{ item[0] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="state-methods" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">State and methods</h2>
+              <div class="mt-4 grid gap-3">
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500"
+                    >visible: Signal&lt;boolean&gt;</code
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    Readonly rendered visibility state.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">show(): void</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    Schedules opening with the configured show delay.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500"
+                    >hide(immediate = false): void</code
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    Schedules closing or destroys the renderer immediately.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                @for (slot of classSlots; track slot[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">{{ slot[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ slot[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="public-types" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div
+                class="mt-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+              >
+                <code class="font-bold text-blue-500"
+                  >NeuralTooltipPosition</code
+                >
+                <p
+                  class="mt-2 break-words text-sm text-[var(--site-text-soft)]"
+                >
+                  'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' |
+                  'bottom-end' | 'left' | 'right'
+                </p>
+                <code class="mt-5 block font-bold text-blue-500"
+                  >NeuralTooltipClasses</code
+                >
+                <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                  Typed root, content and arrow class ownership.
+                </p>
+              </div>
+            </section>
+            <section id="compatibility" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Compatibility alias</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code class="text-blue-500">TooltipDirective</code> remains a
+                deprecated alias. New code and generated AI output should import
+                <code class="text-blue-500">NeuralTooltip</code>.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                TOOLTIP
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Design tokens
+              </h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Surface, typography, arrow geometry and motion remain
+                independently customizable.
+              </p>
+            </header>
+            <section id="surface-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="mb-5 text-2xl font-black">Surface</h2>
+              <site-design-token-list [tokens]="surfaceTokens" />
+            </section>
+            <section id="typography-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="mb-5 text-2xl font-black">Typography</h2>
+              <site-design-token-list [tokens]="typographyTokens" />
+            </section>
+            <section id="sizing-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="mb-5 text-2xl font-black">Arrow and sizing</h2>
+              <site-design-token-list [tokens]="sizingTokens" />
+            </section>
+            <section id="motion-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="mb-5 text-2xl font-black">Motion</h2>
+              <site-design-token-list [tokens]="motionTokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

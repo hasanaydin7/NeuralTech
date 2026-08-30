@@ -1,0 +1,347 @@
+<article class="docs-page icons-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow"> Getting started </span>
+
+    <h1 class="docs-hero__title">Neural Icons</h1>
+
+    <p class="docs-hero__description">
+      A class-first icon package with {{ totals().icons }} embedded SVG masks.
+      It inherits text color and size, needs no runtime network request, and
+      keeps Angular templates as simple as <code>nt nt-user</code>.
+    </p>
+  </header>
+
+  <section id="install">
+    <h2>Install</h2>
+    <p>
+      Neural Icons is a standalone package. Its generated CSS contains the SVG
+      data, so consumers do not install or ship an additional icon dependency.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="bash"
+      language="bash"
+      [code]="installCommand"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="false"
+      [theme]="resolvedMode()"
+    >
+    </code-view>
+  </section>
+
+  <section id="imports">
+    <h2>Choose an Import Size</h2>
+    <p>
+      Start with the curated core, import only a category, or opt into the
+      complete catalog. Category entry points are the best production default.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="Curated Core"
+      language="css"
+      [code]="coreImport"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="false"
+      [theme]="resolvedMode()"
+    >
+    </code-view>
+    <code-view
+      class="mt-2"
+      fileName="One Category"
+      language="css"
+      [code]="categoryExample"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="false"
+      [theme]="resolvedMode()"
+    >
+    </code-view>
+    <code-view
+      class="mt-2"
+      fileName="All 6,166 Icons"
+      language="css"
+      [code]="fullImport"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="false"
+      [theme]="resolvedMode()"
+    >
+    </code-view>
+  </section>
+
+  <section id="usage">
+    <h2>Class API</h2>
+    <p class="docs-hero__description">
+      Outline icons use <code>nt-*</code> filled variants use
+      <code>nt-filled-*</code>. The icon follows <code>color</code> and
+      <code>font-size</code> from its parent.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="app.html"
+      language="html"
+      [code]="classExample"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="flex items-center gap-2">
+        <i class="nt nt-user size-small" aria-hidden="true"></i>
+        <i class="nt nt-heart size-medium color-accent" aria-hidden="true"></i>
+        <i
+          class="nt nt-circle-check size-large color-success"
+          aria-hidden="true"
+        ></i>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="catalog">
+    <div class="catalog-heading">
+      <div>
+        <h2>Icon Catalog</h2>
+        <p>
+          {{ totals().outline }} outline and {{ totals().filled }} filled icons.
+          Select an icon to copy its complete class value.
+        </p>
+      </div>
+      <strong>{{ totals().icons }} icons</strong>
+    </div>
+
+    <div class="icon-controls">
+      <neural-field controlId="icons-search" pending fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Search</label>
+        <input
+          neuralInput
+          type="search"
+          placeholder="Try user, arrow, brand..."
+          [value]="query()"
+          (input)="changeQuery($event)"
+        />
+      </neural-field>
+
+      <neural-field controlId="icons-style" pending fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Style</label>
+        <neural-select
+          [options]="styles()"
+          optionLabel="label"
+          optionValue="style"
+          ariaLabel="Style"
+          [(value)]="style"
+          (selectionChange)="changeStyle($event)"
+        />
+      </neural-field>
+
+      <neural-field controlId="icons-category" pending fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Category</label>
+        <neural-select
+          class="w-full"
+          [options]="categoryOptions()"
+          optionLabel="label"
+          optionValue="value"
+          ariaLabel="Category"
+          [value]="category()"
+          (selectionChange)="changeCategory($event)"
+        />
+      </neural-field>
+    </div>
+
+    <p class="catalog-status" aria-live="polite">
+      {{ matchingIcons().length }} icons match the current filters. @if
+      (copiedClass()) {
+      <span>
+        {{ copiedClass()!.startsWith('Copy manually:') ? '' : 'Copied: ' }}
+        <code>{{ copiedClass() }}</code>
+      </span>
+      }
+    </p>
+
+    @if (metadata()) {
+    <div
+      role="list"
+      aria-label="Neural Icons search results"
+      class="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 2xl:grid-cols-6"
+    >
+      @for (icon of visibleIcons(); track icon.name) { @let className =
+      iconClass(icon); @let copied = copiedIcon() === className;
+
+      <div role="listitem" class="min-w-0">
+        <button
+          type="button"
+          class="group relative isolate grid min-h-44 w-full min-w-0 grid-rows-[auto_1fr_auto_auto] overflow-hidden rounded-2xl border border-[var(--neural-color-border)] bg-[var(--neural-color-surface)] p-3 text-left text-[var(--neural-color-text)] shadow-sm transition-all duration-200 ease-out cursor-pointer before:absolute before:inset-x-4 before:top-0 before:h-0.5 before:origin-center before:scale-x-0 before:rounded-b-full before:bg-[var(--neural-color-focus)] before:opacity-0 before:transition-all before:duration-200 before:content-[''] hover:-translate-y-0.5 hover:border-[var(--neural-color-border-strong)] hover:bg-[var(--neural-color-surface-hover)] hover:shadow-lg hover:before:scale-x-100 hover:before:opacity-100 active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neural-color-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--neural-color-surface)] data-[copied]:border-[var(--neural-color-focus)] data-[copied]:before:scale-x-100 data-[copied]:before:opacity-100 motion-reduce:transform-none motion-reduce:transition-none"
+          [attr.data-copied]="copied ? '' : null"
+          [attr.aria-label]="copied ? className + ' copied' : 'Copy ' + className"
+          [attr.title]="'Copy ' + className"
+          (click)="copyIconClass(icon)"
+        >
+          <span class="flex min-w-0 items-center justify-between gap-2">
+            <span
+              class="max-w-[65%] truncate rounded-full border border-[var(--neural-color-border)] bg-[var(--neural-color-surface-hover)] px-2 py-1 text-[0.625rem] font-semibold capitalize leading-none text-[var(--neural-color-text-muted)]"
+            >
+              {{ icon.category }}
+            </span>
+
+            <span
+              aria-hidden="true"
+              class="inline-flex shrink-0 items-center gap-1 text-[0.625rem] font-semibold text-[var(--neural-color-text-muted)] opacity-60 transition-all duration-200 group-hover:text-[var(--neural-color-text)] group-hover:opacity-100 group-data-[copied]:text-[var(--neural-color-focus)] group-data-[copied]:opacity-100"
+            >
+              @if (copied) {
+              <i class="nt nt-check text-xs"></i>
+              <span>Copied</span>
+              } @else {
+              <i class="nt nt-copy text-xs"></i>
+              <span>Copy</span>
+              }
+            </span>
+          </span>
+
+          <span
+            aria-hidden="true"
+            class="my-3 grid size-16 place-items-center self-center justify-self-center rounded-2xl border border-[var(--neural-color-border)] bg-[var(--neural-color-surface-hover)] shadow-inner transition-all duration-200 ease-out group-hover:-translate-y-0.5 group-hover:scale-[1.04] group-hover:border-[var(--neural-color-border-strong)] group-data-[copied]:border-[var(--neural-color-focus)] motion-reduce:transform-none motion-reduce:transition-none"
+          >
+            <i
+              [class]="className"
+              class="text-[1.875rem] transition-transform duration-200 group-hover:scale-110 motion-reduce:transform-none motion-reduce:transition-none"
+            ></i>
+          </span>
+
+          <span
+            class="block min-w-0 truncate text-center text-xs font-semibold leading-5 text-[var(--neural-color-text)]"
+          >
+            {{ icon.name }}
+          </span>
+
+          <code
+            class="mt-1 block min-w-0 truncate text-center font-mono text-[0.65rem] font-medium leading-4 text-[var(--neural-color-focus)]"
+          >
+            {{ className }}
+          </code>
+        </button>
+      </div>
+      }
+    </div>
+    } @else {
+    <div
+      role="status"
+      class="grid min-h-52 place-items-center rounded-2xl border border-dashed border-[var(--neural-color-border)] bg-[var(--neural-color-surface)] p-10 text-center text-sm text-[var(--neural-color-text-muted)]"
+    >
+      <span class="inline-flex items-center gap-2">
+        <span
+          class="size-4 animate-spin rounded-full border-2 border-[var(--neural-color-border)] border-t-[var(--neural-color-focus)]"
+          aria-hidden="true"
+        >
+        </span>
+        Loading icon metadata…
+      </span>
+    </div>
+    } @if (metadata() && matchingIcons().length === 0) {
+    <div
+      class="flex min-h-52 flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-[var(--neural-color-border)] bg-[var(--neural-color-surface)] p-10 text-center"
+    >
+      <span
+        aria-hidden="true"
+        class="mb-1 grid size-14 place-items-center rounded-2xl border border-[var(--neural-color-border)] bg-[var(--neural-color-surface-hover)] text-[var(--neural-color-text-muted)]"
+      >
+        <i class="nt nt-search-off text-2xl"></i>
+      </span>
+
+      <strong class="text-sm font-semibold text-[var(--neural-color-text)]">
+        No icons found
+      </strong>
+
+      <span
+        class="max-w-md text-xs leading-5 text-[var(--neural-color-text-muted)]"
+      >
+        Try changing your search, style or category filters.
+      </span>
+    </div>
+    }
+
+    <div class="mt-4">
+      <neural-paginator
+        [(pageIndex)]="pageIndex"
+        [(pageSize)]="pageSize"
+        [totalItems]="matchingIcons().length"
+        [pageSizeOptions]="pageSizeOptions"
+        [labels]="paginatorLabels"
+        reportTemplate="Showing {start}–{end} of {total} icons"
+        paginatorClass="icons-docs-paginator"
+      />
+    </div>
+  </section>
+
+  <section id="motion">
+    <h2>Motion</h2>
+    <p class="docs-hero__description">
+      Add <code>nt-spin</code> or <code>nt-spin-reverse</code> to rotate the
+      complete icon.
+      <code>nt-loader-3 nt-spin-dual</code>
+      counter-rotates its generated layers. All motion stops for reduced-motion
+      preferences.
+    </p>
+    <div class="motion-grid">
+      <figure>
+        <i class="nt nt-loader-3 nt-spin" aria-hidden="true"></i>
+        <figcaption>
+          <code
+            class="rounded-lg px-2 py-1 ring-1 text-md backdrop-blur bg-white/70 ring-black/10 dark:bg-zinc-900/70 dark:ring-white/10"
+            >nt-spin</code
+          >
+        </figcaption>
+      </figure>
+      <figure>
+        <i class="nt nt-loader-3 nt-spin-reverse" aria-hidden="true"></i>
+        <figcaption>
+          <code
+            class="rounded-lg px-2 py-1 ring-1 text-md backdrop-blur bg-white/70 ring-black/10 dark:bg-zinc-900/70 dark:ring-white/10"
+            >nt-spin-reverse</code
+          >
+        </figcaption>
+      </figure>
+      <figure>
+        <i class="nt nt-loader-3 nt-spin-dual" aria-hidden="true"></i>
+        <figcaption>
+          <code
+            class="rounded-lg px-2 py-1 ring-1 text-md backdrop-blur bg-white/70 ring-black/10 dark:bg-zinc-900/70 dark:ring-white/10"
+            >nt-spin-dual</code
+          >
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="accessibility">
+    <h2>Accessibility</h2>
+    <p class="docs-hero__description">
+      Decorative icons should use <code>aria-hidden="true"</code>. When an icon
+      is the only content in a control, give the control an accessible label.
+      Meaning must never depend on the icon alone.
+    </p>
+  </section>
+
+  <section id="license">
+    <h2>License and Delivery</h2>
+    <p>
+      The generated package preserves Tabler Icons' MIT attribution in its
+      third-party notices. SVG masks are embedded in CSS; no CDN, fetch, font,
+      or runtime JavaScript is required. Brand marks can still be subject to
+      their owners' trademark rules.
+    </p>
+  </section>
+</article>

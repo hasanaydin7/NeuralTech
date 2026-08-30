@@ -1,0 +1,606 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="radio-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Radio documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-circle-dot"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FORMS</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Radio
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  Native single-choice groups with typed data mapping, rich
+                  projected options, complete Forms support and deterministic
+                  keyboard navigation.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    inputs</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Roving
+                    focus</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical standalone group and projected option from
+                the granular entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+            <section id="data-options" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Data-driven options</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Map labels, values, icons and disabled state without changing
+                the source collection.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="plans.html"
+                language="html"
+                [code]="dataCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-col items-center gap-5"
+                >
+                  <neural-radio-group
+                    ariaLabel="Billing plan"
+                    [options]="plans"
+                    optionLabel="name"
+                    optionValue="id"
+                    optionDisabled="unavailable"
+                    optionIcon="iconClass"
+                    orientation="horizontal"
+                    [(value)]="plan"
+                    (selectionChange)="selectionChanged($event)"
+                  /><output
+                    class="font-mono text-xs text-[var(--site-text-muted)]"
+                    >value: {{ plan() }} · {{ eventStatus() }}</output
+                  >
+                </div></code-view
+              >
+            </section>
+            <section id="projected" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Projected rich options</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use neural-radio children when an option needs structured
+                content. Do not combine them with data options.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="delivery.html"
+                language="html"
+                [code]="projectedCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full max-w-lg">
+                  <neural-radio-group
+                    ariaLabel="Delivery method"
+                    [(value)]="delivery"
+                    ><neural-radio value="standard"
+                      ><span class="flex flex-col"
+                        ><strong>Standard delivery</strong
+                        ><small class="text-[var(--site-text-muted)]"
+                          >3–5 business days · Free</small
+                        ></span
+                      ></neural-radio
+                    ><neural-radio value="express"
+                      ><span class="flex flex-col"
+                        ><strong>Express delivery</strong
+                        ><small class="text-[var(--site-text-muted)]"
+                          >Next business day · €12</small
+                        ></span
+                      ></neural-radio
+                    ><neural-radio value="pickup"
+                      ><span class="flex flex-col"
+                        ><strong>Store pickup</strong
+                        ><small class="text-[var(--site-text-muted)]"
+                          >Ready today · Free</small
+                        ></span
+                      ></neural-radio
+                    ></neural-radio-group
+                  >
+                </div></code-view
+              >
+            </section>
+            <section id="orientations" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Vertical and horizontal</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Orientation controls both layout and aria-orientation; keyboard
+                arrows remain predictable.
+              </p>
+              <div
+                class="mt-6 grid gap-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-6 md:grid-cols-2"
+              >
+                <div>
+                  <p class="mb-4 text-sm font-black">Vertical</p>
+                  <neural-radio-group
+                    ariaLabel="Vertical choices"
+                    [options]="formOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    [value]="'starter'"
+                  />
+                </div>
+                <div>
+                  <p class="mb-4 text-sm font-black">Horizontal</p>
+                  <neural-radio-group
+                    ariaLabel="Horizontal choices"
+                    [options]="formOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    orientation="horizontal"
+                    [value]="'team'"
+                  />
+                </div>
+              </div>
+            </section>
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">All Angular Forms adapters</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                One nullable value contract works with Signal Forms, Reactive
+                Forms and template-driven forms.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="forms.html"
+                language="html"
+                [code]="formsCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-6 lg:grid-cols-3">
+                  <div>
+                    <p class="mb-3 text-sm font-black">Signal Forms</p>
+                    <neural-radio-group
+                      ariaLabel="Signal plan"
+                      [options]="formOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      [formField]="signalForm.signalPlan"
+                    />
+                  </div>
+                  <div>
+                    <p class="mb-3 text-sm font-black">Reactive Forms</p>
+                    <neural-radio-group
+                      ariaLabel="Reactive plan"
+                      [options]="formOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      [formControl]="reactivePlan"
+                    />
+                  </div>
+                  <div>
+                    <p class="mb-3 text-sm font-black">ngModel</p>
+                    <neural-radio-group
+                      ariaLabel="Template plan"
+                      [options]="formOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      name="templatePlan"
+                      [(ngModel)]="templatePlan"
+                    />
+                  </div></div
+              ></code-view>
+            </section>
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">States and Field composition</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disabled, readonly, required, invalid, pending and fluid states
+                compose without replacing native semantics.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="states.html"
+                language="html"
+                [code]="statesCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-7 lg:grid-cols-3">
+                  <div>
+                    <p class="mb-3 text-sm font-black">Disabled</p>
+                    <neural-radio-group
+                      ariaLabel="Disabled plan"
+                      [options]="formOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      value="starter"
+                      disabled
+                    />
+                  </div>
+                  <div>
+                    <p class="mb-3 text-sm font-black">Readonly</p>
+                    <neural-radio-group
+                      ariaLabel="Readonly plan"
+                      [options]="formOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      [(value)]="readonlyPlan"
+                      readonly
+                    />
+                  </div>
+                  <neural-field
+                    controlId="contact-method"
+                    label="Required contact"
+                    required
+                    invalid
+                    fluid
+                    ><neural-radio-group
+                      [options]="contactOptions"
+                      optionLabel="label"
+                      optionValue="value"
+                      [(value)]="contact"
+                    /><small neuralFieldHint>Choose one contact method.</small
+                    ><small neuralFieldError
+                      >A contact method is required.</small
+                    ></neural-field
+                  >
+                </div></code-view
+              >
+            </section>
+            <section id="events-demo" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic user events</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                selectionChange reports value, previousValue, original option
+                and pointer/keyboard source. Programmatic writes stay silent.
+              </p>
+            </section>
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Native inputs and interaction survive while Tailwind owns the
+                complete visual layer.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="flex w-full justify-center">
+                  <neural-radio-group
+                    unstyled
+                    [options]="headlessOptions"
+                    [(value)]="headlessValue"
+                    [classes]="headlessClasses"
+                    orientation="horizontal"
+                  /></div
+              ></code-view>
+            </section>
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Contract boundaries</h2>
+              <div class="mt-6 grid gap-4 md:grid-cols-3">
+                @for (item of [['RadioGroup','Owns one nullable value and group
+                navigation.'],['Radio','Owns one projected option and its rich
+                label.'],['Application','Owns validation rules, persistence and
+                clear actions.']]; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">{{ item[0] }}</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Native radio behavior</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                The visual control wraps real, named radio inputs rather than
+                recreating browser semantics.
+              </p>
+            </header>
+            <section id="native" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Native semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The container uses role=radiogroup. Each choice is a native
+                input[type=radio] sharing a stable generated or
+                consumer-provided name.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Arrow keys move and select while skipping disabled choices. Home
+                and End select the first and last enabled choice; Space selects
+                the focused choice.
+              </p>
+            </section>
+            <section id="roving" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Roving focus</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Only the selected option, or the first enabled option when
+                empty, has tabindex 0. focus() restores that deterministic entry
+                point.
+              </p>
+            </section>
+            <section id="readonly-disabled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Readonly versus disabled</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Readonly remains focusable and exposes aria-readonly while
+                blocking mutation. Disabled uses native disabled inputs and
+                leaves the tab order.
+              </p>
+            </section>
+            <section id="field-state" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Field state</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Field descriptions, required, invalid, busy, disabled, readonly
+                and unstyled state are inherited by the complete group.
+              </p>
+            </section>
+            <section id="ssr" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">SSR and hydration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                APP_ID-backed IDs and declarative rendering are deterministic;
+                no browser global is required during server rendering.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC API
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Radio contracts</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Canonical symbols are NeuralRadioGroup and NeuralRadio, with
+                nullable generic values and typed semantic events.
+              </p>
+            </header>
+            <section id="group-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Group inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[55rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of groupInputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="radio-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Projected Radio inputs</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of radioInputs; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ms-3 font-mono text-xs"
+                    >{{ item[1] }} · {{ item[2] }}</span
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[3] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="models" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Models and outputs</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of models; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ms-3 font-mono text-xs">{{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                } @for (item of outputs; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ms-3 font-mono text-xs">{{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ms-3 font-mono text-xs">{{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                @for (item of classSlots; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of publicTypes; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="aliases" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Legacy aliases</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                RadioGroupComponent and RadioComponent remain deprecated
+                compatibility aliases. New code and generated AI context use
+                only the Neural-prefixed symbols.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Radio tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Neutral defines the reference contract; every theme overrides
+                these same semantic variables.
+              </p>
+            </header>
+            <section id="layout-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Layout and typography</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="layoutTokens"
+              />
+            </section>
+            <section id="state-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Control and state</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="stateTokens"
+              />
+            </section>
+            <section id="motion-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Motion</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="motionTokens"
+              />
+              <p class="mt-5 text-sm text-[var(--site-text-soft)]">
+                Reduced-motion preferences collapse these transitions
+                automatically.
+              </p>
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

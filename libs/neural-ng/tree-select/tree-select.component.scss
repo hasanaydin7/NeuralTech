@@ -1,0 +1,183 @@
+:where(.neural-tree-select-host) {
+  display: inline-block;
+  min-width: 0;
+  max-width: 100%;
+}
+:where(.neural-tree-select-host-fluid) {
+  display: block;
+  width: 100%;
+}
+:where(.neural-tree-select-root),
+:where(.neural-tree-select-trigger-root) {
+  box-sizing: border-box;
+  min-width: 0;
+}
+:where(.neural-tree-select-trigger-root) {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  overflow: hidden;
+}
+:where(.neural-tree-select-value-root) {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+:where(.neural-tree-select-chip-list-root) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+:where(.neural-tree-select-chip-root),
+:where(.neural-tree-select-loading-root) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+:where(.neural-tree-select-chip-remove-root),
+:where(.neural-tree-select-clear-root),
+:where(.neural-tree-select-dropdown-root) {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+:where(.neural-tree-select-base) {
+  width: var(--neural-tree-select-width, auto);
+  color: var(--neural-tree-select-color, var(--neural-color-text));
+  font-family: inherit;
+}
+:where(.neural-tree-select-trigger-base) {
+  min-height: var(--neural-control-height, 2.5rem);
+  padding-inline-start: 0.75rem;
+  color: inherit;
+  background: var(--neural-tree-select-background, var(--neural-color-surface));
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.625rem;
+  box-shadow: 0 1px 2px rgb(var(--neural-color-shadow) / 0.04);
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+:where(.neural-tree-select-trigger-base:focus-visible),
+:where(
+  .neural-tree-select-root[data-open='true'] .neural-tree-select-trigger-base
+) {
+  outline: 0;
+  border-color: var(--neural-color-focus);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--neural-color-focus) 18%, transparent);
+}
+:where(
+  .neural-tree-select-root[data-invalid='true'] .neural-tree-select-trigger-base
+) {
+  border-color: var(--neural-color-error);
+}
+:where(.neural-tree-select-root[data-disabled='true']) {
+  opacity: 0.6;
+  pointer-events: none;
+}
+:where(.neural-tree-select-placeholder-base) {
+  color: var(--neural-color-text-muted);
+}
+:where(.neural-tree-select-chip-base) {
+  padding: 0.25rem 0.25rem 0.25rem 0.55rem;
+  color: var(--neural-color-primary);
+  background: color-mix(
+    in srgb,
+    var(--neural-color-primary) 10%,
+    var(--neural-color-surface)
+  );
+  border: 1px solid
+    color-mix(in srgb, var(--neural-color-primary) 22%, transparent);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+}
+:where(.neural-tree-select-chip-remove-base) {
+  width: 1.4rem;
+  height: 1.4rem;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+:where(.neural-tree-select-chip-remove-base:hover) {
+  background: color-mix(in srgb, currentColor 12%, transparent);
+}
+:where(.neural-tree-select-clear-base),
+:where(.neural-tree-select-dropdown-base) {
+  align-self: stretch;
+  min-width: var(--neural-control-height, 2.5rem);
+  padding: 0;
+  color: var(--neural-color-text-muted);
+  background: transparent;
+  border: 0;
+}
+:where(.neural-tree-select-clear-base) {
+  cursor: pointer;
+}
+:where(.neural-tree-select-clear-base:hover) {
+  color: var(--neural-color-text-strong);
+  background: var(--neural-color-surface-hover);
+}
+.neural-tree-select-panel-root.neural-popover-content-root {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+:where(.neural-tree-select-panel-base) {
+  color: var(--neural-color-text);
+  background: var(--neural-color-surface);
+  border-radius: 0.75rem;
+}
+:where(.neural-tree-select-header-base) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.65rem;
+  border-bottom: 1px solid var(--neural-color-border);
+}
+:where(.neural-tree-select-header-base > .nt) {
+  position: absolute;
+  inset-inline-start: 1.3rem;
+  color: var(--neural-color-text-muted);
+  pointer-events: none;
+}
+:where(.neural-tree-select-filter-base) {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 2.25rem;
+  padding: 0.45rem 0.7rem 0.45rem 2.15rem;
+  color: inherit;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.5rem;
+  outline: 0;
+  font: inherit;
+}
+:where(.neural-tree-select-filter-base:focus) {
+  border-color: var(--neural-color-focus);
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--neural-color-focus) 16%, transparent);
+}
+:where(.neural-tree-select-loading-base),
+:where(.neural-tree-select-empty-base) {
+  padding: 0.85rem;
+  color: var(--neural-color-text-muted);
+}
+.neural-tree-select-panel-root
+  > .neural-tree-host
+  > .neural-tree-root.neural-tree-root-base {
+  min-height: 0;
+  max-height: var(--neural-tree-select-panel-max-height, 20rem);
+  overflow: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}

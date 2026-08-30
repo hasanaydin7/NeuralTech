@@ -1,0 +1,50 @@
+# @neural-ng/core/dialog
+
+Import `NeuralDialog`, `NeuralDialogHeader`, `NeuralDialogBody`,
+`NeuralDialogFooter`, and `NeuralDialogInitialFocus` only from
+`@neural-ng/core/dialog`. Never generate their deprecated `Dialog*` aliases,
+an NgModule, or a div-based replacement.
+
+Use `neural-dialog` with optional `neural-dialog-header`,
+`neural-dialog-body`, and `neural-dialog-footer`. Give every dialog an
+accessible name through `ariaLabelledby` pointing to a real heading, or through
+`ariaLabel`. Prefer `neuralDialogInitialFocus` on the first meaningful
+interactive control.
+
+Bind `[(open)]` for declarative state or call `show()` and `close()` from a
+template reference. The optional `closed` output returns a
+`NeuralDialogClose`; normal open-state binding does not require importing this
+type. Do not invent `onHide` or `visibleChange` outputs.
+
+`modal`, `closable`, `closeOnEscape`, and `dismissibleBackdrop` default to
+true. Do not disable dismissal paths unless the product flow supplies an
+obvious accessible alternative.
+
+Use `fluid` for viewport-safe width and `full` only for a complete
+`100vw × 100dvh` application surface. `full` takes visual precedence over
+`fluid`.
+
+Set `showFullScreenButton` to render the localized maximize/minimize action
+immediately before close. Observe `fullChange` when application state must
+track user toggles. Use `enterFullScreenLabel` and `exitFullScreenLabel` only
+to override locale messages.
+
+For headless rendering, set `unstyled` and pass typed `classes`. Structural
+classes remain. Do not assume Neural Icons is installed.
+
+Canonical example:
+
+```html
+<neural-button (clicked)="dialog.show()">Open settings</neural-button>
+<neural-dialog #dialog ariaLabelledby="settings-title">
+  <neural-dialog-header>
+    <h2 id="settings-title">Settings</h2>
+  </neural-dialog-header>
+  <neural-dialog-body>
+    <input neuralDialogInitialFocus aria-label="Workspace name" />
+  </neural-dialog-body>
+  <neural-dialog-footer>
+    <button type="button" (click)="dialog.close()">Done</button>
+  </neural-dialog-footer>
+</neural-dialog>
+```

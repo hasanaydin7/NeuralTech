@@ -1,0 +1,172 @@
+<section
+  [class]="rootClass()"
+  role="region"
+  [attr.aria-label]="ariaLabel()"
+  [attr.aria-busy]="loading() ? 'true' : null"
+  [attr.data-layout]="layout()"
+  [attr.data-loading]="loading() ? 'true' : 'false'"
+>
+  @if (headerTemplate(); as template) {
+    <header
+      [class]="
+        classFor(
+          'header',
+          'neural-data-view-header-root',
+          'neural-data-view-header-base'
+        )
+      "
+    >
+      <ng-container [ngTemplateOutlet]="template.templateRef" />
+    </header>
+  }
+  <div
+    [class]="
+      classFor(
+        'content',
+        'neural-data-view-content-root',
+        'neural-data-view-content-base'
+      )
+    "
+  >
+    @if (loading()) {
+      <div
+        role="status"
+        [class]="
+          classFor(
+            'loading',
+            'neural-data-view-loading-root',
+            'neural-data-view-loading-base'
+          )
+        "
+      >
+        @if (loadingTemplate(); as template) {
+          <ng-container
+            [ngTemplateOutlet]="template.templateRef"
+            [ngTemplateOutletContext]="stateContext(loadingMessage())"
+          />
+        } @else {
+          <span class="neural-data-view-sr-only">{{ loadingMessage() }}</span>
+          @for (_ of loadingPlaceholders(); track $index) {
+            <span
+              [class]="
+                classFor(
+                  'skeleton',
+                  'neural-data-view-skeleton-root',
+                  'neural-data-view-skeleton-base'
+                )
+              "
+              aria-hidden="true"
+            ></span>
+          }
+        }
+      </div>
+    } @else if (!renderedItems().length) {
+      <div
+        [class]="
+          classFor(
+            'empty',
+            'neural-data-view-empty-root',
+            'neural-data-view-empty-base'
+          )
+        "
+      >
+        @if (emptyTemplate(); as template) {
+          <ng-container
+            [ngTemplateOutlet]="template.templateRef"
+            [ngTemplateOutletContext]="stateContext(emptyMessage())"
+          />
+        } @else {
+          <i class="nt nt-inbox" aria-hidden="true"></i
+          ><span>{{ emptyMessage() }}</span>
+        }
+      </div>
+    } @else {
+      <div
+        role="list"
+        [class]="
+          layout() === 'grid'
+            ? classFor(
+                'grid',
+                'neural-data-view-grid-root',
+                'neural-data-view-grid-base'
+              )
+            : classFor(
+                'list',
+                'neural-data-view-list-root',
+                'neural-data-view-list-base'
+              )
+        "
+      >
+        @for (
+          item of renderedItems();
+          track trackItem($index, item);
+          let index = $index
+        ) {
+          <article
+            role="listitem"
+            [class]="
+              classFor(
+                'item',
+                'neural-data-view-item-root',
+                'neural-data-view-item-base'
+              )
+            "
+            [attr.data-index]="itemContext(item, index).originalIndex"
+          >
+            @if (layout() === 'grid' && gridItemTemplate(); as template) {
+              <ng-container
+                [ngTemplateOutlet]="template.templateRef"
+                [ngTemplateOutletContext]="itemContext(item, index)"
+              />
+            } @else if (listItemTemplate(); as template) {
+              <ng-container
+                [ngTemplateOutlet]="template.templateRef"
+                [ngTemplateOutletContext]="itemContext(item, index)"
+              />
+            } @else if (gridItemTemplate(); as template) {
+              <ng-container
+                [ngTemplateOutlet]="template.templateRef"
+                [ngTemplateOutletContext]="itemContext(item, index)"
+              />
+            } @else {
+              {{ item }}
+            }
+          </article>
+        }
+      </div>
+    }
+  </div>
+  @if (paginator() && !loading() && effectiveTotalRecords() > 0) {
+    <div
+      [class]="
+        classFor(
+          'paginator',
+          'neural-data-view-paginator-root',
+          'neural-data-view-paginator-base'
+        )
+      "
+    >
+      <neural-paginator
+        [totalItems]="effectiveTotalRecords()"
+        [pageIndex]="pageIndex()"
+        [pageSize]="normalizedRows()"
+        [pageSizeOptions]="pageSizeOptions()"
+        [unstyled]="effectiveUnstyled()"
+        (pageChange)="handlePageChange($event)"
+      />
+    </div>
+  }
+  @if (footerTemplate(); as template) {
+    <footer
+      [class]="
+        classFor(
+          'footer',
+          'neural-data-view-footer-root',
+          'neural-data-view-footer-base'
+        )
+      "
+    >
+      <ng-container [ngTemplateOutlet]="template.templateRef" />
+    </footer>
+  }
+</section>

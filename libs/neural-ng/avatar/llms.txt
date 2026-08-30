@@ -1,0 +1,26 @@
+NeuralNg Avatar rules
+
+- Import Avatar only from `@neural-ng/core/avatar`.
+- Add `NeuralAvatar` directly to standalone component imports.
+- Add `NeuralAvatarGroup` when `<neural-avatar-group>` is used.
+- `AvatarComponent` and `AvatarGroupComponent` are deprecated compatibility aliases; generate canonical Neural names.
+- Prefer `name` for identity; it supplies derived initials and fallback accessibility.
+- Set `alt=""` explicitly only when the image is decorative.
+- Fallback priority is image, initials, iconClass, then projected content.
+- `iconClass` is optional. Never assume Neural Icons is a core dependency.
+- Sizes: `extra-small`, `small`, `medium`, `large`, `extra-large`.
+- Shapes: `circle`, `rounded`, `square`.
+- Image fit: `cover`, `contain`.
+- Use `srcSet` and `sizes` for responsive sources.
+- `imageLoaded` and `imageError` emit native Event values.
+- Image errors switch to fallback; a new src retries automatically.
+- Compose status dots and counts with `NeuralBadgeDirective` from `@neural-ng/core/badge`.
+- Do not create Avatar-specific Badge markup or positioning logic.
+- AvatarGroup max keeps that many Avatars visible and renders +N overflow.
+- Localize AvatarGroup `overflowLabel` and preserve its `{count}` placeholder.
+- Group overlap uses logical CSS and follows RTL.
+- `unstyled` removes visual classes while structural hooks remain.
+- Avatar slots: `root`, `image`, `fallback`, `initials`, `icon`, `content`.
+- AvatarGroup slots: `root`, `overflow`.
+- Global unstyled mode is `provideNeuralNg({ unstyled: true })`.
+- Current maturity is Beta. Upload, crop, presence transport, profile fetching, interactive menus, and tooltips are separate concerns.

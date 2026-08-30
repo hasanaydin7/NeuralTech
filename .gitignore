@@ -1,0 +1,79 @@
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# compiled output
+dist
+tmp
+out-tsc
+*.tsbuildinfo
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+.npmrc
+!.npmrc.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.csr
+*.jks
+*.keystore
+
+# logs and generated package archives
+*.log
+*.tgz
+.eslintcache
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+/typings
+
+# test artifacts
+coverage/
+playwright-report/
+test-results/
+blob-report/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# tool caches
+.nx/
+.angular/
+.cache/
+
+.claude/worktrees
+.claude/settings.local.json
+
+# Verdaccio runtime files; keep the shared local-registry config
+.verdaccio/*
+!.verdaccio/config.yml
+
+__screenshots__/
+
+.angular

@@ -1,0 +1,37 @@
+{
+  "$schema": "../schema.json",
+  "schemaVersion": 1,
+  "name": "neutral",
+  "extends": "neutral",
+  "color": {
+    "primary": "blue",
+    "surface": "slate",
+    "success": "#16a34a",
+    "warning": "#ca8a04",
+    "error": "#dc2626"
+  },
+  "typography": {
+    "sans": "inherit",
+    "mono": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+    "scale": "default"
+  },
+  "shape": {
+    "radius": "medium",
+    "border": "default"
+  },
+  "density": "comfortable",
+  "elevation": "soft",
+  "motion": "default",
+  "modes": {
+    "dark": "auto"
+  },
+  "output": {
+    "tailwind": true,
+    "tokens": true,
+    "report": true,
+    "types": true
+  },
+  "generator": {
+    "colorAlgorithm": "neural-oklch-v1"
+  }
+}

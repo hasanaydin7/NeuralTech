@@ -1,0 +1,101 @@
+<article class="docs-page divider-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Divider</h1>
+    <p>
+      Semantic content boundaries with logical orientation, optional labels,
+      projected markup, line variants, and full headless ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Semantic boundary</h2>
+    <p>
+      Divider renders a real separator role and an explicit logical orientation.
+    </p>
+    <div class="demo-surface divider-copy" data-testid="divider-basic">
+      <p>Workspace activity and recent updates.</p>
+      <neural-divider />
+      <p>Team permissions and account controls.</p>
+    </div>
+    <app-code-example label="Basic" language="html" [code]="basicCode" />
+  </section>
+
+  <section id="content">
+    <h2>Content and alignment</h2>
+    <p>
+      Plain labels cover the common case. Projection keeps icons and richer
+      Angular markup available without widening the core API.
+    </p>
+    <div class="demo-surface divider-stack" data-testid="divider-content">
+      <neural-divider label="CENTER" />
+      <neural-divider label="START" align="start" type="dashed" />
+      <neural-divider align="end" type="dotted">
+        <span class="divider-projected">
+          <i class="nt nt-sparkles" aria-hidden="true"></i>
+          PROJECTED
+        </span>
+      </neural-divider>
+    </div>
+    <app-code-example label="Content" language="html" [code]="contentCode" />
+  </section>
+
+  <section id="vertical">
+    <h2>Vertical orientation</h2>
+    <p>
+      Vertical separators stretch with their flex container and use logical
+      inline borders, so writing direction remains safe.
+    </p>
+    <div class="demo-surface divider-actions" data-testid="divider-vertical">
+      <button type="button">Save</button>
+      <neural-divider
+        orientation="vertical"
+        ariaLabel="Primary and secondary actions"
+      />
+      <button type="button">Cancel</button>
+      <neural-divider
+        orientation="vertical"
+        type="dashed"
+        ariaLabel="Secondary and destructive actions"
+      />
+      <button type="button">Delete</button>
+    </div>
+    <app-code-example label="Vertical" language="html" [code]="verticalCode" />
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Separator semantics, logical orientation, and all four structural hooks
+      remain while consumer classes own the visual layer.
+    </p>
+    <div class="demo-surface" data-testid="divider-headless">
+      <neural-divider
+        label="HEADLESS"
+        type="dotted"
+        unstyled
+        dividerClass="docs-headless-divider--custom"
+        [classes]="headlessClasses"
+      />
+    </div>
+    <app-code-example
+      label="Headless Divider"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <footer class="docs-page-next">
+    <span>Next component</span>
+    <a href="/docs/components/field">Field →</a>
+  </footer>
+</article>

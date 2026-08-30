@@ -1,0 +1,222 @@
+<main class="landing-page">
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Angular 22+ · Signals · Standalone</span>
+      <h1>UI infrastructure designed for developers and AI agents.</h1>
+      <p>
+        NeuralNg combines native accessibility, a headless core, deterministic
+        APIs, and token-driven themes without locking your product into a visual
+        language.
+      </p>
+
+      <div class="hero-actions">
+        <a
+          class="landing-link landing-link-primary"
+          routerLink="/docs/getting-started/installation"
+        >
+          Get started
+        </a>
+        <a
+          class="landing-link landing-link-secondary"
+          routerLink="/docs/components/button"
+        >
+          Browse components
+        </a>
+      </div>
+
+      <div class="install-command" aria-label="Install command">
+        <span aria-hidden="true">$</span>
+        <code>npm install &#64;neural-ng/core</code>
+      </div>
+    </div>
+
+    <div class="hero-preview">
+      <span class="preview-label">Live alpha preview</span>
+      <neural-card ariaLabelledby="landing-preview-title">
+        <neural-card-header>
+          <div>
+            <small>Headless by design</small>
+            <h2 id="landing-preview-title">Native first</h2>
+          </div>
+          <span class="signal-dot" aria-hidden="true"></span>
+        </neural-card-header>
+        <neural-card-body>
+          <neural-field controlId="landing-email" fluid>
+            <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+            <label neuralFieldLabel>Work email</label>
+            <input
+              neuralInput
+              type="email"
+              autocomplete="email"
+              placeholder="developer@neural.ng"
+            />
+            <small neuralFieldHint>
+              Real input semantics. Automatic accessible wiring.
+            </small>
+          </neural-field>
+
+          <neural-field controlId="landing-architecture" fluid>
+            <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+            <label neuralFieldLabel>Architecture focus</label>
+            <neural-select
+              [options]="architectureOptions"
+              optionLabel="label"
+              optionValue="value"
+              [(value)]="architecture"
+              ariaLabel="Architecture focus"
+            />
+          </neural-field>
+
+          <neural-field controlId="landing-note" fluid>
+            <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+            <label neuralFieldLabel>Prototype note</label>
+            <textarea
+              neuralTextarea
+              rows="2"
+              placeholder="Native multiline input"
+            ></textarea>
+          </neural-field>
+
+          <neural-checkbox [(checked)]="updatesEnabled">
+            Send release notes
+          </neural-checkbox>
+
+          <neural-radio-group
+            [options]="runtimeOptions"
+            optionLabel="label"
+            optionValue="value"
+            orientation="horizontal"
+            [(value)]="preferredRuntime"
+            ariaLabel="Preferred runtime"
+          />
+
+          <neural-switch [(checked)]="telemetryEnabled">
+            Anonymous telemetry
+          </neural-switch>
+
+          <neural-button class="landing-action" (clicked)="tryButton()">
+            Test Signal output
+          </neural-button>
+          <output aria-live="polite">{{ lastInteraction() }}</output>
+        </neural-card-body>
+      </neural-card>
+    </div>
+  </section>
+
+  <section class="landing-section" aria-labelledby="principles-title">
+    <span class="section-kicker">Foundation</span>
+    <h2 id="principles-title">
+      A smaller API surface with stronger contracts.
+    </h2>
+    <div class="feature-grid">
+      <article>
+        <span>01</span>
+        <h3>AI-first context</h3>
+        <p>
+          Component-level README and llms.txt files give coding agents exact
+          imports, state rules, and composition examples.
+        </p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Headless ownership</h3>
+        <p>
+          Keep semantics and behavior while removing every visual class with a
+          local or global unstyled contract.
+        </p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>Native performance</h3>
+        <p>
+          Standalone secondary entry points, Signals, SSR-safe code, and
+          tree-shakable packages keep each feature focused.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section
+    class="landing-section component-index"
+    aria-labelledby="alpha-title"
+  >
+    <div>
+      <span class="section-kicker">Alpha collection</span>
+      <h2 id="alpha-title">Thirty-one foundations are ready to explore.</h2>
+      <p>
+        Each component page will grow with live examples, accessibility notes,
+        API tables, tokens, and AI generation rules.
+      </p>
+    </div>
+    <div class="component-links">
+      <a routerLink="/docs/components/accordion">
+        Accordion <span>Ready</span>
+      </a>
+      <a routerLink="/docs/components/avatar">Avatar <span>Ready</span></a>
+      <a routerLink="/docs/components/badge">Badge <span>Ready</span></a>
+      <a routerLink="/docs/components/button">Button <span>Ready</span></a>
+      <a routerLink="/docs/components/checkbox">Checkbox <span>Ready</span></a>
+      <a routerLink="/docs/components/tri-state-checkbox">
+        TriStateCheckbox <span>Ready</span>
+      </a>
+      <a routerLink="/docs/components/card">Card <span>Ready</span></a>
+      <a routerLink="/docs/components/dialog">Dialog <span>Ready</span></a>
+      <a routerLink="/docs/components/divider">Divider <span>Ready</span></a>
+      <a routerLink="/docs/components/field">Field <span>Ready</span></a>
+      <a routerLink="/docs/components/input">Input <span>Ready</span></a>
+      <a routerLink="/docs/components/input-number">
+        InputNumber <span>Ready</span>
+      </a>
+      <a routerLink="/docs/components/loading-overlay">
+        LoadingOverlay <span>Ready</span>
+      </a>
+      <a routerLink="/docs/components/menu">Menu <span>Ready</span></a>
+      <a routerLink="/docs/components/meter-group">
+        MeterGroup <span>Ready</span>
+      </a>
+      <a routerLink="/docs/components/breadcrumb"
+        >Breadcrumb <span>Ready</span></a
+      >
+      <a routerLink="/docs/components/paginator"
+        >Paginator <span>Ready</span></a
+      >
+      <a routerLink="/docs/components/panel-menu"
+        >PanelMenu <span>Ready</span></a
+      >
+      <a routerLink="/docs/components/progress-bar">
+        ProgressBar <span>Ready</span>
+      </a>
+      <a routerLink="/docs/components/progress-spinner">
+        ProgressSpinner <span>Ready</span>
+      </a>
+      <a routerLink="/docs/components/radio">Radio <span>Ready</span></a>
+      <a routerLink="/docs/components/select">Select <span>Ready</span></a>
+      <a routerLink="/docs/components/skeleton">Skeleton <span>Ready</span></a>
+      <a routerLink="/docs/components/switch">Switch <span>Ready</span></a>
+      <a routerLink="/docs/components/table">Table <span>Ready</span></a>
+      <a routerLink="/docs/components/tabs">Tabs <span>Ready</span></a>
+      <a routerLink="/docs/components/tag">Tag <span>Ready</span></a>
+      <a routerLink="/docs/components/textarea">
+        Textarea <span>Ready</span>
+      </a>
+      <a routerLink="/docs/components/toast">Toast <span>Ready</span></a>
+      <a routerLink="/docs/components/tooltip">Tooltip <span>Ready</span></a>
+      <a routerLink="/docs/apis/message">Message API <span>Ready</span></a>
+    </div>
+  </section>
+
+  <section class="landing-cta" aria-labelledby="cta-title">
+    <span class="section-kicker">Build with us</span>
+    <h2 id="cta-title">Start with the stable alpha contracts.</h2>
+    <p>
+      Install the package, choose a theme, and import only the components your
+      Angular application uses.
+    </p>
+    <a
+      class="landing-link landing-link-primary"
+      routerLink="/docs/getting-started/installation"
+    >
+      Read installation guide
+    </a>
+  </section>
+</main>

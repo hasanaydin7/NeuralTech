@@ -1,0 +1,188 @@
+<article class="docs-page textarea-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Textarea</h1>
+    <p>
+      A native multiline control enhanced with Signal Forms, Field composition,
+      token-driven states, modern CSS auto sizing, and direct class ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Native and Signal Forms</h2>
+    <p>
+      The directive enhances the real textarea. Native attributes and events
+      stay on the same element, while Angular Signal Forms binds without a
+      ControlValueAccessor.
+    </p>
+    <div class="textarea-demo-surface">
+      <neural-field controlId="biography" fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Biography</label>
+        <textarea
+          neuralTextarea
+          rows="5"
+          placeholder="Tell us about your work"
+          [formField]="profileForm.biography"
+        ></textarea>
+        <small neuralFieldHint>Maximum 500 characters.</small>
+      </neural-field>
+      <output class="demo-status" aria-live="polite">
+        Model length: {{ profile().biography.length }}
+      </output>
+    </div>
+    <app-code-example
+      label="Native Textarea with Signal Forms"
+      language="html"
+      [code]="basicCode"
+    />
+  </section>
+
+  <section id="auto-resize">
+    <h2>Auto resize</h2>
+    <p>
+      Auto resize uses <code>field-sizing: content</code>. There is no
+      scrollHeight measurement, browser listener, or hydration-only correction.
+      Growth stops at the theme's maximum block-size token.
+    </p>
+    <div class="textarea-demo-surface">
+      <label for="auto-growing-textarea">Growing message</label>
+      <textarea
+        neuralTextarea
+        id="auto-growing-textarea"
+        autoResize
+        fluid
+        [formField]="profileForm.growing"
+      ></textarea>
+    </div>
+    <app-code-example
+      label="CSS-native auto resize"
+      language="html"
+      [code]="autoResizeCode"
+    />
+  </section>
+
+  <section id="resize-modes">
+    <h2>Manual resize modes</h2>
+    <p>
+      Styled textareas default to vertical resizing. Horizontal, both, and none
+      are explicit options; auto resize always takes precedence.
+    </p>
+    <div class="textarea-demo-surface resize-grid">
+      <label>
+        Vertical
+        <textarea neuralTextarea rows="3" resizeMode="vertical"></textarea>
+      </label>
+      <label>
+        Horizontal
+        <textarea neuralTextarea rows="3" resizeMode="horizontal"></textarea>
+      </label>
+      <label>
+        Both
+        <textarea neuralTextarea rows="3" resizeMode="both"></textarea>
+      </label>
+      <label>
+        None
+        <textarea neuralTextarea rows="3" resizeMode="none"></textarea>
+      </label>
+    </div>
+    <app-code-example
+      label="Resize modes"
+      language="html"
+      [code]="resizeCode"
+    />
+  </section>
+
+  <section id="states">
+    <h2>States and Field</h2>
+    <div class="textarea-demo-surface state-grid">
+      <label>
+        Disabled
+        <textarea neuralTextarea rows="3" disabled>Locked value</textarea>
+      </label>
+      <label>
+        Readonly
+        <textarea neuralTextarea rows="3" readonly>
+Submitted but not editable
+        </textarea>
+      </label>
+      <neural-field controlId="required-summary" required invalid fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Required summary</label>
+        <textarea neuralTextarea rows="3"></textarea>
+        <small neuralFieldHint>Field owns the accessible relationships.</small>
+        <small neuralFieldError>A summary is required.</small>
+      </neural-field>
+    </div>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and native classes</h2>
+    <p>
+      Because the directive host is the textarea itself, normal
+      <code>class</code> bindings are the complete styling API. Unstyled mode
+      keeps only the structural hook.
+    </p>
+    <div class="textarea-demo-surface">
+      <label for="headless-textarea">Custom visual ownership</label>
+      <textarea
+        neuralTextarea
+        id="headless-textarea"
+        class="docs-headless-textarea"
+        placeholder="Styled entirely by the documentation app"
+        unstyled
+      ></textarea>
+    </div>
+    <app-code-example
+      label="Headless Textarea"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <section id="api">
+    <h2>Directive API</h2>
+    <div class="api-table-wrapper">
+      <table class="api-table">
+        <thead>
+          <tr>
+            <th>Input</th>
+            <th>Default</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>fluid</code></td>
+            <td>false</td>
+            <td>Uses the full available width in styled mode.</td>
+          </tr>
+          <tr>
+            <td><code>autoResize</code></td>
+            <td>false</td>
+            <td>Enables native CSS content sizing.</td>
+          </tr>
+          <tr>
+            <td><code>resizeMode</code></td>
+            <td>vertical</td>
+            <td>Controls the native manual resize direction.</td>
+          </tr>
+          <tr>
+            <td><code>unstyled</code></td>
+            <td>false</td>
+            <td>Removes NeuralNg visual and resize classes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</article>

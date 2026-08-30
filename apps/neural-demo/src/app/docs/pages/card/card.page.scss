@@ -1,0 +1,64 @@
+.card-docs-page {
+  max-width: 58rem;
+}
+
+.card-demo-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(12rem, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.card-demo-grid h2,
+.card-demo-grid p {
+  margin: 0;
+}
+
+.card-demo-grid small {
+  color: var(--neural-color-text-muted);
+}
+
+.card-status {
+  padding: 0.25rem 0.5rem;
+  color: var(--neural-color-success);
+  background: color-mix(in srgb, var(--neural-color-success) 12%, transparent);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.card-metric {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+.card-secondary-action {
+  --neural-button-color: var(--neural-color-text);
+  --neural-button-background: var(--neural-color-surface-hover);
+}
+
+.docs-headless-card {
+  overflow: hidden;
+  color: #ede9fe;
+  background: linear-gradient(145deg, #2e1065, #4c1d95);
+  border: 1px solid #8b5cf6;
+  border-radius: 1rem;
+}
+
+.docs-headless-card__header,
+.docs-headless-card__body,
+.docs-headless-card__footer {
+  padding: 1rem 1.25rem;
+}
+
+.docs-headless-card__footer {
+  color: #c4b5fd;
+  border-top: 1px solid rgb(196 181 253 / 0.25);
+}
+
+@media (max-width: 42rem) {
+  .card-demo-grid {
+    grid-template-columns: 1fr;
+  }
+}

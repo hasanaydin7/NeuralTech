@@ -1,0 +1,239 @@
+/* Experimental NeuralNg Mist theme. Calm translucent surfaces for long sessions. */
+:where([data-neural-theme='mist']) {
+  color-scheme: light;
+  --neural-color-primary-50: #f2f8f8;
+  --neural-color-primary-100: #e3efef;
+  --neural-color-primary-200: #c9dfdf;
+  --neural-color-primary-300: #a8c9ca;
+  --neural-color-primary-400: #7da9ad;
+  --neural-color-primary-500: #5f8c92;
+  --neural-color-primary-600: #4f747b;
+  --neural-color-primary-700: #425f65;
+  --neural-color-primary-800: #394f54;
+  --neural-color-primary-900: #334449;
+  --neural-color-primary-950: #1b2629;
+  --neural-color-primary: var(--neural-color-primary-600);
+  --neural-color-primary-hover: var(--neural-color-primary-700);
+  --neural-color-primary-active: var(--neural-color-primary-800);
+  --neural-color-primary-contrast: #ffffff;
+  --neural-color-surface: rgb(247 250 250 / 0.74);
+  --neural-color-surface-hover: rgb(247 250 250 / 0.84);
+  --neural-color-surface-active: rgb(255 255 255 / 0.92);
+  --neural-color-text: #26363b;
+  --neural-color-text-strong: #17252a;
+  --neural-color-text-muted: #64757a;
+  --neural-color-border: rgb(91 112 118 / 0.24);
+  --neural-color-border-hover: rgb(79 116 123 / 0.38);
+  --neural-color-border-active: rgb(66 95 101 / 0.52);
+  --neural-color-focus: var(--neural-color-primary-600);
+  --neural-color-shadow: 36 53 58;
+
+  --neural-button-background: var(--neural-color-surface);
+  --neural-button-background-hover: var(--neural-color-surface-hover);
+  --neural-button-background-active: var(--neural-color-surface-active);
+  --neural-button-border-color: var(--neural-color-border);
+  --neural-button-border-color-hover: var(--neural-color-border-hover);
+  --neural-button-border-color-active: var(--neural-color-border-active);
+  --neural-button-radius: 0.875rem;
+  --neural-button-shadow: 0 8px 24px rgb(var(--neural-color-shadow) / 0.08);
+  --neural-button-shadow-hover: 0 12px 30px
+    rgb(var(--neural-color-shadow) / 0.12);
+  --neural-button-shadow-active: 0 6px 18px
+    rgb(var(--neural-color-shadow) / 0.1);
+  --neural-button-backdrop-filter: blur(20px) saturate(112%);
+  --neural-button-focus-ring-offset: 3px;
+  --neural-button-transition:
+    background-color 180ms ease, border-color 180ms ease, color 180ms ease,
+    box-shadow 180ms ease, transform 180ms ease;
+
+  --neural-card-background: rgb(247 250 250 / 0.7);
+  --neural-card-border: 1px solid var(--neural-color-border);
+  --neural-card-radius: 1.125rem;
+  --neural-card-shadow: 0 18px 48px rgb(var(--neural-color-shadow) / 0.1);
+  --neural-card-backdrop-filter: blur(24px) saturate(110%);
+
+  --neural-input-background: rgb(255 255 255 / 0.68);
+  --neural-input-background-hover: rgb(255 255 255 / 0.78);
+  --neural-input-background-focus: rgb(255 255 255 / 0.9);
+  --neural-input-border: 1px solid var(--neural-color-border);
+  --neural-input-border-color-hover: var(--neural-color-border-hover);
+  --neural-input-border-color-focus: var(--neural-color-primary-500);
+  --neural-input-radius: 0.8rem;
+  --neural-input-shadow: 0 7px 22px rgb(var(--neural-color-shadow) / 0.07);
+  --neural-input-shadow-hover: 0 10px 26px rgb(var(--neural-color-shadow) / 0.1);
+  --neural-input-backdrop-filter: blur(18px) saturate(108%);
+  --neural-input-focus-ring-offset: 3px;
+
+  --neural-field-label-color: var(--neural-color-text-strong);
+  --neural-field-hint-color: var(--neural-color-text-muted);
+
+  --neural-accordion-panel-background: var(--neural-color-surface);
+  --neural-accordion-panel-background-expanded: var(
+    --neural-color-surface-hover
+  );
+  --neural-accordion-panel-border: 1px solid var(--neural-color-border);
+  --neural-accordion-panel-radius: 1rem;
+  --neural-accordion-panel-shadow: 0 10px 28px
+    rgb(var(--neural-color-shadow) / 0.07);
+  --neural-accordion-panel-shadow-expanded: 0 16px 38px
+    rgb(var(--neural-color-shadow) / 0.1);
+
+  --neural-dialog-background: rgb(247 250 250 / 0.82);
+  --neural-dialog-border: 1px solid var(--neural-color-border);
+  --neural-dialog-radius: 1.25rem;
+  --neural-dialog-shadow: 0 28px 80px rgb(var(--neural-color-shadow) / 0.2);
+  --neural-dialog-backdrop: rgb(32 47 52 / 0.26);
+  --neural-dialog-backdrop-filter: blur(12px);
+
+  --neural-popover-background: rgb(247 250 250 / 0.84);
+  --neural-popover-border: 1px solid var(--neural-color-border);
+  --neural-popover-radius: 1rem;
+  --neural-popover-shadow: 0 20px 54px rgb(var(--neural-color-shadow) / 0.14);
+
+  --neural-menu-background: rgb(247 250 250 / 0.86);
+  --neural-menu-border: 1px solid var(--neural-color-border);
+  --neural-menu-radius: 1rem;
+  --neural-menu-shadow: 0 20px 50px rgb(var(--neural-color-shadow) / 0.14);
+
+  --neural-tooltip-background: rgb(29 45 50 / 0.9);
+  --neural-tooltip-color: #f4f8f8;
+  --neural-tooltip-radius: 0.7rem;
+  --neural-tooltip-shadow: 0 12px 32px rgb(var(--neural-color-shadow) / 0.2);
+
+  --neural-toast-message-background: rgb(247 250 250 / 0.84);
+  --neural-message-background: rgb(247 250 250 / 0.84);
+  --neural-message-border-color: var(--neural-color-border);
+  --neural-message-radius: 1rem;
+  --neural-message-shadow: 0 18px 48px rgb(var(--neural-color-shadow) / 0.12);
+  --neural-toast-message-border-width: 1px;
+  --neural-toast-message-border-style: solid;
+  --neural-toast-message-border-color: var(--neural-color-border);
+  --neural-toast-message-radius: 1rem;
+  --neural-toast-message-shadow: 0 22px 58px
+    rgb(var(--neural-color-shadow) / 0.15);
+  --neural-toast-message-backdrop-filter: blur(24px) saturate(112%);
+
+  --neural-select-background: var(--neural-input-background);
+  --neural-select-background-hover: var(--neural-input-background-hover);
+  --neural-select-panel-background: rgb(247 250 250 / 0.88);
+  --neural-select-panel-border: 1px solid var(--neural-color-border);
+  --neural-select-panel-radius: 1rem;
+  --neural-select-panel-shadow: 0 20px 54px
+    rgb(var(--neural-color-shadow) / 0.14);
+
+  --neural-auto-complete-panel-background: rgb(247 250 250 / 0.88);
+  --neural-auto-complete-panel-radius: 1rem;
+  --neural-auto-complete-shadow: 0 20px 54px
+    rgb(var(--neural-color-shadow) / 0.14);
+  --neural-auto-complete-backdrop-filter: blur(24px) saturate(112%);
+
+  --neural-date-picker-background: rgb(255 255 255 / 0.68);
+  --neural-date-picker-border: 1px solid var(--neural-color-border);
+  --neural-date-picker-radius: 0.875rem;
+  --neural-date-picker-panel-background: rgb(247 250 250 / 0.9);
+  --neural-date-picker-panel-border: 1px solid var(--neural-color-border);
+  --neural-date-picker-panel-radius: 1.125rem;
+  --neural-date-picker-panel-shadow: 0 24px 64px
+    rgb(var(--neural-color-shadow) / 0.16);
+  --neural-date-picker-panel-backdrop-filter: blur(24px) saturate(112%);
+  --neural-date-picker-focus-ring: 2px solid var(--neural-color-focus);
+
+  --neural-drawer-background: rgb(247 250 250 / 0.86);
+  --neural-drawer-backdrop: rgb(32 47 52 / 0.24);
+  --neural-drawer-backdrop-filter: blur(12px);
+  --neural-drawer-shadow: 0 0 4rem rgb(var(--neural-color-shadow) / 0.16);
+
+  --neural-toolbar-background: rgb(247 250 250 / 0.76);
+  --neural-toolbar-border: 1px solid var(--neural-color-border);
+  --neural-toolbar-radius: 1rem;
+  --neural-toolbar-shadow: 0 14px 38px rgb(var(--neural-color-shadow) / 0.09);
+  --neural-toolbar-backdrop-filter: blur(22px) saturate(110%);
+
+  --neural-tabs-list-padding: 0.25rem;
+  --neural-tabs-list-border: 1px solid var(--neural-color-border);
+  --neural-tab-background: transparent;
+  --neural-tab-active-background: rgb(255 255 255 / 0.86);
+  --neural-tab-radius: 0.7rem;
+
+  --neural-panel-menu-background: var(--neural-color-surface);
+  --neural-panel-menu-border: 1px solid var(--neural-color-border);
+  --neural-panel-menu-radius: 1rem;
+  --neural-panel-menu-shadow: 0 14px 38px rgb(var(--neural-color-shadow) / 0.09);
+
+  --neural-table-background: rgb(247 250 250 / 0.72);
+  --neural-table-header-background: rgb(247 250 250 / 0.86);
+  --neural-table-border: 1px solid var(--neural-color-border);
+  --neural-table-radius: 1rem;
+  --neural-table-shadow: 0 18px 48px rgb(var(--neural-color-shadow) / 0.1);
+
+  --neural-checkbox-radius: 0.45rem;
+  --neural-checkbox-shadow: 0 5px 16px rgb(var(--neural-color-shadow) / 0.08);
+  --neural-radio-shadow: 0 5px 16px rgb(var(--neural-color-shadow) / 0.08);
+  --neural-switch-track-radius: 999px;
+  --neural-switch-track-shadow: 0 5px 16px
+    rgb(var(--neural-color-shadow) / 0.08);
+  --neural-input-number-radius: 0.8rem;
+  --neural-password-radius: 0.8rem;
+  --neural-file-upload-radius: 1rem;
+  --neural-input-otp-radius: 0.8rem;
+  --neural-input-mask-radius: 0.8rem;
+  --neural-textarea-radius: 0.8rem;
+  --neural-textarea-backdrop-filter: blur(18px) saturate(108%);
+  --neural-slider-thumb-radius: 999px;
+  --neural-paginator-button-radius: 0.7rem;
+  --neural-breadcrumb-radius: 0.9rem;
+  --neural-avatar-rounded-radius: 0.9rem;
+  --neural-badge-radius: 0.65rem;
+  --neural-tag-radius: 0.7rem;
+  --neural-progress-bar-radius: 999px;
+  --neural-progress-spinner-filter: drop-shadow(
+    0 5px 14px rgb(var(--neural-color-shadow) / 0.14)
+  );
+  --neural-loading-overlay-panel-background: rgb(247 250 250 / 0.84);
+  --neural-loading-overlay-panel-radius: 1rem;
+  --neural-loading-overlay-backdrop-filter: blur(16px);
+  --neural-divider-content-color: var(--neural-color-text-muted);
+  --neural-meter-group-radius: 999px;
+  --neural-skeleton-rounded-radius: 1rem;
+}
+
+:where(
+  [data-neural-mode='dark'][data-neural-theme='mist'],
+  [data-neural-mode='dark'] [data-neural-theme='mist']
+) {
+  color-scheme: dark;
+  --neural-color-primary: var(--neural-color-primary-300);
+  --neural-color-primary-hover: var(--neural-color-primary-200);
+  --neural-color-primary-active: var(--neural-color-primary-100);
+  --neural-color-primary-contrast: #182528;
+  --neural-color-surface: rgb(24 37 41 / 0.7);
+  --neural-color-surface-hover: rgb(31 46 50 / 0.8);
+  --neural-color-surface-active: rgb(39 55 59 / 0.88);
+  --neural-color-text: #dce7e8;
+  --neural-color-text-strong: #f4f8f8;
+  --neural-color-text-muted: #a8b8bb;
+  --neural-color-border: rgb(214 230 232 / 0.16);
+  --neural-color-border-hover: rgb(214 230 232 / 0.26);
+  --neural-color-border-active: rgb(214 230 232 / 0.38);
+  --neural-color-focus: var(--neural-color-primary-300);
+  --neural-color-shadow: 8 15 18;
+  --neural-card-background: rgb(24 37 41 / 0.72);
+  --neural-input-background: rgb(24 37 41 / 0.68);
+  --neural-input-background-hover: rgb(31 46 50 / 0.78);
+  --neural-input-background-focus: rgb(39 55 59 / 0.86);
+  --neural-dialog-background: rgb(24 37 41 / 0.82);
+  --neural-popover-background: rgb(24 37 41 / 0.86);
+  --neural-menu-background: rgb(24 37 41 / 0.88);
+  --neural-toast-message-background: rgb(24 37 41 / 0.86);
+  --neural-message-background: rgb(24 37 41 / 0.86);
+  --neural-select-panel-background: rgb(24 37 41 / 0.9);
+  --neural-auto-complete-panel-background: rgb(24 37 41 / 0.9);
+  --neural-date-picker-background: rgb(24 37 41 / 0.7);
+  --neural-date-picker-panel-background: rgb(24 37 41 / 0.92);
+  --neural-drawer-background: rgb(24 37 41 / 0.9);
+  --neural-toolbar-background: rgb(24 37 41 / 0.74);
+  --neural-tab-active-background: rgb(48 65 69 / 0.78);
+  --neural-table-background: rgb(24 37 41 / 0.72);
+  --neural-table-header-background: rgb(31 46 50 / 0.84);
+  --neural-loading-overlay-panel-background: rgb(24 37 41 / 0.86);
+}

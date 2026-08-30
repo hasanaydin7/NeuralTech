@@ -1,0 +1,349 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_20%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >FOUNDATION</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            Accessibility
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            Build inclusive Angular interfaces from native semantics,
+            predictable keyboard models and explicit focus contracts instead of
+            repairing accessibility after release.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>WCAG 2.2
+              informed</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Keyboard
+              first</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Focus
+              deterministic</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="boundary" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          SHARED RESPONSIBILITY
+        </p>
+        <h2 class="mt-3 text-2xl font-black">
+          A strong foundation, not a compliance badge
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          NeuralNg is designed against WCAG 2.2 and WAI-ARIA Authoring
+          Practices, but a component library cannot certify the finished
+          application. Content, custom colors, page structure and end-to-end
+          workflows remain part of the product team's accessibility
+          responsibility.
+        </p>
+        <div class="mt-6 grid gap-4 md:grid-cols-2">
+          <article
+            class="rounded-2xl border border-emerald-500/20 bg-emerald-500/[.07] p-6"
+          >
+            <h3 class="font-black text-emerald-600 dark:text-emerald-400">
+              NeuralNg provides
+            </h3>
+            <ul
+              class="mt-4 space-y-2 text-sm leading-6 text-[var(--site-text-soft)]"
+            >
+              <li>Native elements or documented ARIA patterns</li>
+              <li>Keyboard interaction and focus lifecycle</li>
+              <li>State, error, busy and live-region wiring</li>
+              <li>RTL, reduced-motion and high-contrast-friendly hooks</li>
+            </ul>
+          </article>
+          <article
+            class="rounded-2xl border border-amber-500/20 bg-amber-500/[.07] p-6"
+          >
+            <h3 class="font-black text-amber-700 dark:text-amber-300">
+              Your application owns
+            </h3>
+            <ul
+              class="mt-4 space-y-2 text-sm leading-6 text-[var(--site-text-soft)]"
+            >
+              <li>Meaningful labels, instructions and alternative text</li>
+              <li>Contrast after token or class customization</li>
+              <li>Heading order, landmarks and logical page flow</li>
+              <li>Automated and assistive-technology testing</li>
+            </ul>
+          </article>
+        </div>
+        <div class="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+          <a
+            class="rounded-xl border border-[var(--site-border)] px-4 py-2 hover:bg-[var(--site-surface)]"
+            href="https://www.w3.org/WAI/WCAG22/quickref/"
+            target="_blank"
+            rel="noreferrer"
+            >WCAG 2.2 Quick Reference</a
+          >
+          <a
+            class="rounded-xl border border-[var(--site-border)] px-4 py-2 hover:bg-[var(--site-surface)]"
+            href="https://www.w3.org/WAI/ARIA/apg/patterns/"
+            target="_blank"
+            rel="noreferrer"
+            >ARIA APG patterns</a
+          >
+        </div>
+      </section>
+
+      <section id="semantics" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Prefer native semantics</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Button renders a real <code>button</code>; form controls keep native
+          input semantics. Composite widgets add roles only where the platform
+          has no equivalent, such as <code>tablist</code>, <code>tree</code>,
+          <code>listbox</code> and calendar <code>grid</code> patterns.
+        </p>
+        <div
+          class="mt-6 rounded-[1.5rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-6"
+        >
+          <div class="flex flex-wrap items-center gap-3">
+            <neural-button label="Save changes" />
+            <neural-button
+              icon="nt nt-settings"
+              ariaLabel="Open settings"
+              rounded
+            />
+            <neural-button
+              label="Saving changes"
+              [loading]="true"
+              loadingLabel="Saving changes"
+            />
+          </div>
+          <p class="mt-4 text-sm text-[var(--site-text-muted)]">
+            The icon-only action has an explicit name. The busy action exposes
+            its state and blocks duplicate activation without replacing native
+            semantics.
+          </p>
+        </div>
+        <code-view
+          class="mt-6 block"
+          fileName="actions.html"
+          language="html"
+          [code]="semanticsCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="names" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Names, descriptions and errors</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Visible text should be the accessible name whenever possible. Field
+          assigns deterministic IDs and keeps <code>for</code>,
+          <code>aria-describedby</code>, <code>aria-invalid</code>,
+          <code>aria-required</code> and pending state synchronized as
+          conditional hints and errors enter the composition.
+        </p>
+        <div
+          class="mt-5 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5 text-sm leading-6"
+        >
+          A placeholder is never a label. Icon-only controls need an
+          <code>ariaLabel</code> or a visible label reference, and decorative
+          icons should remain hidden from assistive technology.
+        </div>
+        <code-view
+          class="mt-6 block"
+          fileName="email-field.html"
+          language="html"
+          [code]="fieldCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="keyboard" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Keyboard contracts follow the widget pattern
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Complex components do not invent one universal shortcut set. Each
+          follows the interaction model users expect for its role, while logical
+          directions adapt to orientation and RTL.
+        </p>
+        <div
+          class="mt-6 overflow-hidden rounded-2xl border border-[var(--site-border)]"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[42rem] text-left text-sm">
+              <thead class="bg-[var(--site-surface-soft)]">
+                <tr>
+                  <th class="px-5 py-4 font-black">Pattern</th>
+                  <th class="px-5 py-4 font-black">Primary keys</th>
+                  <th class="px-5 py-4 font-black">Focus model</th>
+                </tr>
+              </thead>
+              <tbody
+                class="divide-y divide-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                @for (row of keyboardPatterns; track row[0]) {
+                <tr>
+                  <th class="px-5 py-4 font-bold">{{ row[0] }}</th>
+                  <td class="px-5 py-4 text-[var(--site-text-soft)]">
+                    {{ row[1] }}
+                  </td>
+                  <td class="px-5 py-4 text-[var(--site-text-soft)]">
+                    {{ row[2] }}
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="focus" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Focus belongs to the interaction</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Dialog and modal Drawer contain keyboard focus, support an explicit
+          initial focus target and restore focus to the opener after closing.
+          Popover, Select and other non-modal overlays preserve their trigger
+          relationship without trapping the rest of the document.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="review-dialog.html"
+          language="html"
+          [code]="overlayCode"
+          [theme]="appearance.mode()"
+        />
+        <p class="mt-4 text-sm leading-6 text-[var(--site-text-muted)]">
+          Never remove focus outlines without supplying an equally visible
+          replacement. Neutral uses <code>:focus-visible</code> so pointer
+          interaction does not create unnecessary rings while keyboard focus
+          remains discoverable.
+        </p>
+      </section>
+
+      <section id="states" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          State must not depend on color alone
+        </h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          @for (item of [['Disabled', 'Native disabled state prevents focus and
+          activation where expected.'], ['Readonly', 'The value remains
+          discoverable and focusable without becoming editable.'], ['Invalid',
+          'ARIA state and associated error text supplement visual severity.'],
+          ['Loading', 'Busy state, visible text and duplicate-action prevention
+          travel together.'], ['Selected', 'ARIA selection or checked state
+          complements color and icons.'], ['Live updates', 'Announcement
+          politeness is chosen by urgency, not decoration.']]; track item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">{{ item[0] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[1] }}
+            </p>
+          </article>
+          }
+        </div>
+      </section>
+
+      <section id="visual" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Motion, contrast and headless ownership
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Component motion respects <code>prefers-reduced-motion</code>. Neutral
+          is the recommended accessible baseline, but changing primary/surface
+          scales or using <code>unstyled</code> transfers visual contrast,
+          target size and focus-indicator ownership to the consumer.
+        </p>
+        <div
+          class="mt-5 rounded-2xl border border-amber-400/20 bg-amber-500/10 p-5 text-sm leading-6"
+        >
+          Headless does not mean accessibility-free. Structural behavior
+          remains, but every custom foreground/background pair and focus
+          treatment must be tested in light, dark, forced-colors and zoomed
+          layouts.
+        </div>
+      </section>
+
+      <section id="rtl" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          RTL and localization are accessibility inputs
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Logical start/end positions, directional keyboard behavior, localized
+          control labels and calendar conventions resolve from configured
+          direction and locale. Supply the same initial values on server and
+          browser so users do not experience a direction or language shift
+          during hydration.
+        </p>
+      </section>
+
+      <section id="testing" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Test behavior, not only markup</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Automated rules catch missing names, invalid relationships and many
+          contrast failures, but cannot judge content quality or complete
+          keyboard flows. Pair component tests and axe checks with
+          keyboard-only, zoom, forced-colors and screen-reader passes on
+          critical journeys.
+        </p>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          @for (item of [['01', 'Unit', 'Roles, attributes, keyboard events and
+          focus restoration.'], ['02', 'Browser', 'Real tab order, overlays,
+          zoom, direction and axe rules.'], ['03', 'Manual', 'Screen reader
+          output, content meaning and end-to-end flow.']]; track item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <span class="text-xs font-black text-[var(--neural-color-primary)]"
+              >{{ item[0] }}</span
+            >
+            <h3 class="mt-2 font-black">{{ item[1] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[2] }}
+            </p>
+          </article>
+          }
+        </div>
+        <code-view
+          class="mt-6 block"
+          fileName="accessibility.spec.ts"
+          language="typescript"
+          [code]="testCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="ssr" class="scroll-mt-28 pb-12 pt-16">
+        <h2 class="text-2xl font-black">
+          SSR and hydration keep identity stable
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Deterministic IDs preserve label, description, control and overlay
+          relationships across server render and hydration. Avoid
+          environment-dependent labels, locale or direction during the initial
+          render; update them only after the application owns a consistent
+          client state.
+        </p>
+      </section>
+    </div>
+
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

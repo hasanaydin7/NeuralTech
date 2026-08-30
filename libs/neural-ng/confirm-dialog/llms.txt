@@ -1,0 +1,14 @@
+# @neural-ng/core/confirm-dialog
+
+- Import `NeuralConfirmDialog` and `NeuralConfirmationService` from this secondary entry point.
+- Never generate the deprecated `ConfirmDialogComponent` alias.
+- Render one `<neural-confirm-dialog />` host for the default key.
+- Call `confirmation.confirm({ message, ...options })`; do not manually toggle the host.
+- Use matching `key` values for independent confirmation channels.
+- `accept` and `reject` may be async. Return `false` to keep the dialog open.
+- The returned ref exposes Signal values: `closed()`, `result()`, and `closeReason()`.
+- Results are `accepted`, `rejected`, or `dismissed`.
+- Set `unstyled` or global NeuralNg `unstyled` and provide typed `classes` for headless visuals.
+- Native dialog semantics, modal focus containment, Escape, focus restoration, and SSR safety come from NeuralNg Dialog.
+- The latest request replaces an active request with the same key. Do not assume
+  same-key queue semantics.

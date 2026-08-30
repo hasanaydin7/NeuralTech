@@ -1,0 +1,37 @@
+# NeuralNg Popover
+
+> Arbitrary, non-modal, trigger-anchored top-layer content from `@neural-ng/core/popover`.
+
+## Generation rules
+
+- Import `NeuralPopover`, `NeuralPopoverTrigger`, `NeuralPopoverClose`, and when needed `NeuralPopoverInitialFocus` only from `@neural-ng/core/popover`.
+- Use a native interactive trigger with `[neuralPopoverTriggerFor]="panel"`.
+- Prefer logical `bottom-start` or `bottom-end` positions; start/end follow RTL.
+- Put any Angular content inside `<neural-popover #panel>`.
+- Use `neuralPopoverClose` for an in-panel close action.
+- Popover is non-modal and never traps focus. Use Dialog for modal workflows.
+- Popover is not a command list. Use Menu when menu roles and arrow-key item navigation are required.
+- Do not generate `appendTo="body"`; native top-layer rendering avoids clipping and stacking-context problems.
+- Focus remains on the trigger by default. Set `popoverFocusOnOpen="first"` and apply `neuralPopoverInitialFocus` only when the workflow benefits from moving focus.
+- Use `role="dialog"` or `role="region"` only when semantically correct, and provide `ariaLabel` or `ariaLabelledby`.
+- Bind `[(open)]` for controlled state. Use `opened` and `closed` only when lifecycle details are needed.
+- `closed.reason` is typed as `trigger`, `outside`, `escape`, `close-directive`, `api`, or `native`.
+- Use `unstyled` and typed `root`, `content`, and `arrow` class slots for headless rendering.
+- Do not create an NgModule.
+
+## Canonical example
+
+```html
+<button
+  type="button"
+  [neuralPopoverTriggerFor]="account"
+  popoverPosition="bottom-end"
+>
+  Account
+</button>
+
+<neural-popover #account role="dialog" ariaLabel="Account panel">
+  <h2>Neural Admin</h2>
+  <button type="button" neuralPopoverClose>Close</button>
+</neural-popover>
+```

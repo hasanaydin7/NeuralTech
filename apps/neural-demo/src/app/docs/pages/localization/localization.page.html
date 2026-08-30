@@ -1,0 +1,53 @@
+<article class="docs-page localization-docs-page">
+  <header class="docs-page-hero">
+    <span class="docs-hero__eyebrow">Guides</span>
+    <h1 class="docs-hero__title">Localization</h1>
+    <p class="docs-hero__description">
+      A signal-based, SSR-safe locale layer with tree-shakable language packs,
+      runtime switching, and component-level overrides.
+    </p>
+  </header>
+
+  <section id="provider">
+    <h2>Application locale</h2>
+    <p>
+      Register an explicit initial locale. NeuralNg deliberately avoids browser
+      language detection so server and client render identical markup.
+    </p>
+
+    <code-view class="mt-2" fileName="app.config.ts" language="ts" [code]="providerCode" [startLine]="1"
+      [showLineNumbers]="true" [wrap]="false" maxHeight="34rem" [preview]="false" [theme]="resolvedMode()">
+    </code-view>
+  </section>
+
+  <section id="runtime">
+    <h2>Runtime signal</h2>
+    <p>
+      Switch the global locale below. InputNumber and Paginator consume the
+      active signal immediately; component inputs still take precedence.
+    </p>
+    <code-view class="mt-2" fileName="Runtime Switch" language="ts" [code]="runtimeCode" [startLine]="1"
+      [showLineNumbers]="true" [wrap]="false" maxHeight="34rem" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content class="flex gap-2">
+        <neural-button [buttonClass]="locale.code() === 'en-US' ? 'locale-active' : ''" (clicked)="useEnglish()">
+          English
+        </neural-button>
+        <neural-button [buttonClass]="locale.code() === 'tr-TR' ? 'locale-active' : ''" (clicked)="useTurkish()">
+          Türkçe
+        </neural-button>
+      </div>
+      <output preview-content class="demo-status flex justify-center">
+        Active locale: {{ locale.code() }} · Direction: {{ locale.direction() }}
+      </output>
+    </code-view>
+  </section>
+
+  <section id="fallback">
+    <h2>Predictable fallback</h2>
+    <p>
+      Locale objects may override only the messages they own. Missing keys
+      deeply fall back to English, while local component labels remain the last
+      and most specific override.
+    </p>
+  </section>
+</article>

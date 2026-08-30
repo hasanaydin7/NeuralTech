@@ -1,0 +1,58 @@
+# NeuralNg Radio
+
+IMPORT
+import { NeuralRadio, NeuralRadioGroup, type NeuralRadioSelectionChange } from '@neural-ng/core/radio';
+
+RULES
+- Use NeuralRadioGroup for every radio set; do not compose unrelated native names manually.
+- Prefer [options] with optionLabel and optionValue for data-driven choices.
+- Use projected <neural-radio [value]="..."> only for rich option content.
+- Do not combine [options] and projected neural-radio children. [options] wins.
+- NeuralRadioGroup implements FormValueControl<TValue | null>.
+- RadioGroupComponent and RadioComponent are deprecated compatibility aliases; never generate them in new code.
+- Bind the model with [(value)] or use [formField], [formControl], or [(ngModel)].
+- Programmatic Forms writes update value without emitting selectionChange.
+- valueChange is the generated model output. selectionChange is the detailed user-only event.
+- selectionChange payload is { value, previousValue, option, source }.
+- source is "pointer" or "keyboard".
+- Radio selection does not toggle back to null. Use a separate clear action if product UX needs clearing.
+- orientation is "vertical" by default and also accepts "horizontal".
+- Native radio inputs, shared name, Arrow keys, Home, End, Space, focus, required, disabled, validation, and form submission are preserved.
+- readonly is not disabled: the roving tab stop remains focusable, aria-readonly is exposed on the group, and user mutation is blocked.
+- touch is emitted when focus leaves the group. focus() targets the roving tab stop and reset() restores null.
+- iconClass and optionIcon values may use Neural Icons classes such as "nt-user"; the base "nt" class is added automatically.
+- Set unstyled for local headless mode or provideNeuralNg({ unstyled: true }) globally.
+- Consumer classes survive unstyled mode.
+- Inside neural-field, RadioGroup inherits id, descriptions, required, invalid, disabled, readonly, fluid, and unstyled state.
+
+DATA EXAMPLE
+<neural-radio-group
+  [options]="plans"
+  optionLabel="name"
+  optionValue="id"
+  optionDisabled="disabled"
+  optionIcon="iconClass"
+  [(value)]="planId"
+  (selectionChange)="planSelected($event)"
+/>
+
+FORMS EXAMPLE
+<!-- Signal Forms -->
+<neural-radio-group [options]="plans" [formField]="form.plan" />
+
+<!-- Reactive Forms -->
+<neural-radio-group [options]="plans" [formControl]="planControl" />
+
+<!-- Template-driven Forms -->
+<neural-radio-group [options]="plans" name="plan" [(ngModel)]="plan" />
+
+PROJECTED EXAMPLE
+<neural-radio-group [(value)]="delivery">
+  <neural-radio value="standard" iconClass="nt-truck">
+    <strong>Standard delivery</strong>
+  </neural-radio>
+  <neural-radio value="express">Express delivery</neural-radio>
+</neural-radio-group>
+
+CLASS SLOTS
+root, option, input, control, selectedControl, disabledOption, label, optionIcon

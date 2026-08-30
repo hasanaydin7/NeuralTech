@@ -1,0 +1,134 @@
+<article class="docs-page tooltip-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Tooltip</h1>
+    <p>
+      Accessible text hints rendered in the browser top layer, positioned by a
+      shared native-first Overlay foundation, and available through one small
+      standalone directive.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Hover and focus</h2>
+    <p>
+      Hover the trigger or reach it with Tab. Escape dismisses the hint
+      immediately, while an existing description remains connected.
+    </p>
+    <div class="demo-surface">
+      <button
+        class="tooltip-demo-trigger"
+        type="button"
+        aria-describedby="tooltip-static-note"
+        neuralTooltip="Account preferences and security"
+        tooltipId="account-settings-tooltip"
+        [showDelay]="120"
+      >
+        Account settings
+      </button>
+      <small id="tooltip-static-note" class="demo-status">
+        The directive preserves this existing aria-describedby token.
+      </small>
+    </div>
+    <app-code-example label="Basic tooltip" language="html" [code]="basicCode" />
+  </section>
+
+  <section id="positions">
+    <h2>Logical positions</h2>
+    <p>
+      Start and end follow the trigger's writing direction. When space runs
+      out, the shared positioner flips or clamps the floating layer inside the
+      viewport. Corner placements align both the tooltip edge and its arrow
+      with the matching trigger corner.
+    </p>
+    <div class="tooltip-position-grid">
+      @for (position of positions; track position) {
+        <button
+          class="tooltip-demo-trigger"
+          type="button"
+          [neuralTooltip]="'Position: ' + position"
+          [tooltipPosition]="position"
+          [showDelay]="0"
+        >
+          {{ position }}
+        </button>
+      }
+    </div>
+    <app-code-example
+      label="Position"
+      language="html"
+      [code]="positionCode"
+    />
+  </section>
+
+  <section id="states">
+    <h2>Delay and disabled state</h2>
+    <p>
+      Delays reduce accidental pointer activation. A disabled tooltip stays
+      completely absent from the accessibility tree and DOM.
+    </p>
+    <div class="demo-surface">
+      <button
+        class="tooltip-demo-trigger"
+        type="button"
+        neuralTooltip="Shown after 700 milliseconds"
+        [showDelay]="700"
+      >
+        Delayed
+      </button>
+      <button
+        class="tooltip-demo-trigger"
+        type="button"
+        neuralTooltip="This content never opens"
+        tooltipDisabled
+      >
+        Tooltip disabled
+      </button>
+    </div>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      The Popover, positioning, timers, Escape behavior, and ARIA wiring remain.
+      Only NeuralNg visual classes are removed.
+    </p>
+    <div class="demo-surface">
+      <button
+        class="tooltip-demo-trigger"
+        type="button"
+        neuralTooltip="Consumer-owned visual layer"
+        tooltipPosition="right"
+        [showDelay]="0"
+        unstyled
+        [classes]="headlessClasses"
+      >
+        Headless tooltip
+      </button>
+    </div>
+    <app-code-example
+      label="Headless slots"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <section id="accessibility">
+    <h2>Accessibility boundary</h2>
+    <p>
+      Tooltip content is plain, descriptive, and non-interactive. Native
+      disabled controls cannot emit the pointer or focus events this pattern
+      needs; put the directive on a focusable wrapper when a disabled action
+      needs an explanation.
+    </p>
+  </section>
+</article>

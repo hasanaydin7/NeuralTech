@@ -1,0 +1,44 @@
+.input-docs-page {
+  max-width: 58rem;
+}
+
+.input-demo-surface {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+
+  label {
+    display: grid;
+    gap: 0.45rem;
+    color: var(--neural-color-text-strong);
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+}
+
+.input-state-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.docs-headless-input {
+  min-height: 2.75rem;
+  padding: 0.65rem 0.9rem;
+  color: #a7f3d0;
+  caret-color: #34d399;
+  background: #052e16;
+  border: 1px solid #10b981;
+  border-radius: 0.5rem;
+  font:
+    500 0.9rem/1.2 ui-monospace,
+    monospace;
+}
+
+@media (max-width: 42rem) {
+  .input-state-grid {
+    grid-template-columns: 1fr;
+  }
+}

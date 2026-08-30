@@ -1,0 +1,609 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="virtual-scroller-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="VirtualScroller documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))]"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt nt-list-details"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-8"
+            >
+              <div
+                class="absolute -right-20 -top-24 size-64 rounded-full bg-blue-500/15 blur-[80px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full bg-violet-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-violet-500"
+                    >DATA</span
+                  >
+                  <span
+                    class="rounded-full bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  VirtualScroller
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  Deterministic fixed-size windowing for large vertical and
+                  horizontal collections with Signals, typed templates and lazy
+                  ranges.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>10,000+
+                    records</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+                    safe</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 text-[var(--site-text-soft)]">
+                Import the canonical standalone component and only the template
+                directives you use.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">10,000 records</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Only the visible window and overscan exist in the DOM. The end
+                index is always exclusive.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="basic.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-2xl py-3">
+                  <div
+                    class="mb-3 flex flex-wrap items-center justify-between gap-3 text-xs text-[var(--site-text-muted)]"
+                  >
+                    <output aria-live="polite">{{ rangeStatus() }}</output>
+                    <neural-button
+                      label="Jump to 5,001"
+                      icon="nt nt-arrow-down"
+                      size="small"
+                      outlined
+                      (clicked)="jumpTo(5000)"
+                    />
+                  </div>
+                  <neural-virtual-scroller
+                    #scroller
+                    [items]="tasks"
+                    [itemSize]="52"
+                    [viewportSize]="312"
+                    [overscan]="3"
+                    [(first)]="first"
+                    [trackBy]="trackTask"
+                    ariaLabel="Agent task records"
+                    (rangeChange)="updateRange($event)"
+                  >
+                    <ng-template
+                      [neuralVirtualScrollerItem]="tasks"
+                      let-task
+                      let-index="index"
+                    >
+                      <div class="flex w-full items-center gap-3">
+                        <span class="w-12 font-mono text-xs text-blue-500"
+                          >#{{ index + 1 }}</span
+                        >
+                        <i
+                          class="nt nt-cpu text-[var(--site-text-muted)]"
+                          aria-hidden="true"
+                        ></i>
+                        <strong class="min-w-0 flex-1 truncate"
+                          >{{ task.name }}</strong
+                        >
+                        <small
+                          class="hidden text-[var(--site-text-muted)] sm:block"
+                          >{{ task.team }}</small
+                        >
+                        <span
+                          class="rounded-full bg-blue-500/10 px-2 py-1 text-[.65rem] font-bold text-blue-500"
+                          >{{ task.state }}</span
+                        >
+                      </div>
+                    </ng-template>
+                  </neural-virtual-scroller>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="horizontal" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Horizontal orientation</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The same range engine windows a horizontal card rail without
+                changing its event contract.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="horizontal.html"
+                language="html"
+                [code]="horizontalCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto w-full max-w-[56rem] overflow-hidden py-3"
+                >
+                  <neural-virtual-scroller
+                    [items]="cards"
+                    orientation="horizontal"
+                    [itemSize]="224"
+                    [viewportSize]="896"
+                    [overscan]="1"
+                    ariaLabel="Agent task cards"
+                  >
+                    <ng-template
+                      [neuralVirtualScrollerItem]="cards"
+                      let-task
+                      let-index="index"
+                    >
+                      <div class="grid h-full w-full content-center gap-2 px-4">
+                        <i
+                          class="nt nt-cpu text-xl text-blue-500"
+                          aria-hidden="true"
+                        ></i>
+                        <strong>{{ task.name }}</strong
+                        ><small class="text-[var(--site-text-muted)]"
+                          >{{ task.team }} · {{ index + 1 }}</small
+                        >
+                      </div>
+                    </ng-template>
+                  </neural-virtual-scroller>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="controlled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Controlled position and imperative scrolling
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>[(first)]</code>, native scrolling and imperative methods
+                remain synchronized.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="controlled.html"
+                language="html"
+                [code]="controlledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto grid w-full max-w-xl gap-3 py-3"
+                >
+                  <div class="flex flex-wrap items-center justify-center gap-3">
+                    <neural-button
+                      label="First item"
+                      size="small"
+                      outlined
+                      (clicked)="controlledScroller.scrollToIndex(0)"
+                    />
+                    <neural-button
+                      label="Middle"
+                      size="small"
+                      outlined
+                      (clicked)="controlledScroller.scrollToIndex(4999)"
+                    />
+                    <neural-button
+                      label="Last item"
+                      size="small"
+                      outlined
+                      (clicked)="controlledScroller.scrollToIndex(9999)"
+                    />
+                    <output class="text-sm text-[var(--site-text-muted)]"
+                      >First: {{ controlledFirst() + 1 }}</output
+                    >
+                  </div>
+                  <neural-virtual-scroller
+                    #controlledScroller
+                    [items]="tasks"
+                    [itemSize]="42"
+                    [viewportSize]="126"
+                    [(first)]="controlledFirst"
+                    [trackBy]="trackTask"
+                    ariaLabel="Controlled task records"
+                  >
+                    <ng-template
+                      [neuralVirtualScrollerItem]="tasks"
+                      let-task
+                      let-index="index"
+                      ><span class="font-mono text-xs text-blue-500"
+                        >{{ index + 1 }}</span
+                      ><strong class="ml-3"
+                        >{{ task.name }}</strong
+                      ></ng-template
+                    >
+                  </neural-virtual-scroller>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="lazy" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Lazy ranges and loading</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>lazyLoad</code> emits each distinct overscanned range for
+                race-safe data sources.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="lazy.html"
+                language="html"
+                [code]="lazyCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-xl py-3">
+                  <div class="mb-3 flex items-center justify-between gap-3">
+                    <output class="text-xs text-[var(--site-text-muted)]"
+                      >{{ lazyStatus() }}</output
+                    >
+                    <neural-button
+                      [label]="loading() ? 'Stop loading' : 'Show loading'"
+                      size="small"
+                      outlined
+                      (clicked)="toggleLoading()"
+                    />
+                  </div>
+                  <neural-virtual-scroller
+                    [items]="tasks"
+                    [itemSize]="44"
+                    [viewportSize]="220"
+                    lazy
+                    [loading]="loading()"
+                    ariaLabel="Lazy task records"
+                    (lazyLoad)="requestRange($event)"
+                  >
+                    <ng-template
+                      [neuralVirtualScrollerItem]="tasks"
+                      let-task
+                      let-index="index"
+                      ><span class="font-mono text-xs text-blue-500"
+                        >{{ index + 1 }}</span
+                      ><strong class="ml-3"
+                        >{{ task.name }}</strong
+                      ></ng-template
+                    >
+                  </neural-virtual-scroller>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="templates" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Typed empty and loading templates
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                State templates receive both the implicit localized label and
+                its named <code>label</code> property.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="states.html"
+                language="html"
+                [code]="templatesCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="grid w-full gap-5 py-3 sm:grid-cols-2"
+                >
+                  <neural-virtual-scroller
+                    [items]="[]"
+                    [viewportSize]="180"
+                    emptyMessage="No queued work"
+                    ariaLabel="Empty task list"
+                  >
+                    <ng-template neuralVirtualScrollerEmpty let-label
+                      ><div class="grid justify-items-center gap-2">
+                        <i class="nt nt-inbox text-2xl text-blue-500"></i
+                        ><strong>{{ label }}</strong>
+                      </div></ng-template
+                    >
+                  </neural-virtual-scroller>
+                  <neural-virtual-scroller
+                    [items]="tasks"
+                    [viewportSize]="180"
+                    loading
+                    loadingMessage="Streaming records"
+                    ariaLabel="Loading task list"
+                  >
+                    <ng-template neuralVirtualScrollerLoading let-label
+                      ><div class="grid justify-items-center gap-2">
+                        <i
+                          class="nt nt-loader-3 nt-spin text-2xl text-blue-500"
+                        ></i
+                        ><strong>{{ label }}</strong>
+                      </div></ng-template
+                    >
+                  </neural-virtual-scroller>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Windowing, dimensions and list semantics remain while consumer
+                classes own every visual choice.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-xl py-3">
+                  <neural-virtual-scroller
+                    unstyled
+                    [classes]="headlessClasses"
+                    [items]="tasks"
+                    [itemSize]="46"
+                    [viewportSize]="184"
+                    [overscan]="1"
+                    [trackBy]="trackTask"
+                    ariaLabel="Headless tasks"
+                  >
+                    <ng-template
+                      [neuralVirtualScrollerItem]="tasks"
+                      let-task
+                      let-index="index"
+                      ><span class="font-mono text-cyan-300"
+                        >{{ index + 1 }}</span
+                      ><strong class="flex-1">{{ task.name }}</strong
+                      ><small class="text-slate-400"
+                        >{{ task.state }}</small
+                      ></ng-template
+                    >
+                  </neural-virtual-scroller>
+                </div>
+              </code-view>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                VIRTUALSCROLLER
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Accessibility</h1>
+            </header>
+            <section id="semantics" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Region and list semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The root is a named region. Its viewport is a native list and
+                each rendered record is a listitem.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Keyboard and focus</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The viewport remains natively focusable and scrollable. Page Up,
+                Page Down, Home, End and platform scrolling continue to work
+                without custom key interception.
+              </p>
+            </section>
+            <section id="position" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Collection position metadata</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Every rendered item exposes <code>aria-posinset</code> and the
+                full collection length through <code>aria-setsize</code>, even
+                though offscreen items are absent.
+              </p>
+            </section>
+            <section id="motion" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Reduced motion</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Smooth programmatic scrolling falls back to immediate native
+                scrolling when the user requests reduced motion.
+              </p>
+            </section>
+            <section id="ssr" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">
+                SSR and responsibility boundary
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The initial range is deterministic during SSR and hydration.
+                Selection, editing and variable-height measurement intentionally
+                belong to composing components or application code.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                VIRTUALSCROLLER
+              </p>
+              <h1 class="mt-3 text-4xl font-black">API</h1>
+            </header>
+            <section id="component-api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Component</h2>
+              <div
+                class="mt-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+              >
+                <code class="font-bold text-blue-500"
+                  >NeuralVirtualScroller&lt;T&gt;</code
+                >
+                <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                  Standalone component with selector
+                  <code>neural-virtual-scroller</code>.
+                  <code>VirtualScrollerComponent</code> remains only as a
+                  deprecated compatibility alias.
+                </p>
+              </div>
+            </section>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Inputs and model</h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[46rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for(item of inputs;track item[0]){
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono">{{ item[1] }}</td>
+                      <td class="p-4 font-mono">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="events" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Events</h2>
+              <div class="mt-4 grid gap-3">
+                @for(item of events;track item[0]){
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code
+                  ><span class="ml-3 font-mono text-xs">{{ item[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-4 grid gap-3">
+                @for(item of methods;track item[0]){
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="templates-api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">
+                Typed templates and class slots
+              </h2>
+              <p class="mt-3 text-[var(--site-text-soft)]">
+                <code>neuralVirtualScrollerItem</code>,
+                <code>neuralVirtualScrollerEmpty</code> and
+                <code>neuralVirtualScrollerLoading</code> preserve template
+                inference.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                @for(slot of slots;track slot){<code
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                @for(type of types;track type){<code
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 font-bold text-blue-500"
+                  >{{ type }}</code
+                >}
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                VIRTUALSCROLLER
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Design tokens</h1>
+              <p class="mt-4 text-[var(--site-text-soft)]">
+                Component tokens customize its surface without changing
+                deterministic structural dimensions.
+              </p>
+            </header>
+            <section id="component-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="mb-5 text-2xl font-black">Component tokens</h2>
+              <site-design-token-list [tokens]="tokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks()" />
+    </div>
+  </neural-tabs>
+</article>

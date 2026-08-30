@@ -1,0 +1,109 @@
+.select-docs-page {
+  max-width: 58rem;
+}
+
+.select-demo-surface {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+
+  neural-select {
+    width: min(100%, 24rem);
+  }
+}
+
+.chained-selects,
+.forms-grid,
+.state-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+
+  neural-select {
+    width: 100%;
+  }
+}
+
+.forms-grid,
+.state-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.forms-example {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+
+  output {
+    color: var(--neural-color-text-muted);
+    font-size: 0.8rem;
+  }
+}
+
+.projected-option {
+  display: grid;
+  gap: 0.15rem;
+
+  small {
+    color: var(--neural-color-text-muted);
+    font-size: 0.7rem;
+  }
+}
+
+.select-success-icon {
+  color: var(--neural-color-success);
+}
+
+.docs-headless-select {
+  position: relative;
+  width: min(100%, 24rem);
+}
+
+.docs-headless-select-trigger {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  color: #e0f2fe;
+  background: #082f49;
+  border: 1px solid #0ea5e9;
+  border-radius: 0.2rem;
+  font: inherit;
+}
+
+.docs-headless-select-panel {
+  position: absolute;
+  z-index: 10;
+  inset-block-start: calc(100% + 0.25rem);
+  inset-inline: 0;
+  padding: 0.3rem;
+  color: #e0f2fe;
+  background: #082f49;
+  border: 1px solid #0ea5e9;
+}
+
+.docs-headless-select-option {
+  display: flex;
+  padding: 0.65rem;
+  cursor: pointer;
+}
+
+.docs-headless-select-active {
+  background: #075985;
+}
+
+.docs-headless-select-selected {
+  color: #7dd3fc;
+  font-weight: 700;
+}
+
+@media (max-width: 46rem) {
+  .chained-selects,
+  .forms-grid,
+  .state-grid {
+    grid-template-columns: 1fr;
+  }
+}

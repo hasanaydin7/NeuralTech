@@ -1,0 +1,124 @@
+.docs-page {
+  max-width: 52rem;
+}
+
+.docs-page-header {
+  margin-bottom: 3.5rem;
+
+  > span {
+    color: var(--neural-color-info);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0.5rem 0 1rem;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.055em;
+  }
+
+  p {
+    max-width: 44rem;
+    color: var(--neural-color-text-muted);
+    font-size: 1.08rem;
+    line-height: 1.7;
+  }
+}
+
+.docs-page > section {
+  padding: 2rem 0;
+  border-top: 1px solid var(--neural-color-border);
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.45rem;
+  }
+
+  > p {
+    color: var(--neural-color-text-muted);
+    line-height: 1.7;
+  }
+
+  code {
+    color: var(--neural-color-info);
+  }
+}
+
+.demo-surface {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 7rem;
+  margin: 0;
+  padding: 1.25rem;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--neural-color-surface-hover) 60%, transparent),
+      transparent
+    ),
+    var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+}
+
+.demo-status {
+  width: 100%;
+  color: var(--neural-color-text-muted);
+  font-size: 0.8rem;
+}
+
+.api-table-wrapper {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.api-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+
+  th,
+  td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--neural-color-border);
+    text-align: start;
+    vertical-align: top;
+  }
+
+  th {
+    color: var(--neural-color-text-muted);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  code {
+    white-space: nowrap;
+  }
+}
+
+.docs-page-next {
+  display: grid;
+  justify-items: end;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--neural-color-border);
+
+  span {
+    color: var(--neural-color-text-muted);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: var(--neural-color-text);
+    font-weight: 700;
+    text-decoration: none;
+  }
+}

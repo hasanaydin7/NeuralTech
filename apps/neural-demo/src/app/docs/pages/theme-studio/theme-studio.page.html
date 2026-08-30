@@ -1,0 +1,1027 @@
+<article class="docs-page theme-studio-page">
+  <header class="docs-hero theme-studio-hero">
+    <div class="theme-studio-hero__copy">
+      <span class="docs-hero__eyebrow">Theme Foundation</span>
+      <h1 class="docs-hero__title">
+        Design a complete theme in four decisions.
+      </h1>
+      <p class="docs-hero__description">
+        Choose a brand direction, tune the interface feel, review real NeuralNg
+        components, then export one compact recipe. The compiler resolves the
+        remaining 1,348 Core and Editor tokens for you.
+      </p>
+    </div>
+
+    <div
+      class="theme-studio-hero__facts"
+      aria-label="Theme Studio capabilities"
+    >
+      <span>Core + Editor</span>
+      <span>Light + dark</span>
+      <span>Tailwind ready</span>
+      <span>Compact JSON</span>
+    </div>
+  </header>
+
+  <div class="theme-studio-shell">
+    <header class="theme-studio-workspace-header">
+      <div class="theme-studio-current theme-studio-current--inline">
+        <div class="theme-studio-current__identity">
+          <span class="theme-studio-kicker">Current theme</span>
+          <strong>{{ recipe().name || 'Untitled theme' }}</strong>
+          <small>
+            {{ recipe().extends ?? 'neutral' }} · {{ effectiveRadius() }} · {{
+            effectiveDensity() }}
+          </small>
+        </div>
+
+        <div class="theme-studio-current__palette" aria-hidden="true">
+          <span [style.background]="effectivePrimary()"></span>
+          <span class="theme-studio-current__surface"></span>
+        </div>
+      </div>
+
+      <div class="theme-studio-workspace-actions">
+        <div class="theme-studio-history-actions" aria-label="Theme history">
+          <neural-button
+            severity="secondary"
+            ariaLabel="Undo last theme change"
+            [disabled]="!canUndo()"
+            (clicked)="undo()"
+          >
+            Undo
+          </neural-button>
+          <neural-button
+            severity="secondary"
+            ariaLabel="Redo theme change"
+            [disabled]="!canRedo()"
+            (clicked)="redo()"
+          >
+            Redo
+          </neural-button>
+        </div>
+        <neural-file-upload
+          class="theme-studio-import-host"
+          ariaLabel="Import theme recipe"
+          accept="application/json,.json"
+          chooseFileLabel="Import recipe"
+          dropFileLabel="Drop a recipe or"
+          [showFileList]="false"
+          [classes]="recipeUploadClasses"
+          [(value)]="recipeImportFiles"
+          (selectionChange)="importRecipe($event)"
+        />
+        <neural-button class="mt-4!" severity="secondary" (clicked)="reset()">
+          Reset to Neutral
+        </neural-button>
+      </div>
+    </header>
+
+    @if (migrationNotice()) {
+    <p class="theme-studio-migration-notice" role="status">
+      <strong>Recipe upgraded.</strong>
+      <span>{{ migrationNotice() }}</span>
+    </p>
+    }
+
+    <neural-tabs
+      tabsId="theme-studio-sections"
+      [value]="activeStep()"
+      [classes]="workspaceTabsClasses"
+      (valueChange)="$event !== null && activeStep.set($any($event))"
+    >
+      <neural-tab-list ariaLabel="Theme Studio sections">
+        <neural-tab value="brand">
+          <span class="theme-studio-tab__number">01</span>
+          <span class="theme-studio-tab__copy">
+            <strong>Brand</strong>
+            <small>Name, primary and surface</small>
+          </span>
+        </neural-tab>
+        <neural-tab value="feel">
+          <span class="theme-studio-tab__number">02</span>
+          <span class="theme-studio-tab__copy">
+            <strong>Feel</strong>
+            <small>Shape, density and motion</small>
+          </span>
+        </neural-tab>
+        <neural-tab value="preview">
+          <span class="theme-studio-tab__number">03</span>
+          <span class="theme-studio-tab__copy">
+            <strong>Preview</strong>
+            <small>Review real components</small>
+          </span>
+        </neural-tab>
+        <neural-tab value="export">
+          <span class="theme-studio-tab__number">04</span>
+          <span class="theme-studio-tab__copy">
+            <strong>Export</strong>
+            <small>Install the generated theme</small>
+          </span>
+        </neural-tab>
+      </neural-tab-list>
+
+      <neural-tab-panels>
+        <neural-tab-panel value="brand" [focusable]="false">
+          <header class="theme-studio-builder__header">
+            <span class="theme-studio-builder__step">01 · Brand</span>
+            <h2>Start with a recognizable direction.</h2>
+            <p>
+              A preset is only a starting point. Pick one, then adjust the
+              primary color and surface family to match your product.
+            </p>
+          </header>
+
+          <section class="theme-studio-field-group">
+            <div class="theme-studio-field-group__header">
+              <div>
+                <h3>Base preset</h3>
+                <p>Start from a complete Core and Editor visual system.</p>
+              </div>
+            </div>
+
+            <div
+              class="theme-studio-preset-grid theme-studio-preset-grid--bases"
+            >
+              @for (preset of basePresets; track preset.id) {
+              <neural-button
+                class="theme-studio-control-host"
+                [unstyled]="true"
+                [buttonClass]="
+                    'theme-studio-preset theme-studio-preset--base ' +
+                    ((recipe().extends ?? 'neutral') === preset.id ? 'is-selected' : '')
+                  "
+                [ariaLabel]="'Use ' + preset.label + ' base preset'"
+                (clicked)="applyBasePreset(preset)"
+              >
+                <span
+                  class="theme-studio-preset__swatch"
+                  [style.background]="preset.primary"
+                ></span>
+                <span class="theme-studio-preset__copy">
+                  <span class="theme-studio-preset__title">
+                    <strong>{{ preset.label }}</strong>
+                    <small
+                      >{{ preset.stability }} · {{ preset.quality.status
+                      }}</small
+                    >
+                  </span>
+                  <small>{{ preset.description }}</small>
+                </span>
+              </neural-button>
+              }
+            </div>
+          </section>
+
+          <section class="theme-studio-field-group">
+            <div class="theme-studio-field-group__header">
+              <div>
+                <h3>Brand direction</h3>
+                <p>
+                  Optionally layer a color direction over the selected preset.
+                </p>
+              </div>
+            </div>
+
+            <div class="theme-studio-preset-grid">
+              @for (preset of brandPresets; track preset.id) {
+              <neural-button
+                class="theme-studio-control-host"
+                [unstyled]="true"
+                [buttonClass]="
+                    'theme-studio-preset ' +
+                    (recipe().color?.primary === preset.primary &&
+                    recipe().color?.surface === preset.surface
+                      ? 'is-selected'
+                      : '')
+                  "
+                [ariaLabel]="'Use ' + preset.name + ' theme direction'"
+                (clicked)="applyPreset(preset)"
+              >
+                <span
+                  class="theme-studio-preset__swatch"
+                  [style.background]="preset.primary"
+                ></span>
+                <span class="theme-studio-preset__copy">
+                  <strong>{{ preset.name }}</strong>
+                  <small>{{ preset.description }}</small>
+                </span>
+              </neural-button>
+              }
+            </div>
+          </section>
+
+          <section class="theme-studio-field-group">
+            <div class="theme-studio-field-group__header">
+              <div>
+                <h3>Name and primary color</h3>
+                <p>The name becomes the generated file and theme selector.</p>
+              </div>
+            </div>
+
+            <div class="theme-studio-form-grid">
+              <label class="theme-studio-field theme-studio-field--wide">
+                <span>Theme name</span>
+                <input
+                  neuralInput
+                  type="text"
+                  autocomplete="off"
+                  [value]="recipe().name"
+                  (input)="updateName($any($event.target).value)"
+                />
+                <small
+                  >Use a short lowercase identifier such as ocean or
+                  atlas.</small
+                >
+              </label>
+
+              <label class="theme-studio-field">
+                <span>Primary color</span>
+                <span class="theme-studio-color-input">
+                  <input
+                    neuralInput
+                    type="color"
+                    [value]="effectivePrimary()"
+                    (input)="updatePrimary($any($event.target).value)"
+                  />
+                  <input
+                    neuralInput
+                    type="text"
+                    spellcheck="false"
+                    [value]="effectivePrimary()"
+                    (change)="updatePrimary($any($event.target).value)"
+                  />
+                </span>
+              </label>
+            </div>
+          </section>
+
+          <section class="theme-studio-field-group">
+            <div class="theme-studio-field-group__header">
+              <div>
+                <h3>Surface family</h3>
+                <p>Controls neutral backgrounds, borders and text contrast.</p>
+              </div>
+            </div>
+
+            <div class="theme-studio-surface-grid">
+              @for (surface of surfaceOptions; track surface.value) {
+              <neural-button
+                class="theme-studio-control-host"
+                [unstyled]="true"
+                [buttonClass]="
+                    'theme-studio-surface ' +
+                    (effectiveSurface() === surface.value ? 'is-selected' : '')
+                  "
+                [ariaLabel]="'Use ' + surface.label + ' surfaces'"
+                (clicked)="updateSurface(surface.value)"
+              >
+                <span class="theme-studio-surface__swatches" aria-hidden="true">
+                  <span [style.background]="surface.light"></span>
+                  <span [style.background]="surface.dark"></span>
+                </span>
+                <strong>{{ surface.label }}</strong>
+              </neural-button>
+              }
+            </div>
+          </section>
+
+          <neural-accordion
+            accordionId="theme-studio-brand-advanced"
+            [(value)]="advancedBrand"
+          >
+            <neural-accordion-panel value="status-colors">
+              <neural-accordion-header
+                >Advanced status colors</neural-accordion-header
+              >
+              <neural-accordion-content>
+                <div class="theme-studio-advanced-content">
+                  <p>
+                    Keep the defaults unless your brand has established semantic
+                    success, warning and error colors.
+                  </p>
+                  <div class="theme-studio-status-grid">
+                    <label class="theme-studio-field">
+                      <span>Success</span>
+                      <input
+                        neuralInput
+                        type="color"
+                        [value]="recipe().color?.success"
+                        (input)="updateStatus('success', $any($event.target).value)"
+                      />
+                    </label>
+                    <label class="theme-studio-field">
+                      <span>Warning</span>
+                      <input
+                        neuralInput
+                        type="color"
+                        [value]="recipe().color?.warning"
+                        (input)="updateStatus('warning', $any($event.target).value)"
+                      />
+                    </label>
+                    <label class="theme-studio-field">
+                      <span>Error</span>
+                      <input
+                        neuralInput
+                        type="color"
+                        [value]="recipe().color?.error"
+                        (input)="updateStatus('error', $any($event.target).value)"
+                      />
+                    </label>
+                  </div>
+                </div>
+              </neural-accordion-content>
+            </neural-accordion-panel>
+          </neural-accordion>
+        </neural-tab-panel>
+
+        <neural-tab-panel value="feel" [focusable]="false">
+          <header class="theme-studio-builder__header">
+            <span class="theme-studio-builder__step">02 · Feel</span>
+            <h2>Decide how the interface should feel.</h2>
+            <p>
+              These choices shape every component consistently. You do not need
+              to tune buttons, inputs and overlays one by one.
+            </p>
+          </header>
+
+          <section class="theme-studio-field-group">
+            <div class="theme-studio-field-group__header">
+              <div>
+                <h3>Corner shape</h3>
+                <p>
+                  From precise enterprise surfaces to expressive product UI.
+                </p>
+              </div>
+            </div>
+            <div
+              class="theme-studio-choice-grid theme-studio-choice-grid--five"
+            >
+              @for (option of ['none', 'small', 'medium', 'large', 'xlarge'];
+              track option) {
+              <neural-button
+                class="theme-studio-control-host"
+                [unstyled]="true"
+                [buttonClass]="
+                    'theme-studio-choice ' +
+                    (effectiveRadius() === option ? 'is-selected' : '')
+                  "
+                [ariaLabel]="'Use ' + option + ' corner radius'"
+                (clicked)="updateRadius(option)"
+              >
+                <span
+                  class="theme-studio-radius-sample"
+                  [attr.data-radius]="option"
+                ></span>
+                <strong>{{ option === 'xlarge' ? 'XL' : option }}</strong>
+              </neural-button>
+              }
+            </div>
+          </section>
+
+          <section class="theme-studio-field-group">
+            <div class="theme-studio-field-group__header">
+              <div>
+                <h3>Density</h3>
+                <p>
+                  Sets the default rhythm for controls and content surfaces.
+                </p>
+              </div>
+            </div>
+            <div class="theme-studio-choice-grid">
+              @for (option of ['compact', 'comfortable', 'spacious']; track
+              option) {
+              <neural-button
+                class="theme-studio-control-host"
+                [unstyled]="true"
+                [buttonClass]="
+                    'theme-studio-choice theme-studio-choice--descriptive ' +
+                    (effectiveDensity() === option ? 'is-selected' : '')
+                  "
+                [ariaLabel]="'Use ' + option + ' density'"
+                (clicked)="updateDensity(option)"
+              >
+                <span
+                  class="theme-studio-density-sample"
+                  [attr.data-density]="option"
+                >
+                  <i></i><i></i><i></i>
+                </span>
+                <strong>{{ option }}</strong>
+                <small>
+                  {{ option === 'compact' ? 'Data-heavy tools' : option ===
+                  'spacious' ? 'Touch-first experiences' : 'Balanced
+                  applications' }}
+                </small>
+              </neural-button>
+              }
+            </div>
+          </section>
+
+          <section class="theme-studio-field-group">
+            <div class="theme-studio-field-group__header">
+              <div>
+                <h3>Depth and borders</h3>
+                <p>Choose how strongly surfaces separate from each other.</p>
+              </div>
+            </div>
+            <div class="theme-studio-form-grid">
+              <neural-field controlId="theme-studio-elevation" fluid>
+                <label neuralFieldLabel for="theme-studio-elevation"
+                  >Elevation</label
+                >
+                <neural-select
+                  selectId="theme-studio-elevation"
+                  [options]="elevationOptions"
+                  optionLabel="label"
+                  optionValue="value"
+                  [value]="effectiveElevation()"
+                  ariaLabel="Elevation"
+                  fluid
+                  (valueChange)="updateElevation($any($event))"
+                />
+              </neural-field>
+              <neural-field controlId="theme-studio-border" fluid>
+                <label neuralFieldLabel for="theme-studio-border"
+                  >Border strength</label
+                >
+                <neural-select
+                  selectId="theme-studio-border"
+                  [options]="borderOptions"
+                  optionLabel="label"
+                  optionValue="value"
+                  [value]="recipe().shape?.border"
+                  ariaLabel="Border strength"
+                  fluid
+                  (valueChange)="updateBorder($any($event))"
+                />
+              </neural-field>
+            </div>
+          </section>
+
+          <section class="theme-studio-field-group">
+            <div class="theme-studio-field-group__header">
+              <div>
+                <h3>Type and motion</h3>
+                <p>Set the visual scale and transition character.</p>
+              </div>
+            </div>
+            <div class="theme-studio-form-grid">
+              <neural-field controlId="theme-studio-typography" fluid>
+                <label neuralFieldLabel for="theme-studio-typography"
+                  >Typography scale</label
+                >
+                <neural-select
+                  selectId="theme-studio-typography"
+                  [options]="typographyScaleOptions"
+                  optionLabel="label"
+                  optionValue="value"
+                  [value]="recipe().typography?.scale ?? 'default'"
+                  ariaLabel="Typography scale"
+                  fluid
+                  (valueChange)="updateTypographyScale($any($event))"
+                />
+              </neural-field>
+              <neural-field controlId="theme-studio-motion" fluid>
+                <label neuralFieldLabel for="theme-studio-motion">Motion</label>
+                <neural-select
+                  selectId="theme-studio-motion"
+                  [options]="motionOptions"
+                  optionLabel="label"
+                  optionValue="value"
+                  [value]="effectiveMotion()"
+                  ariaLabel="Motion"
+                  fluid
+                  (valueChange)="updateMotion($any($event))"
+                />
+              </neural-field>
+            </div>
+          </section>
+
+          <neural-accordion
+            accordionId="theme-studio-component-overrides"
+            [(value)]="advancedComponents"
+          >
+            <neural-accordion-panel value="component-overrides">
+              <neural-accordion-header
+                >Advanced component tuning</neural-accordion-header
+              >
+              <neural-accordion-content>
+                <div
+                  class="theme-studio-advanced-content theme-studio-component-tuning"
+                >
+                  <p>
+                    Override one documented component token without opening the
+                    full token graph. The change stays sparse in the exported
+                    recipe.
+                  </p>
+
+                  <div
+                    class="theme-studio-form-grid theme-studio-form-grid--component"
+                  >
+                    <neural-field controlId="theme-studio-component" fluid>
+                      <label neuralFieldLabel for="theme-studio-component"
+                        >Component</label
+                      >
+                      <neural-select
+                        selectId="theme-studio-component"
+                        [options]="componentOptions"
+                        optionLabel="label"
+                        optionValue="value"
+                        [value]="selectedComponent()"
+                        ariaLabel="Component to tune"
+                        fluid
+                        (valueChange)="updateSelectedComponent($any($event))"
+                      />
+                    </neural-field>
+
+                    <neural-field
+                      controlId="theme-studio-component-token"
+                      fluid
+                    >
+                      <label neuralFieldLabel for="theme-studio-component-token"
+                        >Token</label
+                      >
+                      <neural-select
+                        selectId="theme-studio-component-token"
+                        [options]="tokenOptions()"
+                        optionLabel="label"
+                        optionValue="value"
+                        [value]="selectedToken()"
+                        ariaLabel="Component token"
+                        fluid
+                        (valueChange)="updateSelectedToken($any($event))"
+                      />
+                    </neural-field>
+
+                    <label class="theme-studio-field">
+                      <span>CSS value or alias</span>
+                      <input
+                        neuralInput
+                        type="text"
+                        spellcheck="false"
+                        placeholder="1rem or {color.primary}"
+                        [value]="overrideValue()"
+                        (input)="overrideValue.set($any($event.target).value)"
+                      />
+                    </label>
+                  </div>
+
+                  <div class="theme-studio-component-tuning__actions">
+                    <neural-button
+                      severity="primary"
+                      (clicked)="applyComponentOverride()"
+                    >
+                      Apply override
+                    </neural-button>
+                    <small
+                      >{{ selectedComponentContract().length }} documented
+                      tokens</small
+                    >
+                  </div>
+
+                  @if (componentOverrides().length > 0) {
+                  <div
+                    class="theme-studio-override-list"
+                    aria-label="Component overrides"
+                  >
+                    @for (override of componentOverrides(); track
+                    override.token) {
+                    <div class="theme-studio-override-item">
+                      <code>{{ override.token }}</code>
+                      <span>{{ override.value }}</span>
+                      <neural-button
+                        severity="secondary"
+                        size="small"
+                        [ariaLabel]="'Remove ' + override.token"
+                        (clicked)="removeComponentOverride(override)"
+                      >
+                        Remove
+                      </neural-button>
+                    </div>
+                    }
+                  </div>
+                  }
+                </div>
+              </neural-accordion-content>
+            </neural-accordion-panel>
+          </neural-accordion>
+        </neural-tab-panel>
+
+        <neural-tab-panel value="preview" [focusable]="false">
+          <header class="theme-studio-builder__header">
+            <span class="theme-studio-builder__step">03 · Preview</span>
+            <h2>Review the decisions in real components.</h2>
+            <p>
+              The preview now gets the whole workspace. Switch component groups
+              and visual modes without competing with the configuration panels.
+            </p>
+          </header>
+
+          <section
+            class="theme-studio-preview-frame theme-studio-preview-frame--embedded"
+            aria-label="Live theme preview"
+          >
+            <div class="theme-studio-preview-frame__toolbar">
+              <div>
+                <span class="theme-studio-live-dot" aria-hidden="true"></span>
+                <strong>Live preview</strong>
+                <small>{{ recipe().name || 'Untitled theme' }}</small>
+              </div>
+
+              <neural-radio-group
+                class="theme-studio-mode-switch"
+                orientation="horizontal"
+                ariaLabel="Preview mode"
+                [options]="previewModeOptions"
+                optionLabel="label"
+                optionValue="value"
+                [value]="previewMode()"
+                (valueChange)="previewMode.set($any($event))"
+              />
+            </div>
+
+            <section
+              class="theme-studio-preview"
+              [attr.data-neural-theme]="recipe().name"
+              [attr.data-neural-mode]="previewMode()"
+            >
+              <neural-tabs
+                tabsId="theme-studio-preview-sections"
+                [value]="previewSection()"
+                [classes]="previewTabsClasses"
+                (valueChange)="$event !== null && previewSection.set($any($event))"
+              >
+                <neural-tab-list ariaLabel="Preview category">
+                  <neural-tab value="overview">Overview</neural-tab>
+                  <neural-tab value="forms">Forms</neural-tab>
+                  <neural-tab value="feedback">Feedback</neural-tab>
+                  <neural-tab value="editor">Editor</neural-tab>
+                </neural-tab-list>
+                <neural-tab-panels>
+                  <neural-tab-panel value="overview" [focusable]="false">
+                    <div class="theme-studio-preview-appbar">
+                      <div class="theme-studio-preview-brand">
+                        <span [style.background]="effectivePrimary()"></span>
+                        <strong>Neural Workspace</strong>
+                      </div>
+                      <span class="theme-studio-preview-avatar">NK</span>
+                    </div>
+
+                    <section class="theme-studio-preview-hero">
+                      <span class="theme-studio-preview-eyebrow"
+                        >Generated theme</span
+                      >
+                      <h2>
+                        Build products with one consistent visual language.
+                      </h2>
+                      <p>
+                        Brand, shape, density and semantic feedback resolve
+                        across every supported component.
+                      </p>
+                      <div class="theme-studio-preview-actions">
+                        <neural-button severity="primary"
+                          >Create workspace</neural-button
+                        >
+                        <neural-button>View documentation</neural-button>
+                      </div>
+                    </section>
+
+                    <div class="theme-studio-preview-metrics">
+                      <article>
+                        <span>Active users</span>
+                        <strong>12,840</strong>
+                        <small>+18.4% this month</small>
+                      </article>
+                      <article>
+                        <span>Automation runs</span>
+                        <strong>94.2k</strong>
+                        <small>99.98% successful</small>
+                      </article>
+                      <article>
+                        <span>Token coverage</span>
+                        <strong>1,348</strong>
+                        <small>Core + Editor</small>
+                      </article>
+                    </div>
+                  </neural-tab-panel>
+
+                  <neural-tab-panel value="forms" [focusable]="false">
+                    <section class="theme-studio-preview-panel">
+                      <span class="theme-studio-preview-eyebrow">Forms</span>
+                      <h2>Workspace preferences</h2>
+                      <p>
+                        Review focus, checked, mixed and selected states
+                        together.
+                      </p>
+
+                      <div class="theme-studio-preview-stack">
+                        <neural-checkbox [(checked)]="previewChecked">
+                          Product announcements
+                        </neural-checkbox>
+                        <neural-tri-state-checkbox [(value)]="previewInherited">
+                          Inherit workspace policy
+                        </neural-tri-state-checkbox>
+                        <neural-switch [(checked)]="previewSwitch">
+                          Enable automation
+                        </neural-switch>
+                        <neural-radio-group
+                          [options]="plans"
+                          optionLabel="label"
+                          optionValue="value"
+                          [(value)]="previewPlan"
+                        />
+                      </div>
+
+                      <div class="theme-studio-preview-actions">
+                        <neural-button severity="primary"
+                          >Save changes</neural-button
+                        >
+                        <neural-button>Cancel</neural-button>
+                      </div>
+                    </section>
+                  </neural-tab-panel>
+
+                  <neural-tab-panel value="feedback" [focusable]="false">
+                    <section class="theme-studio-preview-panel">
+                      <span class="theme-studio-preview-eyebrow">Feedback</span>
+                      <h2>System status</h2>
+                      <p>
+                        Semantic colors remain recognizable in both visual
+                        modes.
+                      </p>
+
+                      <div
+                        class="theme-studio-feedback theme-studio-feedback--success"
+                      >
+                        <span class="theme-studio-feedback__icon">✓</span>
+                        <div>
+                          <strong>Theme compiled</strong>
+                          <span
+                            >All public Core and Editor tokens were
+                            resolved.</span
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="theme-studio-feedback theme-studio-feedback--warning"
+                      >
+                        <span class="theme-studio-feedback__icon">!</span>
+                        <div>
+                          <strong>Contrast review</strong>
+                          <span
+                            >Warnings remain visible without blocking
+                            export.</span
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="theme-studio-feedback theme-studio-feedback--error"
+                      >
+                        <span class="theme-studio-feedback__icon">×</span>
+                        <div>
+                          <strong>Invalid alias</strong>
+                          <span
+                            >Compiler errors are explicit and actionable.</span
+                          >
+                        </div>
+                      </div>
+
+                      <div class="theme-studio-progress-copy">
+                        <span>Generating theme artifacts</span>
+                        <strong>72%</strong>
+                      </div>
+                      <neural-progress-bar
+                        [value]="72"
+                        [showValue]="false"
+                        ariaLabel="Theme generation progress"
+                      />
+                    </section>
+                  </neural-tab-panel>
+
+                  <neural-tab-panel value="editor" [focusable]="false">
+                    <section
+                      class="theme-studio-preview-panel theme-studio-editor-card"
+                    >
+                      <span class="theme-studio-preview-eyebrow">Editor</span>
+                      <h2>Structured content</h2>
+                      <p>
+                        The editor consumes the same generated typography and
+                        surfaces.
+                      </p>
+                      <neural-editor
+                        [(value)]="previewDocument"
+                        ariaLabel="Theme Studio editor preview"
+                        placeholder="Write with the generated theme…"
+                        showWordCount
+                        showCharacterCount
+                        fluid
+                      />
+                    </section>
+                  </neural-tab-panel>
+                </neural-tab-panels>
+              </neural-tabs>
+            </section>
+
+            <footer class="theme-studio-preview-frame__footer">
+              <span>
+                <i [style.background]="effectivePrimary()"></i>
+                {{ effectivePrimary() }}
+              </span>
+              <span>{{ effectiveSurface() }}</span>
+              <span>{{ effectiveRadius() }}</span>
+              <span>{{ previewMode() }}</span>
+            </footer>
+          </section>
+
+          <section
+            class="theme-studio-review-list theme-studio-review-list--wide"
+          >
+            <div [class.is-complete]="!!effectivePrimary()">
+              <span>01</span>
+              <div>
+                <strong>Brand is recognizable</strong>
+                <small
+                  >Primary actions and focus states feel intentional.</small
+                >
+              </div>
+            </div>
+            <div [class.is-complete]="!!artifacts()">
+              <span>02</span>
+              <div>
+                <strong>Core and Editor compile together</strong>
+                <small>The same recipe resolves both token graphs.</small>
+              </div>
+            </div>
+            <div [class.is-complete]="errorCount() === 0">
+              <span>03</span>
+              <div>
+                <strong>No blocking diagnostics</strong>
+                <small>Warnings can be reviewed before export.</small>
+              </div>
+            </div>
+          </section>
+        </neural-tab-panel>
+
+        <neural-tab-panel value="export" [focusable]="false">
+          <header class="theme-studio-builder__header">
+            <span class="theme-studio-builder__step">04 · Export</span>
+            <h2>Take the theme into your application.</h2>
+            <p>
+              Export the small recipe for future edits and the generated CSS for
+              immediate use. Keep the recipe in source control.
+            </p>
+          </header>
+
+          <section
+            class="theme-studio-ready"
+            [attr.data-ready]="readyToExport()"
+          >
+            <span class="theme-studio-ready__mark" aria-hidden="true">
+              {{ readyToExport() ? '✓' : '!' }}
+            </span>
+            <div>
+              <strong>
+                {{ readyToExport() ? 'Theme is ready to export' : 'Review the
+                diagnostics before export' }}
+              </strong>
+              <small>
+                {{ errorCount() }} errors · {{ warningCount() }} warnings ·
+                1,348 contract tokens · {{ qualityStatus() }} quality
+              </small>
+            </div>
+          </section>
+
+          @if (artifacts(); as output) {
+          <section class="theme-studio-export-summary">
+            <div>
+              <span>Theme</span>
+              <strong>{{ output.summary.name }}</strong>
+            </div>
+            <div>
+              <span>Primary</span>
+              <strong>{{ output.summary.primary }}</strong>
+            </div>
+            <div>
+              <span>Surface</span>
+              <strong>{{ output.summary.surface }}</strong>
+            </div>
+            <div>
+              <span>Overrides</span>
+              <strong>{{ output.summary.tokenOverrides }}</strong>
+            </div>
+            <div>
+              <span>Quality</span>
+              <strong>{{ output.summary.quality.status }}</strong>
+            </div>
+          </section>
+          }
+
+          <section class="theme-studio-export-actions">
+            <neural-button severity="primary" (clicked)="downloadRecipe()">
+              Download recipe
+            </neural-button>
+            <neural-button (clicked)="downloadCss()"
+              >Download CSS</neural-button
+            >
+            <neural-button (clicked)="downloadTokens()"
+              >Tokens JSON</neural-button
+            >
+            <neural-button (clicked)="downloadReport()">Report</neural-button>
+          </section>
+
+          <section class="theme-studio-integration">
+            <div class="theme-studio-field-group__header">
+              <div>
+                <h3>Integration</h3>
+                <p>Import the generated CSS after Tailwind and Neural Icons.</p>
+              </div>
+              <neural-button severity="secondary" (clicked)="copyIntegration()">
+                Copy
+              </neural-button>
+            </div>
+            <pre><code>{{ integrationSnippet() }}</code></pre>
+          </section>
+
+          @if (allDiagnostics().length > 0 || jsonDiagnostic()) {
+          <section class="theme-studio-diagnostics">
+            <h3>Diagnostics</h3>
+            <ul>
+              @if (jsonDiagnostic()) {
+              <li data-severity="error">
+                <strong>Recipe JSON</strong>
+                <span>{{ jsonDiagnostic() }}</span>
+              </li>
+              } @for (diagnostic of allDiagnostics(); track diagnostic.code +
+              diagnostic.path) {
+              <li [attr.data-severity]="diagnostic.severity">
+                <strong>{{ diagnostic.path }}</strong>
+                <span>{{ diagnostic.message }}</span>
+              </li>
+              }
+            </ul>
+          </section>
+          }
+
+          <neural-accordion
+            accordionId="theme-studio-export-advanced"
+            [(value)]="advancedExport"
+          >
+            <neural-accordion-panel value="recipe-json">
+              <neural-accordion-header>
+                Advanced: edit the compact recipe JSON
+              </neural-accordion-header>
+              <neural-accordion-content>
+                <div class="theme-studio-advanced-content">
+                  <p>
+                    Most users never need this editor. Use it for component
+                    overrides, custom token aliases or AI-assisted sparse
+                    changes.
+                  </p>
+                  <div class="theme-studio-json-toolbar">
+                    <neural-button
+                      severity="secondary"
+                      (clicked)="copyRecipe()"
+                    >
+                      Copy JSON
+                    </neural-button>
+                  </div>
+                  <textarea
+                    neuralTextarea
+                    aria-label="Theme recipe JSON"
+                    spellcheck="false"
+                    [value]="recipeText()"
+                    (input)="updateRecipeText($any($event.target).value)"
+                  ></textarea>
+                </div>
+              </neural-accordion-content>
+            </neural-accordion-panel>
+          </neural-accordion>
+        </neural-tab-panel>
+      </neural-tab-panels>
+    </neural-tabs>
+
+    <footer class="theme-studio-builder__footer">
+      <neural-button
+        severity="secondary"
+        [disabled]="activeStepIndex() === 0"
+        (clicked)="previousStep()"
+      >
+        Back
+      </neural-button>
+      @if (activeStepIndex() < steps.length - 1) {
+      <neural-button severity="primary" (clicked)="nextStep()">
+        Continue to {{ steps[activeStepIndex() + 1].label }}
+      </neural-button>
+      } @else {
+      <neural-button severity="primary" (clicked)="downloadRecipe()">
+        Download recipe
+      </neural-button>
+      }
+    </footer>
+  </div>
+
+  @if (copied()) {
+  <p class="theme-studio-toast" role="status">{{ copied() }}</p>
+  }
+</article>

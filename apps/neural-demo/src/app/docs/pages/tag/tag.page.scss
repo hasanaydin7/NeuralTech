@@ -1,0 +1,40 @@
+.tag-docs-page {
+  .demo-surface {
+    gap: 1rem;
+  }
+}
+
+.docs-headless-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  color: #ecfeff;
+  background: #164e63;
+  border: 2px solid #22d3ee;
+  border-radius: 0.375rem;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #22d3ee 18%, transparent);
+  font: 750 0.8rem/1 ui-monospace, monospace;
+}
+
+.docs-headless-tag__icon {
+  color: #67e8f9;
+}
+
+.docs-headless-tag__remove {
+  display: inline-grid;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  color: inherit;
+  background: rgb(255 255 255 / 12%);
+  border: 0;
+  border-radius: 0.25rem;
+  place-items: center;
+  cursor: pointer;
+}
+
+.docs-headless-tag__remove:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}

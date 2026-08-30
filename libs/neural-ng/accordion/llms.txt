@@ -1,0 +1,42 @@
+# NeuralNg Accordion
+
+Current component maturity: beta.
+
+Import Accordion only from `@neural-ng/core/accordion`. Use standalone imports.
+
+Canonical imports are `NeuralAccordion`, `NeuralAccordionPanel`,
+`NeuralAccordionHeader`, and `NeuralAccordionContent`.
+
+For object arrays, prefer `items` with `itemLabel`, `itemValue`,
+`itemContent`, and optionally `itemDisabled`. `itemValue` must be a unique
+string or number. Data content is plain text.
+
+Invalid or missing data values fall back to the stable render index. Values
+must remain unique; development mode warns about duplicates. Programmatic
+`value` writes do not emit the user-only `panelChange` event.
+
+For custom Angular markup, compose `neural-accordion-panel`,
+`neural-accordion-header`, and `neural-accordion-content`. Never combine data
+items and projected panels.
+
+Bind `[(value)]`. Single mode uses `string | number | null`; `multiple` mode
+uses an array. `panelChange` is optional and should only be used when the
+interaction source or previous value is needed. Do not invent `onOpen`,
+`onClose`, or `activeIndex` APIs.
+
+Headers are native buttons with complete ARIA relationships and keyboard
+navigation. Do not add custom key handlers around Accordion.
+
+Use `unstyled` and typed `classes` for headless rendering. The default chevron
+is CSS-only; do not require Neural Icons.
+
+Canonical example:
+
+```html
+<neural-accordion accordionId="account" [(value)]="openPanel">
+  <neural-accordion-panel value="profile">
+    <neural-accordion-header>Profile</neural-accordion-header>
+    <neural-accordion-content>Profile settings</neural-accordion-content>
+  </neural-accordion-panel>
+</neural-accordion>
+```

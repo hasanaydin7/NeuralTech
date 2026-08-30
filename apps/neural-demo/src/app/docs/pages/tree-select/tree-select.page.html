@@ -1,0 +1,194 @@
+<article class="docs-page tree-select-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Sprint 4</span>
+    <h1 class="docs-hero__title">TreeSelect</h1>
+    <p class="docs-hero__description">
+      A compact hierarchical picker built from the same immutable Tree
+      controller and top-layer Popover foundation.
+    </p>
+  </header>
+
+  <section>
+    <h2>Import</h2>
+    <p>Import only the tree-shakable secondary entry point.</p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="forms">
+    <h2>Angular Forms adapters</h2>
+    <p>
+      TreeSelect exposes one hierarchical value model to Signal Forms, Reactive
+      Forms, and template-driven Forms. Readonly remains focusable and may open
+      for filtering and expansion, while selection, clear, and chip removal stay
+      blocked.
+    </p>
+    <div class="tree-select-forms-grid">
+      <div class="tree-select-forms-example">
+        <strong>Signal Forms</strong>
+        <neural-tree-select
+          [options]="locations"
+          optionLabel="name"
+          optionValue="id"
+          optionIcon="icon"
+          [formField]="signalForm.location"
+          [filter]="false"
+          ariaLabel="Signal form location"
+          fluid
+        />
+        <output>Value: {{ displayValue(formsModel().location) }}</output>
+      </div>
+      <div class="tree-select-forms-example">
+        <strong>Reactive Forms</strong>
+        <neural-tree-select
+          [options]="locations"
+          optionLabel="name"
+          optionValue="id"
+          optionIcon="icon"
+          [formControl]="reactiveLocation"
+          [filter]="false"
+          ariaLabel="Reactive form location"
+          fluid
+        />
+        <output>Value: {{ displayValue(reactiveLocation.value) }}</output>
+      </div>
+      <div class="tree-select-forms-example">
+        <strong>Template-driven Forms</strong>
+        <neural-tree-select
+          [options]="locations"
+          optionLabel="name"
+          optionValue="id"
+          optionIcon="icon"
+          name="templateLocation"
+          [(ngModel)]="templateLocation"
+          [filter]="false"
+          ariaLabel="Template form location"
+          fluid
+        />
+        <output>Value: {{ displayValue(templateLocation) }}</output>
+      </div>
+      <div class="tree-select-forms-example">
+        <strong>Readonly inspection</strong>
+        <neural-tree-select
+          [options]="locations"
+          optionLabel="name"
+          optionValue="id"
+          optionIcon="icon"
+          [(value)]="readonlyLocation"
+          ariaLabel="Readonly location"
+          readonly
+          fluid
+        />
+        <output>Value: {{ displayValue(readonlyLocation()) }}</output>
+      </div>
+    </div>
+    <code-view
+      fileName="forms.html"
+      language="html"
+      [code]="formsCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Single selection</h2>
+    <p>
+      Map arbitrary nested objects with optionLabel, optionValue,
+      optionChildren, optionDisabled, and optionIcon.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="tree-select-demo">
+        <neural-field controlId="workspace-location" fluid>
+          <label neuralFieldLabel for="workspace-location"
+            >Workspace location</label
+          >
+          <neural-tree-select
+            treeSelectId="workspace-location"
+            [options]="locations"
+            optionLabel="name"
+            optionValue="id"
+            optionIcon="icon"
+            optionDisabled="disabled"
+            [(value)]="selected"
+            ariaLabel="Workspace location"
+            fluid
+            (selectionChange)="changed($event)"
+          />
+          <small neuralFieldHint
+            >Filter, expand, then choose with pointer or keyboard.</small
+          >
+        </neural-field>
+        <output class="demo-status" aria-live="polite">{{ status() }}</output>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Checkbox selection</h2>
+    <p>
+      Parents expose partial state while selected leaves stay synchronized with
+      an immutable array value.
+    </p>
+    <code-view
+      fileName="checkbox.html"
+      language="html"
+      [code]="checkboxCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="tree-select-demo">
+        <neural-tree-select
+          [options]="locations"
+          optionLabel="name"
+          optionValue="id"
+          optionIcon="icon"
+          selectionMode="checkbox"
+          [closeOnSelect]="false"
+          [(value)]="checked"
+          ariaLabel="Deployment scopes"
+          fluid
+        />
+        <small class="demo-status">{{ checked() }}</small>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Unstyled and class slots</h2>
+    <p>
+      TreeSelect keeps combobox, tree, focus, filtering, and overlay behavior
+      while consumer CSS owns every visual class.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="tree-select-demo">
+        <neural-tree-select
+          [options]="locations"
+          optionLabel="name"
+          optionValue="id"
+          optionIcon="icon"
+          [(value)]="headless"
+          ariaLabel="Headless location"
+          unstyled
+          [classes]="headlessClasses"
+          fluid
+        />
+      </div>
+    </code-view>
+  </section>
+</article>

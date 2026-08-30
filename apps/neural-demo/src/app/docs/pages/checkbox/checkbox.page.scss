@@ -1,0 +1,68 @@
+.checkbox-docs-page {
+  max-width: 58rem;
+}
+
+.checkbox-demo-surface {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+}
+
+fieldset.checkbox-demo-surface {
+  padding-block-start: 1rem;
+
+  legend {
+    padding-inline: 0.35rem;
+    color: var(--neural-color-text-strong);
+    font-weight: 700;
+  }
+}
+
+.state-list {
+  gap: 1.25rem;
+}
+
+.docs-headless-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: fit-content;
+  color: var(--neural-color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.docs-headless-checkbox-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.docs-headless-checkbox-control {
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  background: #082f49;
+  border: 1px solid #0ea5e9;
+  border-radius: 999px;
+}
+
+.docs-headless-checkbox-checked::after {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #7dd3fc;
+  border-radius: inherit;
+  content: '';
+}
+
+
+.docs-headless-checkbox-label {
+  font-weight: 700;
+}

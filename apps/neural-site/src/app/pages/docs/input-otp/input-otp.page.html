@@ -1,0 +1,470 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="input-otp-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="InputOtp documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-lock"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-blue-500"
+                    >COMPONENT</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-0.045em] sm:text-5xl"
+                >
+                  InputOtp
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A secure one-time-code experience with native autofill, fast
+                  paste, deterministic keyboard behavior and one string model
+                  across every Angular Forms API.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Autofill
+                    ready</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>RTL
+                    keyboard</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Signal
+                    Forms ready</span
+                  >
+                </div>
+              </div>
+            </header>
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Import
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical standalone component from its granular
+                entry point.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="app.ts"
+                  language="typescript"
+                  [code]="importCode"
+                  [theme]="appearance.mode()"
+                />
+              </div>
+            </section>
+            <section id="verification" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Verification code
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Type, paste or use platform autofill. Every native cell
+                contributes to one string model and
+                <code class="font-mono text-blue-500">complete</code> fires when
+                all cells are ready.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="verification.html"
+                  language="html"
+                  [code]="verificationCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="mx-auto grid w-full max-w-xl gap-3"
+                  >
+                    <neural-field controlId="site-verification-code" fluid
+                      ><span neuralFieldLabel>Verification code</span
+                      ><neural-input-otp
+                        inputOtpId="site-verification-code"
+                        ariaLabel="Verification code"
+                        [formField]="verificationForm.code"
+                        [length]="6"
+                        autocomplete="one-time-code"
+                        fluid
+                        (complete)="completed($event)"
+                      /><small neuralFieldHint
+                        >Enter the code sent to your device.</small
+                      ></neural-field
+                    ><output
+                      aria-live="polite"
+                      class="text-xs text-[var(--site-text-muted)]"
+                      >{{ status() }}</output
+                    >
+                  </div></code-view
+                >
+              </div>
+            </section>
+            <section id="variants" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Alphanumeric, separator and mask
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Recovery codes can accept Unicode letters and numbers.
+                Separators are visual only; masking conceals cells without
+                changing the string model.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="variants.html"
+                  language="html"
+                  [code]="variantsCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="flex w-full flex-col items-center justify-center gap-6"
+                  >
+                    <neural-input-otp
+                      ariaLabel="Recovery code"
+                      mode="alphanumeric"
+                      separator="-"
+                      [(value)]="recoveryCode"
+                    /><neural-input-otp
+                      ariaLabel="Private verification code"
+                      mask
+                      [(value)]="privateCode"
+                    /></div
+                ></code-view>
+              </div>
+            </section>
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Every Angular Forms API
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Signal Forms, Reactive Forms and template-driven Forms share the
+                same string contract.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="forms.html"
+                  language="html"
+                  [code]="formsCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="grid w-full gap-6 lg:grid-cols-3"
+                  >
+                    <div class="grid justify-items-center gap-2">
+                      <span class="text-xs font-black text-blue-500"
+                        >SIGNAL FORMS</span
+                      ><neural-input-otp
+                        ariaLabel="Signal Forms code"
+                        [length]="6"
+                        [formField]="verificationForm.code"
+                      />
+                    </div>
+                    <div class="grid justify-items-center gap-2">
+                      <span class="text-xs font-black text-blue-500"
+                        >REACTIVE</span
+                      ><neural-input-otp
+                        ariaLabel="Reactive Forms code"
+                        [length]="6"
+                        [formControl]="reactiveCode"
+                      />
+                    </div>
+                    <div class="grid justify-items-center gap-2">
+                      <span class="text-xs font-black text-blue-500"
+                        >NGMODEL</span
+                      ><neural-input-otp
+                        ariaLabel="Template-driven code"
+                        [length]="6"
+                        name="templateCode"
+                        [(ngModel)]="templateCode"
+                      />
+                    </div></div
+                ></code-view>
+              </div>
+            </section>
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                States and Field composition
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disabled, readonly, required, invalid, pending, touched, dirty,
+                fluid and unstyled states compose with Neural Field.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="states.html"
+                  language="html"
+                  [code]="statesCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="grid w-full justify-items-center gap-6"
+                  >
+                    <neural-input-otp
+                      ariaLabel="Disabled code"
+                      value="123456"
+                      disabled
+                    /><neural-input-otp
+                      ariaLabel="Readonly code"
+                      value="123456"
+                      readonly
+                    /><neural-field
+                      controlId="invalid-code"
+                      required
+                      invalid
+                      class="w-fit justify-self-center"
+                      ><label neuralFieldLabel for="invalid-code"
+                        >Required code</label
+                      ><neural-input-otp
+                        inputOtpId="invalid-code"
+                        ariaLabel="Required code"
+                      /><small neuralFieldError
+                        >Enter the complete verification code.</small
+                      ></neural-field
+                    ><neural-input-otp
+                      ariaLabel="Pending code"
+                      value="123456"
+                      pending
+                    /></div
+                ></code-view>
+              </div>
+            </section>
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Unstyled and typed class slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Unstyled retains paste, autofill, Forms and accessibility while
+                consumer classes own every visual element.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="unstyled.html"
+                  language="html"
+                  [code]="unstyledCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div preview-content class="w-full">
+                    <neural-input-otp
+                      ariaLabel="Consumer styled code"
+                      unstyled
+                      fluid
+                      mode="alphanumeric"
+                      separator="·"
+                      [classes]="headlessClasses"
+                      [(value)]="styledCode"
+                    /></div
+                ></code-view>
+              </div>
+            </section>
+          </neural-tab-panel>
+          <neural-tab-panel value="accessibility" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                INPUTOTP
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Accessibility
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+              >
+                Native single-character inputs remain individually operable
+                inside one named group.
+              </p>
+            </header>
+            <div class="grid gap-10 pt-10">
+              <section id="semantics" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Group and cell semantics</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  The root is a named
+                  <code class="font-mono text-blue-500">role="group"</code>.
+                  Every cell announces its position and total; required, invalid
+                  and busy states are exposed without replacing native inputs.
+                </p>
+              </section>
+              <section id="keyboard" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Keyboard</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Backspace clears or returns, Delete clears in place, arrows
+                  move logically, and Home/End jump to boundaries. Arrow
+                  behavior reverses correctly in RTL.
+                </p>
+              </section>
+              <section id="autofill" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Autofill and paste</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Only the first cell requests
+                  <code class="font-mono text-blue-500">one-time-code</code>.
+                  Platform autofill and multi-character paste are sanitized and
+                  distributed from the active cell.
+                </p>
+              </section>
+              <section id="security" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Security boundary</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Masking only reduces shoulder-surfing. Verification,
+                  expiration, replay protection, retry limits and rate limiting
+                  must run on the server.
+                </p>
+              </section>
+            </div></neural-tab-panel
+          >
+          <neural-tab-panel value="api" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                INPUTOTP
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">API</h1>
+              <p class="mt-4 text-[var(--site-text-soft)]">
+                The complete public contract of
+                <code class="font-mono text-blue-500">NeuralInputOtp</code>.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                <table class="w-full min-w-[56rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (item of inputs; track item[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{ item[0] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="events" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Events</h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of events; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid sm:grid-cols-[9rem_17rem_1fr] sm:gap-4"
+                >
+                  <code class="font-bold text-blue-500">{{ item[0] }}</code
+                  ><code class="text-xs">{{ item[1] }}</code>
+                  <p class="text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid sm:grid-cols-[15rem_1fr] sm:gap-4"
+                >
+                  <code class="font-bold text-blue-500">{{ item[0] }}</code>
+                  <p class="text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-4 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+            <section id="value-contract" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Value contract</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Application state is one sanitized string. Separators and
+                masking never enter the model, and verification never belongs to
+                the UI component.
+              </p>
+            </section>
+          </neural-tab-panel>
+          <neural-tab-panel value="tokens" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                INPUTOTP
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Design tokens
+              </h1>
+              <p class="mt-4 text-[var(--site-text-soft)]">
+                Neutral, dark mode and experimental themes share the same
+                component-token surface.
+              </p>
+            </header>
+            <section id="design-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Component tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="tokens"
+              /></section
+          ></neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

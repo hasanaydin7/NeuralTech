@@ -1,0 +1,193 @@
+.data-view-demo {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+}
+.data-view-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+.data-view-toolbar > div:first-child {
+  display: grid;
+  gap: 0.15rem;
+  margin-inline-end: auto;
+}
+.data-view-toolbar small,
+.product-copy small,
+.product-meta small,
+.product-card > small,
+.remote-row span {
+  color: var(--neural-color-text-muted);
+}
+.data-view-toolbar label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--neural-color-text-muted);
+  font-size: 0.8rem;
+}
+.data-view-toolbar select {
+  min-height: 2.35rem;
+  padding: 0.4rem 0.65rem;
+  color: var(--neural-color-text);
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.5rem;
+  font: inherit;
+}
+.layout-switch {
+  display: inline-flex;
+  padding: 0.2rem;
+  background: var(--neural-color-surface-hover);
+  border-radius: 0.55rem;
+}
+.product-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+}
+.product-visual {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  color: var(--neural-color-primary);
+  background: color-mix(
+    in srgb,
+    var(--neural-color-primary) 10%,
+    var(--neural-color-surface)
+  );
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--neural-color-primary) 18%,
+      var(--neural-color-border)
+    );
+  border-radius: 0.75rem;
+  font-size: 1.35rem;
+}
+.product-copy {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+.product-copy strong,
+.product-card h3 {
+  color: var(--neural-color-text-strong);
+}
+.product-copy > span,
+.product-card p {
+  color: var(--neural-color-text-muted);
+  font-size: 0.875rem;
+}
+.product-meta {
+  display: grid;
+  justify-items: end;
+  gap: 0.4rem;
+}
+.product-card {
+  display: grid;
+  gap: 0.65rem;
+  height: 100%;
+  padding: 1rem;
+}
+.product-visual--grid {
+  width: 100%;
+  height: 7rem;
+  margin-bottom: 0.25rem;
+  font-size: 2rem;
+}
+.product-card h3,
+.product-card p {
+  margin: 0;
+}
+.product-card footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: auto;
+  padding-top: 0.35rem;
+}
+.remote-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+.remote-row > .nt {
+  color: var(--neural-color-primary);
+  font-size: 1.15rem;
+}
+.data-view-state-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+.custom-empty {
+  display: grid;
+  place-items: center;
+  gap: 0.4rem;
+  color: var(--neural-color-text-muted);
+}
+.custom-empty .nt {
+  color: var(--neural-color-primary);
+  font-size: 1.75rem;
+}
+.docs-data-view-headless {
+  width: 100%;
+  overflow: hidden;
+  color: #e0f2fe;
+  background: #07111f;
+  border: 1px solid #38bdf8;
+  border-radius: 0.7rem;
+  box-shadow: 0 20px 54px rgb(2 132 199 / 0.18);
+}
+.docs-data-view-headless__list {
+  display: grid;
+}
+.docs-data-view-headless__item + .docs-data-view-headless__item {
+  border-top: 1px solid #1e3a5f;
+}
+.headless-product {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+}
+.headless-product > span {
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  color: #07111f;
+  background: #38bdf8;
+  border-radius: 0.4rem;
+  font-weight: 800;
+}
+.headless-product small {
+  color: #7dd3fc;
+}
+.docs-data-view-headless__paginator {
+  padding: 0.7rem;
+  border-top: 1px solid #1e3a5f;
+}
+@media (max-width: 42rem) {
+  .data-view-state-grid {
+    grid-template-columns: 1fr;
+  }
+  .product-row {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .product-meta {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, auto);
+    align-items: center;
+    justify-content: end;
+  }
+}

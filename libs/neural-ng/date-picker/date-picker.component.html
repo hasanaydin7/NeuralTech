@@ -1,0 +1,501 @@
+<div
+  [class]="rootClass()"
+  [attr.data-open]="open() ? 'true' : null"
+  [attr.data-disabled]="effectiveDisabled() ? 'true' : null"
+  [attr.data-readonly]="effectiveReadonly() ? 'true' : null"
+  [attr.data-invalid]="effectiveInvalid() ? 'true' : null"
+  [attr.data-touched]="touched() ? 'true' : null"
+  [attr.data-dirty]="dirty() ? 'true' : null"
+  [attr.data-week-numbers]="showWeekNumbers() ? 'true' : null"
+  [attr.data-selection-mode]="selectionMode()"
+  [attr.data-picker-mode]="pickerMode()"
+  [attr.dir]="resolvedLocale().direction"
+  (focusout)="handleFocusOut($event)"
+>
+  <div #anchor [class]="inputGroupClass()">
+    <input
+      #dateInput
+      type="text"
+      role="combobox"
+      inputmode="none"
+      autocomplete="off"
+      readonly
+      aria-haspopup="dialog"
+      [id]="controlId()"
+      [name]="name()"
+      [class]="inputClass()"
+      [value]="displayValue()"
+      [placeholder]="placeholder() || chooseValueLabel()"
+      [disabled]="effectiveDisabled()"
+      [required]="effectiveRequired()"
+      [attr.aria-label]="ariaLabel() || null"
+      [attr.aria-expanded]="open()"
+      [attr.aria-controls]="panelId"
+      [attr.aria-describedby]="field?.controlDescribedBy()"
+      [attr.aria-invalid]="effectiveInvalid() ? 'true' : null"
+      [attr.aria-required]="effectiveRequired() ? 'true' : null"
+      [attr.aria-busy]="pending() || field?.pending() ? 'true' : null"
+      (click)="show()"
+      (keydown)="handleInputKeydown($event)"
+    />
+
+    @if (clearable() && value() && !interactionBlocked()) {
+      <button
+        type="button"
+        [class]="clearButtonClass()"
+        [attr.aria-label]="clearLabel()"
+        (click)="clear($event)"
+      >
+        <i [class]="clearIconClass()" aria-hidden="true"></i>
+      </button>
+    }
+
+    <button
+      type="button"
+      [class]="triggerButtonClass()"
+      [disabled]="effectiveDisabled()"
+      [attr.aria-disabled]="interactionBlocked() ? 'true' : null"
+      [attr.aria-label]="triggerLabel()"
+      [attr.aria-expanded]="open()"
+      [attr.aria-controls]="panelId"
+      (click)="toggle($event)"
+    >
+      @if (triggerIconTemplate(); as template) {
+        <ng-container
+          [ngTemplateOutlet]="template.templateRef"
+          [ngTemplateOutletContext]="iconTemplateContext()"
+        />
+      } @else {
+        <i [class]="triggerIconClass()" aria-hidden="true"></i>
+      }
+    </button>
+  </div>
+</div>
+
+<neural-popover
+  #calendarPopover
+  [(open)]="open"
+  position="bottom-start"
+  [offset]="6"
+  [matchTriggerWidth]="true"
+  [popoverId]="panelId"
+  role="dialog"
+  [ariaLabel]="calendarLabel()"
+  [restoreFocus]="false"
+  [unstyled]="effectiveUnstyled()"
+  [popoverClass]="panelClass()"
+  (opened)="handleOpened()"
+  (closed)="handleClosed()"
+>
+  @if (open()) {
+    <div
+      [class]="calendarClass()"
+      [attr.data-picker-mode]="pickerMode()"
+      [attr.dir]="resolvedLocale().direction"
+      (mouseleave)="clearRangePreview()"
+    >
+      <span
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        [class]="announcementClass()"
+      >
+        {{ viewAnnouncement() }}
+      </span>
+      @if (hasCalendar()) {
+        <div [class]="headerClass()">
+          @if (headerTemplate(); as template) {
+            <ng-container
+              [ngTemplateOutlet]="template.templateRef"
+              [ngTemplateOutletContext]="headerTemplateContext()"
+            />
+          } @else {
+            <button
+              type="button"
+              [class]="navigationButtonClass()"
+              [disabled]="
+                calendarView() === 'days'
+                  ? previousMonthDisabled()
+                  : calendarView() === 'months'
+                    ? previousYearDisabled()
+                    : previousYearsDisabled()
+              "
+              [attr.aria-label]="
+                calendarView() === 'days'
+                  ? previousMonthLabel()
+                  : calendarView() === 'months'
+                    ? previousYearLabel()
+                    : previousYearsLabel()
+              "
+              (click)="navigateHeader(-1)"
+            >
+              @if (previousIconTemplate(); as template) {
+                <ng-container
+                  [ngTemplateOutlet]="template.templateRef"
+                  [ngTemplateOutletContext]="iconTemplateContext('previous')"
+                />
+              } @else {
+                <i
+                  [class]="navigationIconClass('previous')"
+                  aria-hidden="true"
+                ></i>
+              }
+            </button>
+
+            @if (calendarView() === 'days') {
+              <strong [class]="titleClass()">
+                <button
+                  type="button"
+                  [class]="monthToggleClass()"
+                  [attr.aria-label]="chooseMonthLabel()"
+                  (click)="toggleMonthView()"
+                >
+                  {{ monthLabel() }}
+                </button>
+                <button
+                  type="button"
+                  [class]="yearToggleClass()"
+                  [attr.aria-label]="chooseYearLabel()"
+                  [attr.aria-expanded]="false"
+                  (click)="toggleYearView()"
+                >
+                  {{ viewDate().year }}
+                </button>
+              </strong>
+            } @else if (calendarView() === 'years') {
+              <div [class]="titleClass()">
+                <input
+                  #yearInput
+                  type="number"
+                  min="1"
+                  max="9999"
+                  inputmode="numeric"
+                  [class]="yearInputClass()"
+                  [value]="viewDate().year"
+                  [attr.aria-label]="yearInputLabel()"
+                  (change)="handleYearInput($event)"
+                  (keydown)="handleYearInputKeydown($event)"
+                />
+              </div>
+            } @else {
+              <strong [class]="titleClass()">
+                <button
+                  type="button"
+                  [class]="yearToggleClass()"
+                  [attr.aria-label]="chooseYearLabel()"
+                  (click)="toggleYearView()"
+                >
+                  {{ viewDate().year }}
+                </button>
+              </strong>
+            }
+
+            <button
+              type="button"
+              [class]="navigationButtonClass()"
+              [disabled]="
+                calendarView() === 'days'
+                  ? nextMonthDisabled()
+                  : calendarView() === 'months'
+                    ? nextYearDisabled()
+                    : nextYearsDisabled()
+              "
+              [attr.aria-label]="
+                calendarView() === 'days'
+                  ? nextMonthLabel()
+                  : calendarView() === 'months'
+                    ? nextYearLabel()
+                    : nextYearsLabel()
+              "
+              (click)="navigateHeader(1)"
+            >
+              @if (nextIconTemplate(); as template) {
+                <ng-container
+                  [ngTemplateOutlet]="template.templateRef"
+                  [ngTemplateOutletContext]="iconTemplateContext('next')"
+                />
+              } @else {
+                <i [class]="navigationIconClass('next')" aria-hidden="true"></i>
+              }
+            </button>
+          }
+        </div>
+
+        @if (calendarView() === 'days') {
+          <div
+            role="grid"
+            [class]="gridClass()"
+            [attr.aria-label]="monthTitle()"
+          >
+            <div role="row" [class]="weekdaysClass()">
+              @if (showWeekNumbers()) {
+                <span
+                  role="columnheader"
+                  [class]="weekNumberHeaderClass()"
+                  [attr.aria-label]="weekNumberHeaderLabel()"
+                >
+                  {{ weekNumberHeaderLabel() }}
+                </span>
+              }
+              @for (weekday of weekdayLabels(); track $index) {
+                <span
+                  role="columnheader"
+                  [class]="weekdayClass()"
+                  [attr.aria-label]="weekday.long"
+                >
+                  {{ weekday.short }}
+                </span>
+              }
+            </div>
+
+            @for (week of calendar().weeks; track $index) {
+              <div role="row" [class]="weekClass()">
+                @if (showWeekNumbers()) {
+                  <span
+                    role="rowheader"
+                    [class]="weekNumberClass()"
+                    [attr.aria-label]="weekNumberAriaLabel(week)"
+                  >
+                    {{ weekNumber(week) }}
+                  </span>
+                }
+                @for (day of week; track day.key) {
+                  @if (shouldRenderDay(day)) {
+                    <button
+                      #dayButton
+                      type="button"
+                      role="gridcell"
+                      [class]="dayClass(day)"
+                      [disabled]="isDayUnavailable(day)"
+                      [tabindex]="isActive(day) ? 0 : -1"
+                      [attr.data-date]="day.key"
+                      [attr.aria-label]="dayAriaLabel(day)"
+                      [attr.aria-selected]="isSelected(day)"
+                      [attr.aria-current]="day.today ? 'date' : null"
+                      (click)="selectDay(day, 'pointer')"
+                      (mouseenter)="previewRange(day)"
+                      (focus)="activeDate.set(day.date)"
+                      (keydown)="handleDayKeydown($event, day)"
+                    >
+                      @if (dayTemplate(); as template) {
+                        <ng-container
+                          [ngTemplateOutlet]="template.templateRef"
+                          [ngTemplateOutletContext]="dayTemplateContext(day)"
+                        />
+                      } @else {
+                        {{ day.date.day }}
+                      }
+                    </button>
+                  } @else {
+                    <span
+                      role="gridcell"
+                      aria-hidden="true"
+                      [class]="otherMonthPlaceholderClass()"
+                    ></span>
+                  }
+                }
+              </div>
+            }
+          </div>
+        } @else if (calendarView() === 'years') {
+          <div [class]="yearViewClass()">
+            <div
+              role="grid"
+              [class]="yearGridClass()"
+              [attr.aria-label]="chooseYearLabel()"
+            >
+              @for (year of visibleYears(); track year) {
+                <button
+                  type="button"
+                  role="gridcell"
+                  [class]="yearClass(year)"
+                  [disabled]="isYearDisabled(year)"
+                  [attr.aria-selected]="year === viewDate().year"
+                  (click)="selectYear(year)"
+                >
+                  {{ year }}
+                </button>
+              }
+            </div>
+          </div>
+        } @else {
+          <div [class]="monthViewClass()">
+            <div
+              role="grid"
+              [class]="monthGridClass()"
+              [attr.aria-label]="chooseMonthLabel()"
+            >
+              @for (month of monthLabels(); track month.value) {
+                <button
+                  #monthButton
+                  type="button"
+                  role="gridcell"
+                  [class]="monthClass(month.value)"
+                  [disabled]="isMonthDisabled(month.value)"
+                  [tabindex]="month.value === viewDate().month ? 0 : -1"
+                  [attr.data-month]="month.value"
+                  [attr.aria-label]="month.long"
+                  [attr.aria-selected]="month.value === viewDate().month"
+                  (click)="selectMonth(month.value)"
+                  (keydown)="handleMonthKeydown($event, month.value)"
+                >
+                  {{ month.short }}
+                </button>
+              }
+            </div>
+          </div>
+        }
+      }
+
+      @if (hasTime()) {
+        <div
+          role="group"
+          [class]="timePickerClass()"
+          [attr.aria-label]="chooseTimeLabel()"
+        >
+          <div [class]="timeGroupClass()">
+            <label [class]="timeFieldClass('hour')">
+              <span [class]="timeLabelClass()">{{ hourLabel() }}</span>
+              <input
+                #timeInput
+                type="text"
+                role="spinbutton"
+                inputmode="numeric"
+                maxlength="2"
+                autocomplete="off"
+                [class]="timeInputClass()"
+                [value]="timePartValue('hour')"
+                [attr.aria-label]="hourLabel()"
+                [attr.aria-valuemin]="hourFormat() === 12 ? 1 : 0"
+                [attr.aria-valuemax]="hourFormat() === 12 ? 12 : 23"
+                [attr.aria-valuenow]="
+                  hourFormat() === 12
+                    ? draftTime().hour % 12 || 12
+                    : draftTime().hour
+                "
+                (input)="handleTimeInput($event, 'hour')"
+                (change)="commitTimeInput($event, 'hour')"
+                (keydown)="handleTimeKeydown($event, 'hour')"
+              />
+            </label>
+
+            <span aria-hidden="true" [class]="timeSeparatorClass()">:</span>
+
+            <label [class]="timeFieldClass('minute')">
+              <span [class]="timeLabelClass()">{{ minuteLabel() }}</span>
+              <input
+                #timeInput
+                type="text"
+                role="spinbutton"
+                inputmode="numeric"
+                maxlength="2"
+                autocomplete="off"
+                [class]="timeInputClass()"
+                [value]="timePartValue('minute')"
+                [attr.aria-label]="minuteLabel()"
+                aria-valuemin="0"
+                aria-valuemax="59"
+                [attr.aria-valuenow]="draftTime().minute"
+                (input)="handleTimeInput($event, 'minute')"
+                (change)="commitTimeInput($event, 'minute')"
+                (keydown)="handleTimeKeydown($event, 'minute')"
+              />
+            </label>
+
+            @if (showSeconds()) {
+              <span aria-hidden="true" [class]="timeSeparatorClass()">:</span>
+
+              <label [class]="timeFieldClass('second')">
+                <span [class]="timeLabelClass()">{{ secondLabel() }}</span>
+                <input
+                  #timeInput
+                  type="text"
+                  role="spinbutton"
+                  inputmode="numeric"
+                  maxlength="2"
+                  autocomplete="off"
+                  [class]="timeInputClass()"
+                  [value]="timePartValue('second')"
+                  [attr.aria-label]="secondLabel()"
+                  aria-valuemin="0"
+                  aria-valuemax="59"
+                  [attr.aria-valuenow]="draftTime().second"
+                  (input)="handleTimeInput($event, 'second')"
+                  (change)="commitTimeInput($event, 'second')"
+                  (keydown)="handleTimeKeydown($event, 'second')"
+                />
+              </label>
+            }
+
+            @if (hourFormat() === 12) {
+              <button
+                type="button"
+                [class]="periodButtonClass()"
+                [attr.aria-label]="periodLabel()"
+                [attr.aria-pressed]="timePeriod() === 'PM'"
+                (click)="togglePeriod()"
+              >
+                {{ timePeriod() }}
+              </button>
+            }
+          </div>
+        </div>
+      }
+
+      @if (resolvedFooterActions().length) {
+        <div
+          role="group"
+          [class]="footerClass()"
+          [attr.aria-label]="calendarLabel()"
+        >
+          @if (footerTemplate(); as template) {
+            <ng-container
+              [ngTemplateOutlet]="template.templateRef"
+              [ngTemplateOutletContext]="footerTemplateContext()"
+            />
+          } @else {
+            @for (action of resolvedFooterActions(); track $index) {
+              <button
+                type="button"
+                [class]="footerActionClass(action)"
+                [disabled]="
+                  action === 'apply'
+                    ? !canApply()
+                    : action === 'today'
+                      ? todayDisabled()
+                      : action === 'clear'
+                        ? draftValue() === null
+                        : false
+                "
+                (click)="
+                  action === 'today'
+                    ? selectToday()
+                    : action === 'clear'
+                      ? clearFromFooter($event)
+                      : action === 'apply'
+                        ? applySelection()
+                        : cancelSelection()
+                "
+              >
+                @switch (action) {
+                  @case ('today') {
+                    {{ todayLabel() }}
+                  }
+                  @case ('clear') {
+                    {{ clearLabel() }}
+                  }
+                  @case ('apply') {
+                    {{ applyLabel() }}
+                  }
+                  @case ('cancel') {
+                    {{ cancelLabel() }}
+                  }
+                }
+              </button>
+            }
+          }
+        </div>
+      }
+    </div>
+  }
+</neural-popover>

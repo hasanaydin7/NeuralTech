@@ -1,0 +1,242 @@
+<article class="docs-page tree-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Sprint 4</span>
+    <h1 class="docs-hero__title">Tree</h1>
+    <p class="docs-hero__description">
+      A signal-first hierarchical data foundation with an immutable flat
+      visible-node model, controlled expansion, and deterministic lazy loading.
+    </p>
+  </header>
+
+  <section>
+    <h2>Import</h2>
+    <p>Tree ships through its own tree-shakable secondary entry point.</p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Workspace hierarchy</h2>
+    <p>
+      Every visible row carries explicit level, parent, path, position, and
+      sibling metadata.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="tree-demo-stack">
+        <div class="tree-demo-actions">
+          <neural-button severity="secondary" (clicked)="tree().expandAll()"
+            ><i class="nt nt-plus" aria-hidden="true"></i>Expand
+            all</neural-button
+          >
+          <neural-button severity="secondary" (clicked)="tree().collapseAll()"
+            ><i class="nt nt-minus" aria-hidden="true"></i>Collapse
+            all</neural-button
+          >
+          <output aria-live="polite">{{ lastEvent() }}</output>
+        </div>
+        <neural-tree
+          #workspaceTree
+          ariaLabel="Workspace files"
+          [value]="nodes()"
+          [(expandedKeys)]="expandedKeys"
+          (nodeToggle)="lastEvent.set($event.key + ' · ' + ($event.expanded ? 'expanded' : 'collapsed'))"
+          (lazyLoad)="handleLazy($event)"
+        />
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Controlled selection</h2>
+    <p>
+      Single, modifier-aware multiple, and checkbox selection share one
+      immutable <code>selectionKeys</code> model. Shift selects a visible range;
+      checkbox state propagates through the complete node graph.
+    </p>
+    <code-view
+      fileName="selection.html"
+      language="html"
+      [code]="selectionCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="tree-selection-grid">
+        <div>
+          <strong>Single</strong>
+          <span>Tab once, then use arrows, Home/End, Enter, or typeahead</span>
+          <neural-tree
+            ariaLabel="Single selection tree"
+            selectionMode="single"
+            [value]="nodes().slice(0, 2)"
+            [expandedKeys]="selectionExpandedKeys"
+            [(selectionKeys)]="singleSelection"
+          />
+          <output>Selected: {{ selectionSummary(singleSelection()) }}</output>
+        </div>
+        <div>
+          <strong>Multiple</strong>
+          <span>Ctrl/⌘ toggles · Shift selects a range</span>
+          <neural-tree
+            ariaLabel="Multiple selection tree"
+            selectionMode="multiple"
+            [value]="nodes().slice(0, 2)"
+            [expandedKeys]="selectionExpandedKeys"
+            [(selectionKeys)]="multipleSelection"
+          />
+          <output>Selected: {{ selectionSummary(multipleSelection()) }}</output>
+        </div>
+        <div>
+          <strong>Checkbox</strong>
+          <neural-tree
+            ariaLabel="Checkbox selection tree"
+            selectionMode="checkbox"
+            [value]="nodes().slice(0, 2)"
+            [expandedKeys]="selectionExpandedKeys"
+            [(selectionKeys)]="checkboxSelection"
+          />
+          <output>Selected: {{ selectionSummary(checkboxSelection()) }}</output>
+        </div>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Lazy branch and loading states</h2>
+    <p>
+      <code>leaf: false</code> declares an unloaded branch. A key emits at most
+      one lazy request.
+    </p>
+    <code-view
+      fileName="lazy.ts"
+      language="typescript"
+      [code]="lazyCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="tree-state-grid">
+        <div>
+          <neural-button severity="secondary" (clicked)="toggleRootLoading()"
+            >Show loading state</neural-button
+          >
+          <neural-tree
+            ariaLabel="Loading example"
+            [loading]="loadingDemo()"
+            [value]="nodes().slice(0, 1)"
+          />
+        </div>
+        <div>
+          <span>Empty collection</span>
+          <neural-tree
+            ariaLabel="Empty example"
+            [value]="[]"
+            emptyLabel="No workspace nodes yet"
+          />
+        </div>
+        <div>
+          <span>Retryable lazy error · attempts: {{ retryAttempts() }}</span>
+          <neural-tree
+            ariaLabel="Lazy error example"
+            [value]="failedNodes"
+            [expandedKeys]="failedExpandedKeys"
+            (lazyLoad)="retryAttempts.update(count => count + 1)"
+          />
+        </div>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Filtering and typed templates</h2>
+    <p>
+      Strict filtering preserves matching ancestors while continuing through
+      descendants. Node, icon, toggler, loading, and empty templates expose
+      typed contexts without mutating the source tree.
+    </p>
+    <code-view
+      fileName="custom-tree.html"
+      language="html"
+      [code]="customizationCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="tree-demo-stack">
+        <label class="tree-filter-field">
+          <span>Filter workspace</span>
+          <input
+            type="search"
+            placeholder="Try app, neural, file..."
+            [value]="filterQuery()"
+            (input)="filterQuery.set($any($event.target).value)"
+          />
+        </label>
+        <neural-tree
+          compact
+          ariaLabel="Filtered custom tree"
+          [value]="nodes().slice(0, 2)"
+          [(filterValue)]="filterQuery"
+          filterMode="strict"
+          [filterFields]="['label', 'data.kind']"
+        >
+          <ng-template neuralTreeToggler let-expanded="expanded">
+            <i
+              class="nt"
+              [class.nt-chevron-down]="expanded"
+              [class.nt-chevron-right]="!expanded"
+              aria-hidden="true"
+            ></i>
+          </ng-template>
+          <ng-template neuralTreeIcon let-iconClass="iconClass">
+            <i [class]="'nt tree-custom-icon ' + iconClass"></i>
+          </ng-template>
+          <ng-template
+            [neuralTreeNode]="workspaceTemplateType"
+            let-node
+            let-selected="selected"
+          >
+            <span class="tree-custom-node">
+              <strong>{{ node.label }}</strong>
+              <small
+                >{{ node.data?.kind }}{{ selected ? ' · selected' : '' }}</small
+              >
+            </span>
+          </ng-template>
+        </neural-tree>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Unstyled and typed class slots</h2>
+    <p>
+      Hierarchy semantics and structural hooks remain while all visual ownership
+      moves to consumer CSS.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content>
+        <neural-tree
+          unstyled
+          ariaLabel="Headless workspace"
+          [value]="nodes().slice(0, 2)"
+          [expandedKeys]="expandedKeys()"
+          [classes]="headlessClasses"
+        />
+      </div>
+    </code-view>
+  </section>
+</article>

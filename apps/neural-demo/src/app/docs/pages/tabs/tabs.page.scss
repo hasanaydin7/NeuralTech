@@ -1,0 +1,48 @@
+.tabs-docs-page {
+  max-width: 58rem;
+}
+
+.tabs-demo-surface {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+}
+
+.tabs-demo-surface p {
+  margin-bottom: 0;
+}
+
+.docs-headless-tabs {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.docs-headless-tabs__list {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.docs-headless-tabs__tab {
+  padding: 0.65rem 1rem;
+  color: #fef3c7;
+  background: #451a03;
+  border: 1px solid #d97706;
+  border-radius: 999px;
+  font: inherit;
+}
+
+.docs-headless-tabs__tab--active {
+  color: #451a03;
+  background: #fbbf24;
+}
+
+.docs-headless-tabs__panels {
+  padding: 1rem;
+  color: #fef3c7;
+  background: #451a03;
+  border-radius: 0.75rem;
+}

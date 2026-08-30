@@ -1,0 +1,262 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_20%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >FOUNDATION</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            AI-First Workflow
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            Give coding agents exact, versioned NeuralNg contracts before they
+            generate Angular code—then verify the result in the same loop.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Deterministic
+              discovery</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Read-only
+              MCP</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Versioned
+              context</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="contract" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          ONE SOURCE OF TRUTH
+        </p>
+        <h2 class="mt-3 text-2xl font-black">
+          Context is part of the public API
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          NeuralNg publishes human documentation, compact agent rules and
+          machine-readable contracts together. An agent does not need to guess a
+          class name, selector, model, Forms adapter or package entry point.
+        </p>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <i
+              class="nt nt-file-text text-xl text-[var(--neural-color-primary)]"
+            ></i>
+            <h3 class="mt-3 font-black">README</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              Complete examples, behavior and accessibility guidance for humans.
+            </p>
+          </article>
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <i
+              class="nt nt-ai-agent text-xl text-[var(--neural-color-primary)]"
+            ></i>
+            <h3 class="mt-3 font-black">llms.txt</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              Concise generation rules, canonical imports and forbidden
+              assumptions.
+            </p>
+          </article>
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <i class="nt nt-api text-xl text-[var(--neural-color-primary)]"></i>
+            <h3 class="mt-3 font-black">MCP contract</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              Structured selectors, models, Forms support, resources and
+              exports.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="connect-mcp" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Connect the read-only MCP server</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          The MCP server runs over stdio and is separate from the Angular
+          runtime. It cannot edit files, execute shell commands, access the
+          network or read arbitrary paths; it only exposes committed NeuralNg
+          contracts and theme tools.
+        </p>
+        <div class="mt-6 grid gap-5">
+          <code-view
+            fileName="terminal"
+            language="bash"
+            [code]="installMcpCode"
+            [theme]="appearance.mode()"
+          />
+          <code-view
+            fileName="mcp.json"
+            language="json"
+            [code]="mcpConfigCode"
+            [theme]="appearance.mode()"
+          />
+        </div>
+        <div
+          class="mt-5 flex gap-3 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5 text-sm leading-6"
+        >
+          <i
+            class="nt nt-shield-check mt-0.5 text-blue-500"
+            aria-hidden="true"
+          ></i>
+          <p>
+            MCP helps the agent reason about NeuralNg. It is a development tool
+            and never becomes part of your browser bundle.
+          </p>
+        </div>
+      </section>
+
+      <section id="agent-loop" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">The reliable agent loop</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Ask the agent to discover before generating. The returned contract is
+          the boundary; project conventions and product requirements complete
+          it.
+        </p>
+        <ol class="mt-7 grid gap-4 sm:grid-cols-2">
+          @for (step of [ ['01', 'Discover', 'Search by UI goal instead of
+          guessing a component name.'], ['02', 'Inspect', 'Resolve the exact
+          selector, entry point, models and Forms support.'], ['03', 'Generate',
+          'Compose only documented APIs with your application requirements.'],
+          ['04', 'Verify', 'Run formatting, typecheck, tests and accessibility
+          checks.'] ]; track step[0]) {
+          <li
+            class="flex gap-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <span
+              class="grid size-10 shrink-0 place-items-center rounded-xl bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] text-xs font-black text-[var(--neural-color-primary)]"
+              >{{ step[0] }}</span
+            >
+            <div>
+              <h3 class="font-black">{{ step[1] }}</h3>
+              <p class="mt-1 text-sm leading-6 text-[var(--site-text-muted)]">
+                {{ step[2] }}
+              </p>
+            </div>
+          </li>
+          }
+        </ol>
+        <code-view
+          class="mt-6 block"
+          fileName="agent-loop.txt"
+          language="markup"
+          [code]="discoveryCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="llms-context" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Use the smallest useful context</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Start with the package-level architecture, then load only the target
+          component's context. Component <code>llms.txt</code> files are
+          exported from the npm package beside their README files, so guidance
+          stays aligned with the installed version.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="context-paths.txt"
+          language="markup"
+          [code]="contextPathsCode"
+          [theme]="appearance.mode()"
+        />
+        <p class="mt-4 text-sm leading-6 text-[var(--site-text-muted)]">
+          Prefer MCP resources such as
+          <code>neural://components/button/llms</code>
+          when the client supports MCP. Use package files as the portable
+          fallback.
+        </p>
+      </section>
+
+      <section id="prompt-recipe" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Write prompts as acceptance criteria
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Describe the user outcome, constraints and verification—not an
+          imagined NeuralNg API. Let discovery provide the syntax.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="prompt.txt"
+          language="markup"
+          [code]="promptCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="generated-result" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">A contract-grounded result</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          The Button contract yields the canonical class, granular entry point,
+          native loading behavior and semantic <code>clicked</code> output.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="save-action.ts"
+          language="typescript"
+          [code]="generatedCode"
+          [theme]="appearance.mode()"
+        />
+        <a
+          routerLink="/docs/components/button"
+          class="mt-6 inline-flex h-11 items-center gap-2 rounded-xl bg-[var(--neural-color-primary)] px-4 text-sm font-black text-[var(--neural-color-primary-contrast)] transition hover:-translate-y-0.5"
+        >
+          Inspect the Button contract
+          <i class="nt nt-arrow-right" aria-hidden="true"></i>
+        </a>
+      </section>
+
+      <section id="verification" class="scroll-mt-28 pb-12 pt-16">
+        <h2 class="text-2xl font-black">Do not stop at valid-looking code</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Generation is complete only when the application proves the result.
+        </p>
+        <div
+          class="mt-6 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-6"
+        >
+          <ul class="grid gap-4 sm:grid-cols-2">
+            @for (item of [ 'Imports resolve from documented secondary entry
+            points', 'Angular strict typecheck passes without casts', 'No
+            deprecated aliases or invented APIs are present', 'Keyboard, labels
+            and focus behavior remain accessible', 'SSR code avoids eager
+            browser globals', 'Relevant unit and browser tests pass' ]; track
+            item) {
+            <li class="flex gap-2.5 text-sm leading-6">
+              <i
+                class="nt nt-circle-check mt-1 text-emerald-500"
+                aria-hidden="true"
+              ></i>
+              <span>{{ item }}</span>
+            </li>
+            }
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

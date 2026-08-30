@@ -1,0 +1,39 @@
+<article class="docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">{{ content.eyebrow }}</span>
+    <h1 class="docs-hero__title">{{ content.title }}</h1>
+    <p class="docs-hero__description">{{ content.description }}</p>
+  </header>
+
+  <section>
+    <h2>{{ content.sectionTitle }}</h2>
+    <div class="guide-principles">
+      @for (principle of content.principles; track principle) {
+      <div class="guide-principle">
+        <i class="nt nt-check" aria-hidden="true"></i>
+        <span>{{ principle }}</span>
+      </div>
+      }
+    </div>
+  </section>
+
+  <section>
+    <h2>{{ content.codeTitle }}</h2>
+    <code-view
+      [fileName]="content.fileName"
+      [language]="content.language"
+      [code]="content.code"
+      [showLineNumbers]="true"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Operational notes</h2>
+    <ul class="guide-notes">
+      @for (note of content.notes; track note) {
+      <li>{{ note }}</li>
+      }
+    </ul>
+  </section>
+</article>

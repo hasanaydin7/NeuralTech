@@ -1,0 +1,13 @@
+# NeuralNg Divider AI context
+
+- Import NeuralDivider only from `@neural-ng/core/divider`. Never generate the
+  deprecated DividerComponent alias.
+- Use Divider for content boundaries, not layout spacing alone.
+- orientation accepts horizontal or vertical and maps to aria-orientation.
+- type accepts solid, dashed, or dotted.
+- align accepts start, center, or end and positions label/projected content.
+- Prefer label for plain text; projected content is the richer alternative.
+- ariaLabelledBy takes precedence over ariaLabel.
+- Set unstyled for headless rendering. Separator semantics and structural
+  orientation hooks remain while NeuralNg visual classes are removed.
+- classes exposes root, before, content, and after. dividerClass targets root.

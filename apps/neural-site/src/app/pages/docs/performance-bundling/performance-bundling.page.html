@@ -1,0 +1,207 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_20%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >GUIDE</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            Performance &amp; Bundling
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            Ship the component, icon and data work the current screen
+            needs—without turning a design system into one permanent application
+            chunk.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Secondary
+              entry points</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Lazy
+              boundaries</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Zoneless
+              ready</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="imports" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          IMPORT ONLY WHAT YOU USE
+        </p>
+        <h2 class="mt-3 text-2xl font-black">
+          Use granular public entry points
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Each Core feature has a dedicated entry point. Importing from
+          <code>@neural-ng/core/button</code> gives the bundler a clear boundary
+          and prevents unrelated components from becoming reachable. Editor
+          remains a separate package because its rich-text runtime is
+          intentionally not part of Core.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="feature.ts"
+          language="typescript"
+          [code]="importsCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="lazy" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Move feature cost behind navigation</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          A tree-shakable import can still belong to the initial chunk when its
+          page is eager. Lazy routes and Angular defer blocks delay tables,
+          editors and visualization-heavy features until users can reach or see
+          them.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="app.routes.ts"
+          language="typescript"
+          [code]="lazyCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="icons" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Choose the right icon payload</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          <code>icons.css</code> contains the curated application set. Category
+          stylesheets add focused groups. <code>all.css</code> is appropriate
+          for an icon browser or user-selectable catalog, not automatically for
+          every application.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="styles.css"
+          language="css"
+          [code]="iconCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="collections" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Render less data, not merely faster templates
+        </h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          @for (item of [['Paginator', 'Split known collections into
+          understandable pages and request remote pages when the server owns the
+          data.'], ['VirtualScroller', 'Window large, consistently sized lists
+          instead of creating thousands of live elements.'], ['Table remote
+          mode', 'Keep sorting, filtering and paging on the data source when the
+          client should not own the full result.'], ['Stable identity', 'Use
+          immutable values and stable keys so Angular can retain DOM and focus
+          across updates.']]; track item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">{{ item[0] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[1] }}
+            </p>
+          </article>
+          }
+        </div>
+      </section>
+
+      <section id="zoneless" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Zoneless Angular needs no NeuralNg adapter
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          NeuralNg components use OnPush change detection and Signals for owned
+          state and do not require Zone.js as a library dependency. Configure
+          zoneless change detection at application level and keep your own
+          asynchronous state inside Signals or Angular-aware APIs.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="app.config.ts"
+          language="typescript"
+          [code]="zonelessCode"
+          [theme]="appearance.mode()"
+        />
+        <a
+          class="mt-5 inline-flex rounded-xl border border-[var(--site-border)] px-4 py-2 text-sm font-bold hover:bg-[var(--site-surface)]"
+          href="https://angular.dev/guide/zoneless"
+          target="_blank"
+          rel="noreferrer"
+          >Angular zoneless guide</a
+        >
+      </section>
+
+      <section id="rendering" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Optimize first content without creating hydration work
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Render useful closed component markup on the server, use Skeleton for
+          intentionally deferred regions and avoid opening overlays during
+          initial rendering. Browser-only measurement and positioning should
+          begin after interaction or an Angular render callback.
+        </p>
+      </section>
+
+      <section id="budgets" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Turn bundle expectations into build failures
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Angular budgets catch accidental initial-chunk and component-style
+          growth. Start from measured production output, choose explicit warning
+          and error limits, then review increases instead of silently raising
+          them.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="project.json"
+          language="json"
+          [code]="budgetCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="checklist" class="scroll-mt-28 pb-12 pt-16">
+        <h2 class="text-2xl font-black">Production checklist</h2>
+        <div class="mt-6 grid gap-3 sm:grid-cols-2">
+          @for (item of ['Import from component entry points', 'Lazy-load
+          feature routes', 'Keep Editor outside routes that do not edit',
+          'Prefer curated or category icon CSS', 'Page or virtualize large
+          collections', 'Use production builds when measuring', 'Set and review
+          Angular bundle budgets', 'Verify SSR and hydration after
+          optimization']; track item) {
+          <div
+            class="flex gap-3 rounded-xl border border-[var(--site-border)] p-4 text-sm"
+          >
+            <i class="nt nt-circle-check mt-0.5 text-emerald-500"></i
+            ><span>{{ item }}</span>
+          </div>
+          }
+        </div>
+      </section>
+    </div>
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

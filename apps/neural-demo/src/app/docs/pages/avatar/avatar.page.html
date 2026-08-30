@@ -1,0 +1,269 @@
+<article class="docs-page avatar-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components</span>
+    <h1 class="docs-hero__title">Avatar</h1>
+    <p class="docs-hero__description">
+      Accessible identities with responsive images, deterministic fallbacks,
+      logical Badge composition, grouped overflow, and complete headless
+      ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <code-view
+      class="mt-2"
+      fileName="avatar-example.ts"
+      language="ts"
+      [code]="importCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="false"
+      [theme]="resolvedMode()"
+    >
+    </code-view>
+  </section>
+
+  <section id="fallbacks">
+    <h2>Images and Deterministic Fallbacks</h2>
+    <p>
+      Avatar tries the image first, then initials, an optional icon class, and
+      finally projected content. A broken image never remains visible.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="avatar-example.html"
+      language="html"
+      [code]="imageCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="flex gap-2!" data-testid="avatar-fallbacks">
+        <neural-avatar
+          src="/avatar-ada.svg"
+          srcSet="/avatar-ada.svg 1x"
+          sizes="64px"
+          name="Ada Lovelace"
+          size="extra-large"
+          loading="eager"
+          fetchPriority="high"
+        />
+        <neural-avatar name="Grace Hopper" size="extra-large" />
+        <neural-avatar
+          initials="MH"
+          ariaLabel="Margaret Hamilton"
+          size="extra-large"
+          shape="rounded"
+        />
+        <neural-avatar
+          iconClass="nt nt-user"
+          ariaLabel="Account"
+          size="extra-large"
+        />
+        <neural-avatar ariaLabel="Neural AI" size="extra-large" shape="square">
+          <i class="nt nt-sparkles" aria-hidden="true"></i>
+        </neural-avatar>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="sizes">
+    <h2>Sizes and Shapes</h2>
+    <code-view
+      class="mt-2"
+      fileName="avatar-example.html"
+      language="html"
+      [code]="sizeCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="flex items-center gap-4">
+        <neural-avatar name="Extra Small" size="extra-small" />
+        <neural-avatar name="Small Avatar" size="small" />
+        <neural-avatar name="Medium Avatar" />
+        <neural-avatar name="Large Avatar" size="large" shape="rounded" />
+        <neural-avatar name="Extra Large" size="extra-large" shape="square" />
+      </div>
+    </code-view>
+  </section>
+
+  <section id="error">
+    <h2>Image Error Recovery</h2>
+    <p>
+      The native event remains available while the visual state switches to
+      initials.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="avatar-example.ts"
+      language="ts"
+      [code]="imageRecoveryCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="flex flex-col items-center justify-center gap-4"
+        data-testid="avatar-error"
+      >
+        <neural-avatar
+          src="/missing-avatar.webp"
+          name="Radia Perlman"
+          size="large"
+          loading="eager"
+          (imageError)="markImageError()"
+        />
+        <span class="demo-status">{{ lastImageEvent() }}</span>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="badges">
+    <h2>Status and Notification Badges</h2>
+    <p>
+      Avatar owns identity; the shared Badge directive owns status and counts.
+      No Avatar-specific Badge implementation is involved.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="avatar-example.html"
+      language="html"
+      [code]="statusCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="flex justify-center gap-4"
+        data-testid="avatar-badges"
+      >
+        <neural-avatar
+          name="Ada Lovelace"
+          size="large"
+          neuralBadgeDot
+          neuralBadgePosition="bottom-end"
+          neuralBadgeSeverity="success"
+          neuralBadgeAriaLabel="Online"
+        />
+        <neural-avatar
+          name="Grace Hopper"
+          size="large"
+          [neuralBadge]="5"
+          neuralBadgePosition="top-end"
+          neuralBadgeSeverity="error"
+          neuralBadgeAriaLabel="5 unread notifications"
+        />
+      </div>
+    </code-view>
+  </section>
+
+  <section id="group">
+    <h2>AvatarGroup</h2>
+    <p>
+      <code>max</code> keeps the useful identities visible and replaces the
+      remainder with a localized overflow count.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="avatar-example.ts"
+      language="ts"
+      [code]="groupCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="flex justify-center gap-4"
+        data-testid="avatar-group"
+      >
+        <neural-avatar-group
+          [max]="3"
+          ariaLabel="NeuralNg project team"
+          overflowLabel="{count} more teammates"
+        >
+          <neural-avatar
+            src="/avatar-ada.svg"
+            name="Ada Lovelace"
+            loading="eager"
+          />
+          <neural-avatar name="Grace Hopper" />
+          <neural-avatar name="Margaret Hamilton" />
+          <neural-avatar name="Radia Perlman" />
+          <neural-avatar name="Annie Easley" />
+          <neural-avatar name="Katherine Johnson" />
+        </neural-avatar-group>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and Typed Slots</h2>
+    <p>
+      Accessibility and structural hooks remain while the consumer owns every
+      visual class.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="avatar-example.ts"
+      language="ts"
+      [code]="headlessCode"
+      [startLine]="1"
+      [showLineNumbers]="true"
+      [wrap]="false"
+      maxHeight="34rem"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div
+        preview-content
+        class="flex justify-center gap-4"
+        data-testid="avatar-headless"
+      >
+        <neural-avatar
+          name="Neural Technology"
+          unstyled
+          avatarClass="docs-headless-avatar--custom"
+          [classes]="avatarClasses"
+        />
+        <neural-avatar-group
+          [max]="2"
+          ariaLabel="Headless team"
+          overflowLabel="{count} hidden identities"
+          unstyled
+          [classes]="groupClasses"
+        >
+          <neural-avatar name="Ada Lovelace" unstyled />
+          <neural-avatar name="Grace Hopper" unstyled />
+          <neural-avatar name="Margaret Hamilton" unstyled />
+        </neural-avatar-group>
+      </div>
+    </code-view>
+  </section>
+
+  <footer class="docs-page-next">
+    <span>Next Component</span>
+    <a href="/docs/components/badge">Badge →</a>
+  </footer>
+</article>

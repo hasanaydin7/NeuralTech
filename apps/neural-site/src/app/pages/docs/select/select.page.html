@@ -1,0 +1,643 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="select-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Select documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-chevron-down"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FORMS</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Select
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A Signal-first combobox with object mapping, declarative
+                  options, all Angular Forms APIs, top-layer overlays and
+                  virtualized data.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    combobox semantics</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+                    safe</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the public
+                <code class="font-mono text-blue-500">NeuralSelect</code> class
+                from the granular entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="data-options" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Data options and nested paths</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Map labels, values, disabled state and icons without mutating
+                source objects. Property accessors also accept nested paths.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="data-options.html"
+                language="html"
+                [code]="dataCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="mx-auto grid w-full max-w-md gap-2"
+                >
+                  <neural-field controlId="site-select-city" fluid
+                    ><label neuralFieldLabel for="site-select-city">City</label
+                    ><neural-select
+                      [options]="cities"
+                      optionLabel="name"
+                      optionValue="id"
+                      optionDisabled="unavailable"
+                      optionIcon="iconClass"
+                      [(value)]="selectedCity"
+                      placeholder="Select a city"
+                      appendTo="body"
+                      clearable
+                      (selectionChange)="citySelected($event)"
+                      (cleared)="cityCleared($event)"
+                    /><small neuralFieldHint
+                      >Bursa demonstrates a disabled option.</small
+                    ></neural-field
+                  ><output
+                    class="text-xs text-[var(--site-text-muted)]"
+                    aria-live="polite"
+                    >{{ eventLog() }}</output
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="primitive-options" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Primitive options</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Strings and numbers need no label or value mapping.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="primitive-options.html"
+                language="html"
+                [code]="primitiveCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-sm">
+                  <neural-select
+                    [options]="architectureOptions"
+                    [(value)]="primitiveValue"
+                    ariaLabel="Architecture"
+                    appendTo="body"
+                    fluid
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="declarative-options" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Declarative options</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code class="font-mono text-blue-500">neural-option</code> owns
+                rich projected content while its explicit label remains
+                available to typeahead and assistive technology.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="projected-options.html"
+                language="html"
+                [code]="projectedCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-sm">
+                  <neural-select
+                    [(value)]="projectedValue"
+                    ariaLabel="Release status"
+                    appendTo="body"
+                    clearable
+                    fluid
+                    ><neural-option
+                      value="ready"
+                      label="Ready"
+                      iconClass="nt nt-circle-check"
+                      ><span class="grid"
+                        ><strong>Ready to ship</strong
+                        ><small class="text-[var(--site-text-muted)]"
+                          >All checks passed</small
+                        ></span
+                      ></neural-option
+                    ><neural-option
+                      value="review"
+                      label="In review"
+                      iconClass="nt nt-eye"
+                      ><span class="grid"
+                        ><strong>In review</strong
+                        ><small class="text-[var(--site-text-muted)]"
+                          >Waiting for approval</small
+                        ></span
+                      ></neural-option
+                    ><neural-option
+                      value="blocked"
+                      label="Blocked"
+                      iconClass="nt nt-alert-triangle"
+                      disabled
+                      >Blocked</neural-option
+                    ></neural-select
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Angular Forms</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                One nullable value contract supports Signal Forms, Reactive
+                Forms and template-driven Forms. Programmatic writes do not emit
+                user-only selection events.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="forms.html"
+                language="html"
+                [code]="formsCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-5 md:grid-cols-3">
+                  <div class="grid gap-2">
+                    <strong class="text-sm">Signal Forms</strong
+                    ><neural-select
+                      [options]="formOptions"
+                      [formField]="selectForm.city"
+                      ariaLabel="Signal Forms city"
+                      appendTo="body"
+                      fluid
+                    /><output class="text-xs text-[var(--site-text-muted)]"
+                      >{{ formModel().city }}</output
+                    >
+                  </div>
+                  <div class="grid gap-2">
+                    <strong class="text-sm">Reactive Forms</strong
+                    ><neural-select
+                      [options]="formOptions"
+                      [formControl]="reactiveCity"
+                      ariaLabel="Reactive Forms city"
+                      appendTo="body"
+                      fluid
+                    /><output class="text-xs text-[var(--site-text-muted)]"
+                      >{{ reactiveCity.value }}</output
+                    >
+                  </div>
+                  <div class="grid gap-2">
+                    <strong class="text-sm">NgModel</strong
+                    ><neural-select
+                      [options]="formOptions"
+                      name="templateCity"
+                      [(ngModel)]="templateCity"
+                      ariaLabel="Template Forms city"
+                      appendTo="body"
+                      fluid
+                    /><output class="text-xs text-[var(--site-text-muted)]"
+                      >{{ templateCity }}</output
+                    >
+                  </div>
+                </div></code-view
+              >
+            </section>
+
+            <section id="chained" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Chained selects</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Compute dependent options from the first Signal and reset the
+                child only on semantic user selection.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="chained-selects.ts"
+                language="typescript"
+                [code]="chainedCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-4 sm:grid-cols-2">
+                  <neural-field controlId="site-chain-city" fluid
+                    ><label neuralFieldLabel for="site-chain-city"
+                      >Province</label
+                    ><neural-select
+                      [options]="cities"
+                      optionLabel="name"
+                      optionValue="id"
+                      optionDisabled="unavailable"
+                      [(value)]="selectedCity"
+                      appendTo="body"
+                      clearable
+                      (selectionChange)="citySelected($event)" /></neural-field
+                  ><neural-field
+                    controlId="site-chain-district"
+                    [disabled]="!selectedCity()"
+                    fluid
+                    ><label neuralFieldLabel for="site-chain-district"
+                      >District</label
+                    ><neural-select
+                      [options]="availableDistricts()"
+                      optionLabel="name"
+                      optionValue="id"
+                      [(value)]="selectedDistrict"
+                      appendTo="body"
+                      placeholder="Select district"
+                      clearable
+                  /></neural-field></div
+              ></code-view>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">States</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disabled, readonly, loading, empty and invalid states retain
+                distinct interaction and ARIA contracts.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="states.html"
+                language="html"
+                [code]="statesCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-4 sm:grid-cols-2">
+                  <neural-select
+                    [options]="cities"
+                    placeholder="Disabled"
+                    disabled
+                    fluid
+                  /><neural-select
+                    [options]="cities"
+                    optionLabel="name"
+                    optionValue="id"
+                    [(value)]="readonlyValue"
+                    readonly
+                    clearable
+                    fluid
+                  /><neural-select
+                    [options]="cities"
+                    loading
+                    loadingLabel="Loading cities"
+                    fluid
+                  /><neural-select
+                    [options]="[]"
+                    emptyLabel="No matching city"
+                    fluid
+                  /><neural-field
+                    controlId="site-invalid-select"
+                    invalid
+                    required
+                    pending
+                    fluid
+                    ><label neuralFieldLabel for="site-invalid-select"
+                      >Required city</label
+                    ><neural-select
+                      [options]="cities"
+                      optionLabel="name"
+                      optionValue="id"
+                      placeholder="Choose a city"
+                    /><small neuralFieldHint
+                      >Selection is required.</small
+                    ></neural-field
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="append-to" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Append to body</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use the browser top layer inside dialogs, tables and clipped
+                containers. The shared positioner matches trigger width, flips
+                and follows scroll or resize.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="append-to.html"
+                language="html"
+                [code]="appendCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-[var(--site-border)] p-3"
+                >
+                  <neural-select
+                    [options]="cities"
+                    optionLabel="name"
+                    optionValue="id"
+                    appendTo="body"
+                    ariaLabel="Top-layer city"
+                    placeholder="Open outside clipping"
+                    fluid
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="virtual-scroll" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Virtual scroll</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Large fixed-height lists render only the visible overscanned
+                range while exposing complete set metadata to assistive
+                technology.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="virtual-scroll.html"
+                language="html"
+                [code]="virtualCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-sm">
+                  <neural-select
+                    [options]="largeOptions"
+                    optionLabel="label"
+                    optionValue="id"
+                    [(value)]="virtualValue"
+                    virtualScroll
+                    [virtualItemSize]="42"
+                    [virtualScrollHeight]="256"
+                    [virtualOverscan]="4"
+                    appendTo="body"
+                    ariaLabel="Virtual agents"
+                    fluid
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="events" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic events</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code class="font-mono text-blue-500">valueChange</code> is the
+                model output; selection, clear, panel and touch events describe
+                user intent without invented on-prefixed aliases.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="events.html"
+                language="html"
+                [code]="eventsCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Unstyled and typed class slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Headless mode keeps combobox behavior, top-layer positioning,
+                forms and structural hooks while consumer classes own every
+                visible surface.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-sm">
+                  <neural-select
+                    unstyled
+                    [options]="['signals', 'standalone', 'ssr']"
+                    [(value)]="headlessValue"
+                    [classes]="headlessClasses"
+                    appendTo="body"
+                    ariaLabel="Headless architecture"
+                    clearable
+                    fluid
+                  /></div
+              ></code-view>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false"
+            ><header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Accessible by contract</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                The behavior follows the ARIA combobox/listbox interaction model
+                without moving DOM focus into the popup.
+              </p>
+            </header>
+            <section id="semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The native trigger exposes <code>role=combobox</code>, expanded
+                state, controls and active descendant. Options expose selected,
+                disabled, position and set size metadata.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Arrow Up/Down navigate enabled options; Home/End jump; Enter and
+                Space select; Escape closes; Tab preserves natural focus order;
+                printable keys provide buffered typeahead.
+              </p>
+            </section>
+            <section id="naming" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Naming and descriptions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use <code>neural-field</code> for deterministic ids, labels,
+                hints and errors, or provide <code>ariaLabel</code> directly.
+                Loading is announced through <code>aria-busy</code>.
+              </p>
+            </section>
+            <section id="readonly-disabled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Readonly and disabled</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Readonly remains focusable and inspectable but blocks mutation.
+                Disabled uses the native disabled state and leaves the tab
+                order. Disabled options are skipped by all navigation paths.
+              </p>
+            </section></neural-tab-panel
+          >
+
+          <neural-tab-panel value="api" [focusable]="false"
+            ><header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Select API</h1>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[44rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Outputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[38rem] text-left text-sm">
+                  <tbody>
+                    @for (item of outputs; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[2] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}{{ item[1] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="option-api" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Option API</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>neural-option</code> requires <code>value</code> and
+                <code>label</code>; it also accepts <code>disabled</code> and
+                <code>iconClass</code>. Do not combine projected options with a
+                non-empty options array.
+              </p>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section></neural-tab-panel
+          >
+
+          <neural-tab-panel value="tokens" [focusable]="false"
+            ><header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Select tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Neutral tokens respond to primary, surface and resolved
+                light/dark mode. Consumer classes remain additive.
+              </p>
+            </header>
+            <section id="tokens" class="scroll-mt-28 pt-16">
+              <site-design-token-list [tokens]="tokens" /></section
+          ></neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

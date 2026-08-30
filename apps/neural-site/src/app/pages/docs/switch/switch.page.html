@@ -1,0 +1,536 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="switch-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Switch documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-toggle-right"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-cyan-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FORMS</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Switch
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  A native binary control with switch semantics, three Angular
+                  Forms adapters, deterministic readonly behavior and complete
+                  visual ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    checkbox</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Forms
+                    ready</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>RTL
+                    safe</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical standalone component from its granular
+                entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Binary state</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Bind the boolean checked model directly. The projected text
+                labels the native switch and remains clickable.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="basic.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex min-h-28 items-center justify-center"
+                >
+                  <neural-switch [(checked)]="notifications"
+                    >Product notifications</neural-switch
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="state-labels" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">On and off labels</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Optional track labels reinforce state visually. They are
+                decorative, so ariaLabel supplies the accessible name when no
+                visible label is projected.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="labels.html"
+                language="html"
+                [code]="labelsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex min-h-28 items-center justify-center"
+                >
+                  <neural-switch
+                    [(checked)]="accountActive"
+                    onLabel="On"
+                    offLabel="Off"
+                    ariaLabel="Account status"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Every Angular Forms API</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Signal Forms, Reactive Forms and template-driven forms share one
+                boolean source of truth.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="forms.html"
+                language="html"
+                [code]="formsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto grid min-h-32 w-full max-w-2xl gap-5 sm:grid-cols-3 sm:items-center"
+                >
+                  <neural-switch [formField]="signalForm.notifications"
+                    >Signal</neural-switch
+                  >
+                  <neural-switch [formControl]="reactiveNotifications"
+                    >Reactive</neural-switch
+                  >
+                  <neural-switch
+                    name="templateNotifications"
+                    [(ngModel)]="templateNotifications"
+                    >Template</neural-switch
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">States and Field composition</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disabled leaves the tab order, readonly remains discoverable
+                without hover feedback, and NeuralField supplies shared
+                validation state.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="states.html"
+                language="html"
+                [code]="statesCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto grid min-h-36 w-full max-w-3xl gap-7 sm:grid-cols-3 sm:items-start"
+                >
+                  <neural-switch [(checked)]="disabledValue" disabled
+                    >Disabled</neural-switch
+                  >
+                  <neural-switch [(checked)]="readonlyValue" readonly
+                    >Readonly</neural-switch
+                  >
+                  <neural-field
+                    controlId="marketing-consent"
+                    required
+                    invalid
+                    fluid
+                  >
+                    <neural-switch [(checked)]="invalidValue"
+                      >Marketing consent</neural-switch
+                    >
+                    <small neuralFieldHint>You can change this later.</small>
+                    <small neuralFieldError>Consent is required.</small>
+                  </neural-field>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="events-demo" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic events</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                stateChange fires only for user interaction and includes both
+                values. Programmatic writes only update checkedChange.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="events.html"
+                language="html"
+                [code]="eventCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex min-h-32 flex-col items-center justify-center gap-4"
+                >
+                  <neural-switch
+                    [(checked)]="notifications"
+                    (stateChange)="stateChanged($event)"
+                    >Notification events</neural-switch
+                  >
+                  <p class="font-mono text-xs text-[var(--site-text-muted)]">
+                    {{ eventStatus() }}
+                  </p>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="rtl" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Logical RTL behavior</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The thumb travels toward logical end, so the same component
+                mirrors without separate application code.
+              </p>
+              <div
+                dir="rtl"
+                class="mt-6 flex min-h-28 items-center justify-center rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-7"
+              >
+                <neural-switch [(checked)]="rtlValue">وضع الوكيل</neural-switch>
+              </div>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Native behavior and structural state hooks remain while Tailwind
+                owns every visible choice.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex min-h-28 items-center justify-center rounded-2xl bg-slate-950 p-6"
+                >
+                  <neural-switch
+                    unstyled
+                    [(checked)]="headlessValue"
+                    [classes]="headlessClasses"
+                    >Agent mode</neural-switch
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Component boundary</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Switch intentionally models only boolean state. Use Checkbox for
+                form choices and TriState Checkbox when null or mixed is part of
+                the domain.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Native switch semantics</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                A real checkbox carries browser focus, validation and form
+                behavior while role=switch communicates the binary interface
+                pattern.
+              </p>
+            </header>
+            <section id="native" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Native foundation</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The visually hidden input remains the interactive element.
+                checked, disabled, required, name and inputValue map directly to
+                native properties.
+              </p>
+            </section>
+            <section id="accessible-name" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Accessible name</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Project a concise visible label whenever possible. For icon-only
+                or label-free composition, provide ariaLabel. onLabel and
+                offLabel never replace the accessible name.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Tab focuses the switch and Space toggles it through native
+                browser behavior. No custom key manager is required.
+              </p>
+            </section>
+            <section id="readonly-disabled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Readonly and disabled</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disabled removes interaction and focus. Readonly uses
+                aria-readonly, stays focusable and restores the previous value
+                when pointer or keyboard activation is attempted.
+              </p>
+            </section>
+            <section id="field-state" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Field state</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Inside NeuralField, the switch inherits its deterministic id,
+                described-by chain, required, invalid, pending, disabled,
+                readonly, fluid and unstyled state.
+              </p>
+            </section>
+            <section id="ssr" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">SSR and hydration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Stable APP_ID-based ids avoid random server markup. Rendering
+                does not touch browser globals and interaction begins after
+                hydration.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Switch API</h1>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Models and inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[46rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (row of inputs; track row[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ row[0] }}</td>
+                      <td class="p-4 font-mono">{{ row[1] }}</td>
+                      <td class="p-4 font-mono">{{ row[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ row[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Outputs</h2>
+              <div class="mt-6 grid gap-3">
+                @for (row of outputs; track row[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ row[0] }}</code
+                  ><span
+                    class="ml-3 font-mono text-xs text-[var(--site-text-muted)]"
+                    >{{ row[1] }}</span
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ row[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-6 grid gap-3">
+                @for (row of methods; track row[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ row[0] }}</code
+                  ><span class="ml-3 font-mono text-xs">{{ row[1] }}</span>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ row[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                @for (row of classSlots; track row[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ row[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ row[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-6 grid gap-3">
+                @for (row of publicTypes; track row[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ row[0] }}</code>
+                  <p
+                    class="mt-2 font-mono text-sm text-[var(--site-text-soft)]"
+                  >
+                    {{ row[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="alias" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Legacy alias</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                SwitchComponent remains importable for compatibility, but new
+                code and generated AI context should always use NeuralSwitch.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Switch tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Neutral supplies production defaults. Glass, Futuristic and
+                consumer themes override this stable contract without changing
+                component logic.
+              </p>
+            </header>
+            <section id="layout-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Layout and typography</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="layoutTokens"
+              />
+            </section>
+            <section id="track-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Track</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="trackTokens"
+              />
+            </section>
+            <section id="state-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Thumb and state</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="stateTokens"
+              />
+            </section>
+            <section id="motion-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Motion</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="motionTokens"
+              />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

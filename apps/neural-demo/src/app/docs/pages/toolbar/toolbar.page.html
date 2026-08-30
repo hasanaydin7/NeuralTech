@@ -1,0 +1,163 @@
+<article class="docs-page toolbar-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Sprint 2</span>
+    <h1 class="docs-hero__title">Toolbar</h1>
+    <p class="docs-hero__description">
+      An accessible action surface with semantic groups, logical alignment,
+      responsive wrapping, and RTL-aware roving keyboard focus.
+    </p>
+  </header>
+
+  <section>
+    <h2>Import</h2>
+    <p>Import only the standalone sections used by the view.</p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Document actions</h2>
+    <p>
+      Start, center, and end use logical alignment and remain stable in RTL.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="toolbar-preview-stack">
+        <neural-toolbar
+          ariaLabel="Document actions"
+          (focusChanged)="focusedAction.set($event.element.textContent.trim() || 'control')"
+        >
+          <neural-toolbar-start>
+            <neural-button
+              severity="secondary"
+              ariaLabel="Create document"
+              (clicked)="run('Created document')"
+              ><i class="nt nt-plus" aria-hidden="true"></i
+              ><span>New</span></neural-button
+            >
+            <neural-button
+              severity="secondary"
+              ariaLabel="Save document"
+              (clicked)="run('Saved document')"
+              ><i class="nt nt-check" aria-hidden="true"></i
+              ><span>Save</span></neural-button
+            >
+          </neural-toolbar-start>
+          <neural-toolbar-separator />
+          <neural-toolbar-center>
+            <label class="toolbar-search"
+              ><i class="nt nt-search" aria-hidden="true"></i
+              ><input
+                neuralInput
+                aria-label="Search commands"
+                placeholder="Search commands"
+            /></label>
+          </neural-toolbar-center>
+          <neural-toolbar-end>
+            <neural-button
+              severity="secondary"
+              ariaLabel="Preview document"
+              (clicked)="run('Opened preview')"
+              ><i class="nt nt-eye" aria-hidden="true"></i
+              ><span>Preview</span></neural-button
+            >
+            <neural-button (clicked)="run('Published document')"
+              ><i class="nt nt-sparkles" aria-hidden="true"></i
+              ><span>Publish</span></neural-button
+            >
+          </neural-toolbar-end>
+        </neural-toolbar>
+        <output aria-live="polite"
+          >{{ lastAction() }} · Focus: {{ focusedAction() }}</output
+        >
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Vertical and keyboard navigation</h2>
+    <p>
+      Arrow Up/Down, Home, and End move through enabled actions using one tab
+      stop.
+    </p>
+    <code-view
+      fileName="vertical.html"
+      language="html"
+      [code]="keyboardCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="toolbar-vertical-demo">
+        <neural-toolbar orientation="vertical" ariaLabel="Formatting actions">
+          <neural-toolbar-start>
+            <neural-button severity="secondary"
+              ><i class="nt nt-edit" aria-hidden="true"></i>Bold</neural-button
+            >
+            <neural-button severity="secondary"
+              ><i class="nt nt-code" aria-hidden="true"></i
+              >Italic</neural-button
+            >
+            <neural-button severity="secondary" [disabled]="true"
+              ><i class="nt nt-copy" aria-hidden="true"></i
+              >Underline</neural-button
+            >
+          </neural-toolbar-start>
+          <neural-toolbar-separator />
+          <neural-toolbar-end
+            ><neural-button severity="secondary"
+              ><i class="nt nt-trash" aria-hidden="true"></i
+              >Clear</neural-button
+            ></neural-toolbar-end
+          >
+        </neural-toolbar>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Unstyled and typed class slots</h2>
+    <p>
+      Semantics and keyboard behavior remain while the consumer owns every
+      visual class.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content>
+        <neural-toolbar
+          unstyled
+          ariaLabel="Agent actions"
+          [classes]="headlessClasses"
+        >
+          <neural-toolbar-start
+            ><button type="button">
+              <i class="nt nt-activity" aria-hidden="true"></i>Run agent
+            </button></neural-toolbar-start
+          >
+          <neural-toolbar-separator />
+          <neural-toolbar-center
+            ><span>2 tasks ready</span></neural-toolbar-center
+          >
+          <neural-toolbar-end
+            ><button type="button">
+              <i class="nt nt-settings" aria-hidden="true"></i>Settings
+            </button></neural-toolbar-end
+          >
+        </neural-toolbar>
+      </div>
+    </code-view>
+  </section>
+</article>

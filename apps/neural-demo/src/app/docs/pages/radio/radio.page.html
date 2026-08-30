@@ -1,0 +1,232 @@
+<article class="docs-page radio-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Radio</h1>
+    <p>
+      A native, Signal-first radio group with concise data options, rich
+      projected choices, complete keyboard navigation, Field composition, and
+      headless visual ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="data-options">
+    <h2>Data options</h2>
+    <p>
+      Map object arrays with property names. Icons, disabled state, values, and
+      labels stay data-driven while every option remains a native radio input.
+    </p>
+    <div class="radio-demo-surface">
+      <neural-radio-group
+        [options]="plans"
+        optionLabel="name"
+        optionValue="id"
+        optionDisabled="disabled"
+        optionIcon="iconClass"
+        orientation="horizontal"
+        [(value)]="plan"
+        (selectionChange)="selectionChanged($event)"
+      />
+      <output class="demo-status" aria-live="polite">
+        value: {{ plan() }} · {{ eventStatus() }}
+      </output>
+    </div>
+    <app-code-example
+      label="Data-driven RadioGroup"
+      language="html"
+      [code]="dataCode"
+    />
+  </section>
+
+  <section id="forms">
+    <h2>Angular Forms</h2>
+    <p>
+      RadioGroup implements <code>FormValueControl&lt;TValue | null&gt;</code>.
+      The same nullable value model works with Signal Forms, Reactive Forms,
+      and template-driven forms without a second state store.
+    </p>
+    <div class="radio-demo-surface forms-list">
+      <div>
+        <strong>Signal Forms</strong>
+        <neural-radio-group
+          ariaLabel="Signal form plan"
+          [options]="formOptions"
+          optionLabel="label"
+          optionValue="value"
+          orientation="horizontal"
+          [formField]="signalForm.signalPlan"
+        />
+      </div>
+      <div>
+        <strong>Reactive Forms</strong>
+        <neural-radio-group
+          ariaLabel="Reactive form plan"
+          [options]="formOptions"
+          optionLabel="label"
+          optionValue="value"
+          orientation="horizontal"
+          [formControl]="reactivePlan"
+        />
+      </div>
+      <div>
+        <strong>Template-driven Forms</strong>
+        <neural-radio-group
+          ariaLabel="Template form plan"
+          [options]="formOptions"
+          optionLabel="label"
+          optionValue="value"
+          orientation="horizontal"
+          name="templatePlan"
+          [(ngModel)]="templatePlan"
+        />
+      </div>
+      <output class="demo-status" aria-live="polite">
+        forms: {{ formsModel().signalPlan }} · {{ reactivePlan.value }} ·
+        {{ templatePlan }}
+      </output>
+    </div>
+    <app-code-example
+      label="Forms adapters"
+      language="html"
+      [code]="formsCode"
+    />
+  </section>
+
+  <section id="projected-options">
+    <h2>Projected rich options</h2>
+    <p>
+      Use <code>neural-radio</code> children when labels need structured
+      content. This is an alternative to <code>options</code>, not a second
+      source in the same group.
+    </p>
+    <div class="radio-demo-surface">
+      <neural-radio-group
+        radioGroupClass="delivery-options"
+        [(value)]="delivery"
+      >
+        <neural-radio value="standard">
+          <span class="rich-radio-label">
+            <strong>Standard delivery</strong>
+            <small>3–5 business days · Free</small>
+          </span>
+        </neural-radio>
+        <neural-radio value="express">
+          <span class="rich-radio-label">
+            <strong>Express delivery</strong>
+            <small>Next business day · €12</small>
+          </span>
+        </neural-radio>
+        <neural-radio value="pickup">
+          <span class="rich-radio-label">
+            <strong>Store pickup</strong>
+            <small>Ready today · Free</small>
+          </span>
+        </neural-radio>
+      </neural-radio-group>
+      <output class="demo-status">delivery: {{ delivery() }}</output>
+    </div>
+    <app-code-example
+      label="Projected Radio"
+      language="html"
+      [code]="projectedCode"
+    />
+  </section>
+
+  <section id="states">
+    <h2>States and Field</h2>
+    <div class="radio-demo-surface state-list">
+      <neural-radio-group
+        ariaLabel="Disabled example"
+        [options]="['Read', 'Write']"
+        value="Read"
+        disabled
+      />
+      <neural-radio-group
+        ariaLabel="Readonly plan"
+        [options]="formOptions"
+        optionLabel="label"
+        optionValue="value"
+        [(value)]="readonlyPlan"
+        readonly
+      />
+      <neural-field controlId="contact-method" required invalid fluid>
+        <neural-radio-group
+          [options]="contactOptions"
+          optionLabel="label"
+          optionValue="value"
+          [(value)]="contact"
+        />
+        <small neuralFieldHint>Choose your preferred contact method.</small>
+        <small neuralFieldError>A contact method is required.</small>
+      </neural-field>
+    </div>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and class slots</h2>
+    <p>
+      Headless mode keeps native behavior, structure, state hooks, and the
+      consumer class contract while removing NeuralNg visual classes.
+    </p>
+    <div class="radio-demo-surface">
+      <neural-radio-group
+        [options]="headlessOptions"
+        [(value)]="headlessValue"
+        [classes]="headlessClasses"
+        orientation="horizontal"
+        unstyled
+      />
+    </div>
+    <app-code-example
+      label="Headless RadioGroup"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <section id="events">
+    <h2>Events</h2>
+    <div class="api-table-wrapper">
+      <table class="api-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Payload</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>valueChange</code></td>
+            <td><code>TValue | null</code></td>
+            <td>Generated by the value model for two-way binding.</td>
+          </tr>
+          <tr>
+            <td><code>selectionChange</code></td>
+            <td>value, previousValue, option, source</td>
+            <td>Detailed user selection with pointer or keyboard source.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="accessibility">
+    <h2>Accessibility</h2>
+    <p>
+      All choices share a stable native name. Arrow keys move and select while
+      skipping disabled choices; Home and End jump to the first and last enabled
+      options. The selected option is the single tab stop. Readonly groups keep
+      that tab stop and expose <code>aria-readonly</code> while blocking value
+      changes; disabled groups use native disabled inputs.
+    </p>
+  </section>
+</article>

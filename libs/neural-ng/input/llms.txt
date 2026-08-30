@@ -1,0 +1,78 @@
+# NeuralNg Input
+
+> Native Angular 22+ text input enhancement at `@neural-ng/core/input`.
+
+## Rules
+
+- Import `NeuralInput` from `@neural-ng/core/input` and add it to standalone
+  component imports.
+- Generate `<input neuralInput>`, not `<neural-input>` and not a wrapper div.
+- Keep native attributes such as `type`, `name`, `autocomplete`, `required`,
+  `disabled`, `readonly`, `minlength`, and `maxlength` on the input.
+- Use Input for text-like types: text, email, password, search, tel, and url.
+- Do not use this primitive to style checkbox, radio, range, color, file,
+  date/time, or numeric interaction models.
+- Use a native `<label for>` or another valid accessible name. Placeholder text
+  is not a label.
+- Associate help and error content through `aria-describedby`.
+- Apply `aria-invalid="true"` only when a validation error exists and provide a
+  human-readable correction message.
+- For Angular Signal Forms, import `FormField` from `@angular/forms/signals`
+  and bind `[formField]` directly to the same native input.
+- For template-driven Forms, import `FormsModule` and use `[(ngModel)]` on the
+  native input. Keep `name` when the input participates in a form.
+- For Reactive Forms, import `ReactiveFormsModule` and use `[formControl]` or
+  `formControlName` directly on the native input.
+- Signal Forms exposes invalid/touched state; explicitly bind `aria-invalid`
+  and connect the rendered error message with `aria-describedby`.
+- When Input is inside `neural-field`, let Field supply its ID, ARIA
+  relationships, state, fluid width, and inherited unstyled mode.
+- Do not create a ControlValueAccessor for this component; its host is already
+  a native form control.
+- Use the normal `class` or `[class.*]` APIs directly. There is no `inputClass`
+  input because no internal input element exists.
+- Use `inputSize="small|medium|large"` for visual sizing. Do not replace the
+  native HTML `size` attribute; both APIs can coexist.
+- Use `variant="outlined|filled"` for the visual treatment. The default is
+  `outlined`.
+- `fluid` applies full width only in styled mode.
+- `unstyled` removes visual and fluid classes while preserving the structural
+  hook and all native behavior.
+- For logical start/end icons, import `NeuralInputGroup` and compose
+  `<neural-input-group startIcon="nt nt-search"><input neuralInput /></neural-input-group>`.
+  Keep the accessible name on the native input; group icons are decorative.
+- Do not invent clear, mask, or password-toggle inputs on this primitive.
+
+## Canonical example
+
+```ts
+import { FormField, email, form, required } from '@angular/forms/signals';
+import { NeuralInput } from '@neural-ng/core/input';
+
+readonly model = signal({ email: '' });
+readonly accountForm = form(this.model, (path) => {
+  required(path.email, { message: 'Email is required.' });
+  email(path.email, { message: 'Enter a valid email address.' });
+});
+```
+
+```html
+<label for="account-email">Email</label>
+<input
+  neuralInput
+  fluid
+  id="account-email"
+  name="email"
+  type="email"
+  autocomplete="email"
+  [formField]="accountForm.email"
+  [attr.aria-invalid]="
+    accountForm.email().touched() && accountForm.email().invalid()
+      ? 'true'
+      : null
+  "
+/>
+```
+
+The rendered control is the original native input. Preserve that semantic and
+form behavior when generating surrounding layout or validation UI.

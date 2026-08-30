@@ -1,0 +1,58 @@
+.divider-docs-page {
+  .divider-copy {
+    display: block;
+  }
+
+  .divider-copy p {
+    margin: 0;
+  }
+
+  .divider-stack {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .divider-projected {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .divider-actions {
+    display: flex;
+    align-items: stretch;
+    min-height: 3rem;
+  }
+
+  .divider-actions button {
+    align-self: center;
+    padding: 0.625rem 0.875rem;
+    color: var(--demo-text);
+    background: var(--demo-surface);
+    border: 1px solid var(--demo-border);
+    border-radius: 0.625rem;
+    font: inherit;
+    font-weight: 700;
+  }
+}
+
+.docs-headless-divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.docs-headless-divider__line {
+  flex: 1 1 auto;
+  border-block-start: 2px dotted #8b5cf6;
+}
+
+.docs-headless-divider__content {
+  flex: 0 0 auto;
+  margin-inline: 0.75rem;
+  color: #7c3aed;
+  font:
+    800 0.75rem/1 ui-monospace,
+    monospace;
+  letter-spacing: 0.14em;
+}

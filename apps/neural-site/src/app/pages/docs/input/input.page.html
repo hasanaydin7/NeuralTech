@@ -1,0 +1,777 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="input-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Input documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-edit"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-blue-500"
+                    >COMPONENT</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-0.045em] sm:text-5xl"
+                >
+                  Input
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A native input enhancer with Signal Forms, direct class
+                  ownership, token-driven states and zero wrapper semantics.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    autofill</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Signal
+                    Forms ready</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Import
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the standalone directive from its granular entry point.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="app.ts"
+                  language="typescript"
+                  [code]="importCode"
+                  [theme]="appearance.mode()"
+                />
+              </div>
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                NATIVE FIRST
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Basic input
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code class="font-mono text-blue-500">neuralInput</code>
+                enhances the real input. Labels, browser validation, autofill,
+                form submission and native events remain intact.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="input-example.html"
+                  language="html"
+                  [code]="basicCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div
+                    preview-content
+                    class="mx-auto grid w-full max-w-md gap-2"
+                  >
+                    <label for="site-component-search" class="text-sm font-bold"
+                      >Search components</label
+                    >
+                    <input
+                      neuralInput
+                      id="site-component-search"
+                      type="search"
+                      placeholder="Try Button"
+                      [formField]="inputForm.query"
+                      fluid
+                    />
+                    <output
+                      class="text-xs text-[var(--site-text-muted)]"
+                      aria-live="polite"
+                      >Signal value: {{ model().query }}</output
+                    >
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="icons" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Start and end icons
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code class="font-mono text-blue-500">NeuralInputGroup</code>
+                places decorative icons at logical start and end while the
+                projected control remains the real native input.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="icons.html"
+                  language="html"
+                  [code]="iconCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="mx-auto w-full max-w-md">
+                    <neural-input-group
+                      startIcon="nt nt-search"
+                      endIcon="nt nt-sparkles"
+                      fluid
+                    >
+                      <input
+                        neuralInput
+                        aria-label="Search agents"
+                        placeholder="Search agents"
+                      />
+                    </neural-input-group>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="native-types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Native text types
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Text, email, password, search, telephone and URL retain their
+                browser-specific behavior and mobile keyboards.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="native-types.html"
+                  language="html"
+                  [code]="nativeTypesCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="grid w-full gap-4 sm:grid-cols-2">
+                    <input
+                      neuralInput
+                      type="text"
+                      aria-label="Name"
+                      placeholder="Text"
+                      fluid
+                    />
+                    <input
+                      neuralInput
+                      type="email"
+                      aria-label="Email"
+                      placeholder="Email"
+                      autocomplete="email"
+                      inputmode="email"
+                      fluid
+                    />
+                    <input
+                      neuralInput
+                      type="password"
+                      aria-label="Password"
+                      value="neuralng"
+                      autocomplete="current-password"
+                      fluid
+                    />
+                    <input
+                      neuralInput
+                      type="search"
+                      aria-label="Search"
+                      placeholder="Search"
+                      enterkeyhint="search"
+                      fluid
+                    />
+                    <input
+                      neuralInput
+                      type="tel"
+                      aria-label="Telephone"
+                      placeholder="Telephone"
+                      autocomplete="tel"
+                      inputmode="tel"
+                      fluid
+                    />
+                    <input
+                      neuralInput
+                      type="url"
+                      aria-label="URL"
+                      placeholder="URL"
+                      autocomplete="url"
+                      inputmode="url"
+                      fluid
+                    />
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="sizes" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Visual sizes
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code class="font-mono text-blue-500">inputSize</code> controls
+                visual density without hijacking the native HTML
+                <code class="font-mono text-blue-500">size</code> attribute.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="sizes.html"
+                  language="html"
+                  [code]="sizeCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div
+                    preview-content
+                    class="flex flex-wrap items-center justify-center gap-4"
+                  >
+                    <input
+                      neuralInput
+                      inputSize="small"
+                      aria-label="Small input"
+                      placeholder="Small"
+                    />
+                    <input
+                      neuralInput
+                      inputSize="medium"
+                      aria-label="Medium input"
+                      placeholder="Medium"
+                    />
+                    <input
+                      neuralInput
+                      inputSize="large"
+                      aria-label="Large input"
+                      placeholder="Large"
+                    />
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="variants" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Visual variants
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Outlined is explicit; filled creates a quieter surface while
+                preserving the same focus and validation contract.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="variants.html"
+                  language="html"
+                  [code]="variantCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="grid w-full gap-4 sm:grid-cols-2">
+                    <input
+                      neuralInput
+                      variant="outlined"
+                      aria-label="Outlined input"
+                      placeholder="Outlined"
+                      fluid
+                    />
+                    <input
+                      neuralInput
+                      variant="filled"
+                      aria-label="Filled input"
+                      placeholder="Filled"
+                      fluid
+                    />
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Native states
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Readonly values remain selectable and submitted. Disabled
+                controls leave form submission. Invalid state is exposed only
+                when the application declares it.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="states.html"
+                  language="html"
+                  [code]="stateCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="grid w-full gap-4 sm:grid-cols-2">
+                    <input
+                      neuralInput
+                      value="Available"
+                      aria-label="Available input"
+                      fluid
+                    />
+                    <input
+                      neuralInput
+                      value="Visible, not editable"
+                      aria-label="Readonly input"
+                      readonly
+                      fluid
+                    />
+                    <input
+                      neuralInput
+                      value="Unavailable"
+                      aria-label="Disabled input"
+                      disabled
+                      fluid
+                    />
+                    <div class="grid gap-1.5">
+                      <input
+                        neuralInput
+                        value="Invalid value"
+                        aria-label="Invalid input"
+                        aria-invalid="true"
+                        aria-describedby="site-value-error"
+                        fluid
+                      />
+                      <small
+                        id="site-value-error"
+                        class="text-xs font-semibold text-red-500"
+                        >Enter a valid value.</small
+                      >
+                    </div>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Angular Forms integration
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The directive stays on the native control, so it needs no custom
+                ControlValueAccessor. Template-driven Forms, Reactive Forms and
+                Signal Forms all bind through Angular's own native input
+                accessors.
+              </p>
+              <div class="mt-6 grid gap-6">
+                <code-view
+                  fileName="ng-model-example.ts"
+                  language="typescript"
+                  [code]="ngModelCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div
+                    preview-content
+                    class="mx-auto grid w-full max-w-md gap-2"
+                  >
+                    <label for="site-ng-model" class="text-sm font-bold"
+                      >NgModel</label
+                    >
+                    <input
+                      neuralInput
+                      id="site-ng-model"
+                      name="templateValue"
+                      [(ngModel)]="templateValue"
+                      fluid
+                    />
+                    <output
+                      class="text-xs text-[var(--site-text-muted)]"
+                      aria-live="polite"
+                      >Model value: {{ templateValue }}</output
+                    >
+                  </div>
+                </code-view>
+
+                <code-view
+                  fileName="reactive-forms-example.ts"
+                  language="typescript"
+                  [code]="reactiveFormsCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div
+                    preview-content
+                    class="mx-auto grid w-full max-w-md gap-2"
+                  >
+                    <label for="site-reactive-form" class="text-sm font-bold"
+                      >Reactive Forms</label
+                    >
+                    <input
+                      neuralInput
+                      id="site-reactive-form"
+                      [formControl]="reactiveControl"
+                      fluid
+                    />
+                    <output
+                      class="text-xs text-[var(--site-text-muted)]"
+                      aria-live="polite"
+                      >Control value: {{ reactiveControl.value }}</output
+                    >
+                  </div>
+                </code-view>
+
+                <code-view
+                  fileName="signal-forms-example.ts"
+                  language="typescript"
+                  [code]="signalFormsCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="mx-auto w-full max-w-md">
+                    <neural-field controlId="site-signal-form" fluid>
+                      <label neuralFieldLabel for="site-signal-form"
+                        >Signal Forms</label
+                      >
+                      <input neuralInput [formField]="inputForm.signalValue" />
+                      <small neuralFieldHint
+                        >Signal value: {{ model().signalValue }}</small
+                      >
+                    </neural-field>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="fluid" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Fluid width
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The default follows native inline sizing. Fluid fills its
+                available container and can also inherit from Neural Field.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="fluid.html"
+                  language="html"
+                  [code]="fluidCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="w-full">
+                    <input
+                      neuralInput
+                      fluid
+                      type="search"
+                      aria-label="Fluid search"
+                      placeholder="Full width"
+                    />
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Unstyled and direct classes
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                There is no
+                <code class="font-mono text-blue-500">inputClass</code>: the
+                host is already the native input. Normal class bindings work
+                directly, while unstyled removes every NeuralNg visual class.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="unstyled.html"
+                  language="html"
+                  [code]="unstyledCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="w-full max-w-lg">
+                    <input
+                      neuralInput
+                      unstyled
+                      class="w-full rounded-xl border-2 border-cyan-500/35 bg-slate-950 px-4 py-3 font-mono text-cyan-100 placeholder:text-cyan-700 focus:border-cyan-400 focus:outline-none focus:ring-4 focus:ring-cyan-400/15"
+                      placeholder="Consumer-owned input"
+                    />
+                  </div>
+                </code-view>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                INPUT
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Accessibility
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                Native semantics are the foundation; NeuralInput never replaces
+                the browser's control contract.
+              </p>
+            </header>
+            <div class="grid gap-10 pt-10">
+              <section id="naming" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  Accessible naming
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Use a native label, Neural Field label or another valid
+                  accessible name. Placeholder text is never a label
+                  replacement.
+                </p>
+              </section>
+              <section id="descriptions" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  Hints and errors
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Connect hints and correction text with
+                  <code class="font-mono text-blue-500">aria-describedby</code>.
+                  Apply
+                  <code class="font-mono text-blue-500"
+                    >aria-invalid="true"</code
+                  >
+                  only when an error should be announced.
+                </p>
+              </section>
+              <section id="input-purpose" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  Input purpose
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Correct <code class="font-mono text-blue-500">type</code>,
+                  <code class="font-mono text-blue-500">autocomplete</code>,
+                  <code class="font-mono text-blue-500">inputmode</code> and
+                  <code class="font-mono text-blue-500">enterkeyhint</code>
+                  values improve autofill, cognition and mobile keyboard choice.
+                </p>
+              </section>
+              <section id="a11y-states" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  State semantics
+                </h2>
+                <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                  @for (item of [['Disabled', 'Unavailable, unfocusable and
+                  excluded from form submission.'], ['Readonly', 'Focusable,
+                  selectable and included in form submission.'], ['Required',
+                  'Use the native required attribute and a visible
+                  indication.'], ['Focus', 'Focus-visible treatment remains
+                  keyboard discoverable and respects reduced motion.']]; track
+                  item[0]) {
+                  <div
+                    class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl"
+                  >
+                    <h3 class="font-extrabold">{{ item[0] }}</h3>
+                    <p
+                      class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                    >
+                      {{ item[1] }}
+                    </p>
+                  </div>
+                  }
+                </div>
+              </section>
+            </div>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                INPUT
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">API</h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                A deliberately small directive API layered on the complete
+                native HTMLInputElement contract.
+              </p>
+            </header>
+            <section id="directive" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">Directive</h2>
+              <div
+                class="mt-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl sm:flex sm:items-center sm:gap-8"
+              >
+                <code class="font-mono font-bold text-blue-500"
+                  >NeuralInput</code
+                ><code class="mt-2 block font-mono text-sm sm:mt-0"
+                  >input[neuralInput]</code
+                >
+                <p
+                  class="mt-2 text-sm text-[var(--site-text-soft)] sm:ml-auto sm:mt-0"
+                >
+                  exportAs: neuralInput
+                </p>
+              </div>
+            </section>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">Inputs</h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] backdrop-blur-xl"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase tracking-wider text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (item of inputs; track item[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{ item[0] }}
+                      </td>
+                      <td
+                        class="p-4 font-mono text-xs text-[var(--site-text-soft)]"
+                      >
+                        {{ item[1] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="input-group-api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">InputGroup</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Optional visual composition around the unchanged native input.
+              </p>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                @for (item of groupInputs; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-mono font-bold text-blue-500"
+                    >{{ item[0] }}</code
+                  >
+                  <span
+                    class="ml-3 font-mono text-xs text-[var(--site-text-muted)]"
+                    >{{ item[1] }}</span
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[3] }} Default: <code>{{ item[2] }}</code>
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">Methods</h2>
+              <div class="mt-4 grid gap-3">
+                @for (method of methods; track method[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl sm:grid sm:grid-cols-[7rem_15rem_1fr] sm:gap-4"
+                >
+                  <code class="font-mono font-bold text-blue-500"
+                    >{{ method[0] }}</code
+                  ><code class="mt-2 text-xs sm:mt-0">{{ method[1] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)] sm:mt-0">
+                    {{ method[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="native-api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Native API remains public
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Attributes such as type, name, value, autocomplete, inputmode,
+                minlength, maxlength, pattern, required, readonly and disabled
+                stay on the input. Listen to native
+                <code class="font-mono text-blue-500">input</code>,
+                <code class="font-mono text-blue-500">change</code>,
+                <code class="font-mono text-blue-500">focus</code> and
+                <code class="font-mono text-blue-500">blur</code> events without
+                NeuralNg aliases.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                INPUT
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Design tokens
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                Every styled state is token-driven; structural behavior remains
+                stable in custom themes.
+              </p>
+            </header>
+            <section id="tokens" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Design tokens
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Override tokens locally, at a product boundary or through a
+                generated Neural theme.
+              </p>
+              <site-design-token-list class="mt-6 block" [tokens]="tokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

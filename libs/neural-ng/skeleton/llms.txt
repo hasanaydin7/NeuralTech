@@ -1,0 +1,14 @@
+# NeuralNg Skeleton AI context
+
+- Import NeuralSkeleton only from `@neural-ng/core/skeleton`.
+- SkeletonComponent is a deprecated compatibility alias; never generate it in new code.
+- Skeleton is decorative and always uses `aria-hidden="true"`.
+- Put `aria-busy` on the surrounding region. Do not add live-region semantics
+  to each placeholder.
+- Use LoadingOverlay when loading must block interaction.
+- shape accepts rectangle, rounded, or circle. Circle dimensions come from size.
+- animation accepts pulse, wave, or none and respects reduced motion.
+- width, height, size, and borderRadius accept CSS length strings.
+- Set unstyled for headless rendering. Structural root/effect hooks and explicit
+  dimensions remain; NeuralNg visual classes are removed.
+- classes has typed root and effect slots. skeletonClass targets the root.

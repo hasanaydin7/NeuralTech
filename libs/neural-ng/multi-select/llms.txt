@@ -1,0 +1,19 @@
+NeuralNg MultiSelect AI context
+
+- Import canonical NeuralMultiSelect from @neural-ng/core/multi-select.
+- Never generate the deprecated MultiSelectComponent compatibility alias.
+- MultiSelect implements FormValueControl<readonly TValue[]>.
+- Bind immutable arrays with `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`; do not add a ControlValueAccessor wrapper.
+- Programmatic writes and reset update the value model without selectionChange.
+- Readonly remains enabled and focusable, exposes aria-readonly, may open for inspection, and blocks option, chip, clear, and select-all mutations.
+- Bind options and configure optionLabel, optionValue, optionDisabled, optionGroup, and filterBy. Nested paths are supported.
+- display defaults to chip; comma is the compact label mode.
+- Local filtering is the default. In remote mode, listen to filterChange and ignore stale requestId values.
+- selectionLimit caps committed values. maxSelectedLabels collapses comma labels into selectedItemsLabel.
+- The popup uses the shared top-layer Popover and always matches the trigger width.
+- Keyboard: Arrow keys move, Enter/Space toggles, Home/End jump, Escape closes.
+- Enable fixed-height virtualization with virtualScroll. Configure virtualItemSize, virtualScrollHeight, and virtualOverscan. Grouped lists intentionally use full rendering because variable-height group headers cannot share the fixed-row geometry.
+- Select and MultiSelect share nested-path option resolution, locale-aware filter matching, enabled-option navigation, and typeahead primitives from @neural-ng/core.
+- Use selectionChange as the main user value event. selected, removed, cleared, and selectAllChange are semantic helpers.
+- unstyled removes NeuralNg visual base classes but preserves structural hooks, behavior, and ARIA.
+- Typed templates: neuralMultiSelectOption, neuralMultiSelectValue, neuralMultiSelectGroup, neuralMultiSelectHeader, neuralMultiSelectFooter, neuralMultiSelectEmpty, and neuralMultiSelectLoading.

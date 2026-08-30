@@ -1,0 +1,52 @@
+.message-api-docs-page {
+  max-width: 58rem;
+}
+
+.message-demo-surface {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+}
+
+.message-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.message-state-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.message-state-list li {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.65rem 0.75rem;
+  background: var(--neural-color-surface-hover);
+  border-radius: 0.5rem;
+}
+
+.message-state-list code {
+  font-size: 0.72rem;
+}
+
+.message-state-list .message-state-empty {
+  display: block;
+  color: var(--neural-color-text-muted);
+}
+
+@media (max-width: 42rem) {
+  .message-state-list li {
+    grid-template-columns: 1fr;
+  }
+}

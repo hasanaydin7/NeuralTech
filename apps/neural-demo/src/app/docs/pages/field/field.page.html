@@ -1,0 +1,97 @@
+<article class="docs-page field-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Field</h1>
+    <p>
+      Accessible label, hint, error, and control-state composition without
+      taking validation ownership away from the form schema.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="validation">
+    <h2>Signal Forms validation</h2>
+    <div class="field-demo-surface">
+      <neural-field
+        controlId="docs-work-email"
+        required
+        fluid
+        [invalid]="
+          profileForm.email().touched() && profileForm.email().invalid()
+        "
+      >
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Work email</label>
+        <input
+          neuralInput
+          type="email"
+          autocomplete="email"
+          placeholder="developer@neural.ng"
+          [formField]="profileForm.email"
+        />
+        <small neuralFieldHint>Used for account notifications.</small>
+        @if (profileForm.email().touched() && profileForm.email().invalid()) {
+        <small neuralFieldError>
+          {{ profileForm.email().errors()[0]?.message }}
+        </small>
+        }
+      </neural-field>
+      <output class="demo-status"
+        >Model: {{ profile().email || 'empty' }}</output
+      >
+    </div>
+    <app-code-example
+      label="Field composition"
+      language="html"
+      [code]="basicCode"
+    />
+  </section>
+
+  <section id="states">
+    <h2>Inherited states</h2>
+    <div class="field-demo-surface field-state-grid">
+      <neural-field controlId="docs-pending" pending fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Workspace</label>
+        <input neuralInput value="neural-team" />
+        <small neuralFieldHint>Checking availability.</small>
+      </neural-field>
+      <neural-field controlId="docs-readonly" readonly fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Account ID</label>
+        <input neuralInput value="usr_neural_001" />
+      </neural-field>
+      <neural-field controlId="docs-disabled" disabled fluid>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel>Legacy region</label>
+        <input neuralInput value="Unavailable" />
+      </neural-field>
+    </div>
+  </section>
+
+  <section id="headless">
+    <h2>Headless native control bridge</h2>
+    <div class="field-demo-surface">
+      <neural-field controlId="docs-field-note" unstyled>
+        <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+        <label neuralFieldLabel class="docs-field-label">Deployment note</label>
+        <textarea
+          neuralFieldControl
+          class="docs-field-control"
+          rows="3"
+        ></textarea>
+        <small neuralFieldHint class="docs-field-hint">
+          IDs and aria-describedby remain connected.
+        </small>
+      </neural-field>
+    </div>
+  </section>
+</article>

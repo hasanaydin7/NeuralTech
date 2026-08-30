@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "presets": [
+    {
+      "id": "futuristic",
+      "stability": "experimental",
+      "quality": {
+        "status": "preview",
+        "minimumPrimarySurfaceContrast": 3,
+        "allowedDiagnosticCodes": [
+          "contrast.primary.light",
+          "contrast.primary.dark"
+        ]
+      },
+      "sourceHash": "d1ca6b066337f08d67396aa26a5110792da97dd57f96f4465e581b4aa4dcab21",
+      "contractTokens": 1469,
+      "diagnostics": [],
+      "artifacts": {
+        "cssBytes": 119804,
+        "cssSha256": "755d20262d7987ad2c209d450b929a3ce28a56681cde83cd166881d8a91fa352",
+        "tokensBytes": 173938,
+        "tokensSha256": "2398eb41a0921e6b20df409d119f47b53f28d9a7c526b2b8e99ef1b1f9976706",
+        "reportSha256": "62bb94ff24e33093ef2afb59f3abe61cc10f92f63a12ddb9336a3c360d013862"
+      }
+    },
+    {
+      "id": "glass",
+      "stability": "experimental",
+      "quality": {
+        "status": "preview",
+        "minimumPrimarySurfaceContrast": 3,
+        "allowedDiagnosticCodes": [
+          "contrast.primary.light",
+          "contrast.primary.dark"
+        ]
+      },
+      "sourceHash": "4bb1a1f5a885aae87af00b0f63d2d3522261ab21ab32d858bfa2c080e579882f",
+      "contractTokens": 1469,
+      "diagnostics": [],
+      "artifacts": {
+        "cssBytes": 113238,
+        "cssSha256": "44e1cb2979ecd8e1a00865f7e4c08ab31aaa57f88b6197ba6637df4291b3650a",
+        "tokensBytes": 171402,
+        "tokensSha256": "ea73055b8435d0937b41a30a5c5bf806bacdd201785cb16cd484a8e18c6537f2",
+        "reportSha256": "698a4349e11d2d54e2232b1efad6134a35e5fea7fbc64a46c100edbb775c9bfd"
+      }
+    },
+    {
+      "id": "mist",
+      "stability": "experimental",
+      "quality": {
+        "status": "preview",
+        "minimumPrimarySurfaceContrast": 3,
+        "allowedDiagnosticCodes": []
+      },
+      "sourceHash": "87c5b63a3f2fe8e30298aeb9e59eaf4e2d37b054e523aac4eb061c16ce88ed33",
+      "contractTokens": 1469,
+      "diagnostics": [],
+      "artifacts": {
+        "cssBytes": 102054,
+        "cssSha256": "f5a2934693556765938fdd429683c43b9ee1858713cd498374ddde0bc17941c8",
+        "tokensBytes": 171902,
+        "tokensSha256": "b5453b15d5848d69dc4e40411ea688a5c1950316831607e2506a8e808f211843",
+        "reportSha256": "89a20e2ac33ef10625371af2cc9d5b7db1d27d00cc5f94d7f1455ea446f5617b"
+      }
+    },
+    {
+      "id": "neutral",
+      "stability": "stable",
+      "quality": {
+        "status": "release",
+        "minimumPrimarySurfaceContrast": 3,
+        "allowedDiagnosticCodes": []
+      },
+      "sourceHash": "76ee2a54a020f28722cbfcd6f880f5f276bdebb377d2b9b4fc97894d30d8ce14",
+      "contractTokens": 1469,
+      "diagnostics": [],
+      "artifacts": {
+        "cssBytes": 91321,
+        "cssSha256": "1169df7b54a95b627f0e070d33c83d3c6a18b4565c4eb6d2d26bfe855da2e03e",
+        "tokensBytes": 168344,
+        "tokensSha256": "b655365e8e543ec96491e66a6a5b17aae4b83825417bf9f86b6d9b8dab62dcbe",
+        "reportSha256": "5a099c89ad43f44f44b8c88eef5edf890c688d3fcf2cba27e8a02246ca20bebf"
+      }
+    }
+  ]
+}

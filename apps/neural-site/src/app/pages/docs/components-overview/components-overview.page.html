@@ -1,0 +1,97 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <header
+    class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+  >
+    <div
+      aria-hidden="true"
+      class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_20%,transparent)] blur-[85px]"
+    ></div>
+    <div class="relative max-w-3xl">
+      <span
+        class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+        >COMPONENTS</span
+      >
+      <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+        Choose the right primitive
+      </h1>
+      <p
+        class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+      >
+        Search by component, category, package entry point or the problem you
+        need to solve. Every result links to interactive behavior,
+        accessibility, API and token documentation.
+      </p>
+    </div>
+  </header>
+
+  <section class="pt-10" aria-labelledby="component-search-title">
+    <h2 id="component-search-title" class="sr-only">Search components</h2>
+    <label
+      class="block max-w-xl text-sm font-black"
+      for="component-catalog-search"
+      >Search the catalog</label
+    >
+    <div class="mt-2 max-w-xl">
+      <neural-input-group startIcon="nt nt-search" fluid>
+        <input
+          id="component-catalog-search"
+          neuralInput
+          type="search"
+          autocomplete="off"
+          placeholder="Table, forms, overlay, @neural-ng/core/..."
+          [value]="query()"
+          (input)="updateQuery($event)"
+        />
+      </neural-input-group>
+    </div>
+    <p class="mt-3 text-sm text-[var(--site-text-muted)]">
+      {{ filteredComponents().length }} of {{ components.length }} components
+    </p>
+  </section>
+
+  @if (filteredComponents().length) {
+  <section
+    class="grid gap-4 pt-8 sm:grid-cols-2 xl:grid-cols-3"
+    aria-label="Component catalog"
+  >
+    @for (item of filteredComponents(); track item.route) {
+    <a
+      [routerLink]="item.route"
+      class="group flex min-h-48 cursor-pointer flex-col rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 transition duration-200 hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--neural-color-primary)_45%,var(--site-border))] hover:shadow-[0_18px_42px_rgba(15,23,42,.09)]"
+    >
+      <div class="flex items-center justify-between gap-3">
+        <span
+          class="rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_11%,transparent)] px-2.5 py-1 text-[.62rem] font-black uppercase tracking-[.14em] text-[var(--neural-color-primary)]"
+          >{{ item.category }}</span
+        ><span
+          class="text-[.62rem] font-black uppercase tracking-[.12em] text-emerald-600 dark:text-emerald-400"
+          >Beta</span
+        >
+      </div>
+      <h2 class="mt-5 text-xl font-black">{{ item.name }}</h2>
+      <p class="mt-2 flex-1 text-sm leading-6 text-[var(--site-text-soft)]">
+        {{ item.summary }}
+      </p>
+      <code class="mt-5 break-all text-[.7rem] text-[var(--site-text-muted)]"
+        >{{ item.entryPoint }}</code
+      >
+      <span
+        class="mt-4 inline-flex items-center gap-2 text-sm font-black text-[var(--neural-color-primary)]"
+        >Open documentation
+        <i class="nt nt-arrow-right transition group-hover:translate-x-1"></i
+      ></span>
+    </a>
+    }
+  </section>
+  } @else {
+  <section
+    class="mt-8 rounded-2xl border border-dashed border-[var(--site-border)] bg-[var(--site-surface)] p-10 text-center"
+  >
+    <i class="nt nt-search text-3xl text-[var(--site-text-muted)]"></i>
+    <h2 class="mt-4 text-xl font-black">No matching component</h2>
+    <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+      Try a task such as “upload”, “hierarchy”, “feedback” or “forms”.
+    </p>
+  </section>
+  }
+</article>

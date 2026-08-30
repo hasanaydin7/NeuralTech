@@ -1,0 +1,768 @@
+/* Experimental NeuralNg Glass theme. Token values may change before stability. */
+:where([data-neural-theme='glass']) {
+  color-scheme: light;
+  --neural-color-primary-50: #eef2ff;
+  --neural-color-primary-100: #e0e7ff;
+  --neural-color-primary-200: #c7d2fe;
+  --neural-color-primary-300: #a5b4fc;
+  --neural-color-primary-400: #818cf8;
+  --neural-color-primary-500: #6366f1;
+  --neural-color-primary-600: #4f46e5;
+  --neural-color-primary-700: #4338ca;
+  --neural-color-primary-800: #3730a3;
+  --neural-color-primary-900: #312e81;
+  --neural-color-primary-950: #1e1b4b;
+  --neural-color-primary: var(--neural-color-primary-600);
+  --neural-color-primary-hover: var(--neural-color-primary-700);
+  --neural-color-primary-active: var(--neural-color-primary-800);
+  --neural-color-primary-contrast: var(--neural-color-surface-0);
+  --neural-color-surface: rgb(255 255 255 / 0.64);
+  --neural-color-surface-hover: rgb(255 255 255 / 0.76);
+  --neural-color-surface-active: rgb(255 255 255 / 0.88);
+  --neural-color-text: #0f172a;
+  --neural-color-text-strong: #020617;
+  --neural-color-text-muted: #475569;
+  --neural-color-border: rgb(255 255 255 / 0.72);
+  --neural-color-border-hover: rgb(148 163 184 / 0.72);
+  --neural-color-border-active: rgb(100 116 139 / 0.8);
+  --neural-color-focus: var(--neural-color-primary);
+  --neural-color-shadow: 15 23 42;
+  --neural-button-primary-color: var(--neural-color-primary-contrast);
+  --neural-button-primary-background: var(--neural-color-primary);
+  --neural-button-primary-background-hover: var(--neural-color-primary-hover);
+  --neural-button-primary-background-active: var(--neural-color-primary-active);
+  --neural-button-primary-border-color: var(--neural-color-primary);
+  --neural-button-primary-border-color-hover: var(--neural-color-primary-hover);
+  --neural-button-primary-border-color-active: var(
+    --neural-color-primary-active
+  );
+  --neural-button-secondary-color: var(--neural-color-text);
+  --neural-button-secondary-background: var(--neural-color-surface-active);
+  --neural-button-secondary-background-hover: var(--neural-color-surface-hover);
+  --neural-button-secondary-background-active: var(
+    --neural-color-surface-active
+  );
+  --neural-button-secondary-border-color: var(--neural-color-border);
+  --neural-button-secondary-border-color-hover: var(
+    --neural-color-border-hover
+  );
+  --neural-button-secondary-border-color-active: var(
+    --neural-color-border-active
+  );
+  --neural-badge-primary-color: var(--neural-color-primary-contrast);
+  --neural-badge-primary-background: var(--neural-color-primary);
+  --neural-badge-secondary-color: var(--neural-color-text);
+  --neural-badge-secondary-background: var(--neural-color-surface-active);
+  --neural-badge-secondary-border-color: var(--neural-color-border);
+  --neural-tag-primary-color: var(--neural-color-primary-contrast);
+  --neural-tag-primary-background: var(--neural-color-primary);
+  --neural-tag-primary-border-color: var(--neural-color-primary);
+  --neural-tag-secondary-color: var(--neural-color-text);
+  --neural-tag-secondary-background: var(--neural-color-surface-active);
+  --neural-tag-secondary-border-color: var(--neural-color-border);
+  --neural-progress-bar-primary-background: var(--neural-color-primary);
+  --neural-progress-bar-secondary-background: var(--neural-color-text-muted);
+  --neural-progress-spinner-primary-color: var(--neural-color-primary);
+  --neural-progress-spinner-secondary-color: var(--neural-color-text-muted);
+  --neural-toast-primary-color: var(--neural-color-primary);
+  --neural-toast-secondary-color: var(--neural-color-text-muted);
+
+  --neural-button-background: var(--neural-color-surface);
+  --neural-button-background-hover: var(--neural-color-surface-hover);
+  --neural-button-background-active: var(--neural-color-surface-active);
+  --neural-button-color: var(--neural-color-text);
+  --neural-button-color-hover: var(--neural-color-text);
+  --neural-button-color-active: var(--neural-color-text-strong);
+  --neural-button-border-width: 1px;
+  --neural-button-border-style: solid;
+  --neural-button-border-color: var(--neural-color-border);
+  --neural-button-border-color-hover: var(--neural-color-border-hover);
+  --neural-button-border-color-active: var(--neural-color-border-active);
+  --neural-button-radius: 1rem;
+  --neural-button-group-radius: 1rem;
+  --neural-button-raised-shadow: 0 14px 38px
+    rgb(var(--neural-color-shadow) / 0.22);
+  --neural-button-raised-shadow-hover: 0 18px 46px
+    rgb(var(--neural-color-shadow) / 0.28);
+  --neural-button-shadow: 0 8px 32px rgb(var(--neural-color-shadow) / 0.16);
+  --neural-button-shadow-hover: 0 10px 36px
+    rgb(var(--neural-color-shadow) / 0.22);
+  --neural-button-shadow-active: 0 6px 24px
+    rgb(var(--neural-color-shadow) / 0.18);
+  --neural-button-backdrop-filter: blur(16px) saturate(140%);
+  --neural-button-padding: 0.5rem 0.875rem;
+  --neural-button-gap: 0.5rem;
+  --neural-button-font-family: inherit;
+  --neural-button-font-size: 0.875rem;
+  --neural-button-font-weight: 600;
+  --neural-button-line-height: 1.25;
+  --neural-button-transition:
+    background-color 180ms ease, border-color 180ms ease, color 180ms ease,
+    box-shadow 180ms ease;
+  --neural-button-focus-ring: 2px solid var(--neural-color-focus);
+  --neural-button-focus-ring-offset: 3px;
+  --neural-button-disabled-opacity: 0.5;
+
+  --neural-card-color: var(--neural-color-text);
+  --neural-card-background: rgb(255 255 255 / 72%);
+  --neural-card-border: 1px solid var(--neural-color-border);
+  --neural-card-radius: 1rem;
+  --neural-card-shadow: 0 16px 40px rgb(var(--neural-color-shadow) / 20%);
+  --neural-card-backdrop-filter: blur(18px) saturate(140%);
+  --neural-card-body-color: var(--neural-color-text-muted);
+
+  --neural-input-background: var(--neural-color-surface);
+  --neural-input-background-hover: var(--neural-color-surface-hover);
+  --neural-input-background-focus: var(--neural-color-surface-active);
+  --neural-input-border: 1px solid var(--neural-color-border);
+  --neural-input-border-color-hover: var(--neural-color-border-hover);
+  --neural-input-border-color-focus: var(--neural-color-focus);
+  --neural-input-radius: 0.75rem;
+  --neural-input-shadow: 0 8px 24px rgb(var(--neural-color-shadow) / 0.12);
+  --neural-input-shadow-hover: 0 10px 28px
+    rgb(var(--neural-color-shadow) / 0.16);
+  --neural-input-backdrop-filter: blur(16px) saturate(140%);
+  --neural-input-focus-ring-offset: 3px;
+  --neural-input-transition:
+    color 180ms ease, background-color 180ms ease, border-color 180ms ease,
+    box-shadow 180ms ease;
+
+  --neural-field-gap: 0.5rem;
+  --neural-field-label-color: var(--neural-color-text-strong);
+  --neural-field-required-color: var(--neural-color-error);
+  --neural-field-hint-color: var(--neural-color-text-muted);
+  --neural-field-error-color: var(--neural-color-error);
+
+  --neural-accordion-panel-background: var(--neural-color-surface);
+  --neural-accordion-panel-background-expanded: var(
+    --neural-color-surface-hover
+  );
+  --neural-accordion-panel-border: 1px solid var(--neural-color-border);
+  --neural-accordion-panel-border-color-expanded: var(
+    --neural-color-border-hover
+  );
+  --neural-accordion-panel-radius: 1rem;
+  --neural-accordion-panel-shadow: 0 8px 24px
+    rgb(var(--neural-color-shadow) / 0.1);
+  --neural-accordion-panel-shadow-expanded: 0 16px 40px
+    rgb(var(--neural-color-shadow) / 0.18);
+  --neural-accordion-trigger-background-hover: var(
+    --neural-color-surface-hover
+  );
+  --neural-accordion-trigger-background-expanded: transparent;
+  --neural-accordion-focus-ring-offset: 3px;
+
+  --neural-dialog-background: var(--neural-color-surface);
+  --neural-dialog-border: 1px solid var(--neural-color-border);
+  --neural-dialog-radius: 1.25rem;
+  --neural-dialog-shadow: 0 28px 80px rgb(var(--neural-color-shadow) / 0.28);
+  --neural-dialog-backdrop: rgb(var(--neural-color-shadow) / 0.4);
+  --neural-dialog-backdrop-filter: blur(8px);
+  --neural-dialog-header-border: 0;
+  --neural-dialog-footer-border: 0;
+  --neural-dialog-close-background-hover: var(--neural-color-surface-hover);
+  --neural-dialog-close-radius: 999px;
+  --neural-dialog-focus-ring-offset: 3px;
+  --neural-dialog-enter-scale: 0.96;
+  --neural-dialog-enter-duration: 220ms;
+  --neural-dialog-leave-duration: 170ms;
+  --neural-confirm-dialog-icon-size: 2.75rem;
+  --neural-confirm-dialog-title-size: 1.15rem;
+  --neural-confirm-dialog-header-padding: 1.35rem 3.75rem 0.8rem 1.35rem;
+  --neural-confirm-dialog-body-padding: 0.55rem 1.35rem 1.35rem;
+  --neural-confirm-dialog-footer-padding: 1rem 1.35rem 1.35rem;
+  --neural-toolbar-background: rgb(255 255 255 / 0.56);
+  --neural-toolbar-border: 1px solid rgb(255 255 255 / 0.78);
+  --neural-toolbar-radius: 1rem;
+  --neural-toolbar-shadow: 0 14px 36px rgb(var(--neural-color-shadow) / 0.14);
+  --neural-toolbar-backdrop-filter: blur(18px) saturate(145%);
+  --neural-tree-background: rgb(255 255 255 / 0.56);
+  --neural-tree-border: 1px solid rgb(255 255 255 / 0.78);
+  --neural-tree-radius: 1rem;
+  --neural-tree-shadow: 0 18px 44px rgb(var(--neural-color-shadow) / 0.14);
+  --neural-tree-node-radius: 0.65rem;
+  --neural-tree-node-background-selected: color-mix(
+    in srgb,
+    var(--neural-color-primary) 16%,
+    transparent
+  );
+  --neural-tree-node-background-partial: rgb(255 255 255 / 0.34);
+  --neural-tree-checkbox-radius: 0.4rem;
+  --neural-tree-match-color: color-mix(
+    in srgb,
+    var(--neural-color-primary) 72%,
+    white
+  );
+
+  /* Experimental DatePicker token override. */
+  --neural-date-picker-background: rgb(255 255 255 / 0.56);
+  --neural-date-picker-border: 1px solid rgb(255 255 255 / 0.78);
+  --neural-date-picker-radius: 0.875rem;
+  --neural-date-picker-shadow: 0 10px 30px
+    rgb(var(--neural-color-shadow) / 0.12);
+  --neural-date-picker-panel-background: rgb(255 255 255 / 0.68);
+  --neural-date-picker-panel-border: 1px solid rgb(255 255 255 / 0.8);
+  --neural-date-picker-panel-radius: 1rem;
+  --neural-date-picker-panel-shadow: 0 24px 64px
+    rgb(var(--neural-color-shadow) / 0.22);
+  --neural-date-picker-panel-backdrop-filter: blur(18px) saturate(145%);
+  --neural-date-picker-day-radius: 0.65rem;
+  --neural-date-picker-day-background-hover: rgb(255 255 255 / 0.72);
+  --neural-date-picker-focus-ring: 2px solid var(--neural-color-focus);
+
+  --neural-checkbox-background: var(--neural-color-surface);
+  --neural-checkbox-background-hover: var(--neural-color-surface-hover);
+  --neural-checkbox-background-checked: var(--neural-color-focus);
+  --neural-checkbox-border: 1px solid var(--neural-color-border);
+  --neural-checkbox-border-color-hover: var(--neural-color-border-hover);
+  --neural-checkbox-border-color-checked: var(--neural-color-focus);
+  --neural-checkbox-radius: 0.5rem;
+  --neural-checkbox-shadow: 0 6px 18px rgb(var(--neural-color-shadow) / 0.12);
+  --neural-checkbox-shadow-focus: 0 0 0 4px
+    color-mix(in srgb, var(--neural-color-focus) 18%, transparent);
+  --neural-checkbox-focus-ring-offset: 3px;
+
+  --neural-input-number-background: var(--neural-color-surface);
+  --neural-input-number-border: 1px solid var(--neural-color-border);
+  --neural-input-number-border-color-focus: var(--neural-color-focus);
+  --neural-input-number-radius: 0.75rem;
+  --neural-input-number-shadow: 0 8px 24px
+    rgb(var(--neural-color-shadow) / 0.12);
+  --neural-input-number-shadow-focus: 0 10px 30px
+    rgb(var(--neural-color-shadow) / 0.18);
+  --neural-input-number-focus-ring-offset: 3px;
+  --neural-input-number-button-background: var(--neural-color-surface-hover);
+  --neural-input-number-button-background-hover: var(
+    --neural-color-surface-active
+  );
+
+  --neural-password-background: var(--neural-color-surface);
+  --neural-password-border: 1px solid var(--neural-color-border);
+  --neural-password-border-color-focus: var(--neural-color-focus);
+  --neural-password-radius: 0.75rem;
+  --neural-password-shadow: 0 8px 24px rgb(var(--neural-color-shadow) / 0.12);
+  --neural-password-shadow-focus: 0 10px 30px
+    rgb(var(--neural-color-shadow) / 0.18);
+  --neural-password-focus-ring-offset: 3px;
+  --neural-password-toggle-background-hover: var(--neural-color-surface-hover);
+
+  --neural-file-upload-dropzone-background: var(--neural-color-surface);
+  --neural-file-upload-dropzone-border: 1px dashed var(--neural-color-border);
+  --neural-file-upload-radius: 0.9rem;
+  --neural-file-upload-shadow: 0 8px 24px rgb(var(--neural-color-shadow) / 0.12);
+  --neural-file-upload-shadow-active: 0 10px 30px
+    rgb(var(--neural-color-shadow) / 0.18);
+  --neural-file-upload-button-radius: 0.65rem;
+  --neural-file-upload-file-item-background: var(--neural-color-surface);
+  --neural-file-upload-file-item-radius: 0.65rem;
+  --neural-file-upload-focus-ring-offset: 3px;
+
+  --neural-input-otp-background: var(--neural-color-surface);
+  --neural-input-otp-background-hover: var(--neural-color-surface-hover);
+  --neural-input-otp-border: 1px solid var(--neural-color-border);
+  --neural-input-otp-radius: 0.75rem;
+  --neural-input-otp-shadow: 0 8px 24px rgb(var(--neural-color-shadow) / 0.12);
+  --neural-input-otp-shadow-focus: 0 10px 30px
+    rgb(var(--neural-color-shadow) / 0.18);
+  --neural-input-otp-focus-ring-offset: 3px;
+
+  --neural-input-mask-background: var(--neural-color-surface);
+  --neural-input-mask-background-hover: var(--neural-color-surface-hover);
+  --neural-input-mask-background-focus: var(--neural-color-surface-active);
+  --neural-input-mask-border: 1px solid var(--neural-color-border);
+  --neural-input-mask-radius: 0.75rem;
+  --neural-input-mask-shadow: 0 8px 24px rgb(var(--neural-color-shadow) / 0.12);
+  --neural-input-mask-shadow-focus: 0 10px 30px
+    rgb(var(--neural-color-shadow) / 0.18);
+  --neural-input-mask-focus-ring-offset: 3px;
+
+  --neural-slider-track-background: color-mix(
+    in srgb,
+    var(--neural-color-surface-active) 78%,
+    transparent
+  );
+  --neural-slider-thumb-border: 2px solid rgb(255 255 255 / 0.72);
+  --neural-slider-thumb-radius: 50%;
+  --neural-slider-thumb-shadow: 0 6px 18px
+    rgb(var(--neural-color-shadow) / 0.24);
+
+  --neural-textarea-background: var(--neural-color-surface);
+  --neural-textarea-background-hover: var(--neural-color-surface-hover);
+  --neural-textarea-background-focus: var(--neural-color-surface-active);
+  --neural-textarea-border: 1px solid var(--neural-color-border);
+  --neural-textarea-border-color-hover: var(--neural-color-border-hover);
+  --neural-textarea-border-color-focus: var(--neural-color-focus);
+  --neural-textarea-radius: 0.75rem;
+  --neural-textarea-shadow: 0 8px 24px rgb(var(--neural-color-shadow) / 0.12);
+  --neural-textarea-shadow-hover: 0 10px 28px
+    rgb(var(--neural-color-shadow) / 0.16);
+  --neural-textarea-shadow-focus: 0 10px 30px
+    rgb(var(--neural-color-shadow) / 0.18);
+  --neural-textarea-backdrop-filter: blur(16px) saturate(140%);
+  --neural-textarea-focus-ring-offset: 3px;
+
+  --neural-select-background: var(--neural-color-surface);
+  --neural-select-background-hover: var(--neural-color-surface-hover);
+  --neural-select-border: 1px solid var(--neural-color-border);
+  --neural-select-border-color-hover: var(--neural-color-border-hover);
+  --neural-select-border-color-focus: var(--neural-color-focus);
+  --neural-select-radius: 0.75rem;
+  --neural-select-shadow: 0 8px 24px rgb(var(--neural-color-shadow) / 0.12);
+  --neural-select-shadow-focus: 0 10px 30px
+    rgb(var(--neural-color-shadow) / 0.18);
+  --neural-select-focus-ring-offset: 3px;
+  --neural-select-panel-background: var(--neural-color-surface-active);
+  --neural-select-panel-border: 1px solid var(--neural-color-border);
+  --neural-select-panel-radius: 1rem;
+  --neural-select-panel-shadow: 0 18px 48px
+    rgb(var(--neural-color-shadow) / 0.24);
+  --neural-select-option-radius: 0.625rem;
+  --neural-select-option-background-active: var(--neural-color-surface-hover);
+  --neural-select-option-background-selected: color-mix(
+    in srgb,
+    var(--neural-color-focus) 12%,
+    var(--neural-color-surface-active)
+  );
+
+  --neural-auto-complete-background: var(--neural-color-surface);
+  --neural-auto-complete-border: 1px solid var(--neural-color-border);
+  --neural-auto-complete-radius: 0.75rem;
+  --neural-auto-complete-shadow: 0 8px 24px
+    rgb(var(--neural-color-shadow) / 0.12);
+  --neural-auto-complete-panel-background: var(--neural-color-surface-active);
+  --neural-auto-complete-panel-radius: 1rem;
+  --neural-auto-complete-backdrop-filter: blur(16px) saturate(140%);
+  --neural-multi-select-background: var(--neural-color-surface);
+  --neural-multi-select-border: 1px solid var(--neural-color-border);
+  --neural-multi-select-radius: 0.75rem;
+  --neural-multi-select-panel-background: var(--neural-color-surface-active);
+
+  --neural-radio-background: var(--neural-color-surface);
+  --neural-radio-background-hover: var(--neural-color-surface-hover);
+  --neural-radio-border: 1px solid var(--neural-color-border);
+  --neural-radio-border-color-hover: var(--neural-color-border-hover);
+  --neural-radio-border-color-selected: var(--neural-color-focus);
+  --neural-radio-color-selected: var(--neural-color-focus);
+  --neural-radio-shadow: 0 6px 18px rgb(var(--neural-color-shadow) / 0.12);
+  --neural-radio-shadow-focus: 0 0 0 4px
+    color-mix(in srgb, var(--neural-color-focus) 18%, transparent);
+  --neural-radio-focus-ring-offset: 3px;
+
+  --neural-switch-track-background: var(--neural-color-surface);
+  --neural-switch-track-background-hover: var(--neural-color-surface-hover);
+  --neural-switch-track-background-checked: var(--neural-color-focus);
+  --neural-switch-track-background-checked-hover: color-mix(
+    in srgb,
+    var(--neural-color-focus) 82%,
+    var(--neural-color-surface)
+  );
+  --neural-switch-track-border: 1px solid var(--neural-color-border);
+  --neural-switch-track-border-color-hover: var(--neural-color-border-hover);
+  --neural-switch-track-border-color-checked: var(--neural-color-focus);
+  --neural-switch-track-radius: 999px;
+  --neural-switch-track-shadow: 0 8px 22px
+    rgb(var(--neural-color-shadow) / 0.14);
+  --neural-switch-track-shadow-focus: 0 0 0 4px
+    color-mix(in srgb, var(--neural-color-focus) 18%, transparent);
+  --neural-switch-thumb-background: var(--neural-color-text-muted);
+  --neural-switch-thumb-background-checked: #ffffff;
+  --neural-switch-thumb-shadow: 0 3px 10px
+    rgb(var(--neural-color-shadow) / 0.24);
+  --neural-switch-focus-ring-offset: 3px;
+
+  --neural-paginator-button-background: var(--neural-color-surface);
+  --neural-paginator-button-border: 1px solid var(--neural-color-border);
+  --neural-paginator-button-radius: 0.75rem;
+  --neural-paginator-button-background-hover: var(--neural-color-surface-hover);
+  --neural-paginator-button-border-color-hover: var(
+    --neural-color-border-hover
+  );
+  --neural-paginator-active-color: var(--neural-color-text-strong);
+  --neural-paginator-active-background: var(--neural-color-surface-active);
+  --neural-paginator-active-border-color: var(--neural-color-border-hover);
+  --neural-paginator-report-color: var(--neural-color-text-muted);
+  --neural-paginator-focus-ring: 2px solid var(--neural-color-focus);
+  --neural-paginator-focus-ring-offset: 3px;
+
+  --neural-tabs-color: var(--neural-color-text);
+  --neural-tabs-list-border: 1px solid var(--neural-color-border);
+  --neural-tab-color: var(--neural-color-text-muted);
+  --neural-tab-background: transparent;
+  --neural-tab-radius: 0.75rem 0.75rem 0 0;
+  --neural-tab-color-hover: var(--neural-color-text);
+  --neural-tab-background-hover: var(--neural-color-surface-hover);
+  --neural-tab-active-color: var(--neural-color-text-strong);
+  --neural-tab-active-background: var(--neural-color-surface-active);
+  --neural-tab-active-border-color: var(--neural-color-border-hover);
+  --neural-tab-focus-ring: 2px solid var(--neural-color-focus);
+  --neural-tab-focus-ring-offset: 3px;
+  --neural-tab-indicator-color: var(--neural-color-focus);
+  --neural-tab-indicator-duration: 220ms;
+  --neural-tab-panel-enter-duration: 220ms;
+  --neural-tab-panel-enter-distance: 0.375rem;
+  --neural-tab-transition:
+    color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+
+  --neural-tooltip-color: var(--neural-color-text-strong);
+  --neural-tooltip-background: var(--neural-color-surface-active);
+  --neural-tooltip-border: 1px solid var(--neural-color-border);
+  --neural-tooltip-radius: 0.75rem;
+  --neural-tooltip-shadow: 0 12px 32px rgb(var(--neural-color-shadow) / 0.22);
+  --neural-tooltip-enter-duration: 160ms;
+  --neural-tooltip-leave-duration: 120ms;
+  --neural-tooltip-enter-scale: 0.94;
+
+  --neural-panel-menu-background: var(--neural-color-surface);
+  --neural-panel-menu-border: 1px solid var(--neural-color-border);
+  --neural-panel-menu-radius: 1rem;
+  --neural-panel-menu-shadow: 0 16px 44px rgb(var(--neural-color-shadow) / 0.18);
+  --neural-panel-menu-item-background-hover: var(--neural-color-surface-hover);
+  --neural-panel-menu-item-background-expanded: var(
+    --neural-color-surface-active
+  );
+  --neural-panel-menu-item-radius: 0.75rem;
+  --neural-panel-menu-focus-ring-offset: -3px;
+  --neural-panel-menu-badge-background: color-mix(
+    in srgb,
+    var(--neural-color-focus) 14%,
+    transparent
+  );
+  --neural-panel-menu-group-duration: 220ms;
+  --neural-panel-menu-separator-color: var(--neural-color-border);
+
+  --neural-menu-background: var(--neural-color-surface);
+  --neural-menu-border: 1px solid var(--neural-color-border);
+  --neural-menu-radius: 1rem;
+  --neural-menu-shadow: 0 18px 48px rgb(var(--neural-color-shadow) / 0.24);
+  --neural-menu-item-background-active: var(--neural-color-surface-hover);
+  --neural-menu-item-radius: 0.75rem;
+  --neural-menu-focus-ring-offset: -3px;
+  --neural-menu-badge-background: color-mix(
+    in srgb,
+    var(--neural-color-focus) 14%,
+    transparent
+  );
+  --neural-menu-enter-distance: -0.375rem;
+  --neural-menu-enter-scale: 0.96;
+  --neural-menu-enter-duration: 200ms;
+  --neural-menu-leave-duration: 150ms;
+
+  --neural-popover-background: var(--neural-color-surface);
+  --neural-popover-border: 1px solid var(--neural-color-border);
+  --neural-popover-radius: 1rem;
+  --neural-popover-shadow: 0 22px 56px rgb(var(--neural-color-shadow) / 0.26);
+  --neural-popover-arrow-background: var(--neural-color-surface);
+  --neural-popover-arrow-border: 1px solid var(--neural-color-border);
+  --neural-popover-enter-distance: -0.375rem;
+  --neural-popover-enter-scale: 0.96;
+  --neural-popover-enter-duration: 200ms;
+  --neural-popover-leave-duration: 150ms;
+
+  --neural-breadcrumb-background: var(--neural-color-surface);
+  --neural-breadcrumb-border: 1px solid var(--neural-color-border);
+  --neural-breadcrumb-radius: 1rem;
+  --neural-breadcrumb-shadow: 0 12px 36px rgb(var(--neural-color-shadow) / 0.14);
+  --neural-breadcrumb-item-background-active: var(--neural-color-surface-hover);
+  --neural-breadcrumb-item-radius: 0.625rem;
+
+  --neural-avatar-background: color-mix(
+    in srgb,
+    var(--neural-color-surface) 78%,
+    transparent
+  );
+  --neural-avatar-border: 1px solid var(--neural-color-border);
+  --neural-avatar-shadow: 0 10px 24px rgb(var(--neural-color-shadow) / 0.16);
+  --neural-avatar-rounded-radius: 1rem;
+  --neural-avatar-fallback-background: color-mix(
+    in srgb,
+    var(--neural-color-focus) 14%,
+    transparent
+  );
+  --neural-avatar-group-ring-color: color-mix(
+    in srgb,
+    var(--neural-color-surface) 78%,
+    transparent
+  );
+  --neural-avatar-group-overflow-background: color-mix(
+    in srgb,
+    var(--neural-color-surface-active) 82%,
+    transparent
+  );
+
+  --neural-badge-radius: 0.75rem;
+  --neural-badge-border: 1px solid var(--neural-color-border);
+  --neural-badge-shadow: 0 6px 18px rgb(var(--neural-color-shadow) / 0.16);
+  --neural-badge-neutral-background: var(--neural-color-surface-active);
+  --neural-badge-info-background: color-mix(
+    in srgb,
+    var(--neural-color-info) 82%,
+    transparent
+  );
+  --neural-badge-success-background: color-mix(
+    in srgb,
+    var(--neural-color-success) 82%,
+    transparent
+  );
+
+  --neural-tag-radius: 0.75rem;
+  --neural-tag-border: 1px solid var(--neural-color-border);
+  --neural-tag-shadow: 0 6px 18px rgb(var(--neural-color-shadow) / 0.12);
+  --neural-tag-neutral-background: var(--neural-color-surface-active);
+  --neural-tag-remove-background-hover: rgb(255 255 255 / 18%);
+
+  --neural-progress-bar-track-background: color-mix(
+    in srgb,
+    var(--neural-color-surface-active) 68%,
+    transparent
+  );
+  --neural-progress-bar-track-border: 1px solid var(--neural-color-border);
+  --neural-progress-bar-radius: 1rem;
+  --neural-progress-bar-shadow:
+    inset 0 1px 2px rgb(var(--neural-color-shadow) / 0.12),
+    0 6px 18px rgb(var(--neural-color-shadow) / 0.08);
+  --neural-progress-bar-buffer-background: color-mix(
+    in srgb,
+    var(--neural-color-focus) 22%,
+    transparent
+  );
+  --neural-progress-bar-stripe-color: rgb(255 255 255 / 0.26);
+
+  --neural-progress-spinner-track-color: color-mix(
+    in srgb,
+    var(--neural-color-text-muted) 22%,
+    transparent
+  );
+  --neural-progress-spinner-indicator-color: var(--neural-color-focus);
+  --neural-progress-spinner-filter: drop-shadow(
+    0 4px 8px rgb(var(--neural-color-shadow) / 0.18)
+  );
+  --neural-progress-spinner-label-font-weight: 650;
+
+  --neural-loading-overlay-backdrop: rgb(15 23 42 / 0.28);
+  --neural-loading-overlay-backdrop-filter: blur(10px) saturate(130%);
+  --neural-loading-overlay-panel-background: color-mix(
+    in srgb,
+    var(--neural-color-surface) 82%,
+    transparent
+  );
+  --neural-loading-overlay-panel-border: 1px solid var(--neural-color-border);
+  --neural-loading-overlay-panel-radius: 1rem;
+  --neural-loading-overlay-panel-shadow: 0 20px 56px
+    rgb(var(--neural-color-shadow) / 0.24);
+  --neural-loading-overlay-enter-duration: 220ms;
+  --neural-loading-overlay-enter-distance: 0.375rem;
+  --neural-loading-overlay-enter-scale: 0.96;
+
+  --neural-toast-message-color: var(--neural-color-text);
+  --neural-toast-message-background: rgb(255 255 255 / 78%);
+  --neural-toast-message-border-color: var(--neural-color-border);
+  --neural-toast-message-radius: 1rem;
+  --neural-toast-message-shadow: 0 16px 40px
+    rgb(var(--neural-color-shadow) / 24%);
+  --neural-toast-message-backdrop-filter: blur(18px) saturate(140%);
+  --neural-toast-detail-color: var(--neural-color-text-muted);
+  --neural-toast-close-color: var(--neural-color-text-muted);
+  --neural-toast-close-color-hover: var(--neural-color-text);
+  --neural-toast-close-background-hover: rgb(148 163 184 / 16%);
+  --neural-toast-focus-ring: 2px solid var(--neural-color-focus);
+  --neural-toast-progress-track: rgb(148 163 184 / 20%);
+  --neural-toast-enter-duration: 220ms;
+  --neural-toast-leave-duration: 170ms;
+
+  --neural-message-background: rgb(255 255 255 / 78%);
+  --neural-message-border-color: var(--neural-color-border);
+  --neural-message-radius: 1rem;
+  --neural-message-shadow: 0 14px 36px rgb(var(--neural-color-shadow) / 16%);
+  --neural-message-enter-duration: 220ms;
+  --neural-message-leave-duration: 170ms;
+
+  --neural-divider-color: color-mix(
+    in srgb,
+    var(--neural-color-border) 76%,
+    transparent
+  );
+  --neural-divider-content-color: var(--neural-color-text);
+  --neural-divider-content-gap: 0.875rem;
+  --neural-divider-font-weight: 700;
+
+  --neural-meter-group-track-background: color-mix(
+    in srgb,
+    var(--neural-color-surface-active) 64%,
+    transparent
+  );
+  --neural-meter-group-track-border: 1px solid var(--neural-color-border);
+  --neural-meter-group-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 18%),
+    0 8px 24px rgb(var(--neural-color-shadow) / 12%);
+  --neural-meter-group-radius: 999px;
+  --neural-meter-group-color-1: #60a5fa;
+  --neural-meter-group-color-2: #c084fc;
+  --neural-meter-group-color-3: #22d3ee;
+  --neural-meter-group-color-4: #4ade80;
+  --neural-meter-group-color-5: #fbbf24;
+  --neural-meter-group-color-6: #fb7185;
+  --neural-meter-group-marker-size: 0.6875rem;
+  --neural-meter-group-transition-duration: 240ms;
+
+  --neural-table-background: color-mix(
+    in srgb,
+    var(--neural-color-surface) 78%,
+    transparent
+  );
+  --neural-table-header-background: color-mix(
+    in srgb,
+    var(--neural-color-surface-hover) 70%,
+    transparent
+  );
+  --neural-table-filter-background: color-mix(
+    in srgb,
+    var(--neural-color-surface-hover) 62%,
+    transparent
+  );
+  --neural-table-filter-control-background: color-mix(
+    in srgb,
+    var(--neural-color-surface) 72%,
+    transparent
+  );
+  --neural-table-filter-control-border: 1px solid var(--neural-color-border);
+  --neural-table-resize-handle-color: color-mix(
+    in srgb,
+    var(--neural-color-border-hover) 72%,
+    transparent
+  );
+  --neural-table-resize-handle-active-color: var(--neural-color-focus);
+  --neural-table-reorder-handle-color: var(--neural-color-text-muted);
+  --neural-table-reorder-handle-active-color: var(--neural-color-focus);
+  --neural-table-drop-indicator-color: var(--neural-color-focus);
+  --neural-table-group-header-background: color-mix(
+    in srgb,
+    var(--neural-color-surface-hover) 72%,
+    transparent
+  );
+  --neural-table-group-header-color: var(--neural-color-text-strong);
+  --neural-table-footer-background: color-mix(
+    in srgb,
+    var(--neural-color-surface-hover) 68%,
+    transparent
+  );
+  --neural-table-footer-color: var(--neural-color-text-strong);
+  --neural-table-footer-group-background: color-mix(
+    in srgb,
+    var(--neural-color-surface) 78%,
+    transparent
+  );
+  --neural-table-footer-group-color: var(--neural-color-text-muted);
+  --neural-table-sticky-background: color-mix(
+    in srgb,
+    var(--neural-color-surface) 92%,
+    transparent
+  );
+  --neural-table-sticky-stripe-background: color-mix(
+    in srgb,
+    var(--neural-color-surface-hover) 58%,
+    var(--neural-color-surface)
+  );
+  --neural-table-expansion-content-background: color-mix(
+    in srgb,
+    var(--neural-color-surface-hover) 72%,
+    transparent
+  );
+  --neural-table-expansion-background-hover: var(--neural-color-surface-hover);
+  --neural-table-control-background: color-mix(
+    in srgb,
+    var(--neural-color-surface) 84%,
+    transparent
+  );
+  --neural-table-control-border: 1px solid var(--neural-color-border-hover);
+  --neural-table-sorted-color: var(--neural-color-focus);
+  --neural-table-selected-indicator: var(--neural-color-focus);
+  --neural-table-editable-hover-background: color-mix(
+    in srgb,
+    var(--neural-color-focus) 8%,
+    transparent
+  );
+  --neural-table-editing-background: color-mix(
+    in srgb,
+    var(--neural-color-surface) 82%,
+    transparent
+  );
+  --neural-table-editing-row-background: color-mix(
+    in srgb,
+    var(--neural-color-focus) 7%,
+    transparent
+  );
+  --neural-table-editing-border-color: var(--neural-color-focus);
+  --neural-table-row-focus-color: color-mix(
+    in srgb,
+    var(--neural-color-focus) 74%,
+    transparent
+  );
+  --neural-table-disabled-row-opacity: 0.48;
+  --neural-table-sort-icon-color: var(--neural-color-text-muted);
+  --neural-table-scrollbar-color: var(--neural-color-border-hover);
+  --neural-table-shadow: 0 0.75rem 2rem rgb(var(--neural-color-shadow) / 12%);
+  --neural-table-radius: 1rem;
+  --neural-table-filter-control-radius: 0.65rem;
+  --neural-table-border: 1px solid var(--neural-color-border);
+
+  --neural-skeleton-background: color-mix(
+    in srgb,
+    var(--neural-color-surface-active) 72%,
+    transparent
+  );
+  --neural-skeleton-rectangle-radius: 0.5rem;
+  --neural-skeleton-rounded-radius: 1rem;
+  --neural-skeleton-wave-background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 52%),
+    transparent
+  );
+  --neural-skeleton-wave-duration: 1.8s;
+}
+
+:where([data-neural-theme='glass']) {
+  --neural-drawer-background: color-mix(
+    in srgb,
+    var(--neural-color-surface) 88%,
+    transparent
+  );
+  --neural-drawer-backdrop: rgb(15 23 42 / 0.38);
+  --neural-drawer-backdrop-filter: blur(8px);
+  --neural-drawer-shadow: 0 0 3rem rgb(var(--neural-color-shadow) / 0.22);
+}
+
+:where(
+  [data-neural-mode='dark'][data-neural-theme='glass'],
+  [data-neural-mode='dark'] [data-neural-theme='glass']
+) {
+  color-scheme: dark;
+  --neural-color-primary: var(--neural-color-primary-300);
+  --neural-color-primary-hover: var(--neural-color-primary-200);
+  --neural-color-primary-active: var(--neural-color-primary-100);
+  --neural-color-primary-contrast: var(--neural-color-primary-950);
+  --neural-color-surface: rgb(255 255 255 / 0.12);
+  --neural-color-surface-hover: rgb(255 255 255 / 0.18);
+  --neural-color-surface-active: rgb(255 255 255 / 0.24);
+  --neural-color-text: #f8fafc;
+  --neural-color-text-strong: #ffffff;
+  --neural-color-text-muted: #cbd5e1;
+  --neural-color-border: rgb(255 255 255 / 0.24);
+  --neural-color-border-hover: rgb(255 255 255 / 0.38);
+  --neural-color-border-active: rgb(255 255 255 / 0.48);
+  --neural-color-focus: var(--neural-color-primary);
+  --neural-color-shadow: 2 6 23;
+  --neural-toast-message-background: rgb(15 23 42 / 72%);
+  --neural-message-background: rgb(15 23 42 / 72%);
+  --neural-toast-close-background-hover: rgb(255 255 255 / 12%);
+  --neural-toast-progress-track: rgb(255 255 255 / 12%);
+  --neural-card-background: rgb(15 23 42 / 72%);
+  --neural-input-background: rgb(15 23 42 / 72%);
+  --neural-input-background-focus: rgb(15 23 42 / 82%);
+  --neural-date-picker-background: rgb(15 23 42 / 72%);
+  --neural-date-picker-panel-background: rgb(15 23 42 / 78%);
+  --neural-date-picker-panel-border: 1px solid rgb(255 255 255 / 24%);
+}
+
+:where([data-neural-theme='glass'], [data-neural-theme='glass'] *) {
+}

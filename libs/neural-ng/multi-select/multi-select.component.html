@@ -1,0 +1,397 @@
+<div
+  [class]="rootClass()"
+  [attr.data-disabled]="effectiveDisabled() ? 'true' : null"
+  [attr.data-readonly]="effectiveReadonly() ? 'true' : null"
+  [attr.data-invalid]="effectiveInvalid() ? 'true' : null"
+  [attr.data-required]="effectiveRequired() ? 'true' : null"
+  [attr.data-loading]="loading() ? 'true' : null"
+  [attr.data-pending]="pending() || field?.pending() ? 'true' : null"
+  [attr.data-touched]="touched() ? 'true' : null"
+  [attr.data-dirty]="dirty() ? 'true' : null"
+  [attr.data-open]="open() ? 'true' : null"
+>
+  <div
+    #anchor
+    [id]="controlId()"
+    [class]="triggerClass()"
+    role="combobox"
+    [attr.tabindex]="effectiveDisabled() ? -1 : 0"
+    [attr.aria-label]="ariaLabel() || resolvedDropdownLabel()"
+    [attr.aria-controls]="listboxId"
+    [attr.aria-expanded]="open()"
+    [attr.aria-activedescendant]="activeDescendant()"
+    [attr.aria-disabled]="effectiveDisabled()"
+    [attr.aria-readonly]="effectiveReadonly()"
+    [attr.aria-required]="effectiveRequired()"
+    [attr.aria-invalid]="effectiveInvalid()"
+    [attr.aria-busy]="
+      loading() || pending() || field?.pending() ? 'true' : null
+    "
+    (click)="togglePanel($event)"
+    (blur)="handleTriggerBlur()"
+    (keydown)="handleTriggerKeydown($event)"
+  >
+    <div
+      [class]="
+        classFor(
+          'value',
+          'neural-multi-select-value-root',
+          'neural-multi-select-value-base'
+        )
+      "
+    >
+      @if (!currentValue().length) {
+        <span
+          [class]="
+            classFor(
+              'placeholder',
+              'neural-multi-select-placeholder-root',
+              'neural-multi-select-placeholder-base'
+            )
+          "
+          >{{ resolvedPlaceholder() }}</span
+        >
+      } @else if (valueTemplate(); as template) {
+        <ng-container
+          [ngTemplateOutlet]="template.templateRef"
+          [ngTemplateOutletContext]="valueTemplateContext()"
+        />
+      } @else if (display() === 'chip') {
+        <span
+          [class]="
+            classFor(
+              'chipList',
+              'neural-multi-select-chip-list-root',
+              'neural-multi-select-chip-list-base'
+            )
+          "
+        >
+          @for (option of selectedOptions(); track option.id) {
+            <span
+              [class]="
+                classFor(
+                  'chip',
+                  'neural-multi-select-chip-root',
+                  'neural-multi-select-chip-base'
+                )
+              "
+            >
+              <span
+                [class]="
+                  classFor(
+                    'chipLabel',
+                    'neural-multi-select-chip-label-root',
+                    'neural-multi-select-chip-label-base'
+                  )
+                "
+                >{{ option.label }}</span
+              >
+              <button
+                type="button"
+                [class]="
+                  classFor(
+                    'chipRemove',
+                    'neural-multi-select-chip-remove-root',
+                    'neural-multi-select-chip-remove-base'
+                  )
+                "
+                [disabled]="effectiveDisabled() || effectiveReadonly()"
+                [attr.aria-label]="
+                  replaceLabel(resolvedRemoveLabel(), option.label)
+                "
+                (click)="removeOption(option, $event)"
+              >
+                <i
+                  [class]="iconClass(removeIconClass())"
+                  aria-hidden="true"
+                ></i>
+              </button>
+            </span>
+          }
+        </span>
+      } @else {
+        <span>{{ summaryLabel() }}</span>
+      }
+    </div>
+
+    @if (clearable() && currentValue().length) {
+      <button
+        type="button"
+        [class]="
+          classFor(
+            'clearButton',
+            'neural-multi-select-clear-root',
+            'neural-multi-select-clear-base'
+          )
+        "
+        [disabled]="effectiveDisabled() || effectiveReadonly()"
+        [attr.aria-label]="resolvedClearLabel()"
+        (click)="clear($event)"
+      >
+        <i [class]="iconClass(clearIconClass())" aria-hidden="true"></i>
+      </button>
+    }
+    <span
+      [class]="
+        classFor(
+          'dropdownButton',
+          'neural-multi-select-dropdown-root',
+          'neural-multi-select-dropdown-base'
+        )
+      "
+      aria-hidden="true"
+    >
+      <i [class]="iconClass(dropdownIconClass())"></i>
+    </span>
+  </div>
+</div>
+
+<neural-popover
+  #optionsPopover
+  position="bottom-start"
+  [offset]="4"
+  [matchTriggerWidth]="true"
+  [restoreFocus]="true"
+  [role]="null"
+  [unstyled]="effectiveUnstyled()"
+  [classes]="{ content: panelClass() }"
+  (opened)="handleOpened()"
+  (closed)="handleClosed()"
+>
+  @if (headerTemplate(); as template) {
+    <div [class]="headerClass()">
+      <ng-container [ngTemplateOutlet]="template.templateRef" />
+    </div>
+  } @else if (filter() || showToggleAll()) {
+    <div [class]="headerClass()">
+      @if (showToggleAll()) {
+        <button
+          type="button"
+          [class]="
+            classFor(
+              'selectAll',
+              'neural-multi-select-select-all-root',
+              'neural-multi-select-select-all-base'
+            )
+          "
+          [disabled]="effectiveDisabled() || effectiveReadonly()"
+          [attr.aria-label]="resolvedSelectAllLabel()"
+          [attr.aria-pressed]="allVisibleSelected()"
+          (click)="toggleAll($event)"
+        >
+          <span
+            [class]="
+              classFor(
+                'checkbox',
+                'neural-multi-select-checkbox-root',
+                'neural-multi-select-checkbox-base'
+              )
+            "
+            [attr.data-checked]="allVisibleSelected() ? 'true' : null"
+            [attr.data-indeterminate]="someVisibleSelected() ? 'true' : null"
+            aria-hidden="true"
+          >
+            @if (allVisibleSelected()) {
+              <i [class]="iconClass(checkIconClass())"></i>
+            } @else if (someVisibleSelected()) {
+              <span class="neural-multi-select-checkbox-indeterminate"></span>
+            }
+          </span>
+        </button>
+      }
+      @if (filter()) {
+        <label class="neural-multi-select-filter-wrap-root">
+          <i [class]="iconClass(searchIconClass())" aria-hidden="true"></i>
+          <input
+            #filterElement
+            type="search"
+            role="combobox"
+            aria-autocomplete="list"
+            autocomplete="off"
+            [class]="filterClass()"
+            [value]="filterValue()"
+            [placeholder]="resolvedFilterPlaceholder()"
+            [attr.aria-label]="resolvedFilterPlaceholder()"
+            [attr.aria-controls]="listboxId"
+            [attr.aria-expanded]="open()"
+            [attr.aria-activedescendant]="activeDescendant()"
+            (input)="updateFilter($event)"
+            (keydown)="handlePanelKeydown($event)"
+          />
+        </label>
+      }
+    </div>
+  }
+
+  @if (loading()) {
+    <div
+      role="status"
+      [class]="
+        classFor(
+          'loadingMessage',
+          'neural-multi-select-loading-root',
+          'neural-multi-select-loading-base'
+        )
+      "
+    >
+      @if (loadingTemplate(); as template) {
+        <ng-container
+          [ngTemplateOutlet]="template.templateRef"
+          [ngTemplateOutletContext]="{ $implicit: resolvedLoadingLabel() }"
+        />
+      } @else {
+        <i [class]="iconClass(loadingIconClass())" aria-hidden="true"></i>
+        {{ resolvedLoadingLabel() }}
+      }
+    </div>
+  } @else if (!visibleOptions().length) {
+    <div
+      [class]="
+        classFor(
+          'emptyMessage',
+          'neural-multi-select-empty-root',
+          'neural-multi-select-empty-base'
+        )
+      "
+    >
+      @if (emptyTemplate(); as template) {
+        <ng-container
+          [ngTemplateOutlet]="template.templateRef"
+          [ngTemplateOutletContext]="{ $implicit: resolvedEmptyLabel() }"
+        />
+      } @else {
+        {{ resolvedEmptyLabel() }}
+      }
+    </div>
+  } @else {
+    <div
+      #listElement
+      [id]="listboxId"
+      role="listbox"
+      tabindex="-1"
+      aria-multiselectable="true"
+      [class]="listClass()"
+      [attr.aria-label]="ariaLabel() || null"
+      [style.height.px]="virtualScroll() ? virtualScrollHeight() : null"
+      (keydown)="handlePanelKeydown($event)"
+      (scroll)="handleVirtualScroll($event)"
+    >
+      @if (effectiveVirtualScroll()) {
+        <div
+          class="neural-multi-select-virtual-spacer"
+          [style.height.px]="virtualRange().offsetBefore"
+          aria-hidden="true"
+        ></div>
+      }
+      @for (row of renderedOptions(); track row.option.id) {
+        @let option = row.option;
+        @let index = row.index;
+        @if (showGroup(index)) {
+          <div
+            role="presentation"
+            [class]="
+              classFor(
+                'group',
+                'neural-multi-select-group-root',
+                'neural-multi-select-group-base'
+              )
+            "
+          >
+            @if (groupTemplate(); as template) {
+              <ng-container
+                [ngTemplateOutlet]="template.templateRef"
+                [ngTemplateOutletContext]="groupTemplateContext(option.group)"
+              />
+            } @else {
+              {{ option.group }}
+            }
+          </div>
+        }
+        <div
+          [id]="option.id"
+          role="option"
+          tabindex="-1"
+          [class]="optionClass(option, index)"
+          [style.height.px]="
+            effectiveVirtualScroll() ? virtualItemSize() : null
+          "
+          [style.min-height.px]="
+            effectiveVirtualScroll() ? virtualItemSize() : null
+          "
+          [attr.aria-selected]="isSelected(option)"
+          [attr.aria-disabled]="
+            option.disabled || effectiveReadonly() ? 'true' : null
+          "
+          [attr.aria-posinset]="index + 1"
+          [attr.aria-setsize]="visibleOptions().length"
+          (pointerenter)="activate(index)"
+          (pointerdown)="$event.preventDefault()"
+          (click)="toggleOption(option, 'pointer')"
+          (keydown.enter)="
+            $event.stopPropagation(); toggleOption(option, 'keyboard')
+          "
+          (keydown.space)="
+            $event.preventDefault();
+            $event.stopPropagation();
+            toggleOption(option, 'keyboard')
+          "
+        >
+          <span
+            [class]="
+              classFor(
+                'checkbox',
+                'neural-multi-select-checkbox-root',
+                'neural-multi-select-checkbox-base'
+              )
+            "
+            [attr.data-checked]="isSelected(option) ? 'true' : null"
+            aria-hidden="true"
+          >
+            @if (isSelected(option)) {
+              <i [class]="iconClass(checkIconClass())"></i>
+            }
+          </span>
+          <span
+            [class]="
+              classFor(
+                'optionLabel',
+                'neural-multi-select-option-label-root',
+                'neural-multi-select-option-label-base'
+              )
+            "
+          >
+            @if (optionTemplate(); as template) {
+              <ng-container
+                [ngTemplateOutlet]="template.templateRef"
+                [ngTemplateOutletContext]="optionTemplateContext(option, index)"
+              />
+            } @else {
+              {{ option.label }}
+            }
+          </span>
+        </div>
+      }
+      @if (effectiveVirtualScroll()) {
+        <div
+          class="neural-multi-select-virtual-spacer"
+          [style.height.px]="virtualRange().offsetAfter"
+          aria-hidden="true"
+        ></div>
+      }
+    </div>
+  }
+
+  @if (footerTemplate(); as template) {
+    <div
+      [class]="
+        classFor(
+          'footer',
+          'neural-multi-select-footer-root',
+          'neural-multi-select-footer-base'
+        )
+      "
+    >
+      <ng-container [ngTemplateOutlet]="template.templateRef" />
+    </div>
+  }
+</neural-popover>

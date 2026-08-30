@@ -1,0 +1,734 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="drawer-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Drawer documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-layout-sidebar-right"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-violet-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-violet-500"
+                    >OVERLAY</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Drawer
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A native top-layer edge panel with logical placement,
+                  deterministic dismissal, focus restoration and independently
+                  composable sections.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    dialog</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>RTL
+                    logical edges</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+                    safe</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import only the standalone sections used by the template.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Basic composition</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Header and footer remain optional. The body owns independent
+                scrolling while the panel stays in the browser top layer.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="flex w-full justify-center">
+                  <neural-button
+                    label="Open settings"
+                    icon="nt nt-settings"
+                    severity="primary"
+                    (clicked)="settingsDrawer.show()"
+                  />
+                </div>
+              </code-view>
+              <neural-drawer
+                #settingsDrawer
+                ariaLabelledby="site-drawer-settings-title"
+                (closed)="recordClose($event)"
+              >
+                <neural-drawer-header
+                  ><div>
+                    <p class="text-xs font-black tracking-widest text-blue-500">
+                      WORKSPACE
+                    </p>
+                    <h2
+                      id="site-drawer-settings-title"
+                      class="mt-1 text-xl font-black"
+                    >
+                      Agent settings
+                    </h2>
+                  </div></neural-drawer-header
+                >
+                <neural-drawer-body
+                  ><p class="leading-7 text-[var(--site-text-soft)]">
+                    Configure the runtime, permissions and delivery policy for
+                    this workspace.
+                  </p>
+                  <button
+                    neuralDrawerInitialFocus
+                    type="button"
+                    class="mt-6 w-full cursor-pointer rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4 text-left font-bold"
+                  >
+                    General preferences</button
+                  ><button
+                    type="button"
+                    class="mt-3 w-full cursor-pointer rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4 text-left font-bold"
+                  >
+                    Agent permissions
+                  </button></neural-drawer-body
+                >
+                <neural-drawer-footer
+                  ><neural-button
+                    label="Cancel"
+                    outlined
+                    (clicked)="settingsDrawer.close()" /><neural-button
+                    label="Save"
+                    severity="primary"
+                    (clicked)="settingsDrawer.close('api', 'saved')"
+                /></neural-drawer-footer>
+              </neural-drawer>
+            </section>
+
+            <section id="positions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Logical positions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Start and end follow document direction. Top and bottom span the
+                viewport width using the same native lifecycle.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="positionsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap justify-center gap-3"
+                >
+                  <neural-button
+                    label="Start"
+                    icon="nt nt-arrow-right"
+                    outlined
+                    (clicked)="startDrawer.show()"
+                  /><neural-button
+                    label="End"
+                    icon="nt nt-arrow-left"
+                    outlined
+                    (clicked)="endDrawer.show()"
+                  /><neural-button
+                    label="Top"
+                    icon="nt nt-arrow-down"
+                    outlined
+                    (clicked)="topDrawer.show()"
+                  /><neural-button
+                    label="Bottom"
+                    icon="nt nt-arrow-up"
+                    outlined
+                    (clicked)="bottomDrawer.show()"
+                  />
+                </div>
+              </code-view>
+              <neural-drawer
+                #startDrawer
+                position="start"
+                ariaLabel="Start drawer"
+                ><neural-drawer-header
+                  ><h2 class="text-xl font-black">
+                    Logical start
+                  </h2></neural-drawer-header
+                ><neural-drawer-body
+                  >Mirrors to the right in RTL.</neural-drawer-body
+                ></neural-drawer
+              >
+              <neural-drawer #endDrawer position="end" ariaLabel="End drawer"
+                ><neural-drawer-header
+                  ><h2 class="text-xl font-black">
+                    Logical end
+                  </h2></neural-drawer-header
+                ><neural-drawer-body
+                  >Default application panel.</neural-drawer-body
+                ></neural-drawer
+              >
+              <neural-drawer #topDrawer position="top" ariaLabel="Top drawer"
+                ><neural-drawer-header
+                  ><h2 class="text-xl font-black">
+                    Top panel
+                  </h2></neural-drawer-header
+                ><neural-drawer-body
+                  >Viewport-wide contextual content.</neural-drawer-body
+                ></neural-drawer
+              >
+              <neural-drawer
+                #bottomDrawer
+                position="bottom"
+                ariaLabel="Bottom drawer"
+                ><neural-drawer-header
+                  ><h2 class="text-xl font-black">
+                    Bottom panel
+                  </h2></neural-drawer-header
+                ><neural-drawer-body
+                  >Touch-friendly action surface.</neural-drawer-body
+                ></neural-drawer
+              >
+            </section>
+
+            <section id="controlled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Controlled Signal state</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>open</code> is a model input, so one state source can
+                drive template and imperative interactions.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="controlledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full items-center justify-center gap-4"
+                >
+                  <neural-button
+                    label="Open controlled"
+                    severity="primary"
+                    (clicked)="controlledOpen.set(true)"
+                  /><span class="text-sm text-[var(--site-text-muted)]"
+                    >{{ controlledOpen() ? 'Open' : 'Closed' }}</span
+                  >
+                </div></code-view
+              >
+              <neural-drawer
+                [(open)]="controlledOpen"
+                ariaLabel="Controlled drawer"
+                ><neural-drawer-header
+                  ><h2 class="text-xl font-black">
+                    Controlled state
+                  </h2></neural-drawer-header
+                ><neural-drawer-body
+                  >The Signal model and native state remain
+                  synchronized.</neural-drawer-body
+                ><neural-drawer-footer
+                  ><neural-button
+                    label="Done"
+                    severity="primary"
+                    (clicked)="controlledOpen.set(false)" /></neural-drawer-footer
+              ></neural-drawer>
+            </section>
+
+            <section id="non-modal" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Non-modal panel</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Set <code>modal</code> false when the page must remain
+                interactive. The Popover top layer keeps the panel above the
+                topbar without making background content inert.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="nonModalCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="flex w-full justify-center">
+                  <neural-button
+                    label="Open task details"
+                    outlined
+                    (clicked)="nonModalOpen.set(true)"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="dismiss-policy" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Dismiss policy</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Escape and backdrop dismissal can be disabled independently. A
+                visible close path must always remain.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="policyCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="flex w-full justify-center">
+                  <neural-button
+                    label="Required decision"
+                    severity="primary"
+                    (clicked)="policyDrawer.show()"
+                  /></div
+              ></code-view>
+              <neural-drawer
+                #policyDrawer
+                [closeOnEscape]="false"
+                [dismissibleBackdrop]="false"
+                ariaLabelledby="site-policy-drawer-title"
+                ><neural-drawer-header
+                  ><h2 id="site-policy-drawer-title" class="text-xl font-black">
+                    Required decision
+                  </h2></neural-drawer-header
+                ><neural-drawer-body
+                  >Backdrop and Escape do not dismiss this
+                  workflow.</neural-drawer-body
+                ><neural-drawer-footer
+                  ><neural-button
+                    label="Complete"
+                    severity="primary"
+                    (clicked)="policyDrawer.close('api', 'complete')" /></neural-drawer-footer
+              ></neural-drawer>
+            </section>
+
+            <section id="lifecycle" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Lifecycle and close reasons</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>opened</code> confirms top-layer entry.
+                <code>closed</code> reports API, Escape, backdrop, close-button
+                or native intent.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="lifecycleCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-4"
+                >
+                  <neural-button
+                    label="Observe lifecycle"
+                    outlined
+                    (clicked)="lifecycleDrawer.show()"
+                  /><span class="text-sm font-bold text-blue-500"
+                    >{{ lifecycle() }}</span
+                  >
+                </div></code-view
+              >
+              <neural-drawer
+                #lifecycleDrawer
+                ariaLabel="Lifecycle drawer"
+                (opened)="lifecycle.set('Opened')"
+                (closed)="recordClose($event)"
+                ><neural-drawer-header
+                  ><h2 class="text-xl font-black">
+                    Lifecycle
+                  </h2></neural-drawer-header
+                ><neural-drawer-body
+                  >Last close: {{ lastClose() }}</neural-drawer-body
+                ></neural-drawer
+              >
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Headless mode retains native dialog behavior, placement, focus
+                and structural hooks while consumer classes own every visual
+                decision.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="flex w-full justify-center">
+                  <neural-button
+                    label="Open headless"
+                    severity="primary"
+                    (clicked)="headlessDrawer.show()"
+                  /></div
+              ></code-view>
+              <neural-drawer
+                #headlessDrawer
+                unstyled
+                [classes]="headlessClasses"
+                ariaLabel="Headless drawer"
+                ><neural-drawer-header
+                  ><h2 class="text-xl font-black">
+                    Consumer canvas
+                  </h2></neural-drawer-header
+                ><neural-drawer-body
+                  >Structure and native behavior remain
+                  library-owned.</neural-drawer-body
+                ><neural-drawer-footer
+                  ><button
+                    type="button"
+                    class="cursor-pointer rounded-xl bg-cyan-300 px-4 py-2 font-black text-slate-950"
+                    (click)="headlessDrawer.close()"
+                  >
+                    Done
+                  </button></neural-drawer-footer
+                ></neural-drawer
+              >
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Beta boundary</h2>
+              <div
+                class="mt-6 rounded-[1.5rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-6 leading-7 text-[var(--site-text-soft)]"
+              >
+                Drawer owns edge placement, native top-layer behavior, modal
+                policy, focus lifecycle and composition. Persistent application
+                sidebars, resizing and swipe gestures remain separate concerns.
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Native focus lifecycle</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Drawer builds on the native dialog top layer without global
+                keyboard listeners or synthetic focus traps.
+              </p>
+            </header>
+            <section id="native-semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Native semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Modal mode uses <code>showModal()</code>; non-modal mode uses
+                <code>show()</code>. Modal background content becomes inert
+                through the browser.
+              </p>
+            </section>
+            <section id="accessible-name" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Accessible name</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Prefer a visible heading connected through
+                <code>ariaLabelledby</code>. Use <code>ariaLabel</code> when no
+                visible title exists and <code>ariaDescribedby</code> for
+                supporting context.
+              </p>
+            </section>
+            <section id="focus-lifecycle" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Focus lifecycle</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>neuralDrawerInitialFocus</code> receives focus after
+                opening. The original trigger regains focus after every
+                completed close.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Escape follows <code>closeOnEscape</code>. Modal Tab containment
+                is native. Every blocked dismissal flow must expose an obvious
+                focusable close or completion action.
+              </p>
+            </section>
+            <section id="rtl" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">RTL positions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Start opens from the right and end from the left under RTL. Top
+                and bottom remain unchanged.
+              </p>
+            </section>
+            <section id="ssr" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">SSR and hydration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Server output remains a closed native dialog. Top-layer,
+                active-element and focus operations run only after browser
+                hydration.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC API
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Drawer contract</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                All runtime declarations follow the canonical
+                <code>NeuralDrawer*</code> naming standard.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[50rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-bold text-blue-500">
+                        <code>{{ item[0] }}</code>
+                      </td>
+                      <td class="p-4"><code>{{ item[1] }}</code></td>
+                      <td class="p-4"><code>{{ item[2] }}</code></td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Outputs</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of outputs; track item[0]) {
+                <div
+                  class="grid gap-2 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid-cols-[10rem_12rem_1fr]"
+                >
+                  <code class="font-bold text-blue-500">{{ item[0] }}</code
+                  ><code>{{ item[1] }}</code
+                  ><span class="text-sm text-[var(--site-text-soft)]"
+                    >{{ item[2] }}</span
+                  >
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="sections" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Sections</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[40rem] text-left text-sm">
+                  <tbody>
+                    @for (item of sections; track item[0]) {
+                    <tr
+                      class="border-b border-[var(--site-border)] last:border-0"
+                    >
+                      <td class="p-4 text-blue-500">
+                        <code>{{ item[0] }}</code>
+                      </td>
+                      <td class="p-4"><code>{{ item[1] }}</code></td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[2] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Class slots</h2>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                @for (item of classSlots; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Types</h2>
+              <div class="mt-6 space-y-3">
+                @for (item of publicTypes; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 font-mono text-sm text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="deprecated-aliases" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Deprecated aliases</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>DrawerComponent</code>, the old section component names
+                and <code>DrawerInitialFocusDirective</code> remain only for
+                compatibility. New code and generated output must use
+                <code>NeuralDrawer*</code>.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Drawer tokens</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Neutral defines the production reference surface. Glass and
+                Futuristic override the same stable contract.
+              </p>
+            </header>
+            <section id="surface-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Surface</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="surfaceTokens"
+              />
+            </section>
+            <section id="layout-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Layout</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="layoutTokens"
+              />
+            </section>
+            <section id="section-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Sections</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="sectionTokens"
+              />
+            </section>
+            <section id="motion-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Motion</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="motionTokens"
+              />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>
+
+<!-- Non-modal native dialogs are intentionally mounted outside the animated
+     documentation panel so fixed positioning resolves against the viewport. -->
+<neural-drawer
+  [(open)]="nonModalOpen"
+  [modal]="false"
+  position="end"
+  ariaLabel="Task details"
+>
+  <neural-drawer-header
+    ><h2 class="text-xl font-black">Task details</h2></neural-drawer-header
+  >
+  <neural-drawer-body
+    >The document remains interactive behind this panel.</neural-drawer-body
+  >
+  <neural-drawer-footer>
+    <neural-button
+      label="Close panel"
+      icon="nt nt-x"
+      severity="primary"
+      (clicked)="nonModalOpen.set(false)"
+    />
+  </neural-drawer-footer>
+</neural-drawer>

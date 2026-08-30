@@ -1,0 +1,40 @@
+# NeuralNg Paginator
+
+> Angular 22+ standalone Signal paginator at `@neural-ng/core/paginator`.
+
+## Rules
+
+- Import `NeuralPaginator` from `@neural-ng/core/paginator`.
+- `pageIndex` is zero-based and is a model input.
+- `pageSize` is a model input; use two-way binding when the selector is shown.
+- Page-size selection composes `NeuralSelect`; do not replace it with a native
+  `<select>` in generated examples or wrappers.
+- `totalItems` is the full collection size, not the visible item count.
+- `startIndex` is inclusive; `endIndex` is exclusive and safe for `slice()`.
+- `pageChange` is emitted only for user navigation or page-size changes.
+- The report and ARIA labels come from the active `NeuralLocaleService`.
+- Local `reportTemplate` and partial `labels` override the global locale.
+- Report placeholders are `{start}`, `{end}`, `{total}`, `{page}`, and
+  `{pageCount}`.
+- Keep the information report enabled unless equivalent context is provided.
+- Use `paginatorClass` for the internal nav and `classes` for typed part slots.
+- `unstyled` removes visual classes, not structure, behavior, or ARIA semantics.
+- Do not add a dependency from core to `@neural-ng/icons`.
+- Navigation icons use overridable Neural Icons class inputs.
+- Use `rounded` for circular controls and `outlined` for the borderless visual
+  variant; they can be combined and do not alter paginator behavior.
+
+## Canonical example
+
+```html
+<neural-paginator
+  [totalItems]="items().length"
+  [(pageIndex)]="pageIndex"
+  [(pageSize)]="pageSize"
+  [pageSizeOptions]="[10, 20, 50]"
+  (pageChange)="handlePageChange($event)"
+/>
+```
+
+Current-page buttons use `aria-current="page"`. Navigation uses native buttons;
+do not introduce tablist roles or custom arrow-key behavior.

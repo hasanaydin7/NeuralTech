@@ -1,0 +1,26 @@
+NeuralNg Badge rules
+
+- Import only from `@neural-ng/core/badge`.
+- Import `NeuralBadge` for `<neural-badge>` and `NeuralBadgeDirective` for `[neuralBadge]` from `@neural-ng/core/badge`.
+- Add the canonical symbol directly to the standalone consumer component's `imports` array.
+- Never generate the deprecated `BadgeComponent` or `BadgeDirective` aliases in new code.
+- Use `[neuralBadge]` to attach a real Badge component to an arbitrary anchor.
+- Directive positions: `start`, `end`, `top-start`, `top-end`, `bottom-start`, `bottom-end`.
+- Logical corner positions follow RTL and do not change anchor layout.
+- `null` and `undefined` remove a directive Badge; zero remains visible.
+- Use a wrapper as the directive anchor for replaced or void elements such as `img` and `input`.
+- The directive creates its Badge in Angular's hydration-safe post-render phase; do not replace this with constructor-time DOM mutation.
+- Use `value` for text or numeric content.
+- Use `max` only for numeric visual caps; the real number stays accessible.
+- Zero and negative numbers are valid values.
+- When `value` is absent, projected content is rendered.
+- Severities: `primary`, `secondary`, `neutral`, `info`, `success`, `warning`, `error`.
+- Sizes: `small`, `medium`, `large`.
+- `rounded` defaults to true.
+- A meaningful `dot` badge must have an `ariaLabel`.
+- Use `ariaLive="polite"` for non-urgent dynamic counters.
+- Use `badgeHidden` for explicit visibility.
+- `unstyled` removes visual classes, not structural hooks.
+- Typed class slots: `root`, `value`, `content`.
+- For a Badge inside NeuralNg Button, prefer Button's shorter `badge` inputs; Button delegates to `NeuralBadgeDirective`.
+- Badge is Beta: do not invent outputs, interactive behavior, tooltip inputs, Tag semantics, or undocumented positions.

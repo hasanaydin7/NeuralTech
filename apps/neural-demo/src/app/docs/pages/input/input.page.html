@@ -1,0 +1,75 @@
+<article class="docs-page input-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Input</h1>
+    <p>
+      A native input enhanced with Signal Forms, token-driven states, direct
+      class ownership, and no wrapper element.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Native and Signal Forms</h2>
+    <div class="input-demo-surface">
+      <label for="docs-native-search">Search components</label>
+      <input
+        neuralInput
+        id="docs-native-search"
+        type="search"
+        placeholder="Try paginator"
+        fluid
+        [formField]="inputForm.query"
+      />
+      <output class="demo-status" aria-live="polite">
+        Signal value: {{ model().query }}
+      </output>
+    </div>
+    <app-code-example label="Native input" language="html" [code]="basicCode" />
+  </section>
+
+  <section id="states">
+    <h2>Native states</h2>
+    <div class="input-demo-surface input-state-grid">
+      <label>
+        Readonly
+        <input neuralInput value="Visible but immutable" readonly />
+      </label>
+      <label>
+        Disabled
+        <input neuralInput value="Unavailable" disabled />
+      </label>
+      <label>
+        Invalid
+        <input neuralInput value="Wrong value" aria-invalid="true" />
+      </label>
+    </div>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled native class</h2>
+    <div class="input-demo-surface">
+      <label for="docs-headless-input">Terminal input</label>
+      <input
+        neuralInput
+        id="docs-headless-input"
+        class="docs-headless-input"
+        placeholder="Styled by the demo"
+        unstyled
+      />
+    </div>
+    <app-code-example
+      label="Headless Input"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+</article>

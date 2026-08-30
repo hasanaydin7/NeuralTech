@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>NeuralNg — Angular UI for the AI era</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="AI-first, headless Angular 22+ UI components built with Signals, standalone architecture, and native accessibility."
+    />
+    <script>
+      (() => {
+        let preference = 'system';
+        try {
+          preference = localStorage.getItem('neural-color-mode') ?? 'system';
+        } catch {}
+
+        const dark =
+          preference === 'dark' ||
+          (preference === 'system' &&
+            matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset['neuralMode'] = dark
+          ? 'dark'
+          : 'light';
+      })();
+    </script>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="any"
+      href="neuralng-agent-favicon.svg"
+    />
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

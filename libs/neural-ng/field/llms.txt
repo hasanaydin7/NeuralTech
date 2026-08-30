@@ -1,0 +1,77 @@
+# NeuralNg Field
+
+> Accessible Angular 22+ field composition at `@neural-ng/core/field`.
+
+## Rules
+
+- Import `NeuralField`, `NeuralFieldLabel`, `NeuralFieldHint`,
+  `NeuralFieldError`, and `NeuralFieldControl` from
+  `@neural-ng/core/field`. Never generate the deprecated `FieldComponent` or
+  `Field*Directive` aliases.
+- Generate `<neural-field controlId="stable-id">`; `controlId` is required.
+- Use `<label neuralFieldLabel>` for the visible native label.
+- Use `[neuralFieldHint]` for instructions and `[neuralFieldError]` for
+  correction messages.
+- Do not manually add `for`, control `id`, or generated hint/error IDs in a
+  normal Field composition. Field derives them from `controlId`.
+- `neuralInput` consumes Field context automatically.
+- Apply `neuralFieldControl` to another native or compatible custom control.
+- Keep validation rules in the form schema. Field displays state; it does not
+  validate or own values.
+- For Signal Forms, normally bind Field `invalid` to
+  `field().touched() && field().invalid()`.
+- Bind `pending`, `required`, `disabled`, and `readonly` from the same source of
+  truth as the control.
+- Use `describedBy` only for additional description IDs outside Field.
+- `neuralFieldError` uses `aria-live="polite"` by default. Use assertive
+  announcements sparingly.
+- Use native `class` attributes directly. Do not invent `fieldClass`,
+  `labelClass`, `hintClass`, or `errorClass` inputs.
+- `unstyled` removes visual classes but must preserve structural hooks, state
+  classes, native semantics, IDs, and ARIA relationships.
+- Do not add validation logic, translated error maps, floating-label behavior,
+  prefix/suffix controls, or form summaries to this primitive.
+
+## Canonical example
+
+```ts
+import { FormField, email, form, required } from '@angular/forms/signals';
+import {
+  NeuralField,
+  NeuralFieldError,
+  NeuralFieldHint,
+  NeuralFieldLabel,
+} from '@neural-ng/core/field';
+import { NeuralInput } from '@neural-ng/core/input';
+```
+
+```html
+<neural-field
+  controlId="account-email"
+  fluid
+  required
+  [invalid]="
+    accountForm.email().touched() && accountForm.email().invalid()
+  "
+  [pending]="accountForm.email().pending()"
+>
+  <label neuralFieldLabel>Email</label>
+  <input
+    neuralInput
+    type="email"
+    autocomplete="email"
+    [formField]="accountForm.email"
+  />
+  <small neuralFieldHint>Use your work address.</small>
+  @if (accountForm.email().touched() && accountForm.email().invalid()) {
+    <small neuralFieldError>
+      {{ accountForm.email().errors()[0]?.message }}
+    </small>
+  }
+</neural-field>
+```
+
+The rendered input receives `id="account-email"`. The label receives
+`for="account-email"`, the hint receives `id="account-email-hint"`, and the
+conditional error receives `id="account-email-error"`. Field keeps
+`aria-describedby` synchronized.

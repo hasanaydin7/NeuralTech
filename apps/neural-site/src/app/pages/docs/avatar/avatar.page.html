@@ -1,0 +1,573 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="avatar-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Avatar documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-user"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-violet-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-violet-500"
+                    >MEDIA</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Avatar
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  Accessible identities with responsive images, deterministic
+                  fallbacks, shared Badge composition and overflow-aware groups.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    image pipeline</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+                    safe</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import only the identity primitives you render from the granular
+                entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="fallbacks" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Deterministic fallback priority
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                A valid image wins, followed by explicit or name-derived
+                initials, an icon class, then projected content. A failed image
+                never remains broken.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="fallbacks.html"
+                language="html"
+                [code]="fallbackCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-4"
+                >
+                  <neural-avatar
+                    src="/avatar-ada.svg"
+                    name="Ada Lovelace"
+                    size="extra-large"
+                    loading="eager"
+                    fetchPriority="high"
+                  /><neural-avatar
+                    name="Grace Hopper"
+                    size="extra-large"
+                  /><neural-avatar
+                    initials="MH"
+                    ariaLabel="Margaret Hamilton"
+                    size="extra-large"
+                    shape="rounded"
+                  /><neural-avatar
+                    iconClass="nt nt-user"
+                    ariaLabel="Account"
+                    size="extra-large"
+                  /><neural-avatar
+                    ariaLabel="Neural AI"
+                    size="extra-large"
+                    shape="square"
+                    ><strong>AI</strong></neural-avatar
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="sizes" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Sizes, shapes and image fit</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Five size presets combine with circle, rounded or square
+                geometry. Image fit remains independently configurable as cover
+                or contain.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="sizes.html"
+                language="html"
+                [code]="sizesCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-5"
+                >
+                  <neural-avatar
+                    name="Extra Small"
+                    size="extra-small"
+                  /><neural-avatar
+                    name="Small Avatar"
+                    size="small"
+                  /><neural-avatar name="Medium Avatar" /><neural-avatar
+                    name="Large Avatar"
+                    size="large"
+                    shape="rounded"
+                  /><neural-avatar
+                    name="Extra Large"
+                    size="extra-large"
+                    shape="square"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="responsive-image" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Responsive native image pipeline
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>srcSet</code>, <code>sizes</code>, loading, decoding,
+                fetch priority and referrer policy map directly to the native
+                image. The root exposes <code>data-image-state</code> as
+                loading, loaded, error or fallback.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="responsive-image.html"
+                language="html"
+                [code]="responsiveCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="flex w-full justify-center">
+                  <neural-avatar
+                    src="/avatar-ada.svg"
+                    srcSet="/avatar-ada.svg 1x"
+                    sizes="80px"
+                    name="Ada Lovelace"
+                    size="extra-large"
+                    imageFit="cover"
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="auto"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="error-recovery" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Image error and retry</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The native error event remains observable while the visual
+                switches to fallback. Changing <code>src</code> resets failure
+                state and retries the new image.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="error.html"
+                language="html"
+                [code]='&apos;<neural-avatar src="/missing-avatar.webp" name="Radia Perlman" (imageError)="failed($event)" />&apos;'
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="grid w-full justify-items-center gap-3"
+                >
+                  <neural-avatar
+                    src="/missing-avatar.webp"
+                    name="Radia Perlman"
+                    size="large"
+                    loading="eager"
+                    (imageError)="markImageError()"
+                  /><output
+                    class="text-xs text-[var(--site-text-muted)]"
+                    aria-live="polite"
+                    >{{ imageEvent() }}</output
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="badges" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Status and notification Badges
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Avatar owns identity; the reusable Badge directive owns dots,
+                counts, severity, logical placement and announcement. No
+                Avatar-only badge API is duplicated.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="badges.html"
+                language="html"
+                [code]="badgeCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="flex w-full justify-center gap-8">
+                  <neural-avatar
+                    name="Ada Lovelace"
+                    size="large"
+                    neuralBadgeDot
+                    neuralBadgePosition="bottom-end"
+                    neuralBadgeSeverity="success"
+                    neuralBadgeAriaLabel="Online"
+                  /><neural-avatar
+                    name="Grace Hopper"
+                    size="large"
+                    [neuralBadge]="5"
+                    neuralBadgePosition="top-end"
+                    neuralBadgeSeverity="error"
+                    neuralBadgeAriaLabel="5 unread notifications"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="group" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                AvatarGroup and localized overflow
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>max</code> keeps useful identities visible and replaces
+                the remainder with an accessible <code>+N</code>. The source
+                projection is preserved and reacts when children or max change.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="group.html"
+                language="html"
+                [code]="groupCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="flex w-full justify-center">
+                  <neural-avatar-group
+                    [max]="3"
+                    ariaLabel="NeuralNg project team"
+                    overflowLabel="{count} more teammates"
+                    ><neural-avatar
+                      src="/avatar-ada.svg"
+                      name="Ada Lovelace"
+                      loading="eager" /><neural-avatar
+                      name="Grace Hopper" /><neural-avatar
+                      name="Margaret Hamilton" /><neural-avatar
+                      name="Radia Perlman" /><neural-avatar
+                      name="Annie Easley" /><neural-avatar
+                      name="Katherine Johnson"
+                  /></neural-avatar-group></div
+              ></code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Unstyled and typed class slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Headless mode retains fixed identity structure, error fallback,
+                semantics, group visibility and logical direction while consumer
+                classes own every visual surface.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-8"
+                >
+                  <neural-avatar
+                    name="Neural Technology"
+                    unstyled
+                    [classes]="avatarClasses"
+                  /><neural-avatar-group
+                    [max]="2"
+                    ariaLabel="Headless team"
+                    overflowLabel="{count} hidden identities"
+                    unstyled
+                    [classes]="groupClasses"
+                    ><neural-avatar
+                      name="Ada Lovelace"
+                      unstyled
+                      [classes]="avatarClasses" /><neural-avatar
+                      name="Grace Hopper"
+                      unstyled
+                      [classes]="avatarClasses" /><neural-avatar
+                      name="Margaret Hamilton"
+                      unstyled
+                      [classes]="avatarClasses"
+                  /></neural-avatar-group></div
+              ></code-view>
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Beta boundaries</h2>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                <div
+                  class="rounded-2xl border border-emerald-400/20 bg-emerald-500/5 p-5"
+                >
+                  <h3 class="font-black text-emerald-500">Included</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Images, initials, icons, projected fallback, native loading
+                    hints, error retry, sizes, shapes, badges, groups, overflow
+                    and headless ownership.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-amber-400/20 bg-amber-500/5 p-5"
+                >
+                  <h3 class="font-black text-amber-500">Application-owned</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Upload, cropping, presence transport, profile fetching,
+                    interactive user menus and tooltip behavior remain separate
+                    components or application concerns.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">
+                Identity without ambiguity
+              </h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Image and fallback semantics follow the same identity contract
+                while decorative content can stay silent.
+              </p>
+            </header>
+            <section id="image-alternatives" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Image alternatives</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>alt</code> is passed to the native image. When omitted,
+                <code>name</code> becomes the alternative. Set
+                <code>alt=""</code> explicitly only when surrounding visible
+                text already names the person and the image is decorative.
+              </p>
+            </section>
+            <section id="fallback-semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Fallback semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Initials, icon and projected fallback visuals are hidden from
+                assistive technology; the root uses <code>role="img"</code> with
+                the resolved <code>ariaLabel</code>, name or alt. Without any
+                name, the fallback stays decorative.
+              </p>
+            </section>
+            <section id="group-semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Group naming and overflow</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Providing <code>ariaLabel</code> creates a named
+                <code>role="group"</code>. The overflow count substitutes every
+                <code>{{ '{count}' }}</code> occurrence in the localized label;
+                keep that placeholder in translations.
+              </p>
+            </section>
+            <section id="badge-semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Badge announcements</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                A visual status dot needs <code>neuralBadgeAriaLabel</code>.
+                Counts should announce their meaning, not only the number.
+                Avatar itself never duplicates these semantics.
+              </p>
+            </section>
+            <section id="rtl" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">RTL and logical layout</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Group overlap and Badge positions use inline start/end, so
+                document direction changes require no alternate markup. Avatar
+                has no keyboard behavior because identity alone is not
+                interactive.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Avatar API</h1>
+            </header>
+            <section id="avatar-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">NeuralAvatar inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <tbody>
+                    @for (item of avatarInputs; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="avatar-outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">NeuralAvatar outputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[40rem] text-left text-sm">
+                  <tbody>
+                    @for (item of avatarOutputs; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[2] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="group-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">NeuralAvatarGroup inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <tbody>
+                    @for (item of groupInputs; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <h3 class="mt-6 font-black">Avatar</h3>
+              <div class="mt-3 flex flex-wrap gap-2">
+                @for (slot of avatarSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+              <h3 class="mt-8 font-black">AvatarGroup</h3>
+              <div class="mt-3 flex flex-wrap gap-2">
+                @for (slot of groupSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Avatar tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Neutral tokens respond to primary, surface and color mode. Glass
+                and Futuristic override the same contract without changing
+                markup.
+              </p>
+            </header>
+            <section id="avatar-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Avatar</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="avatarTokens"
+              />
+            </section>
+            <section id="group-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">AvatarGroup</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="groupTokens"
+              />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

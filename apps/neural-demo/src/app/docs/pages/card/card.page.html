@@ -1,0 +1,79 @@
+<article class="docs-page card-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Card</h1>
+    <p>
+      Semantic article composition with optional header, body, footer,
+      accessible naming, theme tokens, and typed headless slots.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="composition">
+    <h2>Composable sections</h2>
+    <div class="card-demo-grid">
+      <neural-card ariaLabelledby="docs-project-title">
+        <neural-card-header>
+          <div>
+            <small>Workspace</small>
+            <h2 id="docs-project-title">Neural Commerce</h2>
+          </div>
+          <span class="card-status">Active</span>
+        </neural-card-header>
+        <neural-card-body>
+          <p>
+            Signals-first storefront primitives with SSR-safe rendering and
+            consumer-owned themes.
+          </p>
+        </neural-card-body>
+        <neural-card-footer>
+          <neural-button>Open project</neural-button>
+          <neural-button buttonClass="card-secondary-action">
+            Settings
+          </neural-button>
+        </neural-card-footer>
+      </neural-card>
+
+      <neural-card ariaLabel="Usage summary" role="region">
+        <neural-card-body>
+          <strong class="card-metric">84%</strong>
+          <span>Bundle budget remaining</span>
+        </neural-card-body>
+      </neural-card>
+    </div>
+    <app-code-example
+      label="Card composition"
+      language="html"
+      [code]="basicCode"
+    />
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <div class="card-demo-grid">
+      <neural-card
+        ariaLabelledby="docs-headless-card-title"
+        unstyled
+        [classes]="headlessClasses"
+      >
+        <neural-card-header>
+          <h2 id="docs-headless-card-title">Consumer canvas</h2>
+        </neural-card-header>
+        <neural-card-body>
+          No NeuralNg visual class is applied to this card.
+        </neural-card-body>
+        <neural-card-footer>
+          <code>classes.footer</code>
+        </neural-card-footer>
+      </neural-card>
+    </div>
+  </section>
+</article>

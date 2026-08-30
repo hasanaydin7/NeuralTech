@@ -1,0 +1,43 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/libs/neural-editor",
+  "assets": [
+    "README.md",
+    "API_FREEZE.md",
+    "MIGRATION.md",
+    "llms.txt",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    {
+      "glob": "**/*.css",
+      "input": "themes",
+      "output": "themes"
+    }
+  ],
+  "allowedNonPeerDependencies": [
+    "@floating-ui/dom",
+    "@tiptap/core",
+    "@tiptap/extension-bubble-menu",
+    "@tiptap/extension-collaboration",
+    "@tiptap/extension-collaboration-caret",
+    "@tiptap/extension-floating-menu",
+    "@tiptap/extension-highlight",
+    "@tiptap/extension-image",
+    "@tiptap/extension-list",
+    "@tiptap/extension-mention",
+    "@tiptap/extension-table",
+    "@tiptap/extension-text-align",
+    "@tiptap/extension-text-style",
+    "@tiptap/extension-unique-id",
+    "@tiptap/extensions",
+    "@tiptap/html",
+    "@tiptap/pm",
+    "@tiptap/starter-kit",
+    "@tiptap/suggestion",
+    "@tiptap/y-tiptap",
+    "yjs"
+  ],
+  "lib": {
+    "entryFile": "index.ts"
+  }
+}

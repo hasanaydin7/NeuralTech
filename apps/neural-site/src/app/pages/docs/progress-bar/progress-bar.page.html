@@ -1,0 +1,522 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="progress-bar-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="ProgressBar documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt nt-progress"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FEEDBACK</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  ProgressBar
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  Accessible linear progress with determinate, buffered and
+                  indeterminate states, semantic color, reduced-motion safety
+                  and complete visual ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Clamped
+                    ranges</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>ARIA
+                    progressbar</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the standalone component from its granular entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="interactive" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Interactive progress</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The value is clamped to its declared range while its visual
+                label and assistive semantics remain synchronized.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="progress.html"
+                language="html"
+                [code]="interactiveCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-6 px-2 sm:px-8">
+                  <neural-progress-bar
+                    [value]="progress()"
+                    ariaLabel="Upload progress"
+                  />
+                  <div class="flex flex-wrap justify-center gap-2">
+                    <neural-button
+                      label="Decrease"
+                      icon="nt nt-minus"
+                      outlined
+                      (clicked)="decrease()"
+                    />
+                    <neural-button
+                      label="Increase"
+                      icon="nt nt-plus"
+                      severity="primary"
+                      (clicked)="increase()"
+                    />
+                    <neural-button
+                      label="Reset"
+                      icon="nt nt-refresh"
+                      text
+                      (clicked)="reset()"
+                    />
+                  </div>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="severities" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic severities</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Every semantic severity consumes the shared NeuralNg color
+                contract and follows runtime primary changes.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="severity.html"
+                language="html"
+                [code]="severityCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-4 px-2 sm:px-8">
+                  <neural-progress-bar
+                    [value]="22"
+                    severity="primary"
+                    ariaLabel="Primary progress"
+                  />
+                  <neural-progress-bar
+                    [value]="32"
+                    severity="secondary"
+                    ariaLabel="Secondary progress"
+                  />
+                  <neural-progress-bar
+                    [value]="42"
+                    severity="neutral"
+                    ariaLabel="Neutral progress"
+                  />
+                  <neural-progress-bar
+                    [value]="52"
+                    severity="info"
+                    ariaLabel="Information progress"
+                  />
+                  <neural-progress-bar
+                    [value]="62"
+                    severity="success"
+                    ariaLabel="Success progress"
+                  />
+                  <neural-progress-bar
+                    [value]="72"
+                    severity="warning"
+                    ariaLabel="Warning progress"
+                  />
+                  <neural-progress-bar
+                    [value]="82"
+                    severity="error"
+                    ariaLabel="Error progress"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="sizes" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Sizes and variants</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Size, label visibility, rounded geometry and striped motion are
+                independent choices.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="sizes.html"
+                language="html"
+                [code]="sizeCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-6 px-2 sm:px-8">
+                  <neural-progress-bar
+                    size="small"
+                    [value]="38"
+                    [showValue]="false"
+                    ariaLabel="Small progress"
+                  />
+                  <neural-progress-bar
+                    size="medium"
+                    [value]="55"
+                    [rounded]="false"
+                    ariaLabel="Square progress"
+                  />
+                  <neural-progress-bar
+                    size="large"
+                    [value]="72"
+                    severity="primary"
+                    striped
+                    animated
+                    ariaLabel="Animated striped progress"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="buffer" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Buffered progress</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                A secondary layer communicates prepared work and can never
+                render behind the current value.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="buffer.html"
+                language="html"
+                [code]="bufferCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full px-2 sm:px-8">
+                  <neural-progress-bar
+                    [value]="35"
+                    [bufferValue]="68"
+                    severity="primary"
+                    ariaLabel="Video playback buffer"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="indeterminate" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Indeterminate progress</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Unknown completion intentionally omits numeric ARIA attributes.
+                Reduced-motion preferences stop the animation automatically.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="loading.html"
+                language="html"
+                [code]="indeterminateCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full px-2 sm:px-8">
+                  <neural-progress-bar
+                    mode="indeterminate"
+                    label="Loading agents"
+                    ariaLabel="Loading agent results"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="labels" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Custom range and labels</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Visual text and the assistive value description can express the
+                same state at different levels of detail.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="labels.html"
+                language="html"
+                [code]="labelCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full px-2 sm:px-8">
+                  <neural-progress-bar
+                    [value]="7"
+                    [max]="10"
+                    label="7 / 10 files"
+                    ariaValueText="7 of 10 files completed"
+                    ariaLabel="File upload progress"
+                    severity="success"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Structural sizing and progress semantics remain while Tailwind
+                owns every visible choice.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="headless.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full px-2 sm:px-8">
+                  <neural-progress-bar
+                    [value]="64"
+                    [bufferValue]="82"
+                    unstyled
+                    [classes]="headlessClasses"
+                    ariaLabel="Headless build progress"
+                  />
+                </div>
+              </code-view>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Progress with meaning</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Visual progress and the accessibility tree share the same
+                normalized source of truth.
+              </p>
+            </header>
+            <section id="semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Progress semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Determinate mode exposes <code>role="progressbar"</code>,
+                <code>aria-valuemin</code>, <code>aria-valuemax</code> and the
+                clamped <code>aria-valuenow</code>.
+              </p>
+            </section>
+            <section id="accessible-names" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Accessible names</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Give every bar either <code>ariaLabel</code> or
+                <code>ariaLabelledBy</code>. The visible percentage alone is
+                intentionally hidden from assistive technology.
+              </p>
+            </section>
+            <section id="value-descriptions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Value descriptions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>ariaValueText</code> supports localized or domain-specific
+                descriptions. Without it, the computed visual label becomes the
+                accessible value text.
+              </p>
+            </section>
+            <section id="unknown-progress" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unknown progress</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Indeterminate mode omits min, max and current numeric attributes
+                because publishing invented completion data would be misleading.
+              </p>
+            </section>
+            <section id="reduced-motion" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Reduced motion</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Value transitions, stripes and indeterminate movement stop under
+                <code>prefers-reduced-motion: reduce</code>.
+              </p>
+            </section>
+            <section id="ssr" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">SSR and hydration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Normalization is deterministic and browser-global free,
+                producing identical server and client markup.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-3 text-4xl font-black">ProgressBar API</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Signal inputs only; progress is a presentational projection and
+                emits no synthetic state.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                @for (item of classSlots; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-5 grid gap-3">
+                @for (item of publicTypes; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 break-words font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="alias" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Legacy alias</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>ProgressBarComponent</code> remains compatible. New code
+                should import <code>NeuralProgressBar</code>.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-3 text-4xl font-black">ProgressBar tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Each custom property maps to a real part of the component
+                implementation.
+              </p>
+            </header>
+            <section id="layout-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Layout</h2>
+              <site-design-token-list [tokens]="layoutTokens" />
+            </section>
+            <section id="surface-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Surface</h2>
+              <site-design-token-list [tokens]="surfaceTokens" />
+            </section>
+            <section id="size-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Sizes</h2>
+              <site-design-token-list [tokens]="sizeTokens" />
+            </section>
+            <section id="severity-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Severity</h2>
+              <site-design-token-list [tokens]="severityTokens" />
+            </section>
+            <section id="label-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Label</h2>
+              <site-design-token-list [tokens]="labelTokens" />
+            </section>
+            <section id="motion-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="mb-5 text-2xl font-black">Motion</h2>
+              <site-design-token-list [tokens]="motionTokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

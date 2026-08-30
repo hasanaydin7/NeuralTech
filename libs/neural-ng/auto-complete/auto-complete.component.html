@@ -1,0 +1,167 @@
+<div
+  [class]="rootClass()"
+  [attr.data-open]="open() ? 'true' : null"
+  [attr.data-disabled]="effectiveDisabled() ? 'true' : null"
+  [attr.data-readonly]="effectiveReadonly() ? 'true' : null"
+  [attr.data-invalid]="effectiveInvalid() ? 'true' : null"
+  [attr.data-loading]="loading() ? 'true' : null"
+>
+  <div #anchor [class]="inputGroupClass()">
+    <input
+      #inputElement
+      type="text"
+      role="combobox"
+      aria-autocomplete="list"
+      aria-haspopup="listbox"
+      [id]="controlId()"
+      [class]="inputClass()"
+      [value]="query()"
+      [name]="name()"
+      [placeholder]="resolvedPlaceholder()"
+      [autocomplete]="autoComplete()"
+      [disabled]="effectiveDisabled()"
+      [readOnly]="effectiveReadonly()"
+      [required]="effectiveRequired()"
+      [attr.aria-label]="ariaLabel() || null"
+      [attr.aria-expanded]="open()"
+      [attr.aria-controls]="listboxId"
+      [attr.aria-activedescendant]="activeDescendant()"
+      [attr.aria-describedby]="field?.controlDescribedBy()"
+      [attr.aria-invalid]="effectiveInvalid() ? 'true' : null"
+      [attr.aria-readonly]="effectiveReadonly() ? 'true' : null"
+      [attr.aria-busy]="
+        loading() || pending() || field?.pending() ? 'true' : null
+      "
+      (input)="handleInput($event)"
+      (focus)="handleFocus()"
+      (blur)="handleBlur()"
+      (keydown)="handleKeydown($event)"
+      (compositionstart)="composing.set(true)"
+      (compositionend)="handleCompositionEnd($event)"
+    />
+    @if (loading()) {
+      <span [class]="loadingIndicatorClass()" aria-hidden="true">
+        <i [class]="iconClass(loadingIconClass())"></i>
+      </span>
+    } @else if (
+      clearable() && query() && !effectiveDisabled() && !effectiveReadonly()
+    ) {
+      <button
+        type="button"
+        [class]="clearButtonClass()"
+        [attr.aria-label]="resolvedClearLabel()"
+        (pointerdown)="$event.preventDefault()"
+        (click)="clear($event)"
+      >
+        @if (clearIconTemplate(); as template) {
+          <ng-container
+            [ngTemplateOutlet]="template.templateRef"
+            [ngTemplateOutletContext]="iconTemplateContext(clearIconClass())"
+          />
+        } @else {
+          <i [class]="iconClass(clearIconClass())" aria-hidden="true"></i>
+        }
+      </button>
+    }
+    @if (showDropdown()) {
+      <button
+        type="button"
+        [class]="dropdownButtonClass()"
+        [disabled]="effectiveDisabled()"
+        [attr.aria-label]="resolvedDropdownLabel()"
+        (pointerdown)="$event.preventDefault()"
+        (click)="showAll($event)"
+      >
+        @if (dropdownIconTemplate(); as template) {
+          <ng-container
+            [ngTemplateOutlet]="template.templateRef"
+            [ngTemplateOutletContext]="iconTemplateContext(dropdownIconClass())"
+          />
+        } @else {
+          <i [class]="iconClass(dropdownIconClass())" aria-hidden="true"></i>
+        }
+      </button>
+    }
+  </div>
+</div>
+
+<neural-popover
+  #suggestionsPopover
+  position="bottom-start"
+  [offset]="4"
+  [matchTriggerWidth]="true"
+  [restoreFocus]="false"
+  [role]="null"
+  [unstyled]="effectiveUnstyled()"
+  [classes]="{ content: panelClass() }"
+  (opened)="onOpened()"
+  (closed)="onClosed()"
+>
+  @if (loading()) {
+    <div role="status" [class]="loadingClass()">
+      @if (loadingTemplate(); as template) {
+        <ng-container
+          [ngTemplateOutlet]="template.templateRef"
+          [ngTemplateOutletContext]="{ $implicit: resolvedLoadingLabel() }"
+        />
+      } @else {
+        {{ resolvedLoadingLabel() }}
+      }
+    </div>
+  } @else if (!visibleOptions().length) {
+    <div [class]="emptyClass()">
+      @if (emptyTemplate(); as template) {
+        <ng-container
+          [ngTemplateOutlet]="template.templateRef"
+          [ngTemplateOutletContext]="{ $implicit: resolvedEmptyLabel() }"
+        />
+      } @else {
+        {{ resolvedEmptyLabel() }}
+      }
+    </div>
+  } @else {
+    <div
+      role="listbox"
+      [id]="listboxId"
+      [class]="listClass()"
+      [attr.aria-label]="ariaLabel() || null"
+    >
+      @for (option of visibleOptions(); track option.id; let index = $index) {
+        @if (showGroup(index)) {
+          <div role="presentation" [class]="groupClass()">
+            @if (groupTemplate(); as template) {
+              <ng-container
+                [ngTemplateOutlet]="template.templateRef"
+                [ngTemplateOutletContext]="groupTemplateContext(option.group)"
+              />
+            } @else {
+              {{ option.group }}
+            }
+          </div>
+        }
+        <div
+          role="option"
+          [id]="option.id"
+          [class]="optionClass(option, index)"
+          tabindex="-1"
+          [attr.aria-selected]="isSelected(option)"
+          [attr.aria-disabled]="option.disabled ? 'true' : null"
+          (pointerenter)="activate(index)"
+          (pointerdown)="handleOptionPointerDown($event, option)"
+          (click)="selectOption(option, 'pointer')"
+          (keydown.enter)="selectOption(option, 'keyboard')"
+          (keydown.space)="selectOption(option, 'keyboard')"
+        >
+          @if (optionTemplate(); as template) {
+            <ng-container
+              [ngTemplateOutlet]="template.templateRef"
+              [ngTemplateOutletContext]="optionTemplateContext(option, index)"
+            />
+          } @else {
+            {{ option.label }}
+          }
+        </div>
+      }
+    </div>
+  }
+</neural-popover>

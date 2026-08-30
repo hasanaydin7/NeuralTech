@@ -1,0 +1,178 @@
+# NeuralNg Toast v0.1 Beta - AI Context
+
+Current component maturity: beta.
+
+Package: @neural-ng/core/toast
+Angular: 22+
+Architecture: standalone, Signals, SSR/hydration-safe, headless-capable
+State dependency: @neural-ng/core/message
+
+## Required generation rules
+
+1. Register provideNeuralMessages() in ApplicationConfig.
+2. Import NeuralToast from @neural-ng/core/toast.
+3. Add <neural-toast /> once for the global channel.
+4. Inject NeuralMessageService from @neural-ng/core/message to send messages.
+5. Do not make Button depend on Message or Toast. Call notify() in application code.
+6. Do not import BrowserAnimationsModule, provideAnimations(), or @angular/animations.
+7. Do not invent left/right positions. Use logical start/end positions.
+8. Use one Toast outlet per channel.
+
+## Zero-config usage
+
+<neural-toast />
+
+Effective defaults:
+- channel: global
+- position: top-end
+- ariaLabel: Notifications
+- closeLabel: Close notification
+- toastClass: empty
+- messageClass: empty
+- icon: true
+- iconClass: automatic by severity
+- unstyled: false, unless global unstyled is true
+- pauseOnInteraction: true
+- showProgress: false
+- swipeToDismiss: true
+- swipeThreshold: 72
+- animated: true
+
+## Providers
+
+- provideNeuralMessages() is required.
+- provideNeuralNg({ unstyled: true }) is optional and affects Button, Toast, and future participating components.
+- provideNeuralToast(options) is optional and defines application-level Toast defaults.
+- Component inputs override provideNeuralToast values.
+- Global unstyled=true forces visual classes off.
+
+## Positions
+
+Allowed values only:
+- top-start, top-center, top-end
+- middle-start, middle-center, middle-end
+- bottom-start, bottom-center, bottom-end
+
+## Styling and unstyled
+
+- toastClass is additive on the fixed outlet.
+- messageClass is additive on every message article.
+- <neural-toast unstyled /> is valid boolean attribute syntax.
+- unstyled removes built-in visual message, close, progress, and animation styling.
+- unstyled preserves structure, position hooks, state, timers, swipe, ARIA, and dismissal.
+- Prefer CSS custom properties for themed usage and consumer classes for full ownership.
+- Treat `data-neural-theme` and resolved `data-neural-mode="light|dark"` as independent selectors.
+
+## Icons
+
+- icon=true renders a decorative severity icon in the default template.
+- Styled messages tint their background, border, content, icon, close control,
+  and progress treatment from the selected severity; severity is not only a
+  leading-border accent.
+- Default classes are primary=nt-settings, secondary=nt-bell, neutral=nt-bell,
+  info=nt-info-circle, success=nt-circle-check, warning=nt-alert-triangle,
+  error=nt-circle-times.
+- Set `[icon]="false"` to remove the icon and collapse the layout correctly.
+- `iconClass="nt-user"` overrides every severity and automatically receives the
+  required `nt` base class.
+- Third-party values such as `iconClass="pi pi-user"` remain unchanged.
+- Default Neural icon artwork requires the optional `@neural-ng/icons`
+  stylesheet. Core behavior must continue without that package.
+- A custom `neuralToastTemplate` owns its content and does not receive the
+  default icon element.
+
+## Custom template
+
+Import NeuralToastTemplateDirective alongside NeuralToast.
+
+```html
+<neural-toast channel="custom">
+  <ng-template
+    neuralToastTemplate
+    let-message
+    let-dismiss="dismiss"
+    let-paused="paused"
+    let-remaining="remaining"
+    let-progress="progress"
+  >
+    <div>{{ message.message }}</div>
+    <button type="button" (click)="dismiss()">Close</button>
+  </ng-template>
+</neural-toast>
+```
+
+Context:
+- $implicit/message: immutable NeuralMessageRecord
+- dismiss(): closes with user reason
+- paused: boolean
+- remaining: milliseconds or null
+- progress: remaining ratio or null
+
+Do not wrap neuralToastTemplate on a non-ng-template element.
+
+## Timer and interaction rules
+
+- duration:null is persistent.
+- Finite durations are owned by Toast and close with timeout reason.
+- Hover, focus, and swipe pause finite timers when pauseOnInteraction is true.
+- Resume uses remaining time; it does not restart the full duration.
+- Progress is shown only when showProgress=true and duration is finite.
+- Touch/pen horizontal swipe dismisses only dismissible messages.
+- Vertical scrolling remains available.
+
+## Animation rules
+
+- Use Angular compiler-native animate.enter and animate.leave with CSS.
+- Do not use legacy Angular animation triggers/providers.
+- animated=false disables built-in enter/leave classes.
+- unstyled=true also removes built-in animation classes.
+- Respect prefers-reduced-motion.
+
+## Accessibility rules
+
+- Keep stable polite and assertive live regions in the DOM.
+- neutral/info/success announce politely.
+- warning/error announce assertively.
+- Never move focus automatically.
+- Keep the default close control a native button.
+- Localize ariaLabel and closeLabel when the application language requires it.
+- Avoid duration:null plus dismissible:false unless application code will clear it.
+
+## SSR and layout rules
+
+- Start browser work with afterNextRender.
+- Never read window, document, Element, or browser timers during server rendering.
+- Preserve logical start/end CSS and safe-area insets.
+- Do not create a second Toast for the same channel.
+
+## Canonical example
+
+```ts
+import { ApplicationConfig, Component, inject } from '@angular/core';
+import { provideNeuralMessages, NeuralMessageService } from '@neural-ng/core/message';
+import { provideNeuralToast, NeuralToast } from '@neural-ng/core/toast';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideNeuralMessages(),
+    provideNeuralToast({ showProgress: true }),
+  ],
+};
+
+@Component({
+  selector: 'app-root',
+  imports: [NeuralToast],
+  template: `<neural-toast />`,
+})
+export class App {
+  private readonly messages = inject(NeuralMessageService);
+
+  showSuccess(): void {
+    this.messages.notify({
+      severity: 'success',
+      title: 'Saved',
+      message: 'Changes saved.',
+    });
+  }
+}
+```

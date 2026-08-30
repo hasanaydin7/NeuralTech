@@ -1,0 +1,15 @@
+# NeuralNg MeterGroup AI context
+
+- Import canonical `NeuralMeterGroup` only from `@neural-ng/core/meter-group`.
+- Do not generate the deprecated `MeterGroupComponent` compatibility alias.
+- Use MeterGroup for scalar measurements in a known range, never task progress.
+- Pass readonly NeuralMeterItem objects with label and numeric value.
+- Optional item fields are color, iconClass, and valueText.
+- Each item is an independently named role=meter with bounded numeric ARIA.
+- min and max define the shared range. Invalid bounds and values are normalized.
+- orientation controls horizontal or vertical meters.
+- labelPosition is start or end; labelOrientation is horizontal or vertical.
+- valueFormatter changes visible text only. Use item.valueText when assistive
+  technology needs a more meaningful value description.
+- Set unstyled for headless rendering. Meter semantics, structural hooks, and
+  percentage sizing remain; NeuralNg visual classes are removed.

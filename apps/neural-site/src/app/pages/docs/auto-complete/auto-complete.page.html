@@ -1,0 +1,755 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="auto-complete-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="AutoComplete documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-search"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FORMS</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  AutoComplete
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  An editable Signal-first combobox for local filtering,
+                  race-safe remote suggestions, typed templates and every
+                  Angular Forms API.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Stable
+                    input focus</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Top-layer overlay</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use the concise public
+                <code class="font-mono text-blue-500">NeuralAutoComplete</code>
+                export from its tree-shakable entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="local" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Local suggestions and nested paths
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Map label, value, disabled and group fields without changing
+                source objects. Search can span comma-separated nested paths;
+                Paris is disabled.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="local.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto grid w-full max-w-md gap-3">
+                  <neural-field controlId="site-autocomplete-place" fluid>
+                    <label neuralFieldLabel for="site-autocomplete-place"
+                      >Destination</label
+                    >
+                    <neural-auto-complete
+                      [options]="places"
+                      optionLabel="city"
+                      optionValue="id"
+                      optionDisabled="disabled"
+                      optionGroup="country"
+                      filterBy="city,country,airport.code"
+                      [(value)]="selectedPlace"
+                      [(query)]="query"
+                      placeholder="City or airport code"
+                      clearable
+                      showDropdown
+                      fluid
+                      [delay]="100"
+                      (selected)="handleSelected($event)"
+                      (cleared)="handleCleared($event)"
+                      (invalidInput)="handleInvalid($event)"
+                    >
+                      <ng-template
+                        neuralAutoCompleteOption
+                        let-place
+                        let-resolved="resolved"
+                      >
+                        <span class="flex items-center justify-between gap-5">
+                          <span class="grid"
+                            ><strong>{{ resolved.label }}</strong
+                            ><small class="text-[var(--site-text-muted)]"
+                              >{{ resolved.group }}</small
+                            ></span
+                          >
+                          <code class="text-xs text-blue-500"
+                            >{{ airportCode(place) }}</code
+                          >
+                        </span>
+                      </ng-template>
+                    </neural-auto-complete>
+                    <small neuralFieldHint
+                      >Committed id: {{ selectedPlace() || 'none' }}</small
+                    >
+                  </neural-field>
+                  <output
+                    class="text-xs text-[var(--site-text-muted)]"
+                    aria-live="polite"
+                    >{{ eventStatus() }}</output
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="free-text" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Free text mode</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code class="font-mono text-blue-500">valueMode="text"</code>
+                keeps the committed form value synchronized with editable text.
+                Disable force selection to accept values outside the suggestion
+                list.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="free-text.html"
+                language="html"
+                [code]="textCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto grid w-full max-w-md gap-2">
+                  <neural-auto-complete
+                    valueMode="text"
+                    [forceSelection]="false"
+                    [options]="['Agent workspace', 'Design system', 'Angular library']"
+                    [(value)]="freeText"
+                    [(query)]="freeTextQuery"
+                    placeholder="Name the workspace"
+                    clearable
+                    fluid
+                  />
+                  <output class="text-xs text-[var(--site-text-muted)]"
+                    >Value: {{ freeText() || 'empty' }}</output
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="remote" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Remote and race-safe</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Remote mode never filters supplied results. Every debounced
+                request carries an increasing id so stale responses can be
+                discarded deterministically.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="remote.html"
+                language="html"
+                [code]="remoteCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto grid w-full max-w-md gap-2">
+                  <neural-auto-complete
+                    dataMode="remote"
+                    [options]="remoteOptions()"
+                    optionLabel="city"
+                    optionValue="id"
+                    [(value)]="remoteValue"
+                    [(query)]="remoteQuery"
+                    [loading]="remoteLoading()"
+                    [delay]="300"
+                    [minLength]="2"
+                    placeholder="Try “an”"
+                    ariaLabel="Remote city search"
+                    clearable
+                    fluid
+                    (search)="searchRemote($event)"
+                  />
+                  <small class="text-[var(--site-text-muted)]"
+                    >Request {{ latestRequestId() }} · {{ remoteLoading() ?
+                    'loading' : remoteOptions().length + ' results' }}</small
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Angular Forms</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The same nullable committed-value model implements Signal Forms,
+                Reactive Forms and template-driven Forms. Programmatic writes do
+                not emit user-only selection events.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="forms.html"
+                language="html"
+                [code]="formsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-5 md:grid-cols-3">
+                  <div class="grid gap-2">
+                    <strong class="text-sm">Signal Forms</strong
+                    ><neural-auto-complete
+                      [options]="formOptions"
+                      [formField]="signalForm.city"
+                      [delay]="0"
+                      showDropdown
+                      fluid
+                      ariaLabel="Signal Forms city"
+                    /><output class="text-xs text-[var(--site-text-muted)]"
+                      >{{ formsModel().city }}</output
+                    >
+                  </div>
+                  <div class="grid gap-2">
+                    <strong class="text-sm">Reactive Forms</strong
+                    ><neural-auto-complete
+                      [options]="formOptions"
+                      [formControl]="reactiveCity"
+                      [delay]="0"
+                      showDropdown
+                      fluid
+                      ariaLabel="Reactive Forms city"
+                    /><output class="text-xs text-[var(--site-text-muted)]"
+                      >{{ reactiveCity.value }}</output
+                    >
+                  </div>
+                  <div class="grid gap-2">
+                    <strong class="text-sm">NgModel</strong
+                    ><neural-auto-complete
+                      [options]="formOptions"
+                      name="templateCity"
+                      [(ngModel)]="templateCity"
+                      [delay]="0"
+                      showDropdown
+                      fluid
+                      ariaLabel="Template Forms city"
+                    /><output class="text-xs text-[var(--site-text-muted)]"
+                      >{{ templateCity }}</output
+                    >
+                  </div>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="templates" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Typed content and icon templates
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Option, group, empty, loading, dropdown icon and clear icon
+                contexts are all type guarded. The example replaces both action
+                icons while preserving their accessible buttons.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="templates.html"
+                language="html"
+                [code]="templatesCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-md">
+                  <neural-auto-complete
+                    [options]="places"
+                    optionLabel="city"
+                    optionValue="id"
+                    optionGroup="country"
+                    placeholder="Custom templates"
+                    clearable
+                    showDropdown
+                    fluid
+                  >
+                    <ng-template neuralAutoCompleteGroup let-group
+                      ><span class="text-blue-500"
+                        >{{ group }}</span
+                      ></ng-template
+                    >
+                    <ng-template
+                      neuralAutoCompleteOption
+                      let-place
+                      let-label="label"
+                      ><span class="flex justify-between gap-4"
+                        ><strong>{{ label }}</strong
+                        ><small>{{ airportCode(place) }}</small></span
+                      ></ng-template
+                    >
+                    <ng-template neuralAutoCompleteEmpty let-label
+                      ><span>{{ label }}</span></ng-template
+                    >
+                    <ng-template neuralAutoCompleteLoading let-label
+                      ><span>{{ label }}…</span></ng-template
+                    >
+                    <ng-template neuralAutoCompleteDropdownIcon
+                      ><i class="nt nt-search" aria-hidden="true"></i
+                    ></ng-template>
+                    <ng-template neuralAutoCompleteClearIcon
+                      ><i class="nt nt-x" aria-hidden="true"></i
+                    ></ng-template>
+                  </neural-auto-complete>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                States, labels and Field composition
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disabled, readonly, loading, empty, required, pending and
+                invalid are distinct. Locale messages supply placeholder and
+                action labels unless a component-level override is set.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="states.html"
+                language="html"
+                [code]="'<!-- disabled, readonly, loading, empty and Field validation -->'"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-4 sm:grid-cols-2">
+                  <neural-auto-complete
+                    [options]="formOptions"
+                    placeholder="Disabled"
+                    disabled
+                    fluid
+                  />
+                  <neural-auto-complete
+                    [options]="formOptions"
+                    [(value)]="readonlyCity"
+                    readonly
+                    showDropdown
+                    fluid
+                    ariaLabel="Readonly city"
+                  />
+                  <neural-auto-complete
+                    [options]="formOptions"
+                    loading
+                    loadingLabel="Loading cities"
+                    fluid
+                  />
+                  <neural-auto-complete
+                    [options]="[]"
+                    emptyLabel="No matching city"
+                    [delay]="0"
+                    completeOnFocus
+                    fluid
+                  />
+                  <neural-field
+                    controlId="site-autocomplete-required"
+                    invalid
+                    required
+                    pending
+                    fluid
+                  >
+                    <label neuralFieldLabel for="site-autocomplete-required"
+                      >Required city</label
+                    >
+                    <neural-auto-complete
+                      [options]="formOptions"
+                      placeholder="Choose a city"
+                      showDropdown
+                    />
+                    <small neuralFieldHint>Selection is required.</small>
+                  </neural-field>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="events" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic events</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Models describe state; semantic outputs describe user intent and
+                popup lifecycle. No legacy on-prefixed aliases are needed.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="events.html"
+                language="html"
+                [code]="eventsCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Unstyled and typed class slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Headless mode keeps structure, top-layer positioning, keyboard
+                behavior, localization and Forms while consumer classes own
+                every visible pixel.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-md">
+                  <neural-auto-complete
+                    unstyled
+                    [classes]="headlessClasses"
+                    [options]="['signals', 'standalone', 'hydration']"
+                    [(value)]="headlessValue"
+                    [(query)]="headlessQuery"
+                    [delay]="0"
+                    placeholder="Search architecture"
+                    clearable
+                    showDropdown
+                    fluid
+                    ariaLabel="Headless architecture"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Beta boundaries</h2>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                <div
+                  class="rounded-2xl border border-emerald-400/20 bg-emerald-500/5 p-5"
+                >
+                  <h3 class="font-black text-emerald-500">Included</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Single option or text value, local/remote data, groups,
+                    nested paths, typed templates, localization, Forms and
+                    headless ownership.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-amber-400/20 bg-amber-500/5 p-5"
+                >
+                  <h3 class="font-black text-amber-500">
+                    Use another primitive
+                  </h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Use MultiSelect for chips/multiple values and Select with
+                    virtual scroll for very large fixed option sets. Grid popups
+                    and inline creation are not Beta behavior.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">
+                Editable combobox by contract
+              </h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                The implementation follows the ARIA editable combobox/listbox
+                model while keeping native input focus stable.
+              </p>
+            </header>
+            <section id="semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The input exposes <code>role="combobox"</code>,
+                <code>aria-autocomplete="list"</code>, expanded, controls,
+                active descendant, busy, readonly and invalid states. Results
+                use listbox, option, selected and disabled semantics.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Arrow Down/Up opens and navigates enabled results, Home/End
+                jump, Enter commits, Escape closes, and Tab preserves the
+                natural focus sequence. The dropdown button is independently
+                keyboard operable.
+              </p>
+            </section>
+            <section id="focus-ime" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Focus, touch and IME</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                DOM focus never moves into options;
+                <code>aria-activedescendant</code> exposes the active result.
+                Blur emits touch and applies force selection. Composition events
+                suppress partial CJK/IME search requests.
+              </p>
+            </section>
+            <section id="readonly-disabled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Readonly and disabled</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Readonly remains enabled, focusable and inspectable but blocks
+                input, selection, clear and blur mutations. Disabled uses the
+                native state and closes an open popup. Disabled options are
+                skipped.
+              </p>
+            </section>
+            <section id="localization" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Localization and direction</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Placeholder, empty, loading, clear and dropdown messages come
+                from <code>NeuralLocaleService</code> with direct input
+                overrides. Logical popup placement follows RTL automatically;
+                locale-aware filtering can use <code>filterLocale</code>.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-4 text-4xl font-black">AutoComplete API</h1>
+            </header>
+            <section id="models" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Models</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[44rem] text-left text-sm">
+                  <tbody>
+                    @for (item of models; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="data-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Data inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <tbody>
+                    @for (item of dataInputs; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="behavior-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Behavior inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <tbody>
+                    @for (item of behaviorInputs; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="state-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                State, labels and styling inputs
+              </h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <tbody>
+                    @for (item of stateInputs; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Outputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[42rem] text-left text-sm">
+                  <tbody>
+                    @for (item of outputs; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[2] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}{{ item[1] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="template-api" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed template directives</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of templateDirectives; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    Context: {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">AutoComplete tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Neutral tokens inherit the active primary, surface and resolved
+                light/dark mode. Glass and Futuristic only override tokens; user
+                classes remain additive.
+              </p>
+            </header>
+            <section id="tokens" class="scroll-mt-28 pt-16">
+              <site-design-token-list [tokens]="tokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

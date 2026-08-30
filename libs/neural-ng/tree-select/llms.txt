@@ -1,0 +1,40 @@
+# NeuralNg TreeSelect AI context
+
+Current component maturity: beta.
+
+Import `NeuralTreeSelect` and `NeuralTreeSelectValue` from
+`@neural-ng/core/tree-select`. Never import them from the primary package and
+never create an NgModule.
+`TreeSelectComponent` is a deprecated compatibility alias; never generate it in
+new code.
+
+Required data contract:
+- `[options]` is immutable hierarchical data.
+- `optionLabel` selects the visible label path.
+- `optionValue` selects the form value path.
+- `optionChildren` defaults to `children`.
+- The key must be a string or number. If optionValue is an object, set
+  `optionKey` to a stable string or number path.
+
+Forms contract:
+- TreeSelect implements `FormValueControl<NeuralTreeSelectValue<TValue>>`.
+- Bind `[(value)]` directly or use `[formField]`, `[formControl]`, or
+  `[(ngModel)]`; do not add a ControlValueAccessor wrapper.
+- Use `selectionMode="single"` for `TValue | null` and `multiple` or `checkbox`
+  for immutable `readonly TValue[]` values.
+- Programmatic writes and `reset()` do not emit semantic selection events.
+- A changed pointer or keyboard selection emits one `selectionChange`; choosing
+  the current single value again emits nothing.
+- Chip removal in multiple modes emits `selectionChange` and `unselected`.
+
+Readonly contract:
+- readonly is not disabled: the combobox remains focusable, exposes
+  `aria-readonly`, and may open for hierarchy inspection.
+- Filtering, roving focus, and branch expansion remain active in readonly mode.
+- Tree selection, clear, and chip removal are blocked.
+- Programmatic Forms writes and reset remain allowed.
+
+Use `[closeOnSelect]="false"` for multi-selection. Do not manually recreate Tree
+keyboard or ARIA behavior. Use `unstyled` plus typed `classes` for custom
+visuals. Structural behavior, Popover positioning, focus restoration,
+filtering, Forms, and Tree semantics remain active in unstyled mode.

@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schema.json",
+  "schemaVersion": 1,
+  "name": "mist",
+  "extends": "mist",
+  "modes": {
+    "dark": "auto"
+  },
+  "output": {
+    "tailwind": true,
+    "tokens": true,
+    "report": true,
+    "types": true
+  },
+  "generator": {
+    "colorAlgorithm": "neural-oklch-v1"
+  }
+}

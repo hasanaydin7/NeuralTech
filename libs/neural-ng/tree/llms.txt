@@ -1,0 +1,28 @@
+# @neural-ng/core/tree
+
+- Import NeuralTree and NeuralTreeNode from `@neural-ng/core/tree`. TreeComponent is deprecated and must not be generated in new code.
+- Every node must have a globally unique, stable string or number `key`.
+- Never mutate `value`, node children, or `expandedKeys` in place; provide new immutable references.
+- Bind `[(expandedKeys)]` to a `ReadonlySet<NeuralTreeKey>`.
+- Set `selectionMode` to `single`, `multiple`, or `checkbox`, then bind `[(selectionKeys)]` to a `ReadonlySet<NeuralTreeKey>`.
+- In multiple mode Ctrl/Meta toggles a node and Shift selects a visible range; set `metaKeySelection="false"` when modifiers should not be required.
+- Checkbox mode propagates selection down and derives checked/partial state upward by default; control this with `propagateSelectionDown` and `propagateSelectionUp`.
+- Use `selectable: false` on data or the `selectableNode` callback to block selection without disabling expansion.
+- `nodeSelect` and `nodeUnselect` emit the affected node, key, resulting immutable key set, and native interaction event.
+- Tree implements one roving tabindex across visible enabled nodes; do not add positive tabindex values to projected or surrounding content.
+- Arrow Up/Down navigate visible nodes, Home/End jump to edges, and horizontal arrows expand, enter children, collapse, or return to a parent.
+- Horizontal navigation follows computed document direction: Arrow Right expands in LTR and collapses in RTL; Arrow Left does the inverse.
+- Enter/Space select when `selectionMode` is set and otherwise toggle a branch. Printable keys run locale-aware typeahead.
+- Use `leaf: false` for a branch whose children will be loaded asynchronously.
+- Handle `lazyLoad` once, then replace the matching node with an immutable copy containing children.
+- `nodeExpand`, `nodeCollapse`, and `nodeToggle` carry node, key, level, and expanded state.
+- Call component `expandAll()` and `collapseAll()` for programmatic bulk expansion.
+- Duplicate keys and cyclic node graphs throw descriptive errors.
+- `unstyled` and global unstyled remove visual classes while structural hooks and ARIA semantics remain.
+- Bind `[(filterValue)]`; use `filterMode="lenient"` to retain a matched subtree or `filterMode="strict"` to continue testing descendants.
+- `filterFields` accepts nested paths such as `label` and `data.meta.owner`. Filtering never mutates the source nodes.
+- Import and use `NeuralTreeNodeTemplate`, `NeuralTreeTogglerTemplate`, `NeuralTreeIconTemplate`, `NeuralTreeLoadingTemplate`, and `NeuralTreeEmptyTemplate` only when their matching `ng-template` attributes are present.
+- When a projected template reads typed node data, bind a type-only value to the directive, for example `[neuralTreeNode]="workspaceTemplateType"`; never cast the template context to `any`.
+- Use `compact` for overlay surfaces. `virtualRange()` and `virtualItems()` expose fixed-height VirtualScroller connection data when `virtualScroll` settings are supplied.
+- Set a lazy node's `error` to a message or `true` for the localized fallback. The rendered Retry action emits a new `lazyLoad` request.
+- Reuse `NeuralTreeController` for DOM-independent state resolution and `mapNeuralTreeOptions()` for TreeSelect-style nested label/value/children mapping.

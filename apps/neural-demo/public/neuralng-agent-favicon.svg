@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <style>
+    .frame,
+    .smile {
+      fill: none;
+      stroke: #0f172a;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .frame {
+      stroke-width: 4;
+    }
+
+    .smile {
+      stroke-width: 2.4;
+    }
+
+    .accent {
+      fill: #2563eb;
+    }
+
+    .cursor {
+      stroke: #ffffff;
+      stroke-linejoin: round;
+      stroke-width: 0.75;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .frame,
+      .smile {
+        stroke: #f8fafc;
+      }
+
+      .accent {
+        fill: #38bdf8;
+      }
+
+      .cursor {
+        stroke: #020617;
+      }
+    }
+  </style>
+
+  <path
+    class="frame"
+    d="M34 6H14a8 8 0 0 0-8 8v20a8 8 0 0 0 8 8h18m10-12V14a8 8 0 0 0-8-8"
+  />
+  <circle class="accent" cx="17" cy="21" r="2.75" />
+  <path
+    class="accent"
+    d="m31 15 1.35 3.15L35.5 19.5l-3.15 1.35L31 24l-1.35-3.15-3.15-1.35 3.15-1.35z"
+  />
+  <path
+    class="smile"
+    d="M17 30.5c2 2.15 4.35 3.2 7 3.2s5-1.05 7-3.2"
+  />
+  <path
+    class="accent cursor"
+    d="M35 33v11l3.1-3.2 2.35 3.15 2.4-1.8-2.4-3.1H45z"
+  />
+</svg>

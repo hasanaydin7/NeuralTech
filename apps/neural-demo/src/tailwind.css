@@ -1,0 +1,26 @@
+@import 'tailwindcss' source('./app');
+@import '../../../libs/neural-ng/themes/tailwind.css';
+
+@custom-variant dark (&:where([data-neural-mode='dark'], [data-neural-mode='dark'] *));
+
+@layer components {
+  .docs-hero {
+    @apply border-b border-[var(--neural-color-border)] pb-8 pt-2 sm:pb-10;
+  }
+
+  .docs-hero__eyebrow {
+    @apply mb-3 block text-xs font-bold uppercase tracking-[0.14em] text-[var(--neural-color-primary)];
+  }
+
+  .docs-hero__title {
+    @apply m-0 text-4xl font-medium leading-[1.08] tracking-[-0.035em] text-[var(--neural-color-text)] sm:text-5xl;
+  }
+
+  .docs-hero__description {
+    @apply mt-4 max-w-3xl text-base font-normal leading-7 text-[var(--neural-color-text-muted)] sm:text-[1.0625rem];
+  }
+
+  .docs-hero__description code {
+    @apply rounded-md bg-[var(--neural-color-surface-hover)] px-1.5 py-0.5 font-mono text-[0.9em] font-medium text-[var(--neural-color-text)];
+  }
+}

@@ -1,0 +1,92 @@
+# NeuralNg Button
+
+> `NeuralButton` is a standalone Angular 22+ component that renders a native button and is imported only from `@neural-ng/core/button`.
+
+Generation rules:
+
+- Import `NeuralButton` from `@neural-ng/core/button`.
+- Add `NeuralButton` directly to the consumer component's `imports` array.
+- Do not declare or export it through a consumer NgModule.
+- Render it with `<neural-button>...</neural-button>`.
+- Prefer `label="Save"` for simple text and `[label]="saveLabel()"` for bound text. Project content only when rich markup is required.
+- Prefer `icon="nt nt-check"` over projecting a decorative `<i>` element. `icon` also accepts property binding.
+- Use `iconPosition="start|end"`; these are logical positions and follow RTL.
+- Icon-only styled Buttons are square automatically. Do not add manual width or padding utility classes; always provide `ariaLabel`.
+- Use `size="small|medium|large"`; the default is `medium`.
+- Use `iconSize="small|medium|large"` only to override the glyph size. When omitted, the icon follows the Button `size`; it does not change the hit target.
+- Use `outlined` for the bordered transparent treatment and `text` for the borderless transparent treatment. If both are present, `text` takes precedence.
+- `raised` and `rounded` are composable boolean modifiers. `text raised` is a supported combination.
+- Import `NeuralButtonGroup` from the same entry point and add it to `imports` when generating `<neural-button-group>`.
+- Give Button groups a meaningful `ariaLabel`; use `orientation="vertical"` only for vertical layouts.
+- Button groups preserve `role="group"`, logical RTL borders, and structural hooks in unstyled mode.
+- Listen with `(clicked)`. Never generate `(onNeuralClick)`, `(buttonClick)`, or `(click)` as a replacement for the documented output.
+- Use `type="submit"` only for intentional form submission; the default is `button`.
+- Use `severity` for semantic intent. Accepted values are `primary`, `secondary`, `neutral`, `info`, `success`, `warning`, and `error`.
+- Bind state with `[disabled]` and `[loading]`.
+- Supply a localized `loadingLabel` whenever the application language is not English.
+- Use `ariaLabel` only when projected content does not provide a meaningful visible label.
+- Composite controls may bind `ariaExpanded`, `ariaControls`,
+  `ariaKeyShortcuts`, `keyDown`, and `pointerDown`/`pointerMove`/`pointerUp`/
+  `pointerCancel`. Do not recreate a raw button merely to forward disclosure
+  or pointer state.
+- Use `badge` for a compact contextual value.
+- `badgePosition` accepts `start`, `end`, `top-start`, `top-end`, `bottom-start`, and `bottom-end`.
+- Use logical corner positions for notification Badges on icon-only buttons.
+- When an icon-only Button has meaningful Badge state, include that state in the Button `ariaLabel`.
+- Configure the Badge with `badgeSeverity`, `badgeSize`, `badgeMax`, `badgeAriaLabel`, and `badgeClass`; Button delegates these to the general `NeuralBadgeDirective`.
+- Zero is a valid Badge value. Do not hide it with truthy checks.
+- Do not project a second `<neural-badge>` when the Button Badge inputs are sufficient.
+- Loading replaces both projected content and the composed Badge.
+- Use `buttonClass` for the inner native button. A standard `class` targets the `neural-button` host.
+- Use `[unstyled]="true"` to remove NeuralNg's visual component layer. Do not assume that `buttonClass` disables theme styles.
+- Use `provideNeuralNg({ unstyled: true })` for application-wide unstyled mode.
+- Import `@neural-ng/core/themes/neutral.css` once for the stable reference theme.
+- Use `data-neural-theme` for theme identity and `data-neural-mode="light|dark"` for resolved color mode; they are independent.
+- Treat Glass, Mist, and Futuristic as optional experimental token presets; do not copy their values into component CSS.
+- Do not add manual keyboard handlers, `role="button"`, or `tabindex` because the component uses native button semantics.
+- While loading, the component remains focusable, blocks activation, exposes `aria-busy="true"` and `aria-disabled="true"`, and displays `loadingLabel`.
+- The `clicked` payload is a `MouseEvent` and does not emit while disabled or loading.
+
+Canonical example:
+
+```ts
+import { Component, signal } from '@angular/core';
+import { NeuralButton } from '@neural-ng/core/button';
+
+@Component({
+  selector: 'app-save-action',
+  standalone: true,
+  imports: [NeuralButton],
+  template: `
+    <neural-button
+      label="Save"
+      icon="nt nt-check"
+      [loading]="isSaving()"
+      loadingLabel="Saving"
+      buttonClass="w-full"
+      (clicked)="save($event)"
+    />
+  `,
+})
+export class SaveActionComponent {
+  readonly isSaving = signal(false);
+
+  save(event: MouseEvent): void {
+    console.log(event);
+  }
+}
+```
+
+## Documentation
+
+- [Button README](./README.md): Complete public API and usage guide.
+- [Package README](../README.md): Package setup and entry-point overview.
+- [Neutral theme](../themes/neutral.css): Reference values for every Button token.
+- [Experimental Glass theme](../themes/experimental/glass.css): Optional Glass token preset.
+- [Experimental Mist theme](../themes/experimental/mist.css): Optional calm blur-based token preset.
+- [Experimental Futuristic theme](../themes/experimental/futuristic.css): Optional Futuristic token preset.
+
+## Optional
+
+- [Package AI context](../llms.txt): NeuralNg-wide architecture and component index.
+- [llms.txt specification](https://llmstxt.org/): Format used by this file.

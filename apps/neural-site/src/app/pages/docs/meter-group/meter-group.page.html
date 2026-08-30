@@ -1,0 +1,441 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="meter-group-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="MeterGroup documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-chart-bar"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-violet-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-violet-500"
+                    >MISC</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  MeterGroup
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  Multiple scalar measurements inside one known range, rendered
+                  as a compact visual composition without sacrificing the
+                  identity and value of each meter.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    meter semantics</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Horizontal and vertical</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-violet-500">
+                STANDALONE API
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical component and immutable item contract from
+                the granular entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Storage composition</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Every segment owns its visible label, optional Neural Icon,
+                formatted value and assistive value text.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full">
+                  <neural-meter-group
+                    [items]="storage()"
+                    ariaLabel="Storage usage"
+                    [valueFormatter]="gigabytes"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="dynamic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Signal-driven values</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Replace immutable items and only the computed geometry changes.
+                Segment transitions respect reduced motion.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="dynamic.html"
+                language="html"
+                [code]="dynamicCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-5">
+                  <neural-meter-group
+                    [items]="storage()"
+                    ariaLabel="Live storage usage"
+                    [valueFormatter]="gigabytes"
+                  /><neural-button
+                    class="justify-self-start"
+                    label="Add media usage"
+                    icon="nt nt-plus"
+                    outlined
+                    (clicked)="addMediaUsage()"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="range" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Custom shared range and colors
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Values are normalized against one shared range. Item colors
+                override the six-color token palette without mutating source
+                data.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="range.html"
+                language="html"
+                [code]="rangeCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full">
+                  <neural-meter-group
+                    [items]="channels"
+                    [max]="200"
+                    [valueFormatter]="gigabytes"
+                    ariaLabel="Traffic allocation"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="layout" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Vertical and logical layout</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Orientation, label position and label flow are independent.
+                Start and end remain correct in RTL.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="vertical.html"
+                language="html"
+                [code]="layoutCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex min-h-64 w-full justify-center"
+                >
+                  <neural-meter-group
+                    class="max-w-md"
+                    [items]="resources"
+                    orientation="vertical"
+                    labelPosition="start"
+                    labelOrientation="vertical"
+                    ariaLabel="Runtime resources"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="labels" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Label and value visibility</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Move labels before the track, hide formatted values or remove
+                the visible legend entirely. Hidden legends become direct
+                accessible meter names.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="labels.html"
+                language="html"
+                [code]="labelsCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="grid w-full gap-7">
+                  <neural-meter-group
+                    [items]="channels"
+                    labelPosition="start"
+                    ariaLabel="Labels first"
+                  /><neural-meter-group
+                    [items]="channels"
+                    [showValues]="false"
+                    ariaLabel="Labels without values"
+                  /><neural-meter-group
+                    [items]="channels"
+                    [showLabels]="false"
+                    ariaLabel="Compact allocation"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="capacity" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Capacity clipping without data loss
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                When totals exceed the track, later segments use only remaining
+                visual capacity. Their real bounded values remain available
+                through ARIA instead of being rewritten.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="capacity.html"
+                language="html"
+                [code]="overflowCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="w-full">
+                  <neural-meter-group
+                    [items]="overflow"
+                    ariaLabel="Capacity request"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Structural sizing and meter semantics remain while Tailwind owns
+                every visible choice.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="w-full rounded-2xl bg-slate-950 p-5"
+                >
+                  <neural-meter-group
+                    unstyled
+                    [items]="resources"
+                    [classes]="headlessClasses"
+                    ariaLabel="Headless allocation"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">MeterGroup or ProgressBar?</h2>
+              <div class="mt-6 grid gap-4 md:grid-cols-2">
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <strong>MeterGroup</strong>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    Known scalar measurements such as storage composition,
+                    quotas, scores and resource allocation.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <strong>ProgressBar</strong>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    A task moving toward completion or an indeterminate
+                    operation. It communicates progress, not composition.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-violet-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-.04em]">
+                Every segment keeps its meaning
+              </h1>
+            </header>
+            <section id="meter-semantics" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Meter semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The container is a named group. Every item uses
+                <code>role="meter"</code> with bounded
+                <code>aria-valuemin</code>, <code>aria-valuemax</code> and
+                <code>aria-valuenow</code>.
+              </p>
+            </section>
+            <section id="names-values" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Names and human values</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Visible labels are connected using stable
+                <code>aria-labelledby</code> IDs. With labels hidden, each meter
+                receives a direct name. Use <code>valueText</code> for units or
+                domain meaning such as “24 gigabytes used”.
+              </p>
+            </section>
+            <section id="motion-rtl" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Motion and RTL</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Logical dimensions and positions follow document direction.
+                Segment transitions are removed when the operating system
+                requests reduced motion.
+              </p>
+            </section></neural-tab-panel
+          >
+
+          <neural-tab-panel value="api" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-violet-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-.04em]">
+                MeterGroup API
+              </h1>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-5 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                <table class="w-full min-w-[58rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (item of inputs; track item[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-violet-500">
+                        {{ item[0] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="item-model" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">NeuralMeterItem</h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of itemFields; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid sm:grid-cols-[10rem_12rem_1fr] sm:gap-4"
+                >
+                  <code class="font-bold text-violet-500">{{ item[0] }}</code
+                  ><code class="text-xs">{{ item[1] }}</code>
+                  <p class="text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-4 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-2 text-xs text-violet-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section></neural-tab-panel
+          >
+
+          <neural-tab-panel value="tokens" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-violet-500">
+                METER GROUP
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-.04em]">
+                Design tokens
+              </h1>
+              <p class="mt-4 text-[var(--site-text-soft)]">
+                Neutral, dark mode, Glass, Futuristic and Mist share this stable
+                component surface.
+              </p>
+            </header>
+            <section id="design-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Component tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="tokens"
+              /></section
+          ></neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

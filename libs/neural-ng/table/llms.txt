@@ -1,0 +1,134 @@
+# @neural-ng/core/table
+
+Import NeuralTable and every template directive used by the consuming
+standalone component from @neural-ng/core/table. Do not import an NgModule.
+TableComponent is a deprecated compatibility alias; generate NeuralTable in
+new code.
+Built-in filter controls integrate NeuralInput and NeuralSelect. Do not emit
+raw browser filter controls in generated Table examples.
+Table's built-in selection and action surfaces compose NeuralCheckbox,
+NeuralRadioGroup, and NeuralButton. Do not replace them with raw controls.
+Compose NeuralPaginator for visible page navigation and bind the same
+[(pageIndex)] and [(pageSize)] models to both components. Do not generate a
+native select for page size. Use NeuralInput, NeuralSelect, NeuralCheckbox,
+NeuralInputNumber, and NeuralButton inside custom Table toolbars/editors.
+
+Required inputs:
+- [columns]: readonly NeuralTableColumn<T>[]
+- [value]: readonly T[] defaults to []
+
+Core rules:
+- Provide rowKey for stable selection and expansion.
+- Table preserves native table semantics; do not add role="grid".
+- sortable columns render native buttons and aria-sort.
+- selectionMode is none, single, or multiple. selectionControl=auto uses a
+  radio for single mode and checkboxes for multiple mode.
+- Client selection stores rows in [(selection)] and mirrors rowKey values to
+  [(selectionKeys)]. Remote selection requires rowKey and is key-only through
+  [(selectionKeys)]; do not bind remote row objects as selection.
+- Row click selects by default. Ctrl/Meta toggles, Shift selects a range, and
+  selectableRow disables rows. Disabled rows are skipped by range and keyboard
+  navigation. Set selectOnRowClick=false for control-only selection.
+- Selectable rows use roving tabindex. ArrowUp/ArrowDown/Home/End navigate;
+  Space and Enter select.
+- selectAllMode is page, filtered, or all. In remote filtered/all mode provide
+  the complete server-resolved selectAllKeys scope.
+- selectionEvent includes rows, keys, changed row/key, selected, reason, and
+  nativeEvent.
+- editMode is cell or row. Editing is opt-in per column through editable and a
+  matching neuralTableEditor="columnId" template.
+- readOnly and disabled can be booleans or row callbacks. Neither enters edit;
+  disabled cells also expose aria-disabled.
+- Editor context exposes value, row, immutable draftRow, rowIndex, column,
+  loading, error, setValue, save, and cancel.
+- Table never mutates [value]. Apply draftRow from cellEditComplete or
+  rowEditSave to the owning Signal/store.
+- Cell edit lifecycle: cellEditStart, cellEditComplete, cellEditCancel.
+  Row lifecycle: rowEditStart, rowEditSave, rowEditCancel.
+- editValidator may return boolean/string/void or a Promise. A string rejects
+  the save and becomes the accessible editor error; pending validation exposes
+  loading and aria-busy. Do not start another edit while validation is pending.
+  Late validation results are ignored after replacement or component destroy.
+- Cell keys: Enter starts/saves, Escape cancels, Tab saves and moves. Row keys:
+  Enter saves, Escape cancels, Tab follows native editor order.
+- Use startRowEdit(row,rowIndex), saveEdit(), and cancelEdit() for row actions.
+- sort, filters, globalFilter, expandedRowKeys, pageIndex, and pageSize are
+  model inputs that support two-way binding.
+- filterable columns render a native filter row. Configure filterType,
+  filterMatchMode, filterOptions, filterPlaceholder, and filterAriaLabel.
+- filter types: text, number, date, boolean, select.
+- match modes: contains, startsWith, endsWith, equals, notEquals, lt, lte, gt,
+  gte, in, between.
+- filter controls debounce with filterDelay=250 by default. filterEvent and
+  stateChange report applied filters; filtering resets pageIndex to zero.
+- clearFilters() clears column filters; clearFilters(true) also clears the
+  global filter.
+- scrollHeight constrains the scroll viewport; combine it with stickyHeader.
+- resizableColumns enables accessible native resize separators. Use
+  columnResizeMode="fit" to balance the next column or "expand" to grow Table.
+- [(columnWidths)] is a readonly Record<string, number> of pixel widths.
+- per-column resize options are resizable, width, minWidth, and maxWidth.
+- resize supports pointer/touch, Arrow keys, and double-click auto-size.
+- [(hiddenColumnIds)] controls dynamic visibility without mutating columns.
+- setColumnVisibility, toggleColumnVisibility, and showAllColumns drive custom
+  column choosers. Observe columnVisibilityChange and columnResize.
+- reorderableColumns adds dedicated leaf-header grips. Bind
+  [(columnOrder)] to a readonly list of IDs and observe columnReorder.
+- reorder uses Pointer Events and ArrowLeft/ArrowRight on the focused grip. It never
+  mutates columns and never crosses sticky start/normal/end regions.
+- set reorderable:false to lock an individual column.
+- [headerGroups] accepts nested NeuralTableHeaderGroup definitions whose leaf
+  children are column IDs. Hidden leaves automatically update colspans.
+- Use neuralTableHeaderGroup="groupId" for a typed group label template.
+- Use column.footer or neuralTableFooter="columnId" for summaries.
+- footerGroups and neuralTableFooterGroup create grouped summary labels.
+- Footer template rows are processed client rows; consumers own aggregation.
+- stickyFooter keeps tfoot visible in a constrained scroll surface.
+- captureState returns a versioned, JSON-safe NeuralTableState containing page,
+  sort, filters, global filter, column order/widths/visibility, selection keys,
+  row expansion keys, and row-group expansion keys.
+- serializeState returns JSON suitable for URLSearchParams. restoreState accepts
+  that JSON or a NeuralTableState, sanitizes unknown columns, and never mutates
+  column definitions.
+- stateKey enables automatic persistence after hydration. stateStorage is
+  local, session, or none. Browser storage is never accessed during SSR.
+- stateAdapter overrides browser storage and may provide async load/save/remove.
+  Adapter failures must not prevent Table from rendering. clearStoredState()
+  calls adapter.remove only when the custom adapter implements it. Saves are
+  serialized and obsolete queued saves are coalesced; clear is ordered after a
+  running save. Late loads cannot restore state after key change or destroy.
+- stateChange includes the full snapshot, a reason, and monotonically increasing
+  requestId. Before applying remote data, call table.isLatestRequest(requestId)
+  to reject stale responses.
+- loadingMode=skeleton renders loadingRows placeholder rows. A
+  neuralTableLoading template takes precedence. Skeleton visual classes are
+  removed by unstyled while structural root hooks remain. loadingRows defaults
+  to 5, finite values are clamped to 1..1000, and non-finite values fall back
+  to 5.
+- groupRowsBy accepts a nested property path or row accessor.
+- rowGroupMode is subheader or rowspan. Subheader supports typed
+  neuralTableGroupHeader and neuralTableGroupFooter templates.
+- expandableRowGroups uses controlled [(expandedRowGroupKeys)] state and emits
+  rowGroupExpansionChange. Never mutate rows to store expansion state.
+- Group template context exposes value, key, rows, groupIndex, firstRowIndex,
+  expanded, toggle, and aggregate.
+- aggregate operations are sum, average, min, and max. Public helpers are
+  aggregateNeuralTableRows and aggregateNeuralTableValues.
+- rowspan mode applies native rowspan when groupRowsBy matches a visible
+  column id or field, including nested paths such as supplier.region.
+- client mode filters, stable-sorts, and optionally pages value.
+- dataMode="remote" never transforms value; react to stateChange to fetch.
+- Use neuralTableCell="columnId" for custom cells.
+- Use neuralTableHeader, neuralTableHeaderGroup, neuralTableExpansion, neuralTableLoading,
+  neuralTableEmpty, and neuralTableError for other typed slots.
+- Use neuralTableFilter="columnId" to own a filter UI while retaining typed
+  apply and clear callbacks.
+- loading, error, and empty are mutually prioritized in that order.
+- Use ariaLabel, ariaLabelledby, or a caption to name the table.
+- unstyled removes only visual *-base classes. Structural *-root hooks, native
+  behavior, and accessibility remain.
+
+The Table contract is in beta. Pin an exact prerelease version until stable.
+
+Not in beta: virtualization, export, tree table, column context menus,
+server-owned grouping, and responsive card conversion.

@@ -1,0 +1,71 @@
+{
+  "name": "neural-mcp",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/neural-mcp/src",
+  "projectType": "library",
+  "tags": ["scope:mcp", "type:server"],
+  "targets": {
+    "catalog": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node libs/neural-mcp/scripts/generate-catalog.mjs"
+      }
+    },
+    "catalog-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node libs/neural-mcp/scripts/generate-catalog.mjs --check"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/libs/neural-mcp"],
+      "options": {
+        "commands": [
+          "node libs/neural-mcp/scripts/generate-catalog.mjs --check",
+          "npx tsc -p libs/neural-mcp/tsconfig.lib.json",
+          "node libs/neural-mcp/scripts/prepare-package.mjs"
+        ],
+        "parallel": false
+      }
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx vitest run --config libs/neural-mcp/vitest.config.mts"
+      }
+    },
+    "package-test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "node libs/neural-mcp/scripts/test-package.mjs"
+      }
+    },
+    "mcp-smoke": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "build",
+        {
+          "target": "build",
+          "projects": ["neural-theme"]
+        }
+      ],
+      "options": {
+        "command": "node libs/neural-mcp/scripts/mcp-smoke.mjs"
+      }
+    }
+  },
+  "release": {
+    "version": {
+      "manifestRootsToUpdate": ["dist/{projectRoot}"],
+      "currentVersionResolver": "git-tag",
+      "fallbackCurrentVersionResolver": "disk"
+    }
+  }
+}

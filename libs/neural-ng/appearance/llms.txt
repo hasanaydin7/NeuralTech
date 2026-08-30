@@ -1,0 +1,59 @@
+# NeuralNg Appearance
+
+> Application-level Signal appearance state from `@neural-ng/core/appearance`.
+
+## Generation rules
+
+- Import `provideNeuralAppearance` and `NeuralAppearanceService` only from
+  `@neural-ng/core/appearance`.
+- Register `provideNeuralNg(...)` for core defaults and
+  `provideNeuralAppearance(...)` for palettes, mode, direction, and persistence.
+- Do not register `provideNeuralColorMode()` beside Appearance. Appearance owns
+  the color-mode provider configuration.
+- Use `primary()`, `surface()`, `mode()`, `resolvedMode()`, `isDark()`,
+  `direction()`, and `resolvedDirection()` as Signals.
+- Change state through `setPrimary`, `setSurface`, `setMode`,
+  `setDirection`, or `reset`. Do not mutate generated palette variables.
+- A palette name must be built in or registered in the provider before use.
+- Use `NEURAL_PRIMARY_PALETTES` and `NEURAL_SURFACE_PALETTES` to render picker
+  options instead of copying catalog values.
+- Keep visual theme family independent. Appearance does not choose
+  `data-neural-theme`.
+- Do not assume Tailwind. The optional Tailwind v4 bridge consumes the same CSS
+  variables without becoming a runtime dependency.
+- Keep SSR deterministic. Do not read localStorage, matchMedia, or document in
+  consumer render logic.
+
+## Canonical setup
+
+```ts
+import { provideNeuralNg } from '@neural-ng/core';
+import { provideNeuralAppearance } from '@neural-ng/core/appearance';
+
+export const appConfig = {
+  providers: [
+    provideNeuralNg(),
+    provideNeuralAppearance({
+      primary: 'violet',
+      surface: 'slate',
+      mode: 'system',
+      direction: 'auto',
+    }),
+  ],
+};
+```
+
+```ts
+import { inject } from '@angular/core';
+import { NeuralAppearanceService } from '@neural-ng/core/appearance';
+
+readonly appearance = inject(NeuralAppearanceService);
+
+choosePrimary(value: string): void {
+  this.appearance.setPrimary(value);
+}
+```
+
+The provider writes namespaced DOM attributes and full primary/surface token
+scales, persists each preference separately, and synchronizes valid changes
+between tabs.

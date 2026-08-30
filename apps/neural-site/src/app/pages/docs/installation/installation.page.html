@@ -1,0 +1,241 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-20 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_18%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >GET STARTED</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            Installation
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            Add NeuralNg to an Angular application, connect the design system
+            and render your first tree-shakable component.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Angular
+              22+</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Standalone
+              APIs</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR safe</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="prerequisites" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          BEFORE YOU START
+        </p>
+        <h2 class="mt-3 text-2xl font-black">Prerequisites</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          NeuralNg targets Angular 22 or newer and uses standalone components,
+          Signals and strict TypeScript contracts. Your application does not
+          need an NgModule.
+        </p>
+        <div class="mt-6 grid gap-3 sm:grid-cols-3">
+          <div
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <i
+              class="nt nt-brand-angular text-xl text-[var(--neural-color-primary)]"
+            ></i>
+            <strong class="mt-3 block">Angular 22+</strong>
+            <p class="mt-1 text-sm text-[var(--site-text-muted)]">
+              Modern standalone application.
+            </p>
+          </div>
+          <div
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <i
+              class="nt nt-code text-xl text-[var(--neural-color-primary)]"
+            ></i>
+            <strong class="mt-3 block">TypeScript strict</strong>
+            <p class="mt-1 text-sm text-[var(--site-text-muted)]">
+              Recommended for complete inference.
+            </p>
+          </div>
+          <div
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <i
+              class="nt nt-server text-xl text-[var(--neural-color-primary)]"
+            ></i>
+            <strong class="mt-3 block">Browser or SSR</strong>
+            <p class="mt-1 text-sm text-[var(--site-text-muted)]">
+              Both rendering modes are supported.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="packages" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Install packages</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Core contains the Angular components. Icons are framework-independent
+          and optional, but recommended for the built-in icon examples.
+        </p>
+        <div class="mt-6 grid gap-5">
+          <code-view
+            fileName="npm"
+            language="bash"
+            [code]="npmCode"
+            [theme]="appearance.mode()"
+          />
+          <details
+            class="group rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] px-5 py-4"
+          >
+            <summary class="cursor-pointer font-bold">
+              Other package managers
+            </summary>
+            <div class="mt-5 grid gap-5">
+              <code-view
+                fileName="pnpm"
+                language="bash"
+                [code]="pnpmCode"
+                [theme]="appearance.mode()"
+              />
+              <code-view
+                fileName="yarn"
+                language="bash"
+                [code]="yarnCode"
+                [theme]="appearance.mode()"
+              />
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="styles" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Add the visual layer</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Import the Neutral reference theme once in your global stylesheet. The
+          icon stylesheet is needed only when using
+          <code>nt nt-*</code> classes.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="styles.css"
+          language="css"
+          [code]="stylesCode"
+          [theme]="appearance.mode()"
+        />
+        <div
+          class="mt-5 flex gap-3 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5 text-sm leading-6"
+        >
+          <i
+            class="nt nt-info-circle mt-0.5 text-blue-500"
+            aria-hidden="true"
+          ></i>
+          <p>
+            Theme CSS is side-effectful by design. Component code still comes
+            from granular entry points such as
+            <code>@neural-ng/core/button</code>, so unused components stay out
+            of the bundle.
+          </p>
+        </div>
+      </section>
+
+      <section id="configuration" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Configure Angular</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Register direction and density with <code>provideNeuralNg()</code>.
+          <code>provideNeuralAppearance()</code> adds persisted primary and
+          surface palettes, light/dark/system mode and logical direction.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="app.config.ts"
+          language="typescript"
+          [code]="configCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="first-component" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Use your first component</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Import from the component entry point. NeuralNg components are
+          standalone, so the import belongs directly in the consuming component.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="save-action.ts"
+          language="typescript"
+          [code]="componentCode"
+          [theme]="appearance.mode()"
+        />
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            routerLink="/docs/components/button"
+            class="inline-flex h-11 items-center gap-2 rounded-xl bg-[var(--neural-color-primary)] px-4 text-sm font-black text-[var(--neural-color-primary-contrast)] transition hover:-translate-y-0.5"
+          >
+            Explore Button
+            <i class="nt nt-arrow-right" aria-hidden="true"></i>
+          </a>
+          <a
+            routerLink="/docs/components/input"
+            class="inline-flex h-11 items-center gap-2 rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-4 text-sm font-bold transition hover:border-[var(--site-border-strong)]"
+          >
+            Explore Input
+          </a>
+        </div>
+      </section>
+
+      <section id="tailwind" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Optional Tailwind CSS bridge</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          NeuralNg does not depend on Tailwind. Tailwind CSS v4 applications can
+          opt into the token bridge to use classes such as
+          <code>bg-primary-500</code>, <code>text-surface-950</code> and the
+          same namespaced dark-mode selector.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="styles.css"
+          language="css"
+          [code]="tailwindCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="headless" class="scroll-mt-28 pb-12 pt-16">
+        <h2 class="text-2xl font-black">Optional global headless mode</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Set <code>unstyled</code> globally when your product owns every visual
+          decision. Semantics, behavior, structural hooks and typed class slots
+          remain available.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="app.config.ts"
+          language="typescript"
+          [code]="headlessCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+    </div>
+
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

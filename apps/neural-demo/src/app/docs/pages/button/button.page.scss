@@ -1,0 +1,24 @@
+.button-docs-page {
+  .button-badge-icon-demo {
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    font-size: 1.125rem;
+  }
+
+  .docs-headless-button {
+    padding: 0.7rem 1rem;
+    color: #f0fdf4;
+    background: #14532d;
+    border: 2px dashed #4ade80;
+    border-radius: 0.35rem;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .docs-headless-button:focus-visible {
+    outline: 2px solid #86efac;
+    outline-offset: 3px;
+  }
+}

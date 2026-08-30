@@ -1,0 +1,110 @@
+<article class="docs-page input-otp-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Forms Foundation</span>
+    <h1 class="docs-hero__title">InputOtp</h1>
+    <p class="docs-hero__description">
+      A secure one-time-code experience with native autofill, fast paste,
+      deterministic keyboard behavior, and one string model across every Angular
+      Forms API.
+    </p>
+  </header>
+
+  <section>
+    <h2>Import</h2>
+    <p>Use the tree-shakable InputOtp secondary entry point.</p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Verification code</h2>
+    <p>
+      Paste or autofill the complete code. The component distributes each
+      character and emits <code>complete</code> when every cell is ready.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="input-otp-demo">
+        <neural-field controlId="docs-verification-code" fluid>
+          <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+          <label neuralFieldLabel>Verification code</label>
+          <neural-input-otp
+            [formField]="verificationForm.code"
+            [length]="6"
+            autocomplete="one-time-code"
+            fluid
+            (complete)="completed($event)"
+          />
+          <small neuralFieldHint>Enter the code sent to your device.</small>
+        </neural-field>
+        <output class="demo-status" aria-live="polite">{{ status() }}</output>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Alphanumeric, separator, and mask</h2>
+    <p>
+      Recovery codes may contain letters, while masking is available for
+      shoulder-surfing sensitive flows.
+    </p>
+    <code-view
+      fileName="variants.html"
+      language="html"
+      [code]="variantsCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="input-otp-demo input-otp-demo--rows">
+        <neural-input-otp
+          ariaLabel="Recovery code"
+          mode="alphanumeric"
+          separator="-"
+          [length]="6"
+          [(value)]="recoveryCode"
+        />
+        <neural-input-otp
+          ariaLabel="Private verification code"
+          mask
+          [(value)]="privateCode"
+        />
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Unstyled and typed class slots</h2>
+    <p>
+      Native semantics and structural hooks remain while consumer classes own
+      the entire visual layer.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="input-otp-demo">
+        <neural-input-otp
+          ariaLabel="Headless agent code"
+          mode="alphanumeric"
+          separator="·"
+          [(value)]="headlessCodeValue"
+          [classes]="headlessClasses"
+          unstyled
+          fluid
+        />
+      </div>
+    </code-view>
+  </section>
+</article>

@@ -1,0 +1,55 @@
+.code-example {
+  overflow: hidden;
+  margin: 1rem 0;
+  background: #09090b;
+  border: 1px solid #27272a;
+  border-radius: 0.75rem;
+}
+
+figcaption {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.55rem 0.4rem 0.85rem;
+  color: #d4d4d8;
+  border-bottom: 1px solid #27272a;
+  font-size: 0.75rem;
+
+  > span:first-child {
+    font-weight: 700;
+  }
+}
+
+.language {
+  margin-inline-end: auto;
+  color: #71717a;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+button {
+  padding: 0.35rem 0.6rem;
+  color: #d4d4d8;
+  background: #18181b;
+  border: 1px solid #3f3f46;
+  border-radius: 0.4rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+pre {
+  overflow-x: auto;
+  margin: 0;
+  padding: 1rem;
+  color: #e4e4e7;
+  font:
+    0.8rem/1.65 ui-monospace,
+    SFMono-Regular,
+    Consolas,
+    monospace;
+  tab-size: 2;
+}
+
+code {
+  white-space: pre;
+}

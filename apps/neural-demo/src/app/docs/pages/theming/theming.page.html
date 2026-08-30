@@ -1,0 +1,130 @@
+<article class="docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Getting Started</span>
+    <h1 class="docs-hero__title">Theming</h1>
+    <p class="docs-hero__description">
+      Build with stable primitive palettes, semantic component tokens, optional
+      Tailwind utilities, and independent light, dark, density, and direction
+      controls.
+    </p>
+  </header>
+
+
+  <section class="theme-studio-callout">
+    <div>
+      <h2>Build a theme visually</h2>
+      <p>
+        Theme Studio compiles the same compact JSON recipe as the
+        <code>neural-theme</code> CLI and scopes the generated Core and Editor
+        tokens to a live preview.
+      </p>
+    </div>
+    <a routerLink="/docs/tools/theme-studio">Open Theme Studio</a>
+  </section>
+
+  <section>
+    <h2>Primitive color palettes</h2>
+    <p>
+      Every step is a stable CSS variable. Changing theme identity can replace
+      the palette without changing application markup or Tailwind class names.
+    </p>
+
+    <div class="palette-block">
+      <h3>Primary</h3>
+      <div class="palette" aria-label="Primary color palette">
+        @for (step of primarySteps; track step.value) {
+        <div class="palette__step" [class]="step.className">
+          <strong>{{ step.value }}</strong>
+          <span>primary</span>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="palette-block">
+      <h3>Surface</h3>
+      <div class="palette" aria-label="Surface color palette">
+        @for (step of surfaceSteps; track step.value) {
+        <div class="palette__step" [class]="step.className">
+          <strong>{{ step.value }}</strong>
+          <span>surface</span>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tailwind CSS v4 bridge</h2>
+    <p>
+      The optional bridge maps NeuralNg variables to Tailwind's color namespace.
+      It creates background, text, border, ring, fill, and related utilities
+      without adding Tailwind as a NeuralNg dependency.
+    </p>
+    <code-view
+      fileName="styles.css"
+      language="css"
+      [code]="tailwindCode"
+      [showLineNumbers]="true"
+      [preview]="false"
+      [theme]="resolvedMode()"
+    />
+    <code-view
+      fileName="profile.html"
+      language="html"
+      [code]="utilityCode"
+      [showLineNumbers]="true"
+      [preview]="false"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Direction and density Signals</h2>
+    <p>
+      Direction is written to the native <code>dir</code> attribute. Auto mode
+      follows the active NeuralNg locale; density uses a namespaced root
+      attribute and shared control tokens.
+    </p>
+
+    <div class="runtime-grid">
+      <div>
+        <h3>Direction: {{ neuralNg.direction() }}</h3>
+        <div class="runtime-actions">
+          <neural-button (clicked)="setDirection('auto')">Auto</neural-button>
+          <neural-button (clicked)="setDirection('ltr')">LTR</neural-button>
+          <neural-button (clicked)="setDirection('rtl')">RTL</neural-button>
+        </div>
+      </div>
+
+      <div>
+        <h3>Density: {{ neuralNg.density() }}</h3>
+        <div class="runtime-actions">
+          <neural-button (clicked)="setDensity('compact')">
+            Compact
+          </neural-button>
+          <neural-button (clicked)="setDensity('comfortable')">
+            Comfortable
+          </neural-button>
+          <neural-button (clicked)="setDensity('spacious')">
+            Spacious
+          </neural-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="direction-preview">
+      <strong>Resolved direction: {{ neuralNg.resolvedDirection() }}</strong>
+      <span>NeuralNg keeps logical start/end behavior across the UI.</span>
+    </div>
+
+    <code-view
+      fileName="app.config.ts"
+      language="ts"
+      [code]="globalConfigCode"
+      [showLineNumbers]="true"
+      [preview]="false"
+      [theme]="resolvedMode()"
+    />
+  </section>
+</article>

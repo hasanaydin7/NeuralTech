@@ -1,0 +1,164 @@
+<section
+  [class]="rootClass()"
+  role="region"
+  [attr.aria-label]="ariaLabel()"
+  [attr.aria-busy]="loading() ? 'true' : null"
+  [attr.data-orientation]="orientation()"
+  [attr.data-first]="range().visibleStart"
+  [attr.data-range-start]="range().start"
+  [attr.data-range-end]="range().end"
+>
+  <div
+    #viewport
+    role="list"
+    [attr.aria-label]="ariaLabel()"
+    [attr.aria-orientation]="orientation()"
+    [attr.tabindex]="tabindex()"
+    [class]="
+      classFor(
+        'viewport',
+        'neural-virtual-scroller-viewport-root',
+        'neural-virtual-scroller-viewport-base'
+      )
+    "
+    [style.height.px]="
+      orientation() === 'vertical' ? normalizedViewportSize() : null
+    "
+    [style.width.px]="
+      orientation() === 'horizontal' ? normalizedViewportSize() : null
+    "
+    (scroll)="handleScroll($event)"
+  >
+    @if (items().length === 0 && !loading()) {
+      <div
+        [class]="
+          classFor(
+            'empty',
+            'neural-virtual-scroller-empty-root',
+            'neural-virtual-scroller-empty-base'
+          )
+        "
+      >
+        @if (emptyTemplate(); as template) {
+          <ng-container
+            [ngTemplateOutlet]="template.templateRef"
+            [ngTemplateOutletContext]="stateContext(emptyMessage())"
+          />
+        } @else {
+          <i class="nt nt-inbox" aria-hidden="true"></i
+          ><span>{{ emptyMessage() }}</span>
+        }
+      </div>
+    } @else {
+      <div
+        [class]="
+          classFor(
+            'content',
+            'neural-virtual-scroller-content-root',
+            'neural-virtual-scroller-content-base'
+          )
+        "
+        [style.flex-direction]="orientation() === 'vertical' ? 'column' : 'row'"
+        [style.height.px]="
+          orientation() === 'vertical' ? range().totalSize : null
+        "
+        [style.width.px]="
+          orientation() === 'horizontal' ? range().totalSize : null
+        "
+      >
+        <span
+          aria-hidden="true"
+          [class]="
+            classFor(
+              'spacerBefore',
+              'neural-virtual-scroller-spacer-before-root',
+              'neural-virtual-scroller-spacer-base'
+            )
+          "
+          [style.flex-basis.px]="range().offsetBefore"
+        ></span>
+        <div
+          [class]="
+            classFor(
+              'items',
+              'neural-virtual-scroller-items-root',
+              'neural-virtual-scroller-items-base'
+            )
+          "
+          [style.flex-direction]="
+            orientation() === 'vertical' ? 'column' : 'row'
+          "
+        >
+          @for (
+            item of renderedItems();
+            track trackItem($index, item);
+            let renderedIndex = $index
+          ) {
+            <article
+              role="listitem"
+              [attr.aria-posinset]="itemContext(item, renderedIndex).index + 1"
+              [attr.aria-setsize]="items().length"
+              [attr.data-index]="itemContext(item, renderedIndex).index"
+              [class]="
+                classFor(
+                  'item',
+                  'neural-virtual-scroller-item-root',
+                  'neural-virtual-scroller-item-base'
+                )
+              "
+              [style.height.px]="
+                orientation() === 'vertical' ? normalizedItemSize() : null
+              "
+              [style.width.px]="
+                orientation() === 'horizontal' ? normalizedItemSize() : null
+              "
+            >
+              @if (itemTemplate(); as template) {
+                <ng-container
+                  [ngTemplateOutlet]="template.templateRef"
+                  [ngTemplateOutletContext]="itemContext(item, renderedIndex)"
+                />
+              } @else {
+                {{ item }}
+              }
+            </article>
+          }
+        </div>
+        <span
+          aria-hidden="true"
+          [class]="
+            classFor(
+              'spacerAfter',
+              'neural-virtual-scroller-spacer-after-root',
+              'neural-virtual-scroller-spacer-base'
+            )
+          "
+          [style.flex-basis.px]="range().offsetAfter"
+        ></span>
+      </div>
+    }
+  </div>
+  @if (loading()) {
+    <div
+      role="status"
+      aria-live="polite"
+      [class]="
+        classFor(
+          'loading',
+          'neural-virtual-scroller-loading-root',
+          'neural-virtual-scroller-loading-base'
+        )
+      "
+    >
+      @if (loadingTemplate(); as template) {
+        <ng-container
+          [ngTemplateOutlet]="template.templateRef"
+          [ngTemplateOutletContext]="stateContext(loadingMessage())"
+        />
+      } @else {
+        <i class="nt nt-loader-3 nt-spin" aria-hidden="true"></i
+        ><span>{{ loadingMessage() }}</span>
+      }
+    </div>
+  }
+</section>

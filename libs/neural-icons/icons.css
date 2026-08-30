@@ -1,0 +1,505 @@
+/*
+ * Neural Icons v0.1.0-beta.0 — curated core
+ * Generated from Tabler Icons 3.46.0 SVG sources (MIT).
+ * https://tabler.io/icons — see THIRD_PARTY_NOTICES.md
+ * Do not edit generated CSS directly.
+ */
+
+.nt {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  background-color: currentColor;
+  -webkit-mask: var(--nt-icon) center / contain no-repeat;
+  mask: var(--nt-icon) center / contain no-repeat;
+}
+
+.nt-spin,
+.nt-spin-reverse,
+.nt-spin-dual {
+  animation: nt-spin var(--nt-spin-duration, 1s) linear infinite;
+}
+
+.nt-spin-reverse {
+  animation-direction: reverse;
+}
+
+.nt-loader-3.nt-spin-dual {
+  position: relative;
+  background-color: transparent;
+  -webkit-mask: none;
+  mask: none;
+  animation: none;
+}
+
+.nt-loader-3.nt-spin-dual::before,
+.nt-loader-3.nt-spin-dual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: currentColor;
+  transform-origin: center;
+}
+
+.nt-loader-3.nt-spin-dual::before {
+  -webkit-mask: var(--nt-icon-outer) center / contain no-repeat;
+  mask: var(--nt-icon-outer) center / contain no-repeat;
+  animation: nt-spin var(--nt-spin-duration, 1s) linear infinite;
+}
+
+.nt-loader-3.nt-spin-dual::after {
+  -webkit-mask: var(--nt-icon-inner) center / contain no-repeat;
+  mask: var(--nt-icon-inner) center / contain no-repeat;
+  animation: nt-spin var(--nt-spin-inner-duration, 0.75s) linear infinite reverse;
+}
+
+@keyframes nt-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nt-spin,
+  .nt-spin-reverse,
+  .nt-spin-dual,
+  .nt-spin-dual::before,
+  .nt-spin-dual::after {
+    animation: none !important;
+  }
+}
+.nt-user {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0%22 %2F%3E%3Cpath d%3D%22M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-search {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0%22 %2F%3E%3Cpath d%3D%22M21 21l-6 -6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-menu {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 6l16 0%22 %2F%3E%3Cpath d%3D%22M4 12l16 0%22 %2F%3E%3Cpath d%3D%22M4 18l16 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-menu-3 {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M10 6h10%22 %2F%3E%3Cpath d%3D%22M4 12h16%22 %2F%3E%3Cpath d%3D%22M7 12h13%22 %2F%3E%3Cpath d%3D%22M4 18h10%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-password-fingerprint {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M17 8c.788 1 1 2 1 3v1%22 %2F%3E%3Cpath d%3D%22M9 11c0 -1.578 1.343 -3 3 -3s3 1.422 3 3v2%22 %2F%3E%3Cpath d%3D%22M12 11v2%22 %2F%3E%3Cpath d%3D%22M6 12v-1.397c-.006 -1.999 1.136 -3.849 2.993 -4.85a6.385 6.385 0 0 1 6.007 -.005%22 %2F%3E%3Cpath d%3D%22M12 17v4%22 %2F%3E%3Cpath d%3D%22M10 20l4 -2%22 %2F%3E%3Cpath d%3D%22M10 18l4 2%22 %2F%3E%3Cpath d%3D%22M5 17v4%22 %2F%3E%3Cpath d%3D%22M3 20l4 -2%22 %2F%3E%3Cpath d%3D%22M3 18l4 2%22 %2F%3E%3Cpath d%3D%22M19 17v4%22 %2F%3E%3Cpath d%3D%22M17 20l4 -2%22 %2F%3E%3Cpath d%3D%22M17 18l4 2%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-times {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M18 6l-12 12%22 %2F%3E%3Cpath d%3D%22M6 6l12 12%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-check {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M5 12l5 5l10 -10%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-copy {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667l0 -8.666%22 %2F%3E%3Cpath d%3D%22M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-external-link {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6%22 %2F%3E%3Cpath d%3D%22M11 13l9 -9%22 %2F%3E%3Cpath d%3D%22M15 4h5v5%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-download {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2%22 %2F%3E%3Cpath d%3D%22M7 11l5 5l5 -5%22 %2F%3E%3Cpath d%3D%22M12 4l0 12%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-github {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-sun {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0%22 %2F%3E%3Cpath d%3D%22M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-moon {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-desktop {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10%22 %2F%3E%3Cpath d%3D%22M7 20h10%22 %2F%3E%3Cpath d%3D%22M9 16v4%22 %2F%3E%3Cpath d%3D%22M15 16v4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-calendar {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12%22 %2F%3E%3Cpath d%3D%22M16 3v4%22 %2F%3E%3Cpath d%3D%22M8 3v4%22 %2F%3E%3Cpath d%3D%22M4 11h16%22 %2F%3E%3Cpath d%3D%22M11 15h1%22 %2F%3E%3Cpath d%3D%22M12 15v3%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-calendar-event {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12%22 %2F%3E%3Cpath d%3D%22M16 3l0 4%22 %2F%3E%3Cpath d%3D%22M8 3l0 4%22 %2F%3E%3Cpath d%3D%22M4 11l16 0%22 %2F%3E%3Cpath d%3D%22M8 15h2v2h-2l0 -2%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-clock {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0%22 %2F%3E%3Cpath d%3D%22M12 7v5l3 3%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-chevron-up {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M6 15l6 -6l6 6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-chevron-down {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M6 9l6 6l6 -6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-chevrons-down {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M7 7l5 5l5 -5%22 %2F%3E%3Cpath d%3D%22M7 13l5 5l5 -5%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-chevrons-left {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M11 7l-5 5l5 5%22 %2F%3E%3Cpath d%3D%22M17 7l-5 5l5 5%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-chevrons-right {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M7 7l5 5l-5 5%22 %2F%3E%3Cpath d%3D%22M13 7l5 5l-5 5%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-chevron-left {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M15 6l-6 6l6 6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-chevron-right {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M9 6l6 6l-6 6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-arrow-left {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M5 12l14 0%22 %2F%3E%3Cpath d%3D%22M5 12l6 6%22 %2F%3E%3Cpath d%3D%22M5 12l6 -6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-arrow-right {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M5 12l14 0%22 %2F%3E%3Cpath d%3D%22M13 18l6 -6%22 %2F%3E%3Cpath d%3D%22M13 6l6 6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-arrow-up {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M12 5l0 14%22 %2F%3E%3Cpath d%3D%22M18 11l-6 -6%22 %2F%3E%3Cpath d%3D%22M6 11l6 -6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-arrow-down {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M12 5l0 14%22 %2F%3E%3Cpath d%3D%22M18 13l-6 6%22 %2F%3E%3Cpath d%3D%22M6 13l6 6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-info-circle {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0%22 %2F%3E%3Cpath d%3D%22M12 9h.01%22 %2F%3E%3Cpath d%3D%22M11 12h1v4h1%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-inbox {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12%22 %2F%3E%3Cpath d%3D%22M4 13h3l3 3h4l3 -3h3%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-alert-triangle {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M12 9v4%22 %2F%3E%3Cpath d%3D%22M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0%22 %2F%3E%3Cpath d%3D%22M12 16h.01%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-alert-circle {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0%22 %2F%3E%3Cpath d%3D%22M12 8v4%22 %2F%3E%3Cpath d%3D%22M12 16h.01%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-armchair {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M5 11a2 2 0 0 1 2 2v2h10v-2a2 2 0 1 1 4 0v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2%22 %2F%3E%3Cpath d%3D%22M5 11v-5a3 3 0 0 1 3 -3h8a3 3 0 0 1 3 3v5%22 %2F%3E%3Cpath d%3D%22M6 19v2%22 %2F%3E%3Cpath d%3D%22M18 19v2%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-circle-check {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0%22 %2F%3E%3Cpath d%3D%22M9 12l2 2l4 -4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-circle-dot {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-circle-times {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0%22 %2F%3E%3Cpath d%3D%22M10 10l4 4m0 -4l-4 4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-bell {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6%22 %2F%3E%3Cpath d%3D%22M9 17v1a3 3 0 0 0 6 0v-1%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-books {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M5 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14%22 %2F%3E%3Cpath d%3D%22M9 5a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -14%22 %2F%3E%3Cpath d%3D%22M5 8h4%22 %2F%3E%3Cpath d%3D%22M9 16h4%22 %2F%3E%3Cpath d%3D%22M13.803 4.56l2.184 -.53c.562 -.135 1.133 .19 1.282 .732l3.695 13.418a1.02 1.02 0 0 1 -.634 1.219l-.133 .041l-2.184 .53c-.562 .135 -1.133 -.19 -1.282 -.732l-3.695 -13.418a1.02 1.02 0 0 1 .634 -1.219l.133 -.041%22 %2F%3E%3Cpath d%3D%22M14 9l4 -1%22 %2F%3E%3Cpath d%3D%22M16 16l3.923 -.98%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-settings {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065%22 %2F%3E%3Cpath d%3D%22M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-folders {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M9 3h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2%22 %2F%3E%3Cpath d%3D%22M17 16v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-binary-tree {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M6 20a2 2 0 1 0 -4 0a2 2 0 0 0 4 0%22 %2F%3E%3Cpath d%3D%22M16 4a2 2 0 1 0 -4 0a2 2 0 0 0 4 0%22 %2F%3E%3Cpath d%3D%22M16 20a2 2 0 1 0 -4 0a2 2 0 0 0 4 0%22 %2F%3E%3Cpath d%3D%22M11 12a2 2 0 1 0 -4 0a2 2 0 0 0 4 0%22 %2F%3E%3Cpath d%3D%22M21 12a2 2 0 1 0 -4 0a2 2 0 0 0 4 0%22 %2F%3E%3Cpath d%3D%22M5.058 18.306l2.88 -4.606%22 %2F%3E%3Cpath d%3D%22M10.061 10.303l2.877 -4.604%22 %2F%3E%3Cpath d%3D%22M10.065 13.705l2.876 4.6%22 %2F%3E%3Cpath d%3D%22M15.063 5.7l2.881 4.61%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-sitemap {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2%22 %2F%3E%3Cpath d%3D%22M15 17a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2%22 %2F%3E%3Cpath d%3D%22M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2l0 -2%22 %2F%3E%3Cpath d%3D%22M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1%22 %2F%3E%3Cpath d%3D%22M12 9l0 3%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-file-text {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M14 3v4a1 1 0 0 0 1 1h4%22 %2F%3E%3Cpath d%3D%22M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2%22 %2F%3E%3Cpath d%3D%22M9 9l1 0%22 %2F%3E%3Cpath d%3D%22M9 13l6 0%22 %2F%3E%3Cpath d%3D%22M9 17l6 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-photo {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M15 8h.01%22 %2F%3E%3Cpath d%3D%22M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12%22 %2F%3E%3Cpath d%3D%22M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5%22 %2F%3E%3Cpath d%3D%22M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-package-off {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M8.812 4.793l3.188 -1.793l8 4.5v8.5m-2.282 1.784l-5.718 3.216l-8 -4.5v-9l2.223 -1.25%22 %2F%3E%3Cpath d%3D%22M14.543 10.57l5.457 -3.07%22 %2F%3E%3Cpath d%3D%22M12 12v9%22 %2F%3E%3Cpath d%3D%22M12 12l-8 -4.5%22 %2F%3E%3Cpath d%3D%22M16 5.25l-4.35 2.447m-2.564 1.442l-1.086 .611%22 %2F%3E%3Cpath d%3D%22M3 3l18 18%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-placeholder {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M10 20.415a8 8 0 1 0 3 -15.415h-3%22 %2F%3E%3Cpath d%3D%22M13 8l-3 -3l3 -3%22 %2F%3E%3Cpath d%3D%22M7 17l4 -4l-4 -4l-4 4l4 4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-cloud {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M6.657 18c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-credit-card {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -8%22 %2F%3E%3Cpath d%3D%22M3 10l18 0%22 %2F%3E%3Cpath d%3D%22M7 15l.01 0%22 %2F%3E%3Cpath d%3D%22M11 15l2 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-shield {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-shield-check {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06%22 %2F%3E%3Cpath d%3D%22M15 19l2 2l4 -4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-cpu {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M5 6a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1l0 -12%22 %2F%3E%3Cpath d%3D%22M9 9h6v6h-6l0 -6%22 %2F%3E%3Cpath d%3D%22M3 10h2%22 %2F%3E%3Cpath d%3D%22M3 14h2%22 %2F%3E%3Cpath d%3D%22M10 3v2%22 %2F%3E%3Cpath d%3D%22M14 3v2%22 %2F%3E%3Cpath d%3D%22M21 10h-2%22 %2F%3E%3Cpath d%3D%22M21 14h-2%22 %2F%3E%3Cpath d%3D%22M14 21v-2%22 %2F%3E%3Cpath d%3D%22M10 21v-2%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-ai-agent {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M11 14a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M6 14a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M16 14a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M11 5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M13.5 9.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M8.5 9.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M13.5 18.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M8.5 18.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M3.5 18.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M18.5 18.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-api {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 13h5%22 %2F%3E%3Cpath d%3D%22M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3%22 %2F%3E%3Cpath d%3D%22M20 8v8%22 %2F%3E%3Cpath d%3D%22M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-versions {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M10 7a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2l0 -10%22 %2F%3E%3Cpath d%3D%22M7 7l0 10%22 %2F%3E%3Cpath d%3D%22M4 8l0 8%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-chart-bar {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -6%22 %2F%3E%3Cpath d%3D%22M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -10%22 %2F%3E%3Cpath d%3D%22M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -14%22 %2F%3E%3Cpath d%3D%22M4 20h14%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-progress {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M10 20.777a8.942 8.942 0 0 1 -2.48 -.969%22 %2F%3E%3Cpath d%3D%22M14 3.223a9.003 9.003 0 0 1 0 17.554%22 %2F%3E%3Cpath d%3D%22M4.579 17.093a8.961 8.961 0 0 1 -1.227 -2.592%22 %2F%3E%3Cpath d%3D%22M3.124 10.5c.16 -.95 .468 -1.85 .9 -2.675l.169 -.305%22 %2F%3E%3Cpath d%3D%22M6.907 4.579a8.954 8.954 0 0 1 3.093 -1.356%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-home {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M5 12l-2 0l9 -9l9 9l-2 0%22 %2F%3E%3Cpath d%3D%22M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7%22 %2F%3E%3Cpath d%3D%22M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-activity {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 12h4l3 8l4 -16l3 8h4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-brand-angular {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M5.428 17.245l6.076 3.471a1 1 0 0 0 .992 0l6.076 -3.471a1 1 0 0 0 .495 -.734l1.323 -9.704a1 1 0 0 0 -.658 -1.078l-7.4 -2.612a1 1 0 0 0 -.665 0l-7.399 2.613a1 1 0 0 0 -.658 1.078l1.323 9.704a1 1 0 0 0 .495 .734l0 -.001%22 %2F%3E%3Cpath d%3D%22M9 15l3 -8l3 8%22 %2F%3E%3Cpath d%3D%22M10 13h4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-building {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 21l18 0%22 %2F%3E%3Cpath d%3D%22M9 8l1 0%22 %2F%3E%3Cpath d%3D%22M9 12l1 0%22 %2F%3E%3Cpath d%3D%22M9 16l1 0%22 %2F%3E%3Cpath d%3D%22M14 8l1 0%22 %2F%3E%3Cpath d%3D%22M14 12l1 0%22 %2F%3E%3Cpath d%3D%22M14 16l1 0%22 %2F%3E%3Cpath d%3D%22M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-browser {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 8h16%22 %2F%3E%3Cpath d%3D%22M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12%22 %2F%3E%3Cpath d%3D%22M8 4v4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-message-2 {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M8 9h8%22 %2F%3E%3Cpath d%3D%22M8 13h6%22 %2F%3E%3Cpath d%3D%22M9 18h-3a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-3l-3 3l-3 -3%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-tooltip {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M10 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0%22 %2F%3E%3Cpath d%3D%22M12 13l-1.707 -1.707a1 1 0 0 0 -.707 -.293h-2.586a2 2 0 0 1 -2 -2v-3a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2.586a1 1 0 0 0 -.707 .293l-1.707 1.707%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-bulb {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7%22 %2F%3E%3Cpath d%3D%22M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3%22 %2F%3E%3Cpath d%3D%22M9.7 17l4.6 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-code {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M7 8l-4 4l4 4%22 %2F%3E%3Cpath d%3D%22M17 8l4 4l-4 4%22 %2F%3E%3Cpath d%3D%22M14 4l-4 16%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-codeblock {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M5 4l-2 2l2 2%22 %2F%3E%3Cpath d%3D%22M12 4l2 2l-2 2%22 %2F%3E%3Cpath d%3D%22M8 8l1 -4%22 %2F%3E%3Cpath d%3D%22M17 6a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-list-numbers {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M11 6h9%22 %2F%3E%3Cpath d%3D%22M11 12h9%22 %2F%3E%3Cpath d%3D%22M12 18h8%22 %2F%3E%3Cpath d%3D%22M4 16a2 2 0 1 1 4 0c0 .591 -.5 1 -1 1.5l-3 2.5h4%22 %2F%3E%3Cpath d%3D%22M6 10v-6l-2 2%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-components {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 12l3 3l3 -3l-3 -3l-3 3%22 %2F%3E%3Cpath d%3D%22M15 12l3 3l3 -3l-3 -3l-3 3%22 %2F%3E%3Cpath d%3D%22M9 6l3 3l3 -3l-3 -3l-3 3%22 %2F%3E%3Cpath d%3D%22M9 18l3 3l3 -3l-3 -3l-3 3%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-bolt {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-refresh {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4%22 %2F%3E%3Cpath d%3D%22M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-server {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-2%22 %2F%3E%3Cpath d%3D%22M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2%22 %2F%3E%3Cpath d%3D%22M7 8l0 .01%22 %2F%3E%3Cpath d%3D%22M7 16l0 .01%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-lock {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6%22 %2F%3E%3Cpath d%3D%22M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0%22 %2F%3E%3Cpath d%3D%22M8 11v-4a4 4 0 1 1 8 0v4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-layout-board {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12%22 %2F%3E%3Cpath d%3D%22M4 9h8%22 %2F%3E%3Cpath d%3D%22M12 15h8%22 %2F%3E%3Cpath d%3D%22M12 4v16%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-layout-grid {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4%22 %2F%3E%3Cpath d%3D%22M14 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4%22 %2F%3E%3Cpath d%3D%22M4 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4%22 %2F%3E%3Cpath d%3D%22M14 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-layout-sidebar-right {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12%22 %2F%3E%3Cpath d%3D%22M15 4l0 16%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-layout-sidebar-left-collapse {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12%22 %2F%3E%3Cpath d%3D%22M9 4v16%22 %2F%3E%3Cpath d%3D%22M15 10l-2 2l2 2%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-layout-sidebar-left-expand {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12%22 %2F%3E%3Cpath d%3D%22M9 4v16%22 %2F%3E%3Cpath d%3D%22M14 10l2 2l-2 2%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-tabs {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10%22 %2F%3E%3Cpath d%3D%22M6.36 5a2 2 0 0 1 1.962 1.608l.356 1.784a2 2 0 0 0 1.962 1.608h8.36a2 2 0 0 1 2 2%22 %2F%3E%3Cpath d%3D%22M12.36 5a2 2 0 0 1 1.962 1.608l.356 1.784a2 2 0 0 0 1.962 1.608%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-list {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M9 6l11 0%22 %2F%3E%3Cpath d%3D%22M9 12l11 0%22 %2F%3E%3Cpath d%3D%22M9 18l11 0%22 %2F%3E%3Cpath d%3D%22M5 6l0 .01%22 %2F%3E%3Cpath d%3D%22M5 12l0 .01%22 %2F%3E%3Cpath d%3D%22M5 18l0 .01%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-list-details {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M13 5h8%22 %2F%3E%3Cpath d%3D%22M13 9h5%22 %2F%3E%3Cpath d%3D%22M13 15h8%22 %2F%3E%3Cpath d%3D%22M13 19h5%22 %2F%3E%3Cpath d%3D%22M3 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4%22 %2F%3E%3Cpath d%3D%22M3 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-align-left {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 6l16 0%22 %2F%3E%3Cpath d%3D%22M4 12l10 0%22 %2F%3E%3Cpath d%3D%22M4 18l14 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-align-center {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 6l16 0%22 %2F%3E%3Cpath d%3D%22M8 12l8 0%22 %2F%3E%3Cpath d%3D%22M6 18l12 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-align-right {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 6l16 0%22 %2F%3E%3Cpath d%3D%22M10 12l10 0%22 %2F%3E%3Cpath d%3D%22M6 18l14 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-sparkles {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2m0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2m-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-speakerphone {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M18 8a3 3 0 0 1 0 6%22 %2F%3E%3Cpath d%3D%22M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5%22 %2F%3E%3Cpath d%3D%22M12 8l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-world {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0%22 %2F%3E%3Cpath d%3D%22M3.6 9h16.8%22 %2F%3E%3Cpath d%3D%22M3.6 15h16.8%22 %2F%3E%3Cpath d%3D%22M11.5 3a17 17 0 0 0 0 18%22 %2F%3E%3Cpath d%3D%22M12.5 3a17 17 0 0 1 0 18%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-x {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M18 6l-12 12%22 %2F%3E%3Cpath d%3D%22M6 6l12 12%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-eye {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0%22 %2F%3E%3Cpath d%3D%22M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-eye-off {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M10.585 10.587a2 2 0 0 0 2.829 2.828%22 %2F%3E%3Cpath d%3D%22M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87%22 %2F%3E%3Cpath d%3D%22M3 3l18 18%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-plus {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M12 5l0 14%22 %2F%3E%3Cpath d%3D%22M5 12l14 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-minus {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M5 12l14 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-maximize {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 8v-2a2 2 0 0 1 2 -2h2%22 %2F%3E%3Cpath d%3D%22M4 16v2a2 2 0 0 0 2 2h2%22 %2F%3E%3Cpath d%3D%22M16 4h2a2 2 0 0 1 2 2v2%22 %2F%3E%3Cpath d%3D%22M16 20h2a2 2 0 0 0 2 -2v-2%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-minimize {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M15 19v-2a2 2 0 0 1 2 -2h2%22 %2F%3E%3Cpath d%3D%22M15 5v2a2 2 0 0 0 2 2h2%22 %2F%3E%3Cpath d%3D%22M5 15h2a2 2 0 0 1 2 2v2%22 %2F%3E%3Cpath d%3D%22M5 9h2a2 2 0 0 0 2 -2v-2%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-dots {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-trash {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 7l16 0%22 %2F%3E%3Cpath d%3D%22M10 11l0 6%22 %2F%3E%3Cpath d%3D%22M14 11l0 6%22 %2F%3E%3Cpath d%3D%22M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12%22 %2F%3E%3Cpath d%3D%22M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-edit {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1%22 %2F%3E%3Cpath d%3D%22M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415%22 %2F%3E%3Cpath d%3D%22M16 5l3 3%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-regex {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M6.5 15a2.5 2.5 0 1 1 0 5a2.5 2.5 0 0 1 0 -5%22 %2F%3E%3Cpath d%3D%22M17 7.875l3 -1.687%22 %2F%3E%3Cpath d%3D%22M17 7.875v3.375%22 %2F%3E%3Cpath d%3D%22M17 7.875l-3 -1.687%22 %2F%3E%3Cpath d%3D%22M17 7.875l3 1.688%22 %2F%3E%3Cpath d%3D%22M17 4.5v3.375%22 %2F%3E%3Cpath d%3D%22M17 7.875l-3 1.688%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-arrows-sort {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 9l4 -4l4 4m-4 -4v14%22 %2F%3E%3Cpath d%3D%22M21 15l-4 4l-4 -4m4 4v-14%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-adjustments-horizontal {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M12 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0%22 %2F%3E%3Cpath d%3D%22M4 6l8 0%22 %2F%3E%3Cpath d%3D%22M16 6l4 0%22 %2F%3E%3Cpath d%3D%22M6 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0%22 %2F%3E%3Cpath d%3D%22M4 12l2 0%22 %2F%3E%3Cpath d%3D%22M10 12l10 0%22 %2F%3E%3Cpath d%3D%22M15 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0%22 %2F%3E%3Cpath d%3D%22M4 18l11 0%22 %2F%3E%3Cpath d%3D%22M19 18l1 0%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-toggle-right {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M14 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0%22 %2F%3E%3Cpath d%3D%22M2 12a6 6 0 0 1 6 -6h8a6 6 0 0 1 6 6a6 6 0 0 1 -6 6h-8a6 6 0 0 1 -6 -6%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-table {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14%22 %2F%3E%3Cpath d%3D%22M3 10h18%22 %2F%3E%3Cpath d%3D%22M10 3v18%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-tag {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M6.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0%22 %2F%3E%3Cpath d%3D%22M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-sort-ascending {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 6l7 0%22 %2F%3E%3Cpath d%3D%22M4 12l7 0%22 %2F%3E%3Cpath d%3D%22M4 18l9 0%22 %2F%3E%3Cpath d%3D%22M15 9l3 -3l3 3%22 %2F%3E%3Cpath d%3D%22M18 6l0 12%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-sort-descending {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M4 6l9 0%22 %2F%3E%3Cpath d%3D%22M4 12l7 0%22 %2F%3E%3Cpath d%3D%22M4 18l7 0%22 %2F%3E%3Cpath d%3D%22M15 15l3 3l3 -3%22 %2F%3E%3Cpath d%3D%22M18 6l0 12%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-spinner {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M12 3a9 9 0 1 0 9 9%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-loader-3 {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 12a9 9 0 0 0 9 9a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9%22 %2F%3E%3Cpath d%3D%22M17 12a5 5 0 1 0 -5 5%22 %2F%3E%3C%2Fsvg%3E");
+  --nt-icon-outer: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 12a9 9 0 0 0 9 9a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9%22 %2F%3E%3C%2Fsvg%3E");
+  --nt-icon-inner: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M17 12a5 5 0 1 0 -5 5%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-loader-quarter {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M12 6l0 -3%22 %2F%3E%3Cpath d%3D%22M6 12l-3 0%22 %2F%3E%3Cpath d%3D%22M7.75 7.75l-2.15 -2.15%22 %2F%3E%3C%2Fsvg%3E");
+}
+
+.nt-toolbar {
+  --nt-icon: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22 fill%3D%22none%22 stroke%3D%22black%22 stroke-width%3D%222%22 stroke-linecap%3D%22round%22 stroke-linejoin%3D%22round%22 %3E%3Cpath d%3D%22M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4%22 %2F%3E%3Cpath d%3D%22M14.5 5.5l4 4%22 %2F%3E%3Cpath d%3D%22M12 8l-5 -5l-4 4l5 5%22 %2F%3E%3Cpath d%3D%22M7 8l-1.5 1.5%22 %2F%3E%3Cpath d%3D%22M16 12l5 5l-4 4l-5 -5%22 %2F%3E%3Cpath d%3D%22M16 17l-1.5 1.5%22 %2F%3E%3C%2Fsvg%3E");
+}

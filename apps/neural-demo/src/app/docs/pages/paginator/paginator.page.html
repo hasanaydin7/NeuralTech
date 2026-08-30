@@ -1,0 +1,60 @@
+<article class="docs-page paginator-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Paginator</h1>
+    <p>
+      Zero-based Signal pagination with localized range reports, native
+      controls, slice-compatible events, and complete class ownership.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Collection pagination</h2>
+    <div class="paginator-demo-surface">
+      <ul class="product-page">
+        @for (product of visibleProducts(); track product) {
+        <li>{{ product }}</li>
+        }
+      </ul>
+      <neural-paginator
+        [totalItems]="products.length"
+        [(pageIndex)]="pageIndex"
+        [(pageSize)]="pageSize"
+        [pageSizeOptions]="[5, 10, 20]"
+        (pageChange)="recordRange($event)"
+      />
+      <output class="demo-status">Last event range: {{ lastRange() }}</output>
+    </div>
+    <app-code-example label="Paginator" language="html" [code]="basicCode" />
+  </section>
+
+  <section id="states">
+    <h2>Disabled state</h2>
+    <div class="paginator-demo-surface">
+      <neural-paginator [totalItems]="30" [pageSize]="10" disabled />
+    </div>
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <div class="paginator-demo-surface">
+      <neural-paginator
+        unstyled
+        paginatorClass="docs-headless-paginator"
+        [totalItems]="42"
+        [pageSize]="5"
+        [(pageIndex)]="headlessIndex"
+        [classes]="headlessClasses"
+      />
+    </div>
+  </section>
+</article>

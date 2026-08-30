@@ -1,0 +1,130 @@
+.drawer-demo-actions,
+.drawer-position-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.drawer-demo-actions output {
+  color: var(--neural-color-text-muted);
+  font-size: 0.875rem;
+}
+.drawer-heading {
+  display: grid;
+  gap: 0.15rem;
+}
+.drawer-heading span {
+  color: var(--neural-color-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.drawer-heading h2,
+.drawer-docs-page neural-drawer h2,
+.drawer-docs-page neural-drawer p {
+  margin: 0;
+}
+.drawer-docs-page neural-drawer label {
+  display: block;
+  margin: 1.25rem 0 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.drawer-docs-page neural-drawer input {
+  width: 100%;
+}
+.drawer-scroll-content {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+.drawer-scroll-content > div {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem;
+  background: var(--neural-color-surface-hover);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.7rem;
+}
+.drawer-scroll-content .nt {
+  color: var(--neural-color-primary);
+}
+.drawer-scroll-content span {
+  display: grid;
+  gap: 0.15rem;
+}
+.drawer-scroll-content small {
+  color: var(--neural-color-text-muted);
+}
+
+.docs-headless-drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: min(26rem, 100vw);
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #e0f2fe;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgb(56 189 248 / 22%),
+      transparent 42%
+    ),
+    #07111f;
+  border: 1px solid #164e63;
+  box-shadow: -1.5rem 0 5rem rgb(2 8 23 / 45%);
+}
+.docs-headless-drawer[open] {
+  display: grid;
+}
+.docs-headless-drawer::backdrop {
+  background: rgb(2 8 23 / 72%);
+  backdrop-filter: blur(5px);
+}
+.docs-headless-drawer__header,
+.docs-headless-drawer__body,
+.docs-headless-drawer__footer {
+  padding: 1.15rem 1.25rem;
+}
+.docs-headless-drawer__header {
+  padding-inline-end: 3.75rem;
+  border-bottom: 1px solid #164e63;
+}
+.docs-headless-drawer__body {
+  overflow: auto;
+}
+.docs-headless-drawer__footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #164e63;
+}
+.docs-headless-drawer__close {
+  position: absolute;
+  inset-block-start: 0.85rem;
+  inset-inline-end: 0.85rem;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: #7dd3fc;
+  background: rgb(14 116 144 / 18%);
+  border: 1px solid #155e75;
+  border-radius: 0.55rem;
+  cursor: pointer;
+}
+.docs-headless-drawer__body button,
+.docs-headless-drawer__footer button {
+  padding: 0.65rem 0.85rem;
+  color: #082f49;
+  background: #7dd3fc;
+  border: 0;
+  border-radius: 0.55rem;
+  font-weight: 800;
+  cursor: pointer;
+}

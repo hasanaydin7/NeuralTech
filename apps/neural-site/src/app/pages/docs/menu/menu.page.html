@@ -1,0 +1,621 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="menu-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Menu documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-menu"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-blue-500"
+                    >NAVIGATION</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-0.045em] sm:text-5xl"
+                >
+                  Menu
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  Accessible flat commands for inline surfaces and native
+                  top-layer popups, with logical positioning, deterministic
+                  Signals and full keyboard behavior.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Inline
+                    and popup</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Top-layer overlay</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Typeahead ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                STANDALONE API
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import only the Menu primitives used by the consuming standalone
+                component.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="app.ts"
+                  language="typescript"
+                  [code]="importCode"
+                  [theme]="appearance.mode()"
+                />
+              </div>
+            </section>
+
+            <section id="inline" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inline commands</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Data entries support icons, badges, shortcuts, links, separators
+                and disabled commands without becoming a navigation tree.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="inline.html"
+                  language="html"
+                  [code]="inlineCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="grid w-full items-start gap-5 sm:grid-cols-[15rem_1fr]"
+                  >
+                    <neural-menu
+                      menuId="site-inline-menu"
+                      ariaLabel="Workspace actions"
+                      [items]="items"
+                      (itemSelect)="select($event)"
+                    /><output
+                      aria-live="polite"
+                      class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4 text-sm text-[var(--site-text-soft)]"
+                      >{{ lastSelection() }}<span
+                        class="mt-2 block text-xs text-[var(--site-text-muted)]"
+                        >Arrow keys wrap; typeahead skips disabled
+                        actions.</span
+                      ></output
+                    >
+                  </div></code-view
+                >
+              </div>
+            </section>
+
+            <section id="groups" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Category groups</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Group labels organize a flat command sequence without becoming
+                selectable items or nested navigation. Data and projected APIs
+                share the same ARIA group semantics.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="groups.ts"
+                  language="typescript"
+                  [code]="groupsCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div preview-content class="flex w-full justify-center">
+                    <neural-menu
+                      menuId="site-grouped-menu"
+                      ariaLabel="Project navigation"
+                      [items]="groupedItems"
+                      (itemSelect)="select($event)"
+                    />
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="popup" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Popup trigger</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The trigger directive connects directly to NeuralButton’s native
+                button, owns ARIA, transfers focus and restores it after Escape.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="popup.html"
+                  language="html"
+                  [code]="popupCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="flex w-full flex-wrap items-center justify-center gap-4"
+                  >
+                    <neural-button
+                      label="Account actions"
+                      icon="nt-user"
+                      [neuralMenuTriggerFor]="accountMenu"
+                      menuPosition="bottom-start"
+                    /><span class="text-xs text-[var(--site-text-muted)]"
+                      >Open: {{ popupOpen() }}</span
+                    ><neural-menu
+                      #accountMenu="neuralMenu"
+                      menuId="site-account-menu"
+                      ariaLabel="Account commands"
+                      popup
+                      [items]="items"
+                      [(open)]="popupOpen"
+                      (itemSelect)="select($event)"
+                    /></div
+                ></code-view>
+              </div>
+            </section>
+
+            <section id="positions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Logical positions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Start and end follow document direction. The shared Overlay
+                positioner flips or clamps when available space changes.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="positions.html"
+                  language="html"
+                  [code]="popupCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="flex w-full flex-wrap justify-center gap-3"
+                  >
+                    <neural-button
+                      label="Bottom start"
+                      outlined
+                      [neuralMenuTriggerFor]="positionMenu"
+                      menuPosition="bottom-start"
+                    /><neural-button
+                      label="Bottom end"
+                      outlined
+                      [neuralMenuTriggerFor]="positionMenu"
+                      menuPosition="bottom-end"
+                    /><neural-button
+                      label="Top start"
+                      outlined
+                      [neuralMenuTriggerFor]="positionMenu"
+                      menuPosition="top-start"
+                    /><neural-button
+                      label="Top end"
+                      outlined
+                      [neuralMenuTriggerFor]="positionMenu"
+                      menuPosition="top-end"
+                    /><neural-menu
+                      #positionMenu="neuralMenu"
+                      popup
+                      ariaLabel="Position example"
+                      [items]="items"
+                      (itemSelect)="select($event)"
+                    /></div
+                ></code-view>
+              </div>
+            </section>
+
+            <section id="projected" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Projected structure</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use projected primitives when commands are clearer in the
+                template. Data and projected sources remain deliberately
+                exclusive.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="projected.html"
+                  language="html"
+                  [code]="projectedCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div preview-content class="flex w-full justify-center">
+                    <neural-menu
+                      ariaLabel="Developer actions"
+                      (itemSelect)="select($event)"
+                      ><neural-menu-group key="project" label="Project"
+                        ><neural-menu-item
+                          key="inspect"
+                          label="Inspect"
+                          iconClass="nt-eye" /><neural-menu-item
+                          key="copy"
+                          label="Copy"
+                          iconClass="nt-copy"
+                          shortcut="Ctrl C" /></neural-menu-group
+                      ><neural-menu-separator /><neural-menu-item
+                        key="delete"
+                        label="Delete"
+                        iconClass="nt-trash"
+                        disabled
+                    /></neural-menu></div
+                ></code-view>
+              </div>
+            </section>
+
+            <section id="state" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Controlled state and dismissal
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code class="text-blue-500">open</code> is a Signal model.
+                Disable close-on-select for multi-step command surfaces and
+                close explicitly when work is complete.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="state.html"
+                  language="html"
+                  [code]="stateCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="flex w-full flex-wrap items-center justify-center gap-3"
+                  >
+                    <neural-button
+                      label="Persistent menu"
+                      [neuralMenuTriggerFor]="persistentMenu"
+                    /><neural-button
+                      label="Close explicitly"
+                      outlined
+                      [disabled]="!persistentOpen()"
+                      (clicked)="persistentMenu.hide(true)"
+                    /><neural-menu
+                      #persistentMenu="neuralMenu"
+                      popup
+                      ariaLabel="Persistent commands"
+                      [closeOnSelect]="false"
+                      [(open)]="persistentOpen"
+                      [items]="items"
+                      (itemSelect)="select($event)"
+                    /><neural-menu
+                      ariaLabel="Disabled menu"
+                      disabled
+                      [items]="items"
+                    /></div
+                ></code-view>
+              </div>
+            </section>
+
+            <section id="metadata" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Links and metadata</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use <code class="text-blue-500">routerLink</code> for Angular
+                SPA navigation and <code class="text-blue-500">href</code> for
+                native or external destinations. Data-driven and projected items
+                share the complete Router options contract. Badge and shortcut
+                remain visual metadata; command behavior still flows through
+                <code class="text-blue-500">itemSelect</code>.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="items.ts"
+                  language="typescript"
+                  [code]="metadataCode"
+                  [theme]="appearance.mode()"
+                />
+              </div>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Unstyled and typed class slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Semantics, keyboard behavior, structural hooks and popup
+                positioning remain while all visual ownership moves to consumer
+                classes.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="unstyled.html"
+                  language="html"
+                  [code]="unstyledCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div preview-content class="flex w-full justify-center">
+                    <neural-menu
+                      unstyled
+                      ariaLabel="Headless commands"
+                      [items]="items"
+                      [classes]="headlessClasses"
+                      (itemSelect)="select($event)"
+                    /></div
+                ></code-view>
+              </div>
+            </section>
+
+            <section id="boundary" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Component boundary</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Menu is a flat command list. PanelMenu owns inline hierarchy;
+                nested flyouts belong to TieredMenu, while application
+                navigation layouts belong to Menubar, Drawer or Sidebar
+                patterns.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                MENU
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Accessibility
+              </h1>
+            </header>
+            <div class="grid gap-10 pt-10">
+              <section id="semantics" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Native menu semantics</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  The collection uses <code class="text-blue-500">menu</code>,
+                  enabled commands use native button or anchor elements with
+                  <code class="text-blue-500">menuitem</code>, and dividers
+                  expose <code class="text-blue-500">separator</code>.
+                </p>
+              </section>
+              <section id="keyboard" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Keyboard model</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Arrow Up and Down wrap through enabled items. Home and End
+                  move to edges, typing performs buffered typeahead, Enter or
+                  Space activates, and disabled actions are skipped.
+                </p>
+              </section>
+              <section id="trigger-focus" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Trigger and focus</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  The trigger receives aria-haspopup, aria-controls and
+                  synchronized aria-expanded. Arrow Down opens at the first
+                  action, Arrow Up at the last, and Escape closes with focus
+                  restoration.
+                </p>
+              </section>
+              <section id="direction-motion" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Direction and motion</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Logical positions follow LTR or RTL direction. Reduced-motion
+                  preferences collapse transitions without changing dismissal or
+                  focus behavior.
+                </p>
+              </section>
+            </div></neural-tab-panel
+          >
+
+          <neural-tab-panel value="api" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                MENU
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">API</h1>
+              <p class="mt-4 text-[var(--site-text-soft)]">
+                The complete public contracts of
+                <code class="font-mono text-blue-500">NeuralMenu</code>, its
+                projected primitives and popup trigger.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Menu inputs</h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                <table class="w-full min-w-[56rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (item of menuInputs; track item[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{ item[0] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="item-inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">MenuItem inputs</h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                <table class="w-full min-w-[56rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (item of itemInputs; track item[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{ item[0] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="group-api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">MenuGroup inputs</h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of groupInputs; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid sm:grid-cols-[12rem_12rem_8rem_1fr] sm:gap-4"
+                >
+                  <code class="font-bold text-blue-500">{{ item[0] }}</code
+                  ><code class="text-xs">{{ item[1] }}</code
+                  ><code class="text-xs">{{ item[2] }}</code>
+                  <p class="text-sm text-[var(--site-text-soft)]">
+                    {{ item[3] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="trigger-api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">MenuTrigger inputs</h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of triggerInputs; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid sm:grid-cols-[12rem_12rem_8rem_1fr] sm:gap-4"
+                >
+                  <code class="font-bold text-blue-500">{{ item[0] }}</code
+                  ><code class="text-xs">{{ item[1] }}</code
+                  ><code class="text-xs">{{ item[2] }}</code>
+                  <p class="text-sm text-[var(--site-text-soft)]">
+                    {{ item[3] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="events" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Events</h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of events; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid sm:grid-cols-[10rem_14rem_1fr] sm:gap-4"
+                >
+                  <code class="font-bold text-blue-500">{{ item[0] }}</code
+                  ><code class="text-xs">{{ item[1] }}</code>
+                  <p class="text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid sm:grid-cols-[18rem_1fr] sm:gap-4"
+                >
+                  <code class="font-bold text-blue-500">{{ item[0] }}</code>
+                  <p class="text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-4 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+            <section id="data-contract" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Data contract</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code class="text-blue-500">NeuralMenuEntry</code> is the union
+                of a keyed action, separator, and category group. Group labels
+                are presentation-only; all group and action keys must be stable
+                and unique. When data and projected children coexist, data wins
+                with a development warning.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                MENU
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Design tokens
+              </h1>
+              <p class="mt-4 text-[var(--site-text-soft)]">
+                Neutral, dark mode and experimental themes share the same Menu
+                token surface.
+              </p>
+            </header>
+            <section id="design-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Component tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="tokens"
+              /></section
+          ></neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

@@ -1,0 +1,73 @@
+# @neural-ng/core/select
+
+Current component maturity: beta.
+
+Angular 22+ standalone, Signal-first Select.
+
+IMPORT
+import { NeuralSelect, OptionComponent, type NeuralSelectChange } from '@neural-ng/core/select';
+
+PREFERRED DATA API
+<neural-select
+  [options]="cities"
+  optionLabel="name"
+  optionValue="id"
+  [(value)]="cityId"
+  placeholder="Select a city"
+  clearable
+  (selectionChange)="citySelected($event)"
+/>
+
+FORMS API
+<!-- Signal Forms -->
+<neural-select [options]="cities" [formField]="form.city" />
+
+<!-- Reactive Forms -->
+<neural-select [options]="cities" [formControl]="cityControl" />
+
+<!-- Template-driven Forms -->
+<neural-select [options]="cities" name="city" [(ngModel)]="city" />
+
+PROJECTED API
+<neural-select [(value)]="status">
+  <neural-option value="ready" label="Ready" iconClass="nt-circle-check">
+    Ready
+  </neural-option>
+</neural-select>
+
+RULES
+- NeuralSelect implements FormValueControl<TValue | null>.
+- Bind the model with [(value)] or use [formField], [formControl], or [(ngModel)].
+- Programmatic Forms writes update value without emitting selectionChange.
+- Use either [options] or neural-option children in one instance, not both.
+- optionLabel, optionValue, optionDisabled, and optionIcon support nested
+  property paths. Primitive arrays need no mappings.
+- valueChange is the generated model output. selectionChange is the detailed
+  user-only event with value, previousValue, option, and source.
+- source is "pointer" or "keyboard".
+- Selecting the current value again does not emit a duplicate selectionChange.
+- Use cleared for explicit clear actions and openChange for panel state.
+- readonly is not disabled: the trigger remains enabled and focusable,
+  aria-readonly is exposed, and pointer, keyboard, and clear mutation are blocked.
+- touch emits when focus leaves the control. focus() targets the trigger and
+  reset() restores null.
+- appendTo defaults to self. Use appendTo="body" inside clipped scroll,
+  table, or dialog surfaces; it uses the browser top layer and shared Overlay
+  positioner without requiring a global container.
+- Do not invent onSelected, onChange, or onSelectLink outputs.
+- Build chained selects by updating the dependent options Signal from the
+  parent value/selectionChange. Reset the dependent value explicitly.
+- Set loading while dependent async options load.
+- neural-option requires both value and label. label is used for selection
+  display, typeahead, and accessible text; projected content renders in the
+  list.
+- iconClass values such as nt-map-pin automatically receive the nt base class.
+- Use unstyled for local headless mode or provideNeuralNg({ unstyled: true })
+  globally. Keep structural classes; replace visual classes with classes slots.
+- Preserve combobox/listbox semantics and keyboard behavior.
+- Inside neural-field, Select inherits id, descriptions, required, invalid,
+  disabled, readonly, fluid, and unstyled state.
+- For fixed-height large lists use virtualScroll with virtualItemSize,
+  virtualScrollHeight and virtualOverscan.
+- Select shares option resolution, enabled navigation and typeahead primitives
+  with MultiSelect through @neural-ng/core.

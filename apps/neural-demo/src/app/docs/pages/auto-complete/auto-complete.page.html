@@ -1,0 +1,288 @@
+<article class="docs-page auto-complete-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Sprint 2</span>
+    <h1 class="docs-hero__title">AutoComplete</h1>
+    <p class="docs-hero__description">
+      An editable, Signal-first combobox for fast local filtering and race-safe
+      remote suggestions. Input focus remains stable while the listbox follows
+      WAI-ARIA keyboard behavior.
+    </p>
+  </header>
+
+  <section>
+    <h2>Import</h2>
+    <p>The package is exposed through a tree-shakable secondary entry point.</p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="forms">
+    <h2>Angular Forms adapters</h2>
+    <p>
+      One committed <code>value</code> model supports Signal Forms, Reactive
+      Forms, and template-driven Forms. Programmatic writes do not emit
+      <code>selected</code>; readonly inputs remain focusable and inspectable
+      without accepting text or option mutations.
+    </p>
+    <div class="autocomplete-forms-grid">
+      <div class="autocomplete-forms-example">
+        <strong>Signal Forms</strong>
+        <neural-auto-complete
+          [options]="formOptions"
+          [formField]="signalForm.city"
+          [delay]="0"
+          ariaLabel="Signal form city"
+          showDropdown
+          fluid
+        />
+        <output>Value: {{ formsModel().city }}</output>
+      </div>
+      <div class="autocomplete-forms-example">
+        <strong>Reactive Forms</strong>
+        <neural-auto-complete
+          [options]="formOptions"
+          [formControl]="reactiveCity"
+          [delay]="0"
+          ariaLabel="Reactive form city"
+          showDropdown
+          fluid
+        />
+        <output>Value: {{ reactiveCity.value }}</output>
+      </div>
+      <div class="autocomplete-forms-example">
+        <strong>Template-driven Forms</strong>
+        <neural-auto-complete
+          [options]="formOptions"
+          name="templateCity"
+          [(ngModel)]="templateCity"
+          [delay]="0"
+          ariaLabel="Template form city"
+          showDropdown
+          fluid
+        />
+        <output>Value: {{ templateCity }}</output>
+      </div>
+      <div class="autocomplete-forms-example">
+        <strong>Readonly</strong>
+        <neural-auto-complete
+          [options]="formOptions"
+          [(value)]="readonlyCity"
+          [delay]="0"
+          ariaLabel="Readonly city"
+          readonly
+          showDropdown
+          fluid
+        />
+        <output>Value: {{ readonlyCity() }}</output>
+      </div>
+    </div>
+    <code-view
+      fileName="forms.html"
+      language="html"
+      [code]="formsCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Local suggestions</h2>
+    <p>
+      Search labels and additional fields without mutating the source array.
+      Paris demonstrates a disabled result.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="autocomplete-demo">
+        <neural-field controlId="docs-place" fluid>
+          <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+          <label neuralFieldLabel>Destination</label>
+          <neural-auto-complete
+            [options]="places"
+            optionLabel="city"
+            optionValue="id"
+            optionDisabled="disabled"
+            optionGroup="country"
+            filterBy="city,code,country"
+            [(value)]="selectedPlace"
+            [(query)]="query"
+            placeholder="City or airport code"
+            ariaLabel="Destination"
+            clearable
+            showDropdown
+            fluid
+            [delay]="100"
+            (selected)="selected($event)"
+          >
+            <ng-template
+              neuralAutoCompleteOption
+              let-place
+              let-resolved="resolved"
+            >
+              <span class="place-option"
+                ><span
+                  ><strong>{{ resolved.label }}</strong
+                  ><small>{{ resolved.group }}</small></span
+                ><code>{{ placeCode(place) }}</code></span
+              >
+            </ng-template>
+          </neural-auto-complete>
+          <small neuralFieldHint>Model: {{ selectedPlace() || 'none' }}</small>
+        </neural-field>
+        <output class="demo-status" aria-live="polite"
+          >{{ eventStatus() }}</output
+        >
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Remote and race-safe</h2>
+    <p>
+      Each debounced search carries an increasing request ID so stale network
+      responses can be ignored deterministically.
+    </p>
+    <code-view
+      fileName="remote.html"
+      language="html"
+      [code]="remoteCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="autocomplete-demo">
+        <neural-auto-complete
+          dataMode="remote"
+          [options]="remoteOptions()"
+          optionLabel="city"
+          optionValue="id"
+          [(value)]="remoteValue"
+          [(query)]="remoteQuery"
+          [loading]="remoteLoading()"
+          [delay]="300"
+          [minLength]="2"
+          placeholder="Try ‘an’"
+          ariaLabel="Remote city search"
+          clearable
+          fluid
+          (search)="searchRemote($event)"
+        />
+        <small
+          >Request {{ latestRequestId() }} · {{ remoteLoading() ? 'loading' :
+          remoteOptions().length + ' results' }}</small
+        >
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Typed option template</h2>
+    <p>
+      The option directive exposes the source option, resolved value, active,
+      selected, disabled, label, and index context.
+    </p>
+    <code-view
+      fileName="option-template.html"
+      language="html"
+      [code]="templateCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Unstyled and typed class slots</h2>
+    <p>
+      Structural hooks, overlay positioning, keyboard behavior, and ARIA remain;
+      every NeuralNg visual class is removed.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="autocomplete-demo">
+        <div class="docs-autocomplete-headless-demo">
+          <span class="docs-autocomplete-headless-demo__label"
+            >Architecture</span
+          >
+          <neural-auto-complete
+            [options]="['signals', 'standalone', 'hydration']"
+            [(value)]="headlessValue"
+            [(query)]="headlessQuery"
+            [classes]="headlessClasses"
+            [delay]="0"
+            placeholder="Search architecture"
+            ariaLabel="Headless architecture"
+            clearable
+            showDropdown
+            unstyled
+            fluid
+          />
+          <small>Consumer-owned CSS · NeuralNg-owned behavior</small>
+        </div>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Alpha contract</h2>
+    <div class="api-table-wrapper">
+      <table class="api-table">
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Included</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data</td>
+            <td>
+              Local/remote, nested label/value/disabled/group paths, filter
+              modes, limit.
+            </td>
+          </tr>
+          <tr>
+            <td>Models</td>
+            <td>
+              <code>value</code> and editable <code>query</code>; option or text
+              value mode.
+            </td>
+          </tr>
+          <tr>
+            <td>Events</td>
+            <td>
+              <code>search</code>, <code>selected</code>, <code>cleared</code>,
+              <code>opened</code>, <code>closed</code>,
+              <code>invalidInput</code>.
+            </td>
+          </tr>
+          <tr>
+            <td>Forms</td>
+            <td>
+              <code>FormValueControl&lt;TValue | string | null&gt;</code>
+              through <code>[formField]</code>, <code>[formControl]</code>, and
+              <code>[(ngModel)]</code>; Field state, touch, readonly, disabled,
+              required, and invalid.
+            </td>
+          </tr>
+          <tr>
+            <td>Deferred</td>
+            <td>
+              Multiple/chips, virtual scroll, grid popup and inline creation.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</article>

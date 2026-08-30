@@ -1,0 +1,55 @@
+.progress-bar-docs-page {
+  .progress-bar-stack {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .progress-bar-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+  }
+}
+
+.docs-headless-progress {
+  display: block;
+  width: 100%;
+}
+
+.docs-headless-progress__track {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 1.125rem;
+  overflow: hidden;
+  background: #172554;
+  border: 1px solid #38bdf8;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #38bdf8 15%, transparent);
+}
+
+.docs-headless-progress__buffer,
+.docs-headless-progress__value {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+}
+
+.docs-headless-progress__buffer {
+  background: #1e40af;
+}
+
+.docs-headless-progress__value {
+  background: linear-gradient(90deg, #06b6d4, #a855f7);
+}
+
+.docs-headless-progress__label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font:
+    800 0.6875rem/1 ui-monospace,
+    monospace;
+}

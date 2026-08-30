@@ -1,0 +1,17 @@
+# @neural-ng/core/password
+
+- Import canonical `NeuralPassword` from `@neural-ng/core/password`.
+  `PasswordComponent` is a compatibility alias only.
+- Bind the string model with `[(value)]`, `[formField]`, `[formControl]`, or
+  `[(ngModel)]`.
+- `autocomplete` defaults to `current-password`; use `new-password` only for
+  account creation or password reset.
+- `toggleVisibility` defaults to true. `showFeedback` defaults to false.
+- Strength feedback is presentational and must not replace schema/server
+  validation.
+- Use `unstyled` or global unstyled mode for headless rendering. Structural
+  classes remain; typed `classes` and direct class inputs own visuals.
+- The visibility control uses Neural Icons `nt-eye` and `nt-eye-off` by
+  default. Override with `showIconClass` and `hideIconClass`.
+- `touch` emits on native input blur. The component supports `focus()`,
+  `select()`, and `reset()`.

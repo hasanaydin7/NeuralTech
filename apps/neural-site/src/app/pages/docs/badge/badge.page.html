@@ -1,0 +1,626 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="badge-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Badge documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-circle-check"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-cyan-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-violet-500"
+                    >MISC</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Badge
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  Compact counts, statuses and metadata with a standalone
+                  component, a hydration-safe arbitrary-anchor directive and
+                  native Button integration.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Logical
+                    positions</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>RTL
+                    ready</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical component and directive from the granular
+                entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="values" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Values and numeric caps</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Strings and every finite number are valid. <code>max</code> only
+                caps presentation; the uncapped number remains the accessible
+                value.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="valuesCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-4"
+                >
+                  <neural-badge value="New" /><neural-badge
+                    [value]="8"
+                    severity="info"
+                  /><neural-badge
+                    [value]="128"
+                    [max]="99"
+                    severity="error"
+                  /><neural-badge [value]="0" /><neural-badge
+                    [value]="-2"
+                    severity="warning"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="severities" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic severities</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Every semantic role follows the active primary, surface and
+                color-mode tokens.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="severityCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-3"
+                >
+                  <neural-badge
+                    value="Primary"
+                    severity="primary"
+                  /><neural-badge
+                    value="Secondary"
+                    severity="secondary"
+                  /><neural-badge
+                    value="Neutral"
+                    severity="neutral"
+                  /><neural-badge value="Info" severity="info" /><neural-badge
+                    value="Success"
+                    severity="success"
+                  /><neural-badge
+                    value="Warning"
+                    severity="warning"
+                  /><neural-badge value="Error" severity="error" /></div
+              ></code-view>
+            </section>
+
+            <section id="sizes" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Sizes, dots and projected content
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Three presets, optional square geometry, meaningful dots and
+                rich projected content cover compact metadata without a second
+                component.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="sizesCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-4"
+                >
+                  <neural-badge value="SM" size="small" /><neural-badge
+                    value="MD"
+                  /><neural-badge
+                    value="LG"
+                    size="large"
+                    [rounded]="false"
+                  /><neural-badge
+                    dot
+                    severity="success"
+                    ariaLabel="Service online"
+                  /><neural-badge severity="success"
+                    ><i class="nt nt-check" aria-hidden="true"></i
+                    >Verified</neural-badge
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="live" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Live counter</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Signal values update directly. Use a polite live region only
+                when the update deserves an announcement.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="liveCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full items-center justify-center gap-5"
+                >
+                  <neural-button
+                    label="Add notification"
+                    icon="nt nt-plus"
+                    (clicked)="increment()"
+                  /><neural-badge
+                    [value]="notifications()"
+                    [max]="99"
+                    severity="info"
+                    ariaLive="polite"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="directive" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Arbitrary anchor directive</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>NeuralBadgeDirective</code> creates the real Badge
+                component on any suitable host after hydration.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="directiveCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full items-center justify-center gap-10"
+                >
+                  <button
+                    type="button"
+                    class="grid size-12 cursor-pointer place-items-center rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+                    aria-label="Notifications, 8 unread"
+                    [neuralBadge]="8"
+                    neuralBadgePosition="top-end"
+                    neuralBadgeSeverity="error"
+                  >
+                    <i
+                      class="nt nt-bell text-xl"
+                      aria-hidden="true"
+                    ></i></button
+                  ><span
+                    class="grid size-12 place-items-center rounded-full bg-blue-500/10 font-black text-blue-500"
+                    neuralBadge=""
+                    neuralBadgeDot
+                    neuralBadgePosition="bottom-end"
+                    neuralBadgeSeverity="success"
+                    neuralBadgeAriaLabel="Online"
+                    >NN</span
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="positions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Logical positions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Inline start/end participate in layout. Four corner positions
+                overlay the anchor and mirror automatically in RTL.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="positionsCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-x-10 gap-y-8"
+                >
+                  @for (position of
+                  ['start','end','top-start','top-end','bottom-start','bottom-end'];
+                  track position) {<span
+                    class="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-4 text-sm font-bold"
+                    [neuralBadge]="3"
+                    [neuralBadgePosition]="$any(position)"
+                    neuralBadgeSeverity="primary"
+                    >{{ position }}</span
+                  >}
+                </div></code-view
+              >
+            </section>
+
+            <section id="button" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Button integration</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                When a Badge belongs to an action, use NeuralButton's shorter
+                API. It delegates to the same directive contract.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="buttonCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-6"
+                >
+                  <neural-button
+                    label="Inbox"
+                    icon="nt nt-inbox"
+                    [badge]="12"
+                    badgePosition="end"
+                    badgeSeverity="error"
+                  /><neural-button
+                    ariaLabel="Notifications"
+                    icon="nt nt-bell"
+                    badge=""
+                    badgeDot
+                    badgePosition="top-end"
+                    badgeSeverity="success"
+                  /></div
+              ></code-view>
+            </section>
+
+            <section id="visibility" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Visibility and empty values</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Zero is content. A directive value of null or undefined removes
+                its generated host; <code>badgeHidden</code> is the explicit
+                component visibility switch.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="visibilityCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-6"
+                >
+                  <neural-button
+                    [label]="directiveValue() === null ? 'Show zero' : 'Remove badge'"
+                    (clicked)="toggleDirective()"
+                  /><span
+                    class="inline-flex min-h-11 items-center rounded-xl border border-[var(--site-border)] px-4 font-bold"
+                    [neuralBadge]="directiveValue()"
+                    neuralBadgeSeverity="info"
+                    >Notifications</span
+                  ><neural-badge value="Hidden" badgeHidden /></div
+              ></code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Unstyled and typed class slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Structural hooks remain while all NeuralNg visual ownership
+                moves to consumer classes.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-8"
+                >
+                  <neural-badge
+                    value="AI"
+                    unstyled
+                    [classes]="headlessClasses"
+                  /><button
+                    type="button"
+                    class="inline-flex min-h-11 cursor-pointer items-center rounded-xl border border-fuchsia-300/30 bg-slate-950 px-4 font-bold text-fuchsia-100"
+                    [neuralBadge]="7"
+                    neuralBadgeUnstyled
+                    neuralBadgeClass="!inline-flex !min-w-6 !items-center !justify-center !rounded-full !bg-fuchsia-400 !px-1.5 !py-0.5 !text-[.65rem] !font-black !text-slate-950"
+                    neuralBadgeHostClass="!-right-2 !-top-2"
+                  >
+                    Messages
+                  </button>
+                </div></code-view
+              >
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Composition boundaries</h2>
+              <div class="mt-6 grid gap-4 md:grid-cols-3">
+                @for (item of [['Standalone','Inline status, count or projected
+                metadata.'],['Directive','Decoration for arbitrary non-void
+                anchors.'],['Button API','The shortest contract for action-owned
+                badges.']]; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <h3 class="font-black">{{ item[0] }}</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">
+                Small visual, complete meaning
+              </h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Badge never replaces the accessible name of the object it
+                decorates.
+              </p>
+            </header>
+            <section id="labels" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Labels and caps</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                A capped <code>99+</code> Badge exposes the real numeric value
+                through its generated aria-label. Set
+                <code>ariaLabel</code> when the number needs context, and keep
+                the anchor's own name complete.
+              </p>
+            </section>
+            <section id="dots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Meaningful dots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                A decorative dot needs no announcement. A dot that means online,
+                unread or failed must receive <code>ariaLabel</code>;
+                development mode warns when it is missing.
+              </p>
+            </section>
+            <section id="live-regions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Live regions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>ariaLive="off"</code> is intentionally the default. Prefer
+                <code>polite</code> for user-relevant background counts and
+                reserve <code>assertive</code> for truly urgent changes.
+              </p>
+            </section>
+            <section id="anchors" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Anchor semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The directive does not change role, focus or keyboard behavior.
+                Use a real Button for actions. Wrap void or replaced elements
+                such as <code>img</code> and <code>input</code> before applying
+                the directive.
+              </p>
+            </section>
+            <section id="rtl" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">RTL and logical placement</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>start</code> and <code>end</code> are logical, not
+                physical. All corner offsets use logical inset properties and
+                follow the document direction without a second API.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC API
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Badge contract</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Canonical symbols are <code>NeuralBadge</code> and
+                <code>NeuralBadgeDirective</code>. Legacy aliases remain
+                deprecated for migration only.
+              </p>
+            </header>
+            <section id="badge-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">NeuralBadge inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[52rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of badgeInputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="directive-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">NeuralBadgeDirective inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[52rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of directiveInputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of publicTypes; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Badge tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Neutral responds to runtime primary, surface and mode. Glass and
+                Futuristic override the same contract without changing markup.
+              </p>
+            </header>
+            <section id="base-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Base tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="baseTokens"
+              />
+            </section>
+            <section id="severity-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Severity tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="severityTokens"
+              />
+            </section>
+            <section id="anchor-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Anchor tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="anchorTokens"
+              />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

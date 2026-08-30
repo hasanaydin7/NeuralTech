@@ -1,0 +1,250 @@
+<div
+  class="min-h-screen bg-[var(--site-canvas)] text-[var(--site-text)]"
+  [attr.data-neural-mode]="appearance.mode()"
+  [attr.data-neural-primary]="appearance.primary()"
+  [attr.data-neural-surface]="appearance.surface()"
+  [attr.dir]="appearance.direction()"
+>
+  <header
+    class="fixed inset-x-0 top-0 z-50 border-b border-[var(--site-border)] bg-[color-mix(in_srgb,var(--site-canvas)_20%,transparent)] backdrop-blur-[28px] backdrop-saturate-150"
+  >
+    <div
+      class="mx-auto flex h-[4.5rem] max-w-[90rem] items-center justify-between gap-5 px-5 lg:px-8"
+    >
+      <a
+        routerLink="/"
+        class="group flex min-w-0 items-center gap-3"
+        (click)="closeMobile()"
+      >
+        <span
+          class="grid size-11 shrink-0 place-items-center"
+          aria-hidden="true"
+        >
+          <svg
+            class="size-10 overflow-visible drop-shadow-[0_8px_16px_color-mix(in_srgb,var(--neural-color-primary)_24%,transparent)]"
+            viewBox="0 0 48 48"
+            focusable="false"
+          >
+            <path
+              class="fill-none stroke-[var(--neural-color-text-strong)] [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:4]"
+              d="M34 6H14a8 8 0 0 0-8 8v20a8 8 0 0 0 8 8h18m10-12V14a8 8 0 0 0-8-8"
+            />
+            <circle
+              class="fill-[var(--neural-color-primary)]"
+              cx="17"
+              cy="21"
+              r="2.75"
+            />
+            <path
+              class="fill-[var(--neural-color-primary)]"
+              d="m31 15 1.35 3.15L35.5 19.5l-3.15 1.35L31 24l-1.35-3.15-3.15-1.35 3.15-1.35z"
+            />
+            <path
+              class="fill-none stroke-[var(--neural-color-text-strong)] [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:2.4]"
+              d="M17 30.5c2 2.15 4.35 3.2 7 3.2s5-1.05 7-3.2"
+            />
+            <path
+              class="fill-[var(--neural-color-primary)] stroke-[var(--neural-color-surface)] [stroke-linejoin:round] [stroke-width:.75]"
+              d="M35 33v11l3.1-3.2 2.35 3.15 2.4-1.8-2.4-3.1H45z"
+            />
+          </svg>
+        </span>
+        <span class="min-w-0">
+          <strong class="block text-[0.95rem] font-black tracking-[0.12em]"
+            >NEURAL<span class="text-[var(--neural-color-primary)]"
+              >NG</span
+            ></strong
+          >
+          <span
+            class="hidden text-[0.65rem] font-semibold tracking-[0.08em] text-[var(--site-text-muted)] sm:block"
+          >
+            ANGULAR UI FOR THE AGENTIC ERA
+          </span>
+        </span>
+      </a>
+
+      <!--      <nav class="ml-auto hidden items-center gap-1 md:flex" aria-label="Primary navigation">-->
+      <!--        <a-->
+      <!--          routerLink="/"-->
+      <!--          [routerLinkActiveOptions]="{ exact: true }"-->
+      <!--          routerLinkActive="!text-[var(&#45;&#45;site-text)] !bg-[var(&#45;&#45;site-surface)]"-->
+      <!--          class="rounded-xl px-4 py-2 text-sm font-semibold text-[var(&#45;&#45;site-text-muted)] transition hover:bg-[var(&#45;&#45;site-surface)] hover:text-[var(&#45;&#45;site-text)]"-->
+      <!--        >Home</a>-->
+      <!--        <a-->
+      <!--          routerLink="/docs/components/button"-->
+      <!--          routerLinkActive="!text-[var(&#45;&#45;site-text)] !bg-[var(&#45;&#45;site-surface)]"-->
+      <!--          class="rounded-xl px-4 py-2 text-sm font-semibold text-[var(&#45;&#45;site-text-muted)] transition hover:bg-[var(&#45;&#45;site-surface)] hover:text-[var(&#45;&#45;site-text)]"-->
+      <!--        >Documentation</a>-->
+      <!--      </nav>-->
+
+      <div class="ml-auto flex items-center gap-2 md:ml-3">
+        <button
+          type="button"
+          class="site-silver-flow grid size-10 cursor-pointer place-items-center rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] text-[var(--site-text-soft)] shadow-sm backdrop-blur-xl transition hover:-translate-y-0.5 hover:text-[var(--site-text)]"
+          [attr.aria-label]="appearance.mode() === 'dark' ? 'Use light mode' : 'Use dark mode'"
+          (click)="appearance.toggle()"
+        >
+          <i
+            [class]="appearance.mode() === 'dark' ? 'nt nt-sun' : 'nt nt-moon'"
+            aria-hidden="true"
+          ></i>
+        </button>
+        <button
+          type="button"
+          class="site-silver-flow grid size-10 cursor-pointer place-items-center rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] text-[var(--site-text-soft)] shadow-sm backdrop-blur-xl transition hover:-translate-y-0.5 hover:text-[var(--site-text)]"
+          aria-label="Open appearance settings"
+          [neuralPopoverTriggerFor]="appearancePanel"
+          popoverPosition="bottom-end"
+          [popoverOffset]="12"
+        >
+          <i class="nt nt-settings" aria-hidden="true"></i>
+          <span
+            class="absolute bottom-1.5 end-1.5 size-1.5 rounded-full ring-2 ring-[var(--site-surface-strong)]"
+            [style.background]="'var(--neural-color-primary-500)'"
+            aria-hidden="true"
+          ></span>
+        </button>
+
+        <neural-popover
+          #appearancePanel
+          role="dialog"
+          ariaLabel="Appearance settings"
+          popoverClass="site-appearance-popover"
+        >
+          <div class="w-full max-w-full text-[var(--site-text)]">
+            <section class="px-1 pb-4 pt-1">
+              <div class="mb-3 flex min-w-0 items-start justify-between gap-3">
+                <div class="min-w-0">
+                  <h2
+                    class="text-[0.72rem] font-black uppercase tracking-[0.14em]"
+                  >
+                    Primary
+                  </h2>
+                  <p
+                    class="mt-1 text-[0.68rem] leading-4 text-[var(--site-text-soft)]"
+                  >
+                    Complete 50–950 color scale.
+                  </p>
+                </div>
+                <code
+                  class="shrink-0 whitespace-nowrap rounded-lg border border-[var(--site-border)] bg-[var(--site-surface-strong)] px-2 py-1 text-[0.64rem] font-bold text-[var(--neural-color-primary)]"
+                  >{{ appearance.primary() }}</code
+                >
+              </div>
+              <div class="grid grid-cols-6 justify-items-center gap-2.5">
+                @for (palette of primaryPalettes; track palette.value) {
+                <button
+                  type="button"
+                  class="size-6 cursor-pointer rounded-full border-2 border-white/55 shadow-[0_2px_8px_rgba(15,23,42,.18)] transition duration-200 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--neural-color-primary)]"
+                  [class.site-palette-selected]="appearance.primary() === palette.value"
+                  [style.background]="palette.color"
+                  [attr.aria-label]="'Use ' + palette.label + ' primary palette'"
+                  [attr.aria-pressed]="appearance.primary() === palette.value"
+                  [title]="palette.label"
+                  (click)="setPrimary(palette.value)"
+                ></button>
+                }
+              </div>
+            </section>
+
+            <section class="border-t border-[var(--site-border)] px-1 py-4">
+              <div class="mb-3 flex min-w-0 items-start justify-between gap-3">
+                <div class="min-w-0">
+                  <h2
+                    class="text-[0.72rem] font-black uppercase tracking-[0.14em]"
+                  >
+                    Surface
+                  </h2>
+                  <p
+                    class="mt-1 text-[0.68rem] leading-4 text-[var(--site-text-soft)]"
+                  >
+                    Canvas, elevation and component layers.
+                  </p>
+                </div>
+                <code
+                  class="shrink-0 whitespace-nowrap rounded-lg border border-[var(--site-border)] bg-[var(--site-surface-strong)] px-2 py-1 text-[0.64rem] font-bold"
+                  >{{ appearance.surface() }}</code
+                >
+              </div>
+              <div class="grid grid-cols-7 justify-items-center gap-2.5">
+                @for (palette of surfacePalettes; track palette.value) {
+                <button
+                  type="button"
+                  class="size-6 cursor-pointer rounded-full border-2 border-white/40 shadow-[0_2px_8px_rgba(15,23,42,.18)] transition duration-200 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--neural-color-primary)]"
+                  [class.site-palette-selected]="appearance.surface() === palette.value"
+                  [style.background]="palette.color"
+                  [attr.aria-label]="'Use ' + palette.label + ' surface palette'"
+                  [attr.aria-pressed]="appearance.surface() === palette.value"
+                  [title]="palette.label"
+                  (click)="setSurface(palette.value)"
+                ></button>
+                }
+              </div>
+            </section>
+
+            <section
+              class="flex items-center justify-between gap-4 border-t border-[var(--site-border)] px-1 pb-1 pt-4"
+            >
+              <span class="min-w-0">
+                <strong class="block text-[0.72rem]">RTL direction</strong>
+                <small
+                  class="mt-1 block text-[0.68rem] leading-4 text-[var(--site-text-soft)]"
+                  >Mirror logical layout and overlays.</small
+                >
+              </span>
+              <neural-switch
+                ariaLabel="Right-to-left direction"
+                [checked]="appearance.direction() === 'rtl'"
+                (checkedChange)="appearance.setRtl($event)"
+              />
+            </section>
+          </div>
+        </neural-popover>
+
+        <a
+          href="https://github.com/hasanaydin7/NeuralTech"
+          class="site-silver-flow hidden h-10 items-center gap-2 rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-3.5 text-sm font-semibold text-[var(--site-text-soft)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:text-[var(--site-text)] sm:flex"
+        >
+          <i class="nt nt-github" aria-hidden="true"></i>
+          GitHub
+        </a>
+        <button
+          type="button"
+          class="site-silver-flow grid size-10 cursor-pointer place-items-center rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] md:hidden"
+          aria-label="Toggle navigation"
+          [attr.aria-expanded]="mobileOpen()"
+          (click)="mobileOpen.update(value => !value)"
+        >
+          <i
+            [class]="mobileOpen() ? 'nt nt-x' : 'nt nt-menu'"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </div>
+
+    @if (mobileOpen()) {
+    <nav
+      class="border-t border-[var(--site-border)] bg-[var(--site-canvas-elevated)] p-4 backdrop-blur-[30px] md:hidden"
+      aria-label="Mobile navigation"
+    >
+      <a
+        routerLink="/"
+        class="block rounded-xl px-4 py-3 font-semibold"
+        (click)="closeMobile()"
+        >Home</a
+      >
+      <a
+        routerLink="/docs/installation"
+        class="block rounded-xl px-4 py-3 font-semibold"
+        (click)="closeMobile()"
+        >Documentation</a
+      >
+    </nav>
+    }
+  </header>
+
+  <main class="pt-[4.5rem]">
+    <router-outlet />
+  </main>
+</div>

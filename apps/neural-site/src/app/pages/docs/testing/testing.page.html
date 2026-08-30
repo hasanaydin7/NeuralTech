@@ -1,0 +1,217 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_20%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >GUIDE</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            Testing NeuralNg
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            Test the behavior your users observe: values, events, roles,
+            keyboard flows, focus and visible state—not NeuralNg’s private DOM
+            arrangement.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Angular
+              TestBed</span
+            ><span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Forms</span
+            ><span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Browser
+              accessibility</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="philosophy" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          CONSUMER TESTS
+        </p>
+        <h2 class="mt-3 text-2xl font-black">Assert the public contract</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          A useful application test asks whether a person can operate the
+          control and whether your application receives the expected value.
+          Internal class names, generated IDs and exact wrapper counts are not
+          stable selectors unless the component explicitly documents them as
+          public class slots.
+        </p>
+      </section>
+
+      <section id="setup" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Import the same component your application uses
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Create a small host component when the behavior spans template binding
+          and application state. Standalone imports keep the test setup
+          identical to production usage.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="save-action.spec.ts"
+          language="typescript"
+          [code]="setupCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="signals" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Read models after user interaction</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Trigger the native interaction, then assert the bound Signal or
+          semantic output. Programmatically assigning a model tests application
+          state; clicking, typing or pressing a key tests the user path. Keep
+          both when both contracts matter.
+        </p>
+      </section>
+
+      <section id="forms" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Test through the selected Forms API</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          For Reactive Forms, assert the <code>FormControl</code> value,
+          disabled state, touched state and validation. Apply the same principle
+          to template-driven and Signal Forms: inspect the public form model
+          instead of reaching into the component instance.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="email-field.spec.ts"
+          language="typescript"
+          [code]="formsCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="keyboard" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Dispatch real keyboard events</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Composite controls require more than click coverage. Test opening,
+          roving focus, selection, Escape dismissal and focus restoration with
+          the documented key contract. Assert roles and ARIA state rather than a
+          visual highlight class.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="select-keyboard.spec.ts"
+          language="typescript"
+          [code]="keyboardCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="overlays" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Query appended overlays from document.body
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Panels using <code>appendTo="body"</code> are outside the fixture root
+          by design. Query the document by role, close or destroy the host after
+          each test and avoid sharing an open overlay between cases.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="overlay.spec.ts"
+          language="typescript"
+          [code]="overlayCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="async" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Control asynchronous time deliberately
+        </h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          @for (item of [['Debounce', 'Advance the configured delay and verify
+          stale remote results do not replace the latest query.'], ['Loading',
+          'Assert busy semantics, disabled interaction and the final settled
+          state.'], ['Toast lifetime', 'Use controlled timers for dismissal and
+          keep persistent messages explicit.'], ['Animations', 'Wait for the
+          semantic state or reduced-motion path, not an arbitrary sleep.']];
+          track item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">{{ item[0] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[1] }}
+            </p>
+          </article>
+          }
+        </div>
+      </section>
+
+      <section id="accessibility" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Combine automation with keyboard inspection
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Automated rules catch missing names, invalid relationships and many
+          contrast issues, but they do not prove that a date grid, tree or
+          dialog feels correct with a keyboard and screen reader.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="checkout.e2e.ts"
+          language="typescript"
+          [code]="axeCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="ssr" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Exercise the production rendering path
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          For SSR applications, test at least one production-rendered route with
+          JavaScript delayed or disabled, then hydrate it and operate the
+          control. This catches browser-global access and server/client identity
+          mismatches that a DOM-only unit test cannot see.
+        </p>
+      </section>
+
+      <section id="selectors" class="scroll-mt-28 pb-12 pt-16">
+        <h2 class="text-2xl font-black">Selector priority</h2>
+        <div class="mt-6 grid gap-3">
+          @for (row of [['1', 'Accessible role and name', 'button named Save,
+          combobox named Country'], ['2', 'Visible label or stable application
+          test ID', 'Use a test ID you own when roles are ambiguous'], ['3',
+          'Documented structural hook', 'Only when the public component contract
+          exposes it'], ['Avoid', 'Generated IDs and private classes', 'They may
+          change without changing user behavior']]; track row[0]) {
+          <div
+            class="grid gap-2 rounded-xl border border-[var(--site-border)] p-4 sm:grid-cols-[5rem_12rem_1fr]"
+          >
+            <strong class="text-[var(--neural-color-primary)]"
+              >{{ row[0] }}</strong
+            ><span class="font-bold">{{ row[1] }}</span
+            ><span class="text-sm text-[var(--site-text-soft)]"
+              >{{ row[2] }}</span
+            >
+          </div>
+          }
+        </div>
+      </section>
+    </div>
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

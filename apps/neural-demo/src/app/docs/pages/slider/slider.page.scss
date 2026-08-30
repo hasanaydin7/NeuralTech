@@ -1,0 +1,35 @@
+.slider-demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 32rem);
+  min-height: 7rem;
+  margin-inline: auto;
+}
+.slider-demo--variants {
+  justify-content: space-around;
+  min-height: 15rem;
+}
+.docs-slider-headless {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  color: #67e8f9;
+  background: #07111f;
+  border: 1px solid #164e63;
+  border-radius: 0.5rem;
+}
+.docs-slider-headless__input {
+  flex: 1;
+  accent-color: #22d3ee;
+  cursor: pointer;
+}
+.docs-slider-headless__value {
+  min-width: 3ch;
+  color: #e0f2fe;
+  font:
+    700 0.875rem ui-monospace,
+    monospace;
+}

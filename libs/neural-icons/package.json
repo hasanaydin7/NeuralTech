@@ -1,0 +1,79 @@
+{
+  "name": "@neural-ng/icons",
+  "version": "0.1.0-beta.0",
+  "description": "Framework-independent NeuralNg CSS mask icons with the nt nt-* class API.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasanaydin7/NeuralTech.git",
+    "directory": "libs/neural-icons"
+  },
+  "homepage": "https://github.com/hasanaydin7/NeuralTech#readme",
+  "bugs": {
+    "url": "https://github.com/hasanaydin7/NeuralTech/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "css",
+    "icons",
+    "neural-ng",
+    "tabler"
+  ],
+  "style": "./icons.css",
+  "sideEffects": [
+    "./*.css",
+    "./categories/*.css",
+    "./categories/filled/*.css"
+  ],
+  "exports": {
+    ".": {
+      "style": "./icons.css",
+      "default": "./icons.css"
+    },
+    "./icons.css": {
+      "style": "./icons.css",
+      "default": "./icons.css"
+    },
+    "./outline.css": {
+      "style": "./outline.css",
+      "default": "./outline.css"
+    },
+    "./filled.css": {
+      "style": "./filled.css",
+      "default": "./filled.css"
+    },
+    "./all.css": {
+      "style": "./all.css",
+      "default": "./all.css"
+    },
+    "./brands.css": {
+      "style": "./brands.css",
+      "default": "./brands.css"
+    },
+    "./categories/*.css": {
+      "style": "./categories/*.css",
+      "default": "./categories/*.css"
+    },
+    "./categories/filled/*.css": {
+      "style": "./categories/filled/*.css",
+      "default": "./categories/filled/*.css"
+    },
+    "./manifest.json": "./manifest.json",
+    "./metadata.json": "./metadata.json",
+    "./llms.txt": "./llms.txt",
+    "./README.md": "./README.md"
+  },
+  "files": [
+    "*.css",
+    "categories/*.css",
+    "categories/filled/*.css",
+    "manifest.json",
+    "metadata.json",
+    "README.md",
+    "llms.txt",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ]
+}

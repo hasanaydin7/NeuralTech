@@ -1,0 +1,23 @@
+# @neural-ng/core/file-upload
+
+- Import `NeuralFileUpload` from `@neural-ng/core/file-upload`. Never generate
+  the deprecated `FileUploadComponent` alias.
+- Bind `readonly File[]` with `[(value)]`, `[formField]`, `[formControl]`, or
+  `[(ngModel)]`. The value is always an array, including single-file mode.
+- Single mode replaces the current file. `multiple` appends accepted files.
+- FileUpload selects, drops, validates, removes, and clears files. It never
+  performs HTTP requests and has no endpoint, header, progress, retry, or
+  auto-upload API.
+- Send selected files with `FormData` in application code. Do not rely on
+  native browser form submission, and do not `JSON.stringify` File objects and do not convert them to base64 unless an
+  external API explicitly requires it.
+- `accept`, `maxFileSize`, `maxFiles`, and duplicate checks improve client UX
+  only. Validate file type, size, filename, and content again on the server.
+- Use `selectionChange` for accepted plus rejected selection details.
+  Rejection reasons are `file-type`, `file-size`, `file-count`, and `duplicate`.
+- `readonly` keeps the file list visible but blocks choose, drop, remove, and
+  clear actions. `disabled` follows form ownership.
+- Use `unstyled` or global unstyled mode for headless rendering. Structural
+  classes and native accessibility relationships remain.
+- Prefer Neural Icons through `chooseIconClass`, `removeIconClass`, and
+  `clearIconClass`. Classes beginning with `nt-` receive the `nt` base class.

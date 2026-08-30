@@ -1,0 +1,107 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "bundler",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strict": false,
+    "paths": {
+      "@neural-ng/core": ["./libs/neural-ng/src/index.ts"],
+      "@neural-ng/core/accordion": ["./libs/neural-ng/accordion/index.ts"],
+      "@neural-ng/core/appearance": ["./libs/neural-ng/appearance/index.ts"],
+      "@neural-ng/core/auto-complete": [
+        "./libs/neural-ng/auto-complete/index.ts"
+      ],
+      "@neural-ng/core/badge": ["./libs/neural-ng/badge/index.ts"],
+      "@neural-ng/core/avatar": ["./libs/neural-ng/avatar/index.ts"],
+      "@neural-ng/core/breadcrumb": ["./libs/neural-ng/breadcrumb/index.ts"],
+      "@neural-ng/core/button": ["./libs/neural-ng/button/index.ts"],
+      "@neural-ng/core/card": ["./libs/neural-ng/card/index.ts"],
+      "@neural-ng/core/checkbox": ["./libs/neural-ng/checkbox/index.ts"],
+      "@neural-ng/core/color-mode": ["./libs/neural-ng/color-mode/index.ts"],
+      "@neural-ng/core/confirm-dialog": [
+        "./libs/neural-ng/confirm-dialog/index.ts"
+      ],
+      "@neural-ng/core/date-picker": ["./libs/neural-ng/date-picker/index.ts"],
+      "@neural-ng/core/data-view": ["./libs/neural-ng/data-view/index.ts"],
+      "@neural-ng/core/dialog": ["./libs/neural-ng/dialog/index.ts"],
+      "@neural-ng/core/drawer": ["./libs/neural-ng/drawer/index.ts"],
+      "@neural-ng/core/divider": ["./libs/neural-ng/divider/index.ts"],
+      "@neural-ng/core/field": ["./libs/neural-ng/field/index.ts"],
+      "@neural-ng/core/input": ["./libs/neural-ng/input/index.ts"],
+      "@neural-ng/core/input-number": [
+        "./libs/neural-ng/input-number/index.ts"
+      ],
+      "@neural-ng/core/loading-overlay": [
+        "./libs/neural-ng/loading-overlay/index.ts"
+      ],
+      "@neural-ng/core/i18n": ["./libs/neural-ng/i18n/index.ts"],
+      "@neural-ng/core/locales/en": ["./libs/neural-ng/locales/en/index.ts"],
+      "@neural-ng/core/locales/tr": ["./libs/neural-ng/locales/tr/index.ts"],
+      "@neural-ng/core/locales/de": ["./libs/neural-ng/locales/de/index.ts"],
+      "@neural-ng/core/locales/fr": ["./libs/neural-ng/locales/fr/index.ts"],
+      "@neural-ng/core/locales/es": ["./libs/neural-ng/locales/es/index.ts"],
+      "@neural-ng/core/locales/pt-br": [
+        "./libs/neural-ng/locales/pt-br/index.ts"
+      ],
+      "@neural-ng/core/locales/ar": ["./libs/neural-ng/locales/ar/index.ts"],
+      "@neural-ng/core/locales/zh-cn": [
+        "./libs/neural-ng/locales/zh-cn/index.ts"
+      ],
+      "@neural-ng/core/message": ["./libs/neural-ng/message/index.ts"],
+      "@neural-ng/core/meter-group": ["./libs/neural-ng/meter-group/index.ts"],
+      "@neural-ng/core/multi-select": [
+        "./libs/neural-ng/multi-select/index.ts"
+      ],
+      "@neural-ng/core/menu": ["./libs/neural-ng/menu/index.ts"],
+      "@neural-ng/core/overlay": ["./libs/neural-ng/overlay/index.ts"],
+      "@neural-ng/core/panel-menu": ["./libs/neural-ng/panel-menu/index.ts"],
+      "@neural-ng/core/paginator": ["./libs/neural-ng/paginator/index.ts"],
+      "@neural-ng/core/password": ["./libs/neural-ng/password/index.ts"],
+      "@neural-ng/core/file-upload": ["./libs/neural-ng/file-upload/index.ts"],
+      "@neural-ng/editor": ["./libs/neural-editor/index.ts"],
+      "@neural-ng/mcp-server": ["./libs/neural-mcp/src/index.ts"],
+      "@neural-ng/core/input-otp": ["./libs/neural-ng/input-otp/index.ts"],
+      "@neural-ng/core/input-mask": ["./libs/neural-ng/input-mask/index.ts"],
+      "@neural-ng/core/popover": ["./libs/neural-ng/popover/index.ts"],
+      "@neural-ng/core/progress-bar": [
+        "./libs/neural-ng/progress-bar/index.ts"
+      ],
+      "@neural-ng/core/progress-spinner": [
+        "./libs/neural-ng/progress-spinner/index.ts"
+      ],
+      "@neural-ng/core/radio": ["./libs/neural-ng/radio/index.ts"],
+      "@neural-ng/core/select": ["./libs/neural-ng/select/index.ts"],
+      "@neural-ng/core/slider": ["./libs/neural-ng/slider/index.ts"],
+      "@neural-ng/core/skeleton": ["./libs/neural-ng/skeleton/index.ts"],
+      "@neural-ng/core/sidebar": ["./libs/neural-ng/sidebar/index.ts"],
+      "@neural-ng/core/switch": ["./libs/neural-ng/switch/index.ts"],
+      "@neural-ng/core/table": ["./libs/neural-ng/table/index.ts"],
+      "@neural-ng/core/tabs": ["./libs/neural-ng/tabs/index.ts"],
+      "@neural-ng/core/tag": ["./libs/neural-ng/tag/index.ts"],
+      "@neural-ng/core/textarea": ["./libs/neural-ng/textarea/index.ts"],
+      "@neural-ng/core/tooltip": ["./libs/neural-ng/tooltip/index.ts"],
+      "@neural-ng/core/toast": ["./libs/neural-ng/toast/index.ts"],
+      "@neural-ng/core/toolbar": ["./libs/neural-ng/toolbar/index.ts"],
+      "@neural-ng/core/tree": ["./libs/neural-ng/tree/index.ts"],
+      "@neural-ng/core/tree-select": ["./libs/neural-ng/tree-select/index.ts"],
+      "@neural-ng/core/virtual-scroller": [
+        "./libs/neural-ng/virtual-scroller/index.ts"
+      ],
+      "@neural-ng/icons/metadata.json": ["./libs/neural-icons/metadata.json"],
+      "@neural-ng/theme": ["./libs/neural-theme/src/index.ts"],
+      "@neural-ng/theme/browser": ["./libs/neural-theme/src/browser.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

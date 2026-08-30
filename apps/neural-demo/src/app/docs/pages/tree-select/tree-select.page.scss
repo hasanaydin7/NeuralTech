@@ -1,0 +1,98 @@
+.tree-select-demo {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 34rem;
+}
+.docs-tree-select-headless {
+  width: 100%;
+}
+.docs-tree-select-headless__trigger {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 3rem;
+  color: #e0f2fe;
+  background: #07111f;
+  border: 1px solid #38bdf8;
+  border-radius: 0.7rem;
+  box-shadow: 0 18px 48px rgb(2 132 199 / 0.18);
+  overflow: hidden;
+}
+.docs-tree-select-headless__value {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 0.65rem 0.85rem;
+}
+.docs-tree-select-headless__action {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  padding: 0;
+  color: #7dd3fc;
+  background: transparent;
+  border: 0;
+}
+.docs-tree-select-headless__panel {
+  width: 100%;
+  padding: 0.55rem;
+  color: #e0f2fe;
+  background: #07111f;
+  border: 1px solid #38bdf8;
+  border-radius: 0.7rem;
+  box-shadow: 0 24px 64px rgb(2 8 23 / 0.45);
+}
+.docs-tree-select-headless__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+.docs-tree-select-headless__header > .nt {
+  position: absolute;
+  inset-inline-start: 0.7rem;
+  color: #7dd3fc;
+}
+.docs-tree-select-headless__filter {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.55rem 0.7rem 0.55rem 2rem;
+  color: #e0f2fe;
+  background: #10243a;
+  border: 1px solid #1e3a5f;
+  border-radius: 0.45rem;
+  outline: 0;
+}
+.docs-tree-select-headless__tree {
+  color: #e0f2fe;
+  background: transparent;
+}
+
+.tree-select-forms-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.tree-select-forms-example {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 1rem;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+
+  output {
+    color: var(--neural-color-text-muted);
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 46rem) {
+  .tree-select-forms-grid {
+    grid-template-columns: 1fr;
+  }
+}

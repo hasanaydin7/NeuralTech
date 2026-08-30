@@ -1,0 +1,718 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="multi-select-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="MultiSelect documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="
+                'translateX(calc(' +
+                selectedViewIndex() * 100 +
+                '% + ' +
+                selectedViewIndex() * 0.25 +
+                'rem))'
+              "
+            ></span>
+            <neural-tab value="component" iconClass="nt-chevrons-down"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FORMS</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  MultiSelect
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  Immutable multiple selection with chips, grouping, filtering,
+                  typed templates, every Angular Forms adapter and an SSR-safe
+                  virtualized popup.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Multiple
+                    listbox semantics</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Top-layer overlay</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use the canonical
+                <code class="font-mono text-blue-500">NeuralMultiSelect</code>
+                export from its granular entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="grouped" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Grouped chips and filtering</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Map nested data without mutation, group related results, keep
+                unavailable options visible and customize each row through a
+                typed template.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="grouped.html"
+                language="html"
+                [code]="groupedCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto grid w-full max-w-lg gap-3">
+                  <neural-field controlId="site-multi-capabilities" fluid>
+                    <label neuralFieldLabel for="site-multi-capabilities"
+                      >Agent capabilities</label
+                    >
+                    <neural-multi-select
+                      [options]="capabilities"
+                      optionLabel="name"
+                      optionValue="id"
+                      optionDisabled="disabled"
+                      optionGroup="category"
+                      filterBy="name,category,description"
+                      [(value)]="selectedCapabilities"
+                      ariaLabel="Agent capabilities"
+                      display="chip"
+                      fluid
+                      (selected)="selectedItem($event)"
+                      (selectionChange)="selectionChanged($event)"
+                    >
+                      <ng-template
+                        neuralMultiSelectOption
+                        let-option
+                        let-resolved="resolved"
+                        let-selected="selected"
+                      >
+                        <span class="flex min-w-0 flex-1 items-center gap-3">
+                          <i
+                            [class]="capabilityIcon(option) + ' text-blue-500'"
+                            aria-hidden="true"
+                          ></i>
+                          <span class="grid min-w-0"
+                            ><strong>{{ resolved.label }}</strong
+                            ><small
+                              class="truncate text-[var(--site-text-muted)]"
+                              >{{ capabilityDescription(option) }}</small
+                            ></span
+                          >
+                          @if (selected) {
+                          <i
+                            class="nt nt-check ml-auto text-emerald-500"
+                            aria-hidden="true"
+                          ></i>
+                          }
+                        </span>
+                      </ng-template>
+                    </neural-multi-select>
+                    <small neuralFieldHint
+                      >{{ selectedCapabilities().length }} capabilities
+                      selected.</small
+                    >
+                  </neural-field>
+                  <output
+                    class="text-xs text-[var(--site-text-muted)]"
+                    aria-live="polite"
+                    >{{ eventLog() }}</output
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="display-limits" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Display modes and selection limits
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>comma</code> mode collapses long values into a localized
+                count while <code>selectionLimit</code> protects domain rules.
+                Chip mode remains the default.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="display.html"
+                language="html"
+                [code]="compactCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto grid w-full max-w-lg gap-4">
+                  <neural-multi-select
+                    [options]="capabilities"
+                    optionLabel="name"
+                    optionValue="id"
+                    [(value)]="compactValue"
+                    display="comma"
+                    [maxSelectedLabels]="2"
+                    [selectionLimit]="4"
+                    ariaLabel="Limited capabilities"
+                    fluid
+                  />
+                  <p class="text-xs text-[var(--site-text-muted)]">
+                    At most four values · {{ compactValue().length }} currently
+                    selected.
+                  </p>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Angular Forms</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Direct Signals, Signal Forms, Reactive Forms and template-driven
+                Forms share one immutable <code>readonly TValue[]</code> model.
+                Programmatic writes never masquerade as user events.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="forms.html"
+                language="html"
+                [code]="formsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-5 md:grid-cols-3">
+                  <div class="grid gap-2">
+                    <strong class="text-sm">Signal Forms</strong
+                    ><neural-multi-select
+                      [options]="primitiveOptions"
+                      [formField]="signalForm.capabilities"
+                      ariaLabel="Signal Form capabilities"
+                      fluid
+                    /><output class="text-xs text-[var(--site-text-muted)]"
+                      >{{ formModel().capabilities.join(', ') }}</output
+                    >
+                  </div>
+                  <div class="grid gap-2">
+                    <strong class="text-sm">Reactive Forms</strong
+                    ><neural-multi-select
+                      [options]="primitiveOptions"
+                      [formControl]="reactiveCapabilities"
+                      ariaLabel="Reactive Form capabilities"
+                      fluid
+                    /><output class="text-xs text-[var(--site-text-muted)]"
+                      >{{ reactiveCapabilities.value.join(', ') }}</output
+                    >
+                  </div>
+                  <div class="grid gap-2">
+                    <strong class="text-sm">NgModel</strong
+                    ><neural-multi-select
+                      [options]="primitiveOptions"
+                      name="capabilities"
+                      [(ngModel)]="ngModelCapabilities"
+                      ariaLabel="Template Form capabilities"
+                      fluid
+                    /><output class="text-xs text-[var(--site-text-muted)]"
+                      >{{ ngModelCapabilities.join(', ') }}</output
+                    >
+                  </div>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="remote" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Remote filtering and request identity
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Remote mode never filters the supplied rows. Each debounced
+                query carries a monotonic request id so stale network responses
+                can be ignored deterministically.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="remote.html"
+                language="html"
+                [code]="remoteCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto grid w-full max-w-lg gap-2">
+                  <neural-multi-select
+                    dataMode="remote"
+                    [options]="remoteOptions()"
+                    optionLabel="name"
+                    optionValue="id"
+                    [(value)]="remoteValue"
+                    filterPlaceholder="Search remote capabilities"
+                    ariaLabel="Remote capabilities"
+                    fluid
+                    (filterChange)="searchRemote($event)"
+                  />
+                  <small class="text-[var(--site-text-muted)]"
+                    >Latest request: {{ remoteRequest() || 'none' }}</small
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="templates" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed composition templates</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Header, group, option, selected value, footer, empty and loading
+                surfaces remain typed and independently replaceable.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="templates.html"
+                language="html"
+                [code]="templatesCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-lg">
+                  <neural-multi-select
+                    [options]="capabilities"
+                    optionLabel="name"
+                    optionValue="id"
+                    optionGroup="category"
+                    [(value)]="templateValue"
+                    ariaLabel="Templated capabilities"
+                    fluid
+                  >
+                    <ng-template neuralMultiSelectHeader
+                      ><div
+                        class="flex items-center gap-2 px-2 py-1 text-sm font-bold"
+                      >
+                        <i class="nt nt-sparkles text-blue-500"></i>Workspace
+                        capabilities
+                      </div></ng-template
+                    >
+                    <ng-template neuralMultiSelectGroup let-group
+                      ><span class="text-blue-500"
+                        >{{ group }}</span
+                      ></ng-template
+                    >
+                    <ng-template
+                      neuralMultiSelectOption
+                      let-option
+                      let-resolved="resolved"
+                      ><span class="flex items-center gap-2"
+                        ><i [class]="capabilityIcon(option)"></i>{{
+                        resolved.label }}</span
+                      ></ng-template
+                    >
+                    <ng-template neuralMultiSelectValue let-labels="labels"
+                      ><span class="text-sm font-semibold"
+                        >{{ labels.join(' · ') }}</span
+                      ></ng-template
+                    >
+                    <ng-template neuralMultiSelectFooter
+                      ><span
+                        >Selection is committed immediately.</span
+                      ></ng-template
+                    >
+                  </neural-multi-select>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">States and localized feedback</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disabled, readonly, loading, empty and invalid states keep
+                distinct semantics. Empty and loading templates can replace
+                localized defaults.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="states.html"
+                language="html"
+                [code]="statesCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-4 sm:grid-cols-2">
+                  <neural-multi-select
+                    [options]="primitiveOptions"
+                    disabled
+                    placeholder="Disabled"
+                    ariaLabel="Disabled capabilities"
+                    fluid
+                  />
+                  <neural-multi-select
+                    [options]="capabilities"
+                    optionLabel="name"
+                    optionValue="id"
+                    [(value)]="readonlyValue"
+                    readonly
+                    ariaLabel="Readonly capabilities"
+                    fluid
+                  />
+                  <neural-multi-select
+                    [options]="capabilities"
+                    loading
+                    ariaLabel="Loading capabilities"
+                    fluid
+                    ><ng-template neuralMultiSelectLoading let-label
+                      ><span class="flex items-center gap-2"
+                        ><i class="nt nt-loader-3 nt-spin"></i>{{ label }}</span
+                      ></ng-template
+                    ></neural-multi-select
+                  >
+                  <neural-multi-select
+                    [options]="[]"
+                    ariaLabel="Empty capabilities"
+                    fluid
+                    ><ng-template neuralMultiSelectEmpty
+                      ><span class="text-sm"
+                        >No compatible capability found.</span
+                      ></ng-template
+                    ></neural-multi-select
+                  >
+                  <neural-field
+                    controlId="site-invalid-multi"
+                    invalid
+                    required
+                    pending
+                    fluid
+                    ><label neuralFieldLabel for="site-invalid-multi"
+                      >Required capabilities</label
+                    ><neural-multi-select
+                      [options]="primitiveOptions"
+                      placeholder="Choose capabilities"
+                    /><small neuralFieldHint
+                      >Select at least one capability.</small
+                    ></neural-field
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="virtual-scroll" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Virtual scrolling</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Fixed-height lists render only the visible overscanned range
+                while preserving full set position metadata. Grouped lists
+                safely fall back to complete rendering.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="virtual.html"
+                language="html"
+                [code]="virtualCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="mx-auto w-full max-w-lg">
+                  <neural-multi-select
+                    [options]="largeOptions"
+                    optionLabel="label"
+                    optionValue="id"
+                    [(value)]="virtualValue"
+                    virtualScroll
+                    [virtualItemSize]="42"
+                    [virtualScrollHeight]="252"
+                    [virtualOverscan]="4"
+                    ariaLabel="Virtual capabilities"
+                    fluid
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="events" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic events</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>valueChange</code> owns model synchronization. Selection,
+                removal, clear, select-all, filter and lifecycle events describe
+                user intent with immutable snapshots and no on-prefixed aliases.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="events.html"
+                language="html"
+                [code]="eventsCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Unstyled and typed class slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Headless mode retains immutable state, Forms, keyboard behavior,
+                ARIA and overlay positioning while Tailwind owns every visible
+                surface.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto w-full max-w-lg rounded-2xl bg-slate-950 p-5"
+                >
+                  <neural-multi-select
+                    unstyled
+                    [options]="capabilities"
+                    optionLabel="name"
+                    optionValue="id"
+                    optionDisabled="disabled"
+                    optionGroup="category"
+                    [(value)]="headlessValue"
+                    [classes]="headlessClasses"
+                    ariaLabel="Headless capabilities"
+                    fluid
+                  />
+                </div>
+              </code-view>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">
+                Multiple selection without ambiguity
+              </h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                The trigger, focused filter and popup share one deterministic
+                multiple-listbox contract.
+              </p>
+            </header>
+            <section id="semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Combobox and listbox semantics
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The trigger and focused filter expose expanded state, controls
+                and active descendant. The popup uses
+                <code>role=listbox</code> with
+                <code>aria-multiselectable=true</code>; every row exposes
+                selection, disabled state, position and total set size.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Keyboard model</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Arrow Up/Down move through enabled options, Home/End jump to
+                boundaries, Enter/Space toggle the active option and Escape
+                closes. When filtering is disabled, buffered typeahead moves by
+                localized labels.
+              </p>
+            </section>
+            <section id="readonly-disabled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Readonly and disabled</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Readonly stays focusable and opens for inspection but blocks
+                options, chips, clear and select-all. Disabled leaves the tab
+                sequence and closes an open popup. Required, invalid, pending,
+                touched and dirty states remain inspectable through ARIA and
+                data hooks.
+              </p>
+            </section>
+            <section id="virtualization-a11y" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Virtualized accessibility</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Only a small window exists in the DOM, but
+                <code>aria-posinset</code> and
+                <code>aria-setsize</code> describe each option inside the
+                complete collection. Active navigation scrolls the target row
+                into view.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-4 text-4xl font-black">MultiSelect API</h1>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs and models</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Outputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[42rem] text-left text-sm">
+                  <tbody>
+                    @for (item of outputs; track item[0]) {
+                    <tr class="border-b border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[2] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public methods</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}{{ item[1] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="template-api" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed templates</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of templates; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    Context: {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">MultiSelect tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Neutral tokens inherit the global primary, surface and resolved
+                light/dark system. Consumer classes remain additive.
+              </p>
+            </header>
+            <section id="design-tokens" class="scroll-mt-28 pt-16">
+              <div class="grid gap-3 sm:grid-cols-2">
+                @for (item of tokens; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-xs text-blue-500">{{ item[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

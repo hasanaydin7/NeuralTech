@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+readonly base_dir='/opt/neuralng'
+readonly release_sha="${1:-}"
+readonly archive="${base_dir}/incoming/neural-site-${release_sha}.tar.gz"
+readonly release_dir="${base_dir}/releases/${release_sha}"
+readonly node_bin="${base_dir}/node/bin/node"
+
+if [[ ! "${release_sha}" =~ ^[0-9a-f]{40}$ ]]; then
+  echo 'Release SHA must be a complete 40-character Git commit SHA.' >&2
+  exit 2
+fi
+
+exec 9>"${base_dir}/state/deploy.lock"
+if ! flock -n 9; then
+  echo 'Another NeuralNg deployment is already running.' >&2
+  exit 3
+fi
+
+if [[ ! -f "${archive}" || -L "${archive}" ]]; then
+  echo "Release archive not found: ${archive}" >&2
+  exit 4
+fi
+
+if [[ -e "${release_dir}" ]]; then
+  echo "Release directory already exists: ${release_dir}" >&2
+  exit 5
+fi
+
+install -d -m 0755 "${release_dir}"
+tar -xzf "${archive}" -C "${release_dir}"
+if [[ ! -f "${release_dir}/server/server.mjs" ]]; then
+  echo 'The release does not contain server/server.mjs.' >&2
+  exit 6
+fi
+
+candidate_pid=''
+cleanup_candidate() {
+  if [[ -n "${candidate_pid}" ]] && kill -0 "${candidate_pid}" 2>/dev/null; then
+    kill "${candidate_pid}" 2>/dev/null || true
+    wait "${candidate_pid}" 2>/dev/null || true
+  fi
+}
+trap cleanup_candidate EXIT
+
+(
+  cd "${release_dir}"
+  HOST=127.0.0.1 \
+    PORT=4011 \
+    NODE_ENV=production \
+    NEURAL_SITE_ORIGIN=https://neuralng.dev \
+    NG_ALLOWED_HOSTS=neuralng.dev,www.neuralng.dev,127.0.0.1,localhost \
+    "${node_bin}" server/server.mjs
+) >"${base_dir}/logs/candidate.log" 2>&1 &
+candidate_pid="$!"
+
+healthy='false'
+for _attempt in {1..30}; do
+  if curl --fail --silent --show-error http://127.0.0.1:4011/healthz >/dev/null; then
+    healthy='true'
+    break
+  fi
+  sleep 2
+done
+
+if [[ "${healthy}" != 'true' ]]; then
+  tail -n 100 "${base_dir}/logs/candidate.log" >&2 || true
+  echo 'Candidate failed its health check; the active release was not changed.' >&2
+  exit 7
+fi
+
+cleanup_candidate
+candidate_pid=''
+
+previous_release=''
+if [[ -L "${base_dir}/current" ]]; then
+  previous_release="$(readlink -f "${base_dir}/current")"
+fi
+
+ln -s "${release_dir}" "${base_dir}/current.new"
+mv -Tf "${base_dir}/current.new" "${base_dir}/current"
+
+printf '%s\n' "${release_sha}" > "${base_dir}/state/deploy-ready.new"
+mv -Tf \
+  "${base_dir}/state/deploy-ready.new" \
+  "${base_dir}/state/deploy-ready"
+
+active='false'
+for _attempt in {1..30}; do
+  if curl --fail --silent --show-error http://127.0.0.1:4010/healthz >/dev/null; then
+    active='true'
+    break
+  fi
+  sleep 2
+done
+
+if [[ "${active}" != 'true' ]]; then
+  if [[ -n "${previous_release}" ]]; then
+    ln -s "${previous_release}" "${base_dir}/current.rollback"
+    mv -Tf "${base_dir}/current.rollback" "${base_dir}/current"
+    printf '%s\n' 'rollback' > "${base_dir}/state/deploy-ready.rollback"
+    mv -Tf \
+      "${base_dir}/state/deploy-ready.rollback" \
+      "${base_dir}/state/deploy-ready"
+  fi
+  tail -n 100 "${base_dir}/logs/service.log" >&2 || true
+  echo 'Release activation failed; the previous release was restored.' >&2
+  exit 8
+fi
+
+printf '%s\n' "${release_sha}" > "${base_dir}/state/current-release"
+echo "NeuralNg ${release_sha} is active on 127.0.0.1:4010."

@@ -1,0 +1,60 @@
+# @neural-ng/core/checkbox
+
+Angular 22+ standalone native binary and tri-state Checkbox Beta controls.
+
+IMPORT
+import {
+  NeuralCheckbox,
+  NeuralTriStateCheckbox,
+} from '@neural-ng/core/checkbox';
+
+BINARY
+<neural-checkbox [(checked)]="accepted">
+  I accept the terms
+</neural-checkbox>
+
+TRI-STATE
+<neural-tri-state-checkbox [(value)]="permission">
+  Inherit permission
+</neural-tri-state-checkbox>
+
+FORMS
+<neural-checkbox [formField]="form.accepted">Accept</neural-checkbox>
+<neural-checkbox [formControl]="acceptedControl">Accept</neural-checkbox>
+<neural-checkbox name="accepted" [(ngModel)]="accepted">Accept</neural-checkbox>
+
+<neural-tri-state-checkbox [formField]="form.permission">
+  Inherit
+</neural-tri-state-checkbox>
+
+RULES
+- NeuralCheckbox implements FormCheckboxControl.
+- Binary checked is always boolean and generates checkedChange.
+- Binary `indeterminate` is presentation-only for partial collection
+  selection. It maps to native indeterminate plus aria-checked="mixed" and
+  never changes the boolean checked model.
+- NeuralTriStateCheckbox implements FormValueControl<boolean | null>.
+- Never generate the deprecated CheckboxComponent or
+  TriStateCheckboxComponent aliases.
+- Tri-state value generates valueChange and cycles false -> true -> null -> false.
+- null means mixed and maps to the native indeterminate property plus
+  aria-checked="mixed".
+- Do not add triState back to neural-checkbox and do not bind nullable data to
+  checked.
+- Do not invent a separate indeterminate model for tri-state; tri-state value
+  is authoritative.
+- stateChange is a user-only semantic event. Programmatic form/model writes do
+  not emit it.
+- disabled removes interaction. readonly remains focusable and blocks mutation.
+- touch emits when the native input blurs.
+- Preserve the real input[type=checkbox], projected label, native Space
+  activation, required, name, value, focus, and form behavior.
+- Use ariaLabel when there is no visible projected label.
+- Both components share --neural-checkbox-* theme tokens.
+- Use unstyled or global provideNeuralNg({ unstyled: true }) for headless mode.
+- Inside neural-field, inherit accessible ids, descriptions, and field state.
+- The components are SSR/hydration safe. Call focus() only from browser-side
+  interaction code.
+- Beta boundary: Checkbox owns native binary/tri-state input behavior and form
+  integration. Business validation and group semantics belong to the consumer
+  or Neural Field.

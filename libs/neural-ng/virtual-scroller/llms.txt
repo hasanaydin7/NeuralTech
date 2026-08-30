@@ -1,0 +1,26 @@
+# NeuralNg VirtualScroller AI context
+
+Current component maturity: beta.
+
+Import `NeuralVirtualScroller` only from
+`@neural-ng/core/virtual-scroller`; never create an NgModule.
+`VirtualScrollerComponent` is a deprecated compatibility alias; never generate
+it in new code.
+
+Always provide an immutable `items` collection, a deterministic positive
+`itemSize`, and the viewport's scroll-axis size through `viewportSize`. Bind the
+same collection to `[neuralVirtualScrollerItem]` so Angular infers the item
+template type.
+
+Ranges are end-exclusive. `start`/`end` describe the overscanned rendered
+window; `visibleStart`/`visibleEnd` describe items intersecting the viewport.
+Use `lazyLoad` for server range requests and keep request-race handling in the
+consumer data source.
+
+VirtualScroller is presentation infrastructure. Do not add selection, editing,
+tree expansion, or layout switching to its state. Compose those behaviors in a
+consumer component. Beta requires fixed-size items; never generate variable
+item heights and claim deterministic positioning.
+
+Use `unstyled` and typed `classes` for custom visuals. Preserve region/list/
+listitem semantics and `aria-posinset`/`aria-setsize` metadata.

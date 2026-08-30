@@ -1,0 +1,193 @@
+<header class="site-header">
+  <a class="brand" routerLink="/" (click)="closeMobileNavigation()">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 48 48" focusable="false">
+        <path
+          class="brand-agent__frame"
+          d="M34 6H14a8 8 0 0 0-8 8v20a8 8 0 0 0 8 8h18m10-12V14a8 8 0 0 0-8-8"
+        />
+        <circle class="brand-agent__accent" cx="17" cy="21" r="2.75" />
+        <path
+          class="brand-agent__accent"
+          d="m31 15 1.35 3.15L35.5 19.5l-3.15 1.35L31 24l-1.35-3.15-3.15-1.35 3.15-1.35z"
+        />
+        <path
+          class="brand-agent__smile"
+          d="M17 30.5c2 2.15 4.35 3.2 7 3.2s5-1.05 7-3.2"
+        />
+        <path
+          class="brand-agent__accent brand-agent__cursor"
+          d="M35 33v11l3.1-3.2 2.35 3.15 2.4-1.8-2.4-3.1H45z"
+        />
+      </svg>
+    </span>
+    <span class="brand-copy">
+      <span class="brand-name">NEURAL<span>NG</span></span>
+      <span class="brand-meta">
+        <small>Angular UI for the AI era</small>
+        <span class="brand-version">ALPHA</span>
+      </span>
+    </span>
+  </a>
+
+  <nav class="desktop-navigation" aria-label="Primary navigation">
+    @for (item of navigation; track item.route) {
+    <a
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="item.exact ? exactMatch : subsetMatch"
+      ariaCurrentWhenActive="page"
+    >
+      {{ item.label }}
+    </a>
+    }
+  </nav>
+
+  <div class="header-actions">
+    <button
+      type="button"
+      class="theme-configurator-button"
+      aria-label="Open theme configurator"
+      [neuralPopoverTriggerFor]="themePopover"
+      popoverPosition="bottom-end"
+      [popoverOffset]="10"
+    >
+      <i class="nt nt-settings" aria-hidden="true"></i>
+    </button>
+
+    <neural-popover
+      #themePopover
+      class="site-theme-popover-host"
+      role="dialog"
+      ariaLabel="Theme configurator"
+    >
+      <div class="theme-configurator">
+        <fieldset class="theme-configurator__group">
+          <legend>Primary</legend>
+          <div class="palette-options">
+            @for (palette of primaryPalettes; track palette.value) {
+            <button
+              type="button"
+              class="palette-option"
+              [class.is-selected]="siteTheme.primary() === palette.value"
+              [style.--palette-color]="palette.color"
+              [attr.aria-label]="'Primary ' + palette.label"
+              [attr.aria-pressed]="siteTheme.primary() === palette.value"
+              [title]="palette.label"
+              (click)="setPrimary(palette.value)"
+            ></button>
+            }
+          </div>
+        </fieldset>
+
+        <fieldset class="theme-configurator__group">
+          <legend>Surface</legend>
+          <div class="palette-options palette-options--surface">
+            @for (palette of surfacePalettes; track palette.value) {
+            <button
+              type="button"
+              class="palette-option"
+              [class.is-selected]="siteTheme.surface() === palette.value"
+              [style.--palette-color]="palette.color"
+              [attr.aria-label]="'Surface ' + palette.label"
+              [attr.aria-pressed]="siteTheme.surface() === palette.value"
+              [title]="palette.label"
+              (click)="setSurface(palette.value)"
+            ></button>
+            }
+          </div>
+        </fieldset>
+
+        <fieldset class="theme-configurator__group">
+          <legend>Theme</legend>
+          <div class="segmented-options">
+            @for (theme of themes; track theme) {
+            <button
+              type="button"
+              [class.is-selected]="siteTheme.theme() === theme"
+              [attr.aria-pressed]="siteTheme.theme() === theme"
+              (click)="setTheme(theme)"
+            >
+              {{ theme }}
+            </button>
+            }
+          </div>
+        </fieldset>
+
+        <fieldset class="theme-configurator__group">
+          <legend>Appearance</legend>
+          <div class="segmented-options">
+            @for (mode of colorModes; track mode) {
+            <button
+              type="button"
+              [class.is-selected]="colorMode.preference() === mode"
+              [attr.aria-pressed]="colorMode.preference() === mode"
+              (click)="setColorMode(mode)"
+            >
+              @if (mode === 'light') {
+              <i class="nt nt-sun" aria-hidden="true"></i>
+              } @else if (mode === 'dark') {
+              <i class="nt nt-moon" aria-hidden="true"></i>
+              } {{ mode }}
+            </button>
+            }
+          </div>
+        </fieldset>
+
+        <fieldset class="theme-configurator__group">
+          <legend>Layout</legend>
+          <div class="preference-row">
+            <span class="preference-row__copy">
+              <strong>RTL direction</strong>
+              <small>Mirror layout and logical overlay positions</small>
+            </span>
+            <neural-switch
+              ariaLabel="Right-to-left direction"
+              [checked]="neuralNg.resolvedDirection() === 'rtl'"
+              (checkedChange)="setRtl($event)"
+            />
+          </div>
+        </fieldset>
+
+        <a
+          class="theme-configurator__docs"
+          routerLink="/docs/getting-started/theming"
+          neuralPopoverClose
+        >
+          <i class="nt nt-settings" aria-hidden="true"></i>
+          Theming documentation
+        </a>
+      </div>
+    </neural-popover>
+
+    <button
+      type="button"
+      class="mobile-menu-button"
+      aria-label="Toggle navigation"
+      aria-controls="mobile-navigation"
+      [attr.aria-expanded]="mobileOpen()"
+      (click)="mobileOpen.update((open) => !open)"
+    >
+      <i class="nt nt-menu" aria-hidden="true"></i>
+    </button>
+  </div>
+</header>
+
+<nav
+  id="mobile-navigation"
+  class="mobile-navigation"
+  aria-label="Mobile navigation"
+  [hidden]="!mobileOpen()"
+>
+  @for (item of navigation; track item.route) {
+  <a
+    [routerLink]="item.route"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="item.exact ? exactMatch : subsetMatch"
+    ariaCurrentWhenActive="page"
+    (click)="closeMobileNavigation()"
+  >
+    {{ item.label }}
+  </a>
+  }
+</nav>

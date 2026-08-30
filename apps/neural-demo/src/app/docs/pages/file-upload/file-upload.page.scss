@@ -1,0 +1,107 @@
+.file-upload-demo {
+  display: grid;
+  gap: 0.75rem;
+  width: min(100%, 36rem);
+  margin-inline: auto;
+}
+
+.file-upload-submit-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-block-start: 0.75rem;
+}
+
+.file-upload-submit-demo > button {
+  padding: 0.55rem 0.85rem;
+  color: inherit;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 0.45rem;
+  cursor: pointer;
+}
+
+.docs-file-upload-headless {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+  color: #dbeafe;
+  font:
+    600 0.875rem/1.25 ui-monospace,
+    monospace;
+}
+
+.docs-file-upload-headless__dropzone {
+  display: grid;
+  min-height: 9rem;
+  padding: 1.5rem;
+  background: #07111f;
+  border: 1px dashed #38bdf8;
+  border-radius: 0.35rem;
+  box-shadow: 0 0 0 3px rgb(56 189 248 / 12%);
+  place-items: center;
+  text-align: center;
+}
+
+.docs-file-upload-headless__text {
+  display: grid;
+  justify-items: center;
+  gap: 0.65rem;
+}
+
+.docs-file-upload-headless__choose,
+.docs-file-upload-headless__remove,
+.docs-file-upload-headless__clear {
+  padding: 0.5rem 0.75rem;
+  color: #7dd3fc;
+  background: transparent;
+  border: 1px solid #38bdf8;
+  border-radius: 0.25rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.docs-file-upload-headless__content,
+.docs-file-upload-headless__list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.docs-file-upload-headless__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  background: #07111f;
+  border: 1px solid #1e3a5f;
+  border-radius: 0.3rem;
+}
+
+.docs-file-upload-headless__info {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+}
+
+.docs-file-upload-headless__name {
+  overflow: hidden;
+  color: #e0f2fe;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.docs-file-upload-headless__meta,
+.docs-file-upload-headless__empty,
+.docs-file-upload-headless__message {
+  color: #64748b;
+  font-size: 0.72rem;
+}
+
+.docs-file-upload-headless__clear {
+  justify-self: end;
+}

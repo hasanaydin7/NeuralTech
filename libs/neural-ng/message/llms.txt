@@ -1,0 +1,68 @@
+# NeuralNg Message
+
+> `NeuralMessage` renders inline feedback. `NeuralMessageService` publishes immutable notification records for renderers such as Toast.
+
+Generation rules:
+
+- Use `<neural-message>` for feedback inside forms, cards, panels, and page flow.
+- Import the canonical component as `NeuralMessage`; do not generate the deprecated `MessageComponent` alias.
+- Inline Message requires no provider and never starts a timer.
+- Valid variants are `filled`, `outlined`, and `simple`; valid sizes are `small`, `medium`, and `large`.
+- Use `message` for simple detail, `title` for an optional heading, and project richer content when required.
+- Mark trailing controls with the `message-actions` attribute.
+- Use `closable` with `[(visible)]` when dismissal state matters; observe `closed` for explicit user dismissal.
+- Automatic severity icons are enabled by default. Override with `iconClass` or remove with `[icon]="false"`.
+- Error defaults to assertive alert semantics; other severities default to a polite status. Override with `ariaLive` only deliberately.
+- `unstyled` removes visual classes but retains structural hooks, semantics, and behavior.
+- `NeuralMessageRecord` is the immutable store data type; do not confuse it with the component.
+- Register the store with `provideNeuralMessages()` in application or route providers before injecting `NeuralMessageService`.
+- Import all public symbols from `@neural-ng/core/message`.
+- Call `notify()` from application action handlers, services, or effects after an operation produces user feedback.
+- Do not make Button or other reusable UI components depend on `NeuralMessageService`; those components emit interaction events only.
+- Every `notify()` input requires a non-blank `message`.
+- Use severities `primary`, `secondary`, `neutral`, `info`, `success`, `warning`, or `error` exactly.
+- Use `duration: null` for a persistent message. Positive numeric durations are milliseconds. Never use `0` as persistent shorthand.
+- Warning and error messages use `importantDuration`, which is persistent by default.
+- Use `channel` to route messages to a specific renderer. The default channel is `global`.
+- `maxVisible` is enforced independently per channel and closes the oldest overflow message.
+- Use the returned `NeuralMessageRef` when the producer must dismiss a message or observe its close reason.
+- Use `clear(channel)` for one channel and `clear()` for every channel.
+- Do not implement timers in the Message API. Toast and other renderers own timing and interaction pauses.
+- Do not assume that calling `notify()` displays UI until a renderer such as `@neural-ng/core/toast` is mounted.
+
+Canonical example:
+
+```ts
+import { ApplicationConfig, Injectable, inject } from '@angular/core';
+import {
+  NeuralMessageService,
+  provideNeuralMessages,
+} from '@neural-ng/core/message';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideNeuralMessages()],
+};
+
+@Injectable({ providedIn: 'root' })
+export class SaveFeedback {
+  private readonly messages = inject(NeuralMessageService);
+
+  saveSucceeded(): void {
+    this.messages.notify({
+      severity: 'success',
+      title: 'Saved',
+      message: 'Your changes were saved.',
+    });
+  }
+}
+```
+
+## Documentation
+
+- [Message README](./README.md): Setup, API tables, channels, references, and renderer contract.
+- [Package README](../README.md): NeuralNg package architecture and entry points.
+
+## Optional
+
+- [Package AI context](../llms.txt): NeuralNg-wide component and API index.
+- [Button AI context](../button/llms.txt): Correct separation between Button events and application messages.

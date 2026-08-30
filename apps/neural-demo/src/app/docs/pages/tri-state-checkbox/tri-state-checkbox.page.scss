@@ -1,0 +1,67 @@
+.tri-state-checkbox-docs-page {
+  max-width: 58rem;
+}
+
+.tri-state-demo-stack {
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 34rem);
+}
+
+.docs-headless-tri-state-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: fit-content;
+  color: var(--neural-color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.docs-headless-tri-state-checkbox-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.docs-headless-tri-state-checkbox-control {
+  box-sizing: border-box;
+  display: grid;
+  width: 1.4rem;
+  height: 1.4rem;
+  place-items: center;
+  color: #e0f2fe;
+  background: #172554;
+  border: 1px solid #60a5fa;
+  border-radius: 0.35rem;
+}
+
+.docs-headless-tri-state-checkbox-control::after {
+  box-sizing: border-box;
+  content: '';
+}
+
+.docs-headless-tri-state-checkbox-checked::after {
+  width: 0.35rem;
+  height: 0.7rem;
+  border: solid currentColor;
+  border-width: 0 0.13rem 0.13rem 0;
+  transform: translateY(-0.08rem) rotate(45deg);
+}
+
+.docs-headless-tri-state-checkbox-mixed::after {
+  width: 0.7rem;
+  border-bottom: 0.14rem solid currentColor;
+}
+
+.docs-headless-tri-state-checkbox-input:focus-visible
+  + .docs-headless-tri-state-checkbox-control {
+  outline: 2px solid #7dd3fc;
+  outline-offset: 3px;
+}
+
+.docs-headless-tri-state-checkbox-label {
+  font-weight: 700;
+}

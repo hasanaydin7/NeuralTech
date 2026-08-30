@@ -1,0 +1,20 @@
+NeuralNg AutoComplete AI context
+
+- Import from @neural-ng/core/auto-complete. Do not import from the package root.
+- Import NeuralAutoComplete from @neural-ng/core/auto-complete and add it to the consumer component imports.
+- AutoCompleteComponent is a deprecated compatibility alias; generate NeuralAutoComplete in new code.
+- AutoComplete implements FormValueControl<TValue | string | null>.
+- Bind `[(value)]` directly or use `[formField]`, `[formControl]`, or `[(ngModel)]`; do not add a ControlValueAccessor wrapper.
+- Bind `[(query)]` separately for editable text. Programmatic value writes and reset do not emit selected.
+- Default valueMode is option: optionValue is committed and unmatched text is cleared when forceSelection is true.
+- Set valueMode="text" for free-text forms.
+- Readonly remains enabled and focusable, exposes aria-readonly, may open for inspection, and blocks input, option, clear, and blur-commit mutations.
+- Data inputs: options, optionLabel, optionValue, optionDisabled, optionGroup, filterBy, filterMode, and limit. Paths may be nested.
+- Set dataMode="remote" for API results. Handle `(search)` and ignore stale responses using event.requestId. The component does not filter remote results.
+- delay defaults to 250 ms and minLength defaults to 1. IME composition never emits partial searches.
+- The popup uses the shared browser top-layer Popover and matches the input width. Do not add appendTo="body".
+- Keyboard focus stays on the input. Do not move focus into listbox options.
+- Use `(selected)`, `(cleared)`, `(opened)`, `(closed)`, and `(invalidInput)` for semantic user events.
+- Use unstyled or global provideNeuralNg({ unstyled: true }) for headless mode; typed `classes` slots own visuals.
+- Use neuralAutoCompleteOption for typed custom results and Neural Icons classes such as `nt nt-search` for icons.
+- Beta covers single option/text selection. Use MultiSelect for chips/multiple values and Select virtual scrolling for very large fixed option sets.

@@ -1,0 +1,175 @@
+<article class="docs-page drawer-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Sprint 2</span>
+    <h1 class="docs-hero__title">Drawer</h1>
+    <p class="docs-hero__description">
+      A native top-layer edge panel with logical RTL-aware placement, focus
+      management, independent body scrolling, and a complete headless contract.
+    </p>
+  </header>
+
+  <section>
+    <h2>Import</h2>
+    <p>Import the standalone pieces from the tree-shakable entry point.</p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Workspace settings</h2>
+    <p>
+      The native dialog top layer blocks background interaction, contains focus,
+      and restores the trigger after any dismissal path.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="drawer-demo-actions">
+        <neural-button (clicked)="settingsDrawer.show()"
+          >Open settings</neural-button
+        >
+        <output aria-live="polite">Last close: {{ lastClose() }}</output>
+      </div>
+    </code-view>
+
+    <neural-drawer
+      #settingsDrawer
+      position="end"
+      ariaLabelledby="settings-drawer-title"
+      ariaDescribedby="settings-drawer-description"
+      (closed)="lastClose.set($event.reason)"
+    >
+      <neural-drawer-header>
+        <div class="drawer-heading">
+          <span>Workspace</span>
+          <h2 id="settings-drawer-title">Settings</h2>
+        </div>
+      </neural-drawer-header>
+      <neural-drawer-body>
+        <p id="settings-drawer-description">
+          Update the details used across your NeuralNg workspace.
+        </p>
+        <label for="drawer-workspace-name">Workspace name</label>
+        <input
+          id="drawer-workspace-name"
+          neuralInput
+          neuralDrawerInitialFocus
+          value="Neural Studio"
+        />
+        <div class="drawer-scroll-content">
+          @for (item of [1, 2, 3, 4, 5, 6, 7, 8]; track item) {
+          <div>
+            <i class="nt nt-sparkles" aria-hidden="true"></i
+            ><span
+              ><strong>Agent capability {{ item }}</strong
+              ><small
+                >Configuration remains inside the independently scrollable
+                body.</small
+              ></span
+            >
+          </div>
+          }
+        </div>
+      </neural-drawer-body>
+      <neural-drawer-footer>
+        <neural-button severity="secondary" (clicked)="settingsDrawer.close()"
+          >Cancel</neural-button
+        >
+        <neural-button (clicked)="settingsDrawer.close('api', 'saved')"
+          >Save changes</neural-button
+        >
+      </neural-drawer-footer>
+    </neural-drawer>
+  </section>
+
+  <section>
+    <h2>Logical positions</h2>
+    <p>
+      Start and end follow the document direction. Top and bottom use the same
+      native modal, dismissal, and focus behavior.
+    </p>
+    <code-view
+      fileName="positions.html"
+      language="html"
+      [code]="positionsCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="drawer-position-grid">
+        @for (item of ['start', 'end', 'top', 'bottom']; track item) {
+        <neural-button
+          severity="secondary"
+          (clicked)="position.set($any(item)); positionDrawer.show()"
+        >
+          <i class="nt nt-menu" aria-hidden="true"></i>{{ item }}
+        </neural-button>
+        }
+      </div>
+    </code-view>
+    <neural-drawer
+      #positionDrawer
+      [position]="position()"
+      [ariaLabel]="position() + ' drawer'"
+    >
+      <neural-drawer-header
+        ><h2>{{ position() }} position</h2></neural-drawer-header
+      >
+      <neural-drawer-body
+        >Logical placement automatically mirrors in RTL.</neural-drawer-body
+      >
+    </neural-drawer>
+  </section>
+
+  <section>
+    <h2>Unstyled and typed class slots</h2>
+    <p>
+      Native top-layer behavior, logical placement, focus restoration, and
+      structural hooks remain while consumer CSS owns every visual decision.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="drawer-demo-actions">
+        <neural-button (clicked)="headlessDrawer.show()"
+          >Open headless drawer</neural-button
+        >
+      </div>
+    </code-view>
+    <neural-drawer
+      #headlessDrawer
+      unstyled
+      [classes]="headlessClasses"
+      ariaLabelledby="headless-drawer-title"
+    >
+      <neural-drawer-header
+        ><h2 id="headless-drawer-title">Agent console</h2></neural-drawer-header
+      >
+      <neural-drawer-body>
+        <p>
+          NeuralNg owns behavior. This visual layer belongs entirely to the
+          consumer.
+        </p>
+        <button neuralDrawerInitialFocus type="button">
+          Run focused action
+        </button>
+      </neural-drawer-body>
+      <neural-drawer-footer
+        ><button type="button" (click)="headlessDrawer.close()">
+          Close console
+        </button></neural-drawer-footer
+      >
+    </neural-drawer>
+  </section>
+</article>

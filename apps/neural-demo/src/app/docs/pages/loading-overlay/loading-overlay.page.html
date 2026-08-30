@@ -1,0 +1,179 @@
+<article class="docs-page loading-overlay-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>LoadingOverlay</h1>
+    <p>
+      Block a container or the full viewport while work is in progress, with
+      localized status, flicker-safe timing, focus restoration, scroll locking,
+      and custom indicator composition.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="container">
+    <h2>Container loading</h2>
+    <p>
+      Only projected content becomes busy and inert. The overlay remains
+      contained by the component boundary.
+    </p>
+    <div class="demo-surface loading-demo-actions">
+      <neural-button (clicked)="loadContainer()"> Load products </neural-button>
+    </div>
+    <neural-loading-overlay
+      class="loading-demo-block"
+      [active]="containerLoading()"
+      label="Loading products"
+      data-testid="loading-container"
+      (shown)="markShown()"
+      (hidden)="markHidden()"
+    >
+      <div class="loading-demo-content">
+        <strong>Product workspace</strong>
+        <button type="button">Edit product</button>
+        <p>Last rendered event: {{ lastEvent() }}</p>
+      </div>
+    </neural-loading-overlay>
+    <app-code-example
+      label="Container"
+      language="html"
+      [code]="containerCode"
+    />
+  </section>
+
+  <section id="viewport">
+    <h2>Viewport loading</h2>
+    <p>
+      Native dialog top-layer behavior blocks the entire page, stays above the
+      header, locks scrolling, and restores focus when work completes.
+    </p>
+    <div
+      class="demo-surface loading-demo-actions"
+      data-testid="loading-viewport-trigger"
+    >
+      <neural-button (clicked)="loadViewport()">
+        Save in viewport
+      </neural-button>
+    </div>
+    <neural-loading-overlay
+      [active]="viewportLoading()"
+      scope="viewport"
+      label="Saving changes"
+      data-testid="loading-viewport"
+    />
+    <app-code-example label="Viewport" language="html" [code]="viewportCode" />
+  </section>
+
+  <section id="custom">
+    <h2>Custom indicator</h2>
+    <p>
+      Replace the default ProgressSpinner without rebuilding blocking or
+      accessibility behavior.
+    </p>
+    <div class="demo-surface loading-demo-actions">
+      <neural-button (clicked)="loadCustom()">Ask Neural AI</neural-button>
+    </div>
+    <neural-loading-overlay
+      class="loading-demo-block"
+      [active]="customLoading()"
+      label="AI is thinking"
+      data-testid="loading-custom"
+    >
+      <div class="loading-demo-content">
+        <strong>Neural workspace</strong>
+        <p>Your generated interface will appear here.</p>
+      </div>
+      <ng-template neuralLoadingIndicator>
+        <span class="docs-ai-loader" aria-hidden="true">NN</span>
+      </ng-template>
+    </neural-loading-overlay>
+    <app-code-example
+      label="Custom indicator"
+      language="html"
+      [code]="customCode"
+    />
+  </section>
+
+  <section id="non-blocking">
+    <h2>Non-blocking background work</h2>
+    <p>
+      Keep interaction available only when the operation is genuinely safe to
+      run in the background. Busy semantics remain active.
+    </p>
+    <div class="demo-surface loading-demo-actions">
+      <neural-button (clicked)="loadInBackground()">
+        Refresh preview
+      </neural-button>
+    </div>
+    <neural-loading-overlay
+      class="loading-demo-block"
+      [active]="backgroundLoading()"
+      [blockInteraction]="false"
+      label="Refreshing preview"
+      data-testid="loading-background"
+    >
+      <div class="loading-demo-content">
+        <strong>Live preview</strong>
+        <button type="button">This action stays available</button>
+      </div>
+    </neural-loading-overlay>
+  </section>
+
+  <section id="timing">
+    <h2>Flicker-safe timing</h2>
+    <p>
+      The default 150 ms delay hides short operations. Once rendered, the
+      overlay remains for at least 300 ms.
+    </p>
+    <app-code-example label="Timing" language="html" [code]="timingCode" />
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Blocking, timing, focus, and structural positioning remain while every
+      visual decision moves to consumer classes.
+    </p>
+    <div class="demo-surface loading-demo-actions">
+      <neural-button (clicked)="toggleHeadless()">
+        Toggle headless loader
+      </neural-button>
+    </div>
+    <neural-loading-overlay
+      class="loading-demo-block"
+      [active]="headlessLoading()"
+      [delay]="0"
+      [minimumDuration]="0"
+      unstyled
+      overlayClass="docs-headless-loader--custom"
+      [classes]="headlessClasses"
+      label="Compiling NeuralNg"
+      data-testid="loading-headless"
+    >
+      <div class="loading-demo-content">
+        <strong>Headless build surface</strong>
+        <p>Consumer classes own this loading treatment.</p>
+      </div>
+      <ng-template neuralLoadingIndicator>
+        <span class="docs-headless-loader__pulse" aria-hidden="true"></span>
+      </ng-template>
+    </neural-loading-overlay>
+    <app-code-example
+      label="Headless LoadingOverlay"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <footer class="docs-page-next">
+    <span>Next component</span>
+    <a href="/docs/components/menu">Menu →</a>
+  </footer>
+</article>

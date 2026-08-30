@@ -1,0 +1,162 @@
+<article class="docs-page panel-menu-docs-page">
+  <neural-toast channel="panel-menu-docs" position="bottom-end" />
+
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>PanelMenu</h1>
+    <p>
+      An inline Accordion + Tree hierarchy with recursive data, deterministic
+      Signal state, complete keyboard navigation, and consumer-owned visual
+      slots. It is neither a Sidebar nor a popup Menu.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="data">
+    <h2>Data-driven hierarchy</h2>
+    <p>
+      Stable keys own expansion and focus relationships. Root panels are
+      exclusive by default, while nested branches retain their state.
+    </p>
+    <div class="panel-menu-demo-layout">
+      <neural-panel-menu
+        panelMenuId="docs-workspace-menu"
+        ariaLabel="Workspace navigation"
+        [items]="items"
+        [(expandedKeys)]="expandedKeys"
+        (itemSelect)="select($event)"
+        (itemToggle)="
+          lastToggle.set(
+            $event.key + ':' + ($event.expanded ? 'open' : 'closed')
+          )
+        "
+      />
+      <div class="panel-menu-demo-report" aria-live="polite">
+        <span>Expanded: {{ expandedKeys().join(', ') || 'none' }}</span>
+        <span>Last toggle: {{ lastToggle() }}</span>
+        <span>Last selection: {{ lastSelection() }}</span>
+      </div>
+    </div>
+    <app-code-example label="Data API" language="html" [code]="dataCode" />
+  </section>
+
+  <section id="multiple">
+    <h2>Multiple roots and deep branches</h2>
+    <p>
+      Add <code>multiple</code> when several root panels should remain open.
+      Right and Left arrows traverse or collapse the hierarchy.
+    </p>
+    <div class="panel-menu-demo-layout">
+      <neural-panel-menu
+        panelMenuId="docs-multiple-menu"
+        ariaLabel="Multiple workspace navigation"
+        [items]="items"
+        multiple
+        [(expandedKeys)]="multipleKeys"
+        (itemSelect)="select($event)"
+      />
+      <div class="panel-menu-demo-note">
+        Workspace and Cloud begin expanded. Open Media to see a third tree
+        level and a disabled leaf.
+      </div>
+    </div>
+  </section>
+
+  <section id="projected">
+    <h2>Projected structure</h2>
+    <p>
+      Component composition is available when the hierarchy belongs in the
+      template instead of a data model.
+    </p>
+    <div class="panel-menu-demo-layout">
+      <neural-panel-menu
+        panelMenuId="docs-projected-menu"
+        ariaLabel="Account navigation"
+        [(expandedKeys)]="projectedKeys"
+        (itemSelect)="select($event)"
+      >
+        <neural-panel-menu-item
+          key="account"
+          label="Account"
+          iconClass="nt nt-user"
+        >
+          <neural-panel-menu-item
+            key="notifications"
+            label="Notifications"
+            iconClass="nt nt-bell"
+            badge="4"
+          />
+          <neural-panel-menu-separator />
+          <neural-panel-menu-item
+            key="privacy"
+            label="Privacy"
+            iconClass="nt nt-shield"
+          />
+          <neural-panel-menu-item
+            key="billing"
+            label="Billing"
+            disabled
+          />
+        </neural-panel-menu-item>
+      </neural-panel-menu>
+    </div>
+    <app-code-example
+      label="Projected items"
+      language="html"
+      [code]="projectedCode"
+    />
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Tree semantics, expansion, keyboard behavior, structural hooks, and
+      animation layout remain while every visual class is consumer-owned.
+    </p>
+    <div class="panel-menu-demo-layout">
+      <neural-panel-menu
+        panelMenuId="docs-headless-menu"
+        ariaLabel="Runtime navigation"
+        unstyled
+        multiple
+        [classes]="headlessClasses"
+        [(expandedKeys)]="headlessKeys"
+        (itemSelect)="select($event)"
+      >
+        <neural-panel-menu-item
+          key="runtime"
+          label="Runtime"
+          iconClass="nt nt-cpu"
+        >
+          <neural-panel-menu-item key="browser" label="Browser" />
+          <neural-panel-menu-item key="server" label="Server" />
+        </neural-panel-menu-item>
+        <neural-panel-menu-item
+          key="observability"
+          label="Observability"
+          iconClass="nt nt-chart-bar"
+        >
+          <neural-panel-menu-item key="logs" label="Logs" />
+          <neural-panel-menu-item key="metrics" label="Metrics" />
+        </neural-panel-menu-item>
+      </neural-panel-menu>
+    </div>
+  </section>
+
+  <section id="boundary">
+    <h2>Component boundary</h2>
+    <p>
+      PanelMenu is always inline. A future Menu component will own flat command
+      lists and optional popup triggers; a future Sidebar or Drawer will own
+      edge-based page layout.
+    </p>
+  </section>
+</article>

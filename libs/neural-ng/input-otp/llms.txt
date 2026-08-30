@@ -1,0 +1,13 @@
+# NeuralNg InputOtp
+
+Import canonical `NeuralInputOtp` from `@neural-ng/core/input-otp`. `InputOtpComponent` is a deprecated compatibility alias.
+
+- Bind the complete code through `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`; never bind individual cells.
+- The value contract is one `string`. The default `length` is `6` and the default `mode` is `numeric`.
+- Use `mode="alphanumeric"` for Unicode letters and numbers, `mask` for visual concealment, and `separator` only for presentation.
+- Keep `autocomplete="one-time-code"` unless product security requirements explicitly forbid platform autofill.
+- `complete` emits `{ value: string }` whenever all cells are filled. Normal value binding does not require importing its event type.
+- Paste, autofill, Backspace, Delete, Arrow Left/Right, Home and End are built in and RTL-aware.
+- Prefer Neural Field with a visible label; otherwise provide `ariaLabel`.
+- `unstyled` removes visual classes but preserves structural hooks and semantics. Use typed `classes` slots for headless styling.
+- Never treat masking as encryption or verify OTP codes in the browser. Verification, expiration, retry limits, replay protection and rate limiting belong on the server.

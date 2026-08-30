@@ -1,0 +1,193 @@
+<article class="docs-page virtual-scroller-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Sprint 4</span>
+    <h1 class="docs-hero__title">VirtualScroller</h1>
+    <p class="docs-hero__description">
+      Window tens of thousands of fixed-size records with deterministic Signal
+      state, typed templates, lazy ranges, and native scrolling.
+    </p>
+  </header>
+
+  <section>
+    <h2>Import</h2>
+    <p>Import only the tree-shakable secondary entry point.</p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>10,000 records</h2>
+    <p>
+      Only the visible window plus overscan exists in the DOM. The controlled
+      <code>first</code> model and imperative API stay synchronized with native
+      scroll.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="virtual-demo">
+        <div class="virtual-toolbar">
+          <span>{{ rangeStatus() }}</span>
+          <neural-button
+            severity="secondary"
+            (clicked)="verticalScroller.scrollToIndex(5000)"
+          >
+            <i class="nt nt-arrow-down" aria-hidden="true"></i> Jump to 5,001
+          </neural-button>
+        </div>
+        <neural-virtual-scroller
+          #verticalScroller
+          [items]="records"
+          [itemSize]="52"
+          [viewportSize]="312"
+          [overscan]="3"
+          [(first)]="first"
+          [trackBy]="trackRecord"
+          ariaLabel="Agent task records"
+          (rangeChange)="updateRange($event)"
+        >
+          <ng-template
+            [neuralVirtualScrollerItem]="records"
+            let-record
+            let-index="index"
+          >
+            <div class="agent-record">
+              <span class="agent-record__index">{{ index + 1 }}</span>
+              <i class="nt nt-cpu" aria-hidden="true"></i>
+              <strong>{{ record.name }}</strong>
+              <small>{{ record.group }}</small>
+              <span class="agent-status" [attr.data-status]="record.status"
+                >{{ record.status }}</span
+              >
+            </div>
+          </ng-template>
+        </neural-virtual-scroller>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Horizontal orientation</h2>
+    <p>The same range engine virtualizes a horizontally scrolling card rail.</p>
+    <code-view
+      fileName="horizontal.html"
+      language="html"
+      [code]="horizontalCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="virtual-demo">
+        <neural-virtual-scroller
+          [items]="cards"
+          orientation="horizontal"
+          [itemSize]="184"
+          [viewportSize]="720"
+          [overscan]="1"
+          ariaLabel="Agent task cards"
+        >
+          <ng-template
+            [neuralVirtualScrollerItem]="cards"
+            let-record
+            let-index="index"
+          >
+            <div class="agent-card">
+              <span>{{ record.group }}</span>
+              <i class="nt nt-cpu" aria-hidden="true"></i>
+              <strong>{{ record.name }}</strong>
+              <small>Task {{ index + 1 }}</small>
+            </div>
+          </ng-template>
+        </neural-virtual-scroller>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Lazy range and loading</h2>
+    <p>
+      Lazy events expose end-exclusive rendered and visible ranges for
+      deterministic data requests.
+    </p>
+    <code-view
+      fileName="lazy.html"
+      language="html"
+      [code]="lazyCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="virtual-demo">
+        <div class="virtual-toolbar">
+          <output>{{ lazyStatus() }}</output>
+          <neural-button severity="secondary" (clicked)="toggleLoading()"
+            >Toggle loading</neural-button
+          >
+        </div>
+        <neural-virtual-scroller
+          [items]="records"
+          [itemSize]="44"
+          [viewportSize]="220"
+          lazy
+          [loading]="loading()"
+          ariaLabel="Lazy agent records"
+          (lazyLoad)="requestRange($event)"
+        >
+          <ng-template
+            [neuralVirtualScrollerItem]="records"
+            let-record
+            let-index="index"
+          >
+            <div class="compact-record">
+              <span>{{ index + 1 }}</span><strong>{{ record.name }}</strong>
+            </div>
+          </ng-template>
+        </neural-virtual-scroller>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Windowing, dimensions, scroll state, and list semantics remain while
+      consumer classes own every visual.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="virtual-demo">
+        <neural-virtual-scroller
+          [items]="records"
+          [itemSize]="46"
+          [viewportSize]="184"
+          [overscan]="1"
+          unstyled
+          [classes]="headlessClasses"
+          ariaLabel="Headless agent records"
+        >
+          <ng-template
+            [neuralVirtualScrollerItem]="records"
+            let-record
+            let-index="index"
+          >
+            <div class="headless-record">
+              <span>{{ index + 1 }}</span><strong>{{ record.name }}</strong
+              ><small>{{ record.status }}</small>
+            </div>
+          </ng-template>
+        </neural-virtual-scroller>
+      </div>
+    </code-view>
+  </section>
+</article>

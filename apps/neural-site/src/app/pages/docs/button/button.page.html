@@ -1,0 +1,630 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="button-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Button documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-components"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-blue-500"
+                    >COMPONENT</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-0.045em] sm:text-5xl"
+                >
+                  Button
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A standalone action primitive with native semantics, Signal
+                  inputs, typed output, loading feedback and complete visual
+                  ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Native
+                    keyboard behavior</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+                    safe</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Import
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import from the granular entry point so unused components stay
+                out of the application bundle.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="app.ts"
+                  language="typescript"
+                  [code]="importCode"
+                  [theme]="appearance.mode()"
+                />
+              </div>
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                FOUNDATION
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Basic action
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use a literal or bound
+                <code class="font-mono text-blue-500">label</code> for everyday
+                actions; projected content remains available for rich
+                composition. The modern
+                <code class="font-mono text-blue-500">clicked</code> output
+                emits the native MouseEvent.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="button-example.html"
+                  language="html"
+                  [code]="basicCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="flex flex-col items-center gap-4">
+                    <neural-button
+                      label="Save changes"
+                      severity="primary"
+                      (clicked)="noteClick($event)"
+                    />
+                    <output
+                      class="text-sm text-[var(--site-text-muted)]"
+                      aria-live="polite"
+                      >{{ lastEvent() }}</output
+                    >
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="severity" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Semantic severities
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Intent is explicit and shared with the rest of NeuralNg's
+                semantic palette.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="button-example.html"
+                  language="html"
+                  [code]="severityCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div
+                    preview-content
+                    class="flex flex-wrap justify-center gap-3"
+                  >
+                    <neural-button severity="primary">Primary</neural-button>
+                    <neural-button severity="secondary"
+                      >Secondary</neural-button
+                    >
+                    <neural-button severity="neutral">Neutral</neural-button>
+                    <neural-button severity="success">Success</neural-button>
+                    <neural-button severity="info">Info</neural-button>
+                    <neural-button severity="warning">Warning</neural-button>
+                    <neural-button severity="error">Error</neural-button>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="variants" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Visual variants
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Outlined and text change the treatment, raised composes with
+                either treatment, and rounded switches to the shared pill
+                radius. If both text and outlined are present, text takes
+                precedence deterministically.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="variants.html"
+                  language="html"
+                  [code]="variantCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div
+                    preview-content
+                    class="flex flex-wrap items-center justify-center gap-4"
+                  >
+                    <neural-button severity="primary">Solid</neural-button>
+                    <neural-button severity="primary" outlined
+                      >Outlined</neural-button
+                    >
+                    <neural-button severity="primary" raised
+                      >Raised</neural-button
+                    >
+                    <neural-button severity="primary" text>Text</neural-button>
+                    <neural-button severity="primary" text raised
+                      >Text raised</neural-button
+                    >
+                    <neural-button severity="primary" rounded
+                      >Rounded</neural-button
+                    >
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="icons" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Icons and sizing
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The <code class="font-mono text-blue-500">icon</code> input
+                removes repetitive inner markup. Logical start/end placement
+                follows RTL, and icon-only actions still need an accessible
+                name. With no label or projected content, the styled control
+                automatically keeps equal width and height at every size.
+              </p>
+              <div class="mt-6 grid gap-6">
+                <code-view
+                  fileName="icons.html"
+                  language="html"
+                  [code]="iconCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div
+                    preview-content
+                    class="flex flex-wrap items-center justify-center gap-3"
+                  >
+                    <neural-button
+                      label="Save"
+                      icon="nt nt-check"
+                      severity="primary"
+                    />
+                    <neural-button
+                      label="Continue"
+                      icon="nt nt-arrow-right"
+                      iconPosition="end"
+                    />
+                    <neural-button
+                      icon="nt nt-settings"
+                      ariaLabel="Open settings"
+                    />
+                  </div>
+                </code-view>
+                <code-view
+                  fileName="sizes.html"
+                  language="html"
+                  [code]="sizeCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div
+                    preview-content
+                    class="flex flex-wrap items-center justify-center gap-3"
+                  >
+                    <neural-button label="Small" size="small" />
+                    <neural-button label="Default" size="medium" />
+                    <neural-button label="Large" size="large" />
+                    <neural-button
+                      label="Compact icon"
+                      icon="nt nt-check"
+                      iconSize="small"
+                    />
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="button-group" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Button group
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                NeuralButtonGroup provides native group semantics, merges
+                adjacent borders and radii, follows RTL through logical CSS, and
+                supports horizontal or vertical composition.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="button-group.html"
+                  language="html"
+                  [code]="groupCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div
+                    preview-content
+                    class="flex flex-wrap items-start justify-center gap-8"
+                  >
+                    <neural-button-group ariaLabel="Text alignment">
+                      <neural-button
+                        icon="nt nt-align-left"
+                        ariaLabel="Align left"
+                      />
+                      <neural-button
+                        icon="nt nt-align-center"
+                        ariaLabel="Align center"
+                      />
+                      <neural-button
+                        icon="nt nt-align-right"
+                        ariaLabel="Align right"
+                      />
+                    </neural-button-group>
+                    <neural-button-group
+                      orientation="vertical"
+                      ariaLabel="View mode"
+                    >
+                      <neural-button label="List" icon="nt nt-list" />
+                      <neural-button label="Grid" icon="nt nt-layout-grid" />
+                    </neural-button-group>
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Disabled and loading
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Loading replaces the visible label, exposes
+                <code class="font-mono text-blue-500">aria-busy</code> and
+                prevents duplicate activation.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="states.html"
+                  language="html"
+                  [code]="stateCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="flex flex-col items-center gap-4">
+                    <div class="flex flex-wrap justify-center gap-3">
+                      <neural-button [disabled]="true">Disabled</neural-button>
+                      <neural-button
+                        severity="primary"
+                        [loading]="saving()"
+                        loadingLabel="Saving changes"
+                        (clicked)="simulateSave()"
+                        >Save changes</neural-button
+                      >
+                    </div>
+                    <output
+                      class="text-sm text-[var(--site-text-muted)]"
+                      aria-live="polite"
+                      >{{ lastEvent() }}</output
+                    >
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="badges" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Badge composition
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use logical inline positions for counts or corner positions for
+                notification-style indicators.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="badges.html"
+                  language="html"
+                  [code]="badgeCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div
+                    preview-content
+                    class="flex flex-wrap items-center justify-center gap-5"
+                  >
+                    <neural-button
+                      [badge]="128"
+                      [badgeMax]="99"
+                      badgePosition="start"
+                      badgeSeverity="info"
+                      >Inbox</neural-button
+                    >
+                    <neural-button
+                      icon="nt nt-bell"
+                      ariaLabel="Notifications"
+                      [badge]="8"
+                      badgePosition="top-end"
+                      badgeSeverity="error"
+                    />
+                    <neural-button
+                      icon="nt nt-components"
+                      ariaLabel="Messages"
+                      [badge]="3"
+                      badgePosition="bottom-start"
+                      badgeSeverity="success"
+                    />
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Native form semantics
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The default type is safely
+                <code class="font-mono text-blue-500">button</code>. Opt into
+                native submit or reset behavior explicitly.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="project-form.html"
+                  language="html"
+                  [code]="formCode"
+                  [theme]="appearance.mode()"
+                />
+              </div>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Unstyled + Tailwind
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Remove NeuralNg's visual layer while keeping the real button,
+                disabled/loading behavior and structural hook.
+                <code class="font-mono text-blue-500">buttonClass</code> targets
+                the native element.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="headless.html"
+                  language="html"
+                  [code]="unstyledCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                >
+                  <div preview-content class="flex justify-center">
+                    <neural-button
+                      [unstyled]="true"
+                      buttonClass="inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-400/10 px-5 py-2.5 font-bold text-cyan-700 backdrop-blur-xl transition hover:-translate-y-0.5 hover:bg-cyan-400/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:text-cyan-200"
+                      ><i class="nt nt-sparkles" aria-hidden="true"></i>Tailwind
+                      owned</neural-button
+                    >
+                  </div>
+                </code-view>
+              </div>
+            </section>
+
+            <section
+              class="mt-16 rounded-[2rem] border border-blue-400/20 bg-blue-500/10 p-7 backdrop-blur-2xl sm:p-9"
+            >
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                AI-FIRST CONTRACT
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Readable by humans. Deterministic for agents.
+              </h2>
+              <p class="mt-3 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                The package ships focused README and llms.txt context beside the
+                entry point, including imports, modern Signal APIs,
+                accessibility rules and failure modes.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                BUTTON
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Accessibility
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                Native semantics and predictable assistive technology behavior
+                are part of the Button contract.
+              </p>
+            </header>
+            <section id="accessibility" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Accessibility
+              </h2>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                @for (item of [['Native first', 'A real button preserves Enter,
+                Space, focus and form behavior.'], ['Busy state', 'Loading
+                exposes aria-busy and an accessible loading label.'], ['Icon
+                actions', 'ariaLabel names actions whose visible content is only
+                an icon.'], ['Logical badges', 'Start and end positions
+                automatically follow writing direction.']]; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl"
+                >
+                  <h3 class="font-extrabold">{{ item[0] }}</h3>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                BUTTON
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">API</h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                The complete typed input and output contract for the standalone
+                Button component.
+              </p>
+            </header>
+            <section id="api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">API</h2>
+              <h3 id="inputs" class="scroll-mt-28 mt-8 text-xl font-extrabold">
+                Inputs
+              </h3>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] backdrop-blur-xl"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase tracking-wider text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (input of inputs; track input[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{ input[0] }}
+                      </td>
+                      <td
+                        class="p-4 font-mono text-xs text-[var(--site-text-soft)]"
+                      >
+                        {{ input[1] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ input[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ input[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+              <h3 id="output" class="scroll-mt-28 mt-8 text-xl font-extrabold">
+                Output
+              </h3>
+              <div
+                class="mt-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl sm:flex sm:items-center sm:gap-8"
+              >
+                <code class="font-mono font-bold text-blue-500">clicked</code
+                ><code class="mt-2 block font-mono text-sm sm:mt-0"
+                  >MouseEvent</code
+                >
+                <p
+                  class="mt-2 text-sm text-[var(--site-text-soft)] sm:ml-auto sm:mt-0"
+                >
+                  Emitted after an allowed native click.
+                </p>
+              </div>
+              <p class="mt-4 text-sm leading-6 text-[var(--site-text-soft)]">
+                Composite components can also consume
+                <code class="font-mono text-blue-500">keyDown</code>,
+                <code class="font-mono text-blue-500">pointerDown</code>,
+                <code class="font-mono text-blue-500">pointerMove</code>,
+                <code class="font-mono text-blue-500">pointerUp</code> and
+                <code class="font-mono text-blue-500">pointerCancel</code>
+                without falling back to a raw button.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                BUTTON
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Design tokens
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                Tune the styled Button layer without changing its behavior or
+                markup contract.
+              </p>
+            </header>
+            <section id="tokens" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Design tokens
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Override component tokens locally, at a product boundary or
+                through your global design system.
+              </p>
+              <site-design-token-list class="mt-6 block" [tokens]="tokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

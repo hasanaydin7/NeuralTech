@@ -1,0 +1,19 @@
+# NeuralNg Slider
+
+IMPORT
+import { NeuralSlider, type NeuralSliderEvent, type NeuralSliderRangeValue } from '@neural-ng/core/slider';
+
+RULES
+- NeuralSlider is canonical. SliderComponent is a deprecated compatibility alias; never generate it in new code.
+- Bind a number for single mode or a [number, number] tuple when range is true.
+- Native range semantics provide Arrow keys, Page Up/Down, Home and End.
+- min, max and step normalize invalid bounds and steps.
+- orientation accepts horizontal or vertical. Range track clicks follow logical RTL direction.
+- Give range thumbs distinct rangeStartAriaLabel and rangeEndAriaLabel values.
+- rangeStartAriaValueText and rangeEndAriaValueText describe non-obvious numeric values.
+- showValue renders output; valueLabel overrides its text.
+- slideStart, slideEnd, valueCommit and touch are semantic user events.
+- readonly remains focusable and blocks mutation; disabled prevents interaction.
+- NeuralSlider supports Signal Forms, Reactive Forms and ngModel.
+- unstyled preserves native inputs, dimensions and structural hooks.
+- Typed class slots are root, input, value, range, track and fill.

@@ -1,0 +1,116 @@
+<article class="docs-page tag-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>Tag</h1>
+    <p>
+      Text-first labels for classification and status. Tag can prepend an icon,
+      project richer content, or expose an accessible controlled remove action.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Classification and status</h2>
+    <p>
+      Unlike Badge, Tag is designed to remain readable as a standalone textual
+      label.
+    </p>
+    <div class="demo-surface" data-testid="tag-severities">
+      <neural-tag value="Neutral" />
+      <neural-tag value="Primary" severity="primary" />
+      <neural-tag value="Secondary" severity="secondary" />
+      <neural-tag value="Information" severity="info" />
+      <neural-tag value="Approved" severity="success" />
+      <neural-tag value="In progress" severity="warning" />
+      <neural-tag value="Rejected" severity="error" />
+    </div>
+    <app-code-example label="Basic Tag" language="html" [code]="basicCode" />
+  </section>
+
+  <section id="icons">
+    <h2>Icons, sizes, and shape</h2>
+    <div class="demo-surface" data-testid="tag-variants">
+      <neural-tag
+        value="Angular"
+        iconClass="nt nt-brand-angular"
+        severity="error"
+        size="small"
+      />
+      <neural-tag value="Signals" iconClass="nt nt-activity" severity="info" />
+      <neural-tag
+        value="Enterprise"
+        iconClass="nt nt-building"
+        severity="success"
+        size="large"
+      />
+      <neural-tag value="Square" [rounded]="false" />
+      <neural-tag severity="info">
+        <i class="nt nt-sparkles" aria-hidden="true"></i>
+        <strong>Projected AI</strong>
+      </neural-tag>
+    </div>
+  </section>
+
+  <section id="removable">
+    <h2>Controlled removal</h2>
+    <p>
+      The native remove button emits context; the owning collection decides
+      whether and when the Tag disappears.
+    </p>
+    <div class="demo-surface" data-testid="tag-removable">
+      @for (filter of filters(); track filter) {
+      <neural-tag
+        [value]="filter"
+        removable
+        severity="info"
+        (removed)="removeFilter($event)"
+      />
+      } @empty {
+      <span class="demo-status">All filters removed.</span>
+      }
+      <neural-tag value="Locked" removable disabled />
+      <span class="demo-status">Last removed: {{ lastRemoved() }}</span>
+    </div>
+    <app-code-example
+      label="Controlled removal"
+      language="html"
+      [code]="removableCode"
+    />
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Structural hooks and the native remove button remain while consumer
+      classes own the entire visual layer.
+    </p>
+    <div class="demo-surface" data-testid="tag-headless">
+      <neural-tag
+        value="Headless"
+        iconClass="nt nt-code"
+        removable
+        unstyled
+        tagClass="docs-headless-tag--custom"
+        [classes]="headlessClasses"
+      />
+    </div>
+    <app-code-example
+      label="Headless Tag"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <footer class="docs-page-next">
+    <span>Next component</span>
+    <a href="/docs/components/textarea">Textarea →</a>
+  </footer>
+</article>

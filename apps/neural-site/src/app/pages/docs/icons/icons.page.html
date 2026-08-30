@@ -1,0 +1,339 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_18%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >FOUNDATION</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            Neural Icons
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            A framework-independent SVG mask library with a class-first API,
+            zero runtime requests and production-sized entry points.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><strong class="text-[var(--site-text)]"
+                >{{ totals().icons }}</strong
+              >
+              unique icons</span
+            >
+            <span
+              ><strong class="text-[var(--site-text)]"
+                >{{ totals().outline }}</strong
+              >
+              outline</span
+            >
+            <span
+              ><strong class="text-[var(--site-text)]"
+                >{{ totals().filled }}</strong
+              >
+              filled</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="install" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          GET STARTED
+        </p>
+        <h2 class="mt-3 text-2xl font-black">Install</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Neural Icons is optional and independent from Angular. SVG artwork is
+          embedded in the generated CSS, so consumers do not install Tabler or
+          make requests to a CDN.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="terminal"
+          language="bash"
+          [code]="installCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="imports" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Choose an import size</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Start with the curated set, select a category for a focused product,
+          or explicitly import the complete outline and filled inventory.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="styles.css"
+          language="css"
+          [code]="importsCode"
+          [theme]="appearance.mode()"
+        />
+        <div class="mt-5 grid gap-3 sm:grid-cols-3">
+          <div
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <strong>Curated</strong>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              Common NeuralNg interface icons.
+            </p>
+          </div>
+          <div
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <strong>Category</strong>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              Smaller domain-specific entry points.
+            </p>
+          </div>
+          <div
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <strong>Complete</strong>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              Every outline and filled icon.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="usage" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Class API</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Render an empty <code>i</code> or <code>span</code> with
+          <code>nt nt-*</code>. Every icon uses <code>1em</code> dimensions and
+          inherits <code>color</code>, so plain CSS and utility classes work
+          without a component wrapper.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="app.html"
+          language="html"
+          [code]="usageCode"
+          [theme]="appearance.mode()"
+          preview
+        >
+          <div
+            preview-content
+            class="flex min-h-32 w-full items-center justify-center gap-7"
+          >
+            <i class="nt nt-user text-lg" aria-hidden="true"></i>
+            <i
+              class="nt nt-search text-3xl text-[var(--neural-color-primary)]"
+              aria-hidden="true"
+            ></i>
+            <i
+              class="nt nt-circle-check text-5xl text-emerald-500"
+              aria-hidden="true"
+            ></i>
+          </div>
+        </code-view>
+      </section>
+
+      <section id="catalog" class="scroll-mt-28 pt-16">
+        <div
+          class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"
+        >
+          <div>
+            <h2 class="text-2xl font-black">Icon catalog</h2>
+            <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+              Search the generated metadata and select a card to copy its full
+              HTML markup.
+            </p>
+          </div>
+          <strong
+            class="shrink-0 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1.5 text-xs text-[var(--neural-color-primary)]"
+            >{{ matchingIcons().length }} results</strong
+          >
+        </div>
+
+        <div
+          class="mt-6 grid gap-4 rounded-[1.5rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-5 md:grid-cols-[minmax(0,1fr)_13rem_15rem]"
+        >
+          <neural-field controlId="icon-search" fluid>
+            <label neuralFieldLabel for="icon-search">Search icons</label>
+            <input
+              id="icon-search"
+              neuralInput
+              type="search"
+              placeholder="user, arrow, brand..."
+              [value]="query()"
+              (input)="changeQuery($event)"
+            />
+          </neural-field>
+          <neural-field controlId="icon-style" fluid>
+            <label neuralFieldLabel for="icon-style">Style</label>
+            <neural-select
+              controlId="icon-style"
+              [options]="styleOptions()"
+              optionLabel="label"
+              optionValue="value"
+              [value]="style()"
+              appendTo="body"
+              fluid
+              (selectionChange)="changeStyle($event)"
+            />
+          </neural-field>
+          <neural-field controlId="icon-category" fluid>
+            <label neuralFieldLabel for="icon-category">Category</label>
+            <neural-select
+              controlId="icon-category"
+              [options]="categoryOptions()"
+              optionLabel="label"
+              optionValue="value"
+              [value]="category()"
+              appendTo="body"
+              fluid
+              filter
+              filterPlaceholder="Filter categories"
+              (selectionChange)="changeCategory($event)"
+            />
+          </neural-field>
+        </div>
+
+        @if (metadata()) { @if (visibleIcons().length) {
+        <div
+          class="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+        >
+          @for (icon of visibleIcons(); track icon.name) {
+          <button
+            type="button"
+            class="group relative flex min-h-28 cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-3 text-center transition duration-200 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--neural-color-primary)_35%,var(--site-border))] hover:bg-[color-mix(in_srgb,var(--neural-color-primary)_6%,var(--site-surface))] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--neural-color-primary)]"
+            [attr.aria-label]="'Copy markup for ' + icon.name"
+            (click)="copyIcon(icon)"
+          >
+            <i
+              [class]="iconClass(icon)"
+              class="text-2xl text-[var(--site-text)] transition group-hover:scale-110 group-hover:text-[var(--neural-color-primary)]"
+              aria-hidden="true"
+            ></i>
+            <code
+              class="max-w-full truncate text-[.7rem] text-[var(--site-text-muted)]"
+              >{{ icon.name }}</code
+            >
+            @if (copiedIcon() === iconClass(icon)) {
+            <span
+              class="absolute inset-x-2 bottom-2 text-[.62rem] font-black text-emerald-500"
+              >COPIED</span
+            >
+            }
+          </button>
+          }
+        </div>
+        <neural-paginator
+          class="mt-6 block"
+          [totalItems]="matchingIcons().length"
+          [pageIndex]="pageIndex()"
+          [pageSize]="pageSize()"
+          [pageSizeOptions]="pageSizeOptions"
+          [labels]="paginatorLabels"
+          [pageLinkCount]="5"
+          outlined
+          rounded
+          (pageChange)="changePage($event)"
+        />
+        } @else {
+        <div
+          class="mt-5 grid min-h-48 place-items-center rounded-2xl border border-dashed border-[var(--site-border)] bg-[var(--site-surface)] text-center text-[var(--site-text-muted)]"
+        >
+          <div>
+            <i class="nt nt-search text-2xl" aria-hidden="true"></i>
+            <p class="mt-3 font-bold">No matching icons</p>
+            <p class="mt-1 text-sm">Try another name, style or category.</p>
+          </div>
+        </div>
+        } } @else {
+        <div
+          class="mt-5 grid min-h-48 place-items-center rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] text-[var(--site-text-muted)]"
+          role="status"
+        >
+          <span class="flex items-center gap-3"
+            ><i class="nt nt-loader-3 nt-spin" aria-hidden="true"></i>Loading
+            icon metadata</span
+          >
+        </div>
+        }
+      </section>
+
+      <section id="motion" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Motion</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Rotate any icon clockwise or in reverse. The layered
+          <code>nt-spin-dual</code> effect is visually authored for
+          <code>loader-3</code>; unsupported artwork safely falls back to a
+          whole-icon spin. Reduced-motion preferences stop every animation.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="loading.html"
+          language="html"
+          [code]="motionCode"
+          [theme]="appearance.mode()"
+          preview
+        >
+          <div
+            preview-content
+            class="flex min-h-32 w-full items-center justify-center gap-10 text-4xl text-[var(--neural-color-primary)]"
+          >
+            <i class="nt nt-spinner nt-spin" aria-hidden="true"></i>
+            <i class="nt nt-spinner nt-spin-reverse" aria-hidden="true"></i>
+            <i class="nt nt-loader-3 nt-spin-dual" aria-hidden="true"></i>
+          </div>
+        </code-view>
+      </section>
+
+      <section id="accessibility" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Accessibility</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Decorative icons must be hidden from assistive technology. Put the
+          accessible name on the interactive control—not on the icon or its
+          class name. When an icon conveys standalone information, provide
+          adjacent or visually hidden text.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="profile.html"
+          language="html"
+          [code]="accessibilityCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="csp" class="scroll-mt-28 pb-12 pt-16">
+        <h2 class="text-2xl font-black">Content Security Policy</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          SVG masks use embedded <code>data:</code> URLs and never contact a
+          third party. Restrictive policies must permit <code>data:</code> in
+          the effective <code>img-src</code> directive while preserving the rest
+          of the application's policy.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="Content-Security-Policy"
+          language="shell"
+          [code]="cspCode"
+          [theme]="appearance.mode()"
+        />
+        <p class="mt-5 text-sm leading-6 text-[var(--site-text-muted)]">
+          Distributed artwork is generated from Tabler Icons 3.46.0 under the
+          MIT License. Brand artwork remains subject to its owner's trademark
+          rules and does not imply endorsement.
+        </p>
+      </section>
+    </div>
+
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

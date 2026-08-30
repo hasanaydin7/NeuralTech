@@ -1,0 +1,125 @@
+<article class="docs-page file-upload-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Forms Foundation</span>
+    <h1 class="docs-hero__title">FileUpload</h1>
+    <p class="docs-hero__description">
+      Native file selection, drag and drop, immutable file arrays, deterministic
+      client-side rejection events, and one model for every Angular Forms API.
+      HTTP upload remains application-owned.
+    </p>
+  </header>
+
+  <section>
+    <h2>Import</h2>
+    <p>Use the tree-shakable FileUpload secondary entry point.</p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Multiple files and Signal Forms</h2>
+    <p>
+      The model is always a <code>readonly File[]</code>. Client checks improve
+      the interface; the server must validate every file again.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="file-upload-demo">
+        <neural-field controlId="docs-application-files" fluid>
+          <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+          <label neuralFieldLabel>Supporting files</label>
+          <neural-file-upload
+            accept=".pdf,image/*"
+            [formField]="applicationForm.attachments"
+            [maxFileSize]="10 * 1024 * 1024"
+            [maxFiles]="5"
+            multiple
+            fluid
+            (selectionChange)="selectionChanged($event)"
+          />
+          <small neuralFieldHint>PDF or image, up to 10 MB each.</small>
+        </neural-field>
+        <output class="demo-status" aria-live="polite">
+          {{ eventStatus() }}
+        </output>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Single-file mode</h2>
+    <p>Without <code>multiple</code>, a new accepted file replaces the old one.</p>
+    <code-view
+      fileName="single-file.html"
+      language="html"
+      [code]="singleCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="file-upload-demo">
+        <neural-file-upload
+          ariaLabel="Profile image"
+          accept="image/png,image/jpeg"
+          [(value)]="avatar"
+          fluid
+        />
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Application-owned HTTP upload</h2>
+    <p>
+      FileUpload does not know an endpoint, headers, authentication, progress,
+      retry, or chunking. Build <code>FormData</code> in application code.
+    </p>
+    <code-view
+      fileName="upload.ts"
+      language="typescript"
+      [code]="formDataCode"
+      [theme]="resolvedMode()"
+    />
+    <div class="file-upload-submit-demo">
+      <button type="button" (click)="prepareFormData()">Prepare FormData</button>
+      <output class="demo-status" aria-live="polite">
+        {{ submitStatus() }}
+      </output>
+    </div>
+  </section>
+
+  <section>
+    <h2>Unstyled and typed class slots</h2>
+    <p>
+      Native behavior, Signals, ARIA relationships, and structural hooks remain
+      while consumer classes own the visual layer.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="file-upload-demo">
+        <neural-file-upload
+          ariaLabel="Headless PDF files"
+          accept=".pdf"
+          [(value)]="headlessFiles"
+          [classes]="headlessClasses"
+          multiple
+          unstyled
+          fluid
+        />
+      </div>
+    </code-view>
+  </section>
+</article>

@@ -1,0 +1,708 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="input-mask-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="InputMask documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + (selectedViewIndex() * 100) + '% + ' + (selectedViewIndex() * 0.25) + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-regex"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-blue-500"
+                    >COMPONENT</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[0.65rem] font-black tracking-[0.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-0.045em] sm:text-5xl"
+                >
+                  InputMask
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  A deterministic masked text control with caret-aware editing,
+                  Unicode slots, every Angular Forms API and complete visual
+                  ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Paste
+                    aware</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Signal
+                    Forms ready</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>IME
+                    safe</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black tracking-[-0.03em]">
+                Import
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical standalone component from its granular
+                entry point.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="app.ts"
+                  language="typescript"
+                  [code]="importCode"
+                  [theme]="appearance.mode()"
+                />
+              </div>
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Basic phone mask
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The model is formatted by default while the native input
+                receives telephone keyboard and autofill hints.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="phone.html"
+                  language="html"
+                  [code]="basicCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="mx-auto grid w-full max-w-md gap-2"
+                  >
+                    <label for="basic-mask" class="text-sm font-bold"
+                      >Phone number</label
+                    ><neural-input-mask
+                      inputMaskId="basic-mask"
+                      mask="(999) 999-9999"
+                      inputMode="tel"
+                      autocomplete="tel"
+                      ariaLabel="Phone number"
+                      [(value)]="basicPhone"
+                      fluid
+                    /><output
+                      class="text-xs text-[var(--site-text-muted)]"
+                      aria-live="polite"
+                      >Model: {{ basicPhone() || 'Empty' }}</output
+                    >
+                  </div></code-view
+                >
+              </div>
+            </section>
+
+            <section id="grammar" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Mask grammar
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code class="font-mono text-blue-500">9</code> accepts ASCII
+                digits, <code class="font-mono text-blue-500">a</code> accepts
+                Unicode letters and
+                <code class="font-mono text-blue-500">*</code> accepts Unicode
+                letters or numbers. Escape a rule with a backslash.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="grammar.html"
+                  language="html"
+                  [code]="grammarCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="grid w-full gap-4 sm:grid-cols-3"
+                  >
+                    <div class="grid gap-2">
+                      <label for="grammar-date" class="text-sm font-bold"
+                        >Date digits</label
+                      ><neural-input-mask
+                        inputMaskId="grammar-date"
+                        mask="99/99/9999"
+                        placeholder="DD/MM/YYYY"
+                        ariaLabel="Date digits"
+                        fluid
+                      />
+                    </div>
+                    <div class="grid gap-2">
+                      <label for="grammar-identity" class="text-sm font-bold"
+                        >Unicode identity</label
+                      ><neural-input-mask
+                        inputMaskId="grammar-identity"
+                        mask="aa-***-99"
+                        ariaLabel="Unicode identity"
+                        fluid
+                      />
+                    </div>
+                    <div class="grid gap-2">
+                      <label for="grammar-escaped" class="text-sm font-bold"
+                        >Escaped nine</label
+                      ><neural-input-mask
+                        inputMaskId="grammar-escaped"
+                        mask="\9-99"
+                        ariaLabel="Escaped nine"
+                        fluid
+                      />
+                    </div></div
+                ></code-view>
+              </div>
+            </section>
+
+            <section id="model" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Formatted and raw models
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Add <code class="font-mono text-blue-500">unmask</code> when
+                your domain stores only slot characters. Semantic completion
+                events always include model, raw and formatted values.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="unmask.html"
+                  language="html"
+                  [code]="modelCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="mx-auto grid w-full max-w-md gap-2"
+                  >
+                    <label for="raw-mask" class="text-sm font-bold"
+                      >Raw phone model</label
+                    ><neural-input-mask
+                      inputMaskId="raw-mask"
+                      mask="(999) 999-9999"
+                      inputMode="tel"
+                      unmask
+                      [(value)]="rawPhone"
+                      (complete)="reportComplete($event)"
+                      (incomplete)="reportIncomplete($event)"
+                      fluid
+                    /><output
+                      class="text-xs text-[var(--site-text-muted)]"
+                      aria-live="polite"
+                      >Raw model: {{ rawPhone() || 'Empty' }}</output
+                    ><output
+                      class="text-xs text-[var(--site-text-soft)]"
+                      aria-live="polite"
+                      >{{ eventStatus() }}</output
+                    >
+                  </div></code-view
+                >
+              </div>
+            </section>
+
+            <section id="editing" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Editing and incomplete policy
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Paste, Backspace, Delete, selections and caret position stay
+                aligned to logical mask slots. This example clears a partial
+                value when focus leaves.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="editing.html"
+                  language="html"
+                  [code]="editingCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="mx-auto grid w-full max-w-md gap-2"
+                  >
+                    <label for="policy-mask" class="text-sm font-bold"
+                      >Employee code</label
+                    ><neural-input-mask
+                      inputMaskId="policy-mask"
+                      mask="aa-9999"
+                      slotChar="•"
+                      clearIncomplete
+                      [(value)]="policyValue"
+                      fluid
+                    /><small class="text-xs text-[var(--site-text-muted)]"
+                      >Paste mixed text or leave the value incomplete and
+                      blur.</small
+                    >
+                  </div></code-view
+                >
+              </div>
+            </section>
+
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Angular Forms integration
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Signal Forms, Reactive Forms and template-driven Forms use the
+                same
+                <code class="font-mono text-blue-500"
+                  >FormValueControl&lt;string&gt;</code
+                >
+                contract.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="forms.html"
+                  language="html"
+                  [code]="formsCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="grid w-full gap-5 lg:grid-cols-3"
+                  >
+                    <div class="grid gap-2">
+                      <label for="forms-signal-mask" class="text-sm font-bold"
+                        >Signal Forms</label
+                      ><neural-input-mask
+                        inputMaskId="forms-signal-mask"
+                        mask="(999) 999-9999"
+                        [formField]="profileForm.phone"
+                        ariaLabel="Signal Forms phone"
+                        fluid
+                      /><small class="text-xs text-[var(--site-text-muted)]"
+                        >{{ profile().phone || 'Empty' }}</small
+                      >
+                    </div>
+                    <div class="grid gap-2">
+                      <label for="forms-reactive-mask" class="text-sm font-bold"
+                        >Reactive Forms</label
+                      ><neural-input-mask
+                        inputMaskId="forms-reactive-mask"
+                        mask="(999) 999-9999"
+                        [formControl]="reactivePhone"
+                        ariaLabel="Reactive Forms phone"
+                        fluid
+                      /><small class="text-xs text-[var(--site-text-muted)]"
+                        >{{ reactivePhone.value }}</small
+                      >
+                    </div>
+                    <div class="grid gap-2">
+                      <label for="forms-template-mask" class="text-sm font-bold"
+                        >NgModel</label
+                      ><neural-input-mask
+                        inputMaskId="forms-template-mask"
+                        name="templatePhone"
+                        mask="(999) 999-9999"
+                        [(ngModel)]="templatePhone"
+                        ariaLabel="Template Forms phone"
+                        fluid
+                      /><small class="text-xs text-[var(--site-text-muted)]"
+                        >{{ templatePhone }}</small
+                      >
+                    </div>
+                  </div></code-view
+                >
+              </div>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                States and Field composition
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Field supplies labels, descriptions and shared disabled,
+                readonly, required, invalid, pending, fluid and unstyled state.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="states.html"
+                  language="html"
+                  [code]="statesCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="grid w-full gap-5 sm:grid-cols-2"
+                  >
+                    <neural-field
+                      controlId="employee-code"
+                      required
+                      invalid
+                      fluid
+                      ><label neuralFieldLabel for="employee-code"
+                        >Employee code</label
+                      ><neural-input-mask
+                        mask="aa-9999"
+                        [formField]="profileForm.employeeCode"
+                      /><small neuralFieldHint
+                        >Two letters followed by four digits.</small
+                      ><small neuralFieldError
+                        >Enter the complete employee code.</small
+                      ></neural-field
+                    >
+                    <div class="grid gap-3">
+                      <neural-input-mask
+                        mask="999-999"
+                        ariaLabel="Disabled mask"
+                        placeholder="Disabled"
+                        disabled
+                        fluid
+                      /><neural-input-mask
+                        mask="999-999"
+                        ariaLabel="Readonly mask"
+                        value="123-456"
+                        readonly
+                        fluid
+                      /><neural-input-mask
+                        mask="999-999"
+                        ariaLabel="Pending mask"
+                        placeholder="Pending"
+                        pending
+                        fluid
+                      />
+                    </div></div
+                ></code-view>
+              </div>
+            </section>
+
+            <section id="native" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Native input configuration
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Name, ID, autocomplete, input mode, placeholder and
+                accessibility metadata are forwarded to the real text input. The
+                mask never replaces domain validation.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="native.html"
+                  language="html"
+                  [code]="nativeCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div
+                    preview-content
+                    class="mx-auto grid w-full max-w-md gap-2"
+                  >
+                    <label for="contact-phone" class="text-sm font-bold"
+                      >Contact phone</label
+                    ><neural-input-mask
+                      mask="(999) 999-9999"
+                      name="contactPhone"
+                      inputMaskId="contact-phone"
+                      autocomplete="tel"
+                      inputMode="tel"
+                      placeholder="(555) 555-5555"
+                      fluid
+                    /></div
+                ></code-view>
+              </div>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Unstyled and typed class slots
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Unstyled removes NeuralNg visual classes while retaining the
+                native input, mask engine, Forms behavior and stable structural
+                hooks.
+              </p>
+              <div class="mt-6">
+                <code-view
+                  fileName="unstyled.html"
+                  language="html"
+                  [code]="unstyledCode"
+                  [preview]="true"
+                  [theme]="appearance.mode()"
+                  ><div preview-content class="mx-auto w-full max-w-md">
+                    <neural-input-mask
+                      mask="aa-9999"
+                      ariaLabel="Consumer styled employee code"
+                      unstyled
+                      fluid
+                      [classes]="headlessClasses"
+                      [(value)]="headlessValue"
+                    /></div
+                ></code-view>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                INPUTMASK
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Accessibility
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                Masking enhances a real text input and preserves its browser
+                semantics, focus behavior and Forms relationship.
+              </p>
+            </header>
+            <div class="grid gap-10 pt-10">
+              <section id="native-semantics" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  Native semantics
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  The focus target remains an
+                  <code class="font-mono text-blue-500">input type="text"</code
+                  >. Native disabled, readonly, required, autocomplete, name and
+                  form submission behavior stay available.
+                </p>
+              </section>
+              <section id="naming" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  Names and descriptions
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Prefer a visible label through Neural Field. Use
+                  <code class="font-mono text-blue-500">ariaLabel</code> only
+                  without a visible label; placeholder and mask characters are
+                  never label replacements. Field wires hints and errors through
+                  <code class="font-mono text-blue-500">aria-describedby</code>.
+                </p>
+              </section>
+              <section id="keyboard" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  Keyboard, selection and paste
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Typing, selections, Backspace, Delete and paste operate on
+                  logical slots without trapping Tab or arrow navigation. IME
+                  composition is allowed to finish before normalization.
+                </p>
+              </section>
+              <section id="validation-a11y" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  Validation state
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  <code class="font-mono text-blue-500">invalid</code>,
+                  <code class="font-mono text-blue-500">required</code> and
+                  <code class="font-mono text-blue-500">pending</code> map to
+                  ARIA state. Completion is an editing event, not proof that the
+                  value is valid for your domain.
+                </p>
+              </section>
+              <section id="international" class="scroll-mt-28">
+                <h2 class="text-2xl font-black tracking-[-0.03em]">
+                  International input
+                </h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  The <code class="font-mono text-blue-500">a</code> and
+                  <code class="font-mono text-blue-500">*</code> slots use
+                  Unicode letter and number properties. Numeric
+                  <code class="font-mono text-blue-500">9</code> deliberately
+                  accepts ASCII digits for stable machine-oriented identifiers.
+                </p>
+              </section>
+            </div>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                INPUTMASK
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">API</h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                The complete public contract of canonical
+                <code class="font-mono text-blue-500">NeuralInputMask</code>.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">Inputs</h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] backdrop-blur-xl"
+              >
+                <table class="w-full min-w-[54rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase tracking-wider text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (item of inputs; track item[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{ item[0] }}
+                      </td>
+                      <td
+                        class="p-4 font-mono text-xs text-[var(--site-text-soft)]"
+                      >
+                        {{ item[1] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="events" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">Events</h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of events; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl sm:grid sm:grid-cols-[9rem_16rem_1fr] sm:gap-4"
+                >
+                  <code class="font-mono font-bold text-blue-500"
+                    >{{ item[0] }}</code
+                  ><code class="mt-2 text-xs sm:mt-0">{{ item[1] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)] sm:mt-0">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Public methods
+              </h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of methods; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl sm:grid sm:grid-cols-[12rem_1fr] sm:gap-4"
+                >
+                  <code class="font-mono font-bold text-blue-500"
+                    >{{ item[0] }}</code
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)] sm:mt-0">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="utilities" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Pure utilities
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The entry point also exports deterministic formatting helpers
+                for application code and tests.
+              </p>
+              <div class="mt-4 grid gap-3">
+                @for (item of utilities; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 backdrop-blur-xl"
+                >
+                  <code class="font-mono text-sm font-bold text-blue-500"
+                    >{{ item[0] }}</code
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Typed class slots
+              </h2>
+              <div class="mt-4 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+              <p class="mt-4 text-sm leading-6 text-[var(--site-text-soft)]">
+                Structural classes remain in unstyled mode.
+                <code class="font-mono text-blue-500">inputMaskClass</code> and
+                <code class="font-mono text-blue-500">inputClass</code> are
+                direct consumer escape hatches.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[0.16em] text-blue-500">
+                INPUTMASK
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-0.04em]">
+                Design tokens
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+              >
+                Neutral, dark mode and experimental themes share this complete
+                component-token surface.
+              </p>
+            </header>
+            <section id="design-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black tracking-[-0.03em]">
+                Component tokens
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Override tokens at component, product boundary or theme scope
+                without changing mask behavior.
+              </p>
+              <site-design-token-list class="mt-6 block" [tokens]="tokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

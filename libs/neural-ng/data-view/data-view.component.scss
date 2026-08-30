@@ -1,0 +1,202 @@
+:where(.neural-data-view-host) {
+  display: block;
+  min-width: 0;
+  width: 100%;
+}
+:where(.neural-data-view-root),
+:where(.neural-data-view-header-root),
+:where(.neural-data-view-content-root),
+:where(.neural-data-view-list-root),
+:where(.neural-data-view-grid-root),
+:where(.neural-data-view-item-root),
+:where(.neural-data-view-empty-root),
+:where(.neural-data-view-loading-root),
+:where(.neural-data-view-skeleton-root),
+:where(.neural-data-view-paginator-root),
+:where(.neural-data-view-footer-root) {
+  box-sizing: border-box;
+  min-width: 0;
+}
+:where(.neural-data-view-list-root),
+:where(.neural-data-view-loading-root) {
+  display: grid;
+}
+:where(.neural-data-view-grid-root) {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, var(--neural-data-view-grid-min, 14rem)), 1fr)
+  );
+}
+:where(.neural-data-view-empty-root) {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+:where(.neural-data-view-sr-only) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:where(.neural-data-view-base) {
+  overflow: hidden;
+  color: var(--neural-data-view-color, var(--neural-color-text));
+  background: var(--neural-data-view-background, var(--neural-color-surface));
+  border: var(--neural-data-view-border, 1px solid var(--neural-color-border));
+  border-radius: var(--neural-data-view-radius, 0.85rem);
+  box-shadow: var(
+    --neural-data-view-shadow,
+    0 1px 2px rgb(var(--neural-color-shadow) / 0.04)
+  );
+  font-family: inherit;
+}
+:where(.neural-data-view-header-base) {
+  padding: var(--neural-data-view-header-padding, 0.85rem 1rem);
+  background: var(
+    --neural-data-view-header-background,
+    color-mix(
+      in srgb,
+      var(--neural-color-surface) 94%,
+      var(--neural-color-primary)
+    )
+  );
+  border-bottom: var(
+    --neural-data-view-header-border,
+    1px solid var(--neural-color-border)
+  );
+}
+:where(.neural-data-view-footer-base) {
+  padding: var(--neural-data-view-footer-padding, 0.85rem 1rem);
+  background: var(
+    --neural-data-view-footer-background,
+    color-mix(
+      in srgb,
+      var(--neural-color-surface) 94%,
+      var(--neural-color-primary)
+    )
+  );
+  border-top: var(
+    --neural-data-view-footer-border,
+    1px solid var(--neural-color-border)
+  );
+}
+:where(.neural-data-view-list-base) {
+  gap: 0;
+}
+:where(.neural-data-view-grid-base) {
+  gap: var(--neural-data-view-grid-gap, 1rem);
+  padding: var(--neural-data-view-grid-padding, 1rem);
+  background: var(
+    --neural-data-view-content-background,
+    var(--neural-color-surface-subtle)
+  );
+}
+:where(
+  .neural-data-view-list-base
+    > .neural-data-view-item-root
+    + .neural-data-view-item-root
+) {
+  border-top: var(
+    --neural-data-view-list-divider,
+    1px solid var(--neural-color-border)
+  );
+}
+:where(.neural-data-view-list-base > .neural-data-view-item-base) {
+  padding: var(--neural-data-view-list-item-padding, 1rem);
+}
+:where(.neural-data-view-grid-base > .neural-data-view-item-base) {
+  overflow: hidden;
+  background: var(
+    --neural-data-view-item-background,
+    var(--neural-color-surface)
+  );
+  border: var(
+    --neural-data-view-item-border,
+    1px solid var(--neural-color-border)
+  );
+  border-radius: var(--neural-data-view-item-radius, 0.75rem);
+  box-shadow: var(
+    --neural-data-view-item-shadow,
+    0 8px 24px rgb(var(--neural-color-shadow) / 0.06)
+  );
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+:where(.neural-data-view-grid-base > .neural-data-view-item-base:hover) {
+  border-color: var(
+    --neural-data-view-item-hover-border,
+    color-mix(
+      in srgb,
+      var(--neural-color-primary) 34%,
+      var(--neural-color-border)
+    )
+  );
+  box-shadow: var(
+    --neural-data-view-item-hover-shadow,
+    0 14px 34px rgb(var(--neural-color-shadow) / 0.1)
+  );
+  transform: translateY(-2px);
+}
+:where(.neural-data-view-empty-base) {
+  min-height: var(--neural-data-view-empty-min-height, 12rem);
+  gap: var(--neural-data-view-empty-gap, 0.65rem);
+  padding: var(--neural-data-view-empty-padding, 2rem);
+  color: var(--neural-data-view-empty-color, var(--neural-color-text-muted));
+}
+:where(.neural-data-view-empty-base > .nt) {
+  font-size: 1.75rem;
+  color: var(--neural-data-view-empty-icon-color, var(--neural-color-primary));
+}
+:where(.neural-data-view-loading-base) {
+  gap: var(--neural-data-view-loading-gap, 0.75rem);
+  padding: var(--neural-data-view-loading-padding, 1rem);
+}
+:where(.neural-data-view-skeleton-base) {
+  display: block;
+  min-height: var(--neural-data-view-skeleton-min-height, 5rem);
+  background: var(
+    --neural-data-view-skeleton-background,
+    linear-gradient(
+      90deg,
+      var(--neural-color-surface-hover) 25%,
+      color-mix(in srgb, var(--neural-color-surface-hover) 55%, white) 50%,
+      var(--neural-color-surface-hover) 75%
+    )
+  );
+  background-size: 200% 100%;
+  border-radius: var(--neural-data-view-skeleton-radius, 0.65rem);
+  animation: neural-data-view-pulse
+    var(--neural-data-view-skeleton-duration, 1.4s) ease-in-out infinite;
+}
+:where(.neural-data-view-paginator-base) {
+  padding: var(--neural-data-view-paginator-padding, 0.75rem 1rem);
+  border-top: var(
+    --neural-data-view-paginator-border,
+    1px solid var(--neural-color-border)
+  );
+}
+@keyframes neural-data-view-pulse {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(.neural-data-view-skeleton-base) {
+    animation: none;
+  }
+  :where(.neural-data-view-grid-base > .neural-data-view-item-base) {
+    transition: none;
+  }
+}

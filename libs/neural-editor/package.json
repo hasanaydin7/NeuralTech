@@ -1,0 +1,98 @@
+{
+  "name": "@neural-ng/editor",
+  "version": "0.1.0-beta.0",
+  "description": "AI-native structured rich-text Editor for Angular 22+, powered by Tiptap, ProseMirror, and Yjs.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasanaydin7/NeuralTech.git",
+    "directory": "libs/neural-editor"
+  },
+  "homepage": "https://github.com/hasanaydin7/NeuralTech#readme",
+  "bugs": {
+    "url": "https://github.com/hasanaydin7/NeuralTech/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "ai",
+    "angular",
+    "editor",
+    "tiptap",
+    "yjs"
+  ],
+  "sideEffects": [
+    "./themes/**/*.css"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/forms": "^22.0.0",
+    "@neural-ng/core": "^0.1.0-beta.0"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.8.0",
+    "@tiptap/core": "^3.29.2",
+    "@tiptap/extension-bubble-menu": "^3.29.2",
+    "@tiptap/extension-collaboration": "^3.29.2",
+    "@tiptap/extension-collaboration-caret": "^3.29.2",
+    "@tiptap/extension-floating-menu": "^3.29.2",
+    "@tiptap/extension-highlight": "^3.29.2",
+    "@tiptap/extension-image": "^3.29.2",
+    "@tiptap/extension-list": "^3.29.2",
+    "@tiptap/extension-mention": "^3.29.2",
+    "@tiptap/extension-table": "^3.29.2",
+    "@tiptap/extension-text-align": "^3.29.2",
+    "@tiptap/extension-text-style": "^3.29.2",
+    "@tiptap/extension-unique-id": "^3.29.2",
+    "@tiptap/extensions": "^3.29.2",
+    "@tiptap/html": "^3.29.2",
+    "@tiptap/pm": "^3.29.2",
+    "@tiptap/starter-kit": "^3.29.2",
+    "@tiptap/suggestion": "^3.29.2",
+    "@tiptap/y-tiptap": "^3.0.8",
+    "tslib": "^2.3.0",
+    "yjs": "^13.6.31"
+  },
+  "exports": {
+    "./README.md": {
+      "default": "./README.md"
+    },
+    "./API_FREEZE.md": {
+      "default": "./API_FREEZE.md"
+    },
+    "./MIGRATION.md": {
+      "default": "./MIGRATION.md"
+    },
+    "./llms.txt": {
+      "default": "./llms.txt"
+    },
+    "./LICENSE": {
+      "default": "./LICENSE"
+    },
+    "./THIRD_PARTY_NOTICES.md": {
+      "default": "./THIRD_PARTY_NOTICES.md"
+    },
+    "./themes/neutral.css": {
+      "style": "./themes/neutral.css",
+      "default": "./themes/neutral.css"
+    },
+    "./themes/tailwind.css": {
+      "style": "./themes/tailwind.css",
+      "default": "./themes/tailwind.css"
+    },
+    "./themes/experimental/glass.css": {
+      "style": "./themes/experimental/glass.css",
+      "default": "./themes/experimental/glass.css"
+    },
+    "./themes/experimental/mist.css": {
+      "style": "./themes/experimental/mist.css",
+      "default": "./themes/experimental/mist.css"
+    },
+    "./themes/experimental/futuristic.css": {
+      "style": "./themes/experimental/futuristic.css",
+      "default": "./themes/experimental/futuristic.css"
+    }
+  }
+}

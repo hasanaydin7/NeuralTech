@@ -1,0 +1,64 @@
+.skeleton-docs-page {
+  .skeleton-stack {
+    display: grid;
+    gap: 0.75rem;
+    width: min(100%, 32rem);
+  }
+
+  .skeleton-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .skeleton-card {
+    display: grid;
+    gap: 1rem;
+    width: min(100%, 24rem);
+    padding: 1rem;
+    border: 1px solid var(--demo-border);
+    border-radius: 1rem;
+  }
+
+  .skeleton-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+}
+
+.docs-headless-skeleton {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: #172554;
+  border: 1px solid #818cf8;
+  border-radius: 1rem;
+}
+
+.docs-headless-skeleton__effect {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgb(196 181 253 / 70%) 48%,
+    transparent 76%
+  );
+  transform: translateX(-100%);
+  animation: docs-headless-skeleton-wave 1.6s ease-in-out infinite;
+}
+
+@keyframes docs-headless-skeleton-wave {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .docs-headless-skeleton__effect {
+    transform: none;
+    animation: none;
+  }
+}

@@ -1,0 +1,66 @@
+.paginator-docs-page {
+  max-width: 58rem;
+}
+
+.paginator-demo-surface {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+}
+
+.product-page {
+  display: grid;
+  gap: 0.4rem;
+  min-height: 10rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-page li {
+  padding: 0.55rem 0.75rem;
+  background: var(--neural-color-surface-hover);
+  border-radius: 0.4rem;
+}
+
+.docs-headless-paginator {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.docs-paginator-list {
+  display: flex;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.docs-paginator-button {
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  color: #dbeafe;
+  background: #172554;
+  border: 1px solid #3b82f6;
+  border-radius: 0.45rem;
+}
+
+.docs-paginator-button--active {
+  color: #172554;
+  background: #93c5fd;
+}
+
+.docs-paginator-report,
+.docs-paginator-size {
+  color: var(--neural-color-text-muted);
+}
+
+.docs-paginator-select {
+  margin-inline-start: 0.4rem;
+}

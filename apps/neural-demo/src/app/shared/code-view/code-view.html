@@ -1,0 +1,110 @@
+<div class="code-preview-container">
+  @if (preview()) {
+  <section
+    #preview
+    class="code-preview-surface"
+    [class.code-preview-surface--light]="theme() === 'light'"
+  >
+    <ng-content select="[preview-content]"></ng-content>
+
+    <div class="code-preview-actions">
+      <button
+        [neuralTooltip]="isCodeVisible() ? 'Hide code' : 'Show code'"
+        [tooltipPosition]="'bottom'"
+        class="code-preview-action"
+        type="button"
+        [attr.aria-label]="isCodeVisible() ? 'Hide code' : 'Show code'"
+        [attr.aria-expanded]="isCodeVisible()"
+        (click)="toggleCode()"
+      >
+        <i class="nt nt-code"></i>
+      </button>
+      <button
+        [neuralTooltip]="copyButtonText()"
+        [tooltipPosition]="'bottom'"
+        class="code-preview-action"
+        type="button"
+        [class.is-success]="copyState() === 'copied'"
+        [class.is-error]="copyState() === 'error'"
+        [attr.aria-label]="copyButtonText()"
+        (click)="copyCode()"
+      >
+        <i
+          [class]="copyState() === 'copied' ? 'nt nt-check' : 'nt nt-copy'"
+          aria-hidden="true"
+        ></i>
+      </button>
+    </div>
+  </section>
+  } @if (!preview() || isCodeVisible()) {
+  <div
+    class="code-example-collapse"
+    [animate.enter]="preview() ? 'code-example-enter' : ''"
+    [animate.leave]="preview() ? 'code-example-leave' : ''"
+  >
+    <div
+      class="code-example-collapse__inner"
+      [class]="!preview() ? '' : 'mrgn-t'"
+    >
+      <section
+        #code
+        class="code-example"
+        [class.code-example--light]="theme() === 'light'"
+        [class.code-example--wrap]="wrap()"
+        [class.code-example--copied]="copyState() === 'copied'"
+        [style.--code-example-max-height]="maxHeight()"
+        [attr.aria-label]="displayTitle()"
+      >
+        <header class="code-example__toolbar">
+          <div class="code-example__window-controls" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="code-example__meta">
+            <strong class="code-example__title"> {{ displayTitle() }} </strong>
+
+            <span class="code-example__language"> {{ languageLabel() }} </span>
+          </div>
+
+          @if (!preview()) {
+          <button
+            [neuralTooltip]="copyButtonText()"
+            [tooltipPosition]="'bottom'"
+            class="code-example__copy-button"
+            type="button"
+            [class.is-success]="copyState() === 'copied'"
+            [class.is-error]="copyState() === 'error'"
+            [attr.aria-label]="copyButtonText()"
+            (click)="copyCode()"
+          >
+            <i
+              [class]="
+                  copyState() === 'copied' ? 'nt nt-check' : 'nt nt-copy'
+                "
+              aria-hidden="true"
+            ></i>
+          </button>
+          }
+        </header>
+
+        <div class="code-example__viewport">
+          <pre
+            class="code-example__pre"
+            [class.line-numbers]="showLineNumbers()"
+            [class.no-line-numbers]="!showLineNumbers()"
+            [attr.data-start]="startLine()"
+            [attr.data-line]="highlightedLineRange() || null"
+            tabindex="0"
+          ><code
+            #codeElement
+            [class]="languageClass()"
+            [textContent]="formattedCode()"
+          ></code></pre>
+        </div>
+      </section>
+    </div>
+  </div>
+  }
+</div>

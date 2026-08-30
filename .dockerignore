@@ -1,0 +1,11 @@
+.angular
+.git
+.github
+.nx
+coverage
+dist
+node_modules
+playwright-report
+test-results
+**/test-output
+*.log

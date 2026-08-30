@@ -1,0 +1,70 @@
+.accordion-docs-page {
+  max-width: 58rem;
+}
+
+.accordion-demo-surface {
+  margin: 1rem 0;
+}
+
+.accordion-event-report {
+  display: block;
+  margin-top: 0.75rem;
+  color: var(--neural-color-text-muted);
+}
+
+.docs-headless-accordion {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.docs-headless-accordion__panel {
+  overflow: hidden;
+  color: #e0f2fe;
+  background: #082f49;
+  border: 1px solid #0e7490;
+  border-radius: 0.875rem;
+}
+
+.docs-headless-accordion__panel--open {
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 1px rgb(34 211 238 / 0.18);
+}
+
+.docs-headless-accordion__header {
+  margin: 0;
+}
+
+.docs-headless-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.docs-headless-accordion__icon {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: solid #67e8f9;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+[data-expanded='true']
+  > .docs-headless-accordion__header
+  .docs-headless-accordion__icon {
+  transform: rotate(-135deg);
+}
+
+.docs-headless-accordion__content-inner {
+  padding: 0.125rem 0.875rem 0.75rem;
+  color: #bae6fd;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}

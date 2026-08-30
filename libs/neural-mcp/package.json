@@ -1,0 +1,54 @@
+{
+  "name": "@neural-ng/mcp-server",
+  "version": "0.1.0-beta.3",
+  "description": "Read-only MCP server for NeuralNg component and compact theme contracts.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasanaydin7/NeuralTech.git",
+    "directory": "libs/neural-mcp"
+  },
+  "homepage": "https://github.com/hasanaydin7/NeuralTech#readme",
+  "bugs": {
+    "url": "https://github.com/hasanaydin7/NeuralTech/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "bin": {
+    "neural-ng-mcp": "src/cli.js"
+  },
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./README.md": "./README.md",
+    "./llms.txt": "./llms.txt",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "llms.txt",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.0.0",
+    "@neural-ng/theme": "0.1.0-beta.3",
+    "zod": "^4.3.5"
+  },
+  "keywords": [
+    "angular",
+    "mcp",
+    "model-context-protocol",
+    "neural-ng"
+  ]
+}

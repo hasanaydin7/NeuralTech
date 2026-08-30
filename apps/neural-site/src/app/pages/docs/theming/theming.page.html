@@ -1,0 +1,408 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_20%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >DESIGN SYSTEM</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            Theming
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            Start from stable visual defaults, customize a small semantic
+            palette, or compile a complete product theme from one compact
+            recipe.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>CSS
+              variables</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Light and
+              dark</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Tailwind
+              optional</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <div
+        class="mt-6 flex gap-3 rounded-2xl border border-amber-400/25 bg-amber-500/10 p-5 text-sm leading-6"
+      >
+        <i
+          class="nt nt-alert-triangle mt-0.5 shrink-0 text-amber-500"
+          aria-hidden="true"
+        ></i>
+        <div>
+          <strong class="font-black"
+            >The custom theming workflow is experimental.</strong
+          >
+          <p class="mt-1 text-[var(--site-text-soft)]">
+            For production applications, use the stable Neutral theme or enable
+            <code>unstyled</code> and own the complete visual layer.
+            Experimental presets and compiler contracts may change before the
+            stable release.
+          </p>
+        </div>
+      </div>
+
+      <section id="layers" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          ONE TOKEN PIPELINE
+        </p>
+        <h2 class="mt-3 text-2xl font-black">Theme layers</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Components never hard-code a product palette. Primitive scales feed
+          semantic colors; semantic colors feed component tokens; consumer
+          classes and local custom properties remain the final override layer.
+        </p>
+        <div class="mt-6 grid gap-3 md:grid-cols-4">
+          @for (layer of [ ['01', 'Primitives', 'Primary and surface scales'],
+          ['02', 'Semantics', 'Surface, text, border and focus'], ['03',
+          'Components', 'Button, Input, Toast and every public token'], ['04',
+          'Consumer', 'Scoped variables and typed class slots'] ]; track
+          layer[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <span class="text-xs font-black text-[var(--neural-color-primary)]"
+              >{{ layer[0] }}</span
+            >
+            <h3 class="mt-3 font-black">{{ layer[1] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              {{ layer[2] }}
+            </p>
+          </article>
+          }
+        </div>
+        <p class="mt-6 leading-7 text-[var(--site-text-soft)]">
+          For the stable reference theme, import Neutral once. It contains the
+          full Core token graph and both color modes.
+        </p>
+        <code-view
+          class="mt-5 block"
+          fileName="styles.css"
+          language="css"
+          [code]="importCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="palettes" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Live primary and surface palettes</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Choose a palette to update the complete documentation shell. Primary
+          owns emphasis and interaction; Surface owns canvas, elevation, text
+          and borders. Light and dark modes consume the same immutable scales.
+        </p>
+        <div
+          class="mt-6 rounded-[1.5rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-6"
+        >
+          <div>
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="font-black">Primary</h3>
+              <code
+                class="rounded-lg bg-[var(--site-surface-soft)] px-2 py-1 text-xs text-[var(--neural-color-primary)]"
+                >{{ appearance.primary() }}</code
+              >
+            </div>
+            <div class="mt-4 flex flex-wrap gap-3">
+              @for (palette of primaryPalettes; track palette.value) {
+              <neural-button
+                [unstyled]="true"
+                [ariaLabel]="'Use ' + palette.label + ' primary palette'"
+                [buttonClass]="swatchClass(appearance.primary() === palette.value)"
+                [style.--swatch]="palette.color"
+                (clicked)="setPrimary(palette.value)"
+              />
+              }
+            </div>
+          </div>
+
+          <div class="mt-7 border-t border-[var(--site-border)] pt-7">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="font-black">Surface</h3>
+              <code
+                class="rounded-lg bg-[var(--site-surface-soft)] px-2 py-1 text-xs text-[var(--neural-color-primary)]"
+                >{{ appearance.surface() }}</code
+              >
+            </div>
+            <div class="mt-4 flex flex-wrap gap-3">
+              @for (palette of surfacePalettes; track palette.value) {
+              <neural-button
+                [unstyled]="true"
+                [ariaLabel]="'Use ' + palette.label + ' surface palette'"
+                [buttonClass]="swatchClass(appearance.surface() === palette.value)"
+                [style.--swatch]="palette.color"
+                (clicked)="setSurface(palette.value)"
+              />
+              }
+            </div>
+          </div>
+
+          <div
+            class="mt-7 grid gap-4 border-t border-[var(--site-border)] pt-7 lg:grid-cols-[1fr_auto] lg:items-end"
+          >
+            <div>
+              <p
+                class="text-xs font-black uppercase tracking-wider text-[var(--site-text-muted)]"
+              >
+                Resolved preview
+              </p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <neural-button
+                  label="Primary action"
+                  icon="nt nt-sparkles"
+                  severity="primary"
+                />
+                <neural-button label="Secondary" severity="secondary" />
+                <neural-button label="Outlined" severity="primary" outlined />
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <neural-button
+                label="Light"
+                icon="nt nt-sun"
+                [outlined]="appearance.mode() !== 'light'"
+                (clicked)="appearance.setMode('light')"
+              />
+              <neural-button
+                label="Dark"
+                icon="nt nt-moon"
+                [outlined]="appearance.mode() !== 'dark'"
+                (clicked)="appearance.setMode('dark')"
+              />
+            </div>
+          </div>
+        </div>
+        <p class="mt-6 leading-7 text-[var(--site-text-soft)]">
+          This picker uses the public
+          <code>NeuralAppearanceService</code>. Register the provider once and
+          inject the same Signal API in any application-owned settings panel.
+        </p>
+        <code-view
+          class="mt-5 block"
+          fileName="app.config.ts"
+          language="typescript"
+          [code]="appearanceCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="primitives" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Primitive scales stay stable</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Primary exposes steps <code>50–950</code>. Surface additionally
+          exposes <code>0</code>. The values do not reverse in dark mode;
+          semantic aliases select suitable steps for the active mode.
+        </p>
+        <div class="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-6">
+          @for (step of paletteSteps; track step) {
+          <div
+            class="overflow-hidden rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+          >
+            <div
+              class="h-14"
+              [style.background-color]="'var(--neural-color-surface-' + step + ')'"
+            ></div>
+            <div class="px-3 py-2 text-xs font-bold">surface-{{ step }}</div>
+          </div>
+          }
+        </div>
+        <code-view
+          class="mt-6 block"
+          fileName="brand.css"
+          language="css"
+          [code]="primitiveCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="semantic" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Prefer semantic aliases in product CSS
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Primitive steps are useful for deliberate palette work. General UI
+          should consume semantic tokens so contrast decisions can change
+          between light and dark without rewriting component CSS.
+        </p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          @for (token of [ ['--neural-color-primary', 'Primary interactive
+          emphasis'], ['--neural-color-surface', 'Default elevated surface'],
+          ['--neural-color-text', 'Default foreground'],
+          ['--neural-color-text-muted', 'Secondary foreground'],
+          ['--neural-color-border', 'Default boundary'],
+          ['--neural-color-focus', 'Keyboard focus indicator'] ]; track
+          token[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <code class="text-sm font-bold text-[var(--neural-color-primary)]"
+              >{{ token[0] }}</code
+            >
+            <p class="mt-2 text-sm text-[var(--site-text-muted)]">
+              {{ token[1] }}
+            </p>
+          </article>
+          }
+        </div>
+      </section>
+
+      <section id="compiler" class="scroll-mt-28 pt-16">
+        <div class="flex flex-wrap items-center gap-3">
+          <h2 class="text-2xl font-black">Compile a product theme</h2>
+          <span
+            class="rounded-full bg-amber-500/12 px-2.5 py-1 text-[.62rem] font-black tracking-wider text-amber-500"
+            >EXPERIMENTAL</span
+          >
+        </div>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          <code>@neural-ng/theme</code> is a development dependency. A compact
+          JSON recipe expands deterministically into complete Core and Editor
+          CSS, token interchange JSON, diagnostics and generated theme-name
+          types.
+        </p>
+        <div class="mt-6 grid gap-5">
+          <code-view
+            fileName="terminal"
+            language="bash"
+            [code]="cliCode"
+            [theme]="appearance.mode()"
+          />
+          <code-view
+            fileName="neural.theme.json"
+            language="json"
+            [code]="recipeCode"
+            [theme]="appearance.mode()"
+          />
+          <code-view
+            fileName="styles.css"
+            language="css"
+            [code]="generatedImportCode"
+            [theme]="appearance.mode()"
+          />
+        </div>
+        <div
+          class="mt-5 flex gap-3 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5 text-sm leading-6"
+        >
+          <i
+            class="nt nt-info-circle mt-0.5 text-blue-500"
+            aria-hidden="true"
+          ></i>
+          <p>
+            Generated CSS already contains the complete Core and Editor token
+            graphs. Do not import Neutral beside the generated theme.
+          </p>
+        </div>
+      </section>
+
+      <section id="overrides" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Keep overrides sparse and scoped</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Use validated recipe properties for system-wide customization. Use a
+          local CSS custom property when one product surface intentionally
+          differs.
+        </p>
+        <div class="mt-6 grid gap-5">
+          <code-view
+            fileName="neural.theme.json"
+            language="json"
+            [code]="overrideCode"
+            [theme]="appearance.mode()"
+          />
+          <code-view
+            fileName="checkout.css"
+            language="css"
+            [code]="cssOverrideCode"
+            [theme]="appearance.mode()"
+          />
+        </div>
+        <p class="mt-4 text-sm leading-6 text-[var(--site-text-muted)]">
+          Unknown components, token names, malformed aliases, declaration
+          injection and external CSS URLs fail theme validation.
+        </p>
+      </section>
+
+      <section id="tailwind" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Optional Tailwind CSS v4 bridge</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          The bridge maps NeuralNg primitives to Tailwind's color namespace.
+          Utilities such as <code>bg-primary-500</code>,
+          <code>text-surface-950</code> and <code>dark:bg-surface-900</code>
+          then follow the active NeuralNg palette. NeuralNg has no Tailwind
+          runtime dependency.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="styles.css"
+          language="css"
+          [code]="tailwindCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="presets" class="scroll-mt-28 pb-12 pt-16">
+        <h2 class="text-2xl font-black">Production guidance</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Until the theming API reaches a stable contract, choose one of the two
+          supported production paths below. Do not build a long-lived product
+          identity on experimental presets yet.
+        </p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <article
+            class="rounded-2xl border border-emerald-400/25 bg-emerald-500/10 p-5"
+          >
+            <span class="text-xs font-black tracking-wider text-emerald-500"
+              >RECOMMENDED</span
+            >
+            <h3 class="mt-3 font-black">Neutral</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              Use the maintained reference theme, then customize only stable
+              primitive or documented component tokens when necessary.
+            </p>
+          </article>
+          <article
+            class="rounded-2xl border border-blue-400/25 bg-blue-500/10 p-5"
+          >
+            <span class="text-xs font-black tracking-wider text-blue-500"
+              >FULL CONTROL</span
+            >
+            <h3 class="mt-3 font-black">Unstyled</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              Remove NeuralNg visuals and build the complete design layer with
+              Tailwind, application CSS or another styling system.
+            </p>
+          </article>
+        </div>
+        <div
+          class="mt-5 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 text-sm leading-6 text-[var(--site-text-muted)]"
+        >
+          Experimental theme presets are intentionally not recommended here.
+          Their names, values and availability may change or be removed before
+          NeuralNg reaches a stable release.
+        </div>
+      </section>
+    </div>
+
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

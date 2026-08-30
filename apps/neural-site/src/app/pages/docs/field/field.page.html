@@ -1,0 +1,525 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="field-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Field documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="
+                'translateX(calc(' +
+                selectedViewIndex() * 100 +
+                '% + ' +
+                selectedViewIndex() * 0.25 +
+                'rem))'
+              "
+            ></span>
+            <neural-tab value="component" iconClass="nt-file-text"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >FORMS</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Field
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg sm:leading-8"
+                >
+                  Accessible label, hint, error and control-state composition
+                  that leaves value and validation ownership with Angular Forms.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Deterministic IDs</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>All
+                    Angular Forms</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import only the standalone declarations used by the composition.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Basic composition</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                One stable <code>controlId</code> connects the label, native
+                control and every description without handwritten IDs.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full max-w-md">
+                  <neural-field controlId="site-account-email" required fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Work email</label>
+                    <input
+                      neuralInput
+                      type="email"
+                      autocomplete="email"
+                      placeholder="agent@neural.ng"
+                    />
+                    <small neuralFieldHint
+                      >Used for account notifications.</small
+                    >
+                  </neural-field>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="forms" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Angular Forms</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Field owns accessible presentation only. Signal Forms, Reactive
+                Forms and template-driven forms continue to own the actual value
+                and validation lifecycle.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="profile-form.html"
+                language="html"
+                [code]="formsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="grid w-full gap-6 lg:grid-cols-3 lg:items-start"
+                >
+                  <neural-field
+                    controlId="site-signal-email"
+                    required
+                    fluid
+                    [invalid]="
+                      profileForm.workEmail().touched() &&
+                      profileForm.workEmail().invalid()
+                    "
+                    [pending]="profileForm.workEmail().pending()"
+                  >
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Signal Forms</label>
+                    <input
+                      neuralInput
+                      type="email"
+                      placeholder="Touch to validate"
+                      [formField]="profileForm.workEmail"
+                    />
+                    <small neuralFieldHint>Schema-owned validation.</small>
+                    @if ( profileForm.workEmail().touched() &&
+                    profileForm.workEmail().invalid() ) {
+                    <small neuralFieldError>
+                      {{ profileForm.workEmail().errors()[0]?.message }}
+                    </small>
+                    }
+                  </neural-field>
+
+                  <neural-field controlId="site-reactive-email" fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Reactive Forms</label>
+                    <input
+                      neuralInput
+                      type="email"
+                      [formControl]="reactiveEmail"
+                    />
+                    <small neuralFieldHint>{{ reactiveEmail.value }}</small>
+                  </neural-field>
+
+                  <neural-field controlId="site-template-email" fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Template-driven</label>
+                    <input
+                      neuralInput
+                      type="email"
+                      name="siteTemplateEmail"
+                      [(ngModel)]="templateEmail"
+                    />
+                    <small neuralFieldHint>{{ templateEmail }}</small>
+                  </neural-field>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inherited states</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                State is synchronized to visual hooks, data attributes, ARIA and
+                compatible native attributes from one source.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="statesCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-5 md:grid-cols-2">
+                  <neural-field controlId="site-required" required fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Required workspace</label>
+                    <input neuralInput value="Neural team" />
+                    <small neuralFieldHint>Required state.</small>
+                  </neural-field>
+                  <neural-field controlId="site-invalid" invalid fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Invalid slug</label>
+                    <input neuralInput value="Not available" />
+                    <small neuralFieldError>Choose another slug.</small>
+                  </neural-field>
+                  <neural-field controlId="site-pending" pending fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Agent handle</label>
+                    <input neuralInput value="neural-agent" />
+                    <small neuralFieldHint>Checking availability…</small>
+                  </neural-field>
+                  <neural-field controlId="site-readonly" readonly fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Account ID</label>
+                    <input neuralInput value="usr_neural_001" />
+                  </neural-field>
+                  <neural-field controlId="site-disabled" disabled fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Legacy region</label>
+                    <input neuralInput value="Unavailable" />
+                  </neural-field>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="native-bridge" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Native control bridge</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use <code>neuralFieldControl</code> when a projected native or
+                compatible custom control does not consume Field context
+                directly.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="nativeBridgeCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full max-w-lg">
+                  <neural-field controlId="site-deployment-note" fluid>
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Deployment note</label>
+                    <textarea
+                      neuralFieldControl
+                      rows="4"
+                      class="w-full resize-y rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-4 py-3 text-[var(--site-text)] outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+                    ></textarea>
+                    <small neuralFieldHint>Maximum 500 characters.</small>
+                  </neural-field>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="descriptions" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Multiple descriptions</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Multiple hints, errors and application-owned IDs are
+                deduplicated into one reactive <code>aria-describedby</code>
+                relationship.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="descriptionsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="w-full max-w-lg">
+                  <p
+                    id="site-slug-policy"
+                    class="mb-3 text-sm text-[var(--site-text-muted)]"
+                  >
+                    Workspace slugs are public.
+                  </p>
+                  <neural-field
+                    controlId="site-workspace-slug"
+                    describedBy="site-slug-policy"
+                    invalid
+                    fluid
+                  >
+                    <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                    <label neuralFieldLabel>Slug</label>
+                    <input neuralInput value="neural" />
+                    <small neuralFieldHint>Lowercase characters only.</small>
+                    <small neuralFieldHint>Maximum 48 characters.</small>
+                    <small neuralFieldError live="polite"
+                      >This slug is unavailable.</small
+                    >
+                  </neural-field>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled ownership</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Visual classes disappear while structural hooks, generated IDs,
+                ARIA relationships and native state propagation remain.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <neural-field
+                  preview-content
+                  controlId="site-agent-key"
+                  unstyled
+                  class="grid w-full max-w-lg gap-2 font-mono"
+                >
+                  <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+                  <label
+                    neuralFieldLabel
+                    class="text-xs font-black uppercase tracking-widest text-cyan-500"
+                    >Agent key</label
+                  >
+                  <input
+                    neuralFieldControl
+                    class="w-full rounded-xl border-2 border-cyan-400/35 bg-slate-950 px-4 py-3 text-cyan-100 outline-none focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/15"
+                    value="agent_live_42"
+                  />
+                  <small neuralFieldHint class="text-xs text-cyan-600"
+                    >Consumer-owned visuals.</small
+                  >
+                </neural-field>
+              </code-view>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Field accessibility</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Field turns projected content into one deterministic accessible
+                relationship without replacing native form semantics.
+              </p>
+            </header>
+            <section id="relationships" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Relationships</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>neuralFieldLabel</code> receives the control's
+                <code>for</code>; hints and errors contribute IDs to
+                <code>aria-describedby</code>. Conditional slots update the
+                relationship reactively.
+              </p>
+            </section>
+            <section id="deterministic-ids" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Deterministic IDs</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Required <code>controlId</code> produces stable SSR and
+                hydration-safe IDs: <code>-hint</code>, <code>-error</code>,
+                then numbered suffixes for additional slots.
+              </p>
+            </section>
+            <section id="announcements" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Error announcements</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>neuralFieldError</code> defaults to polite announcements.
+                Use assertive only for genuinely urgent feedback, or off when an
+                application-level summary announces the same error.
+              </p>
+            </section>
+            <section id="responsibility" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Responsibility boundary</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Field never owns values, executes validation, translates
+                messages or decides when feedback becomes visible. Keep those
+                decisions in the form schema and application policy.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Field API</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Canonical standalone declarations and their beta contracts.
+              </p>
+            </header>
+            <section id="declarations" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Declarations</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[40rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Kind</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of declarations; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4">{{ item[1] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[2] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Field inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[48rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (item of inputs; track item[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4 font-mono text-blue-500">{{ item[0] }}</td>
+                      <td class="p-4 font-mono">{{ item[1] }}</td>
+                      <td class="p-4 font-mono">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="directive-inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Directive inputs</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Only <code>NeuralFieldError</code> adds an input:
+                <code>live: 'off' | 'polite' | 'assertive'</code>, defaulting to
+                <code>polite</code>. Other directives derive their complete
+                contract from Field context.
+              </p>
+            </section>
+            <section id="state-hooks" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">State and structural hooks</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>neural-field-root</code>,
+                <code>neural-field--invalid</code>, <code>--required</code>,
+                <code>--disabled</code>, <code>--readonly</code>,
+                <code>--pending</code> and the <code>neural-field__*</code> slot
+                hooks remain available in styled and unstyled modes.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN SYSTEM
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Field tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Component tokens inherit the active primary, surface and
+                color-mode foundation.
+              </p>
+            </header>
+            <section id="design-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Design tokens</h2>
+              <site-design-token-list class="mt-6 block" [tokens]="tokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

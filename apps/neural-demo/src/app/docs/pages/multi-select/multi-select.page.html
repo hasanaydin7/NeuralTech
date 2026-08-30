@@ -1,0 +1,263 @@
+<article class="docs-page multi-select-docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Sprint 2</span>
+    <h1 class="docs-hero__title">MultiSelect</h1>
+    <p class="docs-hero__description">
+      A Signal-first multiple listbox with chips, grouped filtering, selection
+      limits, top-layer overlay, and a fully headless visual contract.
+    </p>
+  </header>
+
+  <section>
+    <h2>Import</h2>
+    <p>Import only the tree-shakable secondary entry point.</p>
+    <code-view
+      fileName="app.ts"
+      language="typescript"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="forms">
+    <h2>Angular Forms adapters</h2>
+    <p>
+      The immutable array model is shared by Signal Forms, Reactive Forms, and
+      template-driven Forms. Readonly controls remain focusable and may open for
+      inspection while option, chip, clear, and select-all mutations stay
+      blocked.
+    </p>
+    <div class="multi-select-forms-grid">
+      <div class="multi-select-forms-example">
+        <strong>Signal Forms</strong>
+        <neural-multi-select
+          [options]="formOptions"
+          [formField]="signalForm.capabilities"
+          [filter]="false"
+          ariaLabel="Signal form capabilities"
+          fluid
+        />
+        <output>Value: {{ formsModel().capabilities.join(', ') }}</output>
+      </div>
+      <div class="multi-select-forms-example">
+        <strong>Reactive Forms</strong>
+        <neural-multi-select
+          [options]="formOptions"
+          [formControl]="reactiveCapabilities"
+          [filter]="false"
+          ariaLabel="Reactive form capabilities"
+          fluid
+        />
+        <output>Value: {{ reactiveCapabilities.value.join(', ') }}</output>
+      </div>
+      <div class="multi-select-forms-example">
+        <strong>Template-driven Forms</strong>
+        <neural-multi-select
+          [options]="formOptions"
+          name="templateCapabilities"
+          [(ngModel)]="templateCapabilities"
+          [filter]="false"
+          ariaLabel="Template form capabilities"
+          fluid
+        />
+        <output>Value: {{ templateCapabilities.join(', ') }}</output>
+      </div>
+      <div class="multi-select-forms-example">
+        <strong>Readonly</strong>
+        <neural-multi-select
+          [options]="formOptions"
+          [(value)]="readonlyCapabilities"
+          [filter]="false"
+          ariaLabel="Readonly capabilities"
+          readonly
+          fluid
+        />
+        <output>Value: {{ readonlyCapabilities().join(', ') }}</output>
+      </div>
+    </div>
+    <code-view
+      fileName="forms.html"
+      language="html"
+      [code]="formsCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section>
+    <h2>Virtual scrolling</h2>
+    <p>
+      A fixed-size, overscanned window keeps 1,000 options responsive without
+      rendering the full list. Filtering resets the window deterministically.
+    </p>
+    <code-view
+      fileName="virtual.html"
+      language="html"
+      [code]="virtualCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="multi-select-demo">
+        <neural-multi-select
+          [options]="virtualOptions"
+          optionLabel="label"
+          optionValue="id"
+          [(value)]="virtualSelected"
+          placeholder="Choose capabilities"
+          filterBy="label"
+          virtualScroll
+          [virtualItemSize]="42"
+          [virtualScrollHeight]="252"
+          ariaLabel="Virtual capabilities"
+          fluid
+        />
+        <small class="demo-status">
+          {{ virtualSelected().length }} selected from 1,000 options
+        </small>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Grouped chips</h2>
+    <p>
+      Filter nested data, keep disabled options visible, remove individual
+      chips, or select every visible option.
+    </p>
+    <code-view
+      fileName="app.html"
+      language="html"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="multi-select-demo">
+        <neural-field controlId="technology-stack" fluid>
+          <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+          <label neuralFieldLabel>Technology stack</label>
+          <neural-multi-select
+            [options]="technologies"
+            optionLabel="name"
+            optionValue="id"
+            optionDisabled="disabled"
+            optionGroup="category"
+            filterBy="name,category"
+            [(value)]="selected"
+            ariaLabel="Technology stack"
+            display="chip"
+            fluid
+            (selected)="selectedItem($event)"
+            (filterChange)="filtered($event)"
+          >
+            <ng-template
+              neuralMultiSelectOption
+              let-technology
+              let-resolved="resolved"
+              let-selected="selected"
+            >
+              <span class="technology-option"
+                ><i
+                  class="nt {{ technologyIcon(technology) }}"
+                  aria-hidden="true"
+                ></i
+                ><span
+                  ><strong>{{ resolved.label }}</strong
+                  ><small>{{ resolved.group }}</small></span
+                >@if (selected) {
+                <i class="nt nt-check option-check" aria-hidden="true"></i>
+                }</span
+              >
+            </ng-template>
+          </neural-multi-select>
+          <small neuralFieldHint
+            >{{ selected().length }} selected · filter request {{
+            latestRequest() }}</small
+          >
+        </neural-field>
+        <output class="demo-status" aria-live="polite">{{ status() }}</output>
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Compact summary and limits</h2>
+    <p>
+      Comma mode collapses long selections while selectionLimit protects the
+      domain rule.
+    </p>
+    <code-view
+      fileName="compact.html"
+      language="html"
+      [code]="compactCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="multi-select-demo multi-select-demo--states">
+        <neural-multi-select
+          [options]="technologies"
+          optionLabel="name"
+          optionValue="id"
+          [(value)]="compactSelected"
+          display="comma"
+          [maxSelectedLabels]="2"
+          [selectionLimit]="4"
+          ariaLabel="Limited technologies"
+          fluid
+        />
+        <neural-multi-select
+          [options]="technologies"
+          optionLabel="name"
+          optionValue="id"
+          [value]="['angular']"
+          placeholder="Loading technologies"
+          loading
+          ariaLabel="Loading technologies"
+          fluid
+        />
+        <neural-multi-select
+          [options]="technologies"
+          optionLabel="name"
+          optionValue="id"
+          [value]="['angular']"
+          disabled
+          ariaLabel="Disabled technologies"
+          fluid
+        />
+      </div>
+    </code-view>
+  </section>
+
+  <section>
+    <h2>Unstyled and typed class slots</h2>
+    <p>
+      NeuralNg owns listbox behavior and popup positioning; the consumer owns
+      every visual decision.
+    </p>
+    <code-view
+      fileName="headless.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="multi-select-demo">
+        <div class="docs-multi-select-headless-demo">
+          <span class="docs-multi-select-headless-demo__label"
+            >Deployment capabilities</span
+          >
+          <neural-multi-select
+            [options]="technologies"
+            optionLabel="name"
+            optionValue="id"
+            optionGroup="category"
+            [(value)]="headlessSelected"
+            ariaLabel="Headless capabilities"
+            [classes]="headlessClasses"
+            unstyled
+            fluid
+          />
+          <small>Consumer CSS · NeuralNg state, focus, ARIA and overlay</small>
+        </div>
+      </div>
+    </code-view>
+  </section>
+</article>

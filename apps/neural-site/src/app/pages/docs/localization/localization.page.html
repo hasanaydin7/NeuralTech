@@ -1,0 +1,287 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_20%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >FOUNDATION</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            Localization
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            Switch component messages, locale conventions and writing direction
+            at runtime through one tree-shakable Signal contract.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Runtime
+              Signals</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>English
+              fallback</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR
+              deterministic</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="initial" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          APPLICATION SETUP
+        </p>
+        <h2 class="mt-3 text-2xl font-black">Configure the initial locale</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Pass the initial locale to <code>provideNeuralNg()</code>. English is
+          built in; additional locale packs use granular entry points, so only
+          explicitly imported languages enter the application bundle.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="app.config.ts"
+          language="typescript"
+          [code]="initialCode"
+          [theme]="appearance.mode()"
+        />
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          @for (item of supportedLocales; track item.locale.code) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class="grid size-10 shrink-0 place-items-center rounded-xl bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] font-black text-[var(--neural-color-primary)]"
+                >{{ item.short }}</span
+              >
+              <div class="min-w-0">
+                <h3 class="font-black">{{ item.name }}</h3>
+                <code class="text-xs text-[var(--site-text-muted)]"
+                  >@neural-ng/core/locales/{{ item.entry }}</code
+                >
+              </div>
+            </div>
+          </article>
+          }
+        </div>
+        <p class="mt-4 text-sm leading-6 text-[var(--site-text-muted)]">
+          All eight packs fully implement the current message contract. Each is
+          an independent secondary entry point; importing one never bundles the
+          others. Build additional languages with the custom-locale contract
+          below.
+        </p>
+      </section>
+
+      <section id="runtime" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Switch language without reloading</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          The demo below changes the real global locale service. Its Paginator,
+          accessible labels and range report update from the same locale state.
+          The original site locale is restored when you leave this page.
+        </p>
+        <div
+          class="mt-6 rounded-[1.5rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-6"
+        >
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p
+                class="text-xs font-black uppercase tracking-wider text-[var(--site-text-muted)]"
+              >
+                Active locale
+              </p>
+              <p class="mt-1 text-xl font-black">{{ locale.code() }}</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              @for (item of supportedLocales; track item.locale.code) {
+              <neural-button
+                [label]="item.short"
+                [attr.aria-label]="item.name"
+                [outlined]="locale.code() !== item.locale.code"
+                (clicked)="useLocale(item.locale)"
+              />
+              }
+            </div>
+          </div>
+          <div
+            class="mt-6 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface-soft)] p-5"
+          >
+            <neural-paginator
+              [totalItems]="137"
+              [(pageIndex)]="pageIndex"
+              [(pageSize)]="pageSize"
+              [pageSizeOptions]="[5, 10, 20]"
+            />
+          </div>
+          <dl class="mt-5 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-xl bg-[var(--site-surface-soft)] p-4">
+              <dt class="text-xs text-[var(--site-text-muted)]">Direction</dt>
+              <dd class="mt-1 font-black">{{ locale.direction() }}</dd>
+            </div>
+            <div class="rounded-xl bg-[var(--site-surface-soft)] p-4">
+              <dt class="text-xs text-[var(--site-text-muted)]">
+                First day of week
+              </dt>
+              <dd class="mt-1 font-black">
+                {{ locale.locale().firstDayOfWeek }}
+              </dd>
+            </div>
+            <div class="rounded-xl bg-[var(--site-surface-soft)] p-4">
+              <dt class="text-xs text-[var(--site-text-muted)]">
+                Resolved report
+              </dt>
+              <dd class="mt-1 text-sm font-bold">{{ report() }}</dd>
+            </div>
+          </dl>
+        </div>
+        <code-view
+          class="mt-6 block"
+          fileName="language-picker.ts"
+          language="typescript"
+          [code]="runtimeCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="signals" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Read resolved locale Signals</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Components consume readonly Signals rather than copying locale state.
+          Message interpolation is plain text and preserves unknown
+          placeholders.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="locale-state.ts"
+          language="typescript"
+          [code]="signalsCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="custom" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Create a partial custom locale</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          A locale needs a canonical language tag and direction. Message groups
+          are partial: define only product-specific translations while every
+          missing entry resolves from the English baseline.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="ar-SA.locale.ts"
+          language="typescript"
+          [code]="customCode"
+          [theme]="appearance.mode()"
+        />
+        <div
+          class="mt-5 flex gap-3 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5 text-sm leading-6"
+        >
+          <i
+            class="nt nt-info-circle mt-0.5 text-blue-500"
+            aria-hidden="true"
+          ></i>
+          <p>
+            Locale messages are text-only. Never place HTML, scripts or template
+            markup inside translations.
+          </p>
+        </div>
+      </section>
+
+      <section id="fallback" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Fallback and precedence</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Resolution is deterministic. The nearest explicit component label
+          wins, followed by the active locale and finally the complete English
+          fallback.
+        </p>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          @for (item of [ ['01', 'Component override', 'A local labels or locale
+          input for one instance.'], ['02', 'Active locale', 'The current
+          NeuralLocaleService message.'], ['03', 'English fallback', 'The
+          built-in value for every missing message.'] ]; track item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <span class="text-xs font-black text-[var(--neural-color-primary)]"
+              >{{ item[0] }}</span
+            >
+            <h3 class="mt-3 font-black">{{ item[1] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              {{ item[2] }}
+            </p>
+          </article>
+          }
+        </div>
+        <code-view
+          class="mt-6 block"
+          fileName="results.html"
+          language="html"
+          [code]="overrideCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="direction" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Locale direction and document direction
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          A locale exposes <code>ltr</code> or <code>rtl</code>, but the locale
+          service alone does not mutate the document. Configure
+          <code>provideNeuralNg(&#123; direction: 'auto' &#125;)</code> to let
+          <code>NeuralNgService</code> follow the active locale and apply the
+          native <code>html[dir]</code> contract. Explicit <code>ltr</code> or
+          <code>rtl</code> configuration always wins.
+        </p>
+      </section>
+
+      <section id="intl" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Format dates and numbers with Intl</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Use the resolved locale code with browser-native Intl formatters.
+          DatePicker uses the same locale contract for month/day names, field
+          order and first-day-of-week behavior, while its parser remains strict
+          and deterministic.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="formatting.ts"
+          language="typescript"
+          [code]="intlCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="ssr" class="scroll-mt-28 pb-12 pt-16">
+        <h2 class="text-2xl font-black">
+          SSR and hydration must start identically
+        </h2>
+        <div
+          class="mt-5 rounded-2xl border border-amber-400/20 bg-amber-500/10 p-5 text-sm leading-6"
+        >
+          Configure the same initial locale on server and browser. NeuralNg does
+          not read <code>navigator.language</code> during rendering because an
+          environment-dependent default can produce different text, direction
+          and calendar structure during hydration.
+        </div>
+      </section>
+    </div>
+
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

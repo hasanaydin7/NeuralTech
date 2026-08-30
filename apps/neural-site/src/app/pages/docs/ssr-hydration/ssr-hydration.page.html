@@ -1,0 +1,342 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_20%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >FOUNDATION</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            SSR &amp; Hydration
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            Render useful HTML on the server, reuse it in the browser and keep
+            component identity, state and interaction deterministic across the
+            boundary.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Server
+              safe</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Event replay
+              ready</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Stable DOM
+              identity</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="modes" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          RENDERING STRATEGY
+        </p>
+        <h2 class="mt-3 text-2xl font-black">Choose a mode per route</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Angular supports server rendering per request, build-time prerendering
+          and client rendering. NeuralNg does not force one mode; the same
+          component contracts remain valid in each.
+        </p>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          @for (item of [['SSR', 'Per request', 'Personalized or frequently
+          changing public content.'], ['SSG', 'At build time', 'Documentation,
+          marketing and other cacheable routes.'], ['CSR', 'In the browser',
+          'Private tools where initial HTML and SEO are not priorities.']];
+          track item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <span class="text-xs font-black text-[var(--neural-color-primary)]"
+              >{{ item[1] }}</span
+            >
+            <h3 class="mt-2 text-lg font-black">{{ item[0] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[2] }}
+            </p>
+          </article>
+          }
+        </div>
+        <code-view
+          class="mt-6 block"
+          fileName="app.routes.server.ts"
+          language="typescript"
+          [code]="modesCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="setup" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Enable hydration once at application level
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          <code>provideClientHydration()</code> lets Angular reconcile and reuse
+          server-rendered DOM. Event replay captures supported interactions that
+          occur before hydration finishes. Angular 22 enables incremental
+          hydration through this provider by default.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="app.config.ts"
+          language="typescript"
+          [code]="setupCode"
+          [theme]="appearance.mode()"
+        />
+        <code-view
+          class="mt-6 block"
+          fileName="app.config.server.ts"
+          language="typescript"
+          [code]="serverCode"
+          [theme]="appearance.mode()"
+        />
+        <div class="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+          <a
+            class="rounded-xl border border-[var(--site-border)] px-4 py-2 hover:bg-[var(--site-surface)]"
+            href="https://angular.dev/guide/hydration"
+            target="_blank"
+            rel="noreferrer"
+            >Angular hydration guide</a
+          >
+          <a
+            class="rounded-xl border border-[var(--site-border)] px-4 py-2 hover:bg-[var(--site-surface)]"
+            href="https://angular.dev/best-practices/performance/ssr"
+            target="_blank"
+            rel="noreferrer"
+            >Angular SSR guide</a
+          >
+        </div>
+      </section>
+
+      <section id="contract" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">What NeuralNg guarantees</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Components render meaningful closed or inactive server markup without
+          requiring browser globals. Browser-only positioning, focus, storage
+          and top-layer work starts after the browser takes ownership.
+        </p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          @for (item of [['Deterministic identity', 'APP_ID-scoped generators
+          and explicit ID inputs preserve ARIA relationships.'], ['Browser
+          guards', 'DOM measurements, observers and global listeners do not
+          execute on the server.'], ['Closed overlays', 'Popup positioning and
+          focus work begin only after a client-side open action.'], ['Lifecycle
+          cleanup', 'Observers, listeners, top-layer state and focus ownership
+          are released on destroy.']]; track item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">{{ item[0] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[1] }}
+            </p>
+          </article>
+          }
+        </div>
+      </section>
+
+      <section id="deterministic" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Server and browser must render the same tree
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          The initial locale, direction, collection order, selected values, open
+          state and conditional branches must agree. Prefer explicit public IDs
+          for important forms and composite widgets; generated IDs are
+          deterministic only while component creation order remains identical.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="stable-identity.html"
+          language="html"
+          [code]="deterministicCode"
+          [theme]="appearance.mode()"
+        />
+        <div
+          class="mt-6 rounded-2xl border border-red-400/20 bg-red-500/[.08] p-5"
+        >
+          <h3 class="font-black text-red-600 dark:text-red-400">
+            Common mismatch sources
+          </h3>
+          <ul
+            class="mt-3 grid gap-2 text-sm leading-6 text-[var(--site-text-soft)] sm:grid-cols-2"
+          >
+            <li>Random IDs or current time in templates</li>
+            <li>Viewport-dependent initial branches</li>
+            <li>Browser storage read during rendering</li>
+            <li>Different server and client locale</li>
+            <li>Invalid HTML corrected by the browser</li>
+            <li>Direct DOM insertion before hydration</li>
+          </ul>
+        </div>
+        <code-view
+          class="mt-6 block"
+          fileName="browser-state.ts"
+          language="typescript"
+          [code]="mismatchCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="browser-work" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Defer browser-only enhancement</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Use Angular render callbacks for measurement, focus and third-party
+          browser APIs. Use <code>isPlatformBrowser</code> in reusable services
+          that must expose a safe server no-op. Do not scatter eager
+          <code>window</code> and <code>document</code> reads through component
+          constructors.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="chart-panel.ts"
+          language="typescript"
+          [code]="browserCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="overlays" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Overlay markup starts stable and closed
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Select, MultiSelect, AutoComplete, TreeSelect, Popover, Tooltip,
+          Dialog and Drawer postpone top-layer positioning and focus work until
+          the browser. An <code>appendTo="body"</code> panel is moved only after
+          opening, never while server HTML is being produced.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="overlays.html"
+          language="html"
+          [code]="overlayCode"
+          [theme]="appearance.mode()"
+        />
+        <div
+          class="mt-5 rounded-2xl border border-amber-400/20 bg-amber-500/10 p-5 text-sm leading-6"
+        >
+          Do not server-render a modal as initially open unless the same state,
+          content and focus intent are guaranteed on the client. A closed
+          initial state is the safest default for reusable overlays.
+        </div>
+      </section>
+
+      <section id="data" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Transfer initial data instead of requesting it twice
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Angular hydration includes HTTP transfer caching for eligible server
+          requests. Keep the initial result serializable, preserve collection
+          order and avoid emitting a temporary empty state in the browser before
+          transferred data resolves.
+        </p>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          @for (item of [['Serialize', 'Dates, Maps and class instances need an
+          explicit wire representation.'], ['Authorize', 'Never expose
+          server-only credentials or private provider state in HTML.'],
+          ['Revalidate', 'Treat transferred data as the initial snapshot, then
+          refresh through application policy.']]; track item[0]) {
+          <article
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">{{ item[0] }}</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item[1] }}
+            </p>
+          </article>
+          }
+        </div>
+      </section>
+
+      <section id="incremental" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Hydrate expensive regions when they become useful
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Incremental hydration combines server-rendered
+          <code>&#64;defer</code> content with hydrate triggers. Reserve it for
+          meaningful boundaries; splitting every small control increases
+          complexity without improving the user journey.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="report.html"
+          language="html"
+          [code]="deferCode"
+          [theme]="appearance.mode()"
+        />
+        <p class="mt-4 text-sm leading-6 text-[var(--site-text-muted)]">
+          The server-rendered block and its placeholder must reserve compatible
+          space. Event replay is automatically available with Angular's
+          incremental hydration.
+        </p>
+      </section>
+
+      <section id="diagnostics" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Diagnose the production path</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          A client-only development server cannot prove SSR safety. Build the
+          production target, inspect the returned HTML with JavaScript disabled,
+          then use Angular DevTools and the browser console to locate hydrated
+          nodes and mismatches.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="verification.sh"
+          language="bash"
+          [code]="diagnosticCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="checklist" class="scroll-mt-28 pb-12 pt-16">
+        <h2 class="text-2xl font-black">Deployment checklist</h2>
+        <div
+          class="mt-6 overflow-hidden rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+        >
+          @for (item of ['Every public route produces useful HTML before
+          JavaScript.', 'Server and browser start with identical locale,
+          direction and form state.', 'No initial branch depends on time,
+          randomness, viewport or browser storage.', 'Explicit IDs are used for
+          critical label, hint and overlay relationships.', 'Early interactions
+          survive hydration and do not execute twice.', 'Overlays restore focus
+          and leave no document listeners after navigation.', 'Hydration is
+          tested in the deployed runtime, not only the CSR dev server.']; track
+          item) {
+          <div
+            class="flex gap-3 border-b border-[var(--site-border)] p-4 last:border-0"
+          >
+            <i
+              class="nt nt-check mt-0.5 text-emerald-500"
+              aria-hidden="true"
+            ></i>
+            <p class="text-sm leading-6 text-[var(--site-text-soft)]">
+              {{ item }}
+            </p>
+          </div>
+          }
+        </div>
+      </section>
+    </div>
+
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

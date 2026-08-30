@@ -1,0 +1,207 @@
+<article class="docs-page progress-bar-docs-page">
+  <header class="docs-page-header">
+    <span>Components</span>
+    <h1>ProgressBar</h1>
+    <p>
+      Accessible linear progress with determinate, buffered, and indeterminate
+      states, semantic severities, reduced-motion safety, and a fully headless
+      class contract.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <app-code-example
+      label="component.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="determinate">
+    <h2>Interactive progress</h2>
+    <p>
+      Values are clamped to the declared range. The visual label and native
+      progressbar semantics stay synchronized.
+    </p>
+    <div
+      class="demo-surface progress-bar-stack"
+      data-testid="progress-interactive"
+    >
+      <neural-progress-bar [value]="progress()" ariaLabel="Upload progress" />
+      <div class="progress-bar-actions">
+        <neural-button severity="secondary" (clicked)="decrease()">
+          Decrease
+        </neural-button>
+        <neural-button (clicked)="increase()">Increase</neural-button>
+        <neural-button severity="secondary" (clicked)="reset()">
+          Reset
+        </neural-button>
+      </div>
+    </div>
+    <app-code-example
+      label="Determinate"
+      language="html"
+      [code]="determinateCode"
+    />
+  </section>
+
+  <section id="severities">
+    <h2>Semantic severities</h2>
+    <div
+      class="demo-surface progress-bar-stack"
+      data-testid="progress-severities"
+    >
+      <neural-progress-bar
+        [value]="18"
+        severity="primary"
+        ariaLabel="Primary progress"
+      />
+      <neural-progress-bar
+        [value]="24"
+        severity="secondary"
+        ariaLabel="Secondary progress"
+      />
+      <neural-progress-bar
+        [value]="28"
+        severity="neutral"
+        ariaLabel="Neutral progress"
+      />
+      <neural-progress-bar
+        [value]="42"
+        severity="info"
+        ariaLabel="Information progress"
+      />
+      <neural-progress-bar
+        [value]="58"
+        severity="success"
+        ariaLabel="Successful progress"
+      />
+      <neural-progress-bar
+        [value]="74"
+        severity="warning"
+        ariaLabel="Warning progress"
+      />
+      <neural-progress-bar
+        [value]="90"
+        severity="error"
+        ariaLabel="Error progress"
+      />
+    </div>
+  </section>
+
+  <section id="sizes">
+    <h2>Sizes and decoration</h2>
+    <div class="demo-surface progress-bar-stack" data-testid="progress-sizes">
+      <neural-progress-bar
+        [value]="38"
+        size="small"
+        [showValue]="false"
+        ariaLabel="Small progress"
+      />
+      <neural-progress-bar [value]="55" ariaLabel="Medium progress" />
+      <neural-progress-bar
+        [value]="72"
+        size="large"
+        striped
+        animated
+        ariaLabel="Large animated progress"
+      />
+    </div>
+  </section>
+
+  <section id="buffer">
+    <h2>Buffered progress</h2>
+    <p>
+      A secondary layer communicates work already prepared ahead of the current
+      value.
+    </p>
+    <div class="demo-surface progress-bar-stack" data-testid="progress-buffer">
+      <neural-progress-bar
+        [value]="35"
+        [bufferValue]="68"
+        ariaLabel="Video playback buffer"
+      />
+    </div>
+    <app-code-example label="Buffer" language="html" [code]="bufferCode" />
+  </section>
+
+  <section id="indeterminate">
+    <h2>Indeterminate</h2>
+    <p>
+      Unknown progress omits numeric ARIA values. Motion automatically stops for
+      users who prefer reduced motion.
+    </p>
+    <div
+      class="demo-surface progress-bar-stack"
+      data-testid="progress-indeterminate"
+    >
+      <neural-progress-bar
+        mode="indeterminate"
+        label="Loading"
+        ariaLabel="Loading search results"
+      />
+    </div>
+    <app-code-example
+      label="Indeterminate"
+      language="html"
+      [code]="indeterminateCode"
+    />
+  </section>
+
+  <section id="localization">
+    <h2>Localized value text</h2>
+    <p>
+      Visual and assistive labels can describe the same state at different
+      levels of detail.
+    </p>
+    <div
+      class="demo-surface progress-bar-stack"
+      data-testid="progress-localized"
+    >
+      <neural-progress-bar
+        [value]="7"
+        [max]="10"
+        label="7 / 10 dosya"
+        ariaValueText="10 dosyanın 7 tanesi tamamlandı"
+        ariaLabel="Dosya yükleme ilerlemesi"
+      />
+    </div>
+    <app-code-example
+      label="Localized labels"
+      language="html"
+      [code]="localizedCode"
+    />
+  </section>
+
+  <section id="headless">
+    <h2>Unstyled and typed slots</h2>
+    <p>
+      Progress semantics and structural hooks remain while consumer classes own
+      every visual decision.
+    </p>
+    <div
+      class="demo-surface progress-bar-stack"
+      data-testid="progress-headless"
+    >
+      <neural-progress-bar
+        [value]="64"
+        [bufferValue]="82"
+        unstyled
+        progressClass="docs-headless-progress--custom"
+        [classes]="headlessClasses"
+        ariaLabel="Headless build progress"
+      />
+    </div>
+    <app-code-example
+      label="Headless ProgressBar"
+      language="html"
+      [code]="headlessCode"
+    />
+  </section>
+
+  <footer class="docs-page-next">
+    <span>Next component</span>
+    <a href="/docs/components/radio">Radio →</a>
+  </footer>
+</article>

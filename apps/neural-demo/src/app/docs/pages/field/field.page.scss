@@ -1,0 +1,46 @@
+.field-docs-page {
+  max-width: 58rem;
+}
+
+.field-demo-surface {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+}
+
+.field-state-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.docs-field-label {
+  color: #67e8f9;
+  font-weight: 800;
+}
+
+.docs-field-control {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0.45rem;
+  padding: 0.75rem;
+  color: #cffafe;
+  background: #164e63;
+  border: 1px solid #06b6d4;
+  border-radius: 0.6rem;
+  font: inherit;
+}
+
+.docs-field-hint {
+  display: block;
+  margin-top: 0.4rem;
+  color: #0891b2;
+}
+
+@media (max-width: 46rem) {
+  .field-state-grid {
+    grid-template-columns: 1fr;
+  }
+}

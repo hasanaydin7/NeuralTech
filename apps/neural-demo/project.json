@@ -1,0 +1,126 @@
+{
+  "name": "neural-demo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/neural-demo/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "dependsOn": [
+        {
+          "projects": ["neural-icons"],
+          "target": "build"
+        }
+      ],
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/neural-demo",
+        "browser": "apps/neural-demo/src/main.ts",
+        "tsConfig": "apps/neural-demo/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "allowedCommonJsDependencies": [
+          "buffer-image-size",
+          "prismjs",
+          "whatwg-mimetype"
+        ],
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/neural-demo/public"
+          },
+          {
+            "glob": "**/*.css",
+            "input": "dist/libs/neural-icons",
+            "output": "neural-icons"
+          }
+        ],
+        "styles": [
+          "apps/neural-demo/src/tailwind.css",
+          "libs/neural-icons/icons.css",
+          "libs/neural-ng/themes/neutral.css",
+          "libs/neural-editor/themes/neutral.css",
+          "libs/neural-ng/themes/experimental/glass.css",
+          "libs/neural-editor/themes/experimental/glass.css",
+          "libs/neural-ng/themes/experimental/mist.css",
+          "libs/neural-editor/themes/experimental/mist.css",
+          "libs/neural-ng/themes/experimental/futuristic.css",
+          "libs/neural-editor/themes/experimental/futuristic.css",
+          "apps/neural-demo/src/styles.scss"
+        ],
+        "server": "apps/neural-demo/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/neural-demo/src/server.ts"
+        },
+        "outputMode": "server"
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "850kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "30kb",
+              "maximumError": "32kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      }
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
+      "dependsOn": [
+        {
+          "projects": ["neural-icons"],
+          "target": "build"
+        }
+      ],
+      "defaultConfiguration": "development",
+      "options": {
+        "prebundle": {
+          "exclude": ["prismjs"]
+        }
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "neural-demo:build:production"
+        },
+        "development": {
+          "buildTarget": "neural-demo:build:development"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "watch": false
+      }
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "neural-demo:build",
+        "port": 4200,
+        "staticFilePath": "dist/apps/neural-demo/browser",
+        "spa": true
+      }
+    }
+  }
+}

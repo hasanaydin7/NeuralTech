@@ -1,0 +1,32 @@
+# NeuralNg Textarea
+
+> Native Angular 22+ multiline text enhancement at @neural-ng/core/textarea.
+
+RULES
+- Import NeuralTextarea from @neural-ng/core/textarea. TextareaComponent is a deprecated compatibility alias.
+- Generate <textarea neuralTextarea>, never <neural-textarea> and never an internal wrapper.
+- Keep rows, cols, name, placeholder, autocomplete, wrap, required, disabled, readonly, minlength, and maxlength on the native textarea.
+- Use a native label or another valid accessible name. Placeholder is not a label.
+- Use native input and change events. Do not invent valueChange or textChange.
+- Bind Angular Signal Forms [formField] directly to the native host. Do not add a ControlValueAccessor.
+- With [formField], define constraints such as maxLength in the Signal Forms schema; do not duplicate them as maxlength attributes on that host. FormField reflects the schema constraint to the native attribute.
+- Without [formField], native minlength and maxlength attributes remain valid.
+- autoResize defaults to false and uses CSS field-sizing: content.
+- When autoResize is true, rows and cols do not determine preferred size. Constrain growth with NeuralNg auto min/max block-size tokens or consumer CSS.
+- resizeMode accepts vertical, horizontal, both, or none and defaults to vertical.
+- autoResize takes precedence over resizeMode.
+- Use normal class and [class.*] bindings; there is no textareaClass input.
+- fluid affects width only in styled mode.
+- unstyled removes visual, fluid, resize, and auto-resize classes but preserves neural-textarea-root, data attributes, consumer classes, and native behavior.
+- Inside neural-field, Textarea inherits ID, descriptions, required, invalid, pending, disabled, readonly, fluid, and unstyled state.
+
+CANONICAL EXAMPLE
+<neural-field controlId="biography" fluid>
+  <label neuralFieldLabel>Biography</label>
+  <textarea
+    neuralTextarea
+    autoResize
+    [formField]="profileForm.biography"
+  ></textarea>
+  <small neuralFieldHint>Maximum 500 characters.</small>
+</neural-field>

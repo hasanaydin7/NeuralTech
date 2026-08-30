@@ -1,0 +1,40 @@
+name: Bug report
+description: Report reproducible incorrect behavior in a NeuralNg package.
+title: '[Bug]: '
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve NeuralNg. Do not report security vulnerabilities here; use a private security advisory.
+  - type: input
+    id: package
+    attributes:
+      label: Package and version
+      placeholder: '@neural-ng/core 0.1.0-beta.6'
+    validations:
+      required: true
+  - type: input
+    id: angular
+    attributes:
+      label: Angular, Node.js and browser versions
+      placeholder: 'Angular 22.0.4, Node.js 24.16.0, Chrome 140'
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Link a repository or provide the smallest code sample that reproduces the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Actual and expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: accessibility
+    attributes:
+      label: Accessibility, SSR or hydration impact
+      description: Include keyboard, screen-reader, server-rendering or hydration details when relevant.

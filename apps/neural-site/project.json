@@ -1,0 +1,115 @@
+{
+  "name": "neural-site",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/neural-site/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "dependsOn": [
+        {
+          "projects": ["neural-icons"],
+          "target": "build"
+        }
+      ],
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/neural-site",
+        "browser": "apps/neural-site/src/main.ts",
+        "tsConfig": "apps/neural-site/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/neural-site/public"
+          },
+          {
+            "glob": "**/*.css",
+            "input": "dist/libs/neural-icons",
+            "output": "neural-icons"
+          }
+        ],
+        "styles": [
+          "libs/neural-ng/themes/neutral.css",
+          "apps/neural-site/src/tailwind.css",
+          "libs/neural-icons/icons.css",
+          "apps/neural-site/src/styles.scss"
+        ],
+        "allowedCommonJsDependencies": [
+          "buffer-image-size",
+          "prismjs",
+          "whatwg-mimetype"
+        ],
+        "server": "apps/neural-site/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/neural-site/src/server.ts"
+        },
+        "outputMode": "server"
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "700kb",
+              "maximumError": "850kb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "24kb",
+              "maximumError": "28kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      }
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 5710,
+        "allowedHosts": ["localhost", "127.0.0.1", "[::1]"],
+        "prebundle": {
+          "exclude": ["prismjs"]
+        }
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "neural-site:build:production"
+        },
+        "development": {
+          "buildTarget": "neural-site:build:development"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "watch": false
+      }
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "neural-site:build",
+        "port": 5710,
+        "staticFilePath": "dist/apps/neural-site/browser",
+        "spa": true
+      }
+    }
+  }
+}

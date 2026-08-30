@@ -1,0 +1,73 @@
+{
+  "name": "neural-theme",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/neural-theme/src",
+  "projectType": "library",
+  "tags": ["scope:theme", "type:tooling"],
+  "targets": {
+    "contract": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node libs/neural-theme/scripts/generate-contract.mjs"
+      }
+    },
+    "contract-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node libs/neural-theme/scripts/generate-contract.mjs --check"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/libs/neural-theme"],
+      "options": {
+        "commands": [
+          "node libs/neural-theme/scripts/generate-contract.mjs --check",
+          "npx tsc -p libs/neural-theme/tsconfig.lib.json",
+          "node libs/neural-theme/scripts/prepare-package.mjs"
+        ],
+        "parallel": false
+      }
+    },
+    "validate-preset": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "commands": [
+          "node dist/libs/neural-theme/src/cli.js validate --config libs/neural-theme/assets/presets/neutral.recipe.json",
+          "node dist/libs/neural-theme/src/cli.js validate --config libs/neural-theme/assets/presets/glass.recipe.json",
+          "node dist/libs/neural-theme/src/cli.js validate --config libs/neural-theme/assets/presets/mist.recipe.json",
+          "node dist/libs/neural-theme/src/cli.js validate --config libs/neural-theme/assets/presets/futuristic.recipe.json"
+        ],
+        "parallel": false
+      }
+    },
+    "package-test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["quality-check"],
+      "options": {
+        "command": "node libs/neural-theme/scripts/test-package.mjs"
+      }
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      },
+      "dependsOn": ["package-test"]
+    },
+    "quality-check": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "node libs/neural-theme/scripts/check-quality.mjs"
+      }
+    }
+  },
+  "release": {
+    "version": {
+      "manifestRootsToUpdate": ["dist/{projectRoot}"],
+      "currentVersionResolver": "git-tag",
+      "fallbackCurrentVersionResolver": "disk"
+    }
+  }
+}

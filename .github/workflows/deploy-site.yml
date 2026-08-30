@@ -1,0 +1,69 @@
+name: Deploy NeuralNg site
+
+on:
+  workflow_run:
+    workflows: [CI]
+    branches: [main]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: neural-site-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy verified landing artifact
+    if: >-
+      ${{ github.event.workflow_run.conclusion == 'success' &&
+          github.event.workflow_run.event == 'push' &&
+          !contains(github.event.workflow_run.head_commit.message, '[skip deploy]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: production
+    steps:
+      - name: Download verified production artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: neural-site-production
+          path: artifact
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Configure dedicated deploy key
+        env:
+          DEPLOY_KEY: ${{ secrets.NEURALNG_DEPLOY_KEY }}
+          DEPLOY_HOST: ${{ vars.NEURALNG_DEPLOY_HOST }}
+          DEPLOY_HOST_KEY: ${{ vars.NEURALNG_DEPLOY_HOST_KEY }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/neuralng_deploy
+          chmod 600 ~/.ssh/neuralng_deploy
+          printf '%s %s\n' "$DEPLOY_HOST" "$DEPLOY_HOST_KEY" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Upload immutable release
+        env:
+          RELEASE_SHA: ${{ github.event.workflow_run.head_sha }}
+          DEPLOY_HOST: ${{ vars.NEURALNG_DEPLOY_HOST }}
+        run: |
+          tar -C artifact -czf "neural-site-${RELEASE_SHA}.tar.gz" .
+          scp -i ~/.ssh/neuralng_deploy \
+            -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes \
+            "neural-site-${RELEASE_SHA}.tar.gz" \
+            "neuralng-deploy@${DEPLOY_HOST}:/opt/neuralng/incoming/"
+
+      - name: Activate healthy release
+        env:
+          RELEASE_SHA: ${{ github.event.workflow_run.head_sha }}
+          DEPLOY_HOST: ${{ vars.NEURALNG_DEPLOY_HOST }}
+        run: |
+          ssh -i ~/.ssh/neuralng_deploy \
+            -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes \
+            "neuralng-deploy@${DEPLOY_HOST}" \
+            "/opt/neuralng/bin/deploy-neuralng ${RELEASE_SHA}"

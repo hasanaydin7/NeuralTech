@@ -1,0 +1,31 @@
+<div
+  class="site-shell"
+  [attr.data-neural-theme]="siteTheme.theme()"
+  [attr.data-site-primary]="siteTheme.primary()"
+  [attr.data-site-surface]="siteTheme.surface()"
+  [style.--site-primary-base]="siteTheme.primaryColor()"
+  [style.--neural-color-surface-0]="siteTheme.surfaceScale()[0]"
+  [style.--neural-color-surface-50]="siteTheme.surfaceScale()[50]"
+  [style.--neural-color-surface-100]="siteTheme.surfaceScale()[100]"
+  [style.--neural-color-surface-200]="siteTheme.surfaceScale()[200]"
+  [style.--neural-color-surface-300]="siteTheme.surfaceScale()[300]"
+  [style.--neural-color-surface-400]="siteTheme.surfaceScale()[400]"
+  [style.--neural-color-surface-500]="siteTheme.surfaceScale()[500]"
+  [style.--neural-color-surface-600]="siteTheme.surfaceScale()[600]"
+  [style.--neural-color-surface-700]="siteTheme.surfaceScale()[700]"
+  [style.--neural-color-surface-800]="siteTheme.surfaceScale()[800]"
+  [style.--neural-color-surface-900]="siteTheme.surfaceScale()[900]"
+  [style.--neural-color-surface-950]="siteTheme.surfaceScale()[950]"
+>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <app-site-header />
+
+  <div id="main-content" class="route-content" tabindex="-1">
+    <router-outlet />
+  </div>
+
+  <footer class="site-footer">
+    <span>NeuralNg · Angular 22+ · v0.1.0-beta.0</span>
+    <a routerLink="/docs/getting-started/installation">Documentation</a>
+  </footer>
+</div>

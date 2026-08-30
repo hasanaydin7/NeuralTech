@@ -1,0 +1,983 @@
+:where(.neural-table-root) {
+  display: block;
+  min-width: 0;
+  color: var(--neural-table-color, var(--neural-color-text, #172033));
+  font: inherit;
+}
+
+:where(.neural-table-scroll-root) {
+  position: relative;
+  isolation: isolate;
+  max-width: 100%;
+  overflow: auto;
+  border-radius: var(--neural-table-radius, 0.75rem);
+}
+
+:where(.neural-table-scroll-base) {
+  border: var(
+    --neural-table-border,
+    1px solid var(--neural-color-border, #d7dfeb)
+  );
+  background: var(--neural-table-background, var(--neural-color-surface, #fff));
+  box-shadow: var(--neural-table-shadow, none);
+  scrollbar-color: var(
+      --neural-table-scrollbar-color,
+      var(--neural-color-border-hover, #cbd5e1)
+    )
+    transparent;
+  scrollbar-width: thin;
+}
+
+:where(.neural-table-scroll-base::-webkit-scrollbar) {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+:where(.neural-table-scroll-base::-webkit-scrollbar-thumb) {
+  background: var(
+    --neural-table-scrollbar-color,
+    var(--neural-color-border-hover, #cbd5e1)
+  );
+  background-clip: padding-box;
+  border: 0.1875rem solid transparent;
+  border-radius: 999px;
+}
+
+:where(.neural-table-table-root) {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+  text-align: start;
+}
+
+:where(.neural-table-table-root[data-neural-resizable='true']) {
+  table-layout: fixed;
+}
+
+:where(.neural-table-table-base) {
+  font-size: var(--neural-table-font-size, 0.925rem);
+}
+
+:where(.neural-table-caption-root) {
+  text-align: start;
+}
+
+:where(.neural-table-caption-base) {
+  padding: var(--neural-table-caption-padding, 1rem);
+  color: var(--neural-table-caption-color, inherit);
+  background: var(--neural-table-caption-background, transparent);
+  border-block-end: var(--neural-table-row-border, 1px solid #d7dfeb);
+  font-weight: 700;
+}
+
+:where(.neural-table-header-root) {
+  position: relative;
+  z-index: 2;
+}
+
+:where(.neural-table-sticky-header-root) {
+  position: sticky;
+  inset-block-start: 0;
+}
+
+:where(
+  .neural-table-header-cell-root,
+  .neural-table-cell-root,
+  .neural-table-footer-cell-root
+) {
+  box-sizing: border-box;
+  height: var(--neural-table-row-height, 3.5rem);
+  padding: var(--neural-table-cell-padding, 0.85rem 1rem);
+  text-align: start;
+  vertical-align: middle;
+}
+
+:where(
+  .neural-table-header-group-cell-root,
+  .neural-table-footer-group-cell-root
+) {
+  box-sizing: border-box;
+  padding: var(--neural-table-group-cell-padding, 0.65rem 1rem);
+  text-align: start;
+  vertical-align: middle;
+}
+
+:where(.neural-table-header-cell-root) {
+  position: relative;
+}
+
+:where(.neural-table-resize-handle-root) {
+  position: absolute;
+  z-index: 3;
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: 0.75rem;
+  cursor: col-resize;
+  touch-action: none;
+  user-select: none;
+}
+
+:where(.neural-table-resize-handle-root:focus-visible) {
+  outline: 2px solid var(--neural-table-focus-color, #3b82f6);
+  outline-offset: -2px;
+}
+
+:where(.neural-table-resize-handle-base)::after {
+  position: absolute;
+  inset-block: 18%;
+  inset-inline-end: 0;
+  width: 0.125rem;
+  background: var(--neural-table-resize-handle-color, transparent);
+  border-radius: 999px;
+  content: '';
+}
+
+:where(.neural-table-reorder-handle-root) {
+  position: absolute;
+  z-index: 4;
+  inset-block-start: 50%;
+  inset-inline-start: 0.4rem;
+  display: inline-grid;
+  inline-size: 1.5rem;
+  block-size: 1.75rem;
+  padding: 0;
+  transform: translateY(-50%);
+  place-items: center;
+  cursor: grab;
+  touch-action: none;
+}
+
+:where(.neural-table-reorder-handle-root:active) {
+  cursor: grabbing;
+}
+
+:where(.neural-table-reorder-handle-base) {
+  color: var(
+    --neural-table-reorder-handle-color,
+    var(--neural-table-muted-color, #68758a)
+  );
+  background: transparent;
+  border: 0;
+  border-radius: 0.3rem;
+  font: inherit;
+  opacity: 0.62;
+}
+
+:where(.neural-table-reorder-handle-base)::before {
+  display: block;
+  inline-size: 0.75rem;
+  block-size: 1rem;
+  background:
+    radial-gradient(
+      circle at 25% 20%,
+      currentColor 0 0.1rem,
+      transparent 0.11rem
+    ),
+    radial-gradient(
+      circle at 75% 20%,
+      currentColor 0 0.1rem,
+      transparent 0.11rem
+    ),
+    radial-gradient(
+      circle at 25% 50%,
+      currentColor 0 0.1rem,
+      transparent 0.11rem
+    ),
+    radial-gradient(
+      circle at 75% 50%,
+      currentColor 0 0.1rem,
+      transparent 0.11rem
+    ),
+    radial-gradient(
+      circle at 25% 80%,
+      currentColor 0 0.1rem,
+      transparent 0.11rem
+    ),
+    radial-gradient(
+      circle at 75% 80%,
+      currentColor 0 0.1rem,
+      transparent 0.11rem
+    );
+  content: '';
+}
+
+:where(
+  .neural-table-reorder-handle-base:hover:not(:disabled),
+  .neural-table-reorder-handle-base:focus-visible
+) {
+  color: var(
+    --neural-table-reorder-handle-active-color,
+    var(--neural-table-accent, #2563eb)
+  );
+  background: var(--neural-table-sort-hover-background, transparent);
+  opacity: 1;
+}
+
+:where(.neural-table-reorder-handle-root:focus-visible) {
+  outline: 2px solid var(--neural-table-focus-color, #3b82f6);
+  outline-offset: 1px;
+}
+
+:where(.neural-table-header-cell-root:has(.neural-table-reorder-handle-root)) {
+  padding-inline-start: 2.35rem;
+}
+
+:where(.neural-table-drop-before-base) {
+  box-shadow: inset 0.2rem 0 0
+    var(
+      --neural-table-drop-indicator-color,
+      var(--neural-table-accent, #2563eb)
+    );
+}
+
+:where(.neural-table-drop-after-base) {
+  box-shadow: inset -0.2rem 0 0
+    var(
+      --neural-table-drop-indicator-color,
+      var(--neural-table-accent, #2563eb)
+    );
+}
+
+:where(.neural-table-live-region-root) {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:where(
+  .neural-table-resize-handle-base:hover::after,
+  .neural-table-resize-handle-base:focus-visible::after
+) {
+  background: var(
+    --neural-table-resize-handle-active-color,
+    var(--neural-table-accent, #2563eb)
+  );
+}
+
+:where(.neural-table-root[data-neural-density='compact']) {
+  --neural-table-cell-padding: 0.5rem 0.75rem;
+  --neural-table-row-height: 2.75rem;
+}
+
+:where(.neural-table-root[data-neural-density='spacious']) {
+  --neural-table-cell-padding: 1.15rem 1.25rem;
+  --neural-table-row-height: 4.25rem;
+}
+
+:where(.neural-table-header-cell-base) {
+  color: var(--neural-table-header-color, #33415c);
+  background: var(--neural-table-header-background, #f6f8fb);
+  border-block-end: var(--neural-table-row-border, 1px solid #d7dfeb);
+  font-weight: 700;
+  letter-spacing: var(--neural-table-header-letter-spacing, -0.005em);
+  white-space: nowrap;
+}
+
+:where(.neural-table-header-group-cell-base) {
+  color: var(
+    --neural-table-group-header-color,
+    var(--neural-table-header-color, #33415c)
+  );
+  background: var(
+    --neural-table-group-header-background,
+    var(--neural-table-header-background, #f6f8fb)
+  );
+  border-block-end: var(--neural-table-row-border, 1px solid #d7dfeb);
+  font-size: var(--neural-table-group-header-font-size, 0.78rem);
+  font-weight: 750;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+:where(.neural-table-filter-cell-root) {
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+:where(.neural-table-filter-cell-base) {
+  padding: var(--neural-table-filter-cell-padding, 0.55rem 0.75rem);
+  background: var(
+    --neural-table-filter-background,
+    var(--neural-table-header-background, #f6f8fb)
+  );
+  border-block-end: var(--neural-table-row-border, 1px solid #d7dfeb);
+  font-weight: 400;
+}
+
+:where(.neural-table-filter-control-root) {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+}
+
+:where(.neural-table-filter-control-base) {
+  min-height: var(--neural-table-filter-control-height, 2.25rem);
+  padding: var(--neural-table-filter-control-padding, 0.42rem 0.6rem);
+  color: var(--neural-table-filter-color, var(--neural-color-text, #172033));
+  background: var(
+    --neural-table-filter-control-background,
+    var(--neural-color-surface, #fff)
+  );
+  border: var(
+    --neural-table-filter-control-border,
+    1px solid var(--neural-color-border, #d7dfeb)
+  );
+  border-radius: var(--neural-table-filter-control-radius, 0.45rem);
+  outline: none;
+}
+
+:where(.neural-table-filter-control-base::placeholder) {
+  color: var(
+    --neural-table-filter-placeholder-color,
+    var(--neural-table-muted-color, #68758a)
+  );
+  opacity: 0.78;
+}
+
+:where(.neural-table-filter-control-base:hover:not(:disabled)) {
+  border-color: var(
+    --neural-table-filter-control-border-hover,
+    var(--neural-color-border-hover, #aeb9ca)
+  );
+}
+
+:where(.neural-table-filter-control-base:focus-visible) {
+  border-color: var(--neural-table-focus-color, #3b82f6);
+  box-shadow: 0 0 0 0.2rem
+    color-mix(
+      in srgb,
+      var(--neural-table-focus-color, #3b82f6) 18%,
+      transparent
+    );
+}
+
+:where(.neural-table-filter-control-base:disabled) {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+:where(.neural-table-filter-range-root) {
+  display: flex;
+  align-items: center;
+  gap: var(--neural-table-filter-range-gap, 0.35rem);
+}
+
+:where(.neural-table-cell-base) {
+  background: var(--neural-table-cell-background, transparent);
+  border-block-end: var(--neural-table-row-border, 1px solid #e6ebf2);
+  transition:
+    color var(--neural-table-transition-duration, 150ms) ease,
+    box-shadow var(--neural-table-transition-duration, 150ms) ease;
+}
+
+:where(.neural-table-row-root[data-neural-selectable='true']) {
+  cursor: pointer;
+}
+
+:where(.neural-table-disabled-row-base) {
+  cursor: not-allowed;
+  opacity: var(--neural-table-disabled-row-opacity, 0.52);
+}
+
+:where(.neural-table-focused-row-base:focus-visible) {
+  outline: none;
+}
+
+:where(.neural-table-focused-row-base:focus-visible > .neural-table-cell-base) {
+  box-shadow: inset 0 0 0 0.125rem
+    var(
+      --neural-table-row-focus-color,
+      var(--neural-table-focus-color, #3b82f6)
+    );
+}
+
+:where(.neural-table-row-root:last-child > .neural-table-cell-root) {
+  border-block-end: 0;
+}
+
+:where(.neural-table-table-root[data-neural-striped='true'])
+  .neural-table-row-root:nth-child(even):not([data-neural-selected='true'])
+  > .neural-table-cell-base:not(.neural-table-sticky-base) {
+  background: var(--neural-table-stripe-background, #f9fafc);
+}
+
+:where(
+  .neural-table-table-root[data-neural-striped='true']
+    .neural-table-row-root:nth-child(even):not([data-neural-selected='true'])
+) {
+  --neural-table-sticky-background: var(
+    --neural-table-sticky-stripe-background,
+    #f9fafc
+  );
+}
+
+:where(.neural-table-table-root[data-neural-hoverable='true'])
+  .neural-table-row-root:hover:not([data-neural-selected='true']):not(
+    [aria-disabled='true']
+  )
+  > .neural-table-cell-base:not(.neural-table-sticky-base) {
+  background: var(--neural-table-hover-background, #f2f6fc);
+}
+
+:where(
+  .neural-table-table-root[data-neural-hoverable='true']
+    .neural-table-row-root:hover:not([data-neural-selected='true']):not(
+      [aria-disabled='true']
+    )
+) {
+  --neural-table-sticky-background: var(
+    --neural-table-hover-background,
+    #f2f6fc
+  );
+}
+
+:where(.neural-table-row-root[data-neural-selected='true']) {
+  --neural-table-sticky-background: var(
+    --neural-table-selected-background,
+    #eaf2ff
+  );
+}
+
+:where(.neural-table-table-root[data-neural-gridlines='true'])
+  :is(.neural-table-header-cell-base, .neural-table-cell-base)
+  + :is(.neural-table-header-cell-base, .neural-table-cell-base) {
+  border-inline-start: var(--neural-table-row-border, 1px solid #d7dfeb);
+}
+
+:where([data-neural-align='center']) {
+  text-align: center;
+}
+
+:where([data-neural-align='end']) {
+  text-align: end;
+}
+
+:where(.neural-table-sort-button-root) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-weight: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  border-radius: var(--neural-table-sort-button-radius, 0.375rem);
+  transition:
+    color var(--neural-table-transition-duration, 150ms) ease,
+    background-color var(--neural-table-transition-duration, 150ms) ease;
+}
+
+:where(.neural-table-sort-button-base:hover:not(:disabled)) {
+  color: var(
+    --neural-table-sort-hover-color,
+    var(--neural-table-accent, #2563eb)
+  );
+}
+
+:where(.neural-table-header-cell-root[aria-sort]) {
+  color: var(--neural-table-sorted-color, var(--neural-table-accent, #2563eb));
+}
+
+:where(.neural-table-sort-button-root:focus-visible) {
+  outline: 2px solid var(--neural-table-focus-color, #3b82f6);
+  outline-offset: 3px;
+  border-radius: 0.2rem;
+}
+
+:where(.neural-table-sort-icon-root) {
+  position: relative;
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  margin-inline-start: auto;
+  color: var(
+    --neural-table-sort-icon-color,
+    var(--neural-color-text-muted, #64748b)
+  );
+  font-size: 1rem;
+  opacity: 0.72;
+  transition:
+    color var(--neural-table-transition-duration, 150ms) ease,
+    opacity var(--neural-table-transition-duration, 150ms) ease,
+    transform var(--neural-table-transition-duration, 150ms) ease;
+}
+
+:where(.neural-table-sort-icon-base:not([data-neural-sort-direction='none'])) {
+  color: var(--neural-table-sorted-color, var(--neural-table-accent, #2563eb));
+  opacity: 1;
+}
+
+:where(.neural-table-control-column-root) {
+  width: 3rem;
+}
+
+:where(.neural-table-selection-cell-root, .neural-table-expansion-cell-root) {
+  width: 3rem;
+  text-align: center;
+}
+
+:where(.neural-table-selection-control-base) {
+  appearance: none;
+  position: relative;
+  display: inline-grid;
+  place-content: center;
+  inline-size: var(--neural-table-control-size, 1.125rem);
+  block-size: var(--neural-table-control-size, 1.125rem);
+  margin: 0;
+  color: #fff;
+  background: var(
+    --neural-table-control-background,
+    var(--neural-color-surface, #fff)
+  );
+  border: var(
+    --neural-table-control-border,
+    1px solid var(--neural-color-border-hover, #aeb9ca)
+  );
+  border-radius: var(--neural-table-control-radius, 0.32rem);
+  cursor: pointer;
+  transition:
+    background-color var(--neural-table-transition-duration, 150ms) ease,
+    border-color var(--neural-table-transition-duration, 150ms) ease,
+    box-shadow var(--neural-table-transition-duration, 150ms) ease;
+}
+
+:where(.neural-table-selection-control-base)::before {
+  content: '';
+  inline-size: 0.5rem;
+  block-size: 0.28rem;
+  border-inline-start: 0.11rem solid currentColor;
+  border-block-end: 0.11rem solid currentColor;
+  opacity: 0;
+  transform: translateY(-0.05rem) rotate(-45deg) scale(0.65);
+  transition:
+    opacity var(--neural-table-transition-duration, 150ms) ease,
+    transform var(--neural-table-transition-duration, 150ms) ease;
+}
+
+:where(
+  .neural-table-selection-control-base:checked,
+  .neural-table-selection-control-base:indeterminate
+) {
+  background: var(--neural-table-accent, #2563eb);
+  border-color: var(--neural-table-accent, #2563eb);
+}
+
+:where(.neural-table-selection-control-base:checked)::before {
+  opacity: 1;
+  transform: translateY(-0.05rem) rotate(-45deg) scale(1);
+}
+
+:where(.neural-table-selection-control-base:indeterminate)::before {
+  inline-size: 0.5rem;
+  block-size: 0;
+  border-inline-start: 0;
+  border-block-end-width: 0.11rem;
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+:where(.neural-table-selection-control-base[type='radio']) {
+  border-radius: 50%;
+}
+
+:where(.neural-table-selection-control-base[type='radio'])::before {
+  inline-size: 0.45rem;
+  block-size: 0.45rem;
+  background: currentColor;
+  border: 0;
+  border-radius: 50%;
+  transform: scale(0.4);
+}
+
+:where(.neural-table-selection-control-base[type='radio']:checked)::before {
+  transform: scale(1);
+}
+
+:where(.neural-table-selection-control-base:hover:not(:disabled)) {
+  border-color: var(--neural-table-accent, #2563eb);
+}
+
+:where(.neural-table-selection-control-base:focus-visible) {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem
+    color-mix(
+      in srgb,
+      var(--neural-table-focus-color, #3b82f6) 22%,
+      transparent
+    );
+}
+
+:where(.neural-table-selection-control-base:disabled) {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+:where(.neural-table-selection-proxy-root) {
+  display: none !important;
+}
+
+:where(.neural-table-selection-radio-group-root),
+:where(.neural-table-selection-radio-option-root) {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+}
+
+:where(.neural-table-expansion-button-base) {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  color: inherit;
+  background: var(--neural-table-expansion-background, transparent);
+  border: var(--neural-table-expansion-border, 1px solid transparent);
+  border-radius: var(--neural-table-expansion-radius, 0.5rem);
+  cursor: pointer;
+  transition:
+    color var(--neural-table-transition-duration, 150ms) ease,
+    background-color var(--neural-table-transition-duration, 150ms) ease,
+    border-color var(--neural-table-transition-duration, 150ms) ease,
+    box-shadow var(--neural-table-transition-duration, 150ms) ease;
+}
+
+:where(.neural-table-expansion-button-base:hover:not(:disabled)) {
+  color: var(--neural-table-accent, #2563eb);
+  background: var(
+    --neural-table-expansion-background-hover,
+    var(--neural-color-surface-hover, #eef2f7)
+  );
+  border-color: var(
+    --neural-table-expansion-border-hover,
+    var(--neural-color-border, #d7dfeb)
+  );
+}
+
+:where(.neural-table-expansion-button-base:focus-visible) {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem
+    color-mix(
+      in srgb,
+      var(--neural-table-focus-color, #3b82f6) 22%,
+      transparent
+    );
+}
+
+:where(.neural-table-expansion-icon-root) {
+  display: block;
+  inline-size: 0.45rem;
+  block-size: 0.45rem;
+  border-inline-end: 0.1rem solid currentColor;
+  border-block-end: 0.1rem solid currentColor;
+  font-size: 0;
+  transform: rotate(-45deg);
+  transition: transform var(--neural-table-transition-duration, 150ms) ease;
+}
+
+:where(
+  .neural-table-expansion-button-root[aria-expanded='true']
+    .neural-table-expansion-icon-root
+) {
+  transform: rotate(45deg) translate(-0.08rem, -0.08rem);
+}
+
+:where(.neural-table-expansion-content-base) {
+  padding: var(--neural-table-expansion-padding, 1rem 1.25rem);
+  background: var(--neural-table-expansion-content-background, #f8fafc);
+  border-block-end: var(--neural-table-row-border, 1px solid #d7dfeb);
+  box-shadow: inset 0 0.1875rem 0.75rem
+    var(--neural-table-expansion-shadow, transparent);
+}
+
+:where(.neural-table-group-header-cell-base) {
+  padding: var(--neural-table-group-header-padding, 0.75rem 1rem);
+  color: var(--neural-table-group-header-color, #26324a);
+  background: var(--neural-table-group-header-background, #eef3f9);
+  border-block: var(--neural-table-row-border, 1px solid #d7dfeb);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: start;
+}
+
+:where(.neural-table-group-toggle-base) {
+  display: inline-flex;
+  align-items: center;
+  inline-size: 100%;
+  gap: 0.625rem;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+:where(.neural-table-group-toggle-base:focus-visible) {
+  outline: none;
+  border-radius: 0.375rem;
+  box-shadow: 0 0 0 0.2rem
+    color-mix(
+      in srgb,
+      var(--neural-table-focus-color, #3b82f6) 22%,
+      transparent
+    );
+}
+
+:where(.neural-table-group-toggle-icon-root) {
+  display: inline-block;
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  border-inline-end: 0.1rem solid currentColor;
+  border-block-end: 0.1rem solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform var(--neural-table-transition-duration, 150ms) ease;
+}
+
+:where(
+  .neural-table-group-toggle-root[aria-expanded='true']
+    .neural-table-group-toggle-icon-root
+) {
+  transform: rotate(45deg) translate(-0.08rem, -0.08rem);
+}
+
+:where(.neural-table-group-count-root) {
+  min-inline-size: 1.625rem;
+  margin-inline-start: auto;
+  padding: 0.125rem 0.45rem;
+  color: var(--neural-table-group-count-color, #5d6b82);
+  background: var(--neural-table-group-count-background, #fff);
+  border: var(--neural-table-row-border, 1px solid #d7dfeb);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  text-align: center;
+}
+
+:where(.neural-table-group-footer-cell-base) {
+  padding: var(--neural-table-group-footer-padding, 0.65rem 1rem);
+  color: var(--neural-table-group-footer-color, #526078);
+  background: var(--neural-table-group-footer-background, #f8fafc);
+  border-block-end: var(--neural-table-row-border, 1px solid #d7dfeb);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+:where(.neural-table-cell-root[rowspan]) {
+  vertical-align: middle;
+  background: var(--neural-table-rowspan-background, #f8fafc);
+  border-inline-end: var(--neural-table-row-border, 1px solid #d7dfeb);
+  font-weight: 700;
+}
+
+:where(.neural-table-state-cell-root) {
+  padding: var(--neural-table-state-padding, 3rem 1rem);
+  text-align: center;
+}
+
+:where(.neural-table-skeleton-cell-base) {
+  pointer-events: none;
+}
+
+:where(.neural-table-skeleton-line-base) {
+  display: block;
+  inline-size: 78%;
+  block-size: 0.75rem;
+  overflow: hidden;
+  background: var(
+    --neural-table-skeleton-background,
+    color-mix(in srgb, var(--neural-color-text, #1d293d) 10%, transparent)
+  );
+  border-radius: 999px;
+  animation: neural-table-skeleton-pulse 1.35s ease-in-out infinite;
+}
+
+:where(.neural-table-sr-only-root) {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes neural-table-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.neural-table-skeleton-line-base) {
+    animation: none;
+  }
+}
+
+:where(.neural-table-footer-cell-base) {
+  color: var(
+    --neural-table-footer-color,
+    var(--neural-table-header-color, #33415c)
+  );
+  background: var(
+    --neural-table-footer-background,
+    var(--neural-table-header-background, #f6f8fb)
+  );
+  border-block-start: var(--neural-table-row-border, 1px solid #d7dfeb);
+  font-weight: 700;
+}
+
+:where(.neural-table-footer-group-cell-base) {
+  color: var(
+    --neural-table-footer-group-color,
+    var(--neural-table-muted-color, #68758a)
+  );
+  background: var(
+    --neural-table-footer-group-background,
+    var(--neural-table-footer-background, #f6f8fb)
+  );
+  border-block-start: var(--neural-table-row-border, 1px solid #d7dfeb);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+:where(.neural-table-sticky-footer-root) {
+  position: sticky;
+  z-index: 2;
+  inset-block-end: 0;
+}
+
+:where(.neural-table-state-base) {
+  color: var(--neural-table-muted-color, #68758a);
+}
+
+:where(.neural-table-sticky-root) {
+  position: sticky;
+  z-index: 1;
+}
+
+:where(.neural-table-sticky-base) {
+  background: var(--neural-table-sticky-background, #fff);
+}
+
+:where(.neural-table-header-cell-base.neural-table-sticky-base) {
+  background: var(--neural-table-header-background, #f6f8fb);
+}
+
+:where(.neural-table-filter-cell-base.neural-table-sticky-base) {
+  background: var(
+    --neural-table-filter-background,
+    var(--neural-table-header-background, #f6f8fb)
+  );
+}
+
+:where(
+  .neural-table-row-root[data-neural-selected='true']
+    > .neural-table-cell-base:not(.neural-table-sticky-base)
+) {
+  background: var(--neural-table-selected-background, #eaf2ff);
+}
+
+:where(
+  .neural-table-row-root[data-neural-selected='true']
+    > .neural-table-cell-base:first-child
+) {
+  box-shadow: inset 0.1875rem 0 0
+    var(--neural-table-selected-indicator, var(--neural-table-accent, #2563eb));
+}
+
+:where(.neural-table-sticky-start-base) {
+  box-shadow: var(--neural-table-sticky-start-shadow, none);
+}
+
+:where(.neural-table-sticky-end-base) {
+  box-shadow: var(--neural-table-sticky-end-shadow, none);
+}
+
+:where(.neural-table-sticky-start-root) {
+  inset-inline-start: 0;
+}
+
+:where(.neural-table-sticky-end-root) {
+  inset-inline-end: 0;
+}
+
+:where(.neural-table-editable-cell-base) {
+  cursor: text;
+  transition:
+    background-color var(--neural-table-transition-duration, 150ms) ease,
+    box-shadow var(--neural-table-transition-duration, 150ms) ease;
+}
+
+:where(.neural-table-editable-cell-base:hover) {
+  background: var(--neural-table-editable-hover-background, #f8fafc);
+}
+
+:where(.neural-table-editable-cell-base:focus-visible),
+:where(.neural-table-editing-cell-base) {
+  position: relative;
+  z-index: 2;
+  outline: none;
+  background: var(--neural-table-editing-background, #fff);
+  box-shadow: inset 0 0 0 0.125rem
+    var(
+      --neural-table-editing-border-color,
+      var(--neural-table-accent, #2563eb)
+    );
+}
+
+:where(.neural-table-readonly-cell-base) {
+  color: var(--neural-table-readonly-color, var(--neural-table-muted-color));
+  cursor: default;
+}
+
+:where(.neural-table-disabled-cell-base) {
+  color: var(--neural-table-readonly-color, var(--neural-table-muted-color));
+  cursor: not-allowed;
+  opacity: var(--neural-table-disabled-cell-opacity, 0.55);
+}
+
+:where(.neural-table-editor-base) {
+  display: grid;
+  min-inline-size: 8rem;
+  gap: 0.35rem;
+}
+
+:where(.neural-table-editor-base > :not(.neural-table-edit-error-root)) {
+  min-inline-size: 0;
+  inline-size: 100%;
+}
+
+:where(.neural-table-editor-base[aria-busy='true']) {
+  cursor: progress;
+  opacity: var(--neural-table-edit-loading-opacity, 0.68);
+  pointer-events: none;
+}
+
+:where(.neural-table-edit-error-base) {
+  color: var(--neural-table-edit-error-color, #b42318);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+:where(.neural-table-editing-row-base > .neural-table-cell-base) {
+  background: var(--neural-table-editing-row-background, #f8fbff);
+}

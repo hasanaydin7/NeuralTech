@@ -1,0 +1,555 @@
+<article class="mx-auto max-w-[96rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="tag-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Tag documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt-tag"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-fuchsia-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full border border-fuchsia-400/20 bg-fuchsia-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-fuchsia-500"
+                    >MISC</span
+                  >
+                  <span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Tag
+                </h1>
+                <p
+                  class="mt-4 max-w-4xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  A compact classification and status primitive with semantic
+                  severities, icons, controlled removal and complete visual
+                  ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Text-first semantics</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Controlled removal</span
+                  >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical standalone class from the granular Tag
+                entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Basic usage</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use <code>value</code> for plain classifications. Rounded pills
+                are the default, while rectangular tags remain one input away.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="basic.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-3"
+                >
+                  <neural-tag value="Angular" />
+                  <neural-tag value="Signals" severity="primary" />
+                  <neural-tag value="Headless" [rounded]="false" />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="severities" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Semantic severities</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Primary follows the runtime palette. Secondary and semantic
+                states follow the active surface and color mode.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="severity.html"
+                language="html"
+                [code]="severityCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-3"
+                >
+                  <neural-tag value="Primary" severity="primary" />
+                  <neural-tag value="Secondary" severity="secondary" />
+                  <neural-tag value="Neutral" severity="neutral" />
+                  <neural-tag value="Info" severity="info" />
+                  <neural-tag value="Success" severity="success" />
+                  <neural-tag value="Warning" severity="warning" />
+                  <neural-tag value="Error" severity="error" />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="sizes" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Sizes and shapes</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Human-readable size values are independent from the rounded
+                shape.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="sizes.html"
+                language="html"
+                [code]="sizeCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-3"
+                >
+                  <neural-tag value="Small" size="small" />
+                  <neural-tag value="Medium" size="medium" />
+                  <neural-tag value="Large" size="large" />
+                  <neural-tag value="Square corners" [rounded]="false" />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="content" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Icons and projected content</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>iconClass</code> handles the common case. Omit
+                <code>value</code> to project arbitrary Angular markup.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="content.html"
+                language="html"
+                [code]="contentCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-3"
+                >
+                  <neural-tag value="Angular" iconClass="nt nt-brand-angular" />
+                  <neural-tag
+                    value="Verified"
+                    iconClass="nt nt-circle-check"
+                    severity="success"
+                  />
+                  <neural-tag severity="info"
+                    ><strong>Projected</strong><span>content</span></neural-tag
+                  >
+                </div>
+              </code-view>
+            </section>
+
+            <section id="removable" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Controlled removal</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Tag emits intent without mutating the owning collection. This
+                keeps filters and server state deterministic.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="filters.html"
+                language="html"
+                [code]="removableCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="grid w-full justify-items-center gap-4"
+                >
+                  <div
+                    class="flex min-h-8 flex-wrap items-center justify-center gap-2"
+                  >
+                    @for (filter of filters(); track filter) {
+                    <neural-tag
+                      [value]="filter"
+                      removable
+                      [removeLabel]="'Remove ' + filter + ' filter'"
+                      (removed)="removeFilter($event)"
+                    />
+                    } @empty {
+                    <span class="text-sm text-[var(--site-text-muted)]"
+                      >No active filters.</span
+                    >
+                    }
+                  </div>
+                  <neural-button
+                    label="Restore filters"
+                    variant="text"
+                    size="small"
+                    (clicked)="resetFilters()"
+                  />
+                  <p
+                    class="text-xs text-[var(--site-text-muted)]"
+                    aria-live="polite"
+                  >
+                    {{ lastEvent() }}
+                  </p>
+                </div>
+              </code-view>
+            </section>
+
+            <section id="states" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Removal states</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Disabled tags remain visible and classified but cannot emit
+                removal. The removal icon is replaceable.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="states.html"
+                language="html"
+                [code]="statesCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full flex-wrap items-center justify-center gap-3"
+                >
+                  <neural-tag value="Available" removable severity="success" />
+                  <neural-tag
+                    value="Locked"
+                    removable
+                    disabled
+                    severity="secondary"
+                  />
+                  <neural-tag
+                    value="Custom remove icon"
+                    removable
+                    removeIconClass="nt nt-trash"
+                    severity="error"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Structural hooks and removal behavior remain while Tailwind owns
+                every visible decision.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="flex w-full items-center justify-center"
+                >
+                  <neural-tag
+                    value="Agentic"
+                    iconClass="nt nt-sparkles"
+                    removable
+                    unstyled
+                    [classes]="headlessClasses"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Tag versus Badge</h2>
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <strong>Use Tag</strong>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    For categories, filters and textual lifecycle states that
+                    identify what an item is.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <strong>Use Badge</strong>
+                  <p
+                    class="mt-2 text-sm leading-6 text-[var(--site-text-soft)]"
+                  >
+                    For compact counts, dots and indicators attached to another
+                    control or identity.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                ACCESSIBILITY
+              </p>
+              <h1 class="mt-4 text-4xl font-black">
+                Text first, explicit actions
+              </h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Classification remains readable text. Interaction appears only
+                when removal is enabled.
+              </p>
+            </header>
+            <section id="semantics" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Text semantics</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                A non-removable Tag is inline content and does not invent an
+                interactive role. Place it inside the consumer's existing
+                semantic context.
+              </p>
+            </section>
+            <section id="icons-a11y" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Meaningful icons</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Icons are decorative by default and receive
+                <code>aria-hidden</code>. Set <code>iconAriaLabel</code> only
+                when the icon adds information absent from the visible label.
+              </p>
+            </section>
+            <section id="removal-a11y" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Removal control</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>removable</code> creates a native button with a generated
+                “Remove value” name, focus ring and keyboard activation.
+                <code>removeLabel</code> can supply domain context.
+              </p>
+            </section>
+            <section id="disabled-a11y" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Disabled state</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The root exposes <code>aria-disabled="true"</code> and the
+                native removal button is disabled, so no event can escape.
+              </p>
+            </section>
+            <section id="rtl" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Logical direction</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Inline ordering and spacing follow document direction. Consumer
+                classes should use logical start/end utilities.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                PUBLIC CONTRACT
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Tag API</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Signal inputs, a controlled semantic event and typed visual
+                slots.
+              </p>
+            </header>
+            <section id="inputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-6 overflow-x-auto rounded-2xl border border-[var(--site-border)]"
+              >
+                <table class="w-full min-w-[44rem] text-left text-sm">
+                  <thead class="bg-[var(--site-surface)]">
+                    <tr>
+                      <th class="p-4">Input</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (row of inputs; track row[0]) {
+                    <tr class="border-t border-[var(--site-border)]">
+                      <td class="p-4">
+                        <code class="text-blue-500">{{ row[0] }}</code>
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ row[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ row[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ row[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="outputs" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Outputs</h2>
+              <div class="mt-6 grid gap-3">
+                @for (row of outputs; track row[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="text-blue-500">{{ row[0] }}</code
+                  ><span
+                    class="ml-3 font-mono text-xs text-[var(--site-text-muted)]"
+                    >{{ row[1] }}</span
+                  >
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ row[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-6 flex flex-wrap gap-2">
+                @for (slot of classSlots; track slot) {<code
+                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
+                  >{{ slot }}</code
+                >}
+              </div>
+            </section>
+            <section id="types" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <div class="mt-6 grid gap-3">
+                @for (item of publicTypes; track item[0]) {
+                <div
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                >
+                  <code class="text-blue-500">{{ item[0] }}</code>
+                  <p
+                    class="mt-2 font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ item[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="alias" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Legacy alias</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>TagComponent</code> remains exported for compatibility but
+                is deprecated. New application and generated code must import
+                <code>NeuralTag</code>.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header
+              class="rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-8 backdrop-blur-[30px]"
+            >
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                DESIGN TOKENS
+              </p>
+              <h1 class="mt-4 text-4xl font-black">Tag tokens</h1>
+              <p class="mt-4 leading-7 text-[var(--site-text-soft)]">
+                Neutral responds to runtime primary, surface and mode. Every
+                token below maps to a real component style declaration.
+              </p>
+            </header>
+            <section id="base-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Base tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="baseTokens"
+              />
+            </section>
+            <section id="size-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Size tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="sizeTokens"
+              />
+            </section>
+            <section id="severity-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Severity tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="severityTokens"
+              />
+            </section>
+            <section id="removal-tokens" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Removal tokens</h2>
+              <site-design-token-list
+                class="mt-6 block"
+                [tokens]="removalTokens"
+              />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

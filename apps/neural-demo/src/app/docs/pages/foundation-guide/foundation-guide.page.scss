@@ -1,0 +1,36 @@
+.guide-principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 0.75rem;
+}
+
+.guide-principle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  min-height: 4.5rem;
+  padding: 1rem;
+  color: var(--neural-color-text);
+  background: var(--neural-color-surface);
+  border: 1px solid var(--neural-color-border);
+  border-radius: 0.75rem;
+}
+
+.guide-principle i {
+  display: grid;
+  flex: 0 0 1.5rem;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--neural-color-primary-contrast);
+  background: var(--neural-color-primary);
+  border-radius: 50%;
+}
+
+.guide-notes {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding-inline-start: 1.25rem;
+  color: var(--neural-color-text-muted);
+}

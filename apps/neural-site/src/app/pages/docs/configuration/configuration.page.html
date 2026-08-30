@@ -1,0 +1,275 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+    <div class="min-w-0">
+      <header
+        class="relative overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] sm:p-9"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute -right-16 -top-24 size-72 rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_20%,transparent)] blur-[85px]"
+        ></div>
+        <div class="relative max-w-3xl">
+          <span
+            class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
+            >GET STARTED</span
+          >
+          <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
+            Configuration
+          </h1>
+          <p
+            class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+          >
+            Configure NeuralNg once, then control direction, density and color
+            mode through small Signal-based runtime services.
+          </p>
+          <div
+            class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+          >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Environment
+              providers</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Runtime
+              Signals</span
+            >
+            <span
+              ><i class="nt nt-check mr-1.5 text-emerald-500"></i>SSR safe</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section id="provider" class="scroll-mt-28 pt-16">
+        <p
+          class="text-xs font-black tracking-[.16em] text-[var(--neural-color-primary)]"
+        >
+          APPLICATION SETUP
+        </p>
+        <h2 class="mt-3 text-2xl font-black">
+          Register the environment providers
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          <code>provideNeuralNg()</code> owns shared component preferences and
+          the initial locale. <code>provideNeuralAppearance()</code> is the
+          optional application controller for palettes, mode, direction,
+          persistence and the root DOM contract.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="app.config.ts"
+          language="typescript"
+          [code]="providerCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="defaults" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Defaults and accepted values</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Every option is optional. Unknown palettes and invalid direction,
+          density or color-mode values fail immediately instead of silently
+          producing mixed state.
+        </p>
+        <div
+          class="mt-6 overflow-hidden rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+        >
+          <div
+            class="grid grid-cols-[minmax(7rem,.8fr)_minmax(9rem,1fr)_minmax(12rem,1.5fr)] border-b border-[var(--site-border)] bg-[var(--site-surface-soft)] px-5 py-3 text-xs font-black uppercase tracking-wider text-[var(--site-text-muted)]"
+          >
+            <span>Option</span><span>Default</span><span>Accepted values</span>
+          </div>
+          @for (row of [ ['unstyled', 'false', 'true | false'], ['direction',
+          'auto', 'auto | ltr | rtl'], ['density', 'comfortable', 'compact |
+          comfortable | spacious'], ['locale', 'English', 'NeuralLocale'],
+          ['primary', 'blue', 'registered palette name'], ['surface', 'slate',
+          'registered palette name'], ['mode', 'system', 'light | dark |
+          system'], ['storageKey', 'neural-appearance', 'string prefix | null']
+          ]; track row[0]) {
+          <div
+            class="grid grid-cols-[minmax(7rem,.8fr)_minmax(9rem,1fr)_minmax(12rem,1.5fr)] border-b border-[var(--site-border)] px-5 py-4 text-sm last:border-0"
+          >
+            <code class="font-bold text-[var(--neural-color-primary)]"
+              >{{ row[0] }}</code
+            >
+            <span>{{ row[1] }}</span>
+            <span class="text-[var(--site-text-muted)]">{{ row[2] }}</span>
+          </div>
+          }
+        </div>
+      </section>
+
+      <section id="live" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Live configuration</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          These controls update the same root-level contracts used by every
+          component on this documentation site.
+        </p>
+        <div
+          class="mt-6 rounded-[1.5rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-6"
+        >
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div>
+              <p
+                class="text-xs font-black uppercase tracking-wider text-[var(--site-text-muted)]"
+              >
+                Direction
+              </p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <neural-button
+                  label="Left to right"
+                  icon="nt nt-align-left"
+                  [outlined]="appearance.direction() !== 'ltr'"
+                  (clicked)="setDirection('ltr')"
+                />
+                <neural-button
+                  label="Right to left"
+                  icon="nt nt-align-right"
+                  [outlined]="appearance.direction() !== 'rtl'"
+                  (clicked)="setDirection('rtl')"
+                />
+              </div>
+            </div>
+            <div>
+              <p
+                class="text-xs font-black uppercase tracking-wider text-[var(--site-text-muted)]"
+              >
+                Density
+              </p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                @for (density of densities; track density) {
+                <neural-button
+                  [label]="density"
+                  [outlined]="neuralNg.density() !== density"
+                  (clicked)="setDensity(density)"
+                />
+                }
+              </div>
+            </div>
+          </div>
+          <dl
+            class="mt-6 grid gap-3 rounded-xl bg-[var(--site-surface-soft)] p-4 text-sm sm:grid-cols-3"
+          >
+            <div>
+              <dt class="text-[var(--site-text-muted)]">
+                Configured direction
+              </dt>
+              <dd class="mt-1 font-black">{{ neuralNg.direction() }}</dd>
+            </div>
+            <div>
+              <dt class="text-[var(--site-text-muted)]">Resolved direction</dt>
+              <dd class="mt-1 font-black">
+                {{ neuralNg.resolvedDirection() }}
+              </dd>
+            </div>
+            <div>
+              <dt class="text-[var(--site-text-muted)]">Density</dt>
+              <dd class="mt-1 font-black">{{ neuralNg.density() }}</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="runtime" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Runtime direction and density</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          <code>direction()</code>, <code>resolvedDirection()</code> and
+          <code>density()</code> are readonly Signals. When direction is
+          <code>auto</code>, the active locale supplies the resolved direction.
+          <code>reset()</code> restores the provider values.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="preferences.ts"
+          language="typescript"
+          [code]="runtimeCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="color-mode" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">One reactive appearance controller</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          <code>primary()</code>, <code>surface()</code>, <code>mode()</code>,
+          <code>resolvedMode()</code> and direction are readonly Signals.
+          Commands update the complete palette, namespaced DOM attributes and
+          persisted preferences together.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="mode-picker.ts"
+          language="typescript"
+          [code]="colorModeCode"
+          [theme]="appearance.mode()"
+        />
+        <div
+          class="mt-5 rounded-2xl border border-amber-400/20 bg-amber-500/10 p-5 text-sm leading-6"
+        >
+          Set <code>storageKey: null</code> when persistence is not wanted.
+          Appearance already configures color mode; do not also register
+          <code>provideNeuralColorMode()</code>.
+        </div>
+      </section>
+
+      <section id="dom-contract" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">The root DOM contract</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          NeuralNg uses namespaced data attributes and the native
+          <code>dir</code> attribute. Theme identity and resolved color mode are
+          deliberately separate concerns. Primary and surface names identify the
+          active registered scales.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="index.html"
+          language="html"
+          [code]="domCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="headless" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Global headless mode</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Global <code>unstyled</code> removes NeuralNg visual classes from all
+          participating components. Native semantics, interaction, ARIA,
+          structural hooks and typed consumer class slots remain.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="app.config.ts"
+          language="typescript"
+          [code]="headlessCode"
+          [theme]="appearance.mode()"
+        />
+      </section>
+
+      <section id="ssr" class="scroll-mt-28 pb-12 pt-16">
+        <h2 class="text-2xl font-black">SSR and hydration rules</h2>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
+          <div
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">Use the same initial locale</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              Configure identical locale and direction inputs on server and
+              browser. Do not infer locale during component rendering.
+            </p>
+          </div>
+          <div
+            class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+          >
+            <h3 class="font-black">Plan first-paint mode</h3>
+            <p class="mt-2 text-sm leading-6 text-[var(--site-text-muted)]">
+              The server cannot read local storage or media queries. Use an
+              application-owned CSP-compatible head script when persisted mode
+              must apply before paint.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <site-on-this-page [links]="pageLinks" />
+  </div>
+</article>

@@ -1,0 +1,499 @@
+# NeuralNg
+
+For one provider that owns primary and surface palettes, color mode, direction,
+DOM attributes, persistence, and cross-tab synchronization, import
+provideNeuralAppearance and NeuralAppearanceService from
+@neural-ng/core/appearance. Do not register provideNeuralColorMode beside
+provideNeuralAppearance; Appearance already configures the color-mode
+controller. Read its Signal properties and call setPrimary, setSurface,
+setMode, or setDirection; do not mutate NeuralNg CSS variables directly.
+Custom palette names must be registered through the provider before use.
+
+> NeuralNg is an AI-first, headless Angular 22+ UI component library using standalone components, Signals, strict TypeScript, native accessibility semantics, SSR-safe code, and secondary package entry points.
+
+For machine-readable discovery, run `npx -y @neural-ng/mcp-server`. The MCP
+server is read-only and exposes exact component contracts, package exports,
+themes, README files, and llms.txt resources. Use its returned entry points,
+selectors, and models without inventing aliases.
+
+Generate only modern Angular code. Import each component from its exact secondary
+entry point. Do not create consumer NgModules. Prefer visible labels, native HTML
+semantics, and documented signal inputs and outputs. Import a theme explicitly
+unless every used component is unstyled.
+
+Use `provideNeuralNg({ unstyled, direction, density })` for application-wide
+configuration. `direction: 'auto'` follows the active NeuralNg locale. Use
+`NeuralNgService.setDirection(...)` and `setDensity(...)` for runtime changes.
+A component-level unstyled input remains valid for local control.
+
+Import localization APIs from `@neural-ng/core/i18n` and locale data from exact
+tree-shakable entry points. Official complete packs are `en`, `tr`, `de`, `fr`,
+`es`, `pt-br`, `ar`, and `zh-cn`. Set an explicit
+initial locale with `provideNeuralNg({ locale })`; use
+`NeuralLocaleService.use(locale)` for runtime switching. Do not infer
+`navigator.language` during component rendering.
+
+Neural Icons is an optional separate package. Import
+`@neural-ng/icons/icons.css` once and use `class="nt nt-{name}"`. Core
+components must not assume that Neural Icons is installed.
+
+Import `NeuralButton` from `@neural-ng/core/button`. Use `size` for the complete
+control and `iconSize="small|medium|large"` only when the glyph needs an
+independent override. When `iconSize` is omitted, it follows the Button size.
+
+Import Accordion from `@neural-ng/core/accordion`. Prefer `items` for plain
+text data and projected panel/header/content composition for custom Angular
+markup. Bind `[(value)]`; add `multiple` for array state. Never combine both
+content sources.
+
+Import AutoComplete from `@neural-ng/core/auto-complete`. Bind `[(value)]` for
+the committed form value and `[(query)]` for editable text. Use local mode for
+deterministic client filtering and `dataMode="remote"` with `(search)` for API
+results; ignore stale responses using `requestId`. IME composition must not
+emit partial searches. Keep DOM focus on the combobox input and preserve its
+`aria-activedescendant` listbox model. The shared Popover already uses the
+browser top layer and matches the input width; do not add appendTo logic.
+
+Import `NeuralBreadcrumb` from `@neural-ng/core/breadcrumb`. Prefer `routerLink`
+plus Angular Router options for SPA navigation and `href` for native links.
+Use `maxItems` for Menu-backed overflow; RouterLink behavior is preserved for
+overflowed items. Let the last item represent the current page unless `current`
+is explicit.
+
+Import `NeuralCard`, `NeuralCardHeader`, `NeuralCardBody`, and
+`NeuralCardFooter` from `@neural-ng/core/card`. Project real headings, media,
+content, and interactive components; Card intentionally owns only the semantic
+surface and section composition. Never generate the deprecated `CardComponent`
+family of aliases.
+
+Import `NeuralCheckbox` and `NeuralTriStateCheckbox` from
+`@neural-ng/core/checkbox`. Keep binary `checked: boolean` separate from
+tri-state `value: boolean | null`; never invent a nullable binary model or a
+second indeterminate source. Do not generate the deprecated
+`CheckboxComponent` aliases.
+
+Import `NeuralConfirmDialog` and `NeuralConfirmationService` from
+`@neural-ng/core/confirm-dialog`. Render a host for each key and open it through
+the service. Async actions may return false to keep the dialog open. The latest
+same-key request replaces the active request; never invent queue behavior or
+generate the deprecated `ConfirmDialogComponent` alias.
+
+Import Badge from `@neural-ng/core/badge`. Use `max` for numeric visual caps,
+add `ariaLabel` to meaningful dot badges, and use `ariaLive` only for relevant
+dynamic updates. Zero and negative values are not empty.
+
+Import Avatar from `@neural-ng/core/avatar`. Prefer `name` for accessible
+initials fallback, compose status through `NeuralBadgeDirective`, and use
+AvatarGroup `max` for localized +N overflow.
+
+Import Tag from `@neural-ng/core/tag`. Use it for textual classification or
+status, not compact counts. `removed` is controlled: update the owning
+collection after receiving `{ value, originalEvent }`.
+
+Keep theme identity and color mode independent. Use `data-neural-theme` for the
+theme family and `data-neural-mode="light|dark"` for the resolved mode. Import
+the optional Signal controller from `@neural-ng/core/color-mode`; never assume
+Tailwind or mutate its generic `.dark` class.
+
+The stable primitive palettes are `--neural-color-primary-{50..950}` and
+`--neural-color-surface-{50..950}`, plus `--neural-color-surface-0`. Primitive
+steps do not reverse in dark mode; semantic aliases choose accessible steps.
+For Tailwind CSS v4, import `@neural-ng/core/themes/tailwind.css` after
+`tailwindcss` to generate `primary-*` and `surface-*` color utilities. Do not
+add Tailwind as a NeuralNg runtime dependency.
+
+Import pagination from `@neural-ng/core/paginator`. It uses zero-based
+`pageIndex` and `pageSize` model inputs, emits slice-compatible `startIndex`
+and exclusive `endIndex`, and includes a polite range report by default.
+
+Import canonical `NeuralDatePicker` from `@neural-ng/core/date-picker`.
+`DatePickerComponent` is a deprecated compatibility alias. Its models are immutable,
+timezone-safe `NeuralDateParts`, `NeuralTimeParts`, and
+`NeuralDateTimeParts` objects. Use `pickerMode="time"` for time only and
+`pickerMode="datetime"` for calendar plus time. Time modes always keep edits in
+an Apply/Cancel draft. Configure 12/24-hour display with `hourFormat`, optional
+seconds with `showSeconds`, increments with `hourStep`, `minuteStep`, and
+`secondStep`, and datetime bounds with `minDateTime`/`maxDateTime`. Do not bind
+JavaScript Date objects or parse locale-formatted display strings as models.
+Use `formatNeuralLocaleDate` for display and `parseNeuralLocaleDate` for strict
+locale text parsing. The parser returns null for wrong field order, wrong
+separators, impossible Gregorian dates, or unsupported text; never use
+`Date.parse`. Preserve the built-in dialog/grid semantics, roving tabindex,
+polite view announcement, full accessible weekday names, and RTL-aware physical
+Left/Right movement.
+DatePicker supports local `unstyled`, global `provideNeuralNg({ unstyled:
+true })`, and `NeuralDatePickerClasses`. Keep structural `*-root` hooks and ARIA
+behavior; remove only visual `*-base` classes. Apply customization in this
+order: structural hooks, component tokens, active theme tokens, consumer
+classes. Neutral owns the stable DatePicker tokens; Glass and Futuristic are
+token-only overrides. For custom content import and use the typed standalone
+directives `NeuralDatePickerDayTemplate`, `NeuralDatePickerHeaderTemplate`,
+`NeuralDatePickerFooterTemplate`, `NeuralDatePickerTriggerIconTemplate`,
+`NeuralDatePickerPreviousIconTemplate`, and
+`NeuralDatePickerNextIconTemplate`; do not replace internal keyboard or overlay
+logic.
+DatePicker implements `FormValueControl<NeuralDatePickerValue<...>>`. Bind it
+with `[formField]` for Signal Forms, `[formControl]` for Reactive Forms, or
+`[(ngModel)]` for template-driven forms. Do not add a ControlValueAccessor or a
+second value store. Preserve `touch` emission on composite blur/close and allow
+the form to own touched, dirty, disabled, readonly, required, and invalid state.
+Use semantic outputs `opened`, `closed`, `selected`, `cleared`, `viewChanged`,
+`monthChanged`, `yearChanged`, and `invalidInput`; use `valueChange` only for
+plain model synchronization.
+DatePicker needs no `appendTo="body"`: its Popover uses the browser top layer,
+retains Angular DOM ownership, restores focus for explicit closes, and releases
+all overlay positioning resources on destroy. It renders closed during SSR.
+
+Import ProgressBar from `@neural-ng/core/progress-bar`. Use determinate mode
+for known numeric progress and mode="indeterminate" when completion is unknown.
+Provide ariaLabel or ariaLabelledBy, use ariaValueText for localized
+descriptions, and never expose numeric ARIA values for indeterminate progress.
+
+Import ProgressSpinner from `@neural-ng/core/progress-spinner`. It is always
+indeterminate and receives a localized default accessible name. Use it for
+compact unknown-duration tasks and use ProgressBar for numeric progress.
+
+Import canonical `NeuralLoadingOverlay` from `@neural-ng/core/loading-overlay`.
+`LoadingOverlayComponent` is a deprecated compatibility alias. It composes
+ProgressSpinner while owning container/viewport blocking, aria-busy, timing,
+focus restoration, and scroll locking. Use neuralLoadingIndicator for custom
+visuals without reimplementing loading behavior.
+
+Import Skeleton from `@neural-ng/core/skeleton`. It is decorative and always
+aria-hidden. Put aria-busy on the surrounding loading region; use LoadingOverlay
+when interaction must be blocked. Prefer wave for active fetching, pulse for
+calm placeholders, and none when motion is unnecessary.
+
+Import MeterGroup from `@neural-ng/core/meter-group`. Use it for multiple
+scalar measurements inside a known range, never loading progress. Every item
+must have a meaningful label and numeric value; use valueText for human-friendly
+assistive descriptions and valueFormatter only for visible text.
+
+Import Table from `@neural-ng/core/table`. Preserve its native table semantics,
+provide `rowKey` for stable selection and expansion. Client selection supports
+row click, Ctrl/Meta toggles, Shift ranges, keyboard navigation, disabled rows,
+and page/filtered/all select-all scopes. Remote selection is key-only through
+`selectionKeys`; use `dataMode="remote"` when the server owns sorting,
+filtering, paging, or selection identity. Use
+`editMode="cell"` or `"row"` with typed `neuralTableEditor` templates for
+immutable editing. Table never mutates supplied rows; apply `draftRow` from
+`cellEditComplete` or `rowEditSave`. `editValidator` supports synchronous or
+Promise validation, while `readOnly` locks individual cells. Use
+`scrollHeight` with `stickyHeader`, `[(columnWidths)]` with
+`resizableColumns`, and `[(hiddenColumnIds)]` for controlled column layout.
+
+Import composable cards from `@neural-ng/core/card`. Use `neural-card` with
+optional header/body/footer components, native headings, and `ariaLabelledby`
+when an accessible name is needed.
+
+Import `NeuralDialog`, `NeuralDialogHeader`, `NeuralDialogBody`,
+`NeuralDialogFooter`, and `NeuralDialogInitialFocus` from
+`@neural-ng/core/dialog`; never generate their deprecated `Dialog*` aliases.
+It renders native `<dialog>` and uses an `open` model. Compose
+header/body/footer, provide `ariaLabelledby` or
+`ariaLabel`, and prefer `neuralDialogInitialFocus` on the first meaningful
+control. Use the optional `closed` event only when its close reason is needed.
+Set `showFullScreenButton` for the localized maximize/minimize action and bind
+`fullChange` only when application state must observe user toggles.
+
+Import `NeuralDrawer`, `NeuralDrawerHeader`, `NeuralDrawerBody`,
+`NeuralDrawerFooter`, and `NeuralDrawerInitialFocus` from
+`@neural-ng/core/drawer`; never generate their deprecated `Drawer*` aliases.
+Use logical start/end positions, a visible accessible heading, and native
+modal focus behavior.
+
+Import `NeuralDivider` from `@neural-ng/core/divider`. Use it for semantic content
+boundaries, choose horizontal or vertical orientation, and prefer label for
+plain text or projection for richer markup. Do not use Divider only to create
+layout spacing.
+
+Import Checkbox controls from `@neural-ng/core/checkbox`. Use
+`neural-checkbox` with a boolean `checked` model for binary fields. Use
+`neural-tri-state-checkbox` with a `boolean | null` `value` model when mixed
+state is required. Both work with Signal Forms, Reactive Forms, and ngModel.
+Use `stateChange` for detailed user events; programmatic writes must not emit it.
+
+Import RadioGroup and Radio from `@neural-ng/core/radio`. RadioGroup implements
+`FormValueControl<TValue | null>` and works with `[formField]`, `[formControl]`,
+and `[(ngModel)]`. Use `selectionChange` only for pointer or keyboard selection;
+programmatic writes must not emit it. Readonly groups remain focusable and
+expose `aria-readonly` without disabling native radio inputs. Radio is an option
+inside RadioGroup, not an independent form control.
+
+Import Input from `@neural-ng/core/input` and apply it as
+`<input neuralInput>`. The host stays native, so use native labels, attributes,
+classes, events, and Angular `[formField]`; never generate `<neural-input>`.
+For logical start/end icons, also import `NeuralInputGroup` and project the
+native input inside `<neural-input-group startIcon="nt nt-search">`.
+
+Import canonical `NeuralInputMask` from `@neural-ng/core/input-mask`.
+`InputMaskComponent` is a deprecated compatibility alias. Bind the string model
+through `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`. Mask rule
+`9` accepts an ASCII digit, `a` accepts a Unicode letter, and `*` accepts a
+Unicode letter or number. Use `unmask` only when the application contract wants
+raw slot characters; masking is not a substitute for server validation.
+
+Import canonical `NeuralInputNumber` from `@neural-ng/core/input-number`.
+`InputNumberComponent` is a deprecated compatibility alias. Bind `[(value)]` as
+`number | null`, never as formatted text. Use `mode="currency"` with an ISO
+currency code, and allow the locale service to own parsing and formatting.
+`valueCommit` is optional; normal binding never requires an event type import.
+
+Import canonical `NeuralInputOtp` from `@neural-ng/core/input-otp`.
+`InputOtpComponent` is a deprecated compatibility alias. Bind the entire code as
+one string through `[(value)]` or an Angular Forms adapter. Use native
+`autocomplete="one-time-code"`; verification, expiry and retry policy always
+belong on the server.
+
+Import FileUpload from `@neural-ng/core/file-upload`. Bind a
+`readonly File[]` model in every mode. FileUpload owns native choose, drag and
+drop, client-side validation, removal, and clearing; it never performs HTTP
+requests. Build `FormData` in application code, never JSON-stringify File
+objects, and repeat type, size, filename, and content validation on the server.
+Use `selectionChange` for accepted plus rejected details. `accept`,
+`maxFileSize`, `maxFiles`, and duplicate checks are UX constraints only.
+
+Install Editor with `npm install @neural-ng/editor` and import canonical
+`NeuralEditor` from `@neural-ng/editor`. `EditorComponent` is a deprecated
+compatibility alias. The Editor package owns its Tiptap, ProseMirror, Floating
+UI, and Yjs runtime dependencies, so applications must not install or import
+those internals directly. Bind only a `NeuralEditorDocument` JSON value; never
+bind HTML, Markdown, or a format union. Use `NeuralEditorController`, stable
+node IDs, typed operations, provider-neutral AI proposals, and explicit
+collaboration providers. Editor never saves, uploads, invokes AI, opens network
+connections, or sanitizes backend output.
+
+
+Import `NeuralField`, `NeuralFieldLabel`, `NeuralFieldHint`,
+`NeuralFieldError`, and `NeuralFieldControl` from `@neural-ng/core/field`.
+Never generate their deprecated `FieldComponent` or `Field*Directive` aliases.
+Use a required, deterministic `controlId`, `<label neuralFieldLabel>`,
+hint/error directives, and either `neuralInput` or `neuralFieldControl`. Keep
+validation in the form schema; Field only synchronizes accessible relationships
+and presentation state.
+
+Import composable tabs from `@neural-ng/core/tabs`. Match each tab value to a
+panel value, label every tab list, and use the `value` model input. A tab accepts
+either projected icon markup or the concise `iconClass` input.
+Horizontal lists provide native overflow scrolling; styled tabs include
+reduced-motion-aware indicator and panel-enter feedback.
+
+Import Select from `@neural-ng/core/select`. Select implements
+`FormValueControl<TValue | null>` and supports `[formField]`, `[formControl]`,
+`[(ngModel)]`, or plain `[(value)]`. Prefer `[options]` with `optionLabel` and
+`optionValue` for object arrays. Use projected `neural-option` declarations as
+an alternative for custom content, never as a second source in the same Select.
+Use `selectionChange` only for pointer or keyboard value changes; programmatic
+writes must not emit it. Readonly remains focusable, exposes `aria-readonly`,
+and blocks pointer, keyboard, and clear mutation. Use `cleared` and
+`openChange`; do not invent `onSelected`, `onChange`, or `onSelectLink`.
+
+Import canonical `NeuralMultiSelect` from `@neural-ng/core/multi-select`; never
+generate the deprecated `MultiSelectComponent` alias. Its `value` model is
+always an immutable readonly array. Prefer data-driven options with optionLabel/optionValue,
+`display="chip"` for removable values, and `selectionChange` as the main event.
+The popup matches the trigger width and supports local or request-ID based
+remote filtering. Keep unstyled structural hooks and typed class slots intact.
+Build dependent selects from Signals and reset the child value when its parent
+selection changes.
+
+Import TreeSelect from `@neural-ng/core/tree-select`. Map immutable nested
+options with `optionLabel`, `optionValue`, and `optionChildren`. Single mode
+writes a scalar or null; multiple and checkbox modes write immutable arrays.
+Use `optionKey` when `optionValue` resolves to an object. TreeSelect composes
+Tree keyboard/selection behavior with the top-layer Popover foundation; never
+recreate either controller in application code.
+
+Import `NeuralDataView` from `@neural-ng/core/data-view`; never generate the
+deprecated `DataViewComponent` alias. Keep it presentation-only:
+compose actions, selection, and editing inside typed item templates instead of
+adding them to DataView state. Bind the source collection to the template
+directive (`[neuralDataViewListItem]="products"` or
+`[neuralDataViewGridItem]="products"`) so Angular infers the item type. Local
+mode owns stable nested-field sorting and paging. Remote mode must receive the
+current server page through `value`, the full count through `totalRecords`, and
+must load from the serializable `stateChange` or `pageChange` event. Use the
+separate VirtualScroller entry point when windowing is required.
+
+Import `NeuralVirtualScroller` from `@neural-ng/core/virtual-scroller`. Provide fixed,
+positive `itemSize` and `viewportSize` values and bind the collection to the
+typed item template directive. Treat every range end as exclusive. Use
+`rangeChange` for client observation and `lazyLoad` for remote range requests.
+Do not put selection, editing, tree state, or variable-height measurement into
+the VirtualScroller contract.
+
+Import RadioGroup and Radio from `@neural-ng/core/radio`. Prefer `[options]`
+with `optionLabel` and `optionValue` for data-driven groups; use projected
+`neural-radio` children as an alternative for rich content. Bind `[(value)]`
+and use `selectionChange` for detailed user-only events. Do not combine both
+option sources or invent a toggle-to-null behavior.
+
+Import Switch from `@neural-ng/core/switch`. It implements
+`FormCheckboxControl` with one strict boolean `checked` model. Bind with
+`[formField]`, `[formControl]`, `[(ngModel)]`, or plain `[(checked)]`, and
+project a visible label. Programmatic writes must not emit `stateChange`; one
+user change emits one detailed event, and `touch` emits on native blur. Switch
+is never tri-state; use `neural-tri-state-checkbox` when null/mixed is part of
+the domain. Readonly stays focusable but cannot be changed.
+
+Import Textarea from `@neural-ng/core/textarea` and generate
+`<textarea neuralTextarea>`, never a custom textarea element. Keep native
+attributes and events on that host and bind Signal Forms directly. `autoResize`
+uses CSS `field-sizing: content`; `resizeMode` controls manual resizing.
+
+Import NeuralTooltip from `@neural-ng/core/tooltip` and apply
+`neuralTooltip="Plain descriptive text"` to the trigger. Tooltip is text-only,
+opens on hover and focus, and closes on leave, blur, or Escape. Use
+`tooltipPosition`, delays, typed class slots, and `unstyled` only when needed.
+Never put interactive content in a tooltip.
+
+Import canonical `NeuralPanelMenu` from `@neural-ng/core/panel-menu`. It is an inline
+Accordion + Tree hierarchy, not a Sidebar and not a popup Menu. Use unique
+stable item keys, bind `[(expandedKeys)]`, emit leaf actions through
+`itemSelect`, and use `itemToggle` only when branch details are needed. Never
+generate a trigger button or Overlay integration for PanelMenu. Use `href` for
+native links and `routerLink` plus Angular Router options for SPA navigation.
+
+Import canonical `NeuralMenu` from `@neural-ng/core/menu`. It is a flat command list. Use
+`[neuralMenuTriggerFor]` only with `<neural-menu popup>`; inline Menu needs no
+trigger. Emit actions through `itemSelect`. Do not generate nested Menu items;
+use PanelMenu for inline hierarchy and reserve popup nesting for TieredMenu.
+Use `routerLink` plus Angular Router options for SPA navigation and `href` for
+native or external navigation.
+
+Import `NeuralSidebar`, `NeuralSidebarLayout`, the header/content/footer
+primitives, `NeuralSidebarMain`, and `NeuralSidebarTrigger` from
+`@neural-ng/core/sidebar`. Sidebar owns application-shell layout and responsive
+collapse state; it does not own navigation entries. Compose NeuralMenu or
+NeuralPanelMenu inside NeuralSidebarContent. Use Drawer for transient arbitrary
+tasks instead of persistent application navigation. Bind `[(open)]`, give the
+Sidebar a stable `id`, and connect a native button or NeuralButton with
+`[neuralSidebarTrigger]="'id'"`. Use logical `side="start|end"`. Desktop defaults
+to icon collapse and mobile to offcanvas at `breakpoint="64rem"`. Preserve
+accessible naming, Escape/backdrop dismissal, focus restoration, structural
+hooks, and unstyled class ownership.
+
+Import Popover from `@neural-ng/core/popover`. Apply
+`[neuralPopoverTriggerFor]="panel"` to a native interactive trigger and place
+arbitrary Angular content in `<neural-popover #panel>`. Prefer logical
+`bottom-start` or `bottom-end` placement. Popover is non-modal, does not trap
+focus, and needs no `appendTo="body"` because it uses the browser top layer.
+Use `neuralPopoverClose` for in-panel dismissal and
+`neuralPopoverInitialFocus` only with an explicit first-focus workflow. Use
+Dialog for modal content and Menu for command-list semantics.
+
+## Components
+
+- [Accordion documentation](./accordion/README.md): Data and projected panels, Signals state, keyboard behavior, typed class slots, tokens, and beta boundaries.
+- [Accordion AI context](./accordion/llms.txt): Deterministic Accordion generation rules and canonical composition.
+- [AutoComplete documentation](./auto-complete/README.md): Local and remote suggestions, dual Signal models, Forms, templates, accessibility, and headless slots.
+- [AutoComplete AI context](./auto-complete/llms.txt): Deterministic editable combobox generation and request-race rules.
+- [MultiSelect documentation](./multi-select/README.md): Chips, filtering, grouped options, Forms, accessibility, and headless slots.
+- [MultiSelect AI context](./multi-select/llms.txt): Deterministic multiple-selection generation rules.
+- [TreeSelect documentation](./tree-select/README.md): Hierarchical option mapping, selection modes, Forms, Popover composition, and headless slots.
+- [TreeSelect AI context](./tree-select/llms.txt): Deterministic hierarchical-picker generation rules.
+- [DataView documentation](./data-view/README.md): Typed list/grid presentation, local and remote state, Paginator composition, and headless slots.
+- [DataView AI context](./data-view/llms.txt): Deterministic collection-presentation and remote-state rules.
+- [VirtualScroller documentation](./virtual-scroller/README.md): Fixed-size vertical/horizontal windowing, lazy ranges, programmatic scrolling, and headless slots.
+- [VirtualScroller AI context](./virtual-scroller/llms.txt): Deterministic range and composition rules.
+- [Breadcrumb documentation](./breadcrumb/README.md): Router links, projected items, responsive Menu overflow, semantics, and headless slots.
+- [Breadcrumb AI context](./breadcrumb/llms.txt): Deterministic breadcrumb generation rules.
+- [Badge documentation](./badge/README.md): Counts, caps, semantic states, dots, projected content, and headless slots.
+- [Badge AI context](./badge/llms.txt): Deterministic Badge generation and accessibility rules.
+- [Avatar documentation](./avatar/README.md): Images, initials, icon and projected fallbacks, Badge composition, groups, and headless slots.
+- [Avatar AI context](./avatar/llms.txt): Deterministic Avatar fallback, accessibility, Badge, and grouping rules.
+- [ProgressBar documentation](./progress-bar/README.md): Determinate, buffered, and indeterminate progress, accessibility, motion, tokens, and headless slots.
+- [ProgressBar AI context](./progress-bar/llms.txt): Deterministic ProgressBar generation and accessibility rules.
+- [ProgressSpinner documentation](./progress-spinner/README.md): SVG indeterminate progress, localization, motion, styling, and headless slots.
+- [ProgressSpinner AI context](./progress-spinner/llms.txt): Deterministic ProgressSpinner generation and accessibility rules.
+- [LoadingOverlay documentation](./loading-overlay/README.md): Container and viewport blocking, timing, focus, scroll, custom indicators, and headless slots.
+- [LoadingOverlay AI context](./loading-overlay/llms.txt): Deterministic blocking-loader generation and composition rules.
+- [Skeleton documentation](./skeleton/README.md): Decorative placeholders, CSS sizing, shapes, motion, accessibility, and headless slots.
+- [Skeleton AI context](./skeleton/llms.txt): Deterministic Skeleton generation and accessibility rules.
+- [MeterGroup documentation](./meter-group/README.md): Multiple scalar meters, ranges, layouts, labels, colors, icons, and headless slots.
+- [MeterGroup AI context](./meter-group/llms.txt): Deterministic MeterGroup generation and accessibility rules.
+- [Table documentation](./table/README.md): Native data table, client and remote state, filters, advanced selection, immutable cell/row editing, expansion, resize, visibility, controlled column ordering, grouped headers, summaries, localization, and headless slots.
+- [Table AI context](./table/llms.txt): Deterministic Table generation, data-mode, column layout, ordering, grouped headers, summaries, and accessibility rules.
+- [NeuralButton documentation](./button/README.md): Public API, examples, styling contract, accessibility, and SSR behavior.
+- [NeuralButton AI context](./button/llms.txt): Concise generation rules and canonical NeuralButton example.
+- [Tag documentation](./tag/README.md): Text labels, semantic states, icons, controlled removal, and headless slots.
+- [Tag AI context](./tag/llms.txt): Deterministic Tag selection and generation rules.
+- [Card documentation](./card/README.md): Composable native sections, typed class slots, tokens, accessibility, and unstyled usage.
+- [Card AI context](./card/llms.txt): Deterministic Card composition rules and canonical example.
+- [Dialog documentation](./dialog/README.md): Native modal behavior, focus, close reasons, composition, class slots, tokens, and SSR.
+- [Dialog AI context](./dialog/llms.txt): Deterministic native Dialog generation rules and canonical composition.
+- [Divider documentation](./divider/README.md): Semantic orientation, labels, projected content, line variants, and headless slots.
+- [Divider AI context](./divider/llms.txt): Deterministic Divider generation and accessibility rules.
+- [Checkbox documentation](./checkbox/README.md): Native binary and tri-state behavior, events, Field composition, classes, and tokens.
+- [Checkbox AI context](./checkbox/llms.txt): Deterministic Checkbox generation rules and tri-state contract.
+- [Input documentation](./input/README.md): Native host, forms, accessibility, class ownership, states, and tokens.
+- [Input AI context](./input/llms.txt): Deterministic native Input generation rules and canonical Signal Forms example.
+- [InputMask documentation](./input-mask/README.md): Canonical component, deterministic mask grammar, caret-aware editing, Forms, accessibility, and headless classes.
+- [InputMask AI context](./input-mask/llms.txt): Deterministic masked-input generation rules.
+- [InputNumber documentation](./input-number/README.md): Localized parsing, currency, bounds, Signal Forms, accessibility, and headless classes.
+- [InputNumber AI context](./input-number/llms.txt): Deterministic numeric-control generation rules.
+- [InputOtp documentation](./input-otp/README.md): Autofill, paste, Forms, keyboard, accessibility, security boundaries, and headless classes.
+- [InputOtp AI context](./input-otp/llms.txt): Deterministic one-time-code generation rules.
+- [FileUpload documentation](./file-upload/README.md): Canonical
+  `NeuralFileUpload`, immutable file arrays, drag and drop, client-side
+  rejection events, Forms, and HTTP ownership boundaries.
+- [FileUpload AI context](./file-upload/llms.txt): Deterministic file-selection generation rules and FormData guidance.
+- [Editor documentation](./editor/README.md): Structured JSON values, Tiptap integration, controller commands, Forms, serializers, security, and headless slots.
+- [Editor AI context](./editor/llms.txt): Deterministic rich-text generation rules and application ownership boundaries.
+- [Field documentation](./field/README.md): Labels, descriptions, validation presentation, native control bridge, state, tokens, and unstyled usage.
+- [Field AI context](./field/llms.txt): Deterministic Field composition and Signal Forms generation rules.
+- [Radio documentation](./radio/README.md): Data and projected choices, native semantics, keyboard behavior, Field composition, classes, and tokens.
+- [Radio AI context](./radio/llms.txt): Deterministic RadioGroup generation rules and canonical examples.
+- [Select documentation](./select/README.md): Data and projected options, events, keyboard behavior, chained selects, classes, and tokens.
+- [Select AI context](./select/llms.txt): Deterministic Select generation rules and canonical data-driven example.
+- [Switch documentation](./switch/README.md): Native switch semantics, boolean state, readonly behavior, Field composition, classes, and tokens.
+- [Switch AI context](./switch/llms.txt): Deterministic Switch generation rules and canonical example.
+- [Textarea documentation](./textarea/README.md): Native host, Signal Forms, auto resize, resize modes, Field composition, states, classes, and tokens.
+- [Textarea AI context](./textarea/llms.txt): Deterministic native Textarea generation rules and canonical example.
+- [Toast documentation](./toast/README.md): v0.1 providers, nine positions, modern animation, templates, progress, swipe, accessibility, class hooks, and unstyled usage.
+- [Toast AI context](./toast/llms.txt): Deterministic generation rules and canonical Toast example.
+- [Tabs documentation](./tabs/README.md): Composition, icon options, keyboard behavior, class slots, tokens, and SSR-safe IDs.
+- [Tabs AI context](./tabs/llms.txt): Deterministic Tabs generation rules and canonical example.
+- [Tooltip documentation](./tooltip/README.md): Positions, delays, accessibility, class slots, and disabled-control guidance.
+- [Tooltip AI context](./tooltip/llms.txt): Deterministic Tooltip generation rules.
+- [PanelMenu documentation](./panel-menu/README.md): Recursive data, projected items, Signals expansion, keyboard behavior, and headless slots.
+- [PanelMenu AI context](./panel-menu/llms.txt): Deterministic inline hierarchy generation rules.
+- [Sidebar documentation](./sidebar/README.md): Application shell, responsive collapse, logical placement, focus behavior, headless slots, and composition boundaries.
+- [Sidebar AI context](./sidebar/llms.txt): Deterministic Sidebar shell and trigger generation rules.
+- [Menu documentation](./menu/README.md): Inline and popup commands, trigger directive, keyboard behavior, Overlay positioning, and headless slots.
+- [Menu AI context](./menu/llms.txt): Deterministic flat command menu generation rules.
+- [Popover documentation](./popover/README.md): Arbitrary content, top-layer positioning, dismissal, focus, class slots, and SSR.
+- [Popover AI context](./popover/llms.txt): Deterministic non-modal Popover generation rules.
+
+## APIs
+
+- [Localization documentation](./i18n/README.md): Locale providers, runtime Signals, fallback rules, and SSR behavior.
+- [Localization AI context](./i18n/llms.txt): Deterministic locale configuration and override rules.
+- [Color Mode documentation](./color-mode/README.md): Optional light/dark/system Signals, persistence, DOM contract, Tailwind integration, and SSR first-paint guidance.
+- [Color Mode AI context](./color-mode/llms.txt): Deterministic generation rules for color-mode control.
+- [Message documentation](./message/README.md): Inline feedback component plus the headless Signal store, providers, channels, references, and renderer contract.
+- [Message AI context](./message/llms.txt): Deterministic rules for inline Message and application notifications.
+- [MeterGroup documentation](./meter-group/README.md): Multiple scalar measurements, shared ranges, accessibility, layout, and headless styling.
+- [MeterGroup AI context](./meter-group/llms.txt): Deterministic generation rules for measurement composition.
+- [Overlay documentation](./overlay/README.md): Shared native-first floating UI positioning.
+- [Overlay AI context](./overlay/llms.txt): Low-level placement and lifecycle rules.
+
+## Themes
+
+- [Neutral theme](./themes/neutral.css): Stable light/dark semantic and component token values.
+- [Tailwind v4 bridge](./themes/tailwind.css): Optional `primary-*` and `surface-*` utility namespaces.
+- [Experimental Glass theme](./themes/experimental/glass.css): Optional Glass token values scoped to `data-neural-theme="glass"`.
+- [Experimental Mist theme](./themes/experimental/mist.css): Calm translucent token values scoped to `data-neural-theme="mist"`.
+- [Experimental Futuristic theme](./themes/experimental/futuristic.css): Optional Futuristic token values scoped to `data-neural-theme="futuristic"`.
+
+## Optional
+
+- [Package README](./README.md): Human-oriented overview, setup, and workspace commands.
+- [llms.txt specification](https://llmstxt.org/): Format used by these AI context files.
+
+Editor collaboration: pass an application-owned `Y.Doc` through
+`NeuralEditorCollaborationConfig`. NeuralNg does not create providers, rooms,
+tokens, or persistence. Wait for initial provider sync before mounting/seed, use
+awareness only for ephemeral presence, and let Collaboration own undo/redo.
+Comments, suggestion-mode text changes, and JSON snapshots are beta review
+primitives; enforce permissions and durable history in application/backend code.

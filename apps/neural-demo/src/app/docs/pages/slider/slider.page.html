@@ -1,0 +1,47 @@
+<article class="docs-page">
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components · Forms Foundation</span>
+    <h1 class="docs-hero__title">Slider</h1>
+    <p class="docs-hero__description">
+      Native range semantics with Signals, precise steps, horizontal or vertical
+      layout, and a fully headless visual layer.
+    </p>
+  </header>
+  <section>
+    <h2>Import</h2>
+    <code-view fileName="app.ts" language="typescript" [code]="importCode" [theme]="resolvedMode()" />
+  </section>
+  <section>
+    <h2>Value and Signal Forms</h2>
+    <code-view fileName="app.html" language="html" [code]="basicCode" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content class="slider-demo">
+        <neural-slider ariaLabel="Volume" [formField]="settingsForm.volume" [step]="5" showValue fluid />
+      </div>
+    </code-view>
+  </section>
+  <section>
+    <h2>Bounds and orientation</h2>
+    <code-view fileName="variants.html" language="html" [code]="variantsCode" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content class="slider-demo slider-demo--variants">
+        <neural-slider ariaLabel="Temperature" [(value)]="temperature" [min]="16" [max]="30" showValue /><neural-slider
+          ariaLabel="Vertical level" [(value)]="vertical" orientation="vertical" showValue />
+      </div>
+    </code-view>
+  </section>
+  <section>
+    <h2>Range</h2>
+    <code-view fileName="app.html" language="html" [code]="basicCode" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content class="slider-demo">
+        <neural-slider [(value)]="rangeValue" range [min]="0" [max]="100" [step]="1" showValue />
+      </div>
+    </code-view>
+  </section>
+  <section>
+    <h2>Unstyled and typed class slots</h2>
+    <code-view fileName="headless.html" language="html" [code]="headlessCode" [preview]="true" [theme]="resolvedMode()">
+      <div preview-content class="slider-demo">
+        <neural-slider ariaLabel="Headless value" [(value)]="headless" [classes]="classes" showValue unstyled fluid />
+      </div>
+    </code-view>
+  </section>
+</article>

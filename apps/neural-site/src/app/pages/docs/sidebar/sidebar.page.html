@@ -1,0 +1,681 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="sidebar-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Sidebar documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="
+                'translateX(calc(' +
+                selectedViewIndex() * 100 +
+                '% + ' +
+                selectedViewIndex() * 0.25 +
+                'rem))'
+              "
+            ></span>
+            <neural-tab
+              value="component"
+              iconClass="nt-layout-sidebar-left-collapse"
+              >Component</neural-tab
+            ><neural-tab value="accessibility" iconClass="nt-shield"
+              >Accessibility</neural-tab
+            ><neural-tab value="api" iconClass="nt-code">API</neural-tab
+            ><neural-tab value="tokens" iconClass="nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-blue-500"
+                    >NAVIGATION</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Sidebar
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  Persistent application-shell navigation with icon collapse,
+                  responsive offcanvas behavior and complete content ownership.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Logical
+                    start/end</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Menu
+                    composition</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i
+                    >Responsive shell</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import only the shell primitives you use from the granular
+                Sidebar entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="application-shell" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Application shell</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                The Sidebar owns layout and collapse state. PanelMenu owns the
+                navigation tree, so both components remain focused and
+                independently reusable. Collapse the shell, then activate a rail
+                icon to open its accessible child-menu flyout.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="shell.html"
+                language="html"
+                [code]="shellCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <neural-sidebar-layout
+                  preview-content
+                  layoutClass="min-h-[25rem] overflow-hidden rounded-2xl border border-[var(--site-border)]"
+                >
+                  <neural-sidebar
+                    id="docs-workspace-nav"
+                    [(open)]="shellOpen"
+                    [responsive]="false"
+                    variant="inset"
+                    width="15rem"
+                    iconWidth="4rem"
+                    openOnHover
+                    (stateChange)="
+                      lastState.set(
+                        $event.open
+                          ? 'Sidebar expanded.'
+                          : 'Sidebar collapsed to its icon rail.'
+                      )
+                    "
+                  >
+                    <neural-sidebar-header>
+                      <div class="flex min-w-0 items-center gap-3 font-black">
+                        <span
+                          class="grid size-9 shrink-0 place-items-center rounded-xl bg-blue-500 text-white"
+                          >N</span
+                        ><span neuralSidebarLabel>Neural workspace</span>
+                      </div>
+                    </neural-sidebar-header>
+                    <neural-sidebar-content>
+                      <neural-panel-menu
+                        ariaLabel="Workspace navigation"
+                        [items]="navigation"
+                      />
+                    </neural-sidebar-content>
+                    <neural-sidebar-footer>
+                      <div class="flex min-w-0 items-center gap-3 text-sm">
+                        <i class="nt nt-user shrink-0 text-blue-500"></i
+                        ><span neuralSidebarLabel>Ada Lovelace</span>
+                      </div>
+                    </neural-sidebar-footer>
+                  </neural-sidebar>
+                  <main neuralSidebarMain class="grid content-start gap-5 p-6">
+                    <div class="flex items-center justify-between gap-4">
+                      <div>
+                        <p class="text-xs font-black text-blue-500">AGENTS</p>
+                        <h3 class="mt-1 text-xl font-black">Operations</h3>
+                      </div>
+                      <neural-button
+                        [neuralSidebarTrigger]="'docs-workspace-nav'"
+                        ariaLabel="Toggle workspace navigation"
+                        [icon]="
+                          shellOpen()
+                            ? 'nt nt-layout-sidebar-left-collapse'
+                            : 'nt nt-layout-sidebar-left-expand'
+                        "
+                        severity="secondary"
+                      />
+                    </div>
+                    <div
+                      class="grid gap-3 sm:grid-cols-2"
+                      aria-label="Workspace metrics"
+                    >
+                      <div
+                        class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                      >
+                        <p class="text-sm text-[var(--site-text-muted)]">
+                          Active agents
+                        </p>
+                        <strong class="mt-2 block text-3xl">12</strong>
+                      </div>
+                      <div
+                        class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
+                      >
+                        <p class="text-sm text-[var(--site-text-muted)]">
+                          Tasks today
+                        </p>
+                        <strong class="mt-2 block text-3xl">284</strong>
+                      </div>
+                    </div>
+                    <p class="text-xs text-[var(--site-text-muted)]">
+                      {{ lastState() }}
+                    </p>
+                  </main>
+                </neural-sidebar-layout>
+              </code-view>
+            </section>
+
+            <section id="hover-rail" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Hover-expand icon rail</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Desktop icon rails can expand temporarily after a controlled
+                pointer delay. The persisted <code>open</code> model stays
+                unchanged, and keyboard focus prevents focused content from
+                collapsing underneath the user. Hover the rail below.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="hover.html"
+                language="html"
+                [code]="hoverCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <neural-sidebar-layout
+                  preview-content
+                  layoutClass="min-h-72 overflow-hidden rounded-2xl border border-[var(--site-border)]"
+                >
+                  <neural-sidebar
+                    [(open)]="hoverShellOpen"
+                    [responsive]="false"
+                    collapseMode="icon"
+                    variant="inset"
+                    width="14rem"
+                    iconWidth="4rem"
+                    openOnHover
+                    [hoverOpenDelay]="100"
+                    [hoverCloseDelay]="180"
+                  >
+                    <neural-sidebar-header>
+                      <div class="flex min-w-0 items-center gap-3 font-black">
+                        <span
+                          class="grid size-9 shrink-0 place-items-center rounded-xl bg-blue-500 text-white"
+                          >N</span
+                        ><span neuralSidebarLabel>Neural workspace</span>
+                      </div>
+                    </neural-sidebar-header>
+                    <neural-sidebar-content>
+                      <neural-panel-menu
+                        ariaLabel="Hover navigation"
+                        [items]="navigation"
+                      />
+                    </neural-sidebar-content>
+                    <neural-sidebar-footer>
+                      <i class="nt nt-user text-blue-500"></i>
+                      <span neuralSidebarLabel>Ada Lovelace</span>
+                    </neural-sidebar-footer>
+                  </neural-sidebar>
+                  <main neuralSidebarMain class="grid content-center p-6">
+                    <p class="text-sm text-[var(--site-text-muted)]">
+                      The controlled model remains
+                      <strong
+                        >{{ hoverShellOpen() ? 'open' : 'closed' }}</strong
+                      >
+                      during temporary hover expansion.
+                    </p>
+                  </main>
+                </neural-sidebar-layout>
+              </code-view>
+            </section>
+
+            <section id="variants" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Shell variants</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Sidebar shares an edge, floating adds exterior breathing room,
+                and inset creates a softer embedded shell. These variants do not
+                change behavior or content APIs.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="variants.html"
+                language="html"
+                [code]="variantsCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div preview-content class="grid w-full gap-4 sm:grid-cols-3">
+                  @for (variant of ['sidebar', 'floating', 'inset']; track
+                  variant) {
+                  <div
+                    class="overflow-hidden rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+                  >
+                    <div class="flex min-h-36">
+                      <div
+                        class="w-20 border-r border-[var(--site-border)] bg-[color-mix(in_srgb,var(--site-surface)_70%,var(--site-primary)_8%)] p-3"
+                        [class.m-2]="variant !== 'sidebar'"
+                        [class.rounded-xl]="variant !== 'sidebar'"
+                      >
+                        <i class="nt nt-layout-sidebar-right"></i>
+                      </div>
+                      <div class="flex-1 p-3"></div>
+                    </div>
+                    <p
+                      class="border-t border-[var(--site-border)] p-3 text-sm font-bold"
+                    >
+                      {{ variant }}
+                    </p>
+                  </div>
+                  }
+                </div>
+              </code-view>
+            </section>
+
+            <section id="responsive" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Responsive offcanvas</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Below the configured breakpoint, the same navigation becomes
+                offcanvas. The trigger remains connected through native ARIA
+                state without owning the menu implementation.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="responsive.html"
+                language="html"
+                [code]="responsiveCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <neural-sidebar-layout
+                  preview-content
+                  layoutClass="min-h-72 overflow-hidden rounded-2xl border border-[var(--site-border)]"
+                >
+                  <neural-sidebar
+                    id="docs-mobile-nav"
+                    [(open)]="overlayOpen"
+                    [responsive]="false"
+                    collapseMode="offcanvas"
+                    width="15rem"
+                  >
+                    <neural-sidebar-header>
+                      <div class="flex items-center justify-between gap-3">
+                        <strong neuralSidebarLabel>Navigation</strong>
+                        <neural-button
+                          neuralSidebarInitialFocus
+                          [neuralSidebarTrigger]="'docs-mobile-nav'"
+                          ariaLabel="Close navigation"
+                          icon="nt nt-x"
+                          severity="secondary"
+                        />
+                      </div>
+                    </neural-sidebar-header>
+                    <neural-sidebar-content>
+                      <neural-panel-menu
+                        ariaLabel="Mobile workspace navigation"
+                        [items]="navigation"
+                      />
+                    </neural-sidebar-content>
+                  </neural-sidebar>
+                  <main neuralSidebarMain class="grid place-items-center p-6">
+                    <neural-button
+                      [neuralSidebarTrigger]="'docs-mobile-nav'"
+                      label="Open navigation"
+                      icon="nt nt-layout-sidebar-left-collapse"
+                    />
+                  </main>
+                </neural-sidebar-layout>
+              </code-view>
+            </section>
+
+            <section id="composition" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Content composition</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Project NeuralMenu for grouped commands or NeuralPanelMenu for
+                expandable navigation. Header and footer accept branding,
+                search, account controls or any application-specific content.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="menu-composition.html"
+                language="html"
+                [code]="menuCompositionCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <neural-sidebar-layout
+                  preview-content
+                  layoutClass="min-h-72 overflow-hidden rounded-2xl border border-[var(--site-border)]"
+                >
+                  <neural-sidebar
+                    [open]="false"
+                    [responsive]="false"
+                    collapseMode="icon"
+                    iconWidth="4rem"
+                  >
+                    <neural-sidebar-header>
+                      <span
+                        class="grid size-9 place-items-center rounded-xl bg-blue-500 font-black text-white"
+                        >N</span
+                      >
+                    </neural-sidebar-header>
+                    <neural-sidebar-content>
+                      <neural-menu
+                        ariaLabel="Quick navigation"
+                        [items]="quickNavigation"
+                      />
+                    </neural-sidebar-content>
+                  </neural-sidebar>
+                  <main
+                    neuralSidebarMain
+                    class="grid place-items-center p-6 text-sm text-[var(--site-text-muted)]"
+                  >
+                    NeuralMenu uses the same centered icon rail.
+                  </main>
+                </neural-sidebar-layout>
+              </code-view>
+            </section>
+
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Structural layout, responsive state and accessibility remain
+                while consumer classes own every visible surface.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <neural-sidebar-layout
+                  preview-content
+                  unstyled
+                  [classes]="headlessClasses"
+                >
+                  <neural-sidebar
+                    unstyled
+                    [responsive]="false"
+                    collapseMode="none"
+                    width="14rem"
+                    [classes]="headlessClasses"
+                  >
+                    <neural-sidebar-header>HEADLESS OS</neural-sidebar-header>
+                    <neural-sidebar-content>
+                      <div class="grid gap-2 text-sm font-bold">
+                        <span class="rounded-xl bg-cyan-400/10 p-3"
+                          >Overview</span
+                        ><span class="rounded-xl p-3">Agents</span>
+                      </div>
+                    </neural-sidebar-content>
+                    <neural-sidebar-footer
+                      >Custom Tailwind shell</neural-sidebar-footer
+                    >
+                  </neural-sidebar>
+                  <main
+                    neuralSidebarMain
+                    neuralSidebarMainUnstyled
+                    class="grid min-h-72 place-items-center bg-slate-950 text-slate-400"
+                  >
+                    Application content
+                  </main>
+                </neural-sidebar-layout>
+              </code-view>
+            </section>
+
+            <section id="boundaries" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Component boundaries</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Use Sidebar for persistent application navigation. Use Drawer
+                for a transient panel containing arbitrary tasks. Use PanelMenu
+                for an inline hierarchical menu, whether or not it lives inside
+                a Sidebar.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                SIDEBAR
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-.04em]">
+                Accessibility
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-lg leading-8 text-[var(--site-text-soft)]"
+              >
+                A named navigation landmark with an explicit trigger and
+                predictable modal behavior only when the layout becomes an
+                overlay.
+              </p>
+            </header>
+            <div class="grid gap-10 pt-10">
+              <section id="landmark" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Navigation landmark</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  The panel renders a native aside. Supply ariaLabel or
+                  ariaLabelledby so assistive technology can distinguish it from
+                  other page landmarks.
+                </p>
+              </section>
+              <section id="trigger-contract" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Trigger contract</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  neuralSidebarTrigger synchronizes aria-controls and
+                  aria-expanded with the target id. Apply it to a native button
+                  or NeuralButton.
+                </p>
+              </section>
+              <section id="focus-dismissal" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Focus and dismissal</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Modal offcanvas mode traps Tab, supports Escape and backdrop
+                  dismissal, moves focus inside on open, and restores the
+                  original trigger after close.
+                </p>
+              </section>
+              <section id="rtl-responsive" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">RTL and responsive mode</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Start and end are logical edges. The media query changes only
+                  collapse behavior, preserving one navigation structure and one
+                  controlled model across viewport sizes.
+                </p>
+              </section>
+              <section id="reduced-motion" class="scroll-mt-28">
+                <h2 class="text-2xl font-black">Reduced motion and SSR</h2>
+                <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                  Motion duration collapses under prefers-reduced-motion.
+                  matchMedia and focus work are browser guarded for SSR and
+                  hydration safety.
+                </p>
+              </section>
+            </div>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                SIDEBAR
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-.04em]">API</h1>
+              <p
+                class="mt-4 max-w-3xl text-lg leading-8 text-[var(--site-text-soft)]"
+              >
+                Standalone shell primitives, a controlled Signal model and one
+                serializable semantic state event.
+              </p>
+            </header>
+            <section id="components" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Components and directives</h2>
+              <div class="mt-4 grid gap-3">
+                @for (item of components; track item[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid sm:grid-cols-[13rem_13rem_1fr] sm:gap-4"
+                >
+                  <code class="font-mono font-bold text-blue-500"
+                    >{{ item[0] }}</code
+                  >
+                  <code class="mt-2 text-xs sm:mt-0">{{ item[1] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)] sm:mt-0">
+                    {{ item[2] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Inputs</h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                <table class="w-full min-w-[58rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase tracking-wider text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for (item of inputs; track item[0]) {
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{ item[0] }}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{ item[1] }}</td>
+                      <td class="p-4 font-mono text-xs">{{ item[2] }}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{ item[3] }}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="models-events" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Models and events</h2>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">[(open)]</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    Controlled expanded and offcanvas visibility Signal model.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">stateChange</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    Emits open, mobile, mode, reason and the optional native
+                    event.
+                  </p>
+                </div>
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">hoverChange</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    Emits the temporary hover expansion state and originating
+                    pointer or focus event without mutating open.
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                @for (slot of classSlots; track slot[0]) {
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">{{ slot[0] }}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{ slot[1] }}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="public-types" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Public types</h2>
+              <p
+                class="mt-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 font-mono text-sm text-blue-500"
+              >
+                NeuralSidebarSide · NeuralSidebarVariant ·
+                NeuralSidebarCollapseMode · NeuralSidebarClasses ·
+                NeuralSidebarStateChange
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                SIDEBAR
+              </p>
+              <h1 class="mt-3 text-4xl font-black tracking-[-.04em]">
+                Design tokens
+              </h1>
+              <p
+                class="mt-4 max-w-3xl text-lg leading-8 text-[var(--site-text-soft)]"
+              >
+                Layout, panel geometry, overlay treatment, section spacing and
+                motion are independently tokenized.
+              </p>
+            </header>
+            <section id="tokens" class="scroll-mt-28 pt-10">
+              <site-design-token-list [tokens]="tokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

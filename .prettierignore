@@ -1,0 +1,27 @@
+# Add files here to ignore them from prettier formatting
+/dist
+/coverage
+/.nx/cache
+/.nx/workspace-data
+.angular
+
+# generated assets
+/libs/neural-icons/icons.css
+/libs/neural-icons/metadata.json
+
+# generated MCP catalog
+/libs/neural-mcp/src/generated/catalog.ts
+
+# generated theme contracts and snapshots
+/libs/neural-theme/assets/contracts/neutral.tokens.json
+/libs/neural-theme/assets/templates/core-neutral.css
+/libs/neural-theme/assets/templates/editor-neutral.css
+/libs/neural-theme/assets/templates/tailwind.css
+/libs/neural-theme/assets/presets/built-ins.json
+/libs/neural-theme/assets/presets/catalog.json
+/libs/neural-theme/assets/presets/glass.recipe.json
+/libs/neural-theme/assets/presets/mist.recipe.json
+/libs/neural-theme/assets/presets/futuristic.recipe.json
+/libs/neural-theme/assets/presets/quality-baseline.json
+/libs/neural-theme/src/browser-assets.ts
+/libs/neural-theme/src/preset-quality.ts

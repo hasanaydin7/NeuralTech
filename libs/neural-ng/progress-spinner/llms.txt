@@ -1,0 +1,26 @@
+NeuralNg ProgressSpinner rules
+
+- Import NeuralProgressSpinner only from `@neural-ng/core/progress-spinner`.
+- Add NeuralProgressSpinner directly to standalone component imports.
+- ProgressSpinner is always indeterminate and never accepts value, min, max, or bufferValue.
+- Use NeuralProgressBar for determinate or buffered progress.
+- The empty `<neural-progress-spinner />` form gets its accessible name from the active locale common loading message.
+- Prefer ariaLabel or ariaLabelledBy when the loading task needs a specific name.
+- ariaLabelledBy owns the accessible name when both naming inputs are present.
+- Never add aria-valuemin, aria-valuemax, or aria-valuenow to ProgressSpinner.
+- Use ariaValueText only for an additional task-state description.
+- An explicit label is visible while showLabel is true and also acts as the accessible-name fallback.
+- Sizes: `small`, `medium`, `large`.
+- Severities: primary, secondary, neutral, info, success, warning, error.
+- Variants: solid (default) and multicolor. Multicolor uses the five color tokens and ignores severity for the animated stroke.
+- dynamicStroke defaults to false and animates the arc length. It composes with solid and multicolor variants.
+- dual defaults to false and adds a counter-rotating inner arc.
+- reverse defaults to false. It reverses the primary direction and swaps the dual directions while keeping them opposed.
+- syncDualColor defaults to true. In dual multicolor mode it keeps both arcs on the same color; set false only for independent color cycles.
+- strokeWidth is clamped to 1..12.
+- speed is a duration in milliseconds clamped to 200..10000.
+- Reduced-motion preferences stop spinner rotation.
+- `unstyled` removes visual classes while structural hooks and semantics remain.
+- Slots: root, svg, track, indicator, inner, innerTrack, innerIndicator, label.
+- Global unstyled mode is `provideNeuralNg({ unstyled: true })`.
+- ProgressSpinnerComponent is a deprecated compatibility alias; generate NeuralProgressSpinner in new code.

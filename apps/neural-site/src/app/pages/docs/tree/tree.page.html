@@ -1,0 +1,553 @@
+<article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <neural-tabs
+    tabsId="tree-documentation-tabs"
+    unstyled
+    [value]="selectedView()"
+    [classes]="docTabClasses"
+    (valueChange)="selectView($event)"
+  >
+    <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_13rem] xl:gap-14">
+      <div class="min-w-0">
+        <div class="sticky top-[5.25rem] z-30 mb-8">
+          <neural-tab-list ariaLabel="Tree documentation sections">
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-1.5 left-1.5 z-0 w-[calc((100%_-_1.5rem)/4)] rounded-[1rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32))] shadow-[0_8px_24px_rgba(15,23,42,.12),inset_0_1px_rgba(255,255,255,.7)] backdrop-blur-[24px] transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(51,65,85,.82),rgba(30,41,59,.58))] dark:shadow-[0_10px_30px_rgba(0,0,0,.32),inset_0_1px_rgba(255,255,255,.12)] motion-reduce:transition-none"
+              [style.transform]="'translateX(calc(' + selectedViewIndex() * 100 + '% + ' + selectedViewIndex() * 0.25 + 'rem))'"
+            ></span>
+            <neural-tab value="component" iconClass="nt nt-binary-tree"
+              >Component</neural-tab
+            >
+            <neural-tab value="accessibility" iconClass="nt nt-shield"
+              >Accessibility</neural-tab
+            >
+            <neural-tab value="api" iconClass="nt nt-code">API</neural-tab>
+            <neural-tab value="tokens" iconClass="nt nt-settings"
+              >Token</neural-tab
+            >
+          </neural-tab-list>
+        </div>
+
+        <neural-tab-panels>
+          <neural-tab-panel value="component" [focusable]="false">
+            <header
+              id="component"
+              class="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-[var(--site-border)] bg-[var(--site-surface)] p-7 shadow-[0_28px_80px_rgba(2,6,23,.08)] backdrop-blur-[30px] sm:p-8"
+            >
+              <div
+                class="pointer-events-none absolute -right-24 -top-28 size-72 rounded-full bg-blue-500/15 blur-[90px]"
+              ></div>
+              <div class="relative">
+                <div class="flex gap-2">
+                  <span
+                    class="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-violet-500"
+                    >DATA</span
+                  ><span
+                    class="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-emerald-500"
+                    >BETA</span
+                  >
+                </div>
+                <h1
+                  class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl"
+                >
+                  Tree
+                </h1>
+                <p
+                  class="mt-4 max-w-3xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
+                >
+                  An immutable, Signal-first hierarchy with controlled
+                  expansion, three selection models, filtering, lazy branches
+                  and virtualized visible rows.
+                </p>
+                <div
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                >
+                  <span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>WAI-ARIA
+                    tree</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Lazy and
+                    virtual</span
+                  ><span
+                    ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Headless
+                    ready</span
+                  >
+                </div>
+              </div>
+            </header>
+
+            <section id="import" class="scroll-mt-28 pt-16">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                GET STARTED
+              </p>
+              <h2 class="mt-3 text-2xl font-black">Import</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Import the canonical standalone component and immutable data
+                contracts from the granular entry point.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="app.ts"
+                language="typescript"
+                [code]="importCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+
+            <section id="basic" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Controlled hierarchy</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Stable keys preserve expansion and focus while application data
+                remains immutable.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="basic.html"
+                language="html"
+                [code]="basicCode"
+                [theme]="appearance.mode()"
+                preview
+              >
+                <div
+                  preview-content
+                  class="mx-auto w-full max-w-xl space-y-4 py-3"
+                >
+                  <div class="flex flex-wrap items-center gap-2">
+                    <neural-button
+                      label="Expand all"
+                      icon="nt nt-plus"
+                      severity="secondary"
+                      (clicked)="tree()?.expandAll()"
+                    /><neural-button
+                      label="Collapse all"
+                      icon="nt nt-minus"
+                      severity="secondary"
+                      (clicked)="tree()?.collapseAll()"
+                    /><output
+                      class="ml-auto text-xs text-[var(--site-text-muted)]"
+                      aria-live="polite"
+                      >{{ eventText() }}</output
+                    >
+                  </div>
+                  <neural-tree
+                    #workspaceTree
+                    ariaLabel="Workspace files"
+                    [value]="nodes()"
+                    [(expandedKeys)]="expandedKeys"
+                    (nodeToggle)="eventText.set($event.key + ($event.expanded ? ' expanded.' : ' collapsed.'))"
+                    (lazyLoad)="handleLazy($event)"
+                  />
+                </div>
+              </code-view>
+            </section>
+
+            <section id="selection" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Selection models</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Single, modifier-aware multiple and propagated checkbox
+                selection share one immutable key-set contract.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="selection.html"
+                language="html"
+                [code]="selectionCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="grid w-full gap-6 py-3 lg:grid-cols-2"
+                >
+                  <div>
+                    <p class="mb-2 text-sm font-bold">
+                      Multiple · {{ selectionSummary(selectionKeys()) }}
+                    </p>
+                    <neural-tree
+                      selectionMode="multiple"
+                      ariaLabel="Multiple selection"
+                      [value]="nodes().slice(0,2)"
+                      [expandedKeys]="expandedKeys()"
+                      [(selectionKeys)]="selectionKeys"
+                    />
+                  </div>
+                  <div>
+                    <p class="mb-2 text-sm font-bold">
+                      Checkbox · {{ checkboxKeys().size }} selected
+                    </p>
+                    <neural-tree
+                      selectionMode="checkbox"
+                      ariaLabel="Checkbox selection"
+                      [value]="nodes().slice(0,2)"
+                      [expandedKeys]="expandedKeys()"
+                      [(selectionKeys)]="checkboxKeys"
+                    />
+                  </div></div
+              ></code-view>
+            </section>
+
+            <section id="filtering" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Nested filtering and typed templates
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Strict mode tests descendants; lenient mode keeps the complete
+                subtree after a parent match. Nested paths never mutate source
+                nodes.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="filter.html"
+                language="html"
+                [code]="filterCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="mx-auto w-full max-w-xl space-y-4 py-3"
+                >
+                  <input
+                    neuralInput
+                    fluid
+                    type="search"
+                    placeholder="Search label or owner…"
+                    [value]="filterValue()"
+                    (input)="setFilter($event)"
+                  /><neural-tree
+                    compact
+                    ariaLabel="Filtered workspace"
+                    [value]="nodes()"
+                    [(filterValue)]="filterValue"
+                    filterMode="strict"
+                    [filterFields]="['label','data.owner']"
+                    ><ng-template neuralTreeToggler let-expanded="expanded"
+                      ><i
+                        class="nt"
+                        [class.nt-chevron-down]="expanded"
+                        [class.nt-chevron-right]="!expanded"
+                      ></i></ng-template
+                    ><ng-template neuralTreeIcon let-iconClass="iconClass"
+                      ><i [class]="iconClass"></i></ng-template
+                    ><ng-template
+                      [neuralTreeNode]="templateType"
+                      let-node
+                      let-selected="selected"
+                      ><span
+                        class="flex min-w-0 flex-1 items-center justify-between gap-3"
+                        ><span class="truncate font-bold">{{ node.label }}</span
+                        ><small class="text-[var(--site-text-muted)]"
+                          >{{ node.data?.owner }}{{ selected ? ' · selected' :
+                          '' }}</small
+                        ></span
+                      ></ng-template
+                    ></neural-tree
+                  >
+                </div></code-view
+              >
+            </section>
+
+            <section id="lazy" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">
+                Lazy, loading, empty and retry
+              </h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>leaf: false</code> declares an unloaded branch. Loading
+                requests are guarded per key and failed branches expose an
+                explicit retry path.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="lazy.ts"
+                language="typescript"
+                [code]="lazyCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div
+                  preview-content
+                  class="grid w-full gap-5 py-3 md:grid-cols-3"
+                >
+                  <div>
+                    <neural-button
+                      label="Show loading"
+                      severity="secondary"
+                      (clicked)="showLoading()"
+                    /><neural-tree
+                      class="mt-3 block"
+                      ariaLabel="Loading tree"
+                      [loading]="loading()"
+                      [value]="nodes().slice(0,1)"
+                    />
+                  </div>
+                  <div>
+                    <p class="mb-3 text-sm font-bold">Empty</p>
+                    <neural-tree
+                      ariaLabel="Empty tree"
+                      [value]="[]"
+                      emptyLabel="No nodes yet"
+                    />
+                  </div>
+                  <div>
+                    <p class="mb-3 text-sm font-bold">
+                      Retry · {{ retryAttempts() }}
+                    </p>
+                    <neural-tree
+                      ariaLabel="Failed lazy branch"
+                      [value]="errorNodes"
+                      [expandedKeys]="errorExpanded"
+                      (lazyLoad)="retryAttempts.update(value => value + 1)"
+                    />
+                  </div></div
+              ></code-view>
+            </section>
+
+            <section id="virtual" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Virtual range foundation</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Fixed row size, viewport height and overscan compute a flat
+                visible range compatible with the shared VirtualScroller
+                contract.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="virtual.html"
+                language="html"
+                [code]="virtualCode"
+                [theme]="appearance.mode()"
+              />
+            </section>
+            <section id="unstyled" class="scroll-mt-28 pt-16">
+              <h2 class="text-2xl font-black">Unstyled and typed slots</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                ARIA, hierarchy, keyboard navigation and lazy behavior remain;
+                Tailwind owns every visible choice.
+              </p>
+              <code-view
+                class="mt-6 block"
+                fileName="unstyled.html"
+                language="html"
+                [code]="unstyledCode"
+                [theme]="appearance.mode()"
+                preview
+                ><div preview-content class="mx-auto w-full max-w-xl py-3">
+                  <neural-tree
+                    unstyled
+                    ariaLabel="Headless workspace"
+                    selectionMode="multiple"
+                    [value]="nodes().slice(0,2)"
+                    [expandedKeys]="expandedKeys()"
+                    [selectionKeys]="selectionKeys()"
+                    [classes]="headlessClasses"
+                  /></div
+              ></code-view>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="accessibility" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                TREE
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Accessibility</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Native focus ownership follows the WAI-ARIA Tree pattern without
+                hiding hierarchy or asynchronous state.
+              </p>
+            </header>
+            <section id="aria" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">ARIA model</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>tree</code>, <code>treeitem</code> and nested
+                <code>group</code> roles expose level, set size and position.
+                Expansion, selection and checkbox mixed state are announced
+                explicitly.
+              </p>
+            </section>
+            <section id="keyboard" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Keyboard</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Arrow Up/Down move visible enabled rows. Home/End reach edges.
+                Enter/Space selects or toggles. Printable characters run
+                locale-aware typeahead.
+              </p>
+            </section>
+            <section id="focus-rtl" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Focus restore and RTL</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                One roving tabindex owns focus. Collapsing a focused descendant
+                returns focus to its branch. Logical horizontal arrows reverse
+                under RTL.
+              </p>
+            </section>
+            <section id="async-ssr" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Async, SSR and cleanup</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                Loading, empty, error and retry states are localized. State
+                resolution is DOM-independent; typeahead timers and lazy guards
+                are cleaned deterministically.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="api" [focusable]="false">
+            <header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                TREE
+              </p>
+              <h1 class="mt-3 text-4xl font-black">API</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Complete public contract for the component, controller,
+                templates and immutable events.
+              </p>
+            </header>
+            <section id="component-api" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Component</h2>
+              <div
+                class="mt-4 rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 sm:grid sm:grid-cols-[13rem_13rem_1fr] sm:gap-4"
+              >
+                <code class="font-bold text-blue-500">NeuralTree&lt;T&gt;</code
+                ><code class="text-xs">neural-tree</code>
+                <p class="text-sm text-[var(--site-text-soft)]">
+                  Standalone generic hierarchy renderer.
+                </p>
+              </div>
+            </section>
+            <section id="inputs" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Models and inputs</h2>
+              <div
+                class="mt-4 overflow-x-auto rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                <table class="w-full min-w-[54rem] text-left text-sm">
+                  <thead
+                    class="border-b border-[var(--site-border)] text-xs uppercase text-[var(--site-text-muted)]"
+                  >
+                    <tr>
+                      <th class="p-4">Name</th>
+                      <th class="p-4">Type</th>
+                      <th class="p-4">Default</th>
+                      <th class="p-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--site-border)]">
+                    @for(item of inputs; track item[0]){
+                    <tr>
+                      <td class="p-4 font-mono font-bold text-blue-500">
+                        {{item[0]}}
+                      </td>
+                      <td class="p-4 font-mono text-xs">{{item[1]}}</td>
+                      <td class="p-4 font-mono text-xs">{{item[2]}}</td>
+                      <td class="p-4 text-[var(--site-text-soft)]">
+                        {{item[3]}}
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section id="events" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Events</h2>
+              <div class="mt-4 grid gap-3">
+                @for(item of events; track item[0]){
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">{{item[0]}}</code
+                  ><code class="ml-3 text-xs">{{item[1]}}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{item[2]}}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="methods" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Methods</h2>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                @for(item of methods; track item[0]){
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">{{item[0]}}</code>
+                  <p class="mt-2 text-sm text-[var(--site-text-soft)]">
+                    {{item[1]}}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="templates" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Typed templates</h2>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                @for(item of templates; track item[0]){
+                <div
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5"
+                >
+                  <code class="font-bold text-blue-500">{{item[0]}}</code>
+                  <p class="mt-2 text-xs text-[var(--site-text-soft)]">
+                    {{item[1]}}
+                  </p>
+                </div>
+                }
+              </div>
+            </section>
+            <section id="class-slots" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Typed class slots</h2>
+              <div class="mt-4 flex flex-wrap gap-2">
+                @for(slot of classSlots; track slot){<code
+                  class="rounded-xl border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-sm text-blue-500"
+                  >{{slot}}</code
+                >}
+              </div>
+            </section>
+            <section id="public-types" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Public types and helpers</h2>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                @for(type of publicTypes; track type){<code
+                  class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-5 font-bold text-blue-500"
+                  >{{type}}</code
+                >}
+              </div>
+            </section>
+            <section id="compatibility" class="scroll-mt-28 pt-10">
+              <h2 class="text-2xl font-black">Compatibility alias</h2>
+              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+                <code>TreeComponent</code> remains deprecated for migration
+                only. New application and generated code must import
+                <code>NeuralTree</code>.
+              </p>
+            </section>
+          </neural-tab-panel>
+
+          <neural-tab-panel value="tokens" [focusable]="false"
+            ><header class="pt-3">
+              <p class="text-xs font-black tracking-[.16em] text-blue-500">
+                TREE
+              </p>
+              <h1 class="mt-3 text-4xl font-black">Design tokens</h1>
+              <p class="mt-4 max-w-3xl leading-7 text-[var(--site-text-soft)]">
+                Every token below maps to a real Tree visual decision and
+                inherits through Neutral and application themes.
+              </p>
+            </header>
+            <section id="surface-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="mb-5 text-2xl font-black">Surface</h2>
+              <site-design-token-list [tokens]="surfaceTokens" />
+            </section>
+            <section id="node-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="mb-5 text-2xl font-black">Nodes and hierarchy</h2>
+              <site-design-token-list [tokens]="nodeTokens" />
+            </section>
+            <section id="control-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="mb-5 text-2xl font-black">Toggler and checkbox</h2>
+              <site-design-token-list [tokens]="controlTokens" />
+            </section>
+            <section id="compact-tokens" class="scroll-mt-28 pt-10">
+              <h2 class="mb-5 text-2xl font-black">Compact density</h2>
+              <site-design-token-list [tokens]="compactTokens" />
+            </section>
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </div>
+      <site-on-this-page [links]="pageLinks[selectedView()]" />
+    </div>
+  </neural-tabs>
+</article>

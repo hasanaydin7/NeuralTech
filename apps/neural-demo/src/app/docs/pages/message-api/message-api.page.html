@@ -1,0 +1,68 @@
+<article class="docs-page message-api-docs-page">
+  <neural-toast channel="message-api-docs" position="bottom-end" />
+
+  <header class="docs-page-header">
+    <span>APIs</span>
+    <h1>Message API</h1>
+    <p>
+      A headless Signal store for notifications. Producers never depend on a
+      visual renderer; Toast is one optional consumer.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import and provider</h2>
+    <app-code-example
+      label="app.config.ts"
+      language="typescript"
+      [code]="importCode"
+    />
+  </section>
+
+  <section id="notify">
+    <h2>Notify, reference, and clear</h2>
+    <div class="message-demo-surface">
+      <div class="message-actions">
+        <neural-button (clicked)="notify(5000)"> Send temporary </neural-button>
+        <neural-button (clicked)="notify(null)">
+          Send persistent
+        </neural-button>
+        <neural-button (clicked)="dismissLast()"
+          >Dismiss last ref</neural-button
+        >
+        <neural-button (clicked)="clear()">Clear channel</neural-button>
+      </div>
+      <output class="demo-status" aria-live="polite">
+        {{ lastRefStatus() }} · Active in channel: {{ channelMessages().length
+        }}
+      </output>
+      <ul class="message-state-list">
+        @for (message of channelMessages(); track message.id) {
+        <li>
+          <strong>{{ message.severity }}</strong>
+          <span>{{ message.message }}</span>
+          <code>{{ message.id }}</code>
+        </li>
+        } @empty {
+        <li class="message-state-empty">
+          The headless channel currently has no messages.
+        </li>
+        }
+      </ul>
+    </div>
+    <app-code-example
+      label="Producer service"
+      language="typescript"
+      [code]="notifyCode"
+    />
+  </section>
+
+  <section id="architecture">
+    <h2>Renderer independence</h2>
+    <p>
+      Business services call <code>notify()</code>. The readonly
+      <code>messages</code> Signal can feed Toast, an inline banner, a log
+      panel, or a completely custom renderer without changing the producer.
+    </p>
+  </section>
+</article>

@@ -1,0 +1,718 @@
+<main class="demo-container" [attr.data-neural-theme]="currentTheme()">
+  <h1>NeuralNg Component Lab</h1>
+
+  <div class="appearance-controls">
+    <fieldset class="theme-switcher">
+      <legend>Theme</legend>
+      <button
+        type="button"
+        [attr.aria-pressed]="currentTheme() === 'neutral'"
+        (click)="changeTheme('neutral')"
+      >
+        Neutral Theme
+      </button>
+      <button
+        type="button"
+        [attr.aria-pressed]="currentTheme() === 'glass'"
+        (click)="changeTheme('glass')"
+      >
+        Glass Theme
+      </button>
+      <button
+        type="button"
+        [attr.aria-pressed]="currentTheme() === 'mist'"
+        (click)="changeTheme('mist')"
+      >
+        Mist Theme
+      </button>
+      <button
+        type="button"
+        [attr.aria-pressed]="currentTheme() === 'futuristic'"
+        (click)="changeTheme('futuristic')"
+      >
+        Futuristic Theme
+      </button>
+    </fieldset>
+
+    <fieldset class="theme-switcher">
+      <legend>Color mode</legend>
+      @for (mode of colorModes; track mode) {
+      <button
+        type="button"
+        [attr.aria-pressed]="colorMode.preference() === mode"
+        (click)="changeColorMode(mode)"
+      >
+        {{ mode }}
+      </button>
+      }
+      <output aria-live="polite">
+        Resolved: {{ colorMode.resolvedMode() }}
+      </output>
+    </fieldset>
+  </div>
+
+  <section class="component-showcase">
+    <neural-toast [position]="toastPosition()" />
+    <neural-toast
+      channel="queue-demo"
+      position="bottom-end"
+      iconClass="nt-bell"
+    />
+    <neural-toast channel="template-demo" position="middle-start">
+      <ng-template
+        neuralToastTemplate
+        let-message
+        let-dismiss="dismiss"
+        let-paused="paused"
+      >
+        <span class="demo-template-toast">
+          <strong>{{ message.title }}</strong>
+          <span>{{ message.message }}</span>
+          <small>Timer {{ paused ? 'duraklatıldı' : 'çalışıyor' }}</small>
+          <button type="button" (click)="dismiss()">
+            Template içinden kapat
+          </button>
+        </span>
+      </ng-template>
+    </neural-toast>
+    <neural-toast
+      channel="unstyled-demo"
+      position="bottom-start"
+      toastClass="demo-headless-outlet"
+      messageClass="demo-headless-message"
+      [icon]="false"
+      unstyled
+    />
+
+    <div class="demo-group card-lab">
+      <h2>Card alpha</h2>
+      <p>
+        Native article semantics, composable sections, theme tokens, and full
+        class ownership without a title-specific API.
+      </p>
+
+      <div class="card-grid">
+        <neural-card ariaLabelledby="card-composition-title">
+          <neural-card-header>
+            <span>
+              <small class="card-eyebrow">Composable</small>
+              <h3 id="card-composition-title">Native sections</h3>
+            </span>
+            <i class="nt nt-code" aria-hidden="true"></i>
+          </neural-card-header>
+          <neural-card-body>
+            Header, body, and footer remain optional standalone pieces. The card
+            itself renders a real article.
+          </neural-card-body>
+          <neural-card-footer>
+            <neural-button (clicked)="showMessage('success')">
+              Trigger message
+            </neural-button>
+          </neural-card-footer>
+        </neural-card>
+
+        <neural-card
+          role="region"
+          ariaLabel="Component progress"
+          cardClass="demo-progress-card"
+        >
+          <neural-card-body>
+            <i class="nt nt-home" aria-hidden="true"></i>
+            <strong>8 alpha building blocks</strong>
+            <span
+              >Button, Message, Toast, Paginator, Card, Input, Field, and
+              Tabs.</span
+            >
+          </neural-card-body>
+        </neural-card>
+
+        <neural-card
+          ariaLabelledby="headless-card-title"
+          [classes]="headlessCardClasses"
+          unstyled
+        >
+          <neural-card-header>
+            <h3 id="headless-card-title">Unstyled card</h3>
+            <code>classes.header</code>
+          </neural-card-header>
+          <neural-card-body>
+            Structural hooks and semantics stay intact; every visual class in
+            this example belongs to the demo.
+          </neural-card-body>
+          <neural-card-footer>
+            <code>provideNeuralNg(&#123; unstyled: true &#125;)</code>
+          </neural-card-footer>
+        </neural-card>
+      </div>
+    </div>
+
+    <div class="demo-group field-lab">
+      <h2>Field v0.1.0-beta.0</h2>
+      <p>
+        A form-agnostic accessibility contract for labels, hints, errors, and
+        control state. Validation remains in the form schema.
+      </p>
+
+      <div class="field-demo-grid">
+        <section>
+          <h3>Angular 22 Signal Forms</h3>
+          <neural-field
+            controlId="signal-email"
+            fluid
+            required
+            [invalid]="
+              inputForm.email().touched() && inputForm.email().invalid()
+            "
+          >
+            <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+            <label neuralFieldLabel>Work email</label>
+            <input
+              neuralInput
+              type="email"
+              autocomplete="email"
+              [formField]="inputForm.email"
+            />
+            <small neuralFieldHint>
+              The model updates through the stable
+              <code>[formField]</code> API.
+            </small>
+            @if (inputForm.email().touched() && inputForm.email().invalid()) {
+            <small neuralFieldError>
+              {{ inputForm.email().errors()[0]?.message }}
+            </small>
+            }
+          </neural-field>
+          <output aria-live="polite">
+            Signal value: {{ inputModel().email }}
+          </output>
+        </section>
+
+        <section>
+          <h3>Pending</h3>
+          <neural-field controlId="field-pending" fluid pending>
+            <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+            <label neuralFieldLabel>Workspace slug</label>
+            <input neuralInput value="neural-team" autocomplete="off" />
+            <small neuralFieldHint>
+              Checking whether this workspace is available.
+            </small>
+          </neural-field>
+        </section>
+
+        <section>
+          <h3>Availability states</h3>
+          <neural-field controlId="field-readonly" fluid readonly>
+            <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+            <label neuralFieldLabel>Account ID</label>
+            <input neuralInput value="usr_neural_001" />
+            <small neuralFieldHint>This value cannot be edited.</small>
+          </neural-field>
+          <neural-field controlId="field-disabled" fluid disabled>
+            <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+            <label neuralFieldLabel>Legacy region</label>
+            <input neuralInput value="Retired" />
+          </neural-field>
+        </section>
+
+        <section>
+          <h3>Unstyled native control</h3>
+          <neural-field
+            controlId="field-headless"
+            class="demo-headless-field"
+            unstyled
+          >
+            <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+            <label neuralFieldLabel class="demo-headless-field-label">
+              Deployment note
+            </label>
+            <textarea
+              neuralFieldControl
+              class="demo-headless-textarea"
+              rows="3"
+            >
+Owned entirely by consumer classes.</textarea
+            >
+            <small neuralFieldHint class="demo-headless-field-hint">
+              Structural IDs and ARIA remain active.
+            </small>
+          </neural-field>
+        </section>
+      </div>
+    </div>
+
+    <div class="demo-group input-lab">
+      <h2>Input v0.1.0-beta.0</h2>
+      <p>
+        A native <code>&lt;input&gt;</code> enhanced with
+        <code>neuralInput</code>: no wrapper, no lost browser semantics, and
+        direct compatibility with Angular Signal Forms.
+      </p>
+
+      <div class="input-demo-grid">
+        <section>
+          <h3>Native states</h3>
+          <label for="input-search">Search</label>
+          <input
+            neuralInput
+            fluid
+            id="input-search"
+            type="search"
+            placeholder="Search components"
+          />
+          <label for="input-invalid">Invalid</label>
+          <input
+            neuralInput
+            fluid
+            id="input-invalid"
+            value="invalid value"
+            aria-invalid="true"
+            aria-describedby="input-invalid-error"
+          />
+          <small id="input-invalid-error" class="input-error">
+            Explain how the value should be corrected.
+          </small>
+        </section>
+
+        <section>
+          <h3>Readonly and disabled</h3>
+          <label for="input-readonly">Readonly value</label>
+          <input
+            neuralInput
+            fluid
+            id="input-readonly"
+            value="Visible but immutable"
+            readonly
+          />
+          <label for="input-disabled">Disabled value</label>
+          <input
+            neuralInput
+            fluid
+            id="input-disabled"
+            value="Unavailable"
+            disabled
+          />
+        </section>
+
+        <section>
+          <h3>Unstyled native class ownership</h3>
+          <label for="input-headless">Custom terminal input</label>
+          <input
+            neuralInput
+            unstyled
+            id="input-headless"
+            class="demo-headless-input"
+            value="class='demo-headless-input'"
+          />
+          <small>
+            The consumer uses the native <code>class</code> attribute directly.
+          </small>
+        </section>
+      </div>
+    </div>
+
+    <div class="demo-group tabs-lab">
+      <h2>Tabs v0.1.0-beta.0</h2>
+      <p>
+        Signal models, native buttons, WAI-ARIA keyboard behavior, icon classes,
+        projected icons, and complete visual class ownership.
+      </p>
+
+      <h3>Automatic activation and both icon APIs</h3>
+      <neural-tabs
+        tabsId="demo-account-tabs"
+        tabsClass="demo-overflow-tabs"
+        [(value)]="activeTab"
+      >
+        <neural-tab-list ariaLabel="Account sections">
+          <neural-tab value="overview" iconClass="nt-home">
+            Overview
+          </neural-tab>
+          <neural-tab value="profile">
+            <i class="nt nt-user" aria-hidden="true"></i>
+            Profile
+          </neural-tab>
+          <neural-tab value="billing" iconClass="nt-copy"> Billing </neural-tab>
+          <neural-tab value="disabled" iconClass="nt-eye-off" disabled>
+            Disabled
+          </neural-tab>
+        </neural-tab-list>
+        <neural-tab-panels>
+          <neural-tab-panel value="overview">
+            <strong>Overview panel</strong>
+            <p>The selected Signal value is <code>{{ activeTab() }}</code>.</p>
+          </neural-tab-panel>
+          <neural-tab-panel value="profile">
+            <strong>Profile panel</strong>
+            <p>This tab projects its own <code>&lt;i&gt;</code> icon.</p>
+          </neural-tab-panel>
+          <neural-tab-panel value="billing">
+            <strong>Billing panel</strong>
+            <p>This tab uses the concise <code>iconClass</code> input.</p>
+          </neural-tab-panel>
+          <neural-tab-panel value="disabled">
+            This panel cannot be selected from its disabled tab.
+          </neural-tab-panel>
+        </neural-tab-panels>
+      </neural-tabs>
+
+      <div class="tabs-demo-grid">
+        <section>
+          <h3>Vertical and manual activation</h3>
+          <neural-tabs
+            tabsId="demo-project-tabs"
+            [(value)]="manualTab"
+            orientation="vertical"
+            activationMode="manual"
+          >
+            <neural-tab-list ariaLabel="Project sections">
+              <neural-tab value="activity" iconClass="nt-bell">
+                Activity
+              </neural-tab>
+              <neural-tab value="team" iconClass="nt-user"> Team </neural-tab>
+              <neural-tab value="settings" iconClass="nt-settings">
+                Settings
+              </neural-tab>
+            </neural-tab-list>
+            <neural-tab-panels>
+              <neural-tab-panel value="activity"
+                >Activity content</neural-tab-panel
+              >
+              <neural-tab-panel value="team">Team content</neural-tab-panel>
+              <neural-tab-panel value="settings"
+                >Settings content</neural-tab-panel
+              >
+            </neural-tab-panels>
+          </neural-tabs>
+          <small>Use Up/Down, then Enter or Space to activate.</small>
+        </section>
+
+        <section>
+          <h3>Unstyled with typed class slots</h3>
+          <neural-tabs
+            tabsId="demo-headless-tabs"
+            [(value)]="headlessTab"
+            [classes]="headlessTabsClasses"
+            unstyled
+          >
+            <neural-tab-list ariaLabel="Headless example">
+              <neural-tab value="markup" iconClass="nt-code">Markup</neural-tab>
+              <neural-tab value="styles" iconClass="nt-settings"
+                >Styles</neural-tab
+              >
+            </neural-tab-list>
+            <neural-tab-panels>
+              <neural-tab-panel value="markup"
+                >Structural classes and ARIA remain.</neural-tab-panel
+              >
+              <neural-tab-panel value="styles"
+                >All visual CSS belongs to the demo.</neural-tab-panel
+              >
+            </neural-tab-panels>
+          </neural-tabs>
+        </section>
+      </div>
+    </div>
+
+    <div class="demo-group icon-lab">
+      <h2>Neural Icons catalog</h2>
+      <p>
+        {{ iconTotals().icons }} embedded SVG files: {{ iconTotals().outline }}
+        outline and {{ iconTotals().filled }} filled. Search, filter, then
+        select an icon to copy its class.
+      </p>
+
+      <div class="icon-controls">
+        <label>
+          Search icons
+          <input
+            type="search"
+            placeholder="Try user, arrow, brand..."
+            [value]="iconQuery()"
+            (input)="changeIconQuery($event)"
+          />
+        </label>
+
+        <label>
+          Style
+          <select [value]="iconStyle()" (change)="changeIconStyle($event)">
+            <option value="outline">
+              Outline ({{ iconTotals().outline }})
+            </option>
+            <option value="filled">Filled ({{ iconTotals().filled }})</option>
+          </select>
+        </label>
+
+        <label>
+          Category
+          <select
+            [value]="iconCategory()"
+            (change)="changeIconCategory($event)"
+          >
+            <option value="all">All categories</option>
+            @for (category of availableIconCategories(); track category.name) {
+            <option [value]="category.name">
+              {{ category.name }} ({{ category[iconStyle()] }})
+            </option>
+            }
+          </select>
+        </label>
+      </div>
+
+      <p class="icon-results" aria-live="polite">
+        {{ matchingIcons().length }} icons match the current filters.
+      </p>
+
+      <div class="icon-grid" aria-label="Neural Icons search results">
+        @for (icon of visibleIcons(); track icon.name) {
+        <button
+          type="button"
+          class="icon-sample"
+          [attr.aria-label]="'Copy ' + iconClass(icon)"
+          [attr.title]="'Copy ' + iconClass(icon)"
+          (click)="copyIconClass(icon)"
+        >
+          <i [class]="iconClass(icon)" aria-hidden="true"></i>
+          <code>{{ iconClass(icon) }}</code>
+          <small>{{ icon.category }}</small>
+        </button>
+        }
+      </div>
+
+      @if (matchingIcons().length === 0) {
+      <p class="icon-empty">No icons match these filters.</p>
+      }
+
+      <neural-paginator
+        [(pageIndex)]="iconPageIndex"
+        [(pageSize)]="iconPageSize"
+        [totalItems]="matchingIcons().length"
+        [pageSizeOptions]="iconPageSizeOptions"
+        [labels]="iconPaginatorLabels"
+        reportTemplate="{total} ikondan {start}–{end} arası gösteriliyor"
+        paginatorClass="icon-paginator"
+        (pageChange)="handleIconPageChange($event)"
+      />
+
+      <p class="icon-copy-status" aria-live="polite">
+        @if (copiedIcon()) { Copied: <code>{{ copiedIcon() }}</code> }
+      </p>
+
+      <p class="icon-brand-note">
+        Brand artwork is optional and may remain subject to its owner's
+        trademark rules.
+      </p>
+
+      <div class="icon-size-demo" aria-label="Inherited icon sizes">
+        <i class="nt nt-check icon-small" aria-hidden="true"></i>
+        <i class="nt nt-sun icon-medium" aria-hidden="true"></i>
+        <i class="nt nt-moon icon-large" aria-hidden="true"></i>
+        <i class="nt nt-spinner nt-spin icon-medium" aria-hidden="true"></i>
+        <i class="nt nt-loader-3 nt-spin icon-medium" aria-hidden="true"></i>
+        <i class="nt nt-loader-4 nt-spin icon-medium" aria-hidden="true"></i>
+      </div>
+
+      <section class="icon-motion-demo" aria-labelledby="icon-motion-title">
+        <h3 id="icon-motion-title">Motion classes</h3>
+        <p>
+          Whole, reverse, and generated counter-rotating layers. Motion stops
+          automatically when reduced motion is preferred.
+        </p>
+        <div class="icon-motion-grid">
+          <figure>
+            <i class="nt nt-loader-3 nt-spin" aria-hidden="true"></i>
+            <figcaption><code>nt-spin</code></figcaption>
+          </figure>
+          <figure>
+            <i class="nt nt-loader-3 nt-spin-reverse" aria-hidden="true"></i>
+            <figcaption><code>nt-spin-reverse</code></figcaption>
+          </figure>
+          <figure>
+            <i class="nt nt-loader-3 nt-spin-dual" aria-hidden="true"></i>
+            <figcaption><code>loader-3 · nt-spin-dual</code></figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+
+    <div class="demo-group paginator-lab">
+      <h2>Paginator alpha</h2>
+      <p>
+        The icon catalog above is the production-style example. These states
+        demonstrate complete class ownership and disabled semantics.
+      </p>
+
+      <h3>Unstyled with typed class slots</h3>
+      <neural-paginator
+        [(pageIndex)]="headlessPaginatorIndex"
+        [(pageSize)]="headlessPaginatorSize"
+        [totalItems]="42"
+        [pageSizeOptions]="[5, 10]"
+        [labels]="headlessPaginatorLabels"
+        [classes]="headlessPaginatorClasses"
+        reportTemplate="Custom range: {start}–{end} / {total}"
+        paginatorClass="demo-headless-paginator"
+        unstyled
+      />
+
+      <h3>Disabled state</h3>
+      <neural-paginator
+        [totalItems]="30"
+        [pageSize]="10"
+        reportTemplate="Disabled range: {start}–{end} / {total}"
+        paginatorClass="demo-disabled-paginator"
+        disabled
+      />
+    </div>
+
+    <h2>Button API</h2>
+    <p>Current theme: {{ currentTheme() }}</p>
+    <p class="focus-hint">
+      Focus halkasını görmek için Tab tuşuyla butonlar arasında gezinin.
+    </p>
+
+    <div class="demo-group">
+      <h3>Standard button and clicked output</h3>
+      <div class="button-row">
+        <neural-button (clicked)="logClick('Standard clicked')">
+          Neural Button
+        </neural-button>
+      </div>
+    </div>
+
+    <div class="demo-group">
+      <h3>Native submit semantics</h3>
+      <form (submit)="handleSubmit($event)">
+        <neural-button type="submit">Submit Form + Message</neural-button>
+      </form>
+    </div>
+
+    <div class="demo-group">
+      <h3>Loading, aria-busy and localized loading label</h3>
+      <div class="button-row">
+        <neural-button
+          [loading]="isLoading()"
+          loadingLabel="Kaydediliyor"
+          (clicked)="toggleLoading()"
+        >
+          Save Changes + Message
+        </neural-button>
+      </div>
+      <p>
+        Loading sırasında buton focusable kalır, yeniden etkinleştirilemez ve
+        işlem tamamlandığında başarı mesajı gösterir.
+      </p>
+    </div>
+
+    <div class="demo-group">
+      <h3>Native disabled state</h3>
+      <div class="button-row">
+        <neural-button [disabled]="true">Disabled</neural-button>
+      </div>
+    </div>
+
+    <div class="demo-group">
+      <h3>Icon-only button with ariaLabel</h3>
+      <div class="button-row">
+        <neural-button
+          ariaLabel="Close dialog"
+          (clicked)="logClick('Icon button clicked')"
+        >
+          <span class="nt nt-times" aria-hidden="true"></span>
+        </neural-button>
+      </div>
+    </div>
+
+    <div class="demo-group">
+      <h3>Additive buttonClass</h3>
+      <div class="button-row">
+        <neural-button
+          buttonClass="demo-accent-button"
+          (clicked)="logClick('buttonClass clicked')"
+        >
+          Base + Custom Class
+        </neural-button>
+      </div>
+    </div>
+
+    <div class="demo-group">
+      <h3>Fully custom unstyled button</h3>
+      <div class="button-row">
+        <neural-button
+          [unstyled]="true"
+          buttonClass="demo-unstyled-button"
+          (clicked)="logClick('Unstyled clicked')"
+        >
+          Unstyled + Custom Class
+        </neural-button>
+      </div>
+    </div>
+
+    <div class="demo-group message-lab">
+      <h2>Headless Message API</h2>
+      <p>
+        Gerçek <code>@neural-ng/core/toast</code> renderer'ı headless
+        <code>@neural-ng/core/message</code> durum akışını tüketir.
+      </p>
+
+      <label class="position-control">
+        Toast position
+        <select
+          [value]="toastPosition()"
+          (change)="changeToastPosition($event)"
+        >
+          @for (position of toastPositions; track position) {
+          <option [value]="position">{{ position }}</option>
+          }
+        </select>
+      </label>
+
+      <h3>Severity and default duration</h3>
+      <div class="button-row">
+        <neural-button severity="primary" (clicked)="showMessage('primary')"
+          >Primary</neural-button
+        >
+        <neural-button severity="secondary" (clicked)="showMessage('secondary')"
+          >Secondary</neural-button
+        >
+        <neural-button (clicked)="showMessage('neutral')"
+          >Neutral</neural-button
+        >
+        <neural-button (clicked)="showMessage('info')">Info</neural-button>
+        <neural-button (clicked)="showMessage('success')"
+          >Success</neural-button
+        >
+        <neural-button (clicked)="showMessage('warning')"
+          >Warning</neural-button
+        >
+        <neural-button (clicked)="showMessage('error')">Error</neural-button>
+      </div>
+      <p>
+        Warning ve Error varsayılan olarak kalıcıdır; diğerleri 5000 ms sürer.
+      </p>
+
+      <h3>Queue, channel and dismiss behavior</h3>
+      <div class="button-row">
+        <neural-button (clicked)="showNonDismissibleMessage()">
+          Non-dismissible / 4s
+        </neural-button>
+        <neural-button (clicked)="showHeadlessMessage()">
+          Unstyled Channel
+        </neural-button>
+        <neural-button (clicked)="showTemplateMessage()">
+          Custom Template
+        </neural-button>
+        <neural-button (clicked)="demonstrateOverflow()">
+          Send 4 / Keep 3
+        </neural-button>
+        <neural-button (clicked)="clearMessages('queue-demo')">
+          Clear Queue Channel
+        </neural-button>
+        <neural-button (clicked)="clearMessages()">Clear All</neural-button>
+      </div>
+    </div>
+
+    <p class="event-output" aria-live="polite">
+      Last action: {{ lastAction() }}
+    </p>
+  </section>
+</main>

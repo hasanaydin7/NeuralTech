@@ -1,0 +1,42 @@
+# NeuralNg Card Beta
+
+Import Card only from `@neural-ng/core/card`. It is standalone; never create or
+import an NgModule.
+
+## Rules
+
+- Use `neural-card` as the root.
+- Import `NeuralCard` and compose `NeuralCardHeader`, `NeuralCardBody`, and
+  `NeuralCardFooter` only when those sections are present.
+- Never generate the deprecated `CardComponent`, `CardHeaderComponent`,
+  `CardBodyComponent`, or `CardFooterComponent` aliases.
+- Project native heading elements with stable IDs. Prefer `ariaLabelledby` on
+  the card when it needs an accessible name.
+- The root is a native article. Do not add `role="region"` to every card; use it
+  only for an important named landmark.
+- `cardClass` targets the native article.
+- `classes` is typed with `root`, `header`, `body`, and `footer` slots.
+- Section-level `headerClass`, `bodyClass`, and `footerClass` inputs are additive.
+- `unstyled` removes visual `*-base` classes but retains structural classes,
+  native semantics, ARIA, projection, and consumer classes.
+- Global `provideNeuralNg({ unstyled: true })` also affects Card.
+- Do not assume Neural Icons, Tailwind, or another styling library is installed.
+- Beta boundary: Card owns the semantic surface and section composition. It
+  intentionally has no title, subtitle, media, action, click, or layout API;
+  project real content and interactive components instead.
+
+## Canonical example
+
+```html
+<neural-card ariaLabelledby="settings-title">
+  <neural-card-header>
+    <h2 id="settings-title">Settings</h2>
+  </neural-card-header>
+  <neural-card-body>
+    <p>Update application preferences.</p>
+  </neural-card-body>
+  <neural-card-footer>
+    <neural-button>Save</neural-button>
+  </neural-card-footer>
+</neural-card>
+```

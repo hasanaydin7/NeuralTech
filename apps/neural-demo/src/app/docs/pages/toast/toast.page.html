@@ -1,0 +1,363 @@
+<article class="docs-page toast-docs-page">
+  <neural-toast
+    channel="toast-docs"
+    [position]="position()"
+    ariaLabel="Toast documentation notifications"
+    showProgress
+  />
+  <neural-toast
+    channel="toast-progress"
+    position="bottom-end"
+    ariaLabel="Toast lifetime examples"
+    showProgress
+  />
+  <neural-toast
+    channel="toast-no-icon"
+    position="middle-center"
+    ariaLabel="Icon-free notifications"
+    [icon]="false"
+  />
+  <neural-toast
+    channel="toast-headless"
+    position="bottom-start"
+    ariaLabel="Headless notifications"
+    toastClass="docs-headless-toast"
+    messageClass="docs-headless-toast__message"
+    unstyled
+  />
+
+  <header class="docs-hero">
+    <span class="docs-hero__eyebrow">Components</span>
+    <h1 class="docs-hero__title">Toast</h1>
+    <p class="docs-hero__description">
+      An accessible viewport renderer for the headless Message API. Toast owns
+      channels, logical positioning, finite lifetimes, progress, interaction
+      pausing, swipe dismissal, animation and consumer-controlled styling.
+    </p>
+  </header>
+
+  <section id="import">
+    <h2>Import</h2>
+    <p>
+      Toast renders messages; <code>NeuralMessageService</code> creates and owns
+      them. Keep the renderer and store imports explicit.
+    </p>
+    <code-view
+      fileName="app.config.ts"
+      language="ts"
+      [code]="importCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="setup">
+    <h2>Application setup</h2>
+    <p>
+      Register the headless message store once. Toast configuration is optional
+      and acts as the default for every outlet.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="app.config.ts"
+      language="ts"
+      [code]="setupCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="basic">
+    <h2>Basic notification</h2>
+    <p>
+      Place one outlet near the application root and notify from application
+      actions or services. Button intentionally does not create global messages.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="save-action.component.ts"
+      language="ts"
+      [code]="basicCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="toast-actions">
+        <neural-button severity="primary" (clicked)="showBasic()">
+          Save changes
+        </neural-button>
+        <neural-button (clicked)="clearDocsChannel()">
+          Clear channel
+        </neural-button>
+      </div>
+    </code-view>
+  </section>
+
+  <section id="severity">
+    <h2>Semantic severity</h2>
+    <p>
+      Severity controls visual intent and live-region priority. Warning and
+      error messages use the configured important lifetime, which is persistent
+      by default.
+    </p>
+    <div class="toast-demo-surface" data-testid="toast-severity-demo">
+      <label>
+        Outlet position
+        <select
+          aria-label="Toast documentation position"
+          [value]="position()"
+          (change)="changePosition($event)"
+        >
+          @for (item of positions; track item) {
+          <option [value]="item">{{ item }}</option>
+          }
+        </select>
+      </label>
+      <div class="toast-actions">
+        <neural-button severity="primary" (clicked)="showSeverity('primary')"
+          >Primary</neural-button
+        >
+        <neural-button
+          severity="secondary"
+          (clicked)="showSeverity('secondary')"
+          >Secondary</neural-button
+        >
+        <neural-button (clicked)="showSeverity('neutral')"
+          >Neutral</neural-button
+        >
+        <neural-button (clicked)="showSeverity('info')">Info</neural-button>
+        <neural-button severity="success" (clicked)="showSeverity('success')"
+          >Success</neural-button
+        >
+        <neural-button severity="warning" (clicked)="showSeverity('warning')"
+          >Warning</neural-button
+        >
+        <neural-button severity="error" (clicked)="showSeverity('error')"
+          >Error</neural-button
+        >
+      </div>
+    </div>
+  </section>
+
+  <section id="lifetime">
+    <h2>Lifetime, progress and references</h2>
+    <p>
+      A finite message owns one timer shared with its progress bar. Hover, focus
+      and swipe pause the same lifetime. Use <code>duration: null</code> for a
+      persistent message and the returned reference for application dismissal.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="notification-lifetime.ts"
+      language="ts"
+      [code]="lifetimeCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="toast-actions">
+        <neural-button (clicked)="showProgress()">Timed progress</neural-button>
+        <neural-button severity="warning" (clicked)="showPersistent()"
+          >Persistent</neural-button
+        >
+        <neural-button (clicked)="showControlled()"
+          >Create controlled</neural-button
+        >
+        <neural-button (clicked)="dismissControlled()"
+          >Dismiss controlled</neural-button
+        >
+      </div>
+      <output preview-content class="demo-status" aria-live="polite">
+        {{ eventStatus() }}
+      </output>
+    </code-view>
+  </section>
+
+  <section id="channels">
+    <h2>Channels and logical positions</h2>
+    <p>
+      Each outlet renders one channel. Positions use logical start and end, so
+      the same configuration follows both LTR and RTL document direction.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="app.html"
+      language="html"
+      [code]="channelsCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="configuration">
+    <h2>Global and local configuration</h2>
+    <p>
+      Component inputs override <code>provideNeuralToast()</code>, which
+      overrides library defaults. Message lifetime defaults belong to
+      <code>provideNeuralMessages()</code>.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="app.config.ts"
+      language="ts"
+      [code]="configurationCode"
+      [theme]="resolvedMode()"
+    />
+  </section>
+
+  <section id="unstyled">
+    <h2>Icon and unstyled ownership</h2>
+    <p>
+      Default icons come from <code>&#64;neural-ng/icons</code>. Disable them
+      per outlet or use <code>unstyled</code> to remove visual classes while
+      retaining channels, timers, live regions, swipe and native close controls.
+    </p>
+    <code-view
+      class="mt-2"
+      fileName="app.html"
+      language="html"
+      [code]="headlessCode"
+      [preview]="true"
+      [theme]="resolvedMode()"
+    >
+      <div preview-content class="toast-actions">
+        <neural-button (clicked)="showWithoutIcon()">No icon</neural-button>
+        <neural-button (clicked)="showHeadless()"
+          >Unstyled channel</neural-button
+        >
+      </div>
+    </code-view>
+  </section>
+
+  <section id="accessibility">
+    <h2>Accessibility</h2>
+    <ul class="toast-contract-list">
+      <li>
+        Polite and assertive live regions exist before messages are inserted.
+      </li>
+      <li>Toast never moves focus automatically.</li>
+      <li>The close action is a native button with a localized label.</li>
+      <li>
+        Hover and keyboard focus pause finite content for additional reading
+        time.
+      </li>
+      <li>
+        Persistent messages remain available through
+        <code>duration: null</code>.
+      </li>
+    </ul>
+  </section>
+
+  <section id="api">
+    <h2>API</h2>
+    <h3>Toast inputs</h3>
+    <div class="api-table-wrapper">
+      <table class="api-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>channel</code></td>
+            <td><code>string</code></td>
+            <td><code>global</code></td>
+            <td>Message channel rendered by this outlet.</td>
+          </tr>
+          <tr>
+            <td><code>position</code></td>
+            <td><code>NeuralToastPosition</code></td>
+            <td><code>top-end</code></td>
+            <td>Logical viewport position.</td>
+          </tr>
+          <tr>
+            <td><code>showProgress</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Show progress for finite messages.</td>
+          </tr>
+          <tr>
+            <td><code>pauseOnInteraction</code></td>
+            <td><code>boolean</code></td>
+            <td><code>true</code></td>
+            <td>Pause finite timers on hover, focus and swipe.</td>
+          </tr>
+          <tr>
+            <td><code>swipeToDismiss</code></td>
+            <td><code>boolean</code></td>
+            <td><code>true</code></td>
+            <td>Enable horizontal touch or pen dismissal.</td>
+          </tr>
+          <tr>
+            <td><code>animated</code></td>
+            <td><code>boolean</code></td>
+            <td><code>true</code></td>
+            <td>Enable compiler-native enter and leave classes.</td>
+          </tr>
+          <tr>
+            <td><code>icon</code></td>
+            <td><code>boolean</code></td>
+            <td><code>true</code></td>
+            <td>Render the decorative severity icon.</td>
+          </tr>
+          <tr>
+            <td><code>unstyled</code></td>
+            <td><code>boolean</code></td>
+            <td><code>false</code></td>
+            <td>Remove built-in visual and animation classes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Message input</h3>
+    <div class="api-table-wrapper">
+      <table class="api-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>message</code></td>
+            <td><code>string</code></td>
+            <td>required</td>
+            <td>Primary user-facing content.</td>
+          </tr>
+          <tr>
+            <td><code>severity</code></td>
+            <td><code>NeuralMessageSeverity</code></td>
+            <td><code>neutral</code></td>
+            <td>Semantic visual and announcement priority.</td>
+          </tr>
+          <tr>
+            <td><code>channel</code></td>
+            <td><code>string</code></td>
+            <td><code>global</code></td>
+            <td>Target outlet channel.</td>
+          </tr>
+          <tr>
+            <td><code>duration</code></td>
+            <td><code>number | null</code></td>
+            <td>severity default</td>
+            <td>Finite milliseconds or persistent lifetime.</td>
+          </tr>
+          <tr>
+            <td><code>dismissible</code></td>
+            <td><code>boolean</code></td>
+            <td><code>true</code></td>
+            <td>Whether renderers expose user dismissal.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <nav class="docs-page-next" aria-label="Next documentation page">
+    <span>Next</span>
+    <a routerLink="/docs/apis/message">Message API →</a>
+  </nav>
+</article>
