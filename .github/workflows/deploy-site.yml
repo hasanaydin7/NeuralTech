@@ -25,6 +25,11 @@ jobs:
     timeout-minutes: 15
     environment: production
     steps:
+      - name: Checkout deploy tooling
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
       - name: Download verified production artifact
         uses: actions/download-artifact@v4
         with:
@@ -67,3 +72,8 @@ jobs:
             -o StrictHostKeyChecking=yes \
             "neuralng-deploy@${DEPLOY_HOST}" \
             "/opt/neuralng/bin/deploy-neuralng ${RELEASE_SHA}"
+
+      - name: Notify IndexNow
+        continue-on-error: true
+        timeout-minutes: 2
+        run: node tools/submit-indexnow.mjs
