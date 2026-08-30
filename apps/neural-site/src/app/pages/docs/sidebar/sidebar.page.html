@@ -65,7 +65,7 @@
                   responsive offcanvas behavior and complete content ownership.
                 </p>
                 <div
-                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
+                  class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-soft)]"
                 >
                   <span
                     ><i class="nt nt-check mr-1.5 text-emerald-500"></i>Logical
@@ -159,7 +159,11 @@
                   <main neuralSidebarMain class="grid content-start gap-5 p-6">
                     <div class="flex items-center justify-between gap-4">
                       <div>
-                        <p class="text-xs font-black text-blue-500">AGENTS</p>
+                        <p
+                          class="text-xs font-black text-blue-500 dark:text-blue-400"
+                        >
+                          AGENTS
+                        </p>
                         <h3 class="mt-1 text-xl font-black">Operations</h3>
                       </div>
                       <neural-button
@@ -180,7 +184,7 @@
                       <div
                         class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
                       >
-                        <p class="text-sm text-[var(--site-text-muted)]">
+                        <p class="text-sm text-[var(--site-text-soft)]">
                           Active agents
                         </p>
                         <strong class="mt-2 block text-3xl">12</strong>
@@ -188,13 +192,13 @@
                       <div
                         class="rounded-2xl border border-[var(--site-border)] bg-[var(--site-surface)] p-4"
                       >
-                        <p class="text-sm text-[var(--site-text-muted)]">
+                        <p class="text-sm text-[var(--site-text-soft)]">
                           Tasks today
                         </p>
                         <strong class="mt-2 block text-3xl">284</strong>
                       </div>
                     </div>
-                    <p class="text-xs text-[var(--site-text-muted)]">
+                    <p class="text-xs text-[var(--site-text-soft)]">
                       {{ lastState() }}
                     </p>
                   </main>
@@ -253,7 +257,7 @@
                     </neural-sidebar-footer>
                   </neural-sidebar>
                   <main neuralSidebarMain class="grid content-center p-6">
-                    <p class="text-sm text-[var(--site-text-muted)]">
+                    <p class="text-sm text-[var(--site-text-soft)]">
                       The controlled model remains
                       <strong
                         >{{ hoverShellOpen() ? 'open' : 'closed' }}</strong
@@ -413,7 +417,7 @@
                   </neural-sidebar>
                   <main
                     neuralSidebarMain
-                    class="grid content-center justify-items-center gap-4 p-6 text-center text-sm text-[var(--site-text-muted)]"
+                    class="grid content-center justify-items-center gap-4 p-6 text-center text-sm text-[var(--site-text-soft)]"
                   >
                     <p>
                       NeuralMenu above and NeuralPanelMenu below remain aligned
@@ -596,7 +600,7 @@
               >
                 <table class="w-full min-w-[58rem] text-left text-sm">
                   <thead
-                    class="border-b border-[var(--site-border)] text-xs uppercase tracking-wider text-[var(--site-text-muted)]"
+                    class="border-b border-[var(--site-border)] text-xs uppercase tracking-wider text-[var(--site-text-soft)]"
                   >
                     <tr>
                       <th class="p-4">Name</th>

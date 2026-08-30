@@ -1,15 +1,15 @@
 {
   "version": 1,
   "preset": "neutral",
-  "sourceHash": "76ee2a54a020f28722cbfcd6f880f5f276bdebb377d2b9b4fc97894d30d8ce14",
+  "sourceHash": "1f7eddd496166976c4fb61ab7099856b83bc5392fe0fbcc65d2f91aea586e52a",
   "generatedFrom": [
     "libs/neural-ng/themes/neutral.css",
     "libs/neural-editor/themes/neutral.css",
     "libs/neural-ng/themes/tailwind.css"
   ],
   "stats": {
-    "tokens": 1469,
-    "coreTokens": 1340,
+    "tokens": 1470,
+    "coreTokens": 1341,
     "editorTokens": 129,
     "sharedTokens": 0,
     "components": 45
@@ -1229,6 +1229,7 @@
       "--neural-sidebar-layout-background",
       "--neural-sidebar-layout-min-height",
       "--neural-sidebar-main-background",
+      "--neural-sidebar-menu-gap",
       "--neural-sidebar-radius",
       "--neural-sidebar-rail-label-background",
       "--neural-sidebar-rail-label-border",
@@ -10563,6 +10564,14 @@
       "source": "core",
       "modes": {
         "base": "var(--neural-color-surface-hover)"
+      }
+    },
+    {
+      "name": "--neural-sidebar-menu-gap",
+      "component": "sidebar",
+      "source": "core",
+      "modes": {
+        "base": "0.5rem"
       }
     },
     {
