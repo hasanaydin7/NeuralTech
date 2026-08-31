@@ -170,9 +170,7 @@ privately through the process in [SECURITY.md](./SECURITY.md).
 
 If NeuralNg saves you time, you can support its development by starring the
 repository, sharing it, contributing fixes, or sponsoring ongoing work through
-the **Sponsor** button at the top of the repository. GitHub Sponsors must be
-activated for [`@hasanaydin7`](https://github.com/hasanaydin7) before monetary
-contributions can be accepted.
+the **Sponsor** button at the top of the repository.
 
 ## License
 
