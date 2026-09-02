@@ -73,7 +73,7 @@
     "@angular-devkit/core": "~22.0.0",
     "@angular-devkit/schematics": "~22.0.4",
     "@angular/build": "~22.0.4",
-    "@angular/cli": "~22.0.4",
+    "@angular/cli": "~22.1.6",
     "@angular/compiler-cli": "~22.0.4",
     "@angular/language-service": "~22.0.4",
     "@axe-core/playwright": "^4.12.1",
