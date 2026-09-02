@@ -45,7 +45,7 @@
     "@angular/router": "~22.0.4",
     "@angular/ssr": "~22.0.4",
     "@floating-ui/dom": "^1.8.0",
-    "@tiptap/core": "^3.29.2",
+    "@tiptap/core": "^3.30.4",
     "@tiptap/extension-bubble-menu": "^3.29.2",
     "@tiptap/extension-collaboration": "^3.29.2",
     "@tiptap/extension-collaboration-caret": "^3.29.2",
