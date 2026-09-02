@@ -185,7 +185,6 @@ export class InputOtpPage {
     ['select()', 'Focuses and selects the first cell.'],
     ['reset()', 'Clears the string model.'],
   ] as const;
-  readonly classSlots = ['root', 'group', 'input', 'separator'] as const;
   readonly tokens = [
     '--neural-input-otp-width',
     '--neural-input-otp-input-size',

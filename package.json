@@ -24,6 +24,7 @@
     "docs:contract": "nx run neural-docs:contract-check",
     "docs:examples": "nx run neural-docs:example-check",
     "docs:coverage": "nx run neural-docs:coverage",
+    "docs:classes": "node tools/neural-docs/scripts/generate-class-contracts.mjs",
     "docs:verify": "nx run neural-docs:verify",
     "theme:contract": "nx run neural-theme:contract-check",
     "theme:build": "nx run neural-theme:build",

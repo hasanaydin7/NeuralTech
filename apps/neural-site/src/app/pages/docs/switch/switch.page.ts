@@ -210,16 +210,6 @@ export class SwitchPage {
     ['focus(options?)', 'void', 'Focuses the native checkbox.'],
     ['reset()', 'void', 'Sets checked to false without a user event.'],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Label wrapper and state-hook owner.'],
-    ['input', 'Visually hidden native checkbox.'],
-    ['track', 'Visible switch track.'],
-    ['checkedTrack', 'Additional track classes while checked.'],
-    ['thumb', 'Movable visual thumb.'],
-    ['label', 'Projected visible label.'],
-    ['onLabel', 'Checked-state track text.'],
-    ['offLabel', 'Unchecked-state track text.'],
-  ] as const;
   readonly publicTypes = [
     [
       'NeuralSwitchChange',

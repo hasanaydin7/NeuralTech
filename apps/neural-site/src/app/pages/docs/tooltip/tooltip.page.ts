@@ -213,11 +213,6 @@ status.set('Agent completed the task');`;
     ['classes', 'NeuralTooltipClasses', '{}', 'Typed classes for every slot.'],
     ['unstyled', 'boolean', 'false', 'Removes NeuralNg visual classes.'],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Fixed-position top-layer host and placement state.'],
-    ['content', 'Text surface containing the accessible description.'],
-    ['arrow', 'Position-aware decorative arrow.'],
-  ] as const;
   readonly surfaceTokens = [
     '--neural-tooltip-color',
     '--neural-tooltip-background',

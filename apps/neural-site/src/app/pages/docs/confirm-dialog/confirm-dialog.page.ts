@@ -335,18 +335,6 @@ first.closeReason(); // 'replaced'`;
     'api',
     'replaced',
   ] as const;
-  readonly classSlots = [
-    'root',
-    'header',
-    'icon',
-    'title',
-    'body',
-    'message',
-    'footer',
-    'acceptButton',
-    'rejectButton',
-    'buttonIcon',
-  ] as const;
   readonly publicTypes = [
     ['NeuralConfirmationInput', 'Configuration accepted by confirm().'],
     ['NeuralConfirmation', 'Normalized immutable active request.'],

@@ -246,16 +246,6 @@ export class ProgressSpinnerPage {
       'Typed outer, inner and label class slots.',
     ],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Semantic progressbar and label layout.'],
-    ['svg', 'Decorative SVG viewport.'],
-    ['track', 'Static circular track.'],
-    ['indicator', 'Animated indeterminate arc.'],
-    ['inner', 'Scaled inner-ring group rendered by dual mode.'],
-    ['innerTrack', 'Static inner circular track.'],
-    ['innerIndicator', 'Counter-rotating inner arc.'],
-    ['label', 'Optional visible loading text.'],
-  ] as const;
   readonly publicTypes = [
     ['NeuralProgressSpinnerSize', "'small' | 'medium' | 'large'"],
     ['NeuralProgressSpinnerVariant', "'solid' | 'multicolor'"],

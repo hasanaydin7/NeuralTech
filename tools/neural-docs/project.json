@@ -22,9 +22,20 @@
         "command": "node tools/neural-docs/scripts/check-coverage.mjs"
       }
     },
+    "class-contract-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node tools/neural-docs/scripts/generate-class-contracts.mjs --check"
+      }
+    },
     "verify": {
       "executor": "nx:run-commands",
-      "dependsOn": ["contract-check", "example-check", "coverage"],
+      "dependsOn": [
+        "contract-check",
+        "example-check",
+        "coverage",
+        "class-contract-check"
+      ],
       "options": {
         "command": "node -e \"console.log('Neural docs verification passed.')\""
       }

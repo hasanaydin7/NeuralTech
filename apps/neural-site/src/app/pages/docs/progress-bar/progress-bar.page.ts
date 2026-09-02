@@ -221,13 +221,6 @@ export class ProgressBarPage {
       'Typed root, track, buffer, value and label slots.',
     ],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Semantic progressbar element.'],
-    ['track', 'Clipping track surface.'],
-    ['buffer', 'Optional prepared-progress layer.'],
-    ['value', 'Current or indeterminate value layer.'],
-    ['label', 'Visible value text.'],
-  ] as const;
   readonly publicTypes = [
     ['NeuralProgressBarMode', "'determinate' | 'indeterminate'"],
     ['NeuralProgressBarSize', "'small' | 'medium' | 'large'"],

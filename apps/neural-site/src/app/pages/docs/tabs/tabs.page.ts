@@ -210,15 +210,6 @@ export class TabsPage {
     ],
     ['NeuralTabPanel.panelClass', 'string', "''", 'Additive panel class.'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'list',
-    'tab',
-    'activeTab',
-    'disabledTab',
-    'panels',
-    'panel',
-  ] as const;
   readonly tokens = [
     '--neural-tabs-gap',
     '--neural-tabs-vertical-gap',

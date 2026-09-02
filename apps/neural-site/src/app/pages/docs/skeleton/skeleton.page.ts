@@ -155,10 +155,6 @@ export class SkeletonPage {
       'Typed root and effect class slots.',
     ],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Sized decorative placeholder and clipping surface.'],
-    ['effect', 'Animated wave layer inside the root.'],
-  ] as const;
   readonly publicTypes = [
     ['NeuralSkeletonShape', "'rectangle' | 'rounded' | 'circle'"],
     ['NeuralSkeletonAnimation', "'pulse' | 'wave' | 'none'"],

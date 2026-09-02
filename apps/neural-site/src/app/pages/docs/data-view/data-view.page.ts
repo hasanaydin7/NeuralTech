@@ -366,19 +366,6 @@ readonly domainSort: NeuralDataViewSortComparator<Product> =
     ['neuralDataViewEmpty', 'NeuralDataViewStateTemplateContext'],
     ['neuralDataViewLoading', 'NeuralDataViewStateTemplateContext'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'header',
-    'content',
-    'list',
-    'grid',
-    'item',
-    'empty',
-    'loading',
-    'skeleton',
-    'paginator',
-    'footer',
-  ] as const;
   readonly publicTypes = [
     ['NeuralDataViewLayout', "'list' | 'grid'"],
     ['NeuralDataViewDataMode', "'local' | 'remote'"],

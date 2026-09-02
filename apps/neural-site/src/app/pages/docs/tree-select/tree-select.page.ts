@@ -345,23 +345,6 @@ export class TreeSelectPage {
     ],
     ['neuralTreeSelectValue', 'Typed value and resolved labels context.'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'trigger',
-    'value',
-    'placeholder',
-    'chipList',
-    'chip',
-    'chipRemove',
-    'clearButton',
-    'dropdownButton',
-    'panel',
-    'header',
-    'filter',
-    'tree',
-    'empty',
-    'loading',
-  ] as const;
   readonly types = [
     'NeuralTreeSelectValue<TValue>',
     'NeuralTreeSelectChange<TValue,TOption>',

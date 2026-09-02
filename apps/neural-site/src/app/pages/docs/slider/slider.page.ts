@@ -224,14 +224,6 @@ export class SliderPage {
     ['focus(options?)', 'void', 'Focuses the first native thumb.'],
     ['reset()', 'void', 'Restores min, or [min,max] in range mode.'],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Complete control and optional output layout.'],
-    ['input', 'Single input or both native range inputs.'],
-    ['value', 'Visible value output.'],
-    ['range', 'Two-thumb positioning surface.'],
-    ['track', 'Range track.'],
-    ['fill', 'Selected interval between thumbs.'],
-  ] as const;
   readonly publicTypes = [
     ['NeuralSliderValue', 'number | NeuralSliderRangeValue'],
     ['NeuralSliderRangeValue', '[number, number]'],

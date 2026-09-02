@@ -278,19 +278,6 @@ export class BreadcrumbPage {
     ],
     ['itemClass', 'string', "''", 'Additive item class.'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'list',
-    'item',
-    'link',
-    'current',
-    'disabled',
-    'icon',
-    'label',
-    'separator',
-    'overflowItem',
-    'overflowTrigger',
-  ] as const;
   readonly publicTypes = [
     [
       'NeuralBreadcrumbItem',

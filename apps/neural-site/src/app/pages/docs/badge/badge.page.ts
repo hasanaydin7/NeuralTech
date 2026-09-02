@@ -266,7 +266,6 @@ export class BadgePage {
       'Removes generated visual classes.',
     ],
   ] as const;
-  readonly classSlots = ['root', 'value', 'content'] as const;
   readonly publicTypes = [
     [
       'NeuralBadgeSeverity',

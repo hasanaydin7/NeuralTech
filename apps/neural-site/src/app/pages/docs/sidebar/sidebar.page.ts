@@ -449,14 +449,6 @@ import {
       'Typed layout and section class slots.',
     ],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Application shell layout root.'],
-    ['backdrop', 'Modal offcanvas backdrop.'],
-    ['panel', 'Sidebar navigation panel.'],
-    ['header', 'Header section.'],
-    ['content', 'Scrollable content section.'],
-    ['footer', 'Footer section.'],
-  ] as const;
   readonly tokens = [
     '--neural-sidebar-layout-min-height',
     '--neural-sidebar-layout-background',

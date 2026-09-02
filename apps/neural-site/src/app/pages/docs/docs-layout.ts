@@ -15,9 +15,17 @@ import {
 import { NeuralButton } from '@neural-ng/core/button';
 import { filter } from 'rxjs';
 
+import { SiteTypedClassApi } from '../../shared/typed-class-api/typed-class-api';
+
 @Component({
   selector: 'app-docs-layout',
-  imports: [NeuralButton, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [
+    NeuralButton,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+    SiteTypedClassApi,
+  ],
   templateUrl: './docs-layout.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

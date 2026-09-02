@@ -258,23 +258,6 @@ export class PanelMenuPage {
       'Branch state change with previous and next key sets.',
     ],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Tree root.'],
-    ['list', 'Top-level item collection.'],
-    ['itemContainer', 'Item and optional child-group wrapper.'],
-    ['item', 'Native button or anchor.'],
-    ['expandedItem', 'Expanded branch state.'],
-    ['disabledItem', 'Disabled item state.'],
-    ['icon', 'Leading Neural icon.'],
-    ['label', 'Item text.'],
-    ['meta', 'Badge, shortcut and indicator wrapper.'],
-    ['badge', 'Optional count or status.'],
-    ['shortcut', 'Optional keyboard hint.'],
-    ['indicator', 'Branch disclosure indicator.'],
-    ['group', 'Animated child group.'],
-    ['groupInner', 'Overflow-clipping group interior.'],
-    ['separator', 'Semantic separator.'],
-  ] as const;
   readonly tokens = [
     '--neural-panel-menu-width',
     '--neural-panel-menu-padding',

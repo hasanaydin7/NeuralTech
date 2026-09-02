@@ -300,13 +300,6 @@ export class InputNumberPage {
     ['select()', 'Selects the editable text.'],
     ['reset()', 'Clears value and transient parse state.'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'input',
-    'decrementButton',
-    'incrementButton',
-    'buttonIcon',
-  ] as const;
   readonly tokens = [
     '--neural-input-number-width',
     '--neural-input-number-input-width',

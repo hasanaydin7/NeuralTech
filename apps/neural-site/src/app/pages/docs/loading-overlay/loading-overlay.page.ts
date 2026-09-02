@@ -169,14 +169,6 @@ export class LoadingOverlayPage {
     ['shown', 'void', 'The delayed visual layer rendered.'],
     ['hidden', 'void', 'The minimum-duration layer was removed.'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'content',
-    'backdrop',
-    'panel',
-    'indicator',
-    'label',
-  ] as const;
   readonly tokens = [
     '--neural-loading-overlay-z-index',
     '--neural-loading-overlay-viewport-z-index',

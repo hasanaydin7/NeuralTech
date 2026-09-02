@@ -313,21 +313,6 @@ export class MenuPage {
     ['hide(restoreFocus?)', 'Closes and optionally restores focus.'],
     ['isTriggerOpen(trigger)', 'Reports trigger ownership.'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'list',
-    'group',
-    'groupLabel',
-    'groupList',
-    'item',
-    'disabledItem',
-    'icon',
-    'label',
-    'meta',
-    'badge',
-    'shortcut',
-    'separator',
-  ] as const;
   readonly tokens = [
     '--neural-menu-width',
     '--neural-menu-max-width',

@@ -300,11 +300,6 @@ export class PopoverPage {
       'Checks whether a trigger owns the open panel.',
     ],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Top-layer positioned panel.'],
-    ['content', 'Projected content wrapper.'],
-    ['arrow', 'Optional positioned arrow.'],
-  ] as const;
   readonly publicTypes = [
     [
       'NeuralPopoverPosition',

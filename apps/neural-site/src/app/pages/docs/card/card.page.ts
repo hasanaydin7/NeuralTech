@@ -176,7 +176,6 @@ export class CardPage {
     ['bodyClass', 'string', "''", 'Additive body wrapper class.'],
     ['footerClass', 'string', "''", 'Additive native footer class.'],
   ] as const;
-  readonly classSlots = ['root', 'header', 'body', 'footer'] as const;
   readonly publicTypes = [
     ['NeuralCardRole', 'article | region | group | presentation'],
     ['NeuralCardClasses', '{ root?, header?, body?, footer? }'],

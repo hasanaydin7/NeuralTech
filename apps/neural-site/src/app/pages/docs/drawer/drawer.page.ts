@@ -236,14 +236,6 @@ export class DrawerPage {
       'Initial focus marker',
     ],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Native dialog panel.'],
-    ['header', 'Projected header section.'],
-    ['body', 'Independently scrollable body.'],
-    ['footer', 'Action section.'],
-    ['closeButton', 'Localized close action.'],
-    ['closeIcon', 'Close Neural Icon.'],
-  ] as const;
   readonly publicTypes = [
     ['NeuralDrawerPosition', "'start' | 'end' | 'top' | 'bottom'"],
     [

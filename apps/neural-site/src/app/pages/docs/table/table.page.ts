@@ -1102,18 +1102,6 @@ readonly stateAdapter: NeuralTableStateAdapter = {
     'headerClass, cellClass, footer',
     'editable, readOnly, disabled',
   ];
-  readonly classSlots = [
-    'root, scroll, table, caption',
-    'header, headerRow, headerCell, headerGroupRow, headerGroupCell',
-    'filterRow, filterCell, filterControl, filterRange',
-    'sortButton, sortIcon, resizeHandle, reorderHandle, dropIndicator',
-    'body, row, selectedRow, disabledRow, focusedRow, cell',
-    'editableCell, editingCell, readOnlyCell, disabledCell, editor, editError, editingRow',
-    'selectionCell, selectionControl, expansionCell, expansionButton, expansionRow, expansionContent',
-    'groupHeaderRow, groupHeaderCell, groupToggle, groupFooterRow, groupFooterCell',
-    'stateRow, stateCell, loading, skeletonRow, skeletonCell, skeletonLine, empty, error',
-    'footer, footerRow, footerCell, footerGroupRow, footerGroupCell',
-  ];
   readonly publicTypes = [
     'NeuralTableColumn<T>, NeuralTableClasses, NeuralTableLabels',
     'NeuralTableSort, NeuralTableFilter and match/filter types',

@@ -221,14 +221,6 @@ export class TagPage {
       'Emits the value and original pointer event; ownership remains controlled.',
     ],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'icon',
-    'label',
-    'content',
-    'removeButton',
-    'removeIcon',
-  ] as const;
   readonly publicTypes = [
     [
       'NeuralTagSeverity',

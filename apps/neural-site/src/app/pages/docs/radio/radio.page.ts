@@ -318,16 +318,6 @@ export class RadioPage {
       'Restores the nullable value model to null without a user event.',
     ],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Radiogroup layout.'],
-    ['option', 'Every data or projected option label.'],
-    ['input', 'Visually hidden native radio input.'],
-    ['control', 'Visible circular control.'],
-    ['selectedControl', 'Selected control state.'],
-    ['disabledOption', 'Disabled option state.'],
-    ['label', 'Visible option content.'],
-    ['optionIcon', 'Optional icon.'],
-  ] as const;
   readonly publicTypes = [
     ['NeuralRadioOrientation', "'horizontal' | 'vertical'"],
     ['NeuralRadioInteractionSource', "'keyboard' | 'pointer'"],

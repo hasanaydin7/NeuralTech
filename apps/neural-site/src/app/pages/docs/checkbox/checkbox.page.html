@@ -548,27 +548,6 @@
                 }
               </div>
             </section>
-            <section id="class-slots" class="scroll-mt-28 pt-16">
-              <h2 class="text-2xl font-black">Typed class slots</h2>
-              <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
-                Binary slots
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                @for (slot of binarySlots; track slot) {<code
-                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
-                  >{{ slot }}</code
-                >}
-              </div>
-              <p class="mt-7 leading-7 text-[var(--site-text-soft)]">
-                Tri-state slots
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                @for (slot of triStateSlots; track slot) {<code
-                  class="rounded-lg border border-[var(--site-border)] bg-[var(--site-surface)] px-3 py-2 text-xs text-blue-500"
-                  >{{ slot }}</code
-                >}
-              </div>
-            </section>
             <section id="types" class="scroll-mt-28 pt-16">
               <h2 class="text-2xl font-black">Public types</h2>
               <div class="mt-6 grid gap-3">

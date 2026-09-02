@@ -241,18 +241,6 @@ export class PasswordPage {
     ['select()', 'Selects the complete native value.'],
     ['reset(value?)', 'Resets value and interaction state.'],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Component root.'],
-    ['inputGroup', 'Input and toggle frame.'],
-    ['input', 'Native password input.'],
-    ['toggle', 'Visibility button.'],
-    ['toggleIcon', 'Visibility Neural icon.'],
-    ['feedback', 'Strength feedback wrapper.'],
-    ['meter', 'Strength meter track.'],
-    ['meterBar', 'Strength meter fill.'],
-    ['strengthLabel', 'Localized strength text.'],
-    ['capsLock', 'Caps Lock message.'],
-  ] as const;
   readonly tokens = [
     '--neural-password-width',
     '--neural-password-input-width',

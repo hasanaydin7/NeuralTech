@@ -210,17 +210,6 @@ export class MeterGroupPage {
     ],
     ['valueText', 'string', 'Optional human-friendly aria-valuetext.'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'meters',
-    'meter',
-    'labels',
-    'labelItem',
-    'marker',
-    'icon',
-    'label',
-    'value',
-  ] as const;
   readonly tokens = [
     '--neural-meter-group-track-background',
     '--neural-meter-group-track-border',

@@ -298,18 +298,6 @@ export class PaginatorPage {
       'Semantic user event containing the complete normalized page state.',
     ],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Internal nav landmark.'],
-    ['list', 'Native list containing page controls.'],
-    ['navigationButton', 'First, previous, next, and last buttons.'],
-    ['pageButton', 'Every numeric page button.'],
-    ['activePageButton', 'Current numeric page button.'],
-    ['icon', 'All navigation and ellipsis icons.'],
-    ['ellipsis', 'Non-interactive truncated-range marker.'],
-    ['report', 'Live current-range text.'],
-    ['pageSize', 'Page-size label wrapper.'],
-    ['pageSizeSelect', 'Trigger of the composed NeuralSelect size control.'],
-  ] as const;
   readonly tokens = [
     '--neural-paginator-gap',
     '--neural-paginator-list-gap',

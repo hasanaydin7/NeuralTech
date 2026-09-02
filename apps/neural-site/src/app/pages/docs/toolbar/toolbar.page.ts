@@ -251,14 +251,6 @@ export class DocumentActions {}`;
     ],
   ] as const;
 
-  readonly classSlots = [
-    ['root', 'Toolbar role and visual surface.'],
-    ['start', 'Logical starting section.'],
-    ['center', 'Flexible centered section.'],
-    ['end', 'Logical ending section.'],
-    ['separator', 'Semantic separator line.'],
-  ] as const;
-
   readonly tokens = [
     '--neural-toolbar-gap',
     '--neural-toolbar-padding',

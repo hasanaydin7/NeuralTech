@@ -470,24 +470,6 @@ load({ query, requestId }: NeuralAutoCompleteSearchEvent): void {
     ['neuralAutoCompleteDropdownIcon', '$implicit, className'],
     ['neuralAutoCompleteClearIcon', '$implicit, className'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'inputGroup',
-    'input',
-    'clearButton',
-    'dropdownButton',
-    'loadingIndicator',
-    'icon',
-    'panel',
-    'list',
-    'group',
-    'option',
-    'activeOption',
-    'selectedOption',
-    'disabledOption',
-    'emptyMessage',
-    'loadingMessage',
-  ] as const;
   readonly tokens = [
     '--neural-auto-complete-width',
     '--neural-auto-complete-color',

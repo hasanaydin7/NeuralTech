@@ -307,27 +307,6 @@ export class TreePage {
     ['neuralTreeEmpty', 'NeuralTreeStateTemplateContext'],
     ['neuralTreeLoading', 'NeuralTreeStateTemplateContext'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'list',
-    'group',
-    'node',
-    'nodeContent',
-    'selectedNode',
-    'partialNode',
-    'matchedNode',
-    'toggler',
-    'togglerIcon',
-    'nodeIcon',
-    'label',
-    'checkbox',
-    'checkboxIcon',
-    'loading',
-    'empty',
-    'error',
-    'errorMessage',
-    'retry',
-  ] as const;
   readonly publicTypes = [
     'NeuralTreeNode<T>',
     'NeuralTreeKey',

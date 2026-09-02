@@ -181,15 +181,6 @@ export class MessagePage {
     ],
     ['closed', 'void', '—', 'Emitted after an explicit user close.'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'icon',
-    'content',
-    'title',
-    'detail',
-    'actions',
-    'close',
-  ] as const;
   readonly tokens = [
     '--neural-message-gap',
     '--neural-message-padding',

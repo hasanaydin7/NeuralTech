@@ -277,7 +277,6 @@ export class InputMaskPage {
     ],
     ['unmaskNeuralValue(value, mask)', 'Extracts accepted slot characters.'],
   ] as const;
-  readonly classSlots = ['root', 'input'] as const;
   readonly tokens = [
     '--neural-input-mask-width',
     '--neural-input-mask-input-width',

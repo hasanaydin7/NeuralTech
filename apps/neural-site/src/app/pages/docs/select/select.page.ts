@@ -262,23 +262,6 @@ export class SelectPage {
     ['reset', '() => void', 'Closes and restores null.'],
     ['toggle', '() => void', 'Toggles when enabled.'],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'trigger',
-    'value',
-    'placeholder',
-    'dropdownIcon',
-    'clearButton',
-    'panel',
-    'list',
-    'option',
-    'activeOption',
-    'selectedOption',
-    'disabledOption',
-    'optionIcon',
-    'emptyMessage',
-    'loadingMessage',
-  ] as const;
   readonly tokens = [
     '--neural-select-width',
     '--neural-select-min-height',

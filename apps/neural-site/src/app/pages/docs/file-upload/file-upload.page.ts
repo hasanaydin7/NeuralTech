@@ -304,27 +304,6 @@ http.post('/api/applications', body, {
     ['formatFileSize(bytes)', 'Formats bytes through the active locale.'],
   ] as const;
 
-  readonly classSlots = [
-    'root',
-    'input',
-    'dropzone',
-    'dropzoneIcon',
-    'dropzoneText',
-    'chooseButton',
-    'content',
-    'fileList',
-    'fileItem',
-    'fileInfo',
-    'fileName',
-    'fileMeta',
-    'removeButton',
-    'removeIcon',
-    'clearButton',
-    'clearIcon',
-    'empty',
-    'message',
-  ] as const;
-
   readonly tokens = [
     '--neural-file-upload-width',
     '--neural-file-upload-gap',

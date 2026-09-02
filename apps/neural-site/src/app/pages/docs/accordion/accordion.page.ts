@@ -204,18 +204,6 @@ export class AccordionPage {
     ['NeuralAccordionHeader.triggerClass', 'string', "''"],
     ['NeuralAccordionContent.contentClass', 'string', "''"],
   ] as const;
-  readonly classSlots = [
-    'root',
-    'panel',
-    'expandedPanel',
-    'disabledPanel',
-    'header',
-    'trigger',
-    'label',
-    'icon',
-    'content',
-    'contentInner',
-  ] as const;
   readonly tokens = [
     '--neural-accordion-gap',
     '--neural-accordion-color',

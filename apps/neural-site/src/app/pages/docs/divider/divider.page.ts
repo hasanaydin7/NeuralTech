@@ -160,12 +160,6 @@ export class DividerPage {
     ['dividerClass', 'string', "''", 'Additive class on the separator root.'],
     ['classes', 'NeuralDividerClasses', '{}', 'Typed additive class slots.'],
   ] as const;
-  readonly classSlots = [
-    ['root', 'The element carrying role="separator".'],
-    ['before', 'Logical line before projected or label content.'],
-    ['content', 'Label or projected content wrapper.'],
-    ['after', 'Logical line after projected or label content.'],
-  ] as const;
   readonly publicTypes = [
     ['NeuralDividerOrientation', "'horizontal' | 'vertical'"],
     ['NeuralDividerAlign', "'start' | 'center' | 'end'"],

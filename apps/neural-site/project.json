@@ -12,6 +12,10 @@
         {
           "projects": ["neural-icons"],
           "target": "build"
+        },
+        {
+          "projects": ["neural-docs"],
+          "target": "class-contract-check"
         }
       ],
       "outputs": ["{options.outputPath}"],

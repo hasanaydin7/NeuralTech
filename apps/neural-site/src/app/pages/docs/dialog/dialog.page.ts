@@ -282,16 +282,6 @@ export class DialogPage {
     ['neural-dialog-footer', 'footerClass', 'Action-row slot.'],
     ['neuralDialogInitialFocus', 'directive', 'Receives focus after opening.'],
   ] as const;
-  readonly classSlots = [
-    ['root', 'Native dialog element.'],
-    ['header', 'Projected header section.'],
-    ['body', 'Projected body section.'],
-    ['footer', 'Projected footer section.'],
-    ['closeButton', 'Localized close button.'],
-    ['closeIcon', 'Neural Icons close glyph.'],
-    ['fullScreenButton', 'Optional full-screen toggle action.'],
-    ['fullScreenIcon', 'Dynamic maximize/minimize Neural Icon.'],
-  ] as const;
   readonly publicTypes = [
     [
       'NeuralDialogCloseReason',
