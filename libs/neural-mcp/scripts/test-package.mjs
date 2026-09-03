@@ -13,7 +13,7 @@ assert(
   packageJson.name === '@neural-ng/mcp-server',
   'Unexpected package name.',
 );
-assert(packageJson.version === '0.1.0-beta.5', 'Unexpected package version.');
+assert(packageJson.version === '0.1.0-beta.6', 'Unexpected package version.');
 assert(
   packageJson.mcpName === 'io.github.hasanaydin7/neuralng',
   'Published MCP package must declare its verified registry name.',
@@ -29,8 +29,8 @@ assert(
   'MCP package must use Zod v4 Standard Schema inputs.',
 );
 assert(
-  packageJson.dependencies?.['@neural-ng/theme'] === packageJson.version,
-  'MCP theme tools must depend on the matching @neural-ng/theme release.',
+  packageJson.dependencies?.['@neural-ng/theme'] === '0.1.0-beta.5',
+  'MCP theme tools must depend on the verified @neural-ng/theme release.',
 );
 assert(
   !JSON.stringify(packageJson).includes('@angular/'),
