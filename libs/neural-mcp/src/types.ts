@@ -203,6 +203,66 @@ export interface NeuralUsageValidationResult {
   };
 }
 
+export interface NeuralProjectDiagnostic {
+  readonly code: string;
+  readonly severity: 'error' | 'warning' | 'info';
+  readonly message: string;
+  readonly file?: string;
+  readonly suggestion?: string;
+}
+
+export interface NeuralProjectComponentUsage {
+  readonly id: string;
+  readonly className: string;
+  readonly selector: string;
+  readonly entryPoint: string;
+  readonly occurrences: number;
+  readonly files: readonly string[];
+}
+
+export interface NeuralProjectInspection {
+  readonly schemaVersion: 1;
+  readonly workspace: string;
+  readonly framework: {
+    readonly angularVersion?: string;
+    readonly neuralPackages: Readonly<Record<string, string>>;
+  };
+  readonly files: {
+    readonly scanned: number;
+    readonly truncated: boolean;
+    readonly totalBytes: number;
+  };
+  readonly components: readonly NeuralProjectComponentUsage[];
+  readonly imports: Readonly<Record<string, readonly string[]>>;
+  readonly themes: readonly string[];
+  readonly appearance: {
+    readonly providerConfigured: boolean;
+    readonly globalConfigConfigured: boolean;
+    readonly unstyled: boolean;
+  };
+  readonly conventions: {
+    readonly importStyle:
+      | 'exact-entry-points'
+      | 'root-barrel'
+      | 'mixed'
+      | 'unknown';
+    readonly preferredTheme?: string;
+  };
+  readonly providers: readonly string[];
+  readonly diagnostics: readonly NeuralProjectDiagnostic[];
+}
+
+export interface NeuralConsistentUiSuggestion {
+  readonly schemaVersion: 1;
+  readonly plan: NeuralCompositionPlan;
+  readonly project: NeuralProjectInspection;
+  readonly consistency: {
+    readonly reusedComponents: readonly string[];
+    readonly introducedComponents: readonly string[];
+    readonly guidance: readonly string[];
+  };
+}
+
 export interface NeuralResourceDescriptor {
   readonly name: string;
   readonly title: string;

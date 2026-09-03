@@ -6,6 +6,7 @@ import {
 } from './catalog.js';
 import { planUi } from './composition.js';
 import { validateUsage } from './validation.js';
+import { inspectNeuralProject, suggestConsistentUi } from './project.js';
 import { listNeuralResources, readNeuralResource } from './resources.js';
 import {
   compileThemeRecipeJson,
@@ -342,6 +343,48 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
               'providers_json',
             ),
           }),
+        });
+      } catch (error) {
+        return errorResult(readErrorMessage(error));
+      }
+    },
+  );
+
+  server.registerTool(
+    'inspect_neuralng_project',
+    {
+      title: 'Inspect the current NeuralNg Angular workspace',
+      description:
+        'Read a bounded set of source files from the MCP process working directory and report installed versions, used NeuralNg components, exact imports, providers, theme/appearance setup, conventions, and consistency diagnostics.',
+      inputSchema: runtime.zod.object({}),
+      annotations: commonAnnotations,
+    },
+    async () => {
+      try {
+        return jsonResult({ inspection: await inspectNeuralProject() });
+      } catch (error) {
+        return errorResult(readErrorMessage(error));
+      }
+    },
+  );
+
+  server.registerTool(
+    'suggest_consistent_ui',
+    {
+      title: 'Plan UI consistent with the current project',
+      description:
+        'Inspect the current Angular workspace, create a contract-backed NeuralNg UI plan, and separate primitives that reuse existing project conventions from newly introduced primitives.',
+      inputSchema: runtime.zod.object({
+        goal: runtime.zod.string().min(1),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      try {
+        return jsonResult({
+          suggestion: await suggestConsistentUi(
+            readRequiredString(input, 'goal'),
+          ),
         });
       } catch (error) {
         return errorResult(readErrorMessage(error));

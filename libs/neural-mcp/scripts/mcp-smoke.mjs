@@ -79,8 +79,8 @@ try {
     const tools = await client.request('tools/list', {});
     const toolNames = tools?.tools?.map((tool) => tool.name) ?? [];
     assert(
-      toolNames.length === 16,
-      `Expected 16 tools, received ${toolNames.length}.`,
+      toolNames.length === 18,
+      `Expected 18 tools, received ${toolNames.length}.`,
     );
     assert(
       toolNames.includes('recommend_components'),
@@ -100,6 +100,14 @@ try {
       'Table structure tool is missing.',
     );
     assert(toolNames.includes('validate_usage'), 'Usage validator is missing.');
+    assert(
+      toolNames.includes('inspect_neuralng_project'),
+      'Project inspection tool is missing.',
+    );
+    assert(
+      toolNames.includes('suggest_consistent_ui'),
+      'Project-consistent UI tool is missing.',
+    );
     assert(
       toolNames.includes('create_theme_recipe'),
       'Theme recipe tool is missing.',
@@ -193,6 +201,16 @@ try {
         (diagnostic) => diagnostic.code === 'NNG201',
       ),
       'Usage validator did not reject an inaccessible icon-only button.',
+    );
+
+    const projectInspection = await client.request('tools/call', {
+      name: 'inspect_neuralng_project',
+      arguments: {},
+    });
+    assert(
+      projectInspection?.structuredContent?.inspection?.framework
+        ?.neuralPackages?.['@neural-ng/mcp-server'],
+      'Project inspector did not detect the installed MCP package.',
     );
 
     const createdTheme = await client.request('tools/call', {

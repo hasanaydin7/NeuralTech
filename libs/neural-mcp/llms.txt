@@ -24,6 +24,11 @@ CORRECTNESS TOOLS
 
 - validate_usage: validate Angular template selectors, bindings, required inputs, exported literal aliases, icon-only button labels, standalone imports, required providers and duplicate Toast channels. imports_json and providers_json are JSON string arrays.
 
+PROJECT TOOLS
+
+- inspect_neuralng_project: bounded read-only inspection of the MCP working directory for package versions, selectors, imports, providers, theme, Appearance, conventions and diagnostics. It accepts no path.
+- suggest_consistent_ui: combine current-project inspection with plan_ui and distinguish reused conventions from newly introduced primitives.
+
 THEME TOOLS
 
 - create_theme_recipe: create a sparse recipe from high-level decisions.
@@ -64,6 +69,7 @@ GENERAL RULES
 - Treat MCP results as read-only package documentation and deterministic tooling.
 - Start non-trivial screens with plan_ui, then fetch standard contracts and only the examples named by exampleQueries.
 - Run validate_usage before presenting generated NeuralNg template code; resolve every error diagnostic and review warnings.
+- For an existing workspace, inspect it before planning; use suggest_consistent_ui when consistency matters more than a greenfield recommendation.
 - Use get_component detail=summary for discovery and detail=standard before implementation.
 - Request detail=full only when class slot definitions or all embedded examples are required.
 - Import components from the exact entryPoint returned by the contract.

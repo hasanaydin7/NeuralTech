@@ -165,6 +165,32 @@ The result includes `valid`, diagnostics, exact suggested imports grouped by
 entry point, and provider requirements. Informational missing-import diagnostics
 do not make a template invalid; error diagnostics do.
 
+## Project-aware tools
+
+### `inspect_neuralng_project`
+
+Inspects the Angular workspace used as the MCP process working directory and
+returns installed Angular/NeuralNg versions, used selectors and occurrence
+locations, imports grouped by entry point, configured providers, theme and
+Appearance setup, inferred conventions, and actionable diagnostics.
+
+The scan is read-only and accepts no filesystem path. It skips dependencies,
+build output, VCS data, tests, declarations, and symlinks. Work is bounded to
+400 source files, 256 KiB per file, and 5 MiB in total; the result explicitly
+reports truncation. Absolute paths are not returned.
+
+### `suggest_consistent_ui`
+
+Combines `inspect_neuralng_project` with the composition engine. It identifies
+which planned primitives already have a project convention, which ones are new,
+and how to preserve the detected theme, unstyled ownership, and import style.
+
+```json
+{
+  "goal": "Add a searchable project table with a detail drawer"
+}
+```
+
 ## Compact theme tools
 
 The theme workflow intentionally operates on the small recipe rather than the

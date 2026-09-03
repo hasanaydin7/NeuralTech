@@ -169,6 +169,25 @@ function addGoalCandidates(
   goal: string,
   kind: PlanKind,
 ): void {
+  if (
+    kind !== 'form' &&
+    containsAny(goal, [
+      'button',
+      'save',
+      'create',
+      'add action',
+      'primary action',
+    ])
+  ) {
+    candidates.push(
+      candidate(
+        'button',
+        'feature',
+        'Provides the named page action with accessible button semantics.',
+        'actions',
+      ),
+    );
+  }
   if (containsAny(goal, ['search', 'filter', 'query'])) {
     candidates.push(
       candidate(
