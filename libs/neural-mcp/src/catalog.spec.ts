@@ -107,6 +107,67 @@ describe('Neural MCP catalog', () => {
     expect(selectClasses?.slots.every((slot) => slot.description)).toBe(true);
   });
 
+  it('publishes structured Signal input, model and output contracts', () => {
+    expect(getComponentContract('neural-button')).toMatchObject({
+      schemaVersion: 2,
+      inputs: expect.arrayContaining([
+        {
+          name: 'size',
+          bindingName: 'size',
+          type: 'NeuralButtonSize',
+          required: false,
+          defaultValue: "'medium'",
+        },
+        expect.objectContaining({
+          name: 'rounded',
+          type: 'boolean',
+          transform: 'booleanAttribute',
+        }),
+      ]),
+      outputs: expect.arrayContaining([
+        expect.objectContaining({
+          name: 'clicked',
+          bindingName: 'clicked',
+          type: 'MouseEvent',
+        }),
+      ]),
+    });
+
+    expect(getComponentContract('neural-select')).toMatchObject({
+      inputs: expect.arrayContaining([
+        expect.objectContaining({
+          name: 'options',
+          type: 'readonly TOption[]',
+          defaultValue: '[]',
+        }),
+      ]),
+      models: expect.arrayContaining([
+        expect.objectContaining({
+          name: 'value',
+          bindingName: 'value',
+          type: 'TValue | null',
+          defaultValue: 'null',
+        }),
+      ]),
+      outputs: expect.arrayContaining([
+        expect.objectContaining({
+          name: 'selectionChange',
+          type: 'NeuralSelectChange<TValue, TOption>',
+        }),
+      ]),
+    });
+
+    expect(getComponentContract('neural-option')).toMatchObject({
+      inputs: expect.arrayContaining([
+        expect.objectContaining({
+          name: 'value',
+          required: true,
+          type: 'unknown',
+        }),
+      ]),
+    });
+  });
+
   it('searches deterministically', () => {
     const first = searchComponents('date calendar', 5);
     const second = searchComponents('date calendar', 5);

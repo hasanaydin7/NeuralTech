@@ -9,6 +9,7 @@ export const GENERATED_SOURCE_HASH = "fb45cdefb81bd1080e1616ecda304784a3d3598836
 
 export const GENERATED_COMPONENTS = [
   {
+    "schemaVersion": 2,
     "id": "accordion",
     "name": "NeuralAccordion",
     "className": "NeuralAccordion",
@@ -17,10 +18,109 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/accordion",
     "status": "beta",
     "summary": "Signals-first accessible disclosure groups for Angular 22+. Accordion supports either concise data items or fully projected panel composition.",
+    "inputs": [
+      {
+        "name": "items",
+        "bindingName": "items",
+        "type": "readonly TItem[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "itemLabel",
+        "bindingName": "itemLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'label'"
+      },
+      {
+        "name": "itemValue",
+        "bindingName": "itemValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'value'"
+      },
+      {
+        "name": "itemContent",
+        "bindingName": "itemContent",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'content'"
+      },
+      {
+        "name": "itemDisabled",
+        "bindingName": "itemDisabled",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'disabled'"
+      },
+      {
+        "name": "multiple",
+        "bindingName": "multiple",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "collapsible",
+        "bindingName": "collapsible",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "accordionId",
+        "bindingName": "accordionId",
+        "type": "unknown",
+        "required": false,
+        "defaultValue": "this.generatedId"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "accordionClass",
+        "bindingName": "accordionClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralAccordionClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "NeuralAccordionModelValue"
+        "bindingName": "value",
+        "type": "NeuralAccordionModelValue",
+        "defaultValue": "null"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "panelChange",
+        "bindingName": "panelChange",
+        "type": "NeuralAccordionPanelChange"
       }
     ],
     "classes": [
@@ -96,6 +196,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Accordion\n\nCurrent component maturity: beta.\n\nImport Accordion only from `@neural-ng/core/accordion`. Use standalone imports.\n\nCanonical imports are `NeuralAccordion`, `NeuralAccordionPanel`,\n`NeuralAccordionHeader`, and `NeuralAccordionContent`.\n\nFor object arrays, prefer `items` with `itemLabel`, `itemValue`,\n`itemContent`, and optionally `itemDisabled`. `itemValue` must be a unique\nstring or number. Data content is plain text.\n\nInvalid or missing data values fall back to the stable render index. Values\nmust remain unique; development mode warns about duplicates. Programmatic\n`value` writes do not emit the user-only `panelChange` event.\n\nFor custom Angular markup, compose `neural-accordion-panel`,\n`neural-accordion-header`, and `neural-accordion-content`. Never combine data\nitems and projected panels.\n\nBind `[(value)]`. Single mode uses `string | number | null`; `multiple` mode\nuses an array. `panelChange` is optional and should only be used when the\ninteraction source or previous value is needed. Do not invent `onOpen`,\n`onClose`, or `activeIndex` APIs.\n\nHeaders are native buttons with complete ARIA relationships and keyboard\nnavigation. Do not add custom key handlers around Accordion.\n\nUse `unstyled` and typed `classes` for headless rendering. The default chevron\nis CSS-only; do not require Neural Icons.\n\nCanonical example:\n\n```html\n<neural-accordion accordionId=\"account\" [(value)]=\"openPanel\">\n  <neural-accordion-panel value=\"profile\">\n    <neural-accordion-header>Profile</neural-accordion-header>\n    <neural-accordion-content>Profile settings</neural-accordion-content>\n  </neural-accordion-panel>\n</neural-accordion>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "accordion-content",
     "name": "NeuralAccordionContent",
     "className": "NeuralAccordionContent",
@@ -104,7 +205,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/accordion",
     "status": "beta",
     "summary": "Signals-first accessible disclosure groups for Angular 22+. Accordion supports either concise data items or fully projected panel composition.",
+    "inputs": [
+      {
+        "name": "contentClass",
+        "bindingName": "contentClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralAccordionClasses",
@@ -178,6 +289,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Accordion\n\nCurrent component maturity: beta.\n\nImport Accordion only from `@neural-ng/core/accordion`. Use standalone imports.\n\nCanonical imports are `NeuralAccordion`, `NeuralAccordionPanel`,\n`NeuralAccordionHeader`, and `NeuralAccordionContent`.\n\nFor object arrays, prefer `items` with `itemLabel`, `itemValue`,\n`itemContent`, and optionally `itemDisabled`. `itemValue` must be a unique\nstring or number. Data content is plain text.\n\nInvalid or missing data values fall back to the stable render index. Values\nmust remain unique; development mode warns about duplicates. Programmatic\n`value` writes do not emit the user-only `panelChange` event.\n\nFor custom Angular markup, compose `neural-accordion-panel`,\n`neural-accordion-header`, and `neural-accordion-content`. Never combine data\nitems and projected panels.\n\nBind `[(value)]`. Single mode uses `string | number | null`; `multiple` mode\nuses an array. `panelChange` is optional and should only be used when the\ninteraction source or previous value is needed. Do not invent `onOpen`,\n`onClose`, or `activeIndex` APIs.\n\nHeaders are native buttons with complete ARIA relationships and keyboard\nnavigation. Do not add custom key handlers around Accordion.\n\nUse `unstyled` and typed `classes` for headless rendering. The default chevron\nis CSS-only; do not require Neural Icons.\n\nCanonical example:\n\n```html\n<neural-accordion accordionId=\"account\" [(value)]=\"openPanel\">\n  <neural-accordion-panel value=\"profile\">\n    <neural-accordion-header>Profile</neural-accordion-header>\n    <neural-accordion-content>Profile settings</neural-accordion-content>\n  </neural-accordion-panel>\n</neural-accordion>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "accordion-header",
     "name": "NeuralAccordionHeader",
     "className": "NeuralAccordionHeader",
@@ -186,7 +298,24 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/accordion",
     "status": "beta",
     "summary": "Signals-first accessible disclosure groups for Angular 22+. Accordion supports either concise data items or fully projected panel composition.",
+    "inputs": [
+      {
+        "name": "headerClass",
+        "bindingName": "headerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "triggerClass",
+        "bindingName": "triggerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralAccordionClasses",
@@ -260,6 +389,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Accordion\n\nCurrent component maturity: beta.\n\nImport Accordion only from `@neural-ng/core/accordion`. Use standalone imports.\n\nCanonical imports are `NeuralAccordion`, `NeuralAccordionPanel`,\n`NeuralAccordionHeader`, and `NeuralAccordionContent`.\n\nFor object arrays, prefer `items` with `itemLabel`, `itemValue`,\n`itemContent`, and optionally `itemDisabled`. `itemValue` must be a unique\nstring or number. Data content is plain text.\n\nInvalid or missing data values fall back to the stable render index. Values\nmust remain unique; development mode warns about duplicates. Programmatic\n`value` writes do not emit the user-only `panelChange` event.\n\nFor custom Angular markup, compose `neural-accordion-panel`,\n`neural-accordion-header`, and `neural-accordion-content`. Never combine data\nitems and projected panels.\n\nBind `[(value)]`. Single mode uses `string | number | null`; `multiple` mode\nuses an array. `panelChange` is optional and should only be used when the\ninteraction source or previous value is needed. Do not invent `onOpen`,\n`onClose`, or `activeIndex` APIs.\n\nHeaders are native buttons with complete ARIA relationships and keyboard\nnavigation. Do not add custom key handlers around Accordion.\n\nUse `unstyled` and typed `classes` for headless rendering. The default chevron\nis CSS-only; do not require Neural Icons.\n\nCanonical example:\n\n```html\n<neural-accordion accordionId=\"account\" [(value)]=\"openPanel\">\n  <neural-accordion-panel value=\"profile\">\n    <neural-accordion-header>Profile</neural-accordion-header>\n    <neural-accordion-content>Profile settings</neural-accordion-content>\n  </neural-accordion-panel>\n</neural-accordion>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "accordion-panel",
     "name": "NeuralAccordionPanel",
     "className": "NeuralAccordionPanel",
@@ -268,7 +398,31 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/accordion",
     "status": "beta",
     "summary": "Signals-first accessible disclosure groups for Angular 22+. Accordion supports either concise data items or fully projected panel composition.",
+    "inputs": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "NeuralAccordionValue",
+        "required": true
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "panelClass",
+        "bindingName": "panelClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralAccordionClasses",
@@ -342,6 +496,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Accordion\n\nCurrent component maturity: beta.\n\nImport Accordion only from `@neural-ng/core/accordion`. Use standalone imports.\n\nCanonical imports are `NeuralAccordion`, `NeuralAccordionPanel`,\n`NeuralAccordionHeader`, and `NeuralAccordionContent`.\n\nFor object arrays, prefer `items` with `itemLabel`, `itemValue`,\n`itemContent`, and optionally `itemDisabled`. `itemValue` must be a unique\nstring or number. Data content is plain text.\n\nInvalid or missing data values fall back to the stable render index. Values\nmust remain unique; development mode warns about duplicates. Programmatic\n`value` writes do not emit the user-only `panelChange` event.\n\nFor custom Angular markup, compose `neural-accordion-panel`,\n`neural-accordion-header`, and `neural-accordion-content`. Never combine data\nitems and projected panels.\n\nBind `[(value)]`. Single mode uses `string | number | null`; `multiple` mode\nuses an array. `panelChange` is optional and should only be used when the\ninteraction source or previous value is needed. Do not invent `onOpen`,\n`onClose`, or `activeIndex` APIs.\n\nHeaders are native buttons with complete ARIA relationships and keyboard\nnavigation. Do not add custom key handlers around Accordion.\n\nUse `unstyled` and typed `classes` for headless rendering. The default chevron\nis CSS-only; do not require Neural Icons.\n\nCanonical example:\n\n```html\n<neural-accordion accordionId=\"account\" [(value)]=\"openPanel\">\n  <neural-accordion-panel value=\"profile\">\n    <neural-accordion-header>Profile</neural-accordion-header>\n    <neural-accordion-content>Profile settings</neural-accordion-content>\n  </neural-accordion-panel>\n</neural-accordion>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "auto-complete",
     "name": "NeuralAutoComplete",
     "className": "NeuralAutoComplete",
@@ -351,14 +506,368 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Editable, accessible and headless-ready suggestions for Angular 22+.",
     "formContract": "FormValueControl<TValue | string | null>",
+    "inputs": [
+      {
+        "name": "options",
+        "bindingName": "options",
+        "type": "readonly TOption[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "optionLabel",
+        "bindingName": "optionLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'label'"
+      },
+      {
+        "name": "optionValue",
+        "bindingName": "optionValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'value'"
+      },
+      {
+        "name": "optionDisabled",
+        "bindingName": "optionDisabled",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'disabled'"
+      },
+      {
+        "name": "optionGroup",
+        "bindingName": "optionGroup",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "valueMode",
+        "bindingName": "valueMode",
+        "type": "NeuralAutoCompleteValueMode",
+        "required": false,
+        "defaultValue": "'option'"
+      },
+      {
+        "name": "dataMode",
+        "bindingName": "dataMode",
+        "type": "NeuralAutoCompleteDataMode",
+        "required": false,
+        "defaultValue": "'local'"
+      },
+      {
+        "name": "filterMode",
+        "bindingName": "filterMode",
+        "type": "NeuralAutoCompleteFilterMode",
+        "required": false,
+        "defaultValue": "'contains'"
+      },
+      {
+        "name": "filterBy",
+        "bindingName": "filterBy",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "filterLocale",
+        "bindingName": "filterLocale",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "compareWith",
+        "bindingName": "compareWith",
+        "type": "(first: TValue | string, second: TValue | string | null) => boolean",
+        "required": false,
+        "defaultValue": "Object.is"
+      },
+      {
+        "name": "minLength",
+        "bindingName": "minLength",
+        "type": "number | undefined",
+        "required": false,
+        "defaultValue": "1",
+        "transform": "(value) => numberAttribute(value)"
+      },
+      {
+        "name": "delay",
+        "bindingName": "delay",
+        "type": "number",
+        "required": false,
+        "defaultValue": "250",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "limit",
+        "bindingName": "limit",
+        "type": "number",
+        "required": false,
+        "defaultValue": "50",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "forceSelection",
+        "bindingName": "forceSelection",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "completeOnFocus",
+        "bindingName": "completeOnFocus",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showDropdown",
+        "bindingName": "showDropdown",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "clearable",
+        "bindingName": "clearable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "loading",
+        "bindingName": "loading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "placeholder",
+        "bindingName": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "emptyLabel",
+        "bindingName": "emptyLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "loadingLabel",
+        "bindingName": "loadingLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "clearLabel",
+        "bindingName": "clearLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "dropdownLabel",
+        "bindingName": "dropdownLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "autoCompleteId",
+        "bindingName": "autoCompleteId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "autoComplete",
+        "bindingName": "autoComplete",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'off'"
+      },
+      {
+        "name": "dropdownIconClass",
+        "bindingName": "dropdownIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-chevron-down'"
+      },
+      {
+        "name": "clearIconClass",
+        "bindingName": "clearIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-x'"
+      },
+      {
+        "name": "loadingIconClass",
+        "bindingName": "loadingIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-loader-3 nt-spin'"
+      },
+      {
+        "name": "autoCompleteClass",
+        "bindingName": "autoCompleteClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralAutoCompleteClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "TValue | string | null"
+        "bindingName": "value",
+        "type": "TValue | string | null",
+        "defaultValue": "null"
       },
       {
         "name": "query",
-        "type": "string"
+        "bindingName": "query",
+        "type": "string",
+        "defaultValue": "''"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "search",
+        "bindingName": "search",
+        "type": "NeuralAutoCompleteSearchEvent"
+      },
+      {
+        "name": "selected",
+        "bindingName": "selected",
+        "type": "NeuralAutoCompleteSelectEvent<TValue, TOption>"
+      },
+      {
+        "name": "cleared",
+        "bindingName": "cleared",
+        "type": "NeuralAutoCompleteClearEvent<TValue>"
+      },
+      {
+        "name": "opened",
+        "bindingName": "opened",
+        "type": "void"
+      },
+      {
+        "name": "closed",
+        "bindingName": "closed",
+        "type": "void"
+      },
+      {
+        "name": "invalidInput",
+        "bindingName": "invalidInput",
+        "type": "NeuralAutoCompleteInvalidInputEvent"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -460,6 +969,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg AutoComplete AI context\n\n- Import from @neural-ng/core/auto-complete. Do not import from the package root.\n- Import NeuralAutoComplete from @neural-ng/core/auto-complete and add it to the consumer component imports.\n- AutoCompleteComponent is a deprecated compatibility alias; generate NeuralAutoComplete in new code.\n- AutoComplete implements FormValueControl<TValue | string | null>.\n- Bind `[(value)]` directly or use `[formField]`, `[formControl]`, or `[(ngModel)]`; do not add a ControlValueAccessor wrapper.\n- Bind `[(query)]` separately for editable text. Programmatic value writes and reset do not emit selected.\n- Default valueMode is option: optionValue is committed and unmatched text is cleared when forceSelection is true.\n- Set valueMode=\"text\" for free-text forms.\n- Readonly remains enabled and focusable, exposes aria-readonly, may open for inspection, and blocks input, option, clear, and blur-commit mutations.\n- Data inputs: options, optionLabel, optionValue, optionDisabled, optionGroup, filterBy, filterMode, and limit. Paths may be nested.\n- Set dataMode=\"remote\" for API results. Handle `(search)` and ignore stale responses using event.requestId. The component does not filter remote results.\n- delay defaults to 250 ms and minLength defaults to 1. IME composition never emits partial searches.\n- The popup uses the shared browser top-layer Popover and matches the input width. Do not add appendTo=\"body\".\n- Keyboard focus stays on the input. Do not move focus into listbox options.\n- Use `(selected)`, `(cleared)`, `(opened)`, `(closed)`, and `(invalidInput)` for semantic user events.\n- Use unstyled or global provideNeuralNg({ unstyled: true }) for headless mode; typed `classes` slots own visuals.\n- Use neuralAutoCompleteOption for typed custom results and Neural Icons classes such as `nt nt-search` for icons.\n- Beta covers single option/text selection. Use MultiSelect for chips/multiple values and Select virtual scrolling for very large fixed option sets.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "avatar",
     "name": "NeuralAvatar",
     "className": "NeuralAvatar",
@@ -468,7 +978,148 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/avatar",
     "status": "beta",
     "summary": "Image, initials, icon, and custom fallback identities for Angular 22+.",
+    "inputs": [
+      {
+        "name": "src",
+        "bindingName": "src",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "srcSet",
+        "bindingName": "srcSet",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "sizes",
+        "bindingName": "sizes",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "alt",
+        "bindingName": "alt",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "initials",
+        "bindingName": "initials",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "size",
+        "bindingName": "size",
+        "type": "NeuralAvatarSize",
+        "required": false,
+        "defaultValue": "'medium'"
+      },
+      {
+        "name": "shape",
+        "bindingName": "shape",
+        "type": "NeuralAvatarShape",
+        "required": false,
+        "defaultValue": "'circle'"
+      },
+      {
+        "name": "imageFit",
+        "bindingName": "imageFit",
+        "type": "NeuralAvatarImageFit",
+        "required": false,
+        "defaultValue": "'cover'"
+      },
+      {
+        "name": "loading",
+        "bindingName": "loading",
+        "type": "NeuralAvatarLoading",
+        "required": false,
+        "defaultValue": "'lazy'"
+      },
+      {
+        "name": "decoding",
+        "bindingName": "decoding",
+        "type": "NeuralAvatarDecoding",
+        "required": false,
+        "defaultValue": "'async'"
+      },
+      {
+        "name": "fetchPriority",
+        "bindingName": "fetchPriority",
+        "type": "NeuralAvatarFetchPriority",
+        "required": false,
+        "defaultValue": "'auto'"
+      },
+      {
+        "name": "referrerPolicy",
+        "bindingName": "referrerPolicy",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "avatarClass",
+        "bindingName": "avatarClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralAvatarClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [
+      {
+        "name": "imageLoaded",
+        "bindingName": "imageLoaded",
+        "type": "Event"
+      },
+      {
+        "name": "imageError",
+        "bindingName": "imageError",
+        "type": "Event"
+      }
+    ],
     "classes": [
       {
         "typeName": "NeuralAvatarClasses",
@@ -536,6 +1187,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg Avatar rules\n\n- Import Avatar only from `@neural-ng/core/avatar`.\n- Add `NeuralAvatar` directly to standalone component imports.\n- Add `NeuralAvatarGroup` when `<neural-avatar-group>` is used.\n- `AvatarComponent` and `AvatarGroupComponent` are deprecated compatibility aliases; generate canonical Neural names.\n- Prefer `name` for identity; it supplies derived initials and fallback accessibility.\n- Set `alt=\"\"` explicitly only when the image is decorative.\n- Fallback priority is image, initials, iconClass, then projected content.\n- `iconClass` is optional. Never assume Neural Icons is a core dependency.\n- Sizes: `extra-small`, `small`, `medium`, `large`, `extra-large`.\n- Shapes: `circle`, `rounded`, `square`.\n- Image fit: `cover`, `contain`.\n- Use `srcSet` and `sizes` for responsive sources.\n- `imageLoaded` and `imageError` emit native Event values.\n- Image errors switch to fallback; a new src retries automatically.\n- Compose status dots and counts with `NeuralBadgeDirective` from `@neural-ng/core/badge`.\n- Do not create Avatar-specific Badge markup or positioning logic.\n- AvatarGroup max keeps that many Avatars visible and renders +N overflow.\n- Localize AvatarGroup `overflowLabel` and preserve its `{count}` placeholder.\n- Group overlap uses logical CSS and follows RTL.\n- `unstyled` removes visual classes while structural hooks remain.\n- Avatar slots: `root`, `image`, `fallback`, `initials`, `icon`, `content`.\n- AvatarGroup slots: `root`, `overflow`.\n- Global unstyled mode is `provideNeuralNg({ unstyled: true })`.\n- Current maturity is Beta. Upload, crop, presence transport, profile fetching, interactive menus, and tooltips are separate concerns.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "avatar-group",
     "name": "NeuralAvatarGroup",
     "className": "NeuralAvatarGroup",
@@ -544,7 +1196,54 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/avatar",
     "status": "beta",
     "summary": "Image, initials, icon, and custom fallback identities for Angular 22+.",
+    "inputs": [
+      {
+        "name": "max",
+        "bindingName": "max",
+        "type": "number | null",
+        "required": false,
+        "defaultValue": "null",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "overflowLabel",
+        "bindingName": "overflowLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'{count} more avatars'"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "groupClass",
+        "bindingName": "groupClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralAvatarGroupClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralAvatarClasses",
@@ -612,6 +1311,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg Avatar rules\n\n- Import Avatar only from `@neural-ng/core/avatar`.\n- Add `NeuralAvatar` directly to standalone component imports.\n- Add `NeuralAvatarGroup` when `<neural-avatar-group>` is used.\n- `AvatarComponent` and `AvatarGroupComponent` are deprecated compatibility aliases; generate canonical Neural names.\n- Prefer `name` for identity; it supplies derived initials and fallback accessibility.\n- Set `alt=\"\"` explicitly only when the image is decorative.\n- Fallback priority is image, initials, iconClass, then projected content.\n- `iconClass` is optional. Never assume Neural Icons is a core dependency.\n- Sizes: `extra-small`, `small`, `medium`, `large`, `extra-large`.\n- Shapes: `circle`, `rounded`, `square`.\n- Image fit: `cover`, `contain`.\n- Use `srcSet` and `sizes` for responsive sources.\n- `imageLoaded` and `imageError` emit native Event values.\n- Image errors switch to fallback; a new src retries automatically.\n- Compose status dots and counts with `NeuralBadgeDirective` from `@neural-ng/core/badge`.\n- Do not create Avatar-specific Badge markup or positioning logic.\n- AvatarGroup max keeps that many Avatars visible and renders +N overflow.\n- Localize AvatarGroup `overflowLabel` and preserve its `{count}` placeholder.\n- Group overlap uses logical CSS and follows RTL.\n- `unstyled` removes visual classes while structural hooks remain.\n- Avatar slots: `root`, `image`, `fallback`, `initials`, `icon`, `content`.\n- AvatarGroup slots: `root`, `overflow`.\n- Global unstyled mode is `provideNeuralNg({ unstyled: true })`.\n- Current maturity is Beta. Upload, crop, presence transport, profile fetching, interactive menus, and tooltips are separate concerns.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "badge",
     "name": "NeuralBadge",
     "className": "NeuralBadge",
@@ -620,7 +1320,99 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/badge",
     "status": "beta",
     "summary": "Compact status, count, and metadata indicators for Angular 22+.",
+    "inputs": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "string | number | null | undefined",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "max",
+        "bindingName": "max",
+        "type": "number | null",
+        "required": false,
+        "defaultValue": "null",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "severity",
+        "bindingName": "severity",
+        "type": "NeuralBadgeSeverity",
+        "required": false,
+        "defaultValue": "'neutral'"
+      },
+      {
+        "name": "size",
+        "bindingName": "size",
+        "type": "NeuralBadgeSize",
+        "required": false,
+        "defaultValue": "'medium'"
+      },
+      {
+        "name": "rounded",
+        "bindingName": "rounded",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dot",
+        "bindingName": "dot",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "badgeHidden",
+        "bindingName": "badgeHidden",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLive",
+        "bindingName": "ariaLive",
+        "type": "NeuralBadgeAriaLive",
+        "required": false,
+        "defaultValue": "'off'"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "badgeClass",
+        "bindingName": "badgeClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralBadgeClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralBadgeClasses",
@@ -657,6 +1449,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg Badge rules\n\n- Import only from `@neural-ng/core/badge`.\n- Import `NeuralBadge` for `<neural-badge>` and `NeuralBadgeDirective` for `[neuralBadge]` from `@neural-ng/core/badge`.\n- Add the canonical symbol directly to the standalone consumer component's `imports` array.\n- Never generate the deprecated `BadgeComponent` or `BadgeDirective` aliases in new code.\n- Use `[neuralBadge]` to attach a real Badge component to an arbitrary anchor.\n- Directive positions: `start`, `end`, `top-start`, `top-end`, `bottom-start`, `bottom-end`.\n- Logical corner positions follow RTL and do not change anchor layout.\n- `null` and `undefined` remove a directive Badge; zero remains visible.\n- Use a wrapper as the directive anchor for replaced or void elements such as `img` and `input`.\n- The directive creates its Badge in Angular's hydration-safe post-render phase; do not replace this with constructor-time DOM mutation.\n- Use `value` for text or numeric content.\n- Use `max` only for numeric visual caps; the real number stays accessible.\n- Zero and negative numbers are valid values.\n- When `value` is absent, projected content is rendered.\n- Severities: `primary`, `secondary`, `neutral`, `info`, `success`, `warning`, `error`.\n- Sizes: `small`, `medium`, `large`.\n- `rounded` defaults to true.\n- A meaningful `dot` badge must have an `ariaLabel`.\n- Use `ariaLive=\"polite\"` for non-urgent dynamic counters.\n- Use `badgeHidden` for explicit visibility.\n- `unstyled` removes visual classes, not structural hooks.\n- Typed class slots: `root`, `value`, `content`.\n- For a Badge inside NeuralNg Button, prefer Button's shorter `badge` inputs; Button delegates to `NeuralBadgeDirective`.\n- Badge is Beta: do not invent outputs, interactive behavior, tooltip inputs, Tag semantics, or undocumented positions.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "badge-directive",
     "name": "NeuralBadge",
     "className": "NeuralBadgeDirective",
@@ -665,7 +1458,106 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/badge",
     "status": "beta",
     "summary": "Compact status, count, and metadata indicators for Angular 22+.",
+    "inputs": [
+      {
+        "name": "neuralBadge",
+        "bindingName": "neuralBadge",
+        "type": "string | number | null | undefined",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "neuralBadgePosition",
+        "bindingName": "neuralBadgePosition",
+        "type": "NeuralBadgePosition",
+        "required": false,
+        "defaultValue": "'top-end'"
+      },
+      {
+        "name": "neuralBadgeSeverity",
+        "bindingName": "neuralBadgeSeverity",
+        "type": "NeuralBadgeSeverity",
+        "required": false,
+        "defaultValue": "'neutral'"
+      },
+      {
+        "name": "neuralBadgeSize",
+        "bindingName": "neuralBadgeSize",
+        "type": "NeuralBadgeSize",
+        "required": false,
+        "defaultValue": "'small'"
+      },
+      {
+        "name": "neuralBadgeMax",
+        "bindingName": "neuralBadgeMax",
+        "type": "number | null",
+        "required": false,
+        "defaultValue": "null",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "neuralBadgeAriaLabel",
+        "bindingName": "neuralBadgeAriaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "neuralBadgeAriaLive",
+        "bindingName": "neuralBadgeAriaLive",
+        "type": "NeuralBadgeAriaLive",
+        "required": false,
+        "defaultValue": "'off'"
+      },
+      {
+        "name": "neuralBadgeClass",
+        "bindingName": "neuralBadgeClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "neuralBadgeHostClass",
+        "bindingName": "neuralBadgeHostClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "neuralBadgeRounded",
+        "bindingName": "neuralBadgeRounded",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "neuralBadgeDot",
+        "bindingName": "neuralBadgeDot",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "neuralBadgeHidden",
+        "bindingName": "neuralBadgeHidden",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "neuralBadgeUnstyled",
+        "bindingName": "neuralBadgeUnstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralBadgeClasses",
@@ -702,6 +1594,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg Badge rules\n\n- Import only from `@neural-ng/core/badge`.\n- Import `NeuralBadge` for `<neural-badge>` and `NeuralBadgeDirective` for `[neuralBadge]` from `@neural-ng/core/badge`.\n- Add the canonical symbol directly to the standalone consumer component's `imports` array.\n- Never generate the deprecated `BadgeComponent` or `BadgeDirective` aliases in new code.\n- Use `[neuralBadge]` to attach a real Badge component to an arbitrary anchor.\n- Directive positions: `start`, `end`, `top-start`, `top-end`, `bottom-start`, `bottom-end`.\n- Logical corner positions follow RTL and do not change anchor layout.\n- `null` and `undefined` remove a directive Badge; zero remains visible.\n- Use a wrapper as the directive anchor for replaced or void elements such as `img` and `input`.\n- The directive creates its Badge in Angular's hydration-safe post-render phase; do not replace this with constructor-time DOM mutation.\n- Use `value` for text or numeric content.\n- Use `max` only for numeric visual caps; the real number stays accessible.\n- Zero and negative numbers are valid values.\n- When `value` is absent, projected content is rendered.\n- Severities: `primary`, `secondary`, `neutral`, `info`, `success`, `warning`, `error`.\n- Sizes: `small`, `medium`, `large`.\n- `rounded` defaults to true.\n- A meaningful `dot` badge must have an `ariaLabel`.\n- Use `ariaLive=\"polite\"` for non-urgent dynamic counters.\n- Use `badgeHidden` for explicit visibility.\n- `unstyled` removes visual classes, not structural hooks.\n- Typed class slots: `root`, `value`, `content`.\n- For a Badge inside NeuralNg Button, prefer Button's shorter `badge` inputs; Button delegates to `NeuralBadgeDirective`.\n- Badge is Beta: do not invent outputs, interactive behavior, tooltip inputs, Tag semantics, or undocumented positions.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "breadcrumb",
     "name": "NeuralBreadcrumb",
     "className": "NeuralBreadcrumb",
@@ -710,7 +1603,88 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/breadcrumb",
     "status": "beta",
     "summary": "Accessible, Signals-based breadcrumb navigation for Angular 22+.",
+    "inputs": [
+      {
+        "name": "items",
+        "bindingName": "items",
+        "type": "readonly NeuralBreadcrumbItem[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "maxItems",
+        "bindingName": "maxItems",
+        "type": "number",
+        "required": false,
+        "defaultValue": "0"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Breadcrumb'"
+      },
+      {
+        "name": "separatorIconClass",
+        "bindingName": "separatorIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-chevron-right'"
+      },
+      {
+        "name": "overflowIconClass",
+        "bindingName": "overflowIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-dots'"
+      },
+      {
+        "name": "overflowLabel",
+        "bindingName": "overflowLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'More breadcrumb items'"
+      },
+      {
+        "name": "overflowTooltipDelay",
+        "bindingName": "overflowTooltipDelay",
+        "type": "number",
+        "required": false,
+        "defaultValue": "100",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "breadcrumbClass",
+        "bindingName": "breadcrumbClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralBreadcrumbClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [
+      {
+        "name": "itemSelect",
+        "bindingName": "itemSelect",
+        "type": "NeuralBreadcrumbSelect"
+      }
+    ],
     "classes": [
       {
         "typeName": "NeuralBreadcrumbClasses",
@@ -788,6 +1762,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg Breadcrumb rules\n\n- Import `NeuralBreadcrumb`, `NeuralBreadcrumbItemComponent`, and `NeuralBreadcrumbSeparatorTemplate` only from `@neural-ng/core/breadcrumb`.\n- Add only the canonical runtime symbols used by the template directly to standalone component imports.\n- Never generate deprecated `BreadcrumbComponent`, `BreadcrumbItemComponent`, or `BreadcrumbSeparatorTemplate` aliases in new code.\n- Every item needs a stable `key` and visible `label`.\n- Prefer `routerLink` for Angular routes and `href` for document navigation.\n- The last item is current by default; use `current` only to override it.\n- `maxItems >= 2` collapses middle items into an accessible NeuralNg Menu.\n- `overflowLabel` labels the trigger and provides its hover/focus Tooltip.\n- `overflowTooltipDelay` defaults to `100` milliseconds.\n- Use either `[items]` or `<neural-breadcrumb-item>` children, never both.\n- Customize separators with `separatorIconClass` or\n  `<ng-template neuralBreadcrumbSeparator>`.\n- `itemSelect` emits `{ key, item, originalEvent }`.\n- `unstyled` removes visual classes, not semantics or structural hooks.\n- `routerLink` accepts a string, command array, or UrlTree and composes with `queryParams`, `fragment`, `queryParamsHandling`, `preserveFragment`, `skipLocationChange`, `replaceUrl`, `state`, and `target`.\n- `href` retains native `target` and `rel` behavior.\n- Do not add custom arrow-key handlers; visible items retain native link behavior and overflow delegates to Neural Menu.\n- Current maturity is Beta. Do not invent route construction, history, authorization, page-title, or tooltip APIs.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "breadcrumb-item",
     "name": "NeuralBreadcrumbItem",
     "className": "NeuralBreadcrumbItemComponent",
@@ -796,7 +1771,131 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/breadcrumb",
     "status": "beta",
     "summary": "Accessible, Signals-based breadcrumb navigation for Angular 22+.",
+    "inputs": [
+      {
+        "name": "key",
+        "bindingName": "key",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "label",
+        "bindingName": "label",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "href",
+        "bindingName": "href",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "routerLink",
+        "bindingName": "routerLink",
+        "type": "NeuralBreadcrumbRouterLink | undefined",
+        "required": false
+      },
+      {
+        "name": "queryParams",
+        "bindingName": "queryParams",
+        "type": "Record<string, unknown> | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "fragment",
+        "bindingName": "fragment",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "queryParamsHandling",
+        "bindingName": "queryParamsHandling",
+        "type": "'merge' | 'preserve' | 'replace' | '' | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "preserveFragment",
+        "bindingName": "preserveFragment",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "skipLocationChange",
+        "bindingName": "skipLocationChange",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "replaceUrl",
+        "bindingName": "replaceUrl",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "state",
+        "bindingName": "state",
+        "type": "Record<string, unknown> | undefined",
+        "required": false,
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "target",
+        "bindingName": "target",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "rel",
+        "bindingName": "rel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "current",
+        "bindingName": "current",
+        "type": "boolean | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "itemClass",
+        "bindingName": "itemClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralBreadcrumbClasses",
@@ -874,6 +1973,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg Breadcrumb rules\n\n- Import `NeuralBreadcrumb`, `NeuralBreadcrumbItemComponent`, and `NeuralBreadcrumbSeparatorTemplate` only from `@neural-ng/core/breadcrumb`.\n- Add only the canonical runtime symbols used by the template directly to standalone component imports.\n- Never generate deprecated `BreadcrumbComponent`, `BreadcrumbItemComponent`, or `BreadcrumbSeparatorTemplate` aliases in new code.\n- Every item needs a stable `key` and visible `label`.\n- Prefer `routerLink` for Angular routes and `href` for document navigation.\n- The last item is current by default; use `current` only to override it.\n- `maxItems >= 2` collapses middle items into an accessible NeuralNg Menu.\n- `overflowLabel` labels the trigger and provides its hover/focus Tooltip.\n- `overflowTooltipDelay` defaults to `100` milliseconds.\n- Use either `[items]` or `<neural-breadcrumb-item>` children, never both.\n- Customize separators with `separatorIconClass` or\n  `<ng-template neuralBreadcrumbSeparator>`.\n- `itemSelect` emits `{ key, item, originalEvent }`.\n- `unstyled` removes visual classes, not semantics or structural hooks.\n- `routerLink` accepts a string, command array, or UrlTree and composes with `queryParams`, `fragment`, `queryParamsHandling`, `preserveFragment`, `skipLocationChange`, `replaceUrl`, `state`, and `target`.\n- `href` retains native `target` and `rel` behavior.\n- Do not add custom arrow-key handlers; visible items retain native link behavior and overflow delegates to Neural Menu.\n- Current maturity is Beta. Do not invent route construction, history, authorization, page-title, or tooltip APIs.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "breadcrumb-separator-template",
     "name": "NeuralBreadcrumbSeparatorTemplate",
     "className": "NeuralBreadcrumbSeparatorTemplate",
@@ -882,7 +1982,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/breadcrumb",
     "status": "beta",
     "summary": "Accessible, Signals-based breadcrumb navigation for Angular 22+.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralBreadcrumbClasses",
@@ -960,6 +2062,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg Breadcrumb rules\n\n- Import `NeuralBreadcrumb`, `NeuralBreadcrumbItemComponent`, and `NeuralBreadcrumbSeparatorTemplate` only from `@neural-ng/core/breadcrumb`.\n- Add only the canonical runtime symbols used by the template directly to standalone component imports.\n- Never generate deprecated `BreadcrumbComponent`, `BreadcrumbItemComponent`, or `BreadcrumbSeparatorTemplate` aliases in new code.\n- Every item needs a stable `key` and visible `label`.\n- Prefer `routerLink` for Angular routes and `href` for document navigation.\n- The last item is current by default; use `current` only to override it.\n- `maxItems >= 2` collapses middle items into an accessible NeuralNg Menu.\n- `overflowLabel` labels the trigger and provides its hover/focus Tooltip.\n- `overflowTooltipDelay` defaults to `100` milliseconds.\n- Use either `[items]` or `<neural-breadcrumb-item>` children, never both.\n- Customize separators with `separatorIconClass` or\n  `<ng-template neuralBreadcrumbSeparator>`.\n- `itemSelect` emits `{ key, item, originalEvent }`.\n- `unstyled` removes visual classes, not semantics or structural hooks.\n- `routerLink` accepts a string, command array, or UrlTree and composes with `queryParams`, `fragment`, `queryParamsHandling`, `preserveFragment`, `skipLocationChange`, `replaceUrl`, `state`, and `target`.\n- `href` retains native `target` and `rel` behavior.\n- Do not add custom arrow-key handlers; visible items retain native link behavior and overflow delegates to Neural Menu.\n- Current maturity is Beta. Do not invent route construction, history, authorization, page-title, or tooltip APIs.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "button",
     "name": "NeuralButton",
     "className": "NeuralButton",
@@ -968,7 +2071,249 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/button",
     "status": "beta",
     "summary": "`NeuralButton` is a standalone, signal-based Angular 22+ component available from the `@neural-ng/core/button` secondary entry point. It renders a native `<button>` and supports themed, class-driven, and headless usage.",
+    "inputs": [
+      {
+        "name": "type",
+        "bindingName": "type",
+        "type": "'button' | 'submit' | 'reset'",
+        "required": false,
+        "defaultValue": "'button'"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false"
+      },
+      {
+        "name": "loading",
+        "bindingName": "loading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false"
+      },
+      {
+        "name": "loadingLabel",
+        "bindingName": "loadingLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Loading'"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaExpanded",
+        "bindingName": "ariaExpanded",
+        "type": "'true' | 'false' | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaControls",
+        "bindingName": "ariaControls",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaKeyShortcuts",
+        "bindingName": "ariaKeyShortcuts",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "title",
+        "bindingName": "title",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "label",
+        "bindingName": "label",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "icon",
+        "bindingName": "icon",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "iconPosition",
+        "bindingName": "iconPosition",
+        "type": "NeuralButtonIconPosition",
+        "required": false,
+        "defaultValue": "'start'"
+      },
+      {
+        "name": "size",
+        "bindingName": "size",
+        "type": "NeuralButtonSize",
+        "required": false,
+        "defaultValue": "'medium'"
+      },
+      {
+        "name": "iconSize",
+        "bindingName": "iconSize",
+        "type": "NeuralButtonIconSize | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "severity",
+        "bindingName": "severity",
+        "type": "NeuralButtonSeverity",
+        "required": false,
+        "defaultValue": "'neutral'"
+      },
+      {
+        "name": "outlined",
+        "bindingName": "outlined",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "raised",
+        "bindingName": "raised",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "text",
+        "bindingName": "text",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "rounded",
+        "bindingName": "rounded",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "badge",
+        "bindingName": "badge",
+        "type": "string | number | null | undefined",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "badgePosition",
+        "bindingName": "badgePosition",
+        "type": "NeuralButtonBadgePosition",
+        "required": false,
+        "defaultValue": "'end'"
+      },
+      {
+        "name": "badgeSeverity",
+        "bindingName": "badgeSeverity",
+        "type": "NeuralBadgeSeverity",
+        "required": false,
+        "defaultValue": "'neutral'"
+      },
+      {
+        "name": "badgeSize",
+        "bindingName": "badgeSize",
+        "type": "NeuralBadgeSize",
+        "required": false,
+        "defaultValue": "'small'"
+      },
+      {
+        "name": "badgeMax",
+        "bindingName": "badgeMax",
+        "type": "number | null",
+        "required": false,
+        "defaultValue": "null",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "badgeAriaLabel",
+        "bindingName": "badgeAriaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "badgeClass",
+        "bindingName": "badgeClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralButtonClasses",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "buttonClass",
+        "bindingName": "buttonClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false"
+      }
+    ],
     "models": [],
+    "outputs": [
+      {
+        "name": "clicked",
+        "bindingName": "clicked",
+        "type": "MouseEvent"
+      },
+      {
+        "name": "keyDown",
+        "bindingName": "keyDown",
+        "type": "KeyboardEvent"
+      },
+      {
+        "name": "pointerDown",
+        "bindingName": "pointerDown",
+        "type": "PointerEvent"
+      },
+      {
+        "name": "pointerMove",
+        "bindingName": "pointerMove",
+        "type": "PointerEvent"
+      },
+      {
+        "name": "pointerUp",
+        "bindingName": "pointerUp",
+        "type": "PointerEvent"
+      },
+      {
+        "name": "pointerCancel",
+        "bindingName": "pointerCancel",
+        "type": "PointerEvent"
+      }
+    ],
     "classes": [
       {
         "typeName": "NeuralButtonGroupClasses",
@@ -1031,6 +2376,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Button\n\n> `NeuralButton` is a standalone Angular 22+ component that renders a native button and is imported only from `@neural-ng/core/button`.\n\nGeneration rules:\n\n- Import `NeuralButton` from `@neural-ng/core/button`.\n- Add `NeuralButton` directly to the consumer component's `imports` array.\n- Do not declare or export it through a consumer NgModule.\n- Render it with `<neural-button>...</neural-button>`.\n- Prefer `label=\"Save\"` for simple text and `[label]=\"saveLabel()\"` for bound text. Project content only when rich markup is required.\n- Prefer `icon=\"nt nt-check\"` over projecting a decorative `<i>` element. `icon` also accepts property binding.\n- Use `iconPosition=\"start|end\"`; these are logical positions and follow RTL.\n- Icon-only styled Buttons are square automatically. Do not add manual width or padding utility classes; always provide `ariaLabel`.\n- Use `size=\"small|medium|large\"`; the default is `medium`.\n- Use `iconSize=\"small|medium|large\"` only to override the glyph size. When omitted, the icon follows the Button `size`; it does not change the hit target.\n- Use `outlined` for the bordered transparent treatment and `text` for the borderless transparent treatment. If both are present, `text` takes precedence.\n- `raised` and `rounded` are composable boolean modifiers. `text raised` is a supported combination.\n- Import `NeuralButtonGroup` from the same entry point and add it to `imports` when generating `<neural-button-group>`.\n- Give Button groups a meaningful `ariaLabel`; use `orientation=\"vertical\"` only for vertical layouts.\n- Button groups preserve `role=\"group\"`, logical RTL borders, and structural hooks in unstyled mode.\n- Listen with `(clicked)`. Never generate `(onNeuralClick)`, `(buttonClick)`, or `(click)` as a replacement for the documented output.\n- Use `type=\"submit\"` only for intentional form submission; the default is `button`.\n- Use `severity` for semantic intent. Accepted values are `primary`, `secondary`, `neutral`, `info`, `success`, `warning`, and `error`.\n- Bind state with `[disabled]` and `[loading]`.\n- Supply a localized `loadingLabel` whenever the application language is not English.\n- Use `ariaLabel` only when projected content does not provide a meaningful visible label.\n- Composite controls may bind `ariaExpanded`, `ariaControls`,\n  `ariaKeyShortcuts`, `keyDown`, and `pointerDown`/`pointerMove`/`pointerUp`/\n  `pointerCancel`. Do not recreate a raw button merely to forward disclosure\n  or pointer state.\n- Use `badge` for a compact contextual value.\n- `badgePosition` accepts `start`, `end`, `top-start`, `top-end`, `bottom-start`, and `bottom-end`.\n- Use logical corner positions for notification Badges on icon-only buttons.\n- When an icon-only Button has meaningful Badge state, include that state in the Button `ariaLabel`.\n- Configure the Badge with `badgeSeverity`, `badgeSize`, `badgeMax`, `badgeAriaLabel`, and `badgeClass`; Button delegates these to the general `NeuralBadgeDirective`.\n- Zero is a valid Badge value. Do not hide it with truthy checks.\n- Do not project a second `<neural-badge>` when the Button Badge inputs are sufficient.\n- Loading replaces both projected content and the composed Badge.\n- Use `buttonClass` for the inner native button. A standard `class` targets the `neural-button` host.\n- Use `[unstyled]=\"true\"` to remove NeuralNg's visual component layer. Do not assume that `buttonClass` disables theme styles.\n- Use `provideNeuralNg({ unstyled: true })` for application-wide unstyled mode.\n- Import `@neural-ng/core/themes/neutral.css` once for the stable reference theme.\n- Use `data-neural-theme` for theme identity and `data-neural-mode=\"light|dark\"` for resolved color mode; they are independent.\n- Treat Glass, Mist, and Futuristic as optional experimental token presets; do not copy their values into component CSS.\n- Do not add manual keyboard handlers, `role=\"button\"`, or `tabindex` because the component uses native button semantics.\n- While loading, the component remains focusable, blocks activation, exposes `aria-busy=\"true\"` and `aria-disabled=\"true\"`, and displays `loadingLabel`.\n- The `clicked` payload is a `MouseEvent` and does not emit while disabled or loading.\n\nCanonical example:\n\n```ts\nimport { Component, signal } from '@angular/core';\nimport { NeuralButton } from '@neural-ng/core/button';\n\n@Component({\n  selector: 'app-save-action',\n  standalone: true,\n  imports: [NeuralButton],\n  template: `\n    <neural-button\n      label=\"Save\"\n      icon=\"nt nt-check\"\n      [loading]=\"isSaving()\"\n      loadingLabel=\"Saving\"\n      buttonClass=\"w-full\"\n      (clicked)=\"save($event)\"\n    />\n  `,\n})\nexport class SaveActionComponent {\n  readonly isSaving = signal(false);\n\n  save(event: MouseEvent): void {\n    console.log(event);\n  }\n}\n```\n\n## Documentation\n\n- [Button README](./README.md): Complete public API and usage guide.\n- [Package README](../README.md): Package setup and entry-point overview.\n- [Neutral theme](../themes/neutral.css): Reference values for every Button token.\n- [Experimental Glass theme](../themes/experimental/glass.css): Optional Glass token preset.\n- [Experimental Mist theme](../themes/experimental/mist.css): Optional calm blur-based token preset.\n- [Experimental Futuristic theme](../themes/experimental/futuristic.css): Optional Futuristic token preset.\n\n## Optional\n\n- [Package AI context](../llms.txt): NeuralNg-wide architecture and component index.\n- [llms.txt specification](https://llmstxt.org/): Format used by this file.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "card",
     "name": "NeuralCard",
     "className": "NeuralCard",
@@ -1039,7 +2385,53 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/card",
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
+    "inputs": [
+      {
+        "name": "role",
+        "bindingName": "role",
+        "type": "NeuralCardRole | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "cardClass",
+        "bindingName": "cardClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralCardClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralCardClasses",
@@ -1083,6 +2475,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Card Beta\n\nImport Card only from `@neural-ng/core/card`. It is standalone; never create or\nimport an NgModule.\n\n## Rules\n\n- Use `neural-card` as the root.\n- Import `NeuralCard` and compose `NeuralCardHeader`, `NeuralCardBody`, and\n  `NeuralCardFooter` only when those sections are present.\n- Never generate the deprecated `CardComponent`, `CardHeaderComponent`,\n  `CardBodyComponent`, or `CardFooterComponent` aliases.\n- Project native heading elements with stable IDs. Prefer `ariaLabelledby` on\n  the card when it needs an accessible name.\n- The root is a native article. Do not add `role=\"region\"` to every card; use it\n  only for an important named landmark.\n- `cardClass` targets the native article.\n- `classes` is typed with `root`, `header`, `body`, and `footer` slots.\n- Section-level `headerClass`, `bodyClass`, and `footerClass` inputs are additive.\n- `unstyled` removes visual `*-base` classes but retains structural classes,\n  native semantics, ARIA, projection, and consumer classes.\n- Global `provideNeuralNg({ unstyled: true })` also affects Card.\n- Do not assume Neural Icons, Tailwind, or another styling library is installed.\n- Beta boundary: Card owns the semantic surface and section composition. It\n  intentionally has no title, subtitle, media, action, click, or layout API;\n  project real content and interactive components instead.\n\n## Canonical example\n\n```html\n<neural-card ariaLabelledby=\"settings-title\">\n  <neural-card-header>\n    <h2 id=\"settings-title\">Settings</h2>\n  </neural-card-header>\n  <neural-card-body>\n    <p>Update application preferences.</p>\n  </neural-card-body>\n  <neural-card-footer>\n    <neural-button>Save</neural-button>\n  </neural-card-footer>\n</neural-card>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "card-body",
     "name": "NeuralCardBody",
     "className": "NeuralCardBody",
@@ -1091,7 +2484,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/card",
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
+    "inputs": [
+      {
+        "name": "bodyClass",
+        "bindingName": "bodyClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralCardClasses",
@@ -1135,6 +2538,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Card Beta\n\nImport Card only from `@neural-ng/core/card`. It is standalone; never create or\nimport an NgModule.\n\n## Rules\n\n- Use `neural-card` as the root.\n- Import `NeuralCard` and compose `NeuralCardHeader`, `NeuralCardBody`, and\n  `NeuralCardFooter` only when those sections are present.\n- Never generate the deprecated `CardComponent`, `CardHeaderComponent`,\n  `CardBodyComponent`, or `CardFooterComponent` aliases.\n- Project native heading elements with stable IDs. Prefer `ariaLabelledby` on\n  the card when it needs an accessible name.\n- The root is a native article. Do not add `role=\"region\"` to every card; use it\n  only for an important named landmark.\n- `cardClass` targets the native article.\n- `classes` is typed with `root`, `header`, `body`, and `footer` slots.\n- Section-level `headerClass`, `bodyClass`, and `footerClass` inputs are additive.\n- `unstyled` removes visual `*-base` classes but retains structural classes,\n  native semantics, ARIA, projection, and consumer classes.\n- Global `provideNeuralNg({ unstyled: true })` also affects Card.\n- Do not assume Neural Icons, Tailwind, or another styling library is installed.\n- Beta boundary: Card owns the semantic surface and section composition. It\n  intentionally has no title, subtitle, media, action, click, or layout API;\n  project real content and interactive components instead.\n\n## Canonical example\n\n```html\n<neural-card ariaLabelledby=\"settings-title\">\n  <neural-card-header>\n    <h2 id=\"settings-title\">Settings</h2>\n  </neural-card-header>\n  <neural-card-body>\n    <p>Update application preferences.</p>\n  </neural-card-body>\n  <neural-card-footer>\n    <neural-button>Save</neural-button>\n  </neural-card-footer>\n</neural-card>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "card-footer",
     "name": "NeuralCardFooter",
     "className": "NeuralCardFooter",
@@ -1143,7 +2547,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/card",
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
+    "inputs": [
+      {
+        "name": "footerClass",
+        "bindingName": "footerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralCardClasses",
@@ -1187,6 +2601,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Card Beta\n\nImport Card only from `@neural-ng/core/card`. It is standalone; never create or\nimport an NgModule.\n\n## Rules\n\n- Use `neural-card` as the root.\n- Import `NeuralCard` and compose `NeuralCardHeader`, `NeuralCardBody`, and\n  `NeuralCardFooter` only when those sections are present.\n- Never generate the deprecated `CardComponent`, `CardHeaderComponent`,\n  `CardBodyComponent`, or `CardFooterComponent` aliases.\n- Project native heading elements with stable IDs. Prefer `ariaLabelledby` on\n  the card when it needs an accessible name.\n- The root is a native article. Do not add `role=\"region\"` to every card; use it\n  only for an important named landmark.\n- `cardClass` targets the native article.\n- `classes` is typed with `root`, `header`, `body`, and `footer` slots.\n- Section-level `headerClass`, `bodyClass`, and `footerClass` inputs are additive.\n- `unstyled` removes visual `*-base` classes but retains structural classes,\n  native semantics, ARIA, projection, and consumer classes.\n- Global `provideNeuralNg({ unstyled: true })` also affects Card.\n- Do not assume Neural Icons, Tailwind, or another styling library is installed.\n- Beta boundary: Card owns the semantic surface and section composition. It\n  intentionally has no title, subtitle, media, action, click, or layout API;\n  project real content and interactive components instead.\n\n## Canonical example\n\n```html\n<neural-card ariaLabelledby=\"settings-title\">\n  <neural-card-header>\n    <h2 id=\"settings-title\">Settings</h2>\n  </neural-card-header>\n  <neural-card-body>\n    <p>Update application preferences.</p>\n  </neural-card-body>\n  <neural-card-footer>\n    <neural-button>Save</neural-button>\n  </neural-card-footer>\n</neural-card>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "card-header",
     "name": "NeuralCardHeader",
     "className": "NeuralCardHeader",
@@ -1195,7 +2610,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/card",
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
+    "inputs": [
+      {
+        "name": "headerClass",
+        "bindingName": "headerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralCardClasses",
@@ -1239,6 +2664,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Card Beta\n\nImport Card only from `@neural-ng/core/card`. It is standalone; never create or\nimport an NgModule.\n\n## Rules\n\n- Use `neural-card` as the root.\n- Import `NeuralCard` and compose `NeuralCardHeader`, `NeuralCardBody`, and\n  `NeuralCardFooter` only when those sections are present.\n- Never generate the deprecated `CardComponent`, `CardHeaderComponent`,\n  `CardBodyComponent`, or `CardFooterComponent` aliases.\n- Project native heading elements with stable IDs. Prefer `ariaLabelledby` on\n  the card when it needs an accessible name.\n- The root is a native article. Do not add `role=\"region\"` to every card; use it\n  only for an important named landmark.\n- `cardClass` targets the native article.\n- `classes` is typed with `root`, `header`, `body`, and `footer` slots.\n- Section-level `headerClass`, `bodyClass`, and `footerClass` inputs are additive.\n- `unstyled` removes visual `*-base` classes but retains structural classes,\n  native semantics, ARIA, projection, and consumer classes.\n- Global `provideNeuralNg({ unstyled: true })` also affects Card.\n- Do not assume Neural Icons, Tailwind, or another styling library is installed.\n- Beta boundary: Card owns the semantic surface and section composition. It\n  intentionally has no title, subtitle, media, action, click, or layout API;\n  project real content and interactive components instead.\n\n## Canonical example\n\n```html\n<neural-card ariaLabelledby=\"settings-title\">\n  <neural-card-header>\n    <h2 id=\"settings-title\">Settings</h2>\n  </neural-card-header>\n  <neural-card-body>\n    <p>Update application preferences.</p>\n  </neural-card-body>\n  <neural-card-footer>\n    <neural-button>Save</neural-button>\n  </neural-card-footer>\n</neural-card>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "checkbox",
     "name": "NeuralCheckbox",
     "className": "NeuralCheckbox",
@@ -1248,10 +2674,160 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Checkbox Beta provides native, Signal-first binary and tri-state controls for Angular 22+. The two value contracts are intentionally separate so every Angular Forms adapter sees one stable model type.",
     "formContract": "FormCheckboxControl",
+    "inputs": [
+      {
+        "name": "indeterminate",
+        "bindingName": "indeterminate",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "inputId",
+        "bindingName": "inputId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputValue",
+        "bindingName": "inputValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'on'"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "checkboxClass",
+        "bindingName": "checkboxClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputClass",
+        "bindingName": "inputClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "labelClass",
+        "bindingName": "labelClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralCheckboxClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "checked",
         "type": "boolean"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "stateChange",
+        "bindingName": "stateChange",
+        "type": "NeuralCheckboxChange"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -1300,6 +2876,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/checkbox\n\nAngular 22+ standalone native binary and tri-state Checkbox Beta controls.\n\nIMPORT\nimport {\n  NeuralCheckbox,\n  NeuralTriStateCheckbox,\n} from '@neural-ng/core/checkbox';\n\nBINARY\n<neural-checkbox [(checked)]=\"accepted\">\n  I accept the terms\n</neural-checkbox>\n\nTRI-STATE\n<neural-tri-state-checkbox [(value)]=\"permission\">\n  Inherit permission\n</neural-tri-state-checkbox>\n\nFORMS\n<neural-checkbox [formField]=\"form.accepted\">Accept</neural-checkbox>\n<neural-checkbox [formControl]=\"acceptedControl\">Accept</neural-checkbox>\n<neural-checkbox name=\"accepted\" [(ngModel)]=\"accepted\">Accept</neural-checkbox>\n\n<neural-tri-state-checkbox [formField]=\"form.permission\">\n  Inherit\n</neural-tri-state-checkbox>\n\nRULES\n- NeuralCheckbox implements FormCheckboxControl.\n- Binary checked is always boolean and generates checkedChange.\n- Binary `indeterminate` is presentation-only for partial collection\n  selection. It maps to native indeterminate plus aria-checked=\"mixed\" and\n  never changes the boolean checked model.\n- NeuralTriStateCheckbox implements FormValueControl<boolean | null>.\n- Never generate the deprecated CheckboxComponent or\n  TriStateCheckboxComponent aliases.\n- Tri-state value generates valueChange and cycles false -> true -> null -> false.\n- null means mixed and maps to the native indeterminate property plus\n  aria-checked=\"mixed\".\n- Do not add triState back to neural-checkbox and do not bind nullable data to\n  checked.\n- Do not invent a separate indeterminate model for tri-state; tri-state value\n  is authoritative.\n- stateChange is a user-only semantic event. Programmatic form/model writes do\n  not emit it.\n- disabled removes interaction. readonly remains focusable and blocks mutation.\n- touch emits when the native input blurs.\n- Preserve the real input[type=checkbox], projected label, native Space\n  activation, required, name, value, focus, and form behavior.\n- Use ariaLabel when there is no visible projected label.\n- Both components share --neural-checkbox-* theme tokens.\n- Use unstyled or global provideNeuralNg({ unstyled: true }) for headless mode.\n- Inside neural-field, inherit accessible ids, descriptions, and field state.\n- The components are SSR/hydration safe. Call focus() only from browser-side\n  interaction code.\n- Beta boundary: Checkbox owns native binary/tri-state input behavior and form\n  integration. Business validation and group semantics belong to the consumer\n  or Neural Field.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "confirm-dialog",
     "name": "NeuralConfirmDialog",
     "className": "NeuralConfirmDialog",
@@ -1308,7 +2885,96 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/confirm-dialog",
     "status": "beta",
     "summary": "ConfirmDialog Beta is a service-driven, native top-layer confirmation dialog for Angular 22+.",
+    "inputs": [
+      {
+        "name": "key",
+        "bindingName": "key",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'default'"
+      },
+      {
+        "name": "closable",
+        "bindingName": "closable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closeOnEscape",
+        "bindingName": "closeOnEscape",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dismissibleBackdrop",
+        "bindingName": "dismissibleBackdrop",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "defaultFocus",
+        "bindingName": "defaultFocus",
+        "type": "'accept' | 'reject' | 'none'",
+        "required": false,
+        "defaultValue": "'accept'"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "confirmDialogClass",
+        "bindingName": "confirmDialogClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralConfirmDialogClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [
+      {
+        "name": "accepted",
+        "bindingName": "accepted",
+        "type": "NeuralConfirmation"
+      },
+      {
+        "name": "rejected",
+        "bindingName": "rejected",
+        "type": "NeuralConfirmation"
+      },
+      {
+        "name": "dismissed",
+        "bindingName": "dismissed",
+        "type": "NeuralConfirmationClose"
+      },
+      {
+        "name": "closed",
+        "bindingName": "closed",
+        "type": "NeuralConfirmationClose"
+      },
+      {
+        "name": "actionError",
+        "bindingName": "actionError",
+        "type": "NeuralConfirmDialogActionError"
+      }
+    ],
     "classes": [
       {
         "typeName": "NeuralConfirmDialogClasses",
@@ -1378,6 +3044,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/confirm-dialog\n\n- Import `NeuralConfirmDialog` and `NeuralConfirmationService` from this secondary entry point.\n- Never generate the deprecated `ConfirmDialogComponent` alias.\n- Render one `<neural-confirm-dialog />` host for the default key.\n- Call `confirmation.confirm({ message, ...options })`; do not manually toggle the host.\n- Use matching `key` values for independent confirmation channels.\n- `accept` and `reject` may be async. Return `false` to keep the dialog open.\n- The returned ref exposes Signal values: `closed()`, `result()`, and `closeReason()`.\n- Results are `accepted`, `rejected`, or `dismissed`.\n- Set `unstyled` or global NeuralNg `unstyled` and provide typed `classes` for headless visuals.\n- Native dialog semantics, modal focus containment, Escape, focus restoration, and SSR safety come from NeuralNg Dialog.\n- The latest request replaces an active request with the same key. Do not assume\n  same-key queue semantics.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "data-view",
     "name": "NeuralDataView",
     "className": "NeuralDataView",
@@ -1386,26 +3053,170 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/data-view",
     "status": "beta",
     "summary": "DataView Beta presents an immutable collection as a semantic list or responsive grid with typed templates, controlled Signal state, stable local sorting, remote request state, and Paginator composition.",
+    "inputs": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "readonly T[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "dataMode",
+        "bindingName": "dataMode",
+        "type": "NeuralDataViewDataMode",
+        "required": false,
+        "defaultValue": "'local'"
+      },
+      {
+        "name": "totalRecords",
+        "bindingName": "totalRecords",
+        "type": "number",
+        "required": false,
+        "defaultValue": "0",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "paginator",
+        "bindingName": "paginator",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pageSizeOptions",
+        "bindingName": "pageSizeOptions",
+        "type": "readonly number[]",
+        "required": false,
+        "defaultValue": "[6, 12, 24]"
+      },
+      {
+        "name": "loading",
+        "bindingName": "loading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "loadingRows",
+        "bindingName": "loadingRows",
+        "type": "number",
+        "required": false,
+        "defaultValue": "6",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "emptyMessage",
+        "bindingName": "emptyMessage",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'No records found'"
+      },
+      {
+        "name": "loadingMessage",
+        "bindingName": "loadingMessage",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Loading records'"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Data view'"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dataViewClass",
+        "bindingName": "dataViewClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralDataViewClasses",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "trackBy",
+        "bindingName": "trackBy",
+        "type": "NeuralDataViewTrackBy<T> | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "sortComparator",
+        "bindingName": "sortComparator",
+        "type": "NeuralDataViewSortComparator<T> | null",
+        "required": false,
+        "defaultValue": "null"
+      }
+    ],
     "models": [
       {
         "name": "layout",
-        "type": "NeuralDataViewLayout"
+        "bindingName": "layout",
+        "type": "NeuralDataViewLayout",
+        "defaultValue": "'list'"
       },
       {
         "name": "first",
-        "type": "number"
+        "bindingName": "first",
+        "type": "number",
+        "defaultValue": "0"
       },
       {
         "name": "rows",
-        "type": "number"
+        "bindingName": "rows",
+        "type": "number",
+        "defaultValue": "6"
       },
       {
         "name": "sortField",
-        "type": "string"
+        "bindingName": "sortField",
+        "type": "string",
+        "defaultValue": "''"
       },
       {
         "name": "sortOrder",
-        "type": "NeuralDataViewSortOrder"
+        "bindingName": "sortOrder",
+        "type": "NeuralDataViewSortOrder",
+        "defaultValue": "1"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "stateChange",
+        "bindingName": "stateChange",
+        "type": "NeuralDataViewStateChange"
+      },
+      {
+        "name": "pageChange",
+        "bindingName": "pageChange",
+        "type": "NeuralDataViewPageEvent"
+      },
+      {
+        "name": "layoutChanged",
+        "bindingName": "layoutChanged",
+        "type": "NeuralDataViewLayoutChange"
+      },
+      {
+        "name": "sortChange",
+        "bindingName": "sortChange",
+        "type": "NeuralDataViewSortChange"
       }
     ],
     "classes": [
@@ -1482,6 +3293,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/data-view\n\n- Import `NeuralDataView` and template directives from this secondary entry point.\n- Never generate the deprecated `DataViewComponent` alias.\n- Always pass immutable `[value]` data.\n- Bind the collection to `[neuralDataViewListItem]` and `[neuralDataViewGridItem]` so Angular infers the item type.\n- Bind `[(layout)]` when the consumer can switch between list and grid.\n- Controlled models are `layout`, `first`, `rows`, `sortField`, and `sortOrder`.\n- Local mode performs stable nested-property sorting and slices the current page without mutating `value`.\n- Remote mode never sorts or slices. Pass the current server page as `value`, the complete count as `totalRecords`, and fetch from `stateChange` or `pageChange`.\n- `sortOrder` is `1` for ascending or `-1` for descending.\n- Use `trackBy` for stable identity and `sortComparator` for domain-specific sorting.\n- Typed templates: list item, grid item, header, footer, empty, and loading.\n- Item context includes `item`, `index`, `originalIndex`, `layout`, `first`, and `last`.\n- Loading and empty states replace collection content; do not expose stale items below them.\n- DataView is presentation-only. Do not invent selection, editing, filtering, fetching, or virtual scrolling inside it.\n- Compose controls in templates and use the separate VirtualScroller entry point for windowing.\n- Use `unstyled` or global `provideNeuralNg({ unstyled: true })` plus typed `classes` for headless visuals.\n- Preserve region, list/listitem, loading status, state attributes, and Paginator semantics.\n- Beta boundary: presentation, layout, paging, sorting, remote state, templates, loading/empty states, and visual ownership.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "date-picker",
     "name": "NeuralDatePicker",
     "className": "NeuralDatePicker",
@@ -1491,10 +3303,407 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Status: **Beta**. The canonical standalone export is `NeuralDatePicker`; `DatePickerComponent` is retained as a deprecated compatibility alias.",
     "formContract": "FormValueControl<NeuralDatePickerValue<TMode, TPickerMode>>",
+    "inputs": [
+      {
+        "name": "selectionMode",
+        "bindingName": "selectionMode",
+        "type": "TMode",
+        "required": false,
+        "defaultValue": "'single' as TMode"
+      },
+      {
+        "name": "pickerMode",
+        "bindingName": "pickerMode",
+        "type": "TPickerMode",
+        "required": false,
+        "defaultValue": "'date' as TPickerMode"
+      },
+      {
+        "name": "minDate",
+        "bindingName": "minDate",
+        "type": "NeuralDateParts | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "maxDate",
+        "bindingName": "maxDate",
+        "type": "NeuralDateParts | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "minDateTime",
+        "bindingName": "minDateTime",
+        "type": "NeuralDateTimeParts | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "maxDateTime",
+        "bindingName": "maxDateTime",
+        "type": "NeuralDateTimeParts | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "disabledDates",
+        "bindingName": "disabledDates",
+        "type": "readonly NeuralDateParts[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "disabledDays",
+        "bindingName": "disabledDays",
+        "type": "readonly NeuralDayOfWeek[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "isDateDisabled",
+        "bindingName": "isDateDisabled",
+        "type": "NeuralDateDisabledPredicate | undefined",
+        "required": false,
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "dateFilter",
+        "bindingName": "dateFilter",
+        "type": "NeuralDateFilter | undefined",
+        "required": false,
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "firstDayOfWeek",
+        "bindingName": "firstDayOfWeek",
+        "type": "NeuralDayOfWeek | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "locale",
+        "bindingName": "locale",
+        "type": "NeuralLocale | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "today",
+        "bindingName": "today",
+        "type": "NeuralDateParts | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "placeholder",
+        "bindingName": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "datePickerId",
+        "bindingName": "datePickerId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "clearable",
+        "bindingName": "clearable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showOtherMonths",
+        "bindingName": "showOtherMonths",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "selectOtherMonths",
+        "bindingName": "selectOtherMonths",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showWeekNumbers",
+        "bindingName": "showWeekNumbers",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showSeconds",
+        "bindingName": "showSeconds",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "hourFormat",
+        "bindingName": "hourFormat",
+        "type": "12 | 24",
+        "required": false,
+        "defaultValue": "24",
+        "transform": "(value) => (Number(value) === 12 ? 12 : 24)"
+      },
+      {
+        "name": "hourStep",
+        "bindingName": "hourStep",
+        "type": "number",
+        "required": false,
+        "defaultValue": "1",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "minuteStep",
+        "bindingName": "minuteStep",
+        "type": "number",
+        "required": false,
+        "defaultValue": "1",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "secondStep",
+        "bindingName": "secondStep",
+        "type": "number",
+        "required": false,
+        "defaultValue": "1",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "closeOnSelect",
+        "bindingName": "closeOnSelect",
+        "type": "boolean | null",
+        "required": false,
+        "defaultValue": "null",
+        "transform": "(value) => (value == null ? null : booleanAttribute(value))"
+      },
+      {
+        "name": "footerActions",
+        "bindingName": "footerActions",
+        "type": "readonly NeuralDatePickerFooterAction[]",
+        "required": false,
+        "defaultValue": "[\n    'today',\n    'clear',\n  ]"
+      },
+      {
+        "name": "showQuickActions",
+        "bindingName": "showQuickActions",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showApplyActions",
+        "bindingName": "showApplyActions",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "datePickerClass",
+        "bindingName": "datePickerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "clearIconClassName",
+        "bindingName": "clearIconClassName",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-x'"
+      },
+      {
+        "name": "previousIconClass",
+        "bindingName": "previousIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-chevron-left'"
+      },
+      {
+        "name": "nextIconClass",
+        "bindingName": "nextIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-chevron-right'"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralDatePickerClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "NeuralDatePickerValue<TMode, TPickerMode>"
+        "bindingName": "value",
+        "type": "NeuralDatePickerValue<TMode, TPickerMode>",
+        "defaultValue": "null"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "selectionChange",
+        "bindingName": "selectionChange",
+        "type": "NeuralDatePickerChange<TMode, TPickerMode>"
+      },
+      {
+        "name": "selected",
+        "bindingName": "selected",
+        "type": "NeuralDatePickerChange<TMode, TPickerMode>"
+      },
+      {
+        "name": "cleared",
+        "bindingName": "cleared",
+        "type": "NeuralDatePickerClear<TMode, TPickerMode>"
+      },
+      {
+        "name": "openChange",
+        "bindingName": "openChange",
+        "type": "boolean"
+      },
+      {
+        "name": "opened",
+        "bindingName": "opened",
+        "type": "void"
+      },
+      {
+        "name": "closed",
+        "bindingName": "closed",
+        "type": "void"
+      },
+      {
+        "name": "viewChanged",
+        "bindingName": "viewChanged",
+        "type": "NeuralDatePickerViewChange"
+      },
+      {
+        "name": "monthChanged",
+        "bindingName": "monthChanged",
+        "type": "NeuralDatePickerMonthChange"
+      },
+      {
+        "name": "yearChanged",
+        "bindingName": "yearChanged",
+        "type": "NeuralDatePickerYearChange"
+      },
+      {
+        "name": "invalidInput",
+        "bindingName": "invalidInput",
+        "type": "NeuralDatePickerInvalidInput"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -1821,6 +4030,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/date-picker\n\nAngular 22+ standalone, Signal-first DatePicker and TimePicker.\nSTATUS: beta\n\nIMPORT\nimport { NeuralDatePicker } from '@neural-ng/core/date-picker';\n- NeuralDatePicker is canonical. DatePickerComponent is deprecated compatibility only.\n\nBASIC\n<neural-date-picker [(value)]=\"date\" />\n\nVALUE RULES\n- Never use JavaScript Date as the component model.\n- Use NeuralDateParts: { year, month, day }.\n- Use NeuralTimeParts: { hour, minute, second, millisecond }.\n- Use NeuralDateTimeParts: { date, time }.\n- selectionMode=\"range\" uses NeuralDateRange.\n- selectionMode=\"multiple\" uses readonly NeuralDateParts[].\n- pickerMode is date, month, year, time, or datetime.\n\nFORMS\n- DatePicker implements FormValueControl.\n- Use [formControl], [(ngModel)], or [formField] directly.\n- Do not add a ControlValueAccessor wrapper or second value store.\n- Preserve disabled, readonly, required, invalid, touched, dirty, and touch.\n\nEVENTS\n- valueChange is model synchronization.\n- selectionChange and selected describe user selection.\n- cleared contains the previous value.\n- opened and closed describe rendered panel lifecycle.\n- viewChanged, monthChanged, and yearChanged describe navigation.\n- invalidInput reports field, raw input, and format/range reason.\n- Do not invent onSelect, onChange, onDateSelect, or onClose outputs.\n\nCONSTRAINTS\n- Compose minDate, maxDate, disabledDates, disabledDays, dateFilter, and\n  isDateDisabled. Do not pre-filter the rendered calendar externally.\n- Today and Clear commit immediately unless unavailable.\n- showApplyActions enables draft Apply/Cancel behavior.\n- Time and datetime always use a draft.\n\nLOCALE AND ACCESSIBILITY\n- Prefer NeuralLocaleService; use [locale] only for a component override.\n- firstDayOfWeek may explicitly override the locale.\n- Preserve dialog/grid semantics, roving tabindex, keyboard navigation, focus\n  restoration, aria-live view announcements, full weekday labels, and RTL.\n- Use parseNeuralLocaleDate for deterministic text parsing. Do not use\n  Date.parse or browser-dependent parsing.\n\nOVERLAY\n- Do not add appendTo=\"body\". DatePicker uses NeuralNg Popover and the browser\n  top layer without moving Angular-owned DOM.\n- Keep SSR closed and browser positioning hydration-safe.\n\nHEADLESS\n- unstyled removes visual *-base classes, never structural *-root hooks.\n- Use NeuralDatePickerClasses for typed slots.\n- Preserve structural -> component tokens -> theme -> consumer class order.\n- Use the six exported neuralDatePicker* typed template directives for custom\n  day, header, footer, trigger, previous, and next rendering.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "multi-select",
     "name": "NeuralMultiSelect",
     "className": "NeuralMultiSelect",
@@ -1830,14 +4040,452 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Signal-first, accessible multiple selection for Angular 22+.",
     "formContract": "FormValueControl<readonly TValue[]>",
+    "inputs": [
+      {
+        "name": "options",
+        "bindingName": "options",
+        "type": "readonly TOption[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "optionLabel",
+        "bindingName": "optionLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'label'"
+      },
+      {
+        "name": "optionValue",
+        "bindingName": "optionValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'value'"
+      },
+      {
+        "name": "optionDisabled",
+        "bindingName": "optionDisabled",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'disabled'"
+      },
+      {
+        "name": "optionGroup",
+        "bindingName": "optionGroup",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "display",
+        "bindingName": "display",
+        "type": "NeuralMultiSelectDisplay",
+        "required": false,
+        "defaultValue": "'chip'"
+      },
+      {
+        "name": "dataMode",
+        "bindingName": "dataMode",
+        "type": "NeuralMultiSelectDataMode",
+        "required": false,
+        "defaultValue": "'local'"
+      },
+      {
+        "name": "filterMode",
+        "bindingName": "filterMode",
+        "type": "NeuralMultiSelectFilterMode",
+        "required": false,
+        "defaultValue": "'contains'"
+      },
+      {
+        "name": "filterBy",
+        "bindingName": "filterBy",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "filterLocale",
+        "bindingName": "filterLocale",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "filter",
+        "bindingName": "filter",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showToggleAll",
+        "bindingName": "showToggleAll",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "clearable",
+        "bindingName": "clearable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closeOnSelect",
+        "bindingName": "closeOnSelect",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "selectionLimit",
+        "bindingName": "selectionLimit",
+        "type": "number",
+        "required": false,
+        "defaultValue": "0",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "maxSelectedLabels",
+        "bindingName": "maxSelectedLabels",
+        "type": "number",
+        "required": false,
+        "defaultValue": "3",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "filterDelay",
+        "bindingName": "filterDelay",
+        "type": "number",
+        "required": false,
+        "defaultValue": "150",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "virtualScroll",
+        "bindingName": "virtualScroll",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "virtualItemSize",
+        "bindingName": "virtualItemSize",
+        "type": "number",
+        "required": false,
+        "defaultValue": "42",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "virtualScrollHeight",
+        "bindingName": "virtualScrollHeight",
+        "type": "number",
+        "required": false,
+        "defaultValue": "256",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "virtualOverscan",
+        "bindingName": "virtualOverscan",
+        "type": "number",
+        "required": false,
+        "defaultValue": "3",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "loading",
+        "bindingName": "loading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "placeholder",
+        "bindingName": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "filterPlaceholder",
+        "bindingName": "filterPlaceholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "emptyLabel",
+        "bindingName": "emptyLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "loadingLabel",
+        "bindingName": "loadingLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "selectedItemsLabel",
+        "bindingName": "selectedItemsLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "selectAllLabel",
+        "bindingName": "selectAllLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "clearLabel",
+        "bindingName": "clearLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "dropdownLabel",
+        "bindingName": "dropdownLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "removeLabel",
+        "bindingName": "removeLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "multiSelectId",
+        "bindingName": "multiSelectId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "dropdownIconClass",
+        "bindingName": "dropdownIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-chevron-down'"
+      },
+      {
+        "name": "clearIconClass",
+        "bindingName": "clearIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-x'"
+      },
+      {
+        "name": "removeIconClass",
+        "bindingName": "removeIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-x'"
+      },
+      {
+        "name": "searchIconClass",
+        "bindingName": "searchIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-search'"
+      },
+      {
+        "name": "checkIconClass",
+        "bindingName": "checkIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-check'"
+      },
+      {
+        "name": "loadingIconClass",
+        "bindingName": "loadingIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-loader-3 nt-spin'"
+      },
+      {
+        "name": "multiSelectClass",
+        "bindingName": "multiSelectClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralMultiSelectClasses",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "compareWith",
+        "bindingName": "compareWith",
+        "type": "(first: TValue, second: TValue) => boolean",
+        "required": false,
+        "defaultValue": "Object.is"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "readonly TValue[]"
+        "bindingName": "value",
+        "type": "readonly TValue[]",
+        "defaultValue": "[]"
       },
       {
         "name": "filterValue",
-        "type": "string"
+        "bindingName": "filterValue",
+        "type": "string",
+        "defaultValue": "''"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "selectionChange",
+        "bindingName": "selectionChange",
+        "type": "NeuralMultiSelectChange<TValue, TOption>"
+      },
+      {
+        "name": "selected",
+        "bindingName": "selected",
+        "type": "NeuralMultiSelectItemEvent<TValue, TOption>"
+      },
+      {
+        "name": "removed",
+        "bindingName": "removed",
+        "type": "NeuralMultiSelectItemEvent<TValue, TOption>"
+      },
+      {
+        "name": "cleared",
+        "bindingName": "cleared",
+        "type": "NeuralMultiSelectClearEvent<TValue>"
+      },
+      {
+        "name": "selectAllChange",
+        "bindingName": "selectAllChange",
+        "type": "NeuralMultiSelectSelectAllEvent<TValue>"
+      },
+      {
+        "name": "filterChange",
+        "bindingName": "filterChange",
+        "type": "NeuralMultiSelectFilterEvent"
+      },
+      {
+        "name": "opened",
+        "bindingName": "opened",
+        "type": "void"
+      },
+      {
+        "name": "closed",
+        "bindingName": "closed",
+        "type": "void"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -1989,6 +4637,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg MultiSelect AI context\n\n- Import canonical NeuralMultiSelect from @neural-ng/core/multi-select.\n- Never generate the deprecated MultiSelectComponent compatibility alias.\n- MultiSelect implements FormValueControl<readonly TValue[]>.\n- Bind immutable arrays with `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`; do not add a ControlValueAccessor wrapper.\n- Programmatic writes and reset update the value model without selectionChange.\n- Readonly remains enabled and focusable, exposes aria-readonly, may open for inspection, and blocks option, chip, clear, and select-all mutations.\n- Bind options and configure optionLabel, optionValue, optionDisabled, optionGroup, and filterBy. Nested paths are supported.\n- display defaults to chip; comma is the compact label mode.\n- Local filtering is the default. In remote mode, listen to filterChange and ignore stale requestId values.\n- selectionLimit caps committed values. maxSelectedLabels collapses comma labels into selectedItemsLabel.\n- The popup uses the shared top-layer Popover and always matches the trigger width.\n- Keyboard: Arrow keys move, Enter/Space toggles, Home/End jump, Escape closes.\n- Enable fixed-height virtualization with virtualScroll. Configure virtualItemSize, virtualScrollHeight, and virtualOverscan. Grouped lists intentionally use full rendering because variable-height group headers cannot share the fixed-row geometry.\n- Select and MultiSelect share nested-path option resolution, locale-aware filter matching, enabled-option navigation, and typeahead primitives from @neural-ng/core.\n- Use selectionChange as the main user value event. selected, removed, cleared, and selectAllChange are semantic helpers.\n- unstyled removes NeuralNg visual base classes but preserves structural hooks, behavior, and ARIA.\n- Typed templates: neuralMultiSelectOption, neuralMultiSelectValue, neuralMultiSelectGroup, neuralMultiSelectHeader, neuralMultiSelectFooter, neuralMultiSelectEmpty, and neuralMultiSelectLoading.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-button-group",
     "name": "NeuralButtonGroup",
     "className": "NeuralButtonGroup",
@@ -1997,7 +4646,46 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/button",
     "status": "beta",
     "summary": "`NeuralButton` is a standalone, signal-based Angular 22+ component available from the `@neural-ng/core/button` secondary entry point. It renders a native `<button>` and supports themed, class-driven, and headless usage.",
+    "inputs": [
+      {
+        "name": "orientation",
+        "bindingName": "orientation",
+        "type": "NeuralButtonGroupOrientation",
+        "required": false,
+        "defaultValue": "'horizontal'"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "groupClass",
+        "bindingName": "groupClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralButtonGroupClasses",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralButtonGroupClasses",
@@ -2060,6 +4748,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Button\n\n> `NeuralButton` is a standalone Angular 22+ component that renders a native button and is imported only from `@neural-ng/core/button`.\n\nGeneration rules:\n\n- Import `NeuralButton` from `@neural-ng/core/button`.\n- Add `NeuralButton` directly to the consumer component's `imports` array.\n- Do not declare or export it through a consumer NgModule.\n- Render it with `<neural-button>...</neural-button>`.\n- Prefer `label=\"Save\"` for simple text and `[label]=\"saveLabel()\"` for bound text. Project content only when rich markup is required.\n- Prefer `icon=\"nt nt-check\"` over projecting a decorative `<i>` element. `icon` also accepts property binding.\n- Use `iconPosition=\"start|end\"`; these are logical positions and follow RTL.\n- Icon-only styled Buttons are square automatically. Do not add manual width or padding utility classes; always provide `ariaLabel`.\n- Use `size=\"small|medium|large\"`; the default is `medium`.\n- Use `iconSize=\"small|medium|large\"` only to override the glyph size. When omitted, the icon follows the Button `size`; it does not change the hit target.\n- Use `outlined` for the bordered transparent treatment and `text` for the borderless transparent treatment. If both are present, `text` takes precedence.\n- `raised` and `rounded` are composable boolean modifiers. `text raised` is a supported combination.\n- Import `NeuralButtonGroup` from the same entry point and add it to `imports` when generating `<neural-button-group>`.\n- Give Button groups a meaningful `ariaLabel`; use `orientation=\"vertical\"` only for vertical layouts.\n- Button groups preserve `role=\"group\"`, logical RTL borders, and structural hooks in unstyled mode.\n- Listen with `(clicked)`. Never generate `(onNeuralClick)`, `(buttonClick)`, or `(click)` as a replacement for the documented output.\n- Use `type=\"submit\"` only for intentional form submission; the default is `button`.\n- Use `severity` for semantic intent. Accepted values are `primary`, `secondary`, `neutral`, `info`, `success`, `warning`, and `error`.\n- Bind state with `[disabled]` and `[loading]`.\n- Supply a localized `loadingLabel` whenever the application language is not English.\n- Use `ariaLabel` only when projected content does not provide a meaningful visible label.\n- Composite controls may bind `ariaExpanded`, `ariaControls`,\n  `ariaKeyShortcuts`, `keyDown`, and `pointerDown`/`pointerMove`/`pointerUp`/\n  `pointerCancel`. Do not recreate a raw button merely to forward disclosure\n  or pointer state.\n- Use `badge` for a compact contextual value.\n- `badgePosition` accepts `start`, `end`, `top-start`, `top-end`, `bottom-start`, and `bottom-end`.\n- Use logical corner positions for notification Badges on icon-only buttons.\n- When an icon-only Button has meaningful Badge state, include that state in the Button `ariaLabel`.\n- Configure the Badge with `badgeSeverity`, `badgeSize`, `badgeMax`, `badgeAriaLabel`, and `badgeClass`; Button delegates these to the general `NeuralBadgeDirective`.\n- Zero is a valid Badge value. Do not hide it with truthy checks.\n- Do not project a second `<neural-badge>` when the Button Badge inputs are sufficient.\n- Loading replaces both projected content and the composed Badge.\n- Use `buttonClass` for the inner native button. A standard `class` targets the `neural-button` host.\n- Use `[unstyled]=\"true\"` to remove NeuralNg's visual component layer. Do not assume that `buttonClass` disables theme styles.\n- Use `provideNeuralNg({ unstyled: true })` for application-wide unstyled mode.\n- Import `@neural-ng/core/themes/neutral.css` once for the stable reference theme.\n- Use `data-neural-theme` for theme identity and `data-neural-mode=\"light|dark\"` for resolved color mode; they are independent.\n- Treat Glass, Mist, and Futuristic as optional experimental token presets; do not copy their values into component CSS.\n- Do not add manual keyboard handlers, `role=\"button\"`, or `tabindex` because the component uses native button semantics.\n- While loading, the component remains focusable, blocks activation, exposes `aria-busy=\"true\"` and `aria-disabled=\"true\"`, and displays `loadingLabel`.\n- The `clicked` payload is a `MouseEvent` and does not emit while disabled or loading.\n\nCanonical example:\n\n```ts\nimport { Component, signal } from '@angular/core';\nimport { NeuralButton } from '@neural-ng/core/button';\n\n@Component({\n  selector: 'app-save-action',\n  standalone: true,\n  imports: [NeuralButton],\n  template: `\n    <neural-button\n      label=\"Save\"\n      icon=\"nt nt-check\"\n      [loading]=\"isSaving()\"\n      loadingLabel=\"Saving\"\n      buttonClass=\"w-full\"\n      (clicked)=\"save($event)\"\n    />\n  `,\n})\nexport class SaveActionComponent {\n  readonly isSaving = signal(false);\n\n  save(event: MouseEvent): void {\n    console.log(event);\n  }\n}\n```\n\n## Documentation\n\n- [Button README](./README.md): Complete public API and usage guide.\n- [Package README](../README.md): Package setup and entry-point overview.\n- [Neutral theme](../themes/neutral.css): Reference values for every Button token.\n- [Experimental Glass theme](../themes/experimental/glass.css): Optional Glass token preset.\n- [Experimental Mist theme](../themes/experimental/mist.css): Optional calm blur-based token preset.\n- [Experimental Futuristic theme](../themes/experimental/futuristic.css): Optional Futuristic token preset.\n\n## Optional\n\n- [Package AI context](../llms.txt): NeuralNg-wide architecture and component index.\n- [llms.txt specification](https://llmstxt.org/): Format used by this file.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-dialog",
     "name": "NeuralDialog",
     "className": "NeuralDialog",
@@ -2068,9 +4757,150 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/dialog",
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
+    "inputs": [
+      {
+        "name": "modal",
+        "bindingName": "modal",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closable",
+        "bindingName": "closable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closeOnEscape",
+        "bindingName": "closeOnEscape",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dismissibleBackdrop",
+        "bindingName": "dismissibleBackdrop",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "full",
+        "bindingName": "full",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showFullScreenButton",
+        "bindingName": "showFullScreenButton",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaDescribedby",
+        "bindingName": "ariaDescribedby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "closeLabel",
+        "bindingName": "closeLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "enterFullScreenLabel",
+        "bindingName": "enterFullScreenLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "exitFullScreenLabel",
+        "bindingName": "exitFullScreenLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "dialogClass",
+        "bindingName": "dialogClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralDialogClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "open",
+        "bindingName": "open",
+        "type": "boolean",
+        "defaultValue": "false"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "opened",
+        "bindingName": "opened",
+        "type": "void"
+      },
+      {
+        "name": "closed",
+        "bindingName": "closed",
+        "type": "NeuralDialogClose"
+      },
+      {
+        "name": "fullChange",
+        "bindingName": "fullChange",
         "type": "boolean"
       }
     ],
@@ -2138,6 +4968,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/dialog\n\nImport `NeuralDialog`, `NeuralDialogHeader`, `NeuralDialogBody`,\n`NeuralDialogFooter`, and `NeuralDialogInitialFocus` only from\n`@neural-ng/core/dialog`. Never generate their deprecated `Dialog*` aliases,\nan NgModule, or a div-based replacement.\n\nUse `neural-dialog` with optional `neural-dialog-header`,\n`neural-dialog-body`, and `neural-dialog-footer`. Give every dialog an\naccessible name through `ariaLabelledby` pointing to a real heading, or through\n`ariaLabel`. Prefer `neuralDialogInitialFocus` on the first meaningful\ninteractive control.\n\nBind `[(open)]` for declarative state or call `show()` and `close()` from a\ntemplate reference. The optional `closed` output returns a\n`NeuralDialogClose`; normal open-state binding does not require importing this\ntype. Do not invent `onHide` or `visibleChange` outputs.\n\n`modal`, `closable`, `closeOnEscape`, and `dismissibleBackdrop` default to\ntrue. Do not disable dismissal paths unless the product flow supplies an\nobvious accessible alternative.\n\nUse `fluid` for viewport-safe width and `full` only for a complete\n`100vw × 100dvh` application surface. `full` takes visual precedence over\n`fluid`.\n\nSet `showFullScreenButton` to render the localized maximize/minimize action\nimmediately before close. Observe `fullChange` when application state must\ntrack user toggles. Use `enterFullScreenLabel` and `exitFullScreenLabel` only\nto override locale messages.\n\nFor headless rendering, set `unstyled` and pass typed `classes`. Structural\nclasses remain. Do not assume Neural Icons is installed.\n\nCanonical example:\n\n```html\n<neural-button (clicked)=\"dialog.show()\">Open settings</neural-button>\n<neural-dialog #dialog ariaLabelledby=\"settings-title\">\n  <neural-dialog-header>\n    <h2 id=\"settings-title\">Settings</h2>\n  </neural-dialog-header>\n  <neural-dialog-body>\n    <input neuralDialogInitialFocus aria-label=\"Workspace name\" />\n  </neural-dialog-body>\n  <neural-dialog-footer>\n    <button type=\"button\" (click)=\"dialog.close()\">Done</button>\n  </neural-dialog-footer>\n</neural-dialog>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-dialog-body",
     "name": "NeuralDialogBody",
     "className": "NeuralDialogBody",
@@ -2146,7 +4977,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/dialog",
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
+    "inputs": [
+      {
+        "name": "bodyClass",
+        "bindingName": "bodyClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralDialogClasses",
@@ -2211,6 +5052,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/dialog\n\nImport `NeuralDialog`, `NeuralDialogHeader`, `NeuralDialogBody`,\n`NeuralDialogFooter`, and `NeuralDialogInitialFocus` only from\n`@neural-ng/core/dialog`. Never generate their deprecated `Dialog*` aliases,\nan NgModule, or a div-based replacement.\n\nUse `neural-dialog` with optional `neural-dialog-header`,\n`neural-dialog-body`, and `neural-dialog-footer`. Give every dialog an\naccessible name through `ariaLabelledby` pointing to a real heading, or through\n`ariaLabel`. Prefer `neuralDialogInitialFocus` on the first meaningful\ninteractive control.\n\nBind `[(open)]` for declarative state or call `show()` and `close()` from a\ntemplate reference. The optional `closed` output returns a\n`NeuralDialogClose`; normal open-state binding does not require importing this\ntype. Do not invent `onHide` or `visibleChange` outputs.\n\n`modal`, `closable`, `closeOnEscape`, and `dismissibleBackdrop` default to\ntrue. Do not disable dismissal paths unless the product flow supplies an\nobvious accessible alternative.\n\nUse `fluid` for viewport-safe width and `full` only for a complete\n`100vw × 100dvh` application surface. `full` takes visual precedence over\n`fluid`.\n\nSet `showFullScreenButton` to render the localized maximize/minimize action\nimmediately before close. Observe `fullChange` when application state must\ntrack user toggles. Use `enterFullScreenLabel` and `exitFullScreenLabel` only\nto override locale messages.\n\nFor headless rendering, set `unstyled` and pass typed `classes`. Structural\nclasses remain. Do not assume Neural Icons is installed.\n\nCanonical example:\n\n```html\n<neural-button (clicked)=\"dialog.show()\">Open settings</neural-button>\n<neural-dialog #dialog ariaLabelledby=\"settings-title\">\n  <neural-dialog-header>\n    <h2 id=\"settings-title\">Settings</h2>\n  </neural-dialog-header>\n  <neural-dialog-body>\n    <input neuralDialogInitialFocus aria-label=\"Workspace name\" />\n  </neural-dialog-body>\n  <neural-dialog-footer>\n    <button type=\"button\" (click)=\"dialog.close()\">Done</button>\n  </neural-dialog-footer>\n</neural-dialog>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-dialog-footer",
     "name": "NeuralDialogFooter",
     "className": "NeuralDialogFooter",
@@ -2219,7 +5061,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/dialog",
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
+    "inputs": [
+      {
+        "name": "footerClass",
+        "bindingName": "footerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralDialogClasses",
@@ -2284,6 +5136,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/dialog\n\nImport `NeuralDialog`, `NeuralDialogHeader`, `NeuralDialogBody`,\n`NeuralDialogFooter`, and `NeuralDialogInitialFocus` only from\n`@neural-ng/core/dialog`. Never generate their deprecated `Dialog*` aliases,\nan NgModule, or a div-based replacement.\n\nUse `neural-dialog` with optional `neural-dialog-header`,\n`neural-dialog-body`, and `neural-dialog-footer`. Give every dialog an\naccessible name through `ariaLabelledby` pointing to a real heading, or through\n`ariaLabel`. Prefer `neuralDialogInitialFocus` on the first meaningful\ninteractive control.\n\nBind `[(open)]` for declarative state or call `show()` and `close()` from a\ntemplate reference. The optional `closed` output returns a\n`NeuralDialogClose`; normal open-state binding does not require importing this\ntype. Do not invent `onHide` or `visibleChange` outputs.\n\n`modal`, `closable`, `closeOnEscape`, and `dismissibleBackdrop` default to\ntrue. Do not disable dismissal paths unless the product flow supplies an\nobvious accessible alternative.\n\nUse `fluid` for viewport-safe width and `full` only for a complete\n`100vw × 100dvh` application surface. `full` takes visual precedence over\n`fluid`.\n\nSet `showFullScreenButton` to render the localized maximize/minimize action\nimmediately before close. Observe `fullChange` when application state must\ntrack user toggles. Use `enterFullScreenLabel` and `exitFullScreenLabel` only\nto override locale messages.\n\nFor headless rendering, set `unstyled` and pass typed `classes`. Structural\nclasses remain. Do not assume Neural Icons is installed.\n\nCanonical example:\n\n```html\n<neural-button (clicked)=\"dialog.show()\">Open settings</neural-button>\n<neural-dialog #dialog ariaLabelledby=\"settings-title\">\n  <neural-dialog-header>\n    <h2 id=\"settings-title\">Settings</h2>\n  </neural-dialog-header>\n  <neural-dialog-body>\n    <input neuralDialogInitialFocus aria-label=\"Workspace name\" />\n  </neural-dialog-body>\n  <neural-dialog-footer>\n    <button type=\"button\" (click)=\"dialog.close()\">Done</button>\n  </neural-dialog-footer>\n</neural-dialog>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-dialog-header",
     "name": "NeuralDialogHeader",
     "className": "NeuralDialogHeader",
@@ -2292,7 +5145,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/dialog",
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
+    "inputs": [
+      {
+        "name": "headerClass",
+        "bindingName": "headerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralDialogClasses",
@@ -2357,6 +5220,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/dialog\n\nImport `NeuralDialog`, `NeuralDialogHeader`, `NeuralDialogBody`,\n`NeuralDialogFooter`, and `NeuralDialogInitialFocus` only from\n`@neural-ng/core/dialog`. Never generate their deprecated `Dialog*` aliases,\nan NgModule, or a div-based replacement.\n\nUse `neural-dialog` with optional `neural-dialog-header`,\n`neural-dialog-body`, and `neural-dialog-footer`. Give every dialog an\naccessible name through `ariaLabelledby` pointing to a real heading, or through\n`ariaLabel`. Prefer `neuralDialogInitialFocus` on the first meaningful\ninteractive control.\n\nBind `[(open)]` for declarative state or call `show()` and `close()` from a\ntemplate reference. The optional `closed` output returns a\n`NeuralDialogClose`; normal open-state binding does not require importing this\ntype. Do not invent `onHide` or `visibleChange` outputs.\n\n`modal`, `closable`, `closeOnEscape`, and `dismissibleBackdrop` default to\ntrue. Do not disable dismissal paths unless the product flow supplies an\nobvious accessible alternative.\n\nUse `fluid` for viewport-safe width and `full` only for a complete\n`100vw × 100dvh` application surface. `full` takes visual precedence over\n`fluid`.\n\nSet `showFullScreenButton` to render the localized maximize/minimize action\nimmediately before close. Observe `fullChange` when application state must\ntrack user toggles. Use `enterFullScreenLabel` and `exitFullScreenLabel` only\nto override locale messages.\n\nFor headless rendering, set `unstyled` and pass typed `classes`. Structural\nclasses remain. Do not assume Neural Icons is installed.\n\nCanonical example:\n\n```html\n<neural-button (clicked)=\"dialog.show()\">Open settings</neural-button>\n<neural-dialog #dialog ariaLabelledby=\"settings-title\">\n  <neural-dialog-header>\n    <h2 id=\"settings-title\">Settings</h2>\n  </neural-dialog-header>\n  <neural-dialog-body>\n    <input neuralDialogInitialFocus aria-label=\"Workspace name\" />\n  </neural-dialog-body>\n  <neural-dialog-footer>\n    <button type=\"button\" (click)=\"dialog.close()\">Done</button>\n  </neural-dialog-footer>\n</neural-dialog>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-dialog-initial-focus",
     "name": "NeuralDialogInitialFocus",
     "className": "NeuralDialogInitialFocus",
@@ -2365,7 +5229,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/dialog",
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralDialogClasses",
@@ -2430,6 +5296,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/dialog\n\nImport `NeuralDialog`, `NeuralDialogHeader`, `NeuralDialogBody`,\n`NeuralDialogFooter`, and `NeuralDialogInitialFocus` only from\n`@neural-ng/core/dialog`. Never generate their deprecated `Dialog*` aliases,\nan NgModule, or a div-based replacement.\n\nUse `neural-dialog` with optional `neural-dialog-header`,\n`neural-dialog-body`, and `neural-dialog-footer`. Give every dialog an\naccessible name through `ariaLabelledby` pointing to a real heading, or through\n`ariaLabel`. Prefer `neuralDialogInitialFocus` on the first meaningful\ninteractive control.\n\nBind `[(open)]` for declarative state or call `show()` and `close()` from a\ntemplate reference. The optional `closed` output returns a\n`NeuralDialogClose`; normal open-state binding does not require importing this\ntype. Do not invent `onHide` or `visibleChange` outputs.\n\n`modal`, `closable`, `closeOnEscape`, and `dismissibleBackdrop` default to\ntrue. Do not disable dismissal paths unless the product flow supplies an\nobvious accessible alternative.\n\nUse `fluid` for viewport-safe width and `full` only for a complete\n`100vw × 100dvh` application surface. `full` takes visual precedence over\n`fluid`.\n\nSet `showFullScreenButton` to render the localized maximize/minimize action\nimmediately before close. Observe `fullChange` when application state must\ntrack user toggles. Use `enterFullScreenLabel` and `exitFullScreenLabel` only\nto override locale messages.\n\nFor headless rendering, set `unstyled` and pass typed `classes`. Structural\nclasses remain. Do not assume Neural Icons is installed.\n\nCanonical example:\n\n```html\n<neural-button (clicked)=\"dialog.show()\">Open settings</neural-button>\n<neural-dialog #dialog ariaLabelledby=\"settings-title\">\n  <neural-dialog-header>\n    <h2 id=\"settings-title\">Settings</h2>\n  </neural-dialog-header>\n  <neural-dialog-body>\n    <input neuralDialogInitialFocus aria-label=\"Workspace name\" />\n  </neural-dialog-body>\n  <neural-dialog-footer>\n    <button type=\"button\" (click)=\"dialog.close()\">Done</button>\n  </neural-dialog-footer>\n</neural-dialog>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-divider",
     "name": "NeuralDivider",
     "className": "NeuralDivider",
@@ -2438,7 +5305,74 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/divider",
     "status": "beta",
     "summary": "`NeuralDivider` separates related content with native separator semantics, logical orientation, optional content, and a fully headless visual contract.",
+    "inputs": [
+      {
+        "name": "orientation",
+        "bindingName": "orientation",
+        "type": "NeuralDividerOrientation",
+        "required": false,
+        "defaultValue": "'horizontal'"
+      },
+      {
+        "name": "align",
+        "bindingName": "align",
+        "type": "NeuralDividerAlign",
+        "required": false,
+        "defaultValue": "'center'"
+      },
+      {
+        "name": "type",
+        "bindingName": "type",
+        "type": "NeuralDividerType",
+        "required": false,
+        "defaultValue": "'solid'"
+      },
+      {
+        "name": "label",
+        "bindingName": "label",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabelledBy",
+        "bindingName": "ariaLabelledBy",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dividerClass",
+        "bindingName": "dividerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralDividerClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralDividerClasses",
@@ -2478,6 +5412,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Divider AI context\n\n- Import NeuralDivider only from `@neural-ng/core/divider`. Never generate the\n  deprecated DividerComponent alias.\n- Use Divider for content boundaries, not layout spacing alone.\n- orientation accepts horizontal or vertical and maps to aria-orientation.\n- type accepts solid, dashed, or dotted.\n- align accepts start, center, or end and positions label/projected content.\n- Prefer label for plain text; projected content is the richer alternative.\n- ariaLabelledBy takes precedence over ariaLabel.\n- Set unstyled for headless rendering. Separator semantics and structural\n  orientation hooks remain while NeuralNg visual classes are removed.\n- classes exposes root, before, content, and after. dividerClass targets root.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-drawer",
     "name": "NeuralDrawer",
     "className": "NeuralDrawer",
@@ -2486,10 +5421,122 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/drawer",
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
+    "inputs": [
+      {
+        "name": "position",
+        "bindingName": "position",
+        "type": "NeuralDrawerPosition",
+        "required": false,
+        "defaultValue": "'end'"
+      },
+      {
+        "name": "modal",
+        "bindingName": "modal",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closable",
+        "bindingName": "closable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closeOnEscape",
+        "bindingName": "closeOnEscape",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dismissibleBackdrop",
+        "bindingName": "dismissibleBackdrop",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaDescribedby",
+        "bindingName": "ariaDescribedby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "closeLabel",
+        "bindingName": "closeLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "closeIcon",
+        "bindingName": "closeIcon",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-x'"
+      },
+      {
+        "name": "drawerClass",
+        "bindingName": "drawerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralDrawerClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "open",
-        "type": "boolean"
+        "bindingName": "open",
+        "type": "boolean",
+        "defaultValue": "false"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "opened",
+        "bindingName": "opened",
+        "type": "void"
+      },
+      {
+        "name": "closed",
+        "bindingName": "closed",
+        "type": "NeuralDrawerClose"
       }
     ],
     "classes": [
@@ -2546,6 +5593,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Drawer\n\n- Import NeuralDrawer, NeuralDrawerHeader, NeuralDrawerBody,\n  NeuralDrawerFooter, and NeuralDrawerInitialFocus from\n  @neural-ng/core/drawer. Never generate their deprecated Drawer* aliases.\n- Use position=\"start|end|top|bottom\". Start/end are logical and RTL-aware.\n- Bind [(open)] or call show(), toggle(), and close().\n- Native dialog provides modal top-layer behavior and focus containment without a global overlay container.\n- Non-modal mode uses the Popover top layer when available, stays above\n  application chrome, and leaves background content interactive.\n- Use ariaLabel or ariaLabelledby. Prefer a visible heading referenced by ariaLabelledby.\n- closeOnEscape and dismissibleBackdrop default to true. closed reports api, escape, backdrop, close-button, or native.\n- neuralDrawerInitialFocus moves initial focus. Focus returns to the opener after close.\n- Header, body, and footer section components keep the body independently scrollable.\n- unstyled removes visual base classes but retains structural hooks, semantics, placement, and behavior.\n- classes provides typed root, header, body, footer, closeButton, and closeIcon slots.\n- The default close icon uses Neural Icons nt nt-x.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-drawer-body",
     "name": "NeuralDrawerBody",
     "className": "NeuralDrawerBody",
@@ -2554,7 +5602,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/drawer",
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
+    "inputs": [
+      {
+        "name": "bodyClass",
+        "bindingName": "bodyClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralDrawerClasses",
@@ -2609,6 +5667,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Drawer\n\n- Import NeuralDrawer, NeuralDrawerHeader, NeuralDrawerBody,\n  NeuralDrawerFooter, and NeuralDrawerInitialFocus from\n  @neural-ng/core/drawer. Never generate their deprecated Drawer* aliases.\n- Use position=\"start|end|top|bottom\". Start/end are logical and RTL-aware.\n- Bind [(open)] or call show(), toggle(), and close().\n- Native dialog provides modal top-layer behavior and focus containment without a global overlay container.\n- Non-modal mode uses the Popover top layer when available, stays above\n  application chrome, and leaves background content interactive.\n- Use ariaLabel or ariaLabelledby. Prefer a visible heading referenced by ariaLabelledby.\n- closeOnEscape and dismissibleBackdrop default to true. closed reports api, escape, backdrop, close-button, or native.\n- neuralDrawerInitialFocus moves initial focus. Focus returns to the opener after close.\n- Header, body, and footer section components keep the body independently scrollable.\n- unstyled removes visual base classes but retains structural hooks, semantics, placement, and behavior.\n- classes provides typed root, header, body, footer, closeButton, and closeIcon slots.\n- The default close icon uses Neural Icons nt nt-x.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-drawer-footer",
     "name": "NeuralDrawerFooter",
     "className": "NeuralDrawerFooter",
@@ -2617,7 +5676,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/drawer",
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
+    "inputs": [
+      {
+        "name": "footerClass",
+        "bindingName": "footerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralDrawerClasses",
@@ -2672,6 +5741,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Drawer\n\n- Import NeuralDrawer, NeuralDrawerHeader, NeuralDrawerBody,\n  NeuralDrawerFooter, and NeuralDrawerInitialFocus from\n  @neural-ng/core/drawer. Never generate their deprecated Drawer* aliases.\n- Use position=\"start|end|top|bottom\". Start/end are logical and RTL-aware.\n- Bind [(open)] or call show(), toggle(), and close().\n- Native dialog provides modal top-layer behavior and focus containment without a global overlay container.\n- Non-modal mode uses the Popover top layer when available, stays above\n  application chrome, and leaves background content interactive.\n- Use ariaLabel or ariaLabelledby. Prefer a visible heading referenced by ariaLabelledby.\n- closeOnEscape and dismissibleBackdrop default to true. closed reports api, escape, backdrop, close-button, or native.\n- neuralDrawerInitialFocus moves initial focus. Focus returns to the opener after close.\n- Header, body, and footer section components keep the body independently scrollable.\n- unstyled removes visual base classes but retains structural hooks, semantics, placement, and behavior.\n- classes provides typed root, header, body, footer, closeButton, and closeIcon slots.\n- The default close icon uses Neural Icons nt nt-x.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-drawer-header",
     "name": "NeuralDrawerHeader",
     "className": "NeuralDrawerHeader",
@@ -2680,7 +5750,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/drawer",
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
+    "inputs": [
+      {
+        "name": "headerClass",
+        "bindingName": "headerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralDrawerClasses",
@@ -2735,6 +5815,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Drawer\n\n- Import NeuralDrawer, NeuralDrawerHeader, NeuralDrawerBody,\n  NeuralDrawerFooter, and NeuralDrawerInitialFocus from\n  @neural-ng/core/drawer. Never generate their deprecated Drawer* aliases.\n- Use position=\"start|end|top|bottom\". Start/end are logical and RTL-aware.\n- Bind [(open)] or call show(), toggle(), and close().\n- Native dialog provides modal top-layer behavior and focus containment without a global overlay container.\n- Non-modal mode uses the Popover top layer when available, stays above\n  application chrome, and leaves background content interactive.\n- Use ariaLabel or ariaLabelledby. Prefer a visible heading referenced by ariaLabelledby.\n- closeOnEscape and dismissibleBackdrop default to true. closed reports api, escape, backdrop, close-button, or native.\n- neuralDrawerInitialFocus moves initial focus. Focus returns to the opener after close.\n- Header, body, and footer section components keep the body independently scrollable.\n- unstyled removes visual base classes but retains structural hooks, semantics, placement, and behavior.\n- classes provides typed root, header, body, footer, closeButton, and closeIcon slots.\n- The default close icon uses Neural Icons nt nt-x.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-drawer-initial-focus",
     "name": "NeuralDrawerInitialFocus",
     "className": "NeuralDrawerInitialFocus",
@@ -2743,7 +5824,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/drawer",
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralDrawerClasses",
@@ -2798,6 +5881,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Drawer\n\n- Import NeuralDrawer, NeuralDrawerHeader, NeuralDrawerBody,\n  NeuralDrawerFooter, and NeuralDrawerInitialFocus from\n  @neural-ng/core/drawer. Never generate their deprecated Drawer* aliases.\n- Use position=\"start|end|top|bottom\". Start/end are logical and RTL-aware.\n- Bind [(open)] or call show(), toggle(), and close().\n- Native dialog provides modal top-layer behavior and focus containment without a global overlay container.\n- Non-modal mode uses the Popover top layer when available, stays above\n  application chrome, and leaves background content interactive.\n- Use ariaLabel or ariaLabelledby. Prefer a visible heading referenced by ariaLabelledby.\n- closeOnEscape and dismissibleBackdrop default to true. closed reports api, escape, backdrop, close-button, or native.\n- neuralDrawerInitialFocus moves initial focus. Focus returns to the opener after close.\n- Header, body, and footer section components keep the body independently scrollable.\n- unstyled removes visual base classes but retains structural hooks, semantics, placement, and behavior.\n- classes provides typed root, header, body, footer, closeButton, and closeIcon slots.\n- The default close icon uses Neural Icons nt nt-x.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-field",
     "name": "NeuralField",
     "className": "NeuralField",
@@ -2806,7 +5890,87 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/field",
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
+    "inputs": [
+      {
+        "name": "controlId",
+        "bindingName": "controlId",
+        "type": "string",
+        "required": true,
+        "transform": "normalizeControlId"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "describedBy",
+        "bindingName": "describedBy",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralFieldClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralFieldClasses",
@@ -2856,6 +6020,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Field\n\n> Accessible Angular 22+ field composition at `@neural-ng/core/field`.\n\n## Rules\n\n- Import `NeuralField`, `NeuralFieldLabel`, `NeuralFieldHint`,\n  `NeuralFieldError`, and `NeuralFieldControl` from\n  `@neural-ng/core/field`. Never generate the deprecated `FieldComponent` or\n  `Field*Directive` aliases.\n- Generate `<neural-field controlId=\"stable-id\">`; `controlId` is required.\n- Use `<label neuralFieldLabel>` for the visible native label.\n- Use `[neuralFieldHint]` for instructions and `[neuralFieldError]` for\n  correction messages.\n- Do not manually add `for`, control `id`, or generated hint/error IDs in a\n  normal Field composition. Field derives them from `controlId`.\n- `neuralInput` consumes Field context automatically.\n- Apply `neuralFieldControl` to another native or compatible custom control.\n- Keep validation rules in the form schema. Field displays state; it does not\n  validate or own values.\n- For Signal Forms, normally bind Field `invalid` to\n  `field().touched() && field().invalid()`.\n- Bind `pending`, `required`, `disabled`, and `readonly` from the same source of\n  truth as the control.\n- Use `describedBy` only for additional description IDs outside Field.\n- `neuralFieldError` uses `aria-live=\"polite\"` by default. Use assertive\n  announcements sparingly.\n- Use native `class` attributes directly. Do not invent `fieldClass`,\n  `labelClass`, `hintClass`, or `errorClass` inputs.\n- `unstyled` removes visual classes but must preserve structural hooks, state\n  classes, native semantics, IDs, and ARIA relationships.\n- Do not add validation logic, translated error maps, floating-label behavior,\n  prefix/suffix controls, or form summaries to this primitive.\n\n## Canonical example\n\n```ts\nimport { FormField, email, form, required } from '@angular/forms/signals';\nimport {\n  NeuralField,\n  NeuralFieldError,\n  NeuralFieldHint,\n  NeuralFieldLabel,\n} from '@neural-ng/core/field';\nimport { NeuralInput } from '@neural-ng/core/input';\n```\n\n```html\n<neural-field\n  controlId=\"account-email\"\n  fluid\n  required\n  [invalid]=\"\n    accountForm.email().touched() && accountForm.email().invalid()\n  \"\n  [pending]=\"accountForm.email().pending()\"\n>\n  <label neuralFieldLabel>Email</label>\n  <input\n    neuralInput\n    type=\"email\"\n    autocomplete=\"email\"\n    [formField]=\"accountForm.email\"\n  />\n  <small neuralFieldHint>Use your work address.</small>\n  @if (accountForm.email().touched() && accountForm.email().invalid()) {\n    <small neuralFieldError>\n      {{ accountForm.email().errors()[0]?.message }}\n    </small>\n  }\n</neural-field>\n```\n\nThe rendered input receives `id=\"account-email\"`. The label receives\n`for=\"account-email\"`, the hint receives `id=\"account-email-hint\"`, and the\nconditional error receives `id=\"account-email-error\"`. Field keeps\n`aria-describedby` synchronized.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-field-control",
     "name": "NeuralFieldControl",
     "className": "NeuralFieldControl",
@@ -2864,7 +6029,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/field",
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralFieldClasses",
@@ -2914,6 +6081,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Field\n\n> Accessible Angular 22+ field composition at `@neural-ng/core/field`.\n\n## Rules\n\n- Import `NeuralField`, `NeuralFieldLabel`, `NeuralFieldHint`,\n  `NeuralFieldError`, and `NeuralFieldControl` from\n  `@neural-ng/core/field`. Never generate the deprecated `FieldComponent` or\n  `Field*Directive` aliases.\n- Generate `<neural-field controlId=\"stable-id\">`; `controlId` is required.\n- Use `<label neuralFieldLabel>` for the visible native label.\n- Use `[neuralFieldHint]` for instructions and `[neuralFieldError]` for\n  correction messages.\n- Do not manually add `for`, control `id`, or generated hint/error IDs in a\n  normal Field composition. Field derives them from `controlId`.\n- `neuralInput` consumes Field context automatically.\n- Apply `neuralFieldControl` to another native or compatible custom control.\n- Keep validation rules in the form schema. Field displays state; it does not\n  validate or own values.\n- For Signal Forms, normally bind Field `invalid` to\n  `field().touched() && field().invalid()`.\n- Bind `pending`, `required`, `disabled`, and `readonly` from the same source of\n  truth as the control.\n- Use `describedBy` only for additional description IDs outside Field.\n- `neuralFieldError` uses `aria-live=\"polite\"` by default. Use assertive\n  announcements sparingly.\n- Use native `class` attributes directly. Do not invent `fieldClass`,\n  `labelClass`, `hintClass`, or `errorClass` inputs.\n- `unstyled` removes visual classes but must preserve structural hooks, state\n  classes, native semantics, IDs, and ARIA relationships.\n- Do not add validation logic, translated error maps, floating-label behavior,\n  prefix/suffix controls, or form summaries to this primitive.\n\n## Canonical example\n\n```ts\nimport { FormField, email, form, required } from '@angular/forms/signals';\nimport {\n  NeuralField,\n  NeuralFieldError,\n  NeuralFieldHint,\n  NeuralFieldLabel,\n} from '@neural-ng/core/field';\nimport { NeuralInput } from '@neural-ng/core/input';\n```\n\n```html\n<neural-field\n  controlId=\"account-email\"\n  fluid\n  required\n  [invalid]=\"\n    accountForm.email().touched() && accountForm.email().invalid()\n  \"\n  [pending]=\"accountForm.email().pending()\"\n>\n  <label neuralFieldLabel>Email</label>\n  <input\n    neuralInput\n    type=\"email\"\n    autocomplete=\"email\"\n    [formField]=\"accountForm.email\"\n  />\n  <small neuralFieldHint>Use your work address.</small>\n  @if (accountForm.email().touched() && accountForm.email().invalid()) {\n    <small neuralFieldError>\n      {{ accountForm.email().errors()[0]?.message }}\n    </small>\n  }\n</neural-field>\n```\n\nThe rendered input receives `id=\"account-email\"`. The label receives\n`for=\"account-email\"`, the hint receives `id=\"account-email-hint\"`, and the\nconditional error receives `id=\"account-email-error\"`. Field keeps\n`aria-describedby` synchronized.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-field-error",
     "name": "NeuralFieldError",
     "className": "NeuralFieldError",
@@ -2922,7 +6090,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/field",
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
+    "inputs": [
+      {
+        "name": "live",
+        "bindingName": "live",
+        "type": "'off' | 'polite' | 'assertive'",
+        "required": false,
+        "defaultValue": "'polite'"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralFieldClasses",
@@ -2972,6 +6150,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Field\n\n> Accessible Angular 22+ field composition at `@neural-ng/core/field`.\n\n## Rules\n\n- Import `NeuralField`, `NeuralFieldLabel`, `NeuralFieldHint`,\n  `NeuralFieldError`, and `NeuralFieldControl` from\n  `@neural-ng/core/field`. Never generate the deprecated `FieldComponent` or\n  `Field*Directive` aliases.\n- Generate `<neural-field controlId=\"stable-id\">`; `controlId` is required.\n- Use `<label neuralFieldLabel>` for the visible native label.\n- Use `[neuralFieldHint]` for instructions and `[neuralFieldError]` for\n  correction messages.\n- Do not manually add `for`, control `id`, or generated hint/error IDs in a\n  normal Field composition. Field derives them from `controlId`.\n- `neuralInput` consumes Field context automatically.\n- Apply `neuralFieldControl` to another native or compatible custom control.\n- Keep validation rules in the form schema. Field displays state; it does not\n  validate or own values.\n- For Signal Forms, normally bind Field `invalid` to\n  `field().touched() && field().invalid()`.\n- Bind `pending`, `required`, `disabled`, and `readonly` from the same source of\n  truth as the control.\n- Use `describedBy` only for additional description IDs outside Field.\n- `neuralFieldError` uses `aria-live=\"polite\"` by default. Use assertive\n  announcements sparingly.\n- Use native `class` attributes directly. Do not invent `fieldClass`,\n  `labelClass`, `hintClass`, or `errorClass` inputs.\n- `unstyled` removes visual classes but must preserve structural hooks, state\n  classes, native semantics, IDs, and ARIA relationships.\n- Do not add validation logic, translated error maps, floating-label behavior,\n  prefix/suffix controls, or form summaries to this primitive.\n\n## Canonical example\n\n```ts\nimport { FormField, email, form, required } from '@angular/forms/signals';\nimport {\n  NeuralField,\n  NeuralFieldError,\n  NeuralFieldHint,\n  NeuralFieldLabel,\n} from '@neural-ng/core/field';\nimport { NeuralInput } from '@neural-ng/core/input';\n```\n\n```html\n<neural-field\n  controlId=\"account-email\"\n  fluid\n  required\n  [invalid]=\"\n    accountForm.email().touched() && accountForm.email().invalid()\n  \"\n  [pending]=\"accountForm.email().pending()\"\n>\n  <label neuralFieldLabel>Email</label>\n  <input\n    neuralInput\n    type=\"email\"\n    autocomplete=\"email\"\n    [formField]=\"accountForm.email\"\n  />\n  <small neuralFieldHint>Use your work address.</small>\n  @if (accountForm.email().touched() && accountForm.email().invalid()) {\n    <small neuralFieldError>\n      {{ accountForm.email().errors()[0]?.message }}\n    </small>\n  }\n</neural-field>\n```\n\nThe rendered input receives `id=\"account-email\"`. The label receives\n`for=\"account-email\"`, the hint receives `id=\"account-email-hint\"`, and the\nconditional error receives `id=\"account-email-error\"`. Field keeps\n`aria-describedby` synchronized.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-field-hint",
     "name": "NeuralFieldHint",
     "className": "NeuralFieldHint",
@@ -2980,7 +6159,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/field",
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralFieldClasses",
@@ -3030,6 +6211,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Field\n\n> Accessible Angular 22+ field composition at `@neural-ng/core/field`.\n\n## Rules\n\n- Import `NeuralField`, `NeuralFieldLabel`, `NeuralFieldHint`,\n  `NeuralFieldError`, and `NeuralFieldControl` from\n  `@neural-ng/core/field`. Never generate the deprecated `FieldComponent` or\n  `Field*Directive` aliases.\n- Generate `<neural-field controlId=\"stable-id\">`; `controlId` is required.\n- Use `<label neuralFieldLabel>` for the visible native label.\n- Use `[neuralFieldHint]` for instructions and `[neuralFieldError]` for\n  correction messages.\n- Do not manually add `for`, control `id`, or generated hint/error IDs in a\n  normal Field composition. Field derives them from `controlId`.\n- `neuralInput` consumes Field context automatically.\n- Apply `neuralFieldControl` to another native or compatible custom control.\n- Keep validation rules in the form schema. Field displays state; it does not\n  validate or own values.\n- For Signal Forms, normally bind Field `invalid` to\n  `field().touched() && field().invalid()`.\n- Bind `pending`, `required`, `disabled`, and `readonly` from the same source of\n  truth as the control.\n- Use `describedBy` only for additional description IDs outside Field.\n- `neuralFieldError` uses `aria-live=\"polite\"` by default. Use assertive\n  announcements sparingly.\n- Use native `class` attributes directly. Do not invent `fieldClass`,\n  `labelClass`, `hintClass`, or `errorClass` inputs.\n- `unstyled` removes visual classes but must preserve structural hooks, state\n  classes, native semantics, IDs, and ARIA relationships.\n- Do not add validation logic, translated error maps, floating-label behavior,\n  prefix/suffix controls, or form summaries to this primitive.\n\n## Canonical example\n\n```ts\nimport { FormField, email, form, required } from '@angular/forms/signals';\nimport {\n  NeuralField,\n  NeuralFieldError,\n  NeuralFieldHint,\n  NeuralFieldLabel,\n} from '@neural-ng/core/field';\nimport { NeuralInput } from '@neural-ng/core/input';\n```\n\n```html\n<neural-field\n  controlId=\"account-email\"\n  fluid\n  required\n  [invalid]=\"\n    accountForm.email().touched() && accountForm.email().invalid()\n  \"\n  [pending]=\"accountForm.email().pending()\"\n>\n  <label neuralFieldLabel>Email</label>\n  <input\n    neuralInput\n    type=\"email\"\n    autocomplete=\"email\"\n    [formField]=\"accountForm.email\"\n  />\n  <small neuralFieldHint>Use your work address.</small>\n  @if (accountForm.email().touched() && accountForm.email().invalid()) {\n    <small neuralFieldError>\n      {{ accountForm.email().errors()[0]?.message }}\n    </small>\n  }\n</neural-field>\n```\n\nThe rendered input receives `id=\"account-email\"`. The label receives\n`for=\"account-email\"`, the hint receives `id=\"account-email-hint\"`, and the\nconditional error receives `id=\"account-email-error\"`. Field keeps\n`aria-describedby` synchronized.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-field-label",
     "name": "NeuralFieldLabel",
     "className": "NeuralFieldLabel",
@@ -3038,7 +6220,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/field",
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralFieldClasses",
@@ -3088,6 +6272,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Field\n\n> Accessible Angular 22+ field composition at `@neural-ng/core/field`.\n\n## Rules\n\n- Import `NeuralField`, `NeuralFieldLabel`, `NeuralFieldHint`,\n  `NeuralFieldError`, and `NeuralFieldControl` from\n  `@neural-ng/core/field`. Never generate the deprecated `FieldComponent` or\n  `Field*Directive` aliases.\n- Generate `<neural-field controlId=\"stable-id\">`; `controlId` is required.\n- Use `<label neuralFieldLabel>` for the visible native label.\n- Use `[neuralFieldHint]` for instructions and `[neuralFieldError]` for\n  correction messages.\n- Do not manually add `for`, control `id`, or generated hint/error IDs in a\n  normal Field composition. Field derives them from `controlId`.\n- `neuralInput` consumes Field context automatically.\n- Apply `neuralFieldControl` to another native or compatible custom control.\n- Keep validation rules in the form schema. Field displays state; it does not\n  validate or own values.\n- For Signal Forms, normally bind Field `invalid` to\n  `field().touched() && field().invalid()`.\n- Bind `pending`, `required`, `disabled`, and `readonly` from the same source of\n  truth as the control.\n- Use `describedBy` only for additional description IDs outside Field.\n- `neuralFieldError` uses `aria-live=\"polite\"` by default. Use assertive\n  announcements sparingly.\n- Use native `class` attributes directly. Do not invent `fieldClass`,\n  `labelClass`, `hintClass`, or `errorClass` inputs.\n- `unstyled` removes visual classes but must preserve structural hooks, state\n  classes, native semantics, IDs, and ARIA relationships.\n- Do not add validation logic, translated error maps, floating-label behavior,\n  prefix/suffix controls, or form summaries to this primitive.\n\n## Canonical example\n\n```ts\nimport { FormField, email, form, required } from '@angular/forms/signals';\nimport {\n  NeuralField,\n  NeuralFieldError,\n  NeuralFieldHint,\n  NeuralFieldLabel,\n} from '@neural-ng/core/field';\nimport { NeuralInput } from '@neural-ng/core/input';\n```\n\n```html\n<neural-field\n  controlId=\"account-email\"\n  fluid\n  required\n  [invalid]=\"\n    accountForm.email().touched() && accountForm.email().invalid()\n  \"\n  [pending]=\"accountForm.email().pending()\"\n>\n  <label neuralFieldLabel>Email</label>\n  <input\n    neuralInput\n    type=\"email\"\n    autocomplete=\"email\"\n    [formField]=\"accountForm.email\"\n  />\n  <small neuralFieldHint>Use your work address.</small>\n  @if (accountForm.email().touched() && accountForm.email().invalid()) {\n    <small neuralFieldError>\n      {{ accountForm.email().errors()[0]?.message }}\n    </small>\n  }\n</neural-field>\n```\n\nThe rendered input receives `id=\"account-email\"`. The label receives\n`for=\"account-email\"`, the hint receives `id=\"account-email-hint\"`, and the\nconditional error receives `id=\"account-email-error\"`. Field keeps\n`aria-describedby` synchronized.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-file-upload",
     "name": "NeuralFileUpload",
     "className": "NeuralFileUpload",
@@ -3097,10 +6282,300 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Signal-first file selection and client-side validation control for Angular 22+. FileUpload owns native file picking, drag and drop, immutable selection state, removal, clearing, and deterministic rejection events. It does not send HTTP requests.",
     "formContract": "FormValueControl<NeuralFileUploadValue>",
+    "inputs": [
+      {
+        "name": "accept",
+        "bindingName": "accept",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "multiple",
+        "bindingName": "multiple",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "maxFileSize",
+        "bindingName": "maxFileSize",
+        "type": "number | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalPositiveNumberAttribute"
+      },
+      {
+        "name": "maxFiles",
+        "bindingName": "maxFiles",
+        "type": "number | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalPositiveIntegerAttribute"
+      },
+      {
+        "name": "allowDuplicates",
+        "bindingName": "allowDuplicates",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showFileList",
+        "bindingName": "showFileList",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "capture",
+        "bindingName": "capture",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "uploadId",
+        "bindingName": "uploadId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabelledBy",
+        "bindingName": "ariaLabelledBy",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "chooseFileLabel",
+        "bindingName": "chooseFileLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "chooseFilesLabel",
+        "bindingName": "chooseFilesLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "dropFileLabel",
+        "bindingName": "dropFileLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "dropFilesLabel",
+        "bindingName": "dropFilesLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "removeButtonLabel",
+        "bindingName": "removeButtonLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "clearFilesLabel",
+        "bindingName": "clearFilesLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "emptyFilesLabel",
+        "bindingName": "emptyFilesLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "chooseIconClass",
+        "bindingName": "chooseIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "removeIconClass",
+        "bindingName": "removeIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "clearIconClass",
+        "bindingName": "clearIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fileUploadClass",
+        "bindingName": "fileUploadClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputClass",
+        "bindingName": "inputClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "dropzoneClassName",
+        "bindingName": "dropzoneClassName",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "fileListClassName",
+        "bindingName": "fileListClassName",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralFileUploadClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "NeuralFileUploadValue"
+        "bindingName": "value",
+        "type": "NeuralFileUploadValue",
+        "defaultValue": "[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "selectionChange",
+        "bindingName": "selectionChange",
+        "type": "NeuralFileSelectionChange"
+      },
+      {
+        "name": "filesRejected",
+        "bindingName": "filesRejected",
+        "type": "NeuralFilesRejectedEvent"
+      },
+      {
+        "name": "fileRemoved",
+        "bindingName": "fileRemoved",
+        "type": "NeuralFileRemoveEvent"
+      },
+      {
+        "name": "cleared",
+        "bindingName": "cleared",
+        "type": "NeuralFileClearEvent"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -3212,6 +6687,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/file-upload\n\n- Import `NeuralFileUpload` from `@neural-ng/core/file-upload`. Never generate\n  the deprecated `FileUploadComponent` alias.\n- Bind `readonly File[]` with `[(value)]`, `[formField]`, `[formControl]`, or\n  `[(ngModel)]`. The value is always an array, including single-file mode.\n- Single mode replaces the current file. `multiple` appends accepted files.\n- FileUpload selects, drops, validates, removes, and clears files. It never\n  performs HTTP requests and has no endpoint, header, progress, retry, or\n  auto-upload API.\n- Send selected files with `FormData` in application code. Do not rely on\n  native browser form submission, and do not `JSON.stringify` File objects and do not convert them to base64 unless an\n  external API explicitly requires it.\n- `accept`, `maxFileSize`, `maxFiles`, and duplicate checks improve client UX\n  only. Validate file type, size, filename, and content again on the server.\n- Use `selectionChange` for accepted plus rejected selection details.\n  Rejection reasons are `file-type`, `file-size`, `file-count`, and `duplicate`.\n- `readonly` keeps the file list visible but blocks choose, drop, remove, and\n  clear actions. `disabled` follows form ownership.\n- Use `unstyled` or global unstyled mode for headless rendering. Structural\n  classes and native accessibility relationships remain.\n- Prefer Neural Icons through `chooseIconClass`, `removeIconClass`, and\n  `clearIconClass`. Classes beginning with `nt-` receive the `nt` base class.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-input",
     "name": "NeuralInput",
     "className": "NeuralInput",
@@ -3220,7 +6696,49 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/input",
     "status": "beta",
     "summary": "Native, Signal Forms-ready text input enhancement for Angular 22+.",
+    "inputs": [
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "inputSize",
+        "bindingName": "inputSize",
+        "type": "NeuralInputSize",
+        "required": false,
+        "defaultValue": "'medium'",
+        "transform": "normalizeInputSize"
+      },
+      {
+        "name": "variant",
+        "bindingName": "variant",
+        "type": "NeuralInputVariant",
+        "required": false,
+        "defaultValue": "'outlined'",
+        "transform": "normalizeInputVariant"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralInputClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralInputGroupClasses",
@@ -3268,6 +6786,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Input\n\n> Native Angular 22+ text input enhancement at `@neural-ng/core/input`.\n\n## Rules\n\n- Import `NeuralInput` from `@neural-ng/core/input` and add it to standalone\n  component imports.\n- Generate `<input neuralInput>`, not `<neural-input>` and not a wrapper div.\n- Keep native attributes such as `type`, `name`, `autocomplete`, `required`,\n  `disabled`, `readonly`, `minlength`, and `maxlength` on the input.\n- Use Input for text-like types: text, email, password, search, tel, and url.\n- Do not use this primitive to style checkbox, radio, range, color, file,\n  date/time, or numeric interaction models.\n- Use a native `<label for>` or another valid accessible name. Placeholder text\n  is not a label.\n- Associate help and error content through `aria-describedby`.\n- Apply `aria-invalid=\"true\"` only when a validation error exists and provide a\n  human-readable correction message.\n- For Angular Signal Forms, import `FormField` from `@angular/forms/signals`\n  and bind `[formField]` directly to the same native input.\n- For template-driven Forms, import `FormsModule` and use `[(ngModel)]` on the\n  native input. Keep `name` when the input participates in a form.\n- For Reactive Forms, import `ReactiveFormsModule` and use `[formControl]` or\n  `formControlName` directly on the native input.\n- Signal Forms exposes invalid/touched state; explicitly bind `aria-invalid`\n  and connect the rendered error message with `aria-describedby`.\n- When Input is inside `neural-field`, let Field supply its ID, ARIA\n  relationships, state, fluid width, and inherited unstyled mode.\n- Do not create a ControlValueAccessor for this component; its host is already\n  a native form control.\n- Use the normal `class` or `[class.*]` APIs directly. There is no `inputClass`\n  input because no internal input element exists.\n- Use `inputSize=\"small|medium|large\"` for visual sizing. Do not replace the\n  native HTML `size` attribute; both APIs can coexist.\n- Use `variant=\"outlined|filled\"` for the visual treatment. The default is\n  `outlined`.\n- `fluid` applies full width only in styled mode.\n- `unstyled` removes visual and fluid classes while preserving the structural\n  hook and all native behavior.\n- For logical start/end icons, import `NeuralInputGroup` and compose\n  `<neural-input-group startIcon=\"nt nt-search\"><input neuralInput /></neural-input-group>`.\n  Keep the accessible name on the native input; group icons are decorative.\n- Do not invent clear, mask, or password-toggle inputs on this primitive.\n\n## Canonical example\n\n```ts\nimport { FormField, email, form, required } from '@angular/forms/signals';\nimport { NeuralInput } from '@neural-ng/core/input';\n\nreadonly model = signal({ email: '' });\nreadonly accountForm = form(this.model, (path) => {\n  required(path.email, { message: 'Email is required.' });\n  email(path.email, { message: 'Enter a valid email address.' });\n});\n```\n\n```html\n<label for=\"account-email\">Email</label>\n<input\n  neuralInput\n  fluid\n  id=\"account-email\"\n  name=\"email\"\n  type=\"email\"\n  autocomplete=\"email\"\n  [formField]=\"accountForm.email\"\n  [attr.aria-invalid]=\"\n    accountForm.email().touched() && accountForm.email().invalid()\n      ? 'true'\n      : null\n  \"\n/>\n```\n\nThe rendered control is the original native input. Preserve that semantic and\nform behavior when generating surrounding layout or validation UI.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-input-group",
     "name": "NeuralInputGroup",
     "className": "NeuralInputGroup",
@@ -3276,7 +6795,61 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/input",
     "status": "beta",
     "summary": "Native, Signal Forms-ready text input enhancement for Angular 22+.",
+    "inputs": [
+      {
+        "name": "startIcon",
+        "bindingName": "startIcon",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "endIcon",
+        "bindingName": "endIcon",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "inputGroupClass",
+        "bindingName": "inputGroupClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralInputGroupClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralInputGroupClasses",
@@ -3324,6 +6897,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Input\n\n> Native Angular 22+ text input enhancement at `@neural-ng/core/input`.\n\n## Rules\n\n- Import `NeuralInput` from `@neural-ng/core/input` and add it to standalone\n  component imports.\n- Generate `<input neuralInput>`, not `<neural-input>` and not a wrapper div.\n- Keep native attributes such as `type`, `name`, `autocomplete`, `required`,\n  `disabled`, `readonly`, `minlength`, and `maxlength` on the input.\n- Use Input for text-like types: text, email, password, search, tel, and url.\n- Do not use this primitive to style checkbox, radio, range, color, file,\n  date/time, or numeric interaction models.\n- Use a native `<label for>` or another valid accessible name. Placeholder text\n  is not a label.\n- Associate help and error content through `aria-describedby`.\n- Apply `aria-invalid=\"true\"` only when a validation error exists and provide a\n  human-readable correction message.\n- For Angular Signal Forms, import `FormField` from `@angular/forms/signals`\n  and bind `[formField]` directly to the same native input.\n- For template-driven Forms, import `FormsModule` and use `[(ngModel)]` on the\n  native input. Keep `name` when the input participates in a form.\n- For Reactive Forms, import `ReactiveFormsModule` and use `[formControl]` or\n  `formControlName` directly on the native input.\n- Signal Forms exposes invalid/touched state; explicitly bind `aria-invalid`\n  and connect the rendered error message with `aria-describedby`.\n- When Input is inside `neural-field`, let Field supply its ID, ARIA\n  relationships, state, fluid width, and inherited unstyled mode.\n- Do not create a ControlValueAccessor for this component; its host is already\n  a native form control.\n- Use the normal `class` or `[class.*]` APIs directly. There is no `inputClass`\n  input because no internal input element exists.\n- Use `inputSize=\"small|medium|large\"` for visual sizing. Do not replace the\n  native HTML `size` attribute; both APIs can coexist.\n- Use `variant=\"outlined|filled\"` for the visual treatment. The default is\n  `outlined`.\n- `fluid` applies full width only in styled mode.\n- `unstyled` removes visual and fluid classes while preserving the structural\n  hook and all native behavior.\n- For logical start/end icons, import `NeuralInputGroup` and compose\n  `<neural-input-group startIcon=\"nt nt-search\"><input neuralInput /></neural-input-group>`.\n  Keep the accessible name on the native input; group icons are decorative.\n- Do not invent clear, mask, or password-toggle inputs on this primitive.\n\n## Canonical example\n\n```ts\nimport { FormField, email, form, required } from '@angular/forms/signals';\nimport { NeuralInput } from '@neural-ng/core/input';\n\nreadonly model = signal({ email: '' });\nreadonly accountForm = form(this.model, (path) => {\n  required(path.email, { message: 'Email is required.' });\n  email(path.email, { message: 'Enter a valid email address.' });\n});\n```\n\n```html\n<label for=\"account-email\">Email</label>\n<input\n  neuralInput\n  fluid\n  id=\"account-email\"\n  name=\"email\"\n  type=\"email\"\n  autocomplete=\"email\"\n  [formField]=\"accountForm.email\"\n  [attr.aria-invalid]=\"\n    accountForm.email().touched() && accountForm.email().invalid()\n      ? 'true'\n      : null\n  \"\n/>\n```\n\nThe rendered control is the original native input. Preserve that semantic and\nform behavior when generating surrounding layout or validation UI.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-input-mask",
     "name": "NeuralInputMask",
     "className": "NeuralInputMask",
@@ -3333,10 +6907,204 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Current component maturity: **beta**.",
     "formContract": "FormValueControl<string>",
+    "inputs": [
+      {
+        "name": "mask",
+        "bindingName": "mask",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "slotChar",
+        "bindingName": "slotChar",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'_'"
+      },
+      {
+        "name": "unmask",
+        "bindingName": "unmask",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showMaskOnFocus",
+        "bindingName": "showMaskOnFocus",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "clearIncomplete",
+        "bindingName": "clearIncomplete",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "autocomplete",
+        "bindingName": "autocomplete",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'off'"
+      },
+      {
+        "name": "inputMode",
+        "bindingName": "inputMode",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'text'"
+      },
+      {
+        "name": "placeholder",
+        "bindingName": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputMaskId",
+        "bindingName": "inputMaskId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "inputMaskClass",
+        "bindingName": "inputMaskClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputClass",
+        "bindingName": "inputClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralInputMaskClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "string"
+        "bindingName": "value",
+        "type": "string",
+        "defaultValue": "''"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "complete",
+        "bindingName": "complete",
+        "type": "NeuralInputMaskCompleteEvent"
+      },
+      {
+        "name": "incomplete",
+        "bindingName": "incomplete",
+        "type": "NeuralInputMaskCompleteEvent"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -3368,6 +7136,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg InputMask\n\nImport `NeuralInputMask` from `@neural-ng/core/input-mask`. Never generate the deprecated `InputMaskComponent` alias.\n\n- `9` accepts an ASCII digit, `a` accepts a Unicode letter, and `*` accepts a Unicode letter or number.\n- Escape a literal mask rule with `\\\\`, for example `\\\\9-99`.\n- Bind the complete control through `[(value)]`.\n- By default the model is formatted; add `unmask` to receive only entered slot characters.\n- `complete` and `incomplete` emit `{ value, rawValue, formattedValue }`.\n- `clearIncomplete` clears a partial value on blur.\n- Paste and caret-aware Backspace/Delete editing are built in.\n- Reactive Forms, template-driven Forms, and Signal Forms share the same model.\n- `unstyled` removes visual classes while preserving native input semantics and structural hooks.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-input-number",
     "name": "NeuralInputNumber",
     "className": "NeuralInputNumber",
@@ -3377,10 +7146,282 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Current component maturity: **beta**.",
     "formContract": "FormValueControl<number | null>",
+    "inputs": [
+      {
+        "name": "min",
+        "bindingName": "min",
+        "type": "number | undefined",
+        "required": false,
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "max",
+        "bindingName": "max",
+        "type": "number | undefined",
+        "required": false,
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "step",
+        "bindingName": "step",
+        "type": "number",
+        "required": false,
+        "defaultValue": "1"
+      },
+      {
+        "name": "mode",
+        "bindingName": "mode",
+        "type": "NeuralInputNumberMode",
+        "required": false,
+        "defaultValue": "'decimal'"
+      },
+      {
+        "name": "locale",
+        "bindingName": "locale",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "currency",
+        "bindingName": "currency",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'USD'"
+      },
+      {
+        "name": "currencyDisplay",
+        "bindingName": "currencyDisplay",
+        "type": "Intl.NumberFormatOptions['currencyDisplay']",
+        "required": false,
+        "defaultValue": "'symbol'"
+      },
+      {
+        "name": "prefix",
+        "bindingName": "prefix",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "suffix",
+        "bindingName": "suffix",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "useGrouping",
+        "bindingName": "useGrouping",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "minFractionDigits",
+        "bindingName": "minFractionDigits",
+        "type": "number | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "maxFractionDigits",
+        "bindingName": "maxFractionDigits",
+        "type": "number | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "showButtons",
+        "bindingName": "showButtons",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "inputId",
+        "bindingName": "inputId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "autocomplete",
+        "bindingName": "autocomplete",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'off'"
+      },
+      {
+        "name": "inputMode",
+        "bindingName": "inputMode",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'decimal'"
+      },
+      {
+        "name": "placeholder",
+        "bindingName": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "incrementAriaLabel",
+        "bindingName": "incrementAriaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "decrementAriaLabel",
+        "bindingName": "decrementAriaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "incrementIconClass",
+        "bindingName": "incrementIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "decrementIconClass",
+        "bindingName": "decrementIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputNumberClass",
+        "bindingName": "inputNumberClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputClass",
+        "bindingName": "inputClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralInputNumberClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "number | null"
+        "bindingName": "value",
+        "type": "number | null",
+        "defaultValue": "null"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "valueCommit",
+        "bindingName": "valueCommit",
+        "type": "NeuralInputNumberCommit"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -3427,6 +7468,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg InputNumber context\n\nImport canonical `NeuralInputNumber` from `@neural-ng/core/input-number`. Never generate the deprecated `InputNumberComponent` alias.\n\n- Bind `[(value)]` as `number | null`; never bind a localized string.\n- The component implements Angular 22 `FormValueControl<number | null>`.\n- `mode` is `decimal` by default or `currency`; set `currency` to an ISO 4217\n  code when currency mode is used.\n- Formatting and parsing follow `NeuralLocaleService`. The optional `locale`\n  input overrides only this component.\n- `min`, `max`, and positive `step` control bounds and stepping.\n- With `[formField]`, configure `min` and `max` in the Signal Forms schema;\n  Angular owns those contract inputs and rejects duplicate template bindings.\n- `ArrowUp`/`ArrowDown` step; bounded `Home`/`End` jump; Enter and blur commit.\n- Letters and malformed numeric characters are rejected during input. Do not\n  add a second consumer-side key filter.\n- `valueCommit` is optional and reports `{ value, previousValue, source }`.\n- Native accessibility is a text input with `role=\"spinbutton\"` and ARIA value\n  metadata.\n- Use `unstyled` for headless mode. Structural classes remain; visual classes\n  are removed. Typed `classes` slots can style every rendered element.\n- Inside `neural-field`, id, disabled, readonly, required, invalid,\n  aria-describedby, and fluid state are inherited.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-input-otp",
     "name": "NeuralInputOtp",
     "className": "NeuralInputOtp",
@@ -3436,10 +7478,199 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Beta one-time-code input for Angular 22+ with one string model, native autofill semantics, paste distribution, deterministic keyboard navigation, localization, SSR-safe IDs, and complete Angular Forms support.",
     "formContract": "FormValueControl<string>",
+    "inputs": [
+      {
+        "name": "length",
+        "bindingName": "length",
+        "type": "number",
+        "required": false,
+        "defaultValue": "6",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "mode",
+        "bindingName": "mode",
+        "type": "NeuralInputOtpMode",
+        "required": false,
+        "defaultValue": "'numeric'"
+      },
+      {
+        "name": "mask",
+        "bindingName": "mask",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "autoFocus",
+        "bindingName": "autoFocus",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "autocomplete",
+        "bindingName": "autocomplete",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'one-time-code'"
+      },
+      {
+        "name": "inputMode",
+        "bindingName": "inputMode",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "separator",
+        "bindingName": "separator",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputOtpId",
+        "bindingName": "inputOtpId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "cellAriaLabel",
+        "bindingName": "cellAriaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "inputOtpClass",
+        "bindingName": "inputOtpClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputClass",
+        "bindingName": "inputClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralInputOtpClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "string"
+        "bindingName": "value",
+        "type": "string",
+        "defaultValue": "''"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "complete",
+        "bindingName": "complete",
+        "type": "NeuralInputOtpCompleteEvent"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -3481,6 +7712,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg InputOtp\n\nImport canonical `NeuralInputOtp` from `@neural-ng/core/input-otp`. `InputOtpComponent` is a deprecated compatibility alias.\n\n- Bind the complete code through `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`; never bind individual cells.\n- The value contract is one `string`. The default `length` is `6` and the default `mode` is `numeric`.\n- Use `mode=\"alphanumeric\"` for Unicode letters and numbers, `mask` for visual concealment, and `separator` only for presentation.\n- Keep `autocomplete=\"one-time-code\"` unless product security requirements explicitly forbid platform autofill.\n- `complete` emits `{ value: string }` whenever all cells are filled. Normal value binding does not require importing its event type.\n- Paste, autofill, Backspace, Delete, Arrow Left/Right, Home and End are built in and RTL-aware.\n- Prefer Neural Field with a visible label; otherwise provide `ariaLabel`.\n- `unstyled` removes visual classes but preserves structural hooks and semantics. Use typed `classes` slots for headless styling.\n- Never treat masking as encryption or verify OTP codes in the browser. Verification, expiration, retry limits, replay protection and rate limiting belong on the server.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-loading-indicator",
     "name": "NeuralLoadingIndicator",
     "className": "NeuralLoadingIndicator",
@@ -3489,7 +7721,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/loading-overlay",
     "status": "beta",
     "summary": "Accessible container and viewport loading blockers for Angular 22+.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralLoadingOverlayClasses",
@@ -3541,6 +7775,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg LoadingOverlay rules\n\n- Import canonical `NeuralLoadingOverlay` only from `@neural-ng/core/loading-overlay`; `LoadingOverlayComponent` is a deprecated alias.\n- Import canonical `NeuralLoadingIndicator` from the same entry point only when a custom indicator template is used; `LoadingIndicatorDirective` is a deprecated alias.\n- Add imported standalone declarations directly to component imports.\n- LoadingOverlay owns blocking, backdrop, timing, focus, and scroll behavior; ProgressSpinner owns only the visual indeterminate indicator.\n- Container scope wraps and blocks only projected content.\n- Viewport scope uses native dialog top-layer behavior and can lock document scroll.\n- Bind active to application state; do not imperatively remove overlay DOM.\n- Provide a task-specific label when \"Loading\" is not sufficient.\n- The label defaults to the active locale common loading message.\n- delay defaults to 150ms and prevents short-operation flashes.\n- minimumDuration defaults to 300ms and prevents visible flicker.\n- aria-busy begins immediately, even while visual rendering is delayed.\n- blockInteraction defaults to true. Set it false only when continued interaction is safe.\n- Escape never dismisses a loading operation.\n- Do not create a close button or dismissible backdrop.\n- Use spinnerSize and spinnerSeverity for the built-in ProgressSpinner.\n- Use `<ng-template neuralLoadingIndicator>` for a custom indicator.\n- Custom indicators receive polite status semantics; avoid duplicate live regions.\n- `unstyled` removes visual classes while blocking and structural behavior remain.\n- Slots: root, content, backdrop, panel, indicator, label.\n- Global unstyled mode is `provideNeuralNg({ unstyled: true })`.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-loading-overlay",
     "name": "NeuralLoadingOverlay",
     "className": "NeuralLoadingOverlay",
@@ -3549,7 +7784,127 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/loading-overlay",
     "status": "beta",
     "summary": "Accessible container and viewport loading blockers for Angular 22+.",
+    "inputs": [
+      {
+        "name": "active",
+        "bindingName": "active",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "scope",
+        "bindingName": "scope",
+        "type": "NeuralLoadingOverlayScope",
+        "required": false,
+        "defaultValue": "'container'"
+      },
+      {
+        "name": "label",
+        "bindingName": "label",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "showLabel",
+        "bindingName": "showLabel",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "backdrop",
+        "bindingName": "backdrop",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "blockInteraction",
+        "bindingName": "blockInteraction",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "lockScroll",
+        "bindingName": "lockScroll",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "delay",
+        "bindingName": "delay",
+        "type": "number",
+        "required": false,
+        "defaultValue": "150",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "minimumDuration",
+        "bindingName": "minimumDuration",
+        "type": "number",
+        "required": false,
+        "defaultValue": "300",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "spinnerSize",
+        "bindingName": "spinnerSize",
+        "type": "NeuralProgressSpinnerSize",
+        "required": false,
+        "defaultValue": "'large'"
+      },
+      {
+        "name": "spinnerSeverity",
+        "bindingName": "spinnerSeverity",
+        "type": "NeuralProgressSpinnerSeverity",
+        "required": false,
+        "defaultValue": "'info'"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "overlayClass",
+        "bindingName": "overlayClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralLoadingOverlayClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [
+      {
+        "name": "shown",
+        "bindingName": "shown",
+        "type": "void"
+      },
+      {
+        "name": "hidden",
+        "bindingName": "hidden",
+        "type": "void"
+      }
+    ],
     "classes": [
       {
         "typeName": "NeuralLoadingOverlayClasses",
@@ -3601,6 +7956,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg LoadingOverlay rules\n\n- Import canonical `NeuralLoadingOverlay` only from `@neural-ng/core/loading-overlay`; `LoadingOverlayComponent` is a deprecated alias.\n- Import canonical `NeuralLoadingIndicator` from the same entry point only when a custom indicator template is used; `LoadingIndicatorDirective` is a deprecated alias.\n- Add imported standalone declarations directly to component imports.\n- LoadingOverlay owns blocking, backdrop, timing, focus, and scroll behavior; ProgressSpinner owns only the visual indeterminate indicator.\n- Container scope wraps and blocks only projected content.\n- Viewport scope uses native dialog top-layer behavior and can lock document scroll.\n- Bind active to application state; do not imperatively remove overlay DOM.\n- Provide a task-specific label when \"Loading\" is not sufficient.\n- The label defaults to the active locale common loading message.\n- delay defaults to 150ms and prevents short-operation flashes.\n- minimumDuration defaults to 300ms and prevents visible flicker.\n- aria-busy begins immediately, even while visual rendering is delayed.\n- blockInteraction defaults to true. Set it false only when continued interaction is safe.\n- Escape never dismisses a loading operation.\n- Do not create a close button or dismissible backdrop.\n- Use spinnerSize and spinnerSeverity for the built-in ProgressSpinner.\n- Use `<ng-template neuralLoadingIndicator>` for a custom indicator.\n- Custom indicators receive polite status semantics; avoid duplicate live regions.\n- `unstyled` removes visual classes while blocking and structural behavior remain.\n- Slots: root, content, backdrop, panel, indicator, label.\n- Global unstyled mode is `provideNeuralNg({ unstyled: true })`.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-menu",
     "name": "NeuralMenu",
     "className": "NeuralMenu",
@@ -3609,10 +7965,95 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/menu",
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
+    "inputs": [
+      {
+        "name": "items",
+        "bindingName": "items",
+        "type": "readonly NeuralMenuEntry[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "popup",
+        "bindingName": "popup",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closeOnSelect",
+        "bindingName": "closeOnSelect",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "menuId",
+        "bindingName": "menuId",
+        "type": "unknown",
+        "required": false,
+        "defaultValue": "this.generatedId"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "menuClass",
+        "bindingName": "menuClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralMenuClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "open",
-        "type": "boolean"
+        "bindingName": "open",
+        "type": "boolean",
+        "defaultValue": "false"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "itemSelect",
+        "bindingName": "itemSelect",
+        "type": "NeuralMenuSelect"
       }
     ],
     "classes": [
@@ -3704,6 +8145,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Menu AI Context\n\nImport canonical `NeuralMenu`, `NeuralMenuGroup`, `NeuralMenuItem`,\n`NeuralMenuSeparatorItem`, and `NeuralMenuTrigger` only from\n`@neural-ng/core/menu`. Legacy `*Component` and\n`*Directive` exports are deprecated compatibility aliases.\n\nUse `<neural-menu [items]=\"items\">` for a flat inline command list. Use\n`<neural-menu #menu=\"neuralMenu\" popup>` with\n`[neuralMenuTriggerFor]=\"menu\"` for a popup command list.\nPrefer attaching the trigger to `NeuralButton`; the directive resolves its\ninner native button so ARIA and focus restoration stay on the interactive node.\n\nRules:\n\n- Every action needs a stable unique `key` and a `label`.\n- Use either `[items]` or projected `neural-menu-item` children, not both.\n- Use `{ separator: true }` or `<neural-menu-separator />` for separators.\n- Use `{ key, label, items }` or `<neural-menu-group key=\"...\" label=\"...\">`\n  for non-interactive category headings. Group headings never receive focus.\n- Handle commands through `(itemSelect)`; do not invent `onMenuClick`.\n- Prefer `routerLink` for Angular SPA navigation and `href` for native or external navigation. Router items support queryParams, fragment, queryParamsHandling, preserveFragment, skipLocationChange, replaceUrl, state, and target.\n- `[(open)]` is optional controlled popup state and produces `openChange`.\n- `menuPosition` belongs on the trigger directive and defaults to\n  `bottom-start`.\n- Do not create a trigger for an inline Menu.\n- Do not generate nested groups or submenus. A Menu group only categorizes a\n  flat action sequence. Use PanelMenu for inline hierarchy and\n  reserve popup nesting for the future TieredMenu.\n- Prefer `iconClass=\"nt-user\"`; NeuralNg adds the `nt` base class.\n- `unstyled` removes visual classes while preserving behavior and structural\n  hooks. Use typed `classes` slots for consumer styling.\n- Popup Menu uses the shared Overlay positioner and browser Popover top layer.\n- Preserve menu/menuitem semantics and built-in keyboard behavior.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-menu-group",
     "name": "NeuralMenuGroup",
     "className": "NeuralMenuGroup",
@@ -3712,7 +8154,52 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/menu",
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
+    "inputs": [
+      {
+        "name": "group",
+        "bindingName": "group",
+        "type": "NeuralMenuGroupEntry | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "key",
+        "bindingName": "key",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "label",
+        "bindingName": "label",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "groupClass",
+        "bindingName": "groupClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "labelClass",
+        "bindingName": "labelClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "listClass",
+        "bindingName": "listClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralMenuClasses",
@@ -3802,6 +8289,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Menu AI Context\n\nImport canonical `NeuralMenu`, `NeuralMenuGroup`, `NeuralMenuItem`,\n`NeuralMenuSeparatorItem`, and `NeuralMenuTrigger` only from\n`@neural-ng/core/menu`. Legacy `*Component` and\n`*Directive` exports are deprecated compatibility aliases.\n\nUse `<neural-menu [items]=\"items\">` for a flat inline command list. Use\n`<neural-menu #menu=\"neuralMenu\" popup>` with\n`[neuralMenuTriggerFor]=\"menu\"` for a popup command list.\nPrefer attaching the trigger to `NeuralButton`; the directive resolves its\ninner native button so ARIA and focus restoration stay on the interactive node.\n\nRules:\n\n- Every action needs a stable unique `key` and a `label`.\n- Use either `[items]` or projected `neural-menu-item` children, not both.\n- Use `{ separator: true }` or `<neural-menu-separator />` for separators.\n- Use `{ key, label, items }` or `<neural-menu-group key=\"...\" label=\"...\">`\n  for non-interactive category headings. Group headings never receive focus.\n- Handle commands through `(itemSelect)`; do not invent `onMenuClick`.\n- Prefer `routerLink` for Angular SPA navigation and `href` for native or external navigation. Router items support queryParams, fragment, queryParamsHandling, preserveFragment, skipLocationChange, replaceUrl, state, and target.\n- `[(open)]` is optional controlled popup state and produces `openChange`.\n- `menuPosition` belongs on the trigger directive and defaults to\n  `bottom-start`.\n- Do not create a trigger for an inline Menu.\n- Do not generate nested groups or submenus. A Menu group only categorizes a\n  flat action sequence. Use PanelMenu for inline hierarchy and\n  reserve popup nesting for the future TieredMenu.\n- Prefer `iconClass=\"nt-user\"`; NeuralNg adds the `nt` base class.\n- `unstyled` removes visual classes while preserving behavior and structural\n  hooks. Use typed `classes` slots for consumer styling.\n- Popup Menu uses the shared Overlay positioner and browser Popover top layer.\n- Preserve menu/menuitem semantics and built-in keyboard behavior.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-menu-item",
     "name": "NeuralMenuItem",
     "className": "NeuralMenuItem",
@@ -3810,7 +8298,147 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/menu",
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
+    "inputs": [
+      {
+        "name": "item",
+        "bindingName": "item",
+        "type": "NeuralMenuAction | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "key",
+        "bindingName": "key",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "label",
+        "bindingName": "label",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "badge",
+        "bindingName": "badge",
+        "type": "string | number | undefined",
+        "required": false,
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "shortcut",
+        "bindingName": "shortcut",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "href",
+        "bindingName": "href",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "routerLink",
+        "bindingName": "routerLink",
+        "type": "NeuralMenuRouterLink | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "queryParams",
+        "bindingName": "queryParams",
+        "type": "Record<string, unknown> | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "fragment",
+        "bindingName": "fragment",
+        "type": "string | undefined",
+        "required": false,
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "queryParamsHandling",
+        "bindingName": "queryParamsHandling",
+        "type": "'merge' | 'preserve' | 'replace' | '' | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "preserveFragment",
+        "bindingName": "preserveFragment",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "skipLocationChange",
+        "bindingName": "skipLocationChange",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "replaceUrl",
+        "bindingName": "replaceUrl",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "state",
+        "bindingName": "state",
+        "type": "Record<string, unknown> | undefined",
+        "required": false,
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "target",
+        "bindingName": "target",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "rel",
+        "bindingName": "rel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "itemClass",
+        "bindingName": "itemClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralMenuClasses",
@@ -3900,6 +8528,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Menu AI Context\n\nImport canonical `NeuralMenu`, `NeuralMenuGroup`, `NeuralMenuItem`,\n`NeuralMenuSeparatorItem`, and `NeuralMenuTrigger` only from\n`@neural-ng/core/menu`. Legacy `*Component` and\n`*Directive` exports are deprecated compatibility aliases.\n\nUse `<neural-menu [items]=\"items\">` for a flat inline command list. Use\n`<neural-menu #menu=\"neuralMenu\" popup>` with\n`[neuralMenuTriggerFor]=\"menu\"` for a popup command list.\nPrefer attaching the trigger to `NeuralButton`; the directive resolves its\ninner native button so ARIA and focus restoration stay on the interactive node.\n\nRules:\n\n- Every action needs a stable unique `key` and a `label`.\n- Use either `[items]` or projected `neural-menu-item` children, not both.\n- Use `{ separator: true }` or `<neural-menu-separator />` for separators.\n- Use `{ key, label, items }` or `<neural-menu-group key=\"...\" label=\"...\">`\n  for non-interactive category headings. Group headings never receive focus.\n- Handle commands through `(itemSelect)`; do not invent `onMenuClick`.\n- Prefer `routerLink` for Angular SPA navigation and `href` for native or external navigation. Router items support queryParams, fragment, queryParamsHandling, preserveFragment, skipLocationChange, replaceUrl, state, and target.\n- `[(open)]` is optional controlled popup state and produces `openChange`.\n- `menuPosition` belongs on the trigger directive and defaults to\n  `bottom-start`.\n- Do not create a trigger for an inline Menu.\n- Do not generate nested groups or submenus. A Menu group only categorizes a\n  flat action sequence. Use PanelMenu for inline hierarchy and\n  reserve popup nesting for the future TieredMenu.\n- Prefer `iconClass=\"nt-user\"`; NeuralNg adds the `nt` base class.\n- `unstyled` removes visual classes while preserving behavior and structural\n  hooks. Use typed `classes` slots for consumer styling.\n- Popup Menu uses the shared Overlay positioner and browser Popover top layer.\n- Preserve menu/menuitem semantics and built-in keyboard behavior.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-menu-separator-item",
     "name": "NeuralMenuSeparatorItem",
     "className": "NeuralMenuSeparatorItem",
@@ -3908,7 +8537,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/menu",
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
+    "inputs": [
+      {
+        "name": "separatorClass",
+        "bindingName": "separatorClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralMenuClasses",
@@ -3998,6 +8637,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Menu AI Context\n\nImport canonical `NeuralMenu`, `NeuralMenuGroup`, `NeuralMenuItem`,\n`NeuralMenuSeparatorItem`, and `NeuralMenuTrigger` only from\n`@neural-ng/core/menu`. Legacy `*Component` and\n`*Directive` exports are deprecated compatibility aliases.\n\nUse `<neural-menu [items]=\"items\">` for a flat inline command list. Use\n`<neural-menu #menu=\"neuralMenu\" popup>` with\n`[neuralMenuTriggerFor]=\"menu\"` for a popup command list.\nPrefer attaching the trigger to `NeuralButton`; the directive resolves its\ninner native button so ARIA and focus restoration stay on the interactive node.\n\nRules:\n\n- Every action needs a stable unique `key` and a `label`.\n- Use either `[items]` or projected `neural-menu-item` children, not both.\n- Use `{ separator: true }` or `<neural-menu-separator />` for separators.\n- Use `{ key, label, items }` or `<neural-menu-group key=\"...\" label=\"...\">`\n  for non-interactive category headings. Group headings never receive focus.\n- Handle commands through `(itemSelect)`; do not invent `onMenuClick`.\n- Prefer `routerLink` for Angular SPA navigation and `href` for native or external navigation. Router items support queryParams, fragment, queryParamsHandling, preserveFragment, skipLocationChange, replaceUrl, state, and target.\n- `[(open)]` is optional controlled popup state and produces `openChange`.\n- `menuPosition` belongs on the trigger directive and defaults to\n  `bottom-start`.\n- Do not create a trigger for an inline Menu.\n- Do not generate nested groups or submenus. A Menu group only categorizes a\n  flat action sequence. Use PanelMenu for inline hierarchy and\n  reserve popup nesting for the future TieredMenu.\n- Prefer `iconClass=\"nt-user\"`; NeuralNg adds the `nt` base class.\n- `unstyled` removes visual classes while preserving behavior and structural\n  hooks. Use typed `classes` slots for consumer styling.\n- Popup Menu uses the shared Overlay positioner and browser Popover top layer.\n- Preserve menu/menuitem semantics and built-in keyboard behavior.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-menu-trigger",
     "name": "NeuralMenuTrigger",
     "className": "NeuralMenuTrigger",
@@ -4006,7 +8646,23 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/menu",
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
+    "inputs": [
+      {
+        "name": "neuralMenuTriggerFor",
+        "bindingName": "neuralMenuTriggerFor",
+        "type": "NeuralMenu",
+        "required": true
+      },
+      {
+        "name": "menuPosition",
+        "bindingName": "menuPosition",
+        "type": "NeuralMenuPosition",
+        "required": false,
+        "defaultValue": "'bottom-start'"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralMenuClasses",
@@ -4096,6 +8752,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Menu AI Context\n\nImport canonical `NeuralMenu`, `NeuralMenuGroup`, `NeuralMenuItem`,\n`NeuralMenuSeparatorItem`, and `NeuralMenuTrigger` only from\n`@neural-ng/core/menu`. Legacy `*Component` and\n`*Directive` exports are deprecated compatibility aliases.\n\nUse `<neural-menu [items]=\"items\">` for a flat inline command list. Use\n`<neural-menu #menu=\"neuralMenu\" popup>` with\n`[neuralMenuTriggerFor]=\"menu\"` for a popup command list.\nPrefer attaching the trigger to `NeuralButton`; the directive resolves its\ninner native button so ARIA and focus restoration stay on the interactive node.\n\nRules:\n\n- Every action needs a stable unique `key` and a `label`.\n- Use either `[items]` or projected `neural-menu-item` children, not both.\n- Use `{ separator: true }` or `<neural-menu-separator />` for separators.\n- Use `{ key, label, items }` or `<neural-menu-group key=\"...\" label=\"...\">`\n  for non-interactive category headings. Group headings never receive focus.\n- Handle commands through `(itemSelect)`; do not invent `onMenuClick`.\n- Prefer `routerLink` for Angular SPA navigation and `href` for native or external navigation. Router items support queryParams, fragment, queryParamsHandling, preserveFragment, skipLocationChange, replaceUrl, state, and target.\n- `[(open)]` is optional controlled popup state and produces `openChange`.\n- `menuPosition` belongs on the trigger directive and defaults to\n  `bottom-start`.\n- Do not create a trigger for an inline Menu.\n- Do not generate nested groups or submenus. A Menu group only categorizes a\n  flat action sequence. Use PanelMenu for inline hierarchy and\n  reserve popup nesting for the future TieredMenu.\n- Prefer `iconClass=\"nt-user\"`; NeuralNg adds the `nt` base class.\n- `unstyled` removes visual classes while preserving behavior and structural\n  hooks. Use typed `classes` slots for consumer styling.\n- Popup Menu uses the shared Overlay positioner and browser Popover top layer.\n- Preserve menu/menuitem semantics and built-in keyboard behavior.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-message",
     "name": "NeuralMessage",
     "className": "NeuralMessage",
@@ -4104,10 +8761,115 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/message",
     "status": "beta",
     "summary": "`@neural-ng/core/message` contains two deliberately separate contracts:",
+    "inputs": [
+      {
+        "name": "severity",
+        "bindingName": "severity",
+        "type": "NeuralMessageSeverity",
+        "required": false,
+        "defaultValue": "'info'"
+      },
+      {
+        "name": "title",
+        "bindingName": "title",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "message",
+        "bindingName": "message",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "variant",
+        "bindingName": "variant",
+        "type": "NeuralMessageVariant",
+        "required": false,
+        "defaultValue": "'filled'"
+      },
+      {
+        "name": "size",
+        "bindingName": "size",
+        "type": "NeuralMessageSize",
+        "required": false,
+        "defaultValue": "'medium'"
+      },
+      {
+        "name": "icon",
+        "bindingName": "icon",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "closable",
+        "bindingName": "closable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closeLabel",
+        "bindingName": "closeLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Close message'"
+      },
+      {
+        "name": "ariaLive",
+        "bindingName": "ariaLive",
+        "type": "NeuralMessageAriaLive",
+        "required": false,
+        "defaultValue": "'auto'"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "messageClass",
+        "bindingName": "messageClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralMessageClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "visible",
-        "type": "boolean"
+        "bindingName": "visible",
+        "type": "boolean",
+        "defaultValue": "true"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "closed",
+        "bindingName": "closed",
+        "type": "void"
       }
     ],
     "classes": [
@@ -4164,6 +8926,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Message\n\n> `NeuralMessage` renders inline feedback. `NeuralMessageService` publishes immutable notification records for renderers such as Toast.\n\nGeneration rules:\n\n- Use `<neural-message>` for feedback inside forms, cards, panels, and page flow.\n- Import the canonical component as `NeuralMessage`; do not generate the deprecated `MessageComponent` alias.\n- Inline Message requires no provider and never starts a timer.\n- Valid variants are `filled`, `outlined`, and `simple`; valid sizes are `small`, `medium`, and `large`.\n- Use `message` for simple detail, `title` for an optional heading, and project richer content when required.\n- Mark trailing controls with the `message-actions` attribute.\n- Use `closable` with `[(visible)]` when dismissal state matters; observe `closed` for explicit user dismissal.\n- Automatic severity icons are enabled by default. Override with `iconClass` or remove with `[icon]=\"false\"`.\n- Error defaults to assertive alert semantics; other severities default to a polite status. Override with `ariaLive` only deliberately.\n- `unstyled` removes visual classes but retains structural hooks, semantics, and behavior.\n- `NeuralMessageRecord` is the immutable store data type; do not confuse it with the component.\n- Register the store with `provideNeuralMessages()` in application or route providers before injecting `NeuralMessageService`.\n- Import all public symbols from `@neural-ng/core/message`.\n- Call `notify()` from application action handlers, services, or effects after an operation produces user feedback.\n- Do not make Button or other reusable UI components depend on `NeuralMessageService`; those components emit interaction events only.\n- Every `notify()` input requires a non-blank `message`.\n- Use severities `primary`, `secondary`, `neutral`, `info`, `success`, `warning`, or `error` exactly.\n- Use `duration: null` for a persistent message. Positive numeric durations are milliseconds. Never use `0` as persistent shorthand.\n- Warning and error messages use `importantDuration`, which is persistent by default.\n- Use `channel` to route messages to a specific renderer. The default channel is `global`.\n- `maxVisible` is enforced independently per channel and closes the oldest overflow message.\n- Use the returned `NeuralMessageRef` when the producer must dismiss a message or observe its close reason.\n- Use `clear(channel)` for one channel and `clear()` for every channel.\n- Do not implement timers in the Message API. Toast and other renderers own timing and interaction pauses.\n- Do not assume that calling `notify()` displays UI until a renderer such as `@neural-ng/core/toast` is mounted.\n\nCanonical example:\n\n```ts\nimport { ApplicationConfig, Injectable, inject } from '@angular/core';\nimport {\n  NeuralMessageService,\n  provideNeuralMessages,\n} from '@neural-ng/core/message';\n\nexport const appConfig: ApplicationConfig = {\n  providers: [provideNeuralMessages()],\n};\n\n@Injectable({ providedIn: 'root' })\nexport class SaveFeedback {\n  private readonly messages = inject(NeuralMessageService);\n\n  saveSucceeded(): void {\n    this.messages.notify({\n      severity: 'success',\n      title: 'Saved',\n      message: 'Your changes were saved.',\n    });\n  }\n}\n```\n\n## Documentation\n\n- [Message README](./README.md): Setup, API tables, channels, references, and renderer contract.\n- [Package README](../README.md): NeuralNg package architecture and entry points.\n\n## Optional\n\n- [Package AI context](../llms.txt): NeuralNg-wide component and API index.\n- [Button AI context](../button/llms.txt): Correct separation between Button events and application messages.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-meter-group",
     "name": "NeuralMeterGroup",
     "className": "NeuralMeterGroup",
@@ -4172,7 +8935,113 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/meter-group",
     "status": "beta",
     "summary": "`NeuralMeterGroup` displays multiple scalar measurements within one known range. Each segment remains an independently named ARIA meter.",
+    "inputs": [
+      {
+        "name": "items",
+        "bindingName": "items",
+        "type": "readonly NeuralMeterItem[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "min",
+        "bindingName": "min",
+        "type": "number",
+        "required": false,
+        "defaultValue": "0",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "max",
+        "bindingName": "max",
+        "type": "number",
+        "required": false,
+        "defaultValue": "100",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "orientation",
+        "bindingName": "orientation",
+        "type": "NeuralMeterGroupOrientation",
+        "required": false,
+        "defaultValue": "'horizontal'"
+      },
+      {
+        "name": "labelPosition",
+        "bindingName": "labelPosition",
+        "type": "NeuralMeterGroupLabelPosition",
+        "required": false,
+        "defaultValue": "'end'"
+      },
+      {
+        "name": "labelOrientation",
+        "bindingName": "labelOrientation",
+        "type": "NeuralMeterGroupLabelOrientation",
+        "required": false,
+        "defaultValue": "'horizontal'"
+      },
+      {
+        "name": "showLabels",
+        "bindingName": "showLabels",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showValues",
+        "bindingName": "showValues",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "valueFormatter",
+        "bindingName": "valueFormatter",
+        "type": "NeuralMeterValueFormatter | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabelledBy",
+        "bindingName": "ariaLabelledBy",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "meterGroupClass",
+        "bindingName": "meterGroupClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralMeterGroupClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralMeterGroupClasses",
@@ -4237,6 +9106,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg MeterGroup AI context\n\n- Import canonical `NeuralMeterGroup` only from `@neural-ng/core/meter-group`.\n- Do not generate the deprecated `MeterGroupComponent` compatibility alias.\n- Use MeterGroup for scalar measurements in a known range, never task progress.\n- Pass readonly NeuralMeterItem objects with label and numeric value.\n- Optional item fields are color, iconClass, and valueText.\n- Each item is an independently named role=meter with bounded numeric ARIA.\n- min and max define the shared range. Invalid bounds and values are normalized.\n- orientation controls horizontal or vertical meters.\n- labelPosition is start or end; labelOrientation is horizontal or vertical.\n- valueFormatter changes visible text only. Use item.valueText when assistive\n  technology needs a more meaningful value description.\n- Set unstyled for headless rendering. Meter semantics, structural hooks, and\n  percentage sizing remain; NeuralNg visual classes are removed.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-paginator",
     "name": "NeuralPaginator",
     "className": "NeuralPaginator",
@@ -4245,14 +9115,159 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/paginator",
     "status": "beta",
     "summary": "Signal-first, standalone, localized, and headless-friendly pagination for Angular 22+.",
+    "inputs": [
+      {
+        "name": "totalItems",
+        "bindingName": "totalItems",
+        "type": "number",
+        "required": false,
+        "defaultValue": "0"
+      },
+      {
+        "name": "pageSizeOptions",
+        "bindingName": "pageSizeOptions",
+        "type": "readonly number[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "pageLinkCount",
+        "bindingName": "pageLinkCount",
+        "type": "number",
+        "required": false,
+        "defaultValue": "5"
+      },
+      {
+        "name": "showFirstLast",
+        "bindingName": "showFirstLast",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showReport",
+        "bindingName": "showReport",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "reportTemplate",
+        "bindingName": "reportTemplate",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "labels",
+        "bindingName": "labels",
+        "type": "Partial<NeuralPaginatorLabels>",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "rounded",
+        "bindingName": "rounded",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "outlined",
+        "bindingName": "outlined",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "firstPageIcon",
+        "bindingName": "firstPageIcon",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-chevrons-left'"
+      },
+      {
+        "name": "previousPageIcon",
+        "bindingName": "previousPageIcon",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-chevron-left'"
+      },
+      {
+        "name": "nextPageIcon",
+        "bindingName": "nextPageIcon",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-chevron-right'"
+      },
+      {
+        "name": "lastPageIcon",
+        "bindingName": "lastPageIcon",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-chevrons-right'"
+      },
+      {
+        "name": "ellipsisIcon",
+        "bindingName": "ellipsisIcon",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-dots'"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "paginatorClass",
+        "bindingName": "paginatorClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralPaginatorClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "pageIndex",
-        "type": "number"
+        "bindingName": "pageIndex",
+        "type": "number",
+        "defaultValue": "0"
       },
       {
         "name": "pageSize",
-        "type": "number"
+        "bindingName": "pageSize",
+        "type": "number",
+        "defaultValue": "10"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "pageChange",
+        "bindingName": "pageChange",
+        "type": "NeuralPageChange"
       }
     ],
     "classes": [
@@ -4324,6 +9339,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Paginator\n\n> Angular 22+ standalone Signal paginator at `@neural-ng/core/paginator`.\n\n## Rules\n\n- Import `NeuralPaginator` from `@neural-ng/core/paginator`.\n- `pageIndex` is zero-based and is a model input.\n- `pageSize` is a model input; use two-way binding when the selector is shown.\n- Page-size selection composes `NeuralSelect`; do not replace it with a native\n  `<select>` in generated examples or wrappers.\n- `totalItems` is the full collection size, not the visible item count.\n- `startIndex` is inclusive; `endIndex` is exclusive and safe for `slice()`.\n- `pageChange` is emitted only for user navigation or page-size changes.\n- The report and ARIA labels come from the active `NeuralLocaleService`.\n- Local `reportTemplate` and partial `labels` override the global locale.\n- Report placeholders are `{start}`, `{end}`, `{total}`, `{page}`, and\n  `{pageCount}`.\n- Keep the information report enabled unless equivalent context is provided.\n- Use `paginatorClass` for the internal nav and `classes` for typed part slots.\n- `unstyled` removes visual classes, not structure, behavior, or ARIA semantics.\n- Do not add a dependency from core to `@neural-ng/icons`.\n- Navigation icons use overridable Neural Icons class inputs.\n- Use `rounded` for circular controls and `outlined` for the borderless visual\n  variant; they can be combined and do not alter paginator behavior.\n\n## Canonical example\n\n```html\n<neural-paginator\n  [totalItems]=\"items().length\"\n  [(pageIndex)]=\"pageIndex\"\n  [(pageSize)]=\"pageSize\"\n  [pageSizeOptions]=\"[10, 20, 50]\"\n  (pageChange)=\"handlePageChange($event)\"\n/>\n```\n\nCurrent-page buttons use `aria-current=\"page\"`. Navigation uses native buttons;\ndo not introduce tablist roles or custom arrow-key behavior.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-panel-menu",
     "name": "NeuralPanelMenu",
     "className": "NeuralPanelMenu",
@@ -4332,10 +9348,92 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/panel-menu",
     "status": "alpha",
     "summary": "Signals-first hierarchical navigation and command panels for Angular 22+. PanelMenu is an inline Accordion + Tree pattern. It is not a Sidebar/Drawer and does not require a popup trigger.",
+    "inputs": [
+      {
+        "name": "items",
+        "bindingName": "items",
+        "type": "readonly NeuralPanelMenuEntry[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "multiple",
+        "bindingName": "multiple",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "panelMenuId",
+        "bindingName": "panelMenuId",
+        "type": "unknown",
+        "required": false,
+        "defaultValue": "this.generatedId"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "panelMenuClass",
+        "bindingName": "panelMenuClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralPanelMenuClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "expandedKeys",
-        "type": "readonly string[]"
+        "bindingName": "expandedKeys",
+        "type": "readonly string[]",
+        "defaultValue": "[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "itemSelect",
+        "bindingName": "itemSelect",
+        "type": "NeuralPanelMenuSelect"
+      },
+      {
+        "name": "itemToggle",
+        "bindingName": "itemToggle",
+        "type": "NeuralPanelMenuToggle"
       }
     ],
     "classes": [
@@ -4435,6 +9533,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg PanelMenu\n\nImport `NeuralPanelMenu`, `NeuralPanelMenuItem`, and\n`NeuralPanelMenuSeparator` from `@neural-ng/core/panel-menu`. Use standalone\nimports. Legacy `*Component` names are compatibility aliases only.\n\nPanelMenu is an inline Accordion + Tree hierarchy. It is not a Sidebar/Drawer\nand it is not a popup Menu. Do not generate a trigger button, popup input, or\nOverlay integration for PanelMenu.\n\nPrefer `[items]` for data and projected `neural-panel-menu-item` children for a\ndeclarative hierarchy. Never combine both sources. Every item requires a\nunique stable `key`.\n\nBind `[(expandedKeys)]` as `readonly string[]`. Root expansion is exclusive by\ndefault; add `multiple` when multiple roots may remain open.\n\nUse `itemSelect` for enabled leaf actions and `itemToggle` for branch state.\nDo not run a leaf command when a branch is toggled. Do not invent `onNodeClick`\nor `activeIndex`.\n\nItems support label, iconClass, badge, shortcut, disabled, href, routerLink,\nqueryParams, fragment, queryParamsHandling, preserveFragment,\nskipLocationChange, replaceUrl, state, target, rel, itemClass, and recursive\nitems. Use `href` for native navigation and `routerLink` for Angular SPA\nnavigation. Separators use `{ separator: true }`.\n\nKeep the built-in tree/treeitem/group semantics and keyboard behavior. Provide\nariaLabel or ariaLabelledby. Use `unstyled` and typed `classes` for headless\nrendering.\n\nCanonical example:\n\n```html\n<neural-panel-menu\n  ariaLabel=\"Workspace\"\n  [items]=\"items\"\n  [(expandedKeys)]=\"expandedKeys\"\n  (itemSelect)=\"run($event.key)\"\n/>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-panel-menu-item",
     "name": "NeuralPanelMenuItem",
     "className": "NeuralPanelMenuItem",
@@ -4443,7 +9542,168 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/panel-menu",
     "status": "alpha",
     "summary": "Signals-first hierarchical navigation and command panels for Angular 22+. PanelMenu is an inline Accordion + Tree pattern. It is not a Sidebar/Drawer and does not require a popup trigger.",
+    "inputs": [
+      {
+        "name": "item",
+        "bindingName": "item",
+        "type": "NeuralPanelMenuAction | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "key",
+        "bindingName": "key",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "label",
+        "bindingName": "label",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "badge",
+        "bindingName": "badge",
+        "type": "string | number | undefined",
+        "required": false,
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "shortcut",
+        "bindingName": "shortcut",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "href",
+        "bindingName": "href",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "routerLink",
+        "bindingName": "routerLink",
+        "type": "NeuralPanelMenuRouterLink | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "queryParams",
+        "bindingName": "queryParams",
+        "type": "Record<string, unknown> | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "fragment",
+        "bindingName": "fragment",
+        "type": "string | undefined",
+        "required": false,
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "queryParamsHandling",
+        "bindingName": "queryParamsHandling",
+        "type": "'merge' | 'preserve' | 'replace' | '' | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "preserveFragment",
+        "bindingName": "preserveFragment",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "skipLocationChange",
+        "bindingName": "skipLocationChange",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "replaceUrl",
+        "bindingName": "replaceUrl",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "state",
+        "bindingName": "state",
+        "type": "Record<string, unknown> | undefined",
+        "required": false,
+        "defaultValue": "undefined"
+      },
+      {
+        "name": "target",
+        "bindingName": "target",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "rel",
+        "bindingName": "rel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "itemClass",
+        "bindingName": "itemClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "level",
+        "bindingName": "level",
+        "type": "number | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "rootKey",
+        "bindingName": "rootKey",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "parentKey",
+        "bindingName": "parentKey",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralPanelMenuClasses",
@@ -4541,6 +9801,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg PanelMenu\n\nImport `NeuralPanelMenu`, `NeuralPanelMenuItem`, and\n`NeuralPanelMenuSeparator` from `@neural-ng/core/panel-menu`. Use standalone\nimports. Legacy `*Component` names are compatibility aliases only.\n\nPanelMenu is an inline Accordion + Tree hierarchy. It is not a Sidebar/Drawer\nand it is not a popup Menu. Do not generate a trigger button, popup input, or\nOverlay integration for PanelMenu.\n\nPrefer `[items]` for data and projected `neural-panel-menu-item` children for a\ndeclarative hierarchy. Never combine both sources. Every item requires a\nunique stable `key`.\n\nBind `[(expandedKeys)]` as `readonly string[]`. Root expansion is exclusive by\ndefault; add `multiple` when multiple roots may remain open.\n\nUse `itemSelect` for enabled leaf actions and `itemToggle` for branch state.\nDo not run a leaf command when a branch is toggled. Do not invent `onNodeClick`\nor `activeIndex`.\n\nItems support label, iconClass, badge, shortcut, disabled, href, routerLink,\nqueryParams, fragment, queryParamsHandling, preserveFragment,\nskipLocationChange, replaceUrl, state, target, rel, itemClass, and recursive\nitems. Use `href` for native navigation and `routerLink` for Angular SPA\nnavigation. Separators use `{ separator: true }`.\n\nKeep the built-in tree/treeitem/group semantics and keyboard behavior. Provide\nariaLabel or ariaLabelledby. Use `unstyled` and typed `classes` for headless\nrendering.\n\nCanonical example:\n\n```html\n<neural-panel-menu\n  ariaLabel=\"Workspace\"\n  [items]=\"items\"\n  [(expandedKeys)]=\"expandedKeys\"\n  (itemSelect)=\"run($event.key)\"\n/>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-panel-menu-separator",
     "name": "NeuralPanelMenuSeparator",
     "className": "NeuralPanelMenuSeparator",
@@ -4549,7 +9810,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/panel-menu",
     "status": "alpha",
     "summary": "Signals-first hierarchical navigation and command panels for Angular 22+. PanelMenu is an inline Accordion + Tree pattern. It is not a Sidebar/Drawer and does not require a popup trigger.",
+    "inputs": [
+      {
+        "name": "separatorClass",
+        "bindingName": "separatorClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralPanelMenuClasses",
@@ -4647,6 +9918,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg PanelMenu\n\nImport `NeuralPanelMenu`, `NeuralPanelMenuItem`, and\n`NeuralPanelMenuSeparator` from `@neural-ng/core/panel-menu`. Use standalone\nimports. Legacy `*Component` names are compatibility aliases only.\n\nPanelMenu is an inline Accordion + Tree hierarchy. It is not a Sidebar/Drawer\nand it is not a popup Menu. Do not generate a trigger button, popup input, or\nOverlay integration for PanelMenu.\n\nPrefer `[items]` for data and projected `neural-panel-menu-item` children for a\ndeclarative hierarchy. Never combine both sources. Every item requires a\nunique stable `key`.\n\nBind `[(expandedKeys)]` as `readonly string[]`. Root expansion is exclusive by\ndefault; add `multiple` when multiple roots may remain open.\n\nUse `itemSelect` for enabled leaf actions and `itemToggle` for branch state.\nDo not run a leaf command when a branch is toggled. Do not invent `onNodeClick`\nor `activeIndex`.\n\nItems support label, iconClass, badge, shortcut, disabled, href, routerLink,\nqueryParams, fragment, queryParamsHandling, preserveFragment,\nskipLocationChange, replaceUrl, state, target, rel, itemClass, and recursive\nitems. Use `href` for native navigation and `routerLink` for Angular SPA\nnavigation. Separators use `{ separator: true }`.\n\nKeep the built-in tree/treeitem/group semantics and keyboard behavior. Provide\nariaLabel or ariaLabelledby. Use `unstyled` and typed `classes` for headless\nrendering.\n\nCanonical example:\n\n```html\n<neural-panel-menu\n  ariaLabel=\"Workspace\"\n  [items]=\"items\"\n  [(expandedKeys)]=\"expandedKeys\"\n  (itemSelect)=\"run($event.key)\"\n/>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-password",
     "name": "NeuralPassword",
     "className": "NeuralPassword",
@@ -4656,18 +9928,273 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Signal-first password control for Angular 22+ with native password-manager semantics, accessible visibility controls, optional strength feedback, and headless class ownership.",
     "formContract": "FormValueControl<string>",
+    "inputs": [
+      {
+        "name": "toggleVisibility",
+        "bindingName": "toggleVisibility",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showFeedback",
+        "bindingName": "showFeedback",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "minLength",
+        "bindingName": "minLength",
+        "type": "number | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalNumberAttribute"
+      },
+      {
+        "name": "maxLength",
+        "bindingName": "maxLength",
+        "type": "number | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalNumberAttribute"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "autocomplete",
+        "bindingName": "autocomplete",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'current-password'"
+      },
+      {
+        "name": "inputMode",
+        "bindingName": "inputMode",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "placeholder",
+        "bindingName": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "passwordId",
+        "bindingName": "passwordId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "showIconClass",
+        "bindingName": "showIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-eye'"
+      },
+      {
+        "name": "hideIconClass",
+        "bindingName": "hideIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-eye-off'"
+      },
+      {
+        "name": "showPasswordLabel",
+        "bindingName": "showPasswordLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "hidePasswordLabel",
+        "bindingName": "hidePasswordLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "weakLabel",
+        "bindingName": "weakLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "mediumLabel",
+        "bindingName": "mediumLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "strongLabel",
+        "bindingName": "strongLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "emptyLabel",
+        "bindingName": "emptyLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "capsLockMessage",
+        "bindingName": "capsLockMessage",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "passwordClass",
+        "bindingName": "passwordClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputClass",
+        "bindingName": "inputClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralPasswordClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "string"
+        "bindingName": "value",
+        "type": "string",
+        "defaultValue": "''"
       },
       {
         "name": "visible",
-        "type": "boolean"
+        "bindingName": "visible",
+        "type": "boolean",
+        "defaultValue": "false"
       },
       {
         "name": "capsLock",
+        "bindingName": "capsLock",
+        "type": "boolean",
+        "defaultValue": "false"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "visibilityChange",
+        "bindingName": "visibilityChange",
         "type": "boolean"
+      },
+      {
+        "name": "strengthChange",
+        "bindingName": "strengthChange",
+        "type": "NeuralPasswordStrengthChange"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -4739,6 +10266,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/password\n\n- Import canonical `NeuralPassword` from `@neural-ng/core/password`.\n  `PasswordComponent` is a compatibility alias only.\n- Bind the string model with `[(value)]`, `[formField]`, `[formControl]`, or\n  `[(ngModel)]`.\n- `autocomplete` defaults to `current-password`; use `new-password` only for\n  account creation or password reset.\n- `toggleVisibility` defaults to true. `showFeedback` defaults to false.\n- Strength feedback is presentational and must not replace schema/server\n  validation.\n- Use `unstyled` or global unstyled mode for headless rendering. Structural\n  classes remain; typed `classes` and direct class inputs own visuals.\n- The visibility control uses Neural Icons `nt-eye` and `nt-eye-off` by\n  default. Override with `showIconClass` and `hideIconClass`.\n- `touch` emits on native input blur. The component supports `focus()`,\n  `select()`, and `reset()`.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-progress-bar",
     "name": "NeuralProgressBar",
     "className": "NeuralProgressBar",
@@ -4747,7 +10275,145 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/progress-bar",
     "status": "alpha",
     "summary": "Accessible determinate and indeterminate progress for Angular 22+.",
+    "inputs": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "number",
+        "required": false,
+        "defaultValue": "0",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "min",
+        "bindingName": "min",
+        "type": "number",
+        "required": false,
+        "defaultValue": "0",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "max",
+        "bindingName": "max",
+        "type": "number",
+        "required": false,
+        "defaultValue": "100",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "bufferValue",
+        "bindingName": "bufferValue",
+        "type": "number | null",
+        "required": false,
+        "defaultValue": "null",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "mode",
+        "bindingName": "mode",
+        "type": "NeuralProgressBarMode",
+        "required": false,
+        "defaultValue": "'determinate'"
+      },
+      {
+        "name": "size",
+        "bindingName": "size",
+        "type": "NeuralProgressBarSize",
+        "required": false,
+        "defaultValue": "'medium'"
+      },
+      {
+        "name": "severity",
+        "bindingName": "severity",
+        "type": "NeuralProgressBarSeverity",
+        "required": false,
+        "defaultValue": "'info'"
+      },
+      {
+        "name": "rounded",
+        "bindingName": "rounded",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "striped",
+        "bindingName": "striped",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "animated",
+        "bindingName": "animated",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showValue",
+        "bindingName": "showValue",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "label",
+        "bindingName": "label",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabelledBy",
+        "bindingName": "ariaLabelledBy",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaValueText",
+        "bindingName": "ariaValueText",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "progressClass",
+        "bindingName": "progressClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralProgressBarClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralProgressBarClasses",
@@ -4792,6 +10458,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg ProgressBar rules\n\n- Import NeuralProgressBar only from `@neural-ng/core/progress-bar`.\n- Add NeuralProgressBar directly to standalone component imports.\n- Determinate mode is the default and uses numeric value, min, and max inputs.\n- Value and bufferValue are clamped to the effective range.\n- bufferValue never renders behind value.\n- Use mode=\"indeterminate\" when the completion value is unknown.\n- Indeterminate mode intentionally omits aria-valuemin, aria-valuemax, and aria-valuenow.\n- Always give an unlabeled ProgressBar ariaLabel or ariaLabelledBy.\n- Use label for visual text and ariaValueText for a localized or descriptive accessible value.\n- showValue=false hides only the visual label; it does not remove progress semantics.\n- Sizes: `small`, `medium`, `large`.\n- Severities: primary, secondary, neutral, info, success, warning, error.\n- striped adds stripes; animated moves them when motion preferences allow.\n- Reduced-motion preferences disable all ProgressBar animation and transitions.\n- `unstyled` removes visual classes while structural hooks remain.\n- Slots: root, track, buffer, value, label.\n- Global unstyled mode is `provideNeuralNg({ unstyled: true })`.\n- ProgressBar is for linear progress. Do not treat it as ProgressSpinner.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-progress-spinner",
     "name": "NeuralProgressSpinner",
     "className": "NeuralProgressSpinner",
@@ -4800,7 +10467,137 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/progress-spinner",
     "status": "alpha",
     "summary": "Accessible indeterminate SVG progress for Angular 22+.",
+    "inputs": [
+      {
+        "name": "size",
+        "bindingName": "size",
+        "type": "NeuralProgressSpinnerSize",
+        "required": false,
+        "defaultValue": "'medium'"
+      },
+      {
+        "name": "variant",
+        "bindingName": "variant",
+        "type": "NeuralProgressSpinnerVariant",
+        "required": false,
+        "defaultValue": "'solid'"
+      },
+      {
+        "name": "dynamicStroke",
+        "bindingName": "dynamicStroke",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dual",
+        "bindingName": "dual",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "reverse",
+        "bindingName": "reverse",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "syncDualColor",
+        "bindingName": "syncDualColor",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "severity",
+        "bindingName": "severity",
+        "type": "NeuralProgressSpinnerSeverity",
+        "required": false,
+        "defaultValue": "'info'"
+      },
+      {
+        "name": "strokeWidth",
+        "bindingName": "strokeWidth",
+        "type": "number",
+        "required": false,
+        "defaultValue": "4",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "speed",
+        "bindingName": "speed",
+        "type": "number",
+        "required": false,
+        "defaultValue": "900",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "label",
+        "bindingName": "label",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "showLabel",
+        "bindingName": "showLabel",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabelledBy",
+        "bindingName": "ariaLabelledBy",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaValueText",
+        "bindingName": "ariaValueText",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "spinnerClass",
+        "bindingName": "spinnerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralProgressSpinnerClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralProgressSpinnerClasses",
@@ -4860,6 +10657,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg ProgressSpinner rules\n\n- Import NeuralProgressSpinner only from `@neural-ng/core/progress-spinner`.\n- Add NeuralProgressSpinner directly to standalone component imports.\n- ProgressSpinner is always indeterminate and never accepts value, min, max, or bufferValue.\n- Use NeuralProgressBar for determinate or buffered progress.\n- The empty `<neural-progress-spinner />` form gets its accessible name from the active locale common loading message.\n- Prefer ariaLabel or ariaLabelledBy when the loading task needs a specific name.\n- ariaLabelledBy owns the accessible name when both naming inputs are present.\n- Never add aria-valuemin, aria-valuemax, or aria-valuenow to ProgressSpinner.\n- Use ariaValueText only for an additional task-state description.\n- An explicit label is visible while showLabel is true and also acts as the accessible-name fallback.\n- Sizes: `small`, `medium`, `large`.\n- Severities: primary, secondary, neutral, info, success, warning, error.\n- Variants: solid (default) and multicolor. Multicolor uses the five color tokens and ignores severity for the animated stroke.\n- dynamicStroke defaults to false and animates the arc length. It composes with solid and multicolor variants.\n- dual defaults to false and adds a counter-rotating inner arc.\n- reverse defaults to false. It reverses the primary direction and swaps the dual directions while keeping them opposed.\n- syncDualColor defaults to true. In dual multicolor mode it keeps both arcs on the same color; set false only for independent color cycles.\n- strokeWidth is clamped to 1..12.\n- speed is a duration in milliseconds clamped to 200..10000.\n- Reduced-motion preferences stop spinner rotation.\n- `unstyled` removes visual classes while structural hooks and semantics remain.\n- Slots: root, svg, track, indicator, inner, innerTrack, innerIndicator, label.\n- Global unstyled mode is `provideNeuralNg({ unstyled: true })`.\n- ProgressSpinnerComponent is a deprecated compatibility alias; generate NeuralProgressSpinner in new code.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-radio",
     "name": "NeuralRadio",
     "className": "NeuralRadio",
@@ -4868,7 +10666,38 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/radio",
     "status": "alpha",
     "summary": "Native, Signal-first RadioGroup and Radio components for Angular 22+.",
+    "inputs": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "TValue",
+        "required": true
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "radioClass",
+        "bindingName": "radioClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralRadioClasses",
@@ -4930,6 +10759,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Radio\n\nIMPORT\nimport { NeuralRadio, NeuralRadioGroup, type NeuralRadioSelectionChange } from '@neural-ng/core/radio';\n\nRULES\n- Use NeuralRadioGroup for every radio set; do not compose unrelated native names manually.\n- Prefer [options] with optionLabel and optionValue for data-driven choices.\n- Use projected <neural-radio [value]=\"...\"> only for rich option content.\n- Do not combine [options] and projected neural-radio children. [options] wins.\n- NeuralRadioGroup implements FormValueControl<TValue | null>.\n- RadioGroupComponent and RadioComponent are deprecated compatibility aliases; never generate them in new code.\n- Bind the model with [(value)] or use [formField], [formControl], or [(ngModel)].\n- Programmatic Forms writes update value without emitting selectionChange.\n- valueChange is the generated model output. selectionChange is the detailed user-only event.\n- selectionChange payload is { value, previousValue, option, source }.\n- source is \"pointer\" or \"keyboard\".\n- Radio selection does not toggle back to null. Use a separate clear action if product UX needs clearing.\n- orientation is \"vertical\" by default and also accepts \"horizontal\".\n- Native radio inputs, shared name, Arrow keys, Home, End, Space, focus, required, disabled, validation, and form submission are preserved.\n- readonly is not disabled: the roving tab stop remains focusable, aria-readonly is exposed on the group, and user mutation is blocked.\n- touch is emitted when focus leaves the group. focus() targets the roving tab stop and reset() restores null.\n- iconClass and optionIcon values may use Neural Icons classes such as \"nt-user\"; the base \"nt\" class is added automatically.\n- Set unstyled for local headless mode or provideNeuralNg({ unstyled: true }) globally.\n- Consumer classes survive unstyled mode.\n- Inside neural-field, RadioGroup inherits id, descriptions, required, invalid, disabled, readonly, fluid, and unstyled state.\n\nDATA EXAMPLE\n<neural-radio-group\n  [options]=\"plans\"\n  optionLabel=\"name\"\n  optionValue=\"id\"\n  optionDisabled=\"disabled\"\n  optionIcon=\"iconClass\"\n  [(value)]=\"planId\"\n  (selectionChange)=\"planSelected($event)\"\n/>\n\nFORMS EXAMPLE\n<!-- Signal Forms -->\n<neural-radio-group [options]=\"plans\" [formField]=\"form.plan\" />\n\n<!-- Reactive Forms -->\n<neural-radio-group [options]=\"plans\" [formControl]=\"planControl\" />\n\n<!-- Template-driven Forms -->\n<neural-radio-group [options]=\"plans\" name=\"plan\" [(ngModel)]=\"plan\" />\n\nPROJECTED EXAMPLE\n<neural-radio-group [(value)]=\"delivery\">\n  <neural-radio value=\"standard\" iconClass=\"nt-truck\">\n    <strong>Standard delivery</strong>\n  </neural-radio>\n  <neural-radio value=\"express\">Express delivery</neural-radio>\n</neural-radio-group>\n\nCLASS SLOTS\nroot, option, input, control, selectedControl, disabledOption, label, optionIcon\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-sidebar",
     "name": "NeuralSidebar",
     "className": "NeuralSidebar",
@@ -4938,10 +10768,221 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/sidebar",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
+    "inputs": [
+      {
+        "name": "id",
+        "bindingName": "id",
+        "type": "string",
+        "required": false,
+        "defaultValue": "`neural-sidebar-${++nextSidebarId}`"
+      },
+      {
+        "name": "side",
+        "bindingName": "side",
+        "type": "NeuralSidebarSide",
+        "required": false,
+        "defaultValue": "'start'"
+      },
+      {
+        "name": "variant",
+        "bindingName": "variant",
+        "type": "NeuralSidebarVariant",
+        "required": false,
+        "defaultValue": "'sidebar'"
+      },
+      {
+        "name": "collapseMode",
+        "bindingName": "collapseMode",
+        "type": "NeuralSidebarCollapseMode",
+        "required": false,
+        "defaultValue": "'icon'"
+      },
+      {
+        "name": "iconMenu",
+        "bindingName": "iconMenu",
+        "type": "NeuralSidebarIconMenu",
+        "required": false,
+        "defaultValue": "'flyout'"
+      },
+      {
+        "name": "openOnHover",
+        "bindingName": "openOnHover",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "hoverOpenDelay",
+        "bindingName": "hoverOpenDelay",
+        "type": "number",
+        "required": false,
+        "defaultValue": "100",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "hoverCloseDelay",
+        "bindingName": "hoverCloseDelay",
+        "type": "number",
+        "required": false,
+        "defaultValue": "180",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "responsive",
+        "bindingName": "responsive",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "breakpoint",
+        "bindingName": "breakpoint",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'64rem'"
+      },
+      {
+        "name": "mobileMode",
+        "bindingName": "mobileMode",
+        "type": "NeuralSidebarCollapseMode",
+        "required": false,
+        "defaultValue": "'offcanvas'"
+      },
+      {
+        "name": "overlay",
+        "bindingName": "overlay",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showBackdrop",
+        "bindingName": "showBackdrop",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "modal",
+        "bindingName": "modal",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dismissibleBackdrop",
+        "bindingName": "dismissibleBackdrop",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closeOnEscape",
+        "bindingName": "closeOnEscape",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closeOnMobile",
+        "bindingName": "closeOnMobile",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closeOnNavigation",
+        "bindingName": "closeOnNavigation",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "blockScroll",
+        "bindingName": "blockScroll",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "width",
+        "bindingName": "width",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'16rem'"
+      },
+      {
+        "name": "iconWidth",
+        "bindingName": "iconWidth",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'3.5rem'"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "'Application navigation'"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "sidebarClass",
+        "bindingName": "sidebarClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralSidebarClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "open",
-        "type": "boolean"
+        "bindingName": "open",
+        "type": "boolean",
+        "defaultValue": "true"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "stateChange",
+        "bindingName": "stateChange",
+        "type": "NeuralSidebarStateChange"
+      },
+      {
+        "name": "hoverChange",
+        "bindingName": "hoverChange",
+        "type": "NeuralSidebarHoverChange"
       }
     ],
     "classes": [
@@ -5002,6 +11043,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/sidebar\n\n- Import standalone symbols from `@neural-ng/core/sidebar`.\n- Sidebar owns application layout and responsive state; use Drawer for transient arbitrary panels.\n- Compose navigation with `NeuralMenu` or `NeuralPanelMenu`; Sidebar does not duplicate menu item APIs.\n- `NeuralPanelMenu` becomes visually flush inside a styled Sidebar and automatically reduces to centered top-level icons in a collapsed icon rail.\n- `NeuralMenu` receives the same flush treatment and collapses flat actions into centered rail icons; import it separately from `@neural-ng/core/menu`.\n- `NeuralMenu` and `NeuralPanelMenu` may be projected together in one `neural-sidebar-content`; both follow the same expanded, collapsed, hover-expanded, responsive and RTL shell state.\n- Sidebar icon-rail styling applies only to inline `NeuralMenu`. A popup `NeuralMenu` projected anywhere inside Sidebar keeps its full overlay labels, metadata and geometry.\n- `iconMenu=\"flyout\"` is the default: activating a parent rail icon opens its children beside the rail. Once the root flyout is open, hovering a nested parent opens the next logical-side flyout after `hoverOpenDelay`; deeper branches never expand the first panel vertically.\n- Closing or replacing a root flyout clears all descendant expansion keys. Reopening it starts collapsed rather than restoring stale nested flyouts. Escape, outside pointer interaction, or Angular navigation closes and resets the hierarchy.\n- `openOnHover` temporarily expands a collapsed desktop icon rail without mutating `open`. Tune `hoverOpenDelay` (100ms) and `hoverCloseDelay` (180ms); use `hoverChange` only for observing this temporary state.\n- Hover expansion ignores touch pointers and does not collapse while keyboard focus remains inside the Sidebar.\n- Without hover expansion, a top-level rail item exposes its `data-label` visually on hover or keyboard focus; parent icons continue to use the accessible child flyout.\n- Add `neuralSidebarLabel` to custom header/footer text that must disappear in icon mode; never hide the associated icon.\n- Use logical `side=\"start|end\"` for RTL safety.\n- `collapseMode`: `icon`, `offcanvas`, or `none`. `mobileMode` defaults to `offcanvas` below `breakpoint=\"64rem\"`.\n- Bind state with `[(open)]`; connect controls using `[neuralSidebarTrigger]=\"sidebarId\"`.\n- Export the trigger as `#trigger=\"neuralSidebarTrigger\"` and read `trigger.expanded()` when the control icon or label must reflect state.\n- `closeOnMobile` defaults to true so an expanded desktop shell does not become an open modal on narrow screens.\n- Open offcanvas navigation closes after Angular Router navigation by default; opt out with `closeOnNavigation=\"false\"`.\n- Modal offcanvas mode locks background scrolling, traps focus, supports Escape/backdrop dismissal, and restores trigger focus. Set `blockScroll=\"false\"` only for intentionally non-blocking overlays.\n- `showBackdrop` controls backdrop rendering only; `overlay`, `modal`, and `blockScroll` remain independent positioning, focus, and scrolling policies.\n- Apply `neuralSidebarInitialFocus` to the preferred first interactive control inside an offcanvas Sidebar.\n- `unstyled` and global unstyled retain structural classes. `classes` provides typed additive slots.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-sidebar-content",
     "name": "NeuralSidebarContent",
     "className": "NeuralSidebarContent",
@@ -5010,7 +11052,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/sidebar",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
+    "inputs": [
+      {
+        "name": "contentClass",
+        "bindingName": "contentClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralSidebarClasses",
@@ -5069,6 +11121,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/sidebar\n\n- Import standalone symbols from `@neural-ng/core/sidebar`.\n- Sidebar owns application layout and responsive state; use Drawer for transient arbitrary panels.\n- Compose navigation with `NeuralMenu` or `NeuralPanelMenu`; Sidebar does not duplicate menu item APIs.\n- `NeuralPanelMenu` becomes visually flush inside a styled Sidebar and automatically reduces to centered top-level icons in a collapsed icon rail.\n- `NeuralMenu` receives the same flush treatment and collapses flat actions into centered rail icons; import it separately from `@neural-ng/core/menu`.\n- `NeuralMenu` and `NeuralPanelMenu` may be projected together in one `neural-sidebar-content`; both follow the same expanded, collapsed, hover-expanded, responsive and RTL shell state.\n- Sidebar icon-rail styling applies only to inline `NeuralMenu`. A popup `NeuralMenu` projected anywhere inside Sidebar keeps its full overlay labels, metadata and geometry.\n- `iconMenu=\"flyout\"` is the default: activating a parent rail icon opens its children beside the rail. Once the root flyout is open, hovering a nested parent opens the next logical-side flyout after `hoverOpenDelay`; deeper branches never expand the first panel vertically.\n- Closing or replacing a root flyout clears all descendant expansion keys. Reopening it starts collapsed rather than restoring stale nested flyouts. Escape, outside pointer interaction, or Angular navigation closes and resets the hierarchy.\n- `openOnHover` temporarily expands a collapsed desktop icon rail without mutating `open`. Tune `hoverOpenDelay` (100ms) and `hoverCloseDelay` (180ms); use `hoverChange` only for observing this temporary state.\n- Hover expansion ignores touch pointers and does not collapse while keyboard focus remains inside the Sidebar.\n- Without hover expansion, a top-level rail item exposes its `data-label` visually on hover or keyboard focus; parent icons continue to use the accessible child flyout.\n- Add `neuralSidebarLabel` to custom header/footer text that must disappear in icon mode; never hide the associated icon.\n- Use logical `side=\"start|end\"` for RTL safety.\n- `collapseMode`: `icon`, `offcanvas`, or `none`. `mobileMode` defaults to `offcanvas` below `breakpoint=\"64rem\"`.\n- Bind state with `[(open)]`; connect controls using `[neuralSidebarTrigger]=\"sidebarId\"`.\n- Export the trigger as `#trigger=\"neuralSidebarTrigger\"` and read `trigger.expanded()` when the control icon or label must reflect state.\n- `closeOnMobile` defaults to true so an expanded desktop shell does not become an open modal on narrow screens.\n- Open offcanvas navigation closes after Angular Router navigation by default; opt out with `closeOnNavigation=\"false\"`.\n- Modal offcanvas mode locks background scrolling, traps focus, supports Escape/backdrop dismissal, and restores trigger focus. Set `blockScroll=\"false\"` only for intentionally non-blocking overlays.\n- `showBackdrop` controls backdrop rendering only; `overlay`, `modal`, and `blockScroll` remain independent positioning, focus, and scrolling policies.\n- Apply `neuralSidebarInitialFocus` to the preferred first interactive control inside an offcanvas Sidebar.\n- `unstyled` and global unstyled retain structural classes. `classes` provides typed additive slots.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-sidebar-footer",
     "name": "NeuralSidebarFooter",
     "className": "NeuralSidebarFooter",
@@ -5077,7 +11130,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/sidebar",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
+    "inputs": [
+      {
+        "name": "footerClass",
+        "bindingName": "footerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralSidebarClasses",
@@ -5136,6 +11199,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/sidebar\n\n- Import standalone symbols from `@neural-ng/core/sidebar`.\n- Sidebar owns application layout and responsive state; use Drawer for transient arbitrary panels.\n- Compose navigation with `NeuralMenu` or `NeuralPanelMenu`; Sidebar does not duplicate menu item APIs.\n- `NeuralPanelMenu` becomes visually flush inside a styled Sidebar and automatically reduces to centered top-level icons in a collapsed icon rail.\n- `NeuralMenu` receives the same flush treatment and collapses flat actions into centered rail icons; import it separately from `@neural-ng/core/menu`.\n- `NeuralMenu` and `NeuralPanelMenu` may be projected together in one `neural-sidebar-content`; both follow the same expanded, collapsed, hover-expanded, responsive and RTL shell state.\n- Sidebar icon-rail styling applies only to inline `NeuralMenu`. A popup `NeuralMenu` projected anywhere inside Sidebar keeps its full overlay labels, metadata and geometry.\n- `iconMenu=\"flyout\"` is the default: activating a parent rail icon opens its children beside the rail. Once the root flyout is open, hovering a nested parent opens the next logical-side flyout after `hoverOpenDelay`; deeper branches never expand the first panel vertically.\n- Closing or replacing a root flyout clears all descendant expansion keys. Reopening it starts collapsed rather than restoring stale nested flyouts. Escape, outside pointer interaction, or Angular navigation closes and resets the hierarchy.\n- `openOnHover` temporarily expands a collapsed desktop icon rail without mutating `open`. Tune `hoverOpenDelay` (100ms) and `hoverCloseDelay` (180ms); use `hoverChange` only for observing this temporary state.\n- Hover expansion ignores touch pointers and does not collapse while keyboard focus remains inside the Sidebar.\n- Without hover expansion, a top-level rail item exposes its `data-label` visually on hover or keyboard focus; parent icons continue to use the accessible child flyout.\n- Add `neuralSidebarLabel` to custom header/footer text that must disappear in icon mode; never hide the associated icon.\n- Use logical `side=\"start|end\"` for RTL safety.\n- `collapseMode`: `icon`, `offcanvas`, or `none`. `mobileMode` defaults to `offcanvas` below `breakpoint=\"64rem\"`.\n- Bind state with `[(open)]`; connect controls using `[neuralSidebarTrigger]=\"sidebarId\"`.\n- Export the trigger as `#trigger=\"neuralSidebarTrigger\"` and read `trigger.expanded()` when the control icon or label must reflect state.\n- `closeOnMobile` defaults to true so an expanded desktop shell does not become an open modal on narrow screens.\n- Open offcanvas navigation closes after Angular Router navigation by default; opt out with `closeOnNavigation=\"false\"`.\n- Modal offcanvas mode locks background scrolling, traps focus, supports Escape/backdrop dismissal, and restores trigger focus. Set `blockScroll=\"false\"` only for intentionally non-blocking overlays.\n- `showBackdrop` controls backdrop rendering only; `overlay`, `modal`, and `blockScroll` remain independent positioning, focus, and scrolling policies.\n- Apply `neuralSidebarInitialFocus` to the preferred first interactive control inside an offcanvas Sidebar.\n- `unstyled` and global unstyled retain structural classes. `classes` provides typed additive slots.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-sidebar-header",
     "name": "NeuralSidebarHeader",
     "className": "NeuralSidebarHeader",
@@ -5144,7 +11208,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/sidebar",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
+    "inputs": [
+      {
+        "name": "headerClass",
+        "bindingName": "headerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralSidebarClasses",
@@ -5203,6 +11277,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/sidebar\n\n- Import standalone symbols from `@neural-ng/core/sidebar`.\n- Sidebar owns application layout and responsive state; use Drawer for transient arbitrary panels.\n- Compose navigation with `NeuralMenu` or `NeuralPanelMenu`; Sidebar does not duplicate menu item APIs.\n- `NeuralPanelMenu` becomes visually flush inside a styled Sidebar and automatically reduces to centered top-level icons in a collapsed icon rail.\n- `NeuralMenu` receives the same flush treatment and collapses flat actions into centered rail icons; import it separately from `@neural-ng/core/menu`.\n- `NeuralMenu` and `NeuralPanelMenu` may be projected together in one `neural-sidebar-content`; both follow the same expanded, collapsed, hover-expanded, responsive and RTL shell state.\n- Sidebar icon-rail styling applies only to inline `NeuralMenu`. A popup `NeuralMenu` projected anywhere inside Sidebar keeps its full overlay labels, metadata and geometry.\n- `iconMenu=\"flyout\"` is the default: activating a parent rail icon opens its children beside the rail. Once the root flyout is open, hovering a nested parent opens the next logical-side flyout after `hoverOpenDelay`; deeper branches never expand the first panel vertically.\n- Closing or replacing a root flyout clears all descendant expansion keys. Reopening it starts collapsed rather than restoring stale nested flyouts. Escape, outside pointer interaction, or Angular navigation closes and resets the hierarchy.\n- `openOnHover` temporarily expands a collapsed desktop icon rail without mutating `open`. Tune `hoverOpenDelay` (100ms) and `hoverCloseDelay` (180ms); use `hoverChange` only for observing this temporary state.\n- Hover expansion ignores touch pointers and does not collapse while keyboard focus remains inside the Sidebar.\n- Without hover expansion, a top-level rail item exposes its `data-label` visually on hover or keyboard focus; parent icons continue to use the accessible child flyout.\n- Add `neuralSidebarLabel` to custom header/footer text that must disappear in icon mode; never hide the associated icon.\n- Use logical `side=\"start|end\"` for RTL safety.\n- `collapseMode`: `icon`, `offcanvas`, or `none`. `mobileMode` defaults to `offcanvas` below `breakpoint=\"64rem\"`.\n- Bind state with `[(open)]`; connect controls using `[neuralSidebarTrigger]=\"sidebarId\"`.\n- Export the trigger as `#trigger=\"neuralSidebarTrigger\"` and read `trigger.expanded()` when the control icon or label must reflect state.\n- `closeOnMobile` defaults to true so an expanded desktop shell does not become an open modal on narrow screens.\n- Open offcanvas navigation closes after Angular Router navigation by default; opt out with `closeOnNavigation=\"false\"`.\n- Modal offcanvas mode locks background scrolling, traps focus, supports Escape/backdrop dismissal, and restores trigger focus. Set `blockScroll=\"false\"` only for intentionally non-blocking overlays.\n- `showBackdrop` controls backdrop rendering only; `overlay`, `modal`, and `blockScroll` remain independent positioning, focus, and scrolling policies.\n- Apply `neuralSidebarInitialFocus` to the preferred first interactive control inside an offcanvas Sidebar.\n- `unstyled` and global unstyled retain structural classes. `classes` provides typed additive slots.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-sidebar-initial-focus",
     "name": "NeuralSidebarInitialFocus",
     "className": "NeuralSidebarInitialFocus",
@@ -5211,7 +11286,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/sidebar",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralSidebarClasses",
@@ -5270,6 +11347,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/sidebar\n\n- Import standalone symbols from `@neural-ng/core/sidebar`.\n- Sidebar owns application layout and responsive state; use Drawer for transient arbitrary panels.\n- Compose navigation with `NeuralMenu` or `NeuralPanelMenu`; Sidebar does not duplicate menu item APIs.\n- `NeuralPanelMenu` becomes visually flush inside a styled Sidebar and automatically reduces to centered top-level icons in a collapsed icon rail.\n- `NeuralMenu` receives the same flush treatment and collapses flat actions into centered rail icons; import it separately from `@neural-ng/core/menu`.\n- `NeuralMenu` and `NeuralPanelMenu` may be projected together in one `neural-sidebar-content`; both follow the same expanded, collapsed, hover-expanded, responsive and RTL shell state.\n- Sidebar icon-rail styling applies only to inline `NeuralMenu`. A popup `NeuralMenu` projected anywhere inside Sidebar keeps its full overlay labels, metadata and geometry.\n- `iconMenu=\"flyout\"` is the default: activating a parent rail icon opens its children beside the rail. Once the root flyout is open, hovering a nested parent opens the next logical-side flyout after `hoverOpenDelay`; deeper branches never expand the first panel vertically.\n- Closing or replacing a root flyout clears all descendant expansion keys. Reopening it starts collapsed rather than restoring stale nested flyouts. Escape, outside pointer interaction, or Angular navigation closes and resets the hierarchy.\n- `openOnHover` temporarily expands a collapsed desktop icon rail without mutating `open`. Tune `hoverOpenDelay` (100ms) and `hoverCloseDelay` (180ms); use `hoverChange` only for observing this temporary state.\n- Hover expansion ignores touch pointers and does not collapse while keyboard focus remains inside the Sidebar.\n- Without hover expansion, a top-level rail item exposes its `data-label` visually on hover or keyboard focus; parent icons continue to use the accessible child flyout.\n- Add `neuralSidebarLabel` to custom header/footer text that must disappear in icon mode; never hide the associated icon.\n- Use logical `side=\"start|end\"` for RTL safety.\n- `collapseMode`: `icon`, `offcanvas`, or `none`. `mobileMode` defaults to `offcanvas` below `breakpoint=\"64rem\"`.\n- Bind state with `[(open)]`; connect controls using `[neuralSidebarTrigger]=\"sidebarId\"`.\n- Export the trigger as `#trigger=\"neuralSidebarTrigger\"` and read `trigger.expanded()` when the control icon or label must reflect state.\n- `closeOnMobile` defaults to true so an expanded desktop shell does not become an open modal on narrow screens.\n- Open offcanvas navigation closes after Angular Router navigation by default; opt out with `closeOnNavigation=\"false\"`.\n- Modal offcanvas mode locks background scrolling, traps focus, supports Escape/backdrop dismissal, and restores trigger focus. Set `blockScroll=\"false\"` only for intentionally non-blocking overlays.\n- `showBackdrop` controls backdrop rendering only; `overlay`, `modal`, and `blockScroll` remain independent positioning, focus, and scrolling policies.\n- Apply `neuralSidebarInitialFocus` to the preferred first interactive control inside an offcanvas Sidebar.\n- `unstyled` and global unstyled retain structural classes. `classes` provides typed additive slots.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-sidebar-label",
     "name": "NeuralSidebarLabel",
     "className": "NeuralSidebarLabel",
@@ -5278,7 +11356,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/sidebar",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralSidebarClasses",
@@ -5337,6 +11417,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/sidebar\n\n- Import standalone symbols from `@neural-ng/core/sidebar`.\n- Sidebar owns application layout and responsive state; use Drawer for transient arbitrary panels.\n- Compose navigation with `NeuralMenu` or `NeuralPanelMenu`; Sidebar does not duplicate menu item APIs.\n- `NeuralPanelMenu` becomes visually flush inside a styled Sidebar and automatically reduces to centered top-level icons in a collapsed icon rail.\n- `NeuralMenu` receives the same flush treatment and collapses flat actions into centered rail icons; import it separately from `@neural-ng/core/menu`.\n- `NeuralMenu` and `NeuralPanelMenu` may be projected together in one `neural-sidebar-content`; both follow the same expanded, collapsed, hover-expanded, responsive and RTL shell state.\n- Sidebar icon-rail styling applies only to inline `NeuralMenu`. A popup `NeuralMenu` projected anywhere inside Sidebar keeps its full overlay labels, metadata and geometry.\n- `iconMenu=\"flyout\"` is the default: activating a parent rail icon opens its children beside the rail. Once the root flyout is open, hovering a nested parent opens the next logical-side flyout after `hoverOpenDelay`; deeper branches never expand the first panel vertically.\n- Closing or replacing a root flyout clears all descendant expansion keys. Reopening it starts collapsed rather than restoring stale nested flyouts. Escape, outside pointer interaction, or Angular navigation closes and resets the hierarchy.\n- `openOnHover` temporarily expands a collapsed desktop icon rail without mutating `open`. Tune `hoverOpenDelay` (100ms) and `hoverCloseDelay` (180ms); use `hoverChange` only for observing this temporary state.\n- Hover expansion ignores touch pointers and does not collapse while keyboard focus remains inside the Sidebar.\n- Without hover expansion, a top-level rail item exposes its `data-label` visually on hover or keyboard focus; parent icons continue to use the accessible child flyout.\n- Add `neuralSidebarLabel` to custom header/footer text that must disappear in icon mode; never hide the associated icon.\n- Use logical `side=\"start|end\"` for RTL safety.\n- `collapseMode`: `icon`, `offcanvas`, or `none`. `mobileMode` defaults to `offcanvas` below `breakpoint=\"64rem\"`.\n- Bind state with `[(open)]`; connect controls using `[neuralSidebarTrigger]=\"sidebarId\"`.\n- Export the trigger as `#trigger=\"neuralSidebarTrigger\"` and read `trigger.expanded()` when the control icon or label must reflect state.\n- `closeOnMobile` defaults to true so an expanded desktop shell does not become an open modal on narrow screens.\n- Open offcanvas navigation closes after Angular Router navigation by default; opt out with `closeOnNavigation=\"false\"`.\n- Modal offcanvas mode locks background scrolling, traps focus, supports Escape/backdrop dismissal, and restores trigger focus. Set `blockScroll=\"false\"` only for intentionally non-blocking overlays.\n- `showBackdrop` controls backdrop rendering only; `overlay`, `modal`, and `blockScroll` remain independent positioning, focus, and scrolling policies.\n- Apply `neuralSidebarInitialFocus` to the preferred first interactive control inside an offcanvas Sidebar.\n- `unstyled` and global unstyled retain structural classes. `classes` provides typed additive slots.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-sidebar-layout",
     "name": "NeuralSidebarLayout",
     "className": "NeuralSidebarLayout",
@@ -5345,7 +11426,32 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/sidebar",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
+    "inputs": [
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "layoutClass",
+        "bindingName": "layoutClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "Pick<NeuralSidebarClasses, 'root'>",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralSidebarClasses",
@@ -5404,6 +11510,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/sidebar\n\n- Import standalone symbols from `@neural-ng/core/sidebar`.\n- Sidebar owns application layout and responsive state; use Drawer for transient arbitrary panels.\n- Compose navigation with `NeuralMenu` or `NeuralPanelMenu`; Sidebar does not duplicate menu item APIs.\n- `NeuralPanelMenu` becomes visually flush inside a styled Sidebar and automatically reduces to centered top-level icons in a collapsed icon rail.\n- `NeuralMenu` receives the same flush treatment and collapses flat actions into centered rail icons; import it separately from `@neural-ng/core/menu`.\n- `NeuralMenu` and `NeuralPanelMenu` may be projected together in one `neural-sidebar-content`; both follow the same expanded, collapsed, hover-expanded, responsive and RTL shell state.\n- Sidebar icon-rail styling applies only to inline `NeuralMenu`. A popup `NeuralMenu` projected anywhere inside Sidebar keeps its full overlay labels, metadata and geometry.\n- `iconMenu=\"flyout\"` is the default: activating a parent rail icon opens its children beside the rail. Once the root flyout is open, hovering a nested parent opens the next logical-side flyout after `hoverOpenDelay`; deeper branches never expand the first panel vertically.\n- Closing or replacing a root flyout clears all descendant expansion keys. Reopening it starts collapsed rather than restoring stale nested flyouts. Escape, outside pointer interaction, or Angular navigation closes and resets the hierarchy.\n- `openOnHover` temporarily expands a collapsed desktop icon rail without mutating `open`. Tune `hoverOpenDelay` (100ms) and `hoverCloseDelay` (180ms); use `hoverChange` only for observing this temporary state.\n- Hover expansion ignores touch pointers and does not collapse while keyboard focus remains inside the Sidebar.\n- Without hover expansion, a top-level rail item exposes its `data-label` visually on hover or keyboard focus; parent icons continue to use the accessible child flyout.\n- Add `neuralSidebarLabel` to custom header/footer text that must disappear in icon mode; never hide the associated icon.\n- Use logical `side=\"start|end\"` for RTL safety.\n- `collapseMode`: `icon`, `offcanvas`, or `none`. `mobileMode` defaults to `offcanvas` below `breakpoint=\"64rem\"`.\n- Bind state with `[(open)]`; connect controls using `[neuralSidebarTrigger]=\"sidebarId\"`.\n- Export the trigger as `#trigger=\"neuralSidebarTrigger\"` and read `trigger.expanded()` when the control icon or label must reflect state.\n- `closeOnMobile` defaults to true so an expanded desktop shell does not become an open modal on narrow screens.\n- Open offcanvas navigation closes after Angular Router navigation by default; opt out with `closeOnNavigation=\"false\"`.\n- Modal offcanvas mode locks background scrolling, traps focus, supports Escape/backdrop dismissal, and restores trigger focus. Set `blockScroll=\"false\"` only for intentionally non-blocking overlays.\n- `showBackdrop` controls backdrop rendering only; `overlay`, `modal`, and `blockScroll` remain independent positioning, focus, and scrolling policies.\n- Apply `neuralSidebarInitialFocus` to the preferred first interactive control inside an offcanvas Sidebar.\n- `unstyled` and global unstyled retain structural classes. `classes` provides typed additive slots.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-sidebar-main",
     "name": "NeuralSidebarMain",
     "className": "NeuralSidebarMain",
@@ -5412,7 +11519,18 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/sidebar",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
+    "inputs": [
+      {
+        "name": "unstyled",
+        "bindingName": "neuralSidebarMainUnstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralSidebarClasses",
@@ -5471,6 +11589,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/sidebar\n\n- Import standalone symbols from `@neural-ng/core/sidebar`.\n- Sidebar owns application layout and responsive state; use Drawer for transient arbitrary panels.\n- Compose navigation with `NeuralMenu` or `NeuralPanelMenu`; Sidebar does not duplicate menu item APIs.\n- `NeuralPanelMenu` becomes visually flush inside a styled Sidebar and automatically reduces to centered top-level icons in a collapsed icon rail.\n- `NeuralMenu` receives the same flush treatment and collapses flat actions into centered rail icons; import it separately from `@neural-ng/core/menu`.\n- `NeuralMenu` and `NeuralPanelMenu` may be projected together in one `neural-sidebar-content`; both follow the same expanded, collapsed, hover-expanded, responsive and RTL shell state.\n- Sidebar icon-rail styling applies only to inline `NeuralMenu`. A popup `NeuralMenu` projected anywhere inside Sidebar keeps its full overlay labels, metadata and geometry.\n- `iconMenu=\"flyout\"` is the default: activating a parent rail icon opens its children beside the rail. Once the root flyout is open, hovering a nested parent opens the next logical-side flyout after `hoverOpenDelay`; deeper branches never expand the first panel vertically.\n- Closing or replacing a root flyout clears all descendant expansion keys. Reopening it starts collapsed rather than restoring stale nested flyouts. Escape, outside pointer interaction, or Angular navigation closes and resets the hierarchy.\n- `openOnHover` temporarily expands a collapsed desktop icon rail without mutating `open`. Tune `hoverOpenDelay` (100ms) and `hoverCloseDelay` (180ms); use `hoverChange` only for observing this temporary state.\n- Hover expansion ignores touch pointers and does not collapse while keyboard focus remains inside the Sidebar.\n- Without hover expansion, a top-level rail item exposes its `data-label` visually on hover or keyboard focus; parent icons continue to use the accessible child flyout.\n- Add `neuralSidebarLabel` to custom header/footer text that must disappear in icon mode; never hide the associated icon.\n- Use logical `side=\"start|end\"` for RTL safety.\n- `collapseMode`: `icon`, `offcanvas`, or `none`. `mobileMode` defaults to `offcanvas` below `breakpoint=\"64rem\"`.\n- Bind state with `[(open)]`; connect controls using `[neuralSidebarTrigger]=\"sidebarId\"`.\n- Export the trigger as `#trigger=\"neuralSidebarTrigger\"` and read `trigger.expanded()` when the control icon or label must reflect state.\n- `closeOnMobile` defaults to true so an expanded desktop shell does not become an open modal on narrow screens.\n- Open offcanvas navigation closes after Angular Router navigation by default; opt out with `closeOnNavigation=\"false\"`.\n- Modal offcanvas mode locks background scrolling, traps focus, supports Escape/backdrop dismissal, and restores trigger focus. Set `blockScroll=\"false\"` only for intentionally non-blocking overlays.\n- `showBackdrop` controls backdrop rendering only; `overlay`, `modal`, and `blockScroll` remain independent positioning, focus, and scrolling policies.\n- Apply `neuralSidebarInitialFocus` to the preferred first interactive control inside an offcanvas Sidebar.\n- `unstyled` and global unstyled retain structural classes. `classes` provides typed additive slots.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-sidebar-trigger",
     "name": "NeuralSidebarTrigger",
     "className": "NeuralSidebarTrigger",
@@ -5479,7 +11598,16 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/sidebar",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
+    "inputs": [
+      {
+        "name": "target",
+        "bindingName": "neuralSidebarTrigger",
+        "type": "string",
+        "required": true
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralSidebarClasses",
@@ -5538,6 +11666,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/sidebar\n\n- Import standalone symbols from `@neural-ng/core/sidebar`.\n- Sidebar owns application layout and responsive state; use Drawer for transient arbitrary panels.\n- Compose navigation with `NeuralMenu` or `NeuralPanelMenu`; Sidebar does not duplicate menu item APIs.\n- `NeuralPanelMenu` becomes visually flush inside a styled Sidebar and automatically reduces to centered top-level icons in a collapsed icon rail.\n- `NeuralMenu` receives the same flush treatment and collapses flat actions into centered rail icons; import it separately from `@neural-ng/core/menu`.\n- `NeuralMenu` and `NeuralPanelMenu` may be projected together in one `neural-sidebar-content`; both follow the same expanded, collapsed, hover-expanded, responsive and RTL shell state.\n- Sidebar icon-rail styling applies only to inline `NeuralMenu`. A popup `NeuralMenu` projected anywhere inside Sidebar keeps its full overlay labels, metadata and geometry.\n- `iconMenu=\"flyout\"` is the default: activating a parent rail icon opens its children beside the rail. Once the root flyout is open, hovering a nested parent opens the next logical-side flyout after `hoverOpenDelay`; deeper branches never expand the first panel vertically.\n- Closing or replacing a root flyout clears all descendant expansion keys. Reopening it starts collapsed rather than restoring stale nested flyouts. Escape, outside pointer interaction, or Angular navigation closes and resets the hierarchy.\n- `openOnHover` temporarily expands a collapsed desktop icon rail without mutating `open`. Tune `hoverOpenDelay` (100ms) and `hoverCloseDelay` (180ms); use `hoverChange` only for observing this temporary state.\n- Hover expansion ignores touch pointers and does not collapse while keyboard focus remains inside the Sidebar.\n- Without hover expansion, a top-level rail item exposes its `data-label` visually on hover or keyboard focus; parent icons continue to use the accessible child flyout.\n- Add `neuralSidebarLabel` to custom header/footer text that must disappear in icon mode; never hide the associated icon.\n- Use logical `side=\"start|end\"` for RTL safety.\n- `collapseMode`: `icon`, `offcanvas`, or `none`. `mobileMode` defaults to `offcanvas` below `breakpoint=\"64rem\"`.\n- Bind state with `[(open)]`; connect controls using `[neuralSidebarTrigger]=\"sidebarId\"`.\n- Export the trigger as `#trigger=\"neuralSidebarTrigger\"` and read `trigger.expanded()` when the control icon or label must reflect state.\n- `closeOnMobile` defaults to true so an expanded desktop shell does not become an open modal on narrow screens.\n- Open offcanvas navigation closes after Angular Router navigation by default; opt out with `closeOnNavigation=\"false\"`.\n- Modal offcanvas mode locks background scrolling, traps focus, supports Escape/backdrop dismissal, and restores trigger focus. Set `blockScroll=\"false\"` only for intentionally non-blocking overlays.\n- `showBackdrop` controls backdrop rendering only; `overlay`, `modal`, and `blockScroll` remain independent positioning, focus, and scrolling policies.\n- Apply `neuralSidebarInitialFocus` to the preferred first interactive control inside an offcanvas Sidebar.\n- `unstyled` and global unstyled retain structural classes. `classes` provides typed additive slots.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-skeleton",
     "name": "NeuralSkeleton",
     "className": "NeuralSkeleton",
@@ -5546,7 +11675,74 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/skeleton",
     "status": "alpha",
     "summary": "`NeuralSkeleton` provides a lightweight, decorative placeholder for content that is still loading.",
+    "inputs": [
+      {
+        "name": "shape",
+        "bindingName": "shape",
+        "type": "NeuralSkeletonShape",
+        "required": false,
+        "defaultValue": "'rounded'"
+      },
+      {
+        "name": "animation",
+        "bindingName": "animation",
+        "type": "NeuralSkeletonAnimation",
+        "required": false,
+        "defaultValue": "'pulse'"
+      },
+      {
+        "name": "width",
+        "bindingName": "width",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'100%'"
+      },
+      {
+        "name": "height",
+        "bindingName": "height",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'1rem'"
+      },
+      {
+        "name": "size",
+        "bindingName": "size",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'2.5rem'"
+      },
+      {
+        "name": "borderRadius",
+        "bindingName": "borderRadius",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "skeletonClass",
+        "bindingName": "skeletonClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralSkeletonClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralSkeletonClasses",
@@ -5576,6 +11772,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Skeleton AI context\n\n- Import NeuralSkeleton only from `@neural-ng/core/skeleton`.\n- SkeletonComponent is a deprecated compatibility alias; never generate it in new code.\n- Skeleton is decorative and always uses `aria-hidden=\"true\"`.\n- Put `aria-busy` on the surrounding region. Do not add live-region semantics\n  to each placeholder.\n- Use LoadingOverlay when loading must block interaction.\n- shape accepts rectangle, rounded, or circle. Circle dimensions come from size.\n- animation accepts pulse, wave, or none and respects reduced motion.\n- width, height, size, and borderRadius accept CSS length strings.\n- Set unstyled for headless rendering. Structural root/effect hooks and explicit\n  dimensions remain; NeuralNg visual classes are removed.\n- classes has typed root and effect slots. skeletonClass targets the root.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "neural-toast-template",
     "name": "NeuralToastTemplate",
     "className": "NeuralToastTemplateDirective",
@@ -5584,7 +11781,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/toast",
     "status": "beta",
     "summary": "Modern Angular 22+ Toast renderer for the headless Signal store in `@neural-ng/core/message`. Toast is standalone, SSR-safe, direction-aware, themeable, and fully consumer-stylable.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralToastClasses",
@@ -5661,6 +11860,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Toast v0.1 Beta - AI Context\n\nCurrent component maturity: beta.\n\nPackage: @neural-ng/core/toast\nAngular: 22+\nArchitecture: standalone, Signals, SSR/hydration-safe, headless-capable\nState dependency: @neural-ng/core/message\n\n## Required generation rules\n\n1. Register provideNeuralMessages() in ApplicationConfig.\n2. Import NeuralToast from @neural-ng/core/toast.\n3. Add <neural-toast /> once for the global channel.\n4. Inject NeuralMessageService from @neural-ng/core/message to send messages.\n5. Do not make Button depend on Message or Toast. Call notify() in application code.\n6. Do not import BrowserAnimationsModule, provideAnimations(), or @angular/animations.\n7. Do not invent left/right positions. Use logical start/end positions.\n8. Use one Toast outlet per channel.\n\n## Zero-config usage\n\n<neural-toast />\n\nEffective defaults:\n- channel: global\n- position: top-end\n- ariaLabel: Notifications\n- closeLabel: Close notification\n- toastClass: empty\n- messageClass: empty\n- icon: true\n- iconClass: automatic by severity\n- unstyled: false, unless global unstyled is true\n- pauseOnInteraction: true\n- showProgress: false\n- swipeToDismiss: true\n- swipeThreshold: 72\n- animated: true\n\n## Providers\n\n- provideNeuralMessages() is required.\n- provideNeuralNg({ unstyled: true }) is optional and affects Button, Toast, and future participating components.\n- provideNeuralToast(options) is optional and defines application-level Toast defaults.\n- Component inputs override provideNeuralToast values.\n- Global unstyled=true forces visual classes off.\n\n## Positions\n\nAllowed values only:\n- top-start, top-center, top-end\n- middle-start, middle-center, middle-end\n- bottom-start, bottom-center, bottom-end\n\n## Styling and unstyled\n\n- toastClass is additive on the fixed outlet.\n- messageClass is additive on every message article.\n- <neural-toast unstyled /> is valid boolean attribute syntax.\n- unstyled removes built-in visual message, close, progress, and animation styling.\n- unstyled preserves structure, position hooks, state, timers, swipe, ARIA, and dismissal.\n- Prefer CSS custom properties for themed usage and consumer classes for full ownership.\n- Treat `data-neural-theme` and resolved `data-neural-mode=\"light|dark\"` as independent selectors.\n\n## Icons\n\n- icon=true renders a decorative severity icon in the default template.\n- Styled messages tint their background, border, content, icon, close control,\n  and progress treatment from the selected severity; severity is not only a\n  leading-border accent.\n- Default classes are primary=nt-settings, secondary=nt-bell, neutral=nt-bell,\n  info=nt-info-circle, success=nt-circle-check, warning=nt-alert-triangle,\n  error=nt-circle-times.\n- Set `[icon]=\"false\"` to remove the icon and collapse the layout correctly.\n- `iconClass=\"nt-user\"` overrides every severity and automatically receives the\n  required `nt` base class.\n- Third-party values such as `iconClass=\"pi pi-user\"` remain unchanged.\n- Default Neural icon artwork requires the optional `@neural-ng/icons`\n  stylesheet. Core behavior must continue without that package.\n- A custom `neuralToastTemplate` owns its content and does not receive the\n  default icon element.\n\n## Custom template\n\nImport NeuralToastTemplateDirective alongside NeuralToast.\n\n```html\n<neural-toast channel=\"custom\">\n  <ng-template\n    neuralToastTemplate\n    let-message\n    let-dismiss=\"dismiss\"\n    let-paused=\"paused\"\n    let-remaining=\"remaining\"\n    let-progress=\"progress\"\n  >\n    <div>{{ message.message }}</div>\n    <button type=\"button\" (click)=\"dismiss()\">Close</button>\n  </ng-template>\n</neural-toast>\n```\n\nContext:\n- $implicit/message: immutable NeuralMessageRecord\n- dismiss(): closes with user reason\n- paused: boolean\n- remaining: milliseconds or null\n- progress: remaining ratio or null\n\nDo not wrap neuralToastTemplate on a non-ng-template element.\n\n## Timer and interaction rules\n\n- duration:null is persistent.\n- Finite durations are owned by Toast and close with timeout reason.\n- Hover, focus, and swipe pause finite timers when pauseOnInteraction is true.\n- Resume uses remaining time; it does not restart the full duration.\n- Progress is shown only when showProgress=true and duration is finite.\n- Touch/pen horizontal swipe dismisses only dismissible messages.\n- Vertical scrolling remains available.\n\n## Animation rules\n\n- Use Angular compiler-native animate.enter and animate.leave with CSS.\n- Do not use legacy Angular animation triggers/providers.\n- animated=false disables built-in enter/leave classes.\n- unstyled=true also removes built-in animation classes.\n- Respect prefers-reduced-motion.\n\n## Accessibility rules\n\n- Keep stable polite and assertive live regions in the DOM.\n- neutral/info/success announce politely.\n- warning/error announce assertively.\n- Never move focus automatically.\n- Keep the default close control a native button.\n- Localize ariaLabel and closeLabel when the application language requires it.\n- Avoid duration:null plus dismissible:false unless application code will clear it.\n\n## SSR and layout rules\n\n- Start browser work with afterNextRender.\n- Never read window, document, Element, or browser timers during server rendering.\n- Preserve logical start/end CSS and safe-area insets.\n- Do not create a second Toast for the same channel.\n\n## Canonical example\n\n```ts\nimport { ApplicationConfig, Component, inject } from '@angular/core';\nimport { provideNeuralMessages, NeuralMessageService } from '@neural-ng/core/message';\nimport { provideNeuralToast, NeuralToast } from '@neural-ng/core/toast';\n\nexport const appConfig: ApplicationConfig = {\n  providers: [\n    provideNeuralMessages(),\n    provideNeuralToast({ showProgress: true }),\n  ],\n};\n\n@Component({\n  selector: 'app-root',\n  imports: [NeuralToast],\n  template: `<neural-toast />`,\n})\nexport class App {\n  private readonly messages = inject(NeuralMessageService);\n\n  showSuccess(): void {\n    this.messages.notify({\n      severity: 'success',\n      title: 'Saved',\n      message: 'Changes saved.',\n    });\n  }\n}\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "option",
     "name": "Option",
     "className": "OptionComponent",
@@ -5669,7 +11869,37 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/select",
     "status": "beta",
     "summary": "Accessible, Signal-first combobox/listbox for Angular 22+.",
+    "inputs": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "unknown",
+        "required": true
+      },
+      {
+        "name": "label",
+        "bindingName": "label",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralSelectClasses",
@@ -5766,6 +11996,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/select\n\nCurrent component maturity: beta.\n\nAngular 22+ standalone, Signal-first Select.\n\nIMPORT\nimport { NeuralSelect, OptionComponent, type NeuralSelectChange } from '@neural-ng/core/select';\n\nPREFERRED DATA API\n<neural-select\n  [options]=\"cities\"\n  optionLabel=\"name\"\n  optionValue=\"id\"\n  [(value)]=\"cityId\"\n  placeholder=\"Select a city\"\n  clearable\n  (selectionChange)=\"citySelected($event)\"\n/>\n\nFORMS API\n<!-- Signal Forms -->\n<neural-select [options]=\"cities\" [formField]=\"form.city\" />\n\n<!-- Reactive Forms -->\n<neural-select [options]=\"cities\" [formControl]=\"cityControl\" />\n\n<!-- Template-driven Forms -->\n<neural-select [options]=\"cities\" name=\"city\" [(ngModel)]=\"city\" />\n\nPROJECTED API\n<neural-select [(value)]=\"status\">\n  <neural-option value=\"ready\" label=\"Ready\" iconClass=\"nt-circle-check\">\n    Ready\n  </neural-option>\n</neural-select>\n\nRULES\n- NeuralSelect implements FormValueControl<TValue | null>.\n- Bind the model with [(value)] or use [formField], [formControl], or [(ngModel)].\n- Programmatic Forms writes update value without emitting selectionChange.\n- Use either [options] or neural-option children in one instance, not both.\n- optionLabel, optionValue, optionDisabled, and optionIcon support nested\n  property paths. Primitive arrays need no mappings.\n- valueChange is the generated model output. selectionChange is the detailed\n  user-only event with value, previousValue, option, and source.\n- source is \"pointer\" or \"keyboard\".\n- Selecting the current value again does not emit a duplicate selectionChange.\n- Use cleared for explicit clear actions and openChange for panel state.\n- readonly is not disabled: the trigger remains enabled and focusable,\n  aria-readonly is exposed, and pointer, keyboard, and clear mutation are blocked.\n- touch emits when focus leaves the control. focus() targets the trigger and\n  reset() restores null.\n- appendTo defaults to self. Use appendTo=\"body\" inside clipped scroll,\n  table, or dialog surfaces; it uses the browser top layer and shared Overlay\n  positioner without requiring a global container.\n- Do not invent onSelected, onChange, or onSelectLink outputs.\n- Build chained selects by updating the dependent options Signal from the\n  parent value/selectionChange. Reset the dependent value explicitly.\n- Set loading while dependent async options load.\n- neural-option requires both value and label. label is used for selection\n  display, typeahead, and accessible text; projected content renders in the\n  list.\n- iconClass values such as nt-map-pin automatically receive the nt base class.\n- Use unstyled for local headless mode or provideNeuralNg({ unstyled: true })\n  globally. Keep structural classes; replace visual classes with classes slots.\n- Preserve combobox/listbox semantics and keyboard behavior.\n- Inside neural-field, Select inherits id, descriptions, required, invalid,\n  disabled, readonly, fluid, and unstyled state.\n- For fixed-height large lists use virtualScroll with virtualItemSize,\n  virtualScrollHeight and virtualOverscan.\n- Select shares option resolution, enabled navigation and typeahead primitives\n  with MultiSelect through @neural-ng/core.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "popover",
     "name": "Popover",
     "className": "PopoverComponent",
@@ -5774,10 +12005,153 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/popover",
     "status": "alpha",
     "summary": "`@neural-ng/core/popover` renders arbitrary Angular content in a non-modal, trigger-anchored top-layer panel. It composes the shared Overlay positioner and does not impose Menu item or Dialog layout semantics.",
+    "inputs": [
+      {
+        "name": "position",
+        "bindingName": "position",
+        "type": "NeuralPopoverPosition",
+        "required": false,
+        "defaultValue": "'bottom-start'"
+      },
+      {
+        "name": "offset",
+        "bindingName": "offset",
+        "type": "number",
+        "required": false,
+        "defaultValue": "8",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "viewportPadding",
+        "bindingName": "viewportPadding",
+        "type": "number",
+        "required": false,
+        "defaultValue": "8",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "focusOnOpen",
+        "bindingName": "focusOnOpen",
+        "type": "NeuralPopoverFocusOnOpen",
+        "required": false,
+        "defaultValue": "'none'"
+      },
+      {
+        "name": "dismissible",
+        "bindingName": "dismissible",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closeOnEscape",
+        "bindingName": "closeOnEscape",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "restoreFocus",
+        "bindingName": "restoreFocus",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "matchTriggerWidth",
+        "bindingName": "matchTriggerWidth",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showArrow",
+        "bindingName": "showArrow",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "role",
+        "bindingName": "role",
+        "type": "NeuralPopoverRole",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "popoverId",
+        "bindingName": "popoverId",
+        "type": "unknown",
+        "required": false,
+        "defaultValue": "this.generatedId"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaDescribedby",
+        "bindingName": "ariaDescribedby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "popoverClass",
+        "bindingName": "popoverClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralPopoverClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "open",
-        "type": "boolean"
+        "bindingName": "open",
+        "type": "boolean",
+        "defaultValue": "false"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "opened",
+        "bindingName": "opened",
+        "type": "NeuralPopoverOpenEvent"
+      },
+      {
+        "name": "closed",
+        "bindingName": "closed",
+        "type": "NeuralPopoverCloseEvent"
       }
     ],
     "classes": [
@@ -5818,6 +12192,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Popover\n\n> Arbitrary, non-modal, trigger-anchored top-layer content from `@neural-ng/core/popover`.\n\n## Generation rules\n\n- Import `NeuralPopover`, `NeuralPopoverTrigger`, `NeuralPopoverClose`, and when needed `NeuralPopoverInitialFocus` only from `@neural-ng/core/popover`.\n- Use a native interactive trigger with `[neuralPopoverTriggerFor]=\"panel\"`.\n- Prefer logical `bottom-start` or `bottom-end` positions; start/end follow RTL.\n- Put any Angular content inside `<neural-popover #panel>`.\n- Use `neuralPopoverClose` for an in-panel close action.\n- Popover is non-modal and never traps focus. Use Dialog for modal workflows.\n- Popover is not a command list. Use Menu when menu roles and arrow-key item navigation are required.\n- Do not generate `appendTo=\"body\"`; native top-layer rendering avoids clipping and stacking-context problems.\n- Focus remains on the trigger by default. Set `popoverFocusOnOpen=\"first\"` and apply `neuralPopoverInitialFocus` only when the workflow benefits from moving focus.\n- Use `role=\"dialog\"` or `role=\"region\"` only when semantically correct, and provide `ariaLabel` or `ariaLabelledby`.\n- Bind `[(open)]` for controlled state. Use `opened` and `closed` only when lifecycle details are needed.\n- `closed.reason` is typed as `trigger`, `outside`, `escape`, `close-directive`, `api`, or `native`.\n- Use `unstyled` and typed `root`, `content`, and `arrow` class slots for headless rendering.\n- Do not create an NgModule.\n\n## Canonical example\n\n```html\n<button\n  type=\"button\"\n  [neuralPopoverTriggerFor]=\"account\"\n  popoverPosition=\"bottom-end\"\n>\n  Account\n</button>\n\n<neural-popover #account role=\"dialog\" ariaLabel=\"Account panel\">\n  <h2>Neural Admin</h2>\n  <button type=\"button\" neuralPopoverClose>Close</button>\n</neural-popover>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "popover-close",
     "name": "PopoverClose",
     "className": "PopoverCloseDirective",
@@ -5826,7 +12201,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/popover",
     "status": "alpha",
     "summary": "`@neural-ng/core/popover` renders arbitrary Angular content in a non-modal, trigger-anchored top-layer panel. It composes the shared Overlay positioner and does not impose Menu item or Dialog layout semantics.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralPopoverClasses",
@@ -5865,6 +12242,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Popover\n\n> Arbitrary, non-modal, trigger-anchored top-layer content from `@neural-ng/core/popover`.\n\n## Generation rules\n\n- Import `NeuralPopover`, `NeuralPopoverTrigger`, `NeuralPopoverClose`, and when needed `NeuralPopoverInitialFocus` only from `@neural-ng/core/popover`.\n- Use a native interactive trigger with `[neuralPopoverTriggerFor]=\"panel\"`.\n- Prefer logical `bottom-start` or `bottom-end` positions; start/end follow RTL.\n- Put any Angular content inside `<neural-popover #panel>`.\n- Use `neuralPopoverClose` for an in-panel close action.\n- Popover is non-modal and never traps focus. Use Dialog for modal workflows.\n- Popover is not a command list. Use Menu when menu roles and arrow-key item navigation are required.\n- Do not generate `appendTo=\"body\"`; native top-layer rendering avoids clipping and stacking-context problems.\n- Focus remains on the trigger by default. Set `popoverFocusOnOpen=\"first\"` and apply `neuralPopoverInitialFocus` only when the workflow benefits from moving focus.\n- Use `role=\"dialog\"` or `role=\"region\"` only when semantically correct, and provide `ariaLabel` or `ariaLabelledby`.\n- Bind `[(open)]` for controlled state. Use `opened` and `closed` only when lifecycle details are needed.\n- `closed.reason` is typed as `trigger`, `outside`, `escape`, `close-directive`, `api`, or `native`.\n- Use `unstyled` and typed `root`, `content`, and `arrow` class slots for headless rendering.\n- Do not create an NgModule.\n\n## Canonical example\n\n```html\n<button\n  type=\"button\"\n  [neuralPopoverTriggerFor]=\"account\"\n  popoverPosition=\"bottom-end\"\n>\n  Account\n</button>\n\n<neural-popover #account role=\"dialog\" ariaLabel=\"Account panel\">\n  <h2>Neural Admin</h2>\n  <button type=\"button\" neuralPopoverClose>Close</button>\n</neural-popover>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "popover-initial-focus",
     "name": "PopoverInitialFocus",
     "className": "PopoverInitialFocusDirective",
@@ -5873,7 +12251,9 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/popover",
     "status": "alpha",
     "summary": "`@neural-ng/core/popover` renders arbitrary Angular content in a non-modal, trigger-anchored top-layer panel. It composes the shared Overlay positioner and does not impose Menu item or Dialog layout semantics.",
+    "inputs": [],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralPopoverClasses",
@@ -5912,6 +12292,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Popover\n\n> Arbitrary, non-modal, trigger-anchored top-layer content from `@neural-ng/core/popover`.\n\n## Generation rules\n\n- Import `NeuralPopover`, `NeuralPopoverTrigger`, `NeuralPopoverClose`, and when needed `NeuralPopoverInitialFocus` only from `@neural-ng/core/popover`.\n- Use a native interactive trigger with `[neuralPopoverTriggerFor]=\"panel\"`.\n- Prefer logical `bottom-start` or `bottom-end` positions; start/end follow RTL.\n- Put any Angular content inside `<neural-popover #panel>`.\n- Use `neuralPopoverClose` for an in-panel close action.\n- Popover is non-modal and never traps focus. Use Dialog for modal workflows.\n- Popover is not a command list. Use Menu when menu roles and arrow-key item navigation are required.\n- Do not generate `appendTo=\"body\"`; native top-layer rendering avoids clipping and stacking-context problems.\n- Focus remains on the trigger by default. Set `popoverFocusOnOpen=\"first\"` and apply `neuralPopoverInitialFocus` only when the workflow benefits from moving focus.\n- Use `role=\"dialog\"` or `role=\"region\"` only when semantically correct, and provide `ariaLabel` or `ariaLabelledby`.\n- Bind `[(open)]` for controlled state. Use `opened` and `closed` only when lifecycle details are needed.\n- `closed.reason` is typed as `trigger`, `outside`, `escape`, `close-directive`, `api`, or `native`.\n- Use `unstyled` and typed `root`, `content`, and `arrow` class slots for headless rendering.\n- Do not create an NgModule.\n\n## Canonical example\n\n```html\n<button\n  type=\"button\"\n  [neuralPopoverTriggerFor]=\"account\"\n  popoverPosition=\"bottom-end\"\n>\n  Account\n</button>\n\n<neural-popover #account role=\"dialog\" ariaLabel=\"Account panel\">\n  <h2>Neural Admin</h2>\n  <button type=\"button\" neuralPopoverClose>Close</button>\n</neural-popover>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "popover-trigger",
     "name": "PopoverTrigger",
     "className": "PopoverTriggerDirective",
@@ -5920,7 +12301,48 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/popover",
     "status": "alpha",
     "summary": "`@neural-ng/core/popover` renders arbitrary Angular content in a non-modal, trigger-anchored top-layer panel. It composes the shared Overlay positioner and does not impose Menu item or Dialog layout semantics.",
+    "inputs": [
+      {
+        "name": "neuralPopoverTriggerFor",
+        "bindingName": "neuralPopoverTriggerFor",
+        "type": "PopoverComponent",
+        "required": true
+      },
+      {
+        "name": "popoverPosition",
+        "bindingName": "popoverPosition",
+        "type": "NeuralPopoverPosition | undefined",
+        "required": false
+      },
+      {
+        "name": "popoverOffset",
+        "bindingName": "popoverOffset",
+        "type": "number | undefined",
+        "required": false
+      },
+      {
+        "name": "popoverViewportPadding",
+        "bindingName": "popoverViewportPadding",
+        "type": "number | undefined",
+        "required": false
+      },
+      {
+        "name": "popoverFocusOnOpen",
+        "bindingName": "popoverFocusOnOpen",
+        "type": "NeuralPopoverFocusOnOpen | undefined",
+        "required": false
+      },
+      {
+        "name": "popoverDisabled",
+        "bindingName": "popoverDisabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralPopoverClasses",
@@ -5959,6 +12381,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Popover\n\n> Arbitrary, non-modal, trigger-anchored top-layer content from `@neural-ng/core/popover`.\n\n## Generation rules\n\n- Import `NeuralPopover`, `NeuralPopoverTrigger`, `NeuralPopoverClose`, and when needed `NeuralPopoverInitialFocus` only from `@neural-ng/core/popover`.\n- Use a native interactive trigger with `[neuralPopoverTriggerFor]=\"panel\"`.\n- Prefer logical `bottom-start` or `bottom-end` positions; start/end follow RTL.\n- Put any Angular content inside `<neural-popover #panel>`.\n- Use `neuralPopoverClose` for an in-panel close action.\n- Popover is non-modal and never traps focus. Use Dialog for modal workflows.\n- Popover is not a command list. Use Menu when menu roles and arrow-key item navigation are required.\n- Do not generate `appendTo=\"body\"`; native top-layer rendering avoids clipping and stacking-context problems.\n- Focus remains on the trigger by default. Set `popoverFocusOnOpen=\"first\"` and apply `neuralPopoverInitialFocus` only when the workflow benefits from moving focus.\n- Use `role=\"dialog\"` or `role=\"region\"` only when semantically correct, and provide `ariaLabel` or `ariaLabelledby`.\n- Bind `[(open)]` for controlled state. Use `opened` and `closed` only when lifecycle details are needed.\n- `closed.reason` is typed as `trigger`, `outside`, `escape`, `close-directive`, `api`, or `native`.\n- Use `unstyled` and typed `root`, `content`, and `arrow` class slots for headless rendering.\n- Do not create an NgModule.\n\n## Canonical example\n\n```html\n<button\n  type=\"button\"\n  [neuralPopoverTriggerFor]=\"account\"\n  popoverPosition=\"bottom-end\"\n>\n  Account\n</button>\n\n<neural-popover #account role=\"dialog\" ariaLabel=\"Account panel\">\n  <h2>Neural Admin</h2>\n  <button type=\"button\" neuralPopoverClose>Close</button>\n</neural-popover>\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "radio-group",
     "name": "NeuralRadioGroup",
     "className": "NeuralRadioGroup",
@@ -5968,10 +12391,189 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Native, Signal-first RadioGroup and Radio components for Angular 22+.",
     "formContract": "FormValueControl<TValue | null>",
+    "inputs": [
+      {
+        "name": "options",
+        "bindingName": "options",
+        "type": "readonly TOption[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "optionLabel",
+        "bindingName": "optionLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'label'"
+      },
+      {
+        "name": "optionValue",
+        "bindingName": "optionValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'value'"
+      },
+      {
+        "name": "optionDisabled",
+        "bindingName": "optionDisabled",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'disabled'"
+      },
+      {
+        "name": "optionIcon",
+        "bindingName": "optionIcon",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'iconClass'"
+      },
+      {
+        "name": "orientation",
+        "bindingName": "orientation",
+        "type": "NeuralRadioOrientation",
+        "required": false,
+        "defaultValue": "'vertical'"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "radioGroupId",
+        "bindingName": "radioGroupId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "radioName",
+        "bindingName": "radioName",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "radioGroupClass",
+        "bindingName": "radioGroupClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralRadioClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "TValue | null"
+        "bindingName": "value",
+        "type": "TValue | null",
+        "defaultValue": "null"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "selectionChange",
+        "bindingName": "selectionChange",
+        "type": "NeuralRadioSelectionChange<TValue, TOption>"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -6035,6 +12637,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Radio\n\nIMPORT\nimport { NeuralRadio, NeuralRadioGroup, type NeuralRadioSelectionChange } from '@neural-ng/core/radio';\n\nRULES\n- Use NeuralRadioGroup for every radio set; do not compose unrelated native names manually.\n- Prefer [options] with optionLabel and optionValue for data-driven choices.\n- Use projected <neural-radio [value]=\"...\"> only for rich option content.\n- Do not combine [options] and projected neural-radio children. [options] wins.\n- NeuralRadioGroup implements FormValueControl<TValue | null>.\n- RadioGroupComponent and RadioComponent are deprecated compatibility aliases; never generate them in new code.\n- Bind the model with [(value)] or use [formField], [formControl], or [(ngModel)].\n- Programmatic Forms writes update value without emitting selectionChange.\n- valueChange is the generated model output. selectionChange is the detailed user-only event.\n- selectionChange payload is { value, previousValue, option, source }.\n- source is \"pointer\" or \"keyboard\".\n- Radio selection does not toggle back to null. Use a separate clear action if product UX needs clearing.\n- orientation is \"vertical\" by default and also accepts \"horizontal\".\n- Native radio inputs, shared name, Arrow keys, Home, End, Space, focus, required, disabled, validation, and form submission are preserved.\n- readonly is not disabled: the roving tab stop remains focusable, aria-readonly is exposed on the group, and user mutation is blocked.\n- touch is emitted when focus leaves the group. focus() targets the roving tab stop and reset() restores null.\n- iconClass and optionIcon values may use Neural Icons classes such as \"nt-user\"; the base \"nt\" class is added automatically.\n- Set unstyled for local headless mode or provideNeuralNg({ unstyled: true }) globally.\n- Consumer classes survive unstyled mode.\n- Inside neural-field, RadioGroup inherits id, descriptions, required, invalid, disabled, readonly, fluid, and unstyled state.\n\nDATA EXAMPLE\n<neural-radio-group\n  [options]=\"plans\"\n  optionLabel=\"name\"\n  optionValue=\"id\"\n  optionDisabled=\"disabled\"\n  optionIcon=\"iconClass\"\n  [(value)]=\"planId\"\n  (selectionChange)=\"planSelected($event)\"\n/>\n\nFORMS EXAMPLE\n<!-- Signal Forms -->\n<neural-radio-group [options]=\"plans\" [formField]=\"form.plan\" />\n\n<!-- Reactive Forms -->\n<neural-radio-group [options]=\"plans\" [formControl]=\"planControl\" />\n\n<!-- Template-driven Forms -->\n<neural-radio-group [options]=\"plans\" name=\"plan\" [(ngModel)]=\"plan\" />\n\nPROJECTED EXAMPLE\n<neural-radio-group [(value)]=\"delivery\">\n  <neural-radio value=\"standard\" iconClass=\"nt-truck\">\n    <strong>Standard delivery</strong>\n  </neural-radio>\n  <neural-radio value=\"express\">Express delivery</neural-radio>\n</neural-radio-group>\n\nCLASS SLOTS\nroot, option, input, control, selectedControl, disabledOption, label, optionIcon\n"
   },
   {
+    "schemaVersion": 2,
     "id": "select",
     "name": "NeuralSelect",
     "className": "NeuralSelect",
@@ -6044,10 +12647,282 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible, Signal-first combobox/listbox for Angular 22+.",
     "formContract": "FormValueControl<TValue | null>",
+    "inputs": [
+      {
+        "name": "options",
+        "bindingName": "options",
+        "type": "readonly TOption[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "optionLabel",
+        "bindingName": "optionLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'label'"
+      },
+      {
+        "name": "optionValue",
+        "bindingName": "optionValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'value'"
+      },
+      {
+        "name": "optionDisabled",
+        "bindingName": "optionDisabled",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'disabled'"
+      },
+      {
+        "name": "optionIcon",
+        "bindingName": "optionIcon",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'iconClass'"
+      },
+      {
+        "name": "compareWith",
+        "bindingName": "compareWith",
+        "type": "(first: TValue, second: TValue | null) => boolean",
+        "required": false,
+        "defaultValue": "Object.is"
+      },
+      {
+        "name": "placeholder",
+        "bindingName": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Select an option'"
+      },
+      {
+        "name": "emptyLabel",
+        "bindingName": "emptyLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'No options available'"
+      },
+      {
+        "name": "loadingLabel",
+        "bindingName": "loadingLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Loading options'"
+      },
+      {
+        "name": "clearLabel",
+        "bindingName": "clearLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Clear selection'"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "selectId",
+        "bindingName": "selectId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-chevron-down'"
+      },
+      {
+        "name": "loadingIcon",
+        "bindingName": "loadingIcon",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt-loader-3 nt-spin'"
+      },
+      {
+        "name": "clearable",
+        "bindingName": "clearable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "loading",
+        "bindingName": "loading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "virtualScroll",
+        "bindingName": "virtualScroll",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "virtualItemSize",
+        "bindingName": "virtualItemSize",
+        "type": "number",
+        "required": false,
+        "defaultValue": "42",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "virtualScrollHeight",
+        "bindingName": "virtualScrollHeight",
+        "type": "number",
+        "required": false,
+        "defaultValue": "256",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "virtualOverscan",
+        "bindingName": "virtualOverscan",
+        "type": "number",
+        "required": false,
+        "defaultValue": "3",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "appendTo",
+        "bindingName": "appendTo",
+        "type": "NeuralSelectAppendTo",
+        "required": false,
+        "defaultValue": "'self'"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "selectClass",
+        "bindingName": "selectClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralSelectClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "TValue | null"
+        "bindingName": "value",
+        "type": "TValue | null",
+        "defaultValue": "null"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "selectionChange",
+        "bindingName": "selectionChange",
+        "type": "NeuralSelectChange<TValue, TOption>"
+      },
+      {
+        "name": "cleared",
+        "bindingName": "cleared",
+        "type": "NeuralSelectClear<TValue>"
+      },
+      {
+        "name": "openChange",
+        "bindingName": "openChange",
+        "type": "boolean"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -6146,6 +13021,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/select\n\nCurrent component maturity: beta.\n\nAngular 22+ standalone, Signal-first Select.\n\nIMPORT\nimport { NeuralSelect, OptionComponent, type NeuralSelectChange } from '@neural-ng/core/select';\n\nPREFERRED DATA API\n<neural-select\n  [options]=\"cities\"\n  optionLabel=\"name\"\n  optionValue=\"id\"\n  [(value)]=\"cityId\"\n  placeholder=\"Select a city\"\n  clearable\n  (selectionChange)=\"citySelected($event)\"\n/>\n\nFORMS API\n<!-- Signal Forms -->\n<neural-select [options]=\"cities\" [formField]=\"form.city\" />\n\n<!-- Reactive Forms -->\n<neural-select [options]=\"cities\" [formControl]=\"cityControl\" />\n\n<!-- Template-driven Forms -->\n<neural-select [options]=\"cities\" name=\"city\" [(ngModel)]=\"city\" />\n\nPROJECTED API\n<neural-select [(value)]=\"status\">\n  <neural-option value=\"ready\" label=\"Ready\" iconClass=\"nt-circle-check\">\n    Ready\n  </neural-option>\n</neural-select>\n\nRULES\n- NeuralSelect implements FormValueControl<TValue | null>.\n- Bind the model with [(value)] or use [formField], [formControl], or [(ngModel)].\n- Programmatic Forms writes update value without emitting selectionChange.\n- Use either [options] or neural-option children in one instance, not both.\n- optionLabel, optionValue, optionDisabled, and optionIcon support nested\n  property paths. Primitive arrays need no mappings.\n- valueChange is the generated model output. selectionChange is the detailed\n  user-only event with value, previousValue, option, and source.\n- source is \"pointer\" or \"keyboard\".\n- Selecting the current value again does not emit a duplicate selectionChange.\n- Use cleared for explicit clear actions and openChange for panel state.\n- readonly is not disabled: the trigger remains enabled and focusable,\n  aria-readonly is exposed, and pointer, keyboard, and clear mutation are blocked.\n- touch emits when focus leaves the control. focus() targets the trigger and\n  reset() restores null.\n- appendTo defaults to self. Use appendTo=\"body\" inside clipped scroll,\n  table, or dialog surfaces; it uses the browser top layer and shared Overlay\n  positioner without requiring a global container.\n- Do not invent onSelected, onChange, or onSelectLink outputs.\n- Build chained selects by updating the dependent options Signal from the\n  parent value/selectionChange. Reset the dependent value explicitly.\n- Set loading while dependent async options load.\n- neural-option requires both value and label. label is used for selection\n  display, typeahead, and accessible text; projected content renders in the\n  list.\n- iconClass values such as nt-map-pin automatically receive the nt base class.\n- Use unstyled for local headless mode or provideNeuralNg({ unstyled: true })\n  globally. Keep structural classes; replace visual classes with classes slots.\n- Preserve combobox/listbox semantics and keyboard behavior.\n- Inside neural-field, Select inherits id, descriptions, required, invalid,\n  disabled, readonly, fluid, and unstyled state.\n- For fixed-height large lists use virtualScroll with virtualItemSize,\n  virtualScrollHeight and virtualOverscan.\n- Select shares option resolution, enabled navigation and typeahead primitives\n  with MultiSelect through @neural-ng/core.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "slider",
     "name": "NeuralSlider",
     "className": "NeuralSlider",
@@ -6155,10 +13031,230 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Native, accessible numeric slider for Angular 22+ with Signal Forms, Reactive Forms, template-driven Forms, horizontal/vertical orientation, and headless styling.",
     "formContract": "FormValueControl<NeuralSliderValue>",
+    "inputs": [
+      {
+        "name": "range",
+        "bindingName": "range",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "rangeStartAriaLabel",
+        "bindingName": "rangeStartAriaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "rangeEndAriaLabel",
+        "bindingName": "rangeEndAriaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "rangeStartAriaValueText",
+        "bindingName": "rangeStartAriaValueText",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "rangeEndAriaValueText",
+        "bindingName": "rangeEndAriaValueText",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "sliderMin",
+        "bindingName": "min",
+        "type": "number | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalNumberAttribute"
+      },
+      {
+        "name": "sliderMax",
+        "bindingName": "max",
+        "type": "number | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalNumberAttribute"
+      },
+      {
+        "name": "step",
+        "bindingName": "step",
+        "type": "number",
+        "required": false,
+        "defaultValue": "1",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "orientation",
+        "bindingName": "orientation",
+        "type": "NeuralSliderOrientation",
+        "required": false,
+        "defaultValue": "'horizontal'"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showValue",
+        "bindingName": "showValue",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "valueLabel",
+        "bindingName": "valueLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "sliderId",
+        "bindingName": "sliderId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabelledBy",
+        "bindingName": "ariaLabelledBy",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaValueText",
+        "bindingName": "ariaValueText",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "sliderClass",
+        "bindingName": "sliderClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputClass",
+        "bindingName": "inputClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralSliderClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "NeuralSliderValue"
+        "bindingName": "value",
+        "type": "NeuralSliderValue",
+        "defaultValue": "0"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "slideStart",
+        "bindingName": "slideStart",
+        "type": "NeuralSliderEvent"
+      },
+      {
+        "name": "slideEnd",
+        "bindingName": "slideEnd",
+        "type": "NeuralSliderEvent"
+      },
+      {
+        "name": "valueCommit",
+        "bindingName": "valueCommit",
+        "type": "NeuralSliderEvent"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -6210,6 +13306,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Slider\n\nIMPORT\nimport { NeuralSlider, type NeuralSliderEvent, type NeuralSliderRangeValue } from '@neural-ng/core/slider';\n\nRULES\n- NeuralSlider is canonical. SliderComponent is a deprecated compatibility alias; never generate it in new code.\n- Bind a number for single mode or a [number, number] tuple when range is true.\n- Native range semantics provide Arrow keys, Page Up/Down, Home and End.\n- min, max and step normalize invalid bounds and steps.\n- orientation accepts horizontal or vertical. Range track clicks follow logical RTL direction.\n- Give range thumbs distinct rangeStartAriaLabel and rangeEndAriaLabel values.\n- rangeStartAriaValueText and rangeEndAriaValueText describe non-obvious numeric values.\n- showValue renders output; valueLabel overrides its text.\n- slideStart, slideEnd, valueCommit and touch are semantic user events.\n- readonly remains focusable and blocks mutation; disabled prevents interaction.\n- NeuralSlider supports Signal Forms, Reactive Forms and ngModel.\n- unstyled preserves native inputs, dimensions and structural hooks.\n- Typed class slots are root, input, value, range, track and fill.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "switch",
     "name": "NeuralSwitch",
     "className": "NeuralSwitch",
@@ -6219,10 +13316,168 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Native, Signal-first boolean switch for Angular 22+.",
     "formContract": "FormCheckboxControl",
+    "inputs": [
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "inputId",
+        "bindingName": "inputId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputValue",
+        "bindingName": "inputValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'on'"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "onLabel",
+        "bindingName": "onLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "offLabel",
+        "bindingName": "offLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "switchClass",
+        "bindingName": "switchClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputClass",
+        "bindingName": "inputClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "labelClass",
+        "bindingName": "labelClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralSwitchClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "checked",
-        "type": "boolean"
+        "bindingName": "checked",
+        "type": "boolean",
+        "defaultValue": "false"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "stateChange",
+        "bindingName": "stateChange",
+        "type": "NeuralSwitchChange"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -6284,6 +13539,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Switch\n\nIMPORT\nimport { NeuralSwitch, type NeuralSwitchChange } from '@neural-ng/core/switch';\n\nRULES\n- Use <neural-switch [(checked)]=\"state\">Visible label</neural-switch>.\n- NeuralSwitch implements FormCheckboxControl.\n- checked is boolean. Switch has no tri-state or null value.\n- checkedChange is generated by the checked model for two-way binding.\n- stateChange is the detailed user-only output: { checked, previousChecked, nativeEvent }.\n- Bind with [formField], [formControl], or [(ngModel)]; do not add a ControlValueAccessor or a second value store.\n- Programmatic checked updates do not emit stateChange. User changes emit exactly one stateChange.\n- The component retains a native input[type=\"checkbox\"] with role=\"switch\".\n- Project a visible label whenever possible. If there is no projected label, provide ariaLabel.\n- onLabel and offLabel are optional visual track text and do not provide the accessible name.\n- touch emits when the native input blurs.\n- readonly stays focusable, exposes aria-readonly, and blocks changes.\n- disabled removes the switch from interaction and the tab order.\n- Use neural-tri-state-checkbox instead when boolean | null is required.\n- Set unstyled for local headless mode or provideNeuralNg({ unstyled: true }) globally.\n- Consumer classes and structural hooks survive unstyled mode.\n- Inside neural-field, Switch inherits id, descriptions, required, invalid, disabled, readonly, fluid, and unstyled state.\n\nFORMS\n<neural-switch [formField]=\"form.notifications\">Signal notifications</neural-switch>\n<neural-switch [formControl]=\"notificationsControl\">Reactive notifications</neural-switch>\n<neural-switch name=\"notifications\" [(ngModel)]=\"notifications\">Template notifications</neural-switch>\n\nEXAMPLE\n<neural-switch\n  [(checked)]=\"notifications\"\n  onLabel=\"On\"\n  offLabel=\"Off\"\n  (stateChange)=\"notificationsChanged($event)\"\n>\n  Notifications\n</neural-switch>\n\nCLASS SLOTS\nroot, input, track, checkedTrack, thumb, label, onLabel, offLabel\n\nCOMPATIBILITY\n- SwitchComponent is a deprecated alias. Generate NeuralSwitch in new code.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "tab",
     "name": "NeuralTab",
     "className": "NeuralTab",
@@ -6292,7 +13548,38 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/tabs",
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
+    "inputs": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "NeuralTabValue",
+        "required": true
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "tabClass",
+        "bindingName": "tabClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralTabsClasses",
@@ -6352,6 +13639,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Tabs\n\n> Angular 22+ composable Signal tabs at `@neural-ng/core/tabs`.\n\n## Rules\n\n- Import `NeuralTabs`, `NeuralTabList`, `NeuralTab`, `NeuralTabPanels`, and\n  `NeuralTabPanel` from\n  `@neural-ng/core/tabs`; do not create a consumer NgModule.\n- Bind the active string/number value through the `value` model input.\n- Every `neural-tab` value must be unique and match one unique\n  `neural-tab-panel` value.\n- Place tabs inside `neural-tab-list` and panels inside `neural-tab-panels`.\n- Give each tab list an accessible name with `ariaLabel` or `ariaLabelledby`.\n- Use `iconClass=\"nt-user\"` for a concise Neural Icons tab icon. The component\n  adds the `nt` base class when an `nt-*` class is present.\n- Project an `<i aria-hidden=\"true\">` or other markup inside `neural-tab` when\n  the icon needs custom content. Do not set `iconClass` for the same icon.\n- Additional `iconClass` utility classes are preserved. Third-party icon\n  classes are not rewritten.\n- Core Tabs does not depend on `@neural-ng/icons`.\n- `activationMode=\"automatic\"` selects on arrow-key focus. Use `manual` only\n  when panel activation should require Enter or Space.\n- Use `orientation=\"vertical\"` only when the visual list is vertical; this\n  changes both ARIA orientation and keyboard keys.\n- `unstyled` removes visual classes, not structure, behavior, or ARIA.\n- Use `tabsClass`, child local class inputs, or typed `classes` slots for custom\n  styling. Do not query generated IDs for styling.\n- Horizontal overflow is built in. Constrain the Tabs container rather than\n  creating a second, non-semantic tab navigation control.\n- Preserve the `prefers-reduced-motion` behavior when overriding indicator or\n  panel-enter motion.\n- Development builds warn about duplicate and unmatched tab/panel values; fix\n  the composition rather than suppressing the warning.\n- Panel rendering is eager in the Beta release; do not invent a lazy input.\n\n## Canonical example\n\n```ts\nreadonly activeTab = signal<string | number | null>('profile');\n```\n\n```html\n<neural-tabs [(value)]=\"activeTab\">\n  <neural-tab-list ariaLabel=\"Account sections\">\n    <neural-tab value=\"profile\" iconClass=\"nt-user\">Profile</neural-tab>\n    <neural-tab value=\"security\">Security</neural-tab>\n    <neural-tab value=\"billing\" disabled>Billing</neural-tab>\n  </neural-tab-list>\n  <neural-tab-panels>\n    <neural-tab-panel value=\"profile\">Profile content</neural-tab-panel>\n    <neural-tab-panel value=\"security\">Security content</neural-tab-panel>\n    <neural-tab-panel value=\"billing\">Billing content</neural-tab-panel>\n  </neural-tab-panels>\n</neural-tabs>\n```\n\nKeyboard behavior follows the WAI-ARIA Tabs pattern: roving `tabindex`,\norientation-aware arrows, Home/End, wrapping, and disabled-tab skipping.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "tab-list",
     "name": "NeuralTabList",
     "className": "NeuralTabList",
@@ -6360,7 +13648,31 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/tabs",
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
+    "inputs": [
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Tabs'"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "listClass",
+        "bindingName": "listClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralTabsClasses",
@@ -6420,6 +13732,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Tabs\n\n> Angular 22+ composable Signal tabs at `@neural-ng/core/tabs`.\n\n## Rules\n\n- Import `NeuralTabs`, `NeuralTabList`, `NeuralTab`, `NeuralTabPanels`, and\n  `NeuralTabPanel` from\n  `@neural-ng/core/tabs`; do not create a consumer NgModule.\n- Bind the active string/number value through the `value` model input.\n- Every `neural-tab` value must be unique and match one unique\n  `neural-tab-panel` value.\n- Place tabs inside `neural-tab-list` and panels inside `neural-tab-panels`.\n- Give each tab list an accessible name with `ariaLabel` or `ariaLabelledby`.\n- Use `iconClass=\"nt-user\"` for a concise Neural Icons tab icon. The component\n  adds the `nt` base class when an `nt-*` class is present.\n- Project an `<i aria-hidden=\"true\">` or other markup inside `neural-tab` when\n  the icon needs custom content. Do not set `iconClass` for the same icon.\n- Additional `iconClass` utility classes are preserved. Third-party icon\n  classes are not rewritten.\n- Core Tabs does not depend on `@neural-ng/icons`.\n- `activationMode=\"automatic\"` selects on arrow-key focus. Use `manual` only\n  when panel activation should require Enter or Space.\n- Use `orientation=\"vertical\"` only when the visual list is vertical; this\n  changes both ARIA orientation and keyboard keys.\n- `unstyled` removes visual classes, not structure, behavior, or ARIA.\n- Use `tabsClass`, child local class inputs, or typed `classes` slots for custom\n  styling. Do not query generated IDs for styling.\n- Horizontal overflow is built in. Constrain the Tabs container rather than\n  creating a second, non-semantic tab navigation control.\n- Preserve the `prefers-reduced-motion` behavior when overriding indicator or\n  panel-enter motion.\n- Development builds warn about duplicate and unmatched tab/panel values; fix\n  the composition rather than suppressing the warning.\n- Panel rendering is eager in the Beta release; do not invent a lazy input.\n\n## Canonical example\n\n```ts\nreadonly activeTab = signal<string | number | null>('profile');\n```\n\n```html\n<neural-tabs [(value)]=\"activeTab\">\n  <neural-tab-list ariaLabel=\"Account sections\">\n    <neural-tab value=\"profile\" iconClass=\"nt-user\">Profile</neural-tab>\n    <neural-tab value=\"security\">Security</neural-tab>\n    <neural-tab value=\"billing\" disabled>Billing</neural-tab>\n  </neural-tab-list>\n  <neural-tab-panels>\n    <neural-tab-panel value=\"profile\">Profile content</neural-tab-panel>\n    <neural-tab-panel value=\"security\">Security content</neural-tab-panel>\n    <neural-tab-panel value=\"billing\">Billing content</neural-tab-panel>\n  </neural-tab-panels>\n</neural-tabs>\n```\n\nKeyboard behavior follows the WAI-ARIA Tabs pattern: roving `tabindex`,\norientation-aware arrows, Home/End, wrapping, and disabled-tab skipping.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "tab-panel",
     "name": "NeuralTabPanel",
     "className": "NeuralTabPanel",
@@ -6428,7 +13741,31 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/tabs",
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
+    "inputs": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "NeuralTabValue",
+        "required": true
+      },
+      {
+        "name": "focusable",
+        "bindingName": "focusable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "panelClass",
+        "bindingName": "panelClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralTabsClasses",
@@ -6488,6 +13825,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Tabs\n\n> Angular 22+ composable Signal tabs at `@neural-ng/core/tabs`.\n\n## Rules\n\n- Import `NeuralTabs`, `NeuralTabList`, `NeuralTab`, `NeuralTabPanels`, and\n  `NeuralTabPanel` from\n  `@neural-ng/core/tabs`; do not create a consumer NgModule.\n- Bind the active string/number value through the `value` model input.\n- Every `neural-tab` value must be unique and match one unique\n  `neural-tab-panel` value.\n- Place tabs inside `neural-tab-list` and panels inside `neural-tab-panels`.\n- Give each tab list an accessible name with `ariaLabel` or `ariaLabelledby`.\n- Use `iconClass=\"nt-user\"` for a concise Neural Icons tab icon. The component\n  adds the `nt` base class when an `nt-*` class is present.\n- Project an `<i aria-hidden=\"true\">` or other markup inside `neural-tab` when\n  the icon needs custom content. Do not set `iconClass` for the same icon.\n- Additional `iconClass` utility classes are preserved. Third-party icon\n  classes are not rewritten.\n- Core Tabs does not depend on `@neural-ng/icons`.\n- `activationMode=\"automatic\"` selects on arrow-key focus. Use `manual` only\n  when panel activation should require Enter or Space.\n- Use `orientation=\"vertical\"` only when the visual list is vertical; this\n  changes both ARIA orientation and keyboard keys.\n- `unstyled` removes visual classes, not structure, behavior, or ARIA.\n- Use `tabsClass`, child local class inputs, or typed `classes` slots for custom\n  styling. Do not query generated IDs for styling.\n- Horizontal overflow is built in. Constrain the Tabs container rather than\n  creating a second, non-semantic tab navigation control.\n- Preserve the `prefers-reduced-motion` behavior when overriding indicator or\n  panel-enter motion.\n- Development builds warn about duplicate and unmatched tab/panel values; fix\n  the composition rather than suppressing the warning.\n- Panel rendering is eager in the Beta release; do not invent a lazy input.\n\n## Canonical example\n\n```ts\nreadonly activeTab = signal<string | number | null>('profile');\n```\n\n```html\n<neural-tabs [(value)]=\"activeTab\">\n  <neural-tab-list ariaLabel=\"Account sections\">\n    <neural-tab value=\"profile\" iconClass=\"nt-user\">Profile</neural-tab>\n    <neural-tab value=\"security\">Security</neural-tab>\n    <neural-tab value=\"billing\" disabled>Billing</neural-tab>\n  </neural-tab-list>\n  <neural-tab-panels>\n    <neural-tab-panel value=\"profile\">Profile content</neural-tab-panel>\n    <neural-tab-panel value=\"security\">Security content</neural-tab-panel>\n    <neural-tab-panel value=\"billing\">Billing content</neural-tab-panel>\n  </neural-tab-panels>\n</neural-tabs>\n```\n\nKeyboard behavior follows the WAI-ARIA Tabs pattern: roving `tabindex`,\norientation-aware arrows, Home/End, wrapping, and disabled-tab skipping.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "tab-panels",
     "name": "NeuralTabPanels",
     "className": "NeuralTabPanels",
@@ -6496,7 +13834,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/tabs",
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
+    "inputs": [
+      {
+        "name": "panelsClass",
+        "bindingName": "panelsClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralTabsClasses",
@@ -6556,6 +13904,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Tabs\n\n> Angular 22+ composable Signal tabs at `@neural-ng/core/tabs`.\n\n## Rules\n\n- Import `NeuralTabs`, `NeuralTabList`, `NeuralTab`, `NeuralTabPanels`, and\n  `NeuralTabPanel` from\n  `@neural-ng/core/tabs`; do not create a consumer NgModule.\n- Bind the active string/number value through the `value` model input.\n- Every `neural-tab` value must be unique and match one unique\n  `neural-tab-panel` value.\n- Place tabs inside `neural-tab-list` and panels inside `neural-tab-panels`.\n- Give each tab list an accessible name with `ariaLabel` or `ariaLabelledby`.\n- Use `iconClass=\"nt-user\"` for a concise Neural Icons tab icon. The component\n  adds the `nt` base class when an `nt-*` class is present.\n- Project an `<i aria-hidden=\"true\">` or other markup inside `neural-tab` when\n  the icon needs custom content. Do not set `iconClass` for the same icon.\n- Additional `iconClass` utility classes are preserved. Third-party icon\n  classes are not rewritten.\n- Core Tabs does not depend on `@neural-ng/icons`.\n- `activationMode=\"automatic\"` selects on arrow-key focus. Use `manual` only\n  when panel activation should require Enter or Space.\n- Use `orientation=\"vertical\"` only when the visual list is vertical; this\n  changes both ARIA orientation and keyboard keys.\n- `unstyled` removes visual classes, not structure, behavior, or ARIA.\n- Use `tabsClass`, child local class inputs, or typed `classes` slots for custom\n  styling. Do not query generated IDs for styling.\n- Horizontal overflow is built in. Constrain the Tabs container rather than\n  creating a second, non-semantic tab navigation control.\n- Preserve the `prefers-reduced-motion` behavior when overriding indicator or\n  panel-enter motion.\n- Development builds warn about duplicate and unmatched tab/panel values; fix\n  the composition rather than suppressing the warning.\n- Panel rendering is eager in the Beta release; do not invent a lazy input.\n\n## Canonical example\n\n```ts\nreadonly activeTab = signal<string | number | null>('profile');\n```\n\n```html\n<neural-tabs [(value)]=\"activeTab\">\n  <neural-tab-list ariaLabel=\"Account sections\">\n    <neural-tab value=\"profile\" iconClass=\"nt-user\">Profile</neural-tab>\n    <neural-tab value=\"security\">Security</neural-tab>\n    <neural-tab value=\"billing\" disabled>Billing</neural-tab>\n  </neural-tab-list>\n  <neural-tab-panels>\n    <neural-tab-panel value=\"profile\">Profile content</neural-tab-panel>\n    <neural-tab-panel value=\"security\">Security content</neural-tab-panel>\n    <neural-tab-panel value=\"billing\">Billing content</neural-tab-panel>\n  </neural-tab-panels>\n</neural-tabs>\n```\n\nKeyboard behavior follows the WAI-ARIA Tabs pattern: roving `tabindex`,\norientation-aware arrows, Home/End, wrapping, and disabled-tab skipping.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "table",
     "name": "NeuralTable",
     "className": "NeuralTable",
@@ -6564,54 +13913,541 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/table",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
+    "inputs": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "readonly T[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "columns",
+        "bindingName": "columns",
+        "type": "readonly NeuralTableColumn<T>[]",
+        "required": true
+      },
+      {
+        "name": "rowKey",
+        "bindingName": "rowKey",
+        "type": "keyof T | string | ((row: T) => NeuralTableRowKey) | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "dataMode",
+        "bindingName": "dataMode",
+        "type": "NeuralTableDataMode",
+        "required": false,
+        "defaultValue": "'client'"
+      },
+      {
+        "name": "stateKey",
+        "bindingName": "stateKey",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "stateStorage",
+        "bindingName": "stateStorage",
+        "type": "NeuralTableStateStorage",
+        "required": false,
+        "defaultValue": "'local'"
+      },
+      {
+        "name": "stateAdapter",
+        "bindingName": "stateAdapter",
+        "type": "NeuralTableStateAdapter | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "groupRowsBy",
+        "bindingName": "groupRowsBy",
+        "type": "keyof T | string | ((row: T, rowIndex: number) => unknown) | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "rowGroupMode",
+        "bindingName": "rowGroupMode",
+        "type": "NeuralTableRowGroupMode",
+        "required": false,
+        "defaultValue": "'subheader'"
+      },
+      {
+        "name": "expandableRowGroups",
+        "bindingName": "expandableRowGroups",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "sortMode",
+        "bindingName": "sortMode",
+        "type": "NeuralTableSortMode",
+        "required": false,
+        "defaultValue": "'single'"
+      },
+      {
+        "name": "selectionMode",
+        "bindingName": "selectionMode",
+        "type": "NeuralTableSelectionMode",
+        "required": false,
+        "defaultValue": "'none'"
+      },
+      {
+        "name": "editMode",
+        "bindingName": "editMode",
+        "type": "NeuralTableEditMode | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "editValidator",
+        "bindingName": "editValidator",
+        "type": "NeuralTableEditValidator<T> | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "selectionControl",
+        "bindingName": "selectionControl",
+        "type": "NeuralTableSelectionControl",
+        "required": false,
+        "defaultValue": "'auto'"
+      },
+      {
+        "name": "selectAllMode",
+        "bindingName": "selectAllMode",
+        "type": "NeuralTableSelectAllMode",
+        "required": false,
+        "defaultValue": "'page'"
+      },
+      {
+        "name": "selectOnRowClick",
+        "bindingName": "selectOnRowClick",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "selectableRow",
+        "bindingName": "selectableRow",
+        "type": "(row: T, rowIndex: number) => boolean",
+        "required": false,
+        "defaultValue": "() => true"
+      },
+      {
+        "name": "selectAllKeys",
+        "bindingName": "selectAllKeys",
+        "type": "readonly NeuralTableRowKey[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "headerGroups",
+        "bindingName": "headerGroups",
+        "type": "readonly NeuralTableHeaderGroup[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "footerGroups",
+        "bindingName": "footerGroups",
+        "type": "readonly NeuralTableHeaderGroup[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "paginate",
+        "bindingName": "paginate",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "totalItems",
+        "bindingName": "totalItems",
+        "type": "number | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "loading",
+        "bindingName": "loading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "loadingMode",
+        "bindingName": "loadingMode",
+        "type": "NeuralTableLoadingMode",
+        "required": false,
+        "defaultValue": "'message'"
+      },
+      {
+        "name": "loadingRows",
+        "bindingName": "loadingRows",
+        "type": "number",
+        "required": false,
+        "defaultValue": "5",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "error",
+        "bindingName": "error",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "striped",
+        "bindingName": "striped",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "hoverable",
+        "bindingName": "hoverable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "gridlines",
+        "bindingName": "gridlines",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "stickyHeader",
+        "bindingName": "stickyHeader",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "stickyFooter",
+        "bindingName": "stickyFooter",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "scrollHeight",
+        "bindingName": "scrollHeight",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "resizableColumns",
+        "bindingName": "resizableColumns",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "reorderableColumns",
+        "bindingName": "reorderableColumns",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "columnResizeMode",
+        "bindingName": "columnResizeMode",
+        "type": "NeuralTableColumnResizeMode",
+        "required": false,
+        "defaultValue": "'fit'"
+      },
+      {
+        "name": "minColumnWidth",
+        "bindingName": "minColumnWidth",
+        "type": "number",
+        "required": false,
+        "defaultValue": "64",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "columnResizeStep",
+        "bindingName": "columnResizeStep",
+        "type": "number",
+        "required": false,
+        "defaultValue": "8",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "filterDelay",
+        "bindingName": "filterDelay",
+        "type": "number",
+        "required": false,
+        "defaultValue": "250",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "density",
+        "bindingName": "density",
+        "type": "NeuralTableDensity",
+        "required": false,
+        "defaultValue": "'comfortable'"
+      },
+      {
+        "name": "caption",
+        "bindingName": "caption",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaDescribedby",
+        "bindingName": "ariaDescribedby",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "labels",
+        "bindingName": "labels",
+        "type": "Partial<NeuralTableLabels>",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "tableClass",
+        "bindingName": "tableClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralTableClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "expandedRowGroupKeys",
-        "type": "readonly NeuralTableRowKey[]"
+        "bindingName": "expandedRowGroupKeys",
+        "type": "readonly NeuralTableRowKey[]",
+        "defaultValue": "[]"
       },
       {
         "name": "sort",
-        "type": "readonly NeuralTableSort[]"
+        "bindingName": "sort",
+        "type": "readonly NeuralTableSort[]",
+        "defaultValue": "[]"
       },
       {
         "name": "filters",
-        "type": "readonly NeuralTableFilter[]"
+        "bindingName": "filters",
+        "type": "readonly NeuralTableFilter[]",
+        "defaultValue": "[]"
       },
       {
         "name": "globalFilter",
-        "type": "unknown"
+        "bindingName": "globalFilter",
+        "type": "unknown",
+        "defaultValue": "null"
       },
       {
         "name": "selection",
-        "type": "readonly T[]"
+        "bindingName": "selection",
+        "type": "readonly T[]",
+        "defaultValue": "[]"
       },
       {
         "name": "selectionKeys",
-        "type": "readonly NeuralTableRowKey[]"
+        "bindingName": "selectionKeys",
+        "type": "readonly NeuralTableRowKey[]",
+        "defaultValue": "[]"
       },
       {
         "name": "expandedRowKeys",
-        "type": "readonly NeuralTableRowKey[]"
+        "bindingName": "expandedRowKeys",
+        "type": "readonly NeuralTableRowKey[]",
+        "defaultValue": "[]"
       },
       {
         "name": "columnWidths",
-        "type": "NeuralTableColumnWidths"
+        "bindingName": "columnWidths",
+        "type": "NeuralTableColumnWidths",
+        "defaultValue": "{}"
       },
       {
         "name": "hiddenColumnIds",
-        "type": "readonly string[]"
+        "bindingName": "hiddenColumnIds",
+        "type": "readonly string[]",
+        "defaultValue": "[]"
       },
       {
         "name": "columnOrder",
-        "type": "NeuralTableColumnOrder"
+        "bindingName": "columnOrder",
+        "type": "NeuralTableColumnOrder",
+        "defaultValue": "[]"
       },
       {
         "name": "pageIndex",
-        "type": "number"
+        "bindingName": "pageIndex",
+        "type": "number",
+        "defaultValue": "0"
       },
       {
         "name": "pageSize",
-        "type": "number"
+        "bindingName": "pageSize",
+        "type": "number",
+        "defaultValue": "10"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "sortEvent",
+        "bindingName": "sortEvent",
+        "type": "NeuralTableSortEvent"
+      },
+      {
+        "name": "filterEvent",
+        "bindingName": "filterEvent",
+        "type": "NeuralTableFilterEvent"
+      },
+      {
+        "name": "selectionEvent",
+        "bindingName": "selectionEvent",
+        "type": "NeuralTableSelectionChange<T>"
+      },
+      {
+        "name": "rowSelect",
+        "bindingName": "rowSelect",
+        "type": "NeuralTableRowEvent<T>"
+      },
+      {
+        "name": "rowUnselect",
+        "bindingName": "rowUnselect",
+        "type": "NeuralTableRowEvent<T>"
+      },
+      {
+        "name": "rowClick",
+        "bindingName": "rowClick",
+        "type": "NeuralTableRowEvent<T>"
+      },
+      {
+        "name": "rowDoubleClick",
+        "bindingName": "rowDoubleClick",
+        "type": "NeuralTableRowEvent<T>"
+      },
+      {
+        "name": "expansionChange",
+        "bindingName": "expansionChange",
+        "type": "NeuralTableExpansionChange<T>"
+      },
+      {
+        "name": "rowGroupExpansionChange",
+        "bindingName": "rowGroupExpansionChange",
+        "type": "NeuralTableRowGroupExpansionChange<T>"
+      },
+      {
+        "name": "columnResize",
+        "bindingName": "columnResize",
+        "type": "NeuralTableColumnResizeEvent<T>"
+      },
+      {
+        "name": "columnVisibilityChange",
+        "bindingName": "columnVisibilityChange",
+        "type": "NeuralTableColumnVisibilityChange"
+      },
+      {
+        "name": "columnReorder",
+        "bindingName": "columnReorder",
+        "type": "NeuralTableColumnReorderEvent<T>"
+      },
+      {
+        "name": "stateChange",
+        "bindingName": "stateChange",
+        "type": "NeuralTableStateChange"
+      },
+      {
+        "name": "stateRestore",
+        "bindingName": "stateRestore",
+        "type": "NeuralTableStateRestoreEvent"
+      },
+      {
+        "name": "cellEditStart",
+        "bindingName": "cellEditStart",
+        "type": "NeuralTableEditEvent<T>"
+      },
+      {
+        "name": "cellEditComplete",
+        "bindingName": "cellEditComplete",
+        "type": "NeuralTableEditEvent<T>"
+      },
+      {
+        "name": "cellEditCancel",
+        "bindingName": "cellEditCancel",
+        "type": "NeuralTableEditEvent<T>"
+      },
+      {
+        "name": "rowEditStart",
+        "bindingName": "rowEditStart",
+        "type": "NeuralTableRowEditEvent<T>"
+      },
+      {
+        "name": "rowEditSave",
+        "bindingName": "rowEditSave",
+        "type": "NeuralTableRowEditEvent<T>"
+      },
+      {
+        "name": "rowEditCancel",
+        "bindingName": "rowEditCancel",
+        "type": "NeuralTableRowEditEvent<T>"
       }
     ],
     "classes": [
@@ -6908,6 +14744,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/table\n\nImport NeuralTable and every template directive used by the consuming\nstandalone component from @neural-ng/core/table. Do not import an NgModule.\nTableComponent is a deprecated compatibility alias; generate NeuralTable in\nnew code.\nBuilt-in filter controls integrate NeuralInput and NeuralSelect. Do not emit\nraw browser filter controls in generated Table examples.\nTable's built-in selection and action surfaces compose NeuralCheckbox,\nNeuralRadioGroup, and NeuralButton. Do not replace them with raw controls.\nCompose NeuralPaginator for visible page navigation and bind the same\n[(pageIndex)] and [(pageSize)] models to both components. Do not generate a\nnative select for page size. Use NeuralInput, NeuralSelect, NeuralCheckbox,\nNeuralInputNumber, and NeuralButton inside custom Table toolbars/editors.\n\nRequired inputs:\n- [columns]: readonly NeuralTableColumn<T>[]\n- [value]: readonly T[] defaults to []\n\nCore rules:\n- Provide rowKey for stable selection and expansion.\n- Table preserves native table semantics; do not add role=\"grid\".\n- sortable columns render native buttons and aria-sort.\n- selectionMode is none, single, or multiple. selectionControl=auto uses a\n  radio for single mode and checkboxes for multiple mode.\n- Client selection stores rows in [(selection)] and mirrors rowKey values to\n  [(selectionKeys)]. Remote selection requires rowKey and is key-only through\n  [(selectionKeys)]; do not bind remote row objects as selection.\n- Row click selects by default. Ctrl/Meta toggles, Shift selects a range, and\n  selectableRow disables rows. Disabled rows are skipped by range and keyboard\n  navigation. Set selectOnRowClick=false for control-only selection.\n- Selectable rows use roving tabindex. ArrowUp/ArrowDown/Home/End navigate;\n  Space and Enter select.\n- selectAllMode is page, filtered, or all. In remote filtered/all mode provide\n  the complete server-resolved selectAllKeys scope.\n- selectionEvent includes rows, keys, changed row/key, selected, reason, and\n  nativeEvent.\n- editMode is cell or row. Editing is opt-in per column through editable and a\n  matching neuralTableEditor=\"columnId\" template.\n- readOnly and disabled can be booleans or row callbacks. Neither enters edit;\n  disabled cells also expose aria-disabled.\n- Editor context exposes value, row, immutable draftRow, rowIndex, column,\n  loading, error, setValue, save, and cancel.\n- Table never mutates [value]. Apply draftRow from cellEditComplete or\n  rowEditSave to the owning Signal/store.\n- Cell edit lifecycle: cellEditStart, cellEditComplete, cellEditCancel.\n  Row lifecycle: rowEditStart, rowEditSave, rowEditCancel.\n- editValidator may return boolean/string/void or a Promise. A string rejects\n  the save and becomes the accessible editor error; pending validation exposes\n  loading and aria-busy. Do not start another edit while validation is pending.\n  Late validation results are ignored after replacement or component destroy.\n- Cell keys: Enter starts/saves, Escape cancels, Tab saves and moves. Row keys:\n  Enter saves, Escape cancels, Tab follows native editor order.\n- Use startRowEdit(row,rowIndex), saveEdit(), and cancelEdit() for row actions.\n- sort, filters, globalFilter, expandedRowKeys, pageIndex, and pageSize are\n  model inputs that support two-way binding.\n- filterable columns render a native filter row. Configure filterType,\n  filterMatchMode, filterOptions, filterPlaceholder, and filterAriaLabel.\n- filter types: text, number, date, boolean, select.\n- match modes: contains, startsWith, endsWith, equals, notEquals, lt, lte, gt,\n  gte, in, between.\n- filter controls debounce with filterDelay=250 by default. filterEvent and\n  stateChange report applied filters; filtering resets pageIndex to zero.\n- clearFilters() clears column filters; clearFilters(true) also clears the\n  global filter.\n- scrollHeight constrains the scroll viewport; combine it with stickyHeader.\n- resizableColumns enables accessible native resize separators. Use\n  columnResizeMode=\"fit\" to balance the next column or \"expand\" to grow Table.\n- [(columnWidths)] is a readonly Record<string, number> of pixel widths.\n- per-column resize options are resizable, width, minWidth, and maxWidth.\n- resize supports pointer/touch, Arrow keys, and double-click auto-size.\n- [(hiddenColumnIds)] controls dynamic visibility without mutating columns.\n- setColumnVisibility, toggleColumnVisibility, and showAllColumns drive custom\n  column choosers. Observe columnVisibilityChange and columnResize.\n- reorderableColumns adds dedicated leaf-header grips. Bind\n  [(columnOrder)] to a readonly list of IDs and observe columnReorder.\n- reorder uses Pointer Events and ArrowLeft/ArrowRight on the focused grip. It never\n  mutates columns and never crosses sticky start/normal/end regions.\n- set reorderable:false to lock an individual column.\n- [headerGroups] accepts nested NeuralTableHeaderGroup definitions whose leaf\n  children are column IDs. Hidden leaves automatically update colspans.\n- Use neuralTableHeaderGroup=\"groupId\" for a typed group label template.\n- Use column.footer or neuralTableFooter=\"columnId\" for summaries.\n- footerGroups and neuralTableFooterGroup create grouped summary labels.\n- Footer template rows are processed client rows; consumers own aggregation.\n- stickyFooter keeps tfoot visible in a constrained scroll surface.\n- captureState returns a versioned, JSON-safe NeuralTableState containing page,\n  sort, filters, global filter, column order/widths/visibility, selection keys,\n  row expansion keys, and row-group expansion keys.\n- serializeState returns JSON suitable for URLSearchParams. restoreState accepts\n  that JSON or a NeuralTableState, sanitizes unknown columns, and never mutates\n  column definitions.\n- stateKey enables automatic persistence after hydration. stateStorage is\n  local, session, or none. Browser storage is never accessed during SSR.\n- stateAdapter overrides browser storage and may provide async load/save/remove.\n  Adapter failures must not prevent Table from rendering. clearStoredState()\n  calls adapter.remove only when the custom adapter implements it. Saves are\n  serialized and obsolete queued saves are coalesced; clear is ordered after a\n  running save. Late loads cannot restore state after key change or destroy.\n- stateChange includes the full snapshot, a reason, and monotonically increasing\n  requestId. Before applying remote data, call table.isLatestRequest(requestId)\n  to reject stale responses.\n- loadingMode=skeleton renders loadingRows placeholder rows. A\n  neuralTableLoading template takes precedence. Skeleton visual classes are\n  removed by unstyled while structural root hooks remain. loadingRows defaults\n  to 5, finite values are clamped to 1..1000, and non-finite values fall back\n  to 5.\n- groupRowsBy accepts a nested property path or row accessor.\n- rowGroupMode is subheader or rowspan. Subheader supports typed\n  neuralTableGroupHeader and neuralTableGroupFooter templates.\n- expandableRowGroups uses controlled [(expandedRowGroupKeys)] state and emits\n  rowGroupExpansionChange. Never mutate rows to store expansion state.\n- Group template context exposes value, key, rows, groupIndex, firstRowIndex,\n  expanded, toggle, and aggregate.\n- aggregate operations are sum, average, min, and max. Public helpers are\n  aggregateNeuralTableRows and aggregateNeuralTableValues.\n- rowspan mode applies native rowspan when groupRowsBy matches a visible\n  column id or field, including nested paths such as supplier.region.\n- client mode filters, stable-sorts, and optionally pages value.\n- dataMode=\"remote\" never transforms value; react to stateChange to fetch.\n- Use neuralTableCell=\"columnId\" for custom cells.\n- Use neuralTableHeader, neuralTableHeaderGroup, neuralTableExpansion, neuralTableLoading,\n  neuralTableEmpty, and neuralTableError for other typed slots.\n- Use neuralTableFilter=\"columnId\" to own a filter UI while retaining typed\n  apply and clear callbacks.\n- loading, error, and empty are mutually prioritized in that order.\n- Use ariaLabel, ariaLabelledby, or a caption to name the table.\n- unstyled removes only visual *-base classes. Structural *-root hooks, native\n  behavior, and accessibility remain.\n\nThe Table contract is in beta. Pin an exact prerelease version until stable.\n\nNot in beta: virtualization, export, tree table, column context menus,\nserver-owned grouping, and responsive card conversion.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "tabs",
     "name": "NeuralTabs",
     "className": "NeuralTabs",
@@ -6916,12 +14753,60 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/tabs",
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
+    "inputs": [
+      {
+        "name": "orientation",
+        "bindingName": "orientation",
+        "type": "NeuralTabsOrientation",
+        "required": false,
+        "defaultValue": "'horizontal'"
+      },
+      {
+        "name": "activationMode",
+        "bindingName": "activationMode",
+        "type": "NeuralTabsActivationMode",
+        "required": false,
+        "defaultValue": "'automatic'"
+      },
+      {
+        "name": "tabsId",
+        "bindingName": "tabsId",
+        "type": "unknown",
+        "required": false,
+        "defaultValue": "this.generatedId"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "tabsClass",
+        "bindingName": "tabsClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralTabsClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "NeuralTabValue | null"
+        "bindingName": "value",
+        "type": "NeuralTabValue | null",
+        "defaultValue": "null"
       }
     ],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralTabsClasses",
@@ -6981,6 +14866,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Tabs\n\n> Angular 22+ composable Signal tabs at `@neural-ng/core/tabs`.\n\n## Rules\n\n- Import `NeuralTabs`, `NeuralTabList`, `NeuralTab`, `NeuralTabPanels`, and\n  `NeuralTabPanel` from\n  `@neural-ng/core/tabs`; do not create a consumer NgModule.\n- Bind the active string/number value through the `value` model input.\n- Every `neural-tab` value must be unique and match one unique\n  `neural-tab-panel` value.\n- Place tabs inside `neural-tab-list` and panels inside `neural-tab-panels`.\n- Give each tab list an accessible name with `ariaLabel` or `ariaLabelledby`.\n- Use `iconClass=\"nt-user\"` for a concise Neural Icons tab icon. The component\n  adds the `nt` base class when an `nt-*` class is present.\n- Project an `<i aria-hidden=\"true\">` or other markup inside `neural-tab` when\n  the icon needs custom content. Do not set `iconClass` for the same icon.\n- Additional `iconClass` utility classes are preserved. Third-party icon\n  classes are not rewritten.\n- Core Tabs does not depend on `@neural-ng/icons`.\n- `activationMode=\"automatic\"` selects on arrow-key focus. Use `manual` only\n  when panel activation should require Enter or Space.\n- Use `orientation=\"vertical\"` only when the visual list is vertical; this\n  changes both ARIA orientation and keyboard keys.\n- `unstyled` removes visual classes, not structure, behavior, or ARIA.\n- Use `tabsClass`, child local class inputs, or typed `classes` slots for custom\n  styling. Do not query generated IDs for styling.\n- Horizontal overflow is built in. Constrain the Tabs container rather than\n  creating a second, non-semantic tab navigation control.\n- Preserve the `prefers-reduced-motion` behavior when overriding indicator or\n  panel-enter motion.\n- Development builds warn about duplicate and unmatched tab/panel values; fix\n  the composition rather than suppressing the warning.\n- Panel rendering is eager in the Beta release; do not invent a lazy input.\n\n## Canonical example\n\n```ts\nreadonly activeTab = signal<string | number | null>('profile');\n```\n\n```html\n<neural-tabs [(value)]=\"activeTab\">\n  <neural-tab-list ariaLabel=\"Account sections\">\n    <neural-tab value=\"profile\" iconClass=\"nt-user\">Profile</neural-tab>\n    <neural-tab value=\"security\">Security</neural-tab>\n    <neural-tab value=\"billing\" disabled>Billing</neural-tab>\n  </neural-tab-list>\n  <neural-tab-panels>\n    <neural-tab-panel value=\"profile\">Profile content</neural-tab-panel>\n    <neural-tab-panel value=\"security\">Security content</neural-tab-panel>\n    <neural-tab-panel value=\"billing\">Billing content</neural-tab-panel>\n  </neural-tab-panels>\n</neural-tabs>\n```\n\nKeyboard behavior follows the WAI-ARIA Tabs pattern: roving `tabindex`,\norientation-aware arrows, Home/End, wrapping, and disabled-tab skipping.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "tag",
     "name": "NeuralTag",
     "className": "NeuralTag",
@@ -6989,7 +14875,111 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/tag",
     "status": "beta",
     "summary": "Text-first classification and status labels for Angular 22+.",
+    "inputs": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "string | null | undefined",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "severity",
+        "bindingName": "severity",
+        "type": "NeuralTagSeverity",
+        "required": false,
+        "defaultValue": "'neutral'"
+      },
+      {
+        "name": "size",
+        "bindingName": "size",
+        "type": "NeuralTagSize",
+        "required": false,
+        "defaultValue": "'medium'"
+      },
+      {
+        "name": "rounded",
+        "bindingName": "rounded",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "iconAriaLabel",
+        "bindingName": "iconAriaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "removable",
+        "bindingName": "removable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "removeLabel",
+        "bindingName": "removeLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "removeIconClass",
+        "bindingName": "removeIconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'nt nt-x'"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "tagClass",
+        "bindingName": "tagClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralTagClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [
+      {
+        "name": "removed",
+        "bindingName": "removed",
+        "type": "NeuralTagRemove"
+      }
+    ],
     "classes": [
       {
         "typeName": "NeuralTagClasses",
@@ -7039,6 +15029,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "NeuralNg Tag rules\n\n- Import only from `@neural-ng/core/tag`.\n- Import NeuralTag. TagComponent is a deprecated compatibility alias.\n- Use Tag for classification or textual status; use Badge for contextual counts.\n- Prefer `value` for plain text and projection for custom Angular markup.\n- Severities: `primary`, `secondary`, `neutral`, `info`, `success`, `warning`, `error`.\n- Sizes: `small`, `medium`, `large`; `rounded` defaults to true.\n- `iconClass` prepends an icon. Decorative icons need no accessible label.\n- `removable` creates a native button and emits `removed`.\n- `removed` carries `{ value, originalEvent }`; update the owning collection.\n- Do not expect Tag to remove itself after emitting.\n- Override the generated remove name with `removeLabel` when context requires it.\n- `disabled` prevents removal and exposes `aria-disabled`.\n- `unstyled` removes visual classes, not structural hooks.\n- Typed slots: `root`, `icon`, `label`, `content`, `removeButton`, `removeIcon`.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "textarea",
     "name": "NeuralTextarea",
     "className": "NeuralTextarea",
@@ -7047,7 +15038,48 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/textarea",
     "status": "beta",
     "summary": "Native, Signal Forms-ready multiline text enhancement for Angular 22+.",
+    "inputs": [
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "autoResize",
+        "bindingName": "autoResize",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "resizeMode",
+        "bindingName": "resizeMode",
+        "type": "NeuralTextareaResizeMode",
+        "required": false,
+        "defaultValue": "'vertical'"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralTextareaClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralTextareaClasses",
@@ -7072,6 +15104,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Textarea\n\n> Native Angular 22+ multiline text enhancement at @neural-ng/core/textarea.\n\nRULES\n- Import NeuralTextarea from @neural-ng/core/textarea. TextareaComponent is a deprecated compatibility alias.\n- Generate <textarea neuralTextarea>, never <neural-textarea> and never an internal wrapper.\n- Keep rows, cols, name, placeholder, autocomplete, wrap, required, disabled, readonly, minlength, and maxlength on the native textarea.\n- Use a native label or another valid accessible name. Placeholder is not a label.\n- Use native input and change events. Do not invent valueChange or textChange.\n- Bind Angular Signal Forms [formField] directly to the native host. Do not add a ControlValueAccessor.\n- With [formField], define constraints such as maxLength in the Signal Forms schema; do not duplicate them as maxlength attributes on that host. FormField reflects the schema constraint to the native attribute.\n- Without [formField], native minlength and maxlength attributes remain valid.\n- autoResize defaults to false and uses CSS field-sizing: content.\n- When autoResize is true, rows and cols do not determine preferred size. Constrain growth with NeuralNg auto min/max block-size tokens or consumer CSS.\n- resizeMode accepts vertical, horizontal, both, or none and defaults to vertical.\n- autoResize takes precedence over resizeMode.\n- Use normal class and [class.*] bindings; there is no textareaClass input.\n- fluid affects width only in styled mode.\n- unstyled removes visual, fluid, resize, and auto-resize classes but preserves neural-textarea-root, data attributes, consumer classes, and native behavior.\n- Inside neural-field, Textarea inherits ID, descriptions, required, invalid, pending, disabled, readonly, fluid, and unstyled state.\n\nCANONICAL EXAMPLE\n<neural-field controlId=\"biography\" fluid>\n  <label neuralFieldLabel>Biography</label>\n  <textarea\n    neuralTextarea\n    autoResize\n    [formField]=\"profileForm.biography\"\n  ></textarea>\n  <small neuralFieldHint>Maximum 500 characters.</small>\n</neural-field>\n"
   },
   {
+    "schemaVersion": 2,
     "id": "toast",
     "name": "NeuralToast",
     "className": "NeuralToast",
@@ -7080,7 +15113,126 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/toast",
     "status": "beta",
     "summary": "Modern Angular 22+ Toast renderer for the headless Signal store in `@neural-ng/core/message`. Toast is standalone, SSR-safe, direction-aware, themeable, and fully consumer-stylable.",
+    "inputs": [
+      {
+        "name": "channel",
+        "bindingName": "channel",
+        "type": "string | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "normalizeOptionalChannel"
+      },
+      {
+        "name": "position",
+        "bindingName": "position",
+        "type": "NeuralToastPosition | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "normalizeOptionalPosition"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "(value) => normalizeOptionalLabel(value, 'ariaLabel')"
+      },
+      {
+        "name": "closeLabel",
+        "bindingName": "closeLabel",
+        "type": "string | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "(value) => normalizeOptionalLabel(value, 'closeLabel')"
+      },
+      {
+        "name": "toastClass",
+        "bindingName": "toastClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "messageClass",
+        "bindingName": "messageClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "icon",
+        "bindingName": "icon",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "iconClass",
+        "bindingName": "iconClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralToastClasses",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalBooleanAttribute"
+      },
+      {
+        "name": "pauseOnInteraction",
+        "bindingName": "pauseOnInteraction",
+        "type": "boolean | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalBooleanAttribute"
+      },
+      {
+        "name": "showProgress",
+        "bindingName": "showProgress",
+        "type": "boolean | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalBooleanAttribute"
+      },
+      {
+        "name": "swipeToDismiss",
+        "bindingName": "swipeToDismiss",
+        "type": "boolean | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalBooleanAttribute"
+      },
+      {
+        "name": "swipeThreshold",
+        "bindingName": "swipeThreshold",
+        "type": "number | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalPositiveNumber"
+      },
+      {
+        "name": "animated",
+        "bindingName": "animated",
+        "type": "boolean | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalBooleanAttribute"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralToastClasses",
@@ -7157,6 +15309,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Toast v0.1 Beta - AI Context\n\nCurrent component maturity: beta.\n\nPackage: @neural-ng/core/toast\nAngular: 22+\nArchitecture: standalone, Signals, SSR/hydration-safe, headless-capable\nState dependency: @neural-ng/core/message\n\n## Required generation rules\n\n1. Register provideNeuralMessages() in ApplicationConfig.\n2. Import NeuralToast from @neural-ng/core/toast.\n3. Add <neural-toast /> once for the global channel.\n4. Inject NeuralMessageService from @neural-ng/core/message to send messages.\n5. Do not make Button depend on Message or Toast. Call notify() in application code.\n6. Do not import BrowserAnimationsModule, provideAnimations(), or @angular/animations.\n7. Do not invent left/right positions. Use logical start/end positions.\n8. Use one Toast outlet per channel.\n\n## Zero-config usage\n\n<neural-toast />\n\nEffective defaults:\n- channel: global\n- position: top-end\n- ariaLabel: Notifications\n- closeLabel: Close notification\n- toastClass: empty\n- messageClass: empty\n- icon: true\n- iconClass: automatic by severity\n- unstyled: false, unless global unstyled is true\n- pauseOnInteraction: true\n- showProgress: false\n- swipeToDismiss: true\n- swipeThreshold: 72\n- animated: true\n\n## Providers\n\n- provideNeuralMessages() is required.\n- provideNeuralNg({ unstyled: true }) is optional and affects Button, Toast, and future participating components.\n- provideNeuralToast(options) is optional and defines application-level Toast defaults.\n- Component inputs override provideNeuralToast values.\n- Global unstyled=true forces visual classes off.\n\n## Positions\n\nAllowed values only:\n- top-start, top-center, top-end\n- middle-start, middle-center, middle-end\n- bottom-start, bottom-center, bottom-end\n\n## Styling and unstyled\n\n- toastClass is additive on the fixed outlet.\n- messageClass is additive on every message article.\n- <neural-toast unstyled /> is valid boolean attribute syntax.\n- unstyled removes built-in visual message, close, progress, and animation styling.\n- unstyled preserves structure, position hooks, state, timers, swipe, ARIA, and dismissal.\n- Prefer CSS custom properties for themed usage and consumer classes for full ownership.\n- Treat `data-neural-theme` and resolved `data-neural-mode=\"light|dark\"` as independent selectors.\n\n## Icons\n\n- icon=true renders a decorative severity icon in the default template.\n- Styled messages tint their background, border, content, icon, close control,\n  and progress treatment from the selected severity; severity is not only a\n  leading-border accent.\n- Default classes are primary=nt-settings, secondary=nt-bell, neutral=nt-bell,\n  info=nt-info-circle, success=nt-circle-check, warning=nt-alert-triangle,\n  error=nt-circle-times.\n- Set `[icon]=\"false\"` to remove the icon and collapse the layout correctly.\n- `iconClass=\"nt-user\"` overrides every severity and automatically receives the\n  required `nt` base class.\n- Third-party values such as `iconClass=\"pi pi-user\"` remain unchanged.\n- Default Neural icon artwork requires the optional `@neural-ng/icons`\n  stylesheet. Core behavior must continue without that package.\n- A custom `neuralToastTemplate` owns its content and does not receive the\n  default icon element.\n\n## Custom template\n\nImport NeuralToastTemplateDirective alongside NeuralToast.\n\n```html\n<neural-toast channel=\"custom\">\n  <ng-template\n    neuralToastTemplate\n    let-message\n    let-dismiss=\"dismiss\"\n    let-paused=\"paused\"\n    let-remaining=\"remaining\"\n    let-progress=\"progress\"\n  >\n    <div>{{ message.message }}</div>\n    <button type=\"button\" (click)=\"dismiss()\">Close</button>\n  </ng-template>\n</neural-toast>\n```\n\nContext:\n- $implicit/message: immutable NeuralMessageRecord\n- dismiss(): closes with user reason\n- paused: boolean\n- remaining: milliseconds or null\n- progress: remaining ratio or null\n\nDo not wrap neuralToastTemplate on a non-ng-template element.\n\n## Timer and interaction rules\n\n- duration:null is persistent.\n- Finite durations are owned by Toast and close with timeout reason.\n- Hover, focus, and swipe pause finite timers when pauseOnInteraction is true.\n- Resume uses remaining time; it does not restart the full duration.\n- Progress is shown only when showProgress=true and duration is finite.\n- Touch/pen horizontal swipe dismisses only dismissible messages.\n- Vertical scrolling remains available.\n\n## Animation rules\n\n- Use Angular compiler-native animate.enter and animate.leave with CSS.\n- Do not use legacy Angular animation triggers/providers.\n- animated=false disables built-in enter/leave classes.\n- unstyled=true also removes built-in animation classes.\n- Respect prefers-reduced-motion.\n\n## Accessibility rules\n\n- Keep stable polite and assertive live regions in the DOM.\n- neutral/info/success announce politely.\n- warning/error announce assertively.\n- Never move focus automatically.\n- Keep the default close control a native button.\n- Localize ariaLabel and closeLabel when the application language requires it.\n- Avoid duration:null plus dismissible:false unless application code will clear it.\n\n## SSR and layout rules\n\n- Start browser work with afterNextRender.\n- Never read window, document, Element, or browser timers during server rendering.\n- Preserve logical start/end CSS and safe-area insets.\n- Do not create a second Toast for the same channel.\n\n## Canonical example\n\n```ts\nimport { ApplicationConfig, Component, inject } from '@angular/core';\nimport { provideNeuralMessages, NeuralMessageService } from '@neural-ng/core/message';\nimport { provideNeuralToast, NeuralToast } from '@neural-ng/core/toast';\n\nexport const appConfig: ApplicationConfig = {\n  providers: [\n    provideNeuralMessages(),\n    provideNeuralToast({ showProgress: true }),\n  ],\n};\n\n@Component({\n  selector: 'app-root',\n  imports: [NeuralToast],\n  template: `<neural-toast />`,\n})\nexport class App {\n  private readonly messages = inject(NeuralMessageService);\n\n  showSuccess(): void {\n    this.messages.notify({\n      severity: 'success',\n      title: 'Saved',\n      message: 'Changes saved.',\n    });\n  }\n}\n```\n"
   },
   {
+    "schemaVersion": 2,
     "id": "toolbar",
     "name": "NeuralToolbar",
     "className": "NeuralToolbar",
@@ -7165,7 +15318,83 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/toolbar",
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
+    "inputs": [
+      {
+        "name": "orientation",
+        "bindingName": "orientation",
+        "type": "NeuralToolbarOrientation",
+        "required": false,
+        "defaultValue": "'horizontal'"
+      },
+      {
+        "name": "wrap",
+        "bindingName": "wrap",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "loop",
+        "bindingName": "loop",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "rovingFocus",
+        "bindingName": "rovingFocus",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "'Toolbar'"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "toolbarClass",
+        "bindingName": "toolbarClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralToolbarClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [],
+    "outputs": [
+      {
+        "name": "focusChanged",
+        "bindingName": "focusChanged",
+        "type": "NeuralToolbarFocusChange"
+      }
+    ],
     "classes": [
       {
         "typeName": "NeuralToolbarClasses",
@@ -7215,6 +15444,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/toolbar\n\n- Import NeuralToolbar, NeuralToolbarStart, NeuralToolbarCenter, NeuralToolbarEnd, and NeuralToolbarSeparator from `@neural-ng/core/toolbar`. Toolbar*Component names are deprecated compatibility aliases.\n- Use one `neural-toolbar` with start, center, and end projected sections.\n- Add `neural-toolbar-separator` between related action groups.\n- Always provide a meaningful `ariaLabel` or `ariaLabelledby`.\n- Orientation is `horizontal` by default; use `vertical` when controls stack.\n- Arrow keys follow orientation. Horizontal ArrowLeft/ArrowRight mirror in RTL. Home/End move to edges.\n- Roving focus skips disabled and aria-disabled controls and restores consumer tabindex values on destroy.\n- focusChanged emits index, element, and nativeEvent after pointer, Tab, or directional focus changes.\n- Editable input, select, textarea, and contenteditable controls retain their native arrow-key behavior.\n- ariaLabelledby takes precedence over ariaLabel when both are supplied.\n- wrap and loop default to true; rovingFocus defaults to true.\n- Set `rovingFocus=\"false\"` only when embedded controls require their own composite keyboard model.\n- Set `unstyled` or global NeuralNg unstyled and use typed root, start, center, end, and separator classes for consumer visuals.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "toolbar-center",
     "name": "NeuralToolbarCenter",
     "className": "NeuralToolbarCenter",
@@ -7223,7 +15453,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/toolbar",
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
+    "inputs": [
+      {
+        "name": "sectionClass",
+        "bindingName": "sectionClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralToolbarClasses",
@@ -7273,6 +15513,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/toolbar\n\n- Import NeuralToolbar, NeuralToolbarStart, NeuralToolbarCenter, NeuralToolbarEnd, and NeuralToolbarSeparator from `@neural-ng/core/toolbar`. Toolbar*Component names are deprecated compatibility aliases.\n- Use one `neural-toolbar` with start, center, and end projected sections.\n- Add `neural-toolbar-separator` between related action groups.\n- Always provide a meaningful `ariaLabel` or `ariaLabelledby`.\n- Orientation is `horizontal` by default; use `vertical` when controls stack.\n- Arrow keys follow orientation. Horizontal ArrowLeft/ArrowRight mirror in RTL. Home/End move to edges.\n- Roving focus skips disabled and aria-disabled controls and restores consumer tabindex values on destroy.\n- focusChanged emits index, element, and nativeEvent after pointer, Tab, or directional focus changes.\n- Editable input, select, textarea, and contenteditable controls retain their native arrow-key behavior.\n- ariaLabelledby takes precedence over ariaLabel when both are supplied.\n- wrap and loop default to true; rovingFocus defaults to true.\n- Set `rovingFocus=\"false\"` only when embedded controls require their own composite keyboard model.\n- Set `unstyled` or global NeuralNg unstyled and use typed root, start, center, end, and separator classes for consumer visuals.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "toolbar-end",
     "name": "NeuralToolbarEnd",
     "className": "NeuralToolbarEnd",
@@ -7281,7 +15522,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/toolbar",
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
+    "inputs": [
+      {
+        "name": "sectionClass",
+        "bindingName": "sectionClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralToolbarClasses",
@@ -7331,6 +15582,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/toolbar\n\n- Import NeuralToolbar, NeuralToolbarStart, NeuralToolbarCenter, NeuralToolbarEnd, and NeuralToolbarSeparator from `@neural-ng/core/toolbar`. Toolbar*Component names are deprecated compatibility aliases.\n- Use one `neural-toolbar` with start, center, and end projected sections.\n- Add `neural-toolbar-separator` between related action groups.\n- Always provide a meaningful `ariaLabel` or `ariaLabelledby`.\n- Orientation is `horizontal` by default; use `vertical` when controls stack.\n- Arrow keys follow orientation. Horizontal ArrowLeft/ArrowRight mirror in RTL. Home/End move to edges.\n- Roving focus skips disabled and aria-disabled controls and restores consumer tabindex values on destroy.\n- focusChanged emits index, element, and nativeEvent after pointer, Tab, or directional focus changes.\n- Editable input, select, textarea, and contenteditable controls retain their native arrow-key behavior.\n- ariaLabelledby takes precedence over ariaLabel when both are supplied.\n- wrap and loop default to true; rovingFocus defaults to true.\n- Set `rovingFocus=\"false\"` only when embedded controls require their own composite keyboard model.\n- Set `unstyled` or global NeuralNg unstyled and use typed root, start, center, end, and separator classes for consumer visuals.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "toolbar-separator",
     "name": "NeuralToolbarSeparator",
     "className": "NeuralToolbarSeparator",
@@ -7339,7 +15591,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/toolbar",
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
+    "inputs": [
+      {
+        "name": "separatorClass",
+        "bindingName": "separatorClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralToolbarClasses",
@@ -7389,6 +15651,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/toolbar\n\n- Import NeuralToolbar, NeuralToolbarStart, NeuralToolbarCenter, NeuralToolbarEnd, and NeuralToolbarSeparator from `@neural-ng/core/toolbar`. Toolbar*Component names are deprecated compatibility aliases.\n- Use one `neural-toolbar` with start, center, and end projected sections.\n- Add `neural-toolbar-separator` between related action groups.\n- Always provide a meaningful `ariaLabel` or `ariaLabelledby`.\n- Orientation is `horizontal` by default; use `vertical` when controls stack.\n- Arrow keys follow orientation. Horizontal ArrowLeft/ArrowRight mirror in RTL. Home/End move to edges.\n- Roving focus skips disabled and aria-disabled controls and restores consumer tabindex values on destroy.\n- focusChanged emits index, element, and nativeEvent after pointer, Tab, or directional focus changes.\n- Editable input, select, textarea, and contenteditable controls retain their native arrow-key behavior.\n- ariaLabelledby takes precedence over ariaLabel when both are supplied.\n- wrap and loop default to true; rovingFocus defaults to true.\n- Set `rovingFocus=\"false\"` only when embedded controls require their own composite keyboard model.\n- Set `unstyled` or global NeuralNg unstyled and use typed root, start, center, end, and separator classes for consumer visuals.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "toolbar-start",
     "name": "NeuralToolbarStart",
     "className": "NeuralToolbarStart",
@@ -7397,7 +15660,17 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/toolbar",
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
+    "inputs": [
+      {
+        "name": "sectionClass",
+        "bindingName": "sectionClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralToolbarClasses",
@@ -7447,6 +15720,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/toolbar\n\n- Import NeuralToolbar, NeuralToolbarStart, NeuralToolbarCenter, NeuralToolbarEnd, and NeuralToolbarSeparator from `@neural-ng/core/toolbar`. Toolbar*Component names are deprecated compatibility aliases.\n- Use one `neural-toolbar` with start, center, and end projected sections.\n- Add `neural-toolbar-separator` between related action groups.\n- Always provide a meaningful `ariaLabel` or `ariaLabelledby`.\n- Orientation is `horizontal` by default; use `vertical` when controls stack.\n- Arrow keys follow orientation. Horizontal ArrowLeft/ArrowRight mirror in RTL. Home/End move to edges.\n- Roving focus skips disabled and aria-disabled controls and restores consumer tabindex values on destroy.\n- focusChanged emits index, element, and nativeEvent after pointer, Tab, or directional focus changes.\n- Editable input, select, textarea, and contenteditable controls retain their native arrow-key behavior.\n- ariaLabelledby takes precedence over ariaLabel when both are supplied.\n- wrap and loop default to true; rovingFocus defaults to true.\n- Set `rovingFocus=\"false\"` only when embedded controls require their own composite keyboard model.\n- Set `unstyled` or global NeuralNg unstyled and use typed root, start, center, end, and separator classes for consumer visuals.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "tooltip",
     "name": "NeuralTooltip",
     "className": "NeuralTooltip",
@@ -7455,7 +15729,77 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/tooltip",
     "status": "beta",
     "summary": "Accessible, text-only tooltips for Angular 22+. Beta.",
+    "inputs": [
+      {
+        "name": "neuralTooltip",
+        "bindingName": "neuralTooltip",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "tooltipPosition",
+        "bindingName": "tooltipPosition",
+        "type": "NeuralTooltipPosition",
+        "required": false,
+        "defaultValue": "'top'"
+      },
+      {
+        "name": "tooltipDisabled",
+        "bindingName": "tooltipDisabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showDelay",
+        "bindingName": "showDelay",
+        "type": "number",
+        "required": false,
+        "defaultValue": "300",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "hideDelay",
+        "bindingName": "hideDelay",
+        "type": "number",
+        "required": false,
+        "defaultValue": "80",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "tooltipId",
+        "bindingName": "tooltipId",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "tooltipClass",
+        "bindingName": "tooltipClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralTooltipClasses",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      }
+    ],
     "models": [],
+    "outputs": [],
     "classes": [
       {
         "typeName": "NeuralTooltipClasses",
@@ -7490,6 +15834,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg Tooltip\n\nImport `NeuralTooltip` from `@neural-ng/core/tooltip`.\n\nPreferred usage:\n\n```html\n<button neuralTooltip=\"Delete account\">Delete</button>\n```\n\nRules:\n\n- `neuralTooltip` accepts plain descriptive text, not HTML.\n- Default position is `top`; default delays are 300 ms show and 80 ms hide.\n- Supported positions: top, top-start, top-end, bottom, bottom-start,\n  bottom-end, left, right.\n- Tooltip opens on hover or focus and closes on leave, blur, or Escape.\n- Do not place interactive content inside a tooltip.\n- Use `tooltipClass` for one root class and `classes` for typed root/content/\n  arrow slots.\n- `unstyled` removes NeuralNg visual classes. Structural classes and behavior\n  remain. Global `provideNeuralNg({ unstyled: true })` is also respected.\n- Existing `aria-describedby` tokens are preserved.\n- Wrap a native disabled control in a focusable element if it needs a tooltip.\n- `TooltipDirective` is a deprecated compatibility alias; generate\n  `NeuralTooltip` imports in new code.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "tree",
     "name": "NeuralTree",
     "className": "NeuralTree",
@@ -7498,18 +15843,249 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/tree",
     "status": "beta",
     "summary": "Signal-first hierarchical data foundation for Angular 22+.",
+    "inputs": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "readonly NeuralTreeNode<T>[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "filterMode",
+        "bindingName": "filterMode",
+        "type": "NeuralTreeFilterMode",
+        "required": false,
+        "defaultValue": "'lenient'"
+      },
+      {
+        "name": "filterFields",
+        "bindingName": "filterFields",
+        "type": "readonly string[]",
+        "required": false,
+        "defaultValue": "['label']"
+      },
+      {
+        "name": "filterPredicate",
+        "bindingName": "filterPredicate",
+        "type": "((node: NeuralTreeNode<T>, normalizedQuery: string) => boolean) | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "selectionMode",
+        "bindingName": "selectionMode",
+        "type": "NeuralTreeSelectionMode | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "metaKeySelection",
+        "bindingName": "metaKeySelection",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "rangeSelection",
+        "bindingName": "rangeSelection",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "propagateSelectionDown",
+        "bindingName": "propagateSelectionDown",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "propagateSelectionUp",
+        "bindingName": "propagateSelectionUp",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "selectableNode",
+        "bindingName": "selectableNode",
+        "type": "NeuralTreeSelectable<T> | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "loading",
+        "bindingName": "loading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "emptyLabel",
+        "bindingName": "emptyLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "loadingLabel",
+        "bindingName": "loadingLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "retryLabel",
+        "bindingName": "retryLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "ariaLabelledby",
+        "bindingName": "ariaLabelledby",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "trackBy",
+        "bindingName": "trackBy",
+        "type": "NeuralTreeTrackBy<T> | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "compact",
+        "bindingName": "compact",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "virtualScroll",
+        "bindingName": "virtualScroll",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "virtualItemSize",
+        "bindingName": "virtualItemSize",
+        "type": "number",
+        "required": false,
+        "defaultValue": "40",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "virtualScrollHeight",
+        "bindingName": "virtualScrollHeight",
+        "type": "number",
+        "required": false,
+        "defaultValue": "320",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "virtualOverscan",
+        "bindingName": "virtualOverscan",
+        "type": "number",
+        "required": false,
+        "defaultValue": "3",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "treeClass",
+        "bindingName": "treeClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralTreeClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "expandedKeys",
-        "type": "ReadonlySet<NeuralTreeKey>"
+        "bindingName": "expandedKeys",
+        "type": "ReadonlySet<NeuralTreeKey>",
+        "defaultValue": "new Set()"
       },
       {
         "name": "selectionKeys",
-        "type": "ReadonlySet<NeuralTreeKey>"
+        "bindingName": "selectionKeys",
+        "type": "ReadonlySet<NeuralTreeKey>",
+        "defaultValue": "new Set()"
       },
       {
         "name": "filterValue",
-        "type": "string"
+        "bindingName": "filterValue",
+        "type": "string",
+        "defaultValue": "''"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "nodeExpand",
+        "bindingName": "nodeExpand",
+        "type": "NeuralTreeNodeEvent<T>"
+      },
+      {
+        "name": "nodeCollapse",
+        "bindingName": "nodeCollapse",
+        "type": "NeuralTreeNodeEvent<T>"
+      },
+      {
+        "name": "nodeToggle",
+        "bindingName": "nodeToggle",
+        "type": "NeuralTreeNodeEvent<T>"
+      },
+      {
+        "name": "lazyLoad",
+        "bindingName": "lazyLoad",
+        "type": "NeuralTreeLazyLoadEvent<T>"
+      },
+      {
+        "name": "nodeSelect",
+        "bindingName": "nodeSelect",
+        "type": "NeuralTreeSelectionEvent<T>"
+      },
+      {
+        "name": "nodeUnselect",
+        "bindingName": "nodeUnselect",
+        "type": "NeuralTreeSelectionEvent<T>"
+      },
+      {
+        "name": "virtualRangeChange",
+        "bindingName": "virtualRangeChange",
+        "type": "NeuralVirtualRange"
       }
     ],
     "classes": [
@@ -7626,6 +16202,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/tree\n\n- Import NeuralTree and NeuralTreeNode from `@neural-ng/core/tree`. TreeComponent is deprecated and must not be generated in new code.\n- Every node must have a globally unique, stable string or number `key`.\n- Never mutate `value`, node children, or `expandedKeys` in place; provide new immutable references.\n- Bind `[(expandedKeys)]` to a `ReadonlySet<NeuralTreeKey>`.\n- Set `selectionMode` to `single`, `multiple`, or `checkbox`, then bind `[(selectionKeys)]` to a `ReadonlySet<NeuralTreeKey>`.\n- In multiple mode Ctrl/Meta toggles a node and Shift selects a visible range; set `metaKeySelection=\"false\"` when modifiers should not be required.\n- Checkbox mode propagates selection down and derives checked/partial state upward by default; control this with `propagateSelectionDown` and `propagateSelectionUp`.\n- Use `selectable: false` on data or the `selectableNode` callback to block selection without disabling expansion.\n- `nodeSelect` and `nodeUnselect` emit the affected node, key, resulting immutable key set, and native interaction event.\n- Tree implements one roving tabindex across visible enabled nodes; do not add positive tabindex values to projected or surrounding content.\n- Arrow Up/Down navigate visible nodes, Home/End jump to edges, and horizontal arrows expand, enter children, collapse, or return to a parent.\n- Horizontal navigation follows computed document direction: Arrow Right expands in LTR and collapses in RTL; Arrow Left does the inverse.\n- Enter/Space select when `selectionMode` is set and otherwise toggle a branch. Printable keys run locale-aware typeahead.\n- Use `leaf: false` for a branch whose children will be loaded asynchronously.\n- Handle `lazyLoad` once, then replace the matching node with an immutable copy containing children.\n- `nodeExpand`, `nodeCollapse`, and `nodeToggle` carry node, key, level, and expanded state.\n- Call component `expandAll()` and `collapseAll()` for programmatic bulk expansion.\n- Duplicate keys and cyclic node graphs throw descriptive errors.\n- `unstyled` and global unstyled remove visual classes while structural hooks and ARIA semantics remain.\n- Bind `[(filterValue)]`; use `filterMode=\"lenient\"` to retain a matched subtree or `filterMode=\"strict\"` to continue testing descendants.\n- `filterFields` accepts nested paths such as `label` and `data.meta.owner`. Filtering never mutates the source nodes.\n- Import and use `NeuralTreeNodeTemplate`, `NeuralTreeTogglerTemplate`, `NeuralTreeIconTemplate`, `NeuralTreeLoadingTemplate`, and `NeuralTreeEmptyTemplate` only when their matching `ng-template` attributes are present.\n- When a projected template reads typed node data, bind a type-only value to the directive, for example `[neuralTreeNode]=\"workspaceTemplateType\"`; never cast the template context to `any`.\n- Use `compact` for overlay surfaces. `virtualRange()` and `virtualItems()` expose fixed-height VirtualScroller connection data when `virtualScroll` settings are supplied.\n- Set a lazy node's `error` to a message or `true` for the localized fallback. The rendered Retry action emits a new `lazyLoad` request.\n- Reuse `NeuralTreeController` for DOM-independent state resolution and `mapNeuralTreeOptions()` for TreeSelect-style nested label/value/children mapping.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "tree-select",
     "name": "NeuralTreeSelect",
     "className": "NeuralTreeSelect",
@@ -7635,18 +16212,320 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Signal-first hierarchical selection composed from NeuralNg Tree and Popover.",
     "formContract": "FormValueControl<NeuralTreeSelectValue<TValue>>",
+    "inputs": [
+      {
+        "name": "options",
+        "bindingName": "options",
+        "type": "readonly TOption[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "optionLabel",
+        "bindingName": "optionLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'label'"
+      },
+      {
+        "name": "optionValue",
+        "bindingName": "optionValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'value'"
+      },
+      {
+        "name": "optionKey",
+        "bindingName": "optionKey",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "optionChildren",
+        "bindingName": "optionChildren",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'children'"
+      },
+      {
+        "name": "optionDisabled",
+        "bindingName": "optionDisabled",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'disabled'"
+      },
+      {
+        "name": "optionIcon",
+        "bindingName": "optionIcon",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'iconClass'"
+      },
+      {
+        "name": "selectionMode",
+        "bindingName": "selectionMode",
+        "type": "NeuralTreeSelectionMode",
+        "required": false,
+        "defaultValue": "'single'"
+      },
+      {
+        "name": "filter",
+        "bindingName": "filter",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "clearable",
+        "bindingName": "clearable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "closeOnSelect",
+        "bindingName": "closeOnSelect",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "loading",
+        "bindingName": "loading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "virtualScroll",
+        "bindingName": "virtualScroll",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "placeholder",
+        "bindingName": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Select an item'"
+      },
+      {
+        "name": "filterPlaceholder",
+        "bindingName": "filterPlaceholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Filter nodes'"
+      },
+      {
+        "name": "emptyLabel",
+        "bindingName": "emptyLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'No results found'"
+      },
+      {
+        "name": "loadingLabel",
+        "bindingName": "loadingLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Loading'"
+      },
+      {
+        "name": "clearLabel",
+        "bindingName": "clearLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Clear selection'"
+      },
+      {
+        "name": "dropdownLabel",
+        "bindingName": "dropdownLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Toggle tree'"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "treeSelectId",
+        "bindingName": "treeSelectId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "treeSelectClass",
+        "bindingName": "treeSelectClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralTreeSelectClasses",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "compareWith",
+        "bindingName": "compareWith",
+        "type": "(first: TValue, second: TValue) => boolean",
+        "required": false,
+        "defaultValue": "Object.is"
+      }
+    ],
     "models": [
       {
         "name": "value",
-        "type": "NeuralTreeSelectValue<TValue>"
+        "bindingName": "value",
+        "type": "NeuralTreeSelectValue<TValue>",
+        "defaultValue": "null"
       },
       {
         "name": "expandedKeys",
-        "type": "ReadonlySet<NeuralTreeKey>"
+        "bindingName": "expandedKeys",
+        "type": "ReadonlySet<NeuralTreeKey>",
+        "defaultValue": "new Set()"
       },
       {
         "name": "filterValue",
-        "type": "string"
+        "bindingName": "filterValue",
+        "type": "string",
+        "defaultValue": "''"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "selectionChange",
+        "bindingName": "selectionChange",
+        "type": "NeuralTreeSelectChange<TValue, TOption>"
+      },
+      {
+        "name": "selected",
+        "bindingName": "selected",
+        "type": "NeuralTreeSelectChange<TValue, TOption>"
+      },
+      {
+        "name": "unselected",
+        "bindingName": "unselected",
+        "type": "NeuralTreeSelectChange<TValue, TOption>"
+      },
+      {
+        "name": "cleared",
+        "bindingName": "cleared",
+        "type": "NeuralTreeSelectClear<TValue>"
+      },
+      {
+        "name": "filterChange",
+        "bindingName": "filterChange",
+        "type": "NeuralTreeSelectFilterEvent"
+      },
+      {
+        "name": "opened",
+        "bindingName": "opened",
+        "type": "void"
+      },
+      {
+        "name": "closed",
+        "bindingName": "closed",
+        "type": "void"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -7743,6 +16622,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# NeuralNg TreeSelect AI context\n\nCurrent component maturity: beta.\n\nImport `NeuralTreeSelect` and `NeuralTreeSelectValue` from\n`@neural-ng/core/tree-select`. Never import them from the primary package and\nnever create an NgModule.\n`TreeSelectComponent` is a deprecated compatibility alias; never generate it in\nnew code.\n\nRequired data contract:\n- `[options]` is immutable hierarchical data.\n- `optionLabel` selects the visible label path.\n- `optionValue` selects the form value path.\n- `optionChildren` defaults to `children`.\n- The key must be a string or number. If optionValue is an object, set\n  `optionKey` to a stable string or number path.\n\nForms contract:\n- TreeSelect implements `FormValueControl<NeuralTreeSelectValue<TValue>>`.\n- Bind `[(value)]` directly or use `[formField]`, `[formControl]`, or\n  `[(ngModel)]`; do not add a ControlValueAccessor wrapper.\n- Use `selectionMode=\"single\"` for `TValue | null` and `multiple` or `checkbox`\n  for immutable `readonly TValue[]` values.\n- Programmatic writes and `reset()` do not emit semantic selection events.\n- A changed pointer or keyboard selection emits one `selectionChange`; choosing\n  the current single value again emits nothing.\n- Chip removal in multiple modes emits `selectionChange` and `unselected`.\n\nReadonly contract:\n- readonly is not disabled: the combobox remains focusable, exposes\n  `aria-readonly`, and may open for hierarchy inspection.\n- Filtering, roving focus, and branch expansion remain active in readonly mode.\n- Tree selection, clear, and chip removal are blocked.\n- Programmatic Forms writes and reset remain allowed.\n\nUse `[closeOnSelect]=\"false\"` for multi-selection. Do not manually recreate Tree\nkeyboard or ARIA behavior. Use `unstyled` plus typed `classes` for custom\nvisuals. Structural behavior, Popover positioning, focus restoration,\nfiltering, Forms, and Tree semantics remain active in unstyled mode.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "tri-state-checkbox",
     "name": "NeuralTriStateCheckbox",
     "className": "NeuralTriStateCheckbox",
@@ -7752,10 +16632,152 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Checkbox Beta provides native, Signal-first binary and tri-state controls for Angular 22+. The two value contracts are intentionally separate so every Angular Forms adapter sees one stable model type.",
     "formContract": "FormValueControl<boolean | null>",
+    "inputs": [
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "inputId",
+        "bindingName": "inputId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputValue",
+        "bindingName": "inputValue",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'on'"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "checkboxClass",
+        "bindingName": "checkboxClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "inputClass",
+        "bindingName": "inputClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "labelClass",
+        "bindingName": "labelClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralTriStateCheckboxClasses",
+        "required": false,
+        "defaultValue": "{}"
+      }
+    ],
     "models": [
       {
         "name": "value",
         "type": "boolean | null"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "stateChange",
+        "bindingName": "stateChange",
+        "type": "NeuralTriStateCheckboxChange"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
       }
     ],
     "classes": [
@@ -7804,6 +16826,7 @@ export const GENERATED_COMPONENTS = [
     "llms": "# @neural-ng/core/checkbox\n\nAngular 22+ standalone native binary and tri-state Checkbox Beta controls.\n\nIMPORT\nimport {\n  NeuralCheckbox,\n  NeuralTriStateCheckbox,\n} from '@neural-ng/core/checkbox';\n\nBINARY\n<neural-checkbox [(checked)]=\"accepted\">\n  I accept the terms\n</neural-checkbox>\n\nTRI-STATE\n<neural-tri-state-checkbox [(value)]=\"permission\">\n  Inherit permission\n</neural-tri-state-checkbox>\n\nFORMS\n<neural-checkbox [formField]=\"form.accepted\">Accept</neural-checkbox>\n<neural-checkbox [formControl]=\"acceptedControl\">Accept</neural-checkbox>\n<neural-checkbox name=\"accepted\" [(ngModel)]=\"accepted\">Accept</neural-checkbox>\n\n<neural-tri-state-checkbox [formField]=\"form.permission\">\n  Inherit\n</neural-tri-state-checkbox>\n\nRULES\n- NeuralCheckbox implements FormCheckboxControl.\n- Binary checked is always boolean and generates checkedChange.\n- Binary `indeterminate` is presentation-only for partial collection\n  selection. It maps to native indeterminate plus aria-checked=\"mixed\" and\n  never changes the boolean checked model.\n- NeuralTriStateCheckbox implements FormValueControl<boolean | null>.\n- Never generate the deprecated CheckboxComponent or\n  TriStateCheckboxComponent aliases.\n- Tri-state value generates valueChange and cycles false -> true -> null -> false.\n- null means mixed and maps to the native indeterminate property plus\n  aria-checked=\"mixed\".\n- Do not add triState back to neural-checkbox and do not bind nullable data to\n  checked.\n- Do not invent a separate indeterminate model for tri-state; tri-state value\n  is authoritative.\n- stateChange is a user-only semantic event. Programmatic form/model writes do\n  not emit it.\n- disabled removes interaction. readonly remains focusable and blocks mutation.\n- touch emits when the native input blurs.\n- Preserve the real input[type=checkbox], projected label, native Space\n  activation, required, name, value, focus, and form behavior.\n- Use ariaLabel when there is no visible projected label.\n- Both components share --neural-checkbox-* theme tokens.\n- Use unstyled or global provideNeuralNg({ unstyled: true }) for headless mode.\n- Inside neural-field, inherit accessible ids, descriptions, and field state.\n- The components are SSR/hydration safe. Call focus() only from browser-side\n  interaction code.\n- Beta boundary: Checkbox owns native binary/tri-state input behavior and form\n  integration. Business validation and group semantics belong to the consumer\n  or Neural Field.\n"
   },
   {
+    "schemaVersion": 2,
     "id": "virtual-scroller",
     "name": "NeuralVirtualScroller",
     "className": "NeuralVirtualScroller",
@@ -7812,10 +16835,143 @@ export const GENERATED_COMPONENTS = [
     "entryPoint": "@neural-ng/core/virtual-scroller",
     "status": "beta",
     "summary": "Fixed-size, SSR-safe collection windowing for Angular Signals applications.",
+    "inputs": [
+      {
+        "name": "items",
+        "bindingName": "items",
+        "type": "readonly T[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "itemSize",
+        "bindingName": "itemSize",
+        "type": "number",
+        "required": false,
+        "defaultValue": "48",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "viewportSize",
+        "bindingName": "viewportSize",
+        "type": "number",
+        "required": false,
+        "defaultValue": "320",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "overscan",
+        "bindingName": "overscan",
+        "type": "number",
+        "required": false,
+        "defaultValue": "3",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "orientation",
+        "bindingName": "orientation",
+        "type": "NeuralVirtualScrollerOrientation",
+        "required": false,
+        "defaultValue": "'vertical'"
+      },
+      {
+        "name": "lazy",
+        "bindingName": "lazy",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "loading",
+        "bindingName": "loading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "emptyMessage",
+        "bindingName": "emptyMessage",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'No items found'"
+      },
+      {
+        "name": "loadingMessage",
+        "bindingName": "loadingMessage",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Loading items'"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'Virtual list'"
+      },
+      {
+        "name": "tabindex",
+        "bindingName": "tabindex",
+        "type": "number",
+        "required": false,
+        "defaultValue": "0",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "virtualScrollerClass",
+        "bindingName": "virtualScrollerClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralVirtualScrollerClasses",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "trackBy",
+        "bindingName": "trackBy",
+        "type": "NeuralVirtualScrollerTrackBy<T> | null",
+        "required": false,
+        "defaultValue": "null"
+      }
+    ],
     "models": [
       {
         "name": "first",
-        "type": "number"
+        "bindingName": "first",
+        "type": "number",
+        "defaultValue": "0"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "rangeChange",
+        "bindingName": "rangeChange",
+        "type": "NeuralVirtualScrollerRangeEvent"
+      },
+      {
+        "name": "lazyLoad",
+        "bindingName": "lazyLoad",
+        "type": "NeuralVirtualScrollerRangeEvent"
+      },
+      {
+        "name": "scrolled",
+        "bindingName": "scrolled",
+        "type": "NeuralVirtualScrollerScrollEvent"
       }
     ],
     "classes": [

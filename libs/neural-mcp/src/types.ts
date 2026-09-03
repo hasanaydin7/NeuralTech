@@ -1,8 +1,28 @@
 export type NeuralCatalogKind = 'component' | 'directive';
 
+export interface NeuralComponentInput {
+  readonly name: string;
+  readonly bindingName: string;
+  readonly type: string;
+  readonly required: boolean;
+  readonly defaultValue?: string;
+  readonly transform?: string;
+  readonly description?: string;
+}
+
 export interface NeuralComponentModel {
   readonly name: string;
+  readonly bindingName?: string;
   readonly type: string;
+  readonly defaultValue?: string;
+  readonly description?: string;
+}
+
+export interface NeuralComponentOutput {
+  readonly name: string;
+  readonly bindingName: string;
+  readonly type: string;
+  readonly description?: string;
 }
 
 export interface NeuralClassSlotContract {
@@ -24,6 +44,7 @@ export interface NeuralComponentResources {
 }
 
 export interface NeuralComponentContract {
+  readonly schemaVersion: 2;
   readonly id: string;
   readonly name: string;
   readonly className: string;
@@ -33,7 +54,9 @@ export interface NeuralComponentContract {
   readonly status: 'alpha' | 'beta';
   readonly summary: string;
   readonly formContract?: string;
+  readonly inputs: readonly NeuralComponentInput[];
   readonly models: readonly NeuralComponentModel[];
+  readonly outputs: readonly NeuralComponentOutput[];
   readonly classes: readonly NeuralClassesContract[];
   readonly relatedComponents: readonly string[];
   readonly resources: NeuralComponentResources;

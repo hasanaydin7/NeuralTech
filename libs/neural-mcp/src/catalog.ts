@@ -142,6 +142,7 @@ function toContract(
   document: NeuralComponentDocument,
 ): NeuralComponentContract {
   return {
+    schemaVersion: document.schemaVersion,
     id: document.id,
     name: document.name,
     className: document.className,
@@ -151,7 +152,9 @@ function toContract(
     status: document.status,
     summary: document.summary,
     formContract: document.formContract,
+    inputs: document.inputs,
     models: document.models,
+    outputs: document.outputs,
     classes: document.classes,
     relatedComponents: document.relatedComponents,
     resources: document.resources,

@@ -108,7 +108,6 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
 
   for (const [index, declaration] of declarations.entries()) {
     const id = entryIds[index];
-    const models = detectModels(declaration.source, declaration.className);
     const formContract = detectFormContract(
       declaration.source,
       declaration.className,
@@ -117,6 +116,7 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
     const readmeUri = `neural://components/${id}/readme`;
     const llmsUri = `neural://components/${id}/llms`;
     components.push({
+      schemaVersion: 2,
       id,
       name: stripSuffix(declaration.className),
       className: declaration.className,
@@ -165,7 +165,9 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
           : 'alpha',
       summary,
       ...(formContract ? { formContract } : {}),
-      models,
+      inputs: declaration.inputs,
+      models: declaration.models,
+      outputs: declaration.outputs,
       classes,
       relatedComponents: entryIds.filter((relatedId) => relatedId !== id),
       resources: {
@@ -277,11 +279,136 @@ function parseDeclarations(source) {
         className: statement.name.text,
         kind: decoratorName.text === 'Component' ? 'component' : 'directive',
         selector: selector.text,
+        ...parseSignalContracts(statement, sourceFile),
       });
     }
   }
 
   return declarations;
+}
+
+function parseSignalContracts(classDeclaration, sourceFile) {
+  const inputs = [];
+  const models = [];
+  const outputs = [];
+
+  for (const member of classDeclaration.members) {
+    if (!ts.isPropertyDeclaration(member) || !member.initializer) continue;
+    if (
+      !ts.isIdentifier(member.name) ||
+      !ts.isCallExpression(member.initializer)
+    ) {
+      continue;
+    }
+
+    const call = member.initializer;
+    const signalKind = getSignalKind(call.expression);
+    if (!signalKind) continue;
+
+    const name = member.name.text;
+    const description = readJsDoc(member) || undefined;
+    const typeArgument = call.typeArguments?.[0]?.getText(sourceFile);
+    const required = signalKind === 'input.required';
+    const optionsIndex = signalKind === 'output' || required ? 0 : 1;
+    const options = call.arguments[optionsIndex];
+    const bindingName = readStringProperty(options, 'alias') ?? name;
+
+    if (signalKind === 'output') {
+      outputs.push({
+        name,
+        bindingName,
+        type: typeArgument ? normalizeType(typeArgument) : 'void',
+        ...(description ? { description } : {}),
+      });
+      continue;
+    }
+
+    const defaultExpression = required ? undefined : call.arguments[0];
+    const type = typeArgument
+      ? normalizeType(typeArgument)
+      : inferExpressionType(defaultExpression, sourceFile);
+    const defaultValue = defaultExpression?.getText(sourceFile);
+
+    if (signalKind === 'model') {
+      models.push({
+        name,
+        bindingName,
+        type,
+        ...(defaultValue ? { defaultValue } : {}),
+        ...(description ? { description } : {}),
+      });
+      continue;
+    }
+
+    const transform = readExpressionProperty(options, 'transform', sourceFile);
+    inputs.push({
+      name,
+      bindingName,
+      type,
+      required,
+      ...(defaultValue ? { defaultValue } : {}),
+      ...(transform ? { transform } : {}),
+      ...(description ? { description } : {}),
+    });
+  }
+
+  return { inputs, models, outputs };
+}
+
+function getSignalKind(expression) {
+  if (ts.isIdentifier(expression)) {
+    if (expression.text === 'input') return 'input';
+    if (expression.text === 'model') return 'model';
+    if (expression.text === 'output') return 'output';
+  }
+  if (
+    ts.isPropertyAccessExpression(expression) &&
+    ts.isIdentifier(expression.expression) &&
+    expression.expression.text === 'input' &&
+    expression.name.text === 'required'
+  ) {
+    return 'input.required';
+  }
+  return undefined;
+}
+
+function readStringProperty(expression, name) {
+  const value = readObjectProperty(expression, name);
+  return value && ts.isStringLiteralLike(value) ? value.text : undefined;
+}
+
+function readExpressionProperty(expression, name, sourceFile) {
+  return readObjectProperty(expression, name)?.getText(sourceFile);
+}
+
+function readObjectProperty(expression, name) {
+  if (!expression || !ts.isObjectLiteralExpression(expression))
+    return undefined;
+  const property = expression.properties.find(
+    (candidate) =>
+      ts.isPropertyAssignment(candidate) &&
+      ((ts.isIdentifier(candidate.name) && candidate.name.text === name) ||
+        (ts.isStringLiteralLike(candidate.name) &&
+          candidate.name.text === name)),
+  );
+  return property && ts.isPropertyAssignment(property)
+    ? property.initializer
+    : undefined;
+}
+
+function inferExpressionType(expression, sourceFile) {
+  if (!expression) return 'unknown';
+  if (
+    expression.kind === ts.SyntaxKind.TrueKeyword ||
+    expression.kind === ts.SyntaxKind.FalseKeyword
+  ) {
+    return 'boolean';
+  }
+  if (ts.isNumericLiteral(expression)) return 'number';
+  if (ts.isStringLiteralLike(expression)) return 'string';
+  if (expression.kind === ts.SyntaxKind.NullKeyword) return 'null';
+  if (ts.isArrayLiteralExpression(expression)) return 'readonly unknown[]';
+  return inferLiteralType(expression.getText(sourceFile));
 }
 
 function parseClasses(source) {
@@ -384,44 +511,6 @@ function detectFormContract(source, className) {
   return generic
     ? `FormValueControl<${normalizeType(generic.content)}>`
     : undefined;
-}
-
-function detectModels(source, className) {
-  const start = findClassStart(source, className);
-  if (start < 0) return [];
-  const nextDecorator = source.indexOf('\n@Component', start + 1);
-  const nextDirective = source.indexOf('\n@Directive', start + 1);
-  const boundaries = [nextDecorator, nextDirective].filter(
-    (value) => value > start,
-  );
-  const end = boundaries.length ? Math.min(...boundaries) : source.length;
-  const classSource = source.slice(start, end);
-  const models = [];
-  const pattern = /readonly\s+(\w+)\s*=\s*model\b/g;
-  let match;
-  while ((match = pattern.exec(classSource))) {
-    let cursor = pattern.lastIndex;
-    while (/\s/.test(classSource[cursor] ?? '')) cursor += 1;
-    const generic =
-      classSource[cursor] === '<'
-        ? readBalanced(classSource, cursor, '<', '>')
-        : undefined;
-    if (generic) cursor = generic.end + 1;
-    while (/\s/.test(classSource[cursor] ?? '')) cursor += 1;
-    const initializer =
-      classSource[cursor] === '('
-        ? readBalanced(classSource, cursor, '(', ')')
-        : undefined;
-    if (!initializer) continue;
-    pattern.lastIndex = initializer.end + 1;
-    models.push({
-      name: match[1],
-      type: generic
-        ? normalizeType(generic.content)
-        : inferLiteralType(initializer.content.trim()),
-    });
-  }
-  return models;
 }
 
 function readBalanced(source, start, open, close) {
