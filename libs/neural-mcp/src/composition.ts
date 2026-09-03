@@ -243,6 +243,104 @@ function addGoalCandidates(
       ),
     );
   }
+  if (containsAny(goal, ['typeahead', 'autocomplete', 'search suggestion'])) {
+    candidates.push(
+      candidate(
+        'auto-complete',
+        'feature',
+        'Provides typed suggestions while preserving controlled query and value state.',
+        'content',
+      ),
+    );
+  }
+  if (containsAny(goal, ['upload', 'attachment', 'drag drop file'])) {
+    candidates.push(
+      candidate(
+        'neural-file-upload',
+        'feature',
+        'Owns accessible file selection, validation, and upload state.',
+        'content',
+      ),
+    );
+  }
+  if (
+    containsAny(goal, [
+      'currency',
+      'price',
+      'amount',
+      'numeric',
+      'number input',
+    ])
+  ) {
+    candidates.push(
+      candidate(
+        'neural-input-number',
+        'feature',
+        'Preserves typed numeric value and locale-aware formatting.',
+        'content',
+      ),
+    );
+  }
+  if (containsAny(goal, ['password', 'secret'])) {
+    candidates.push(
+      candidate(
+        'neural-password',
+        'feature',
+        'Provides password visibility and strength behavior without exposing the value.',
+        'content',
+      ),
+    );
+  }
+  if (containsAny(goal, ['otp', 'verification code', 'one time code'])) {
+    candidates.push(
+      candidate(
+        'neural-input-otp',
+        'feature',
+        'Captures segmented verification input with keyboard continuity.',
+        'content',
+      ),
+    );
+  }
+  if (containsAny(goal, ['phone', 'masked input', 'input mask'])) {
+    candidates.push(
+      candidate(
+        'neural-input-mask',
+        'feature',
+        'Applies a controlled input mask while preserving Forms integration.',
+        'content',
+      ),
+    );
+  }
+  if (containsAny(goal, ['long text', 'comment', 'description', 'multiline'])) {
+    candidates.push(
+      candidate(
+        'textarea',
+        'feature',
+        'Captures multiline content with controlled resize behavior.',
+        'content',
+      ),
+    );
+  }
+  if (containsAny(goal, ['range', 'slider'])) {
+    candidates.push(
+      candidate(
+        'slider',
+        'feature',
+        'Captures bounded numeric or range state with keyboard behavior.',
+        'content',
+      ),
+    );
+  }
+  if (containsAny(goal, ['radio', 'mutually exclusive', 'few options'])) {
+    candidates.push(
+      candidate(
+        'radio-group',
+        'feature',
+        'Presents a small mutually exclusive choice set without hiding options.',
+        'content',
+      ),
+    );
+  }
   if (containsAny(goal, ['toggle', 'enabled', 'active setting', 'on off'])) {
     candidates.push(
       candidate(
