@@ -1,8 +1,10 @@
 import {
   getComponentContract,
+  getComponentExamples,
   recommendComponents,
   searchComponents,
 } from './catalog.js';
+import { planUi } from './composition.js';
 import { listNeuralResources, readNeuralResource } from './resources.js';
 import {
   compileThemeRecipeJson,
@@ -153,6 +155,65 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
   );
 
   server.registerTool(
+    'get_component',
+    {
+      title: 'Get a structured NeuralNg component API',
+      description:
+        'Resolve a component and return its versioned public API. Use summary for discovery, standard for implementation, or full for every class slot and example.',
+      inputSchema: runtime.zod.object({
+        component: runtime.zod.string().min(1),
+        detail: runtime.zod.string().optional().default('standard'),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      const reference = readRequiredString(input, 'component');
+      const detail = readOptionalString(input, 'detail', 'standard');
+      if (detail !== 'summary' && detail !== 'standard' && detail !== 'full') {
+        return errorResult('detail must be "summary", "standard", or "full".');
+      }
+      const component = getComponentContract(reference);
+      if (!component) {
+        return errorResult(`Unknown NeuralNg component: ${reference}`);
+      }
+      return jsonResult({ component: componentView(component, detail) });
+    },
+  );
+
+  server.registerTool(
+    'get_component_examples',
+    {
+      title: 'Get NeuralNg component examples',
+      description:
+        'Return bounded, executable examples extracted from the published component README with their heading and language.',
+      inputSchema: runtime.zod.object({
+        component: runtime.zod.string().min(1),
+        limit: runtime.zod.number().int().min(1).max(20).optional().default(5),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      const reference = readRequiredString(input, 'component');
+      const component = getComponentContract(reference);
+      if (!component) {
+        return errorResult(`Unknown NeuralNg component: ${reference}`);
+      }
+      return jsonResult({
+        component: {
+          id: component.id,
+          className: component.className,
+          selector: component.selector,
+          entryPoint: component.entryPoint,
+        },
+        examples: getComponentExamples(
+          reference,
+          readNumber(input, 'limit', 5),
+        ),
+      });
+    },
+  );
+
+  server.registerTool(
     'get_component_contract',
     {
       title: 'Get a NeuralNg component contract',
@@ -192,6 +253,65 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
           readNumber(input, 'limit', 5),
         ),
       }),
+  );
+
+  server.registerTool(
+    'plan_ui',
+    {
+      title: 'Plan a NeuralNg UI composition',
+      description:
+        'Turn a product goal into a deterministic, contract-backed component composition with exact imports, providers, state, accessibility checks, and implementation order.',
+      inputSchema: runtime.zod.object({
+        goal: runtime.zod.string().min(1),
+        kind: runtime.zod.string().optional().default('auto'),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      try {
+        const kind = readOptionalString(input, 'kind', 'auto');
+        if (
+          kind !== 'auto' &&
+          kind !== 'form' &&
+          kind !== 'page' &&
+          kind !== 'table'
+        ) {
+          return errorResult(
+            'kind must be "auto", "form", "page", or "table".',
+          );
+        }
+        return jsonResult({
+          plan: planUi({
+            goal: readRequiredString(input, 'goal'),
+            kind,
+          }),
+        });
+      } catch (error) {
+        return errorResult(readErrorMessage(error));
+      }
+    },
+  );
+
+  registerStructureTool(
+    server,
+    runtime,
+    commonAnnotations,
+    'suggest_form_structure',
+    'form',
+  );
+  registerStructureTool(
+    server,
+    runtime,
+    commonAnnotations,
+    'suggest_page_structure',
+    'page',
+  );
+  registerStructureTool(
+    server,
+    runtime,
+    commonAnnotations,
+    'suggest_table_structure',
+    'table',
   );
 
   server.registerTool(
@@ -338,6 +458,35 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
   return server;
 }
 
+function registerStructureTool(
+  server: McpServerRuntime,
+  runtime: RuntimeModules,
+  annotations: Record<string, boolean>,
+  name: string,
+  kind: 'form' | 'page' | 'table',
+): void {
+  server.registerTool(
+    name,
+    {
+      title: `Suggest a NeuralNg ${kind} structure`,
+      description: `Return a contract-backed ${kind} composition with exact imports, providers, state ownership, accessibility checks, and implementation order.`,
+      inputSchema: runtime.zod.object({
+        goal: runtime.zod.string().min(1),
+      }),
+      annotations,
+    },
+    async (input) => {
+      try {
+        return jsonResult({
+          plan: planUi({ goal: readRequiredString(input, 'goal'), kind }),
+        });
+      } catch (error) {
+        return errorResult(readErrorMessage(error));
+      }
+    },
+  );
+}
+
 async function loadRuntimeModules(): Promise<RuntimeModules> {
   const [server, stdio, zod] = await Promise.all([
     import(serverPackageSpecifier) as Promise<unknown>,
@@ -365,8 +514,10 @@ async function loadRuntimeModules(): Promise<RuntimeModules> {
 }
 
 function jsonResult(value: unknown): Record<string, unknown> {
+  const structuredContent = isRecord(value) ? value : { result: value };
   return {
     content: [{ type: 'text', text: JSON.stringify(value, null, 2) }],
+    structuredContent,
   };
 }
 
@@ -374,6 +525,42 @@ function errorResult(message: string): Record<string, unknown> {
   return {
     isError: true,
     content: [{ type: 'text', text: message }],
+  };
+}
+
+function componentView(
+  component: NonNullable<ReturnType<typeof getComponentContract>>,
+  detail: 'summary' | 'standard' | 'full',
+): Record<string, unknown> {
+  if (detail === 'full') return { ...component };
+
+  const base = {
+    schemaVersion: component.schemaVersion,
+    id: component.id,
+    name: component.name,
+    className: component.className,
+    kind: component.kind,
+    selector: component.selector,
+    entryPoint: component.entryPoint,
+    status: component.status,
+    summary: component.summary,
+    formContract: component.formContract,
+    relatedComponents: component.relatedComponents,
+    resources: component.resources,
+  };
+  if (detail === 'summary') return base;
+
+  return {
+    ...base,
+    inputs: component.inputs,
+    models: component.models,
+    outputs: component.outputs,
+    templates: component.templates,
+    providers: component.providers,
+    providerRequirements: component.providerRequirements,
+    methods: component.methods,
+    classTypes: component.classes.map((contract) => contract.typeName),
+    exampleCount: component.examples.length,
   };
 }
 

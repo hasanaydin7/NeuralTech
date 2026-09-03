@@ -60,12 +60,22 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
   const summary = extractSummary(readme ?? llms ?? '', directoryName);
   const declarations = [];
   const classes = [];
+  const providers = [];
 
   for (const filePath of sourceFiles) {
     if (dirname(filePath) !== entryRoot) continue;
     const source = await readText(filePath);
     const fileStem = `./${basename(filePath, '.ts')}`;
     const publicFile = exportAllFiles.has(fileStem);
+
+    for (const provider of parseProviders(source)) {
+      const isPublic = exportedNames.has(provider.name) || publicFile;
+      if (!isPublic || providers.some((item) => item.name === provider.name)) {
+        continue;
+      }
+      trackedFiles.add(filePath);
+      providers.push(provider);
+    }
 
     for (const contract of parseClasses(source)) {
       const isPublic = exportedNames.has(contract.typeName) || publicFile;
@@ -77,7 +87,7 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
       });
     }
 
-    if (!/\.(?:component|directive)\.ts$/.test(filePath)) continue;
+    if (!/\.ts$/.test(filePath) || /\.spec\.ts$/.test(filePath)) continue;
     const found = parseDeclarations(source);
 
     for (const declaration of found) {
@@ -105,6 +115,23 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
     if ((baseIdCounts.get(baseId) ?? 0) === 1) return baseId;
     return declaration.kind === 'directive' ? `${baseId}-directive` : baseId;
   });
+  const templates = declarations
+    .filter(
+      (declaration) =>
+        declaration.kind === 'directive' &&
+        (declaration.className.includes('Template') ||
+          declaration.selector.startsWith('ng-template[') ||
+          Boolean(declaration.templateContext)),
+    )
+    .map((declaration) => ({
+      name: stripSuffix(declaration.className),
+      className: declaration.className,
+      selector: declaration.selector,
+      contextType: declaration.templateContext ?? 'unknown',
+    }));
+  const examples = extractExamples(readme ?? '');
+  const documentationText = `${readme ?? ''}\n${llms ?? ''}`;
+  const providerRequirements = extractProviderRequirements(documentationText);
 
   for (const [index, declaration] of declarations.entries()) {
     const id = entryIds[index];
@@ -168,6 +195,13 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
       inputs: declaration.inputs,
       models: declaration.models,
       outputs: declaration.outputs,
+      templates,
+      providers,
+      providerRequirements,
+      methods: declaration.methods.filter((method) =>
+        documentationText.includes(`${method.name}(`),
+      ),
+      examples,
       classes,
       relatedComponents: entryIds.filter((relatedId) => relatedId !== id),
       resources: {
@@ -279,12 +313,149 @@ function parseDeclarations(source) {
         className: statement.name.text,
         kind: decoratorName.text === 'Component' ? 'component' : 'directive',
         selector: selector.text,
+        templateContext: parseTemplateContext(statement, sourceFile),
         ...parseSignalContracts(statement, sourceFile),
+        methods: parsePublicMethods(statement, sourceFile),
       });
     }
   }
 
   return declarations;
+}
+
+function parseTemplateContext(classDeclaration, sourceFile) {
+  for (const member of classDeclaration.members) {
+    if (
+      ts.isMethodDeclaration(member) &&
+      member.name?.getText(sourceFile) === 'ngTemplateContextGuard' &&
+      member.type &&
+      ts.isTypePredicateNode(member.type)
+    ) {
+      return member.type.type?.getText(sourceFile) ?? 'unknown';
+    }
+    if (!ts.isPropertyDeclaration(member) || !member.initializer) continue;
+    let contextType;
+    const visit = (node) => {
+      if (
+        !contextType &&
+        ts.isTypeReferenceNode(node) &&
+        node.typeName.getText(sourceFile) === 'TemplateRef'
+      ) {
+        contextType = node.typeArguments?.[0]?.getText(sourceFile);
+      }
+      if (!contextType) ts.forEachChild(node, visit);
+    };
+    visit(member.initializer);
+    if (contextType) return normalizeType(contextType);
+  }
+  return undefined;
+}
+
+function parseProviders(source) {
+  const providers = [];
+  const sourceFile = ts.createSourceFile(
+    'neural-providers.ts',
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  for (const statement of sourceFile.statements) {
+    if (!ts.isFunctionDeclaration(statement) || !statement.name) continue;
+    if (!statement.name.text.startsWith('provideNeural')) continue;
+    providers.push({
+      name: statement.name.text,
+      returnType: statement.type?.getText(sourceFile) ?? 'unknown',
+      ...(readJsDoc(statement) ? { description: readJsDoc(statement) } : {}),
+    });
+  }
+  return providers;
+}
+
+function parsePublicMethods(classDeclaration, sourceFile) {
+  const methods = [];
+  for (const member of classDeclaration.members) {
+    if (!ts.isMethodDeclaration(member) || !member.name) continue;
+    const name = member.name.getText(sourceFile);
+    if (!/^[A-Za-z_$][\w$]*$/.test(name) || name.startsWith('ng')) continue;
+    const modifiers = new Set(member.modifiers?.map((item) => item.kind) ?? []);
+    if (
+      modifiers.has(ts.SyntaxKind.PrivateKeyword) ||
+      modifiers.has(ts.SyntaxKind.ProtectedKeyword) ||
+      modifiers.has(ts.SyntaxKind.StaticKeyword)
+    ) {
+      continue;
+    }
+    const parameters = member.parameters
+      .map((parameter) => parameter.getText(sourceFile))
+      .join(', ');
+    const returnType = member.type?.getText(sourceFile) ?? 'unknown';
+    methods.push({
+      name,
+      signature: `${name}(${parameters}): ${returnType}`,
+      returnType: normalizeType(returnType),
+      ...(readJsDoc(member) ? { description: readJsDoc(member) } : {}),
+    });
+  }
+  return methods;
+}
+
+function extractProviderRequirements(documentation) {
+  const priorities = { supported: 0, optional: 1, required: 2 };
+  const requirements = new Map();
+  for (const rawLine of documentation.replace(/\r\n/g, '\n').split('\n')) {
+    const line = rawLine.trim();
+    const names = [...line.matchAll(/\b(provideNeural[A-Z]\w*)\s*\(/g)].map(
+      (match) => match[1],
+    );
+    for (const name of names) {
+      const normalized = line.toLowerCase();
+      const requirement = /\brequired\b|\bmust\b/.test(normalized)
+        ? 'required'
+        : /\boptional\b/.test(normalized)
+          ? 'optional'
+          : 'supported';
+      const current = requirements.get(name);
+      if (
+        !current ||
+        priorities[requirement] > priorities[current.requirement]
+      ) {
+        requirements.set(name, { name, requirement, evidence: line });
+      }
+    }
+  }
+  return [...requirements.values()].sort((left, right) =>
+    compareText(left.name, right.name),
+  );
+}
+
+function extractExamples(markdown) {
+  const examples = [];
+  const lines = markdown.replace(/\r\n/g, '\n').split('\n');
+  let heading = 'Usage';
+  for (let index = 0; index < lines.length; index += 1) {
+    const headingMatch = /^(#{2,4})\s+(.+)$/.exec(lines[index]);
+    if (headingMatch?.[2]) {
+      heading = headingMatch[2].replace(/`/g, '').trim();
+      continue;
+    }
+    const fence = /^```([a-zA-Z0-9_-]*)\s*$/.exec(lines[index]);
+    if (!fence) continue;
+    const code = [];
+    index += 1;
+    while (index < lines.length && !/^```\s*$/.test(lines[index])) {
+      code.push(lines[index]);
+      index += 1;
+    }
+    const value = code.join('\n').trim();
+    if (!value) continue;
+    examples.push({
+      title: heading,
+      language: fence[1] || 'text',
+      code: value,
+    });
+  }
+  return examples;
 }
 
 function parseSignalContracts(classDeclaration, sourceFile) {

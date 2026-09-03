@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   getComponentContract,
+  getComponentExamples,
   getPackageCatalog,
   listComponents,
   recommendComponents,
@@ -168,12 +169,61 @@ describe('Neural MCP catalog', () => {
     });
   });
 
+  it('publishes typed templates, providers and executable documentation examples', () => {
+    expect(getComponentContract('neural-table')).toMatchObject({
+      templates: expect.arrayContaining([
+        expect.objectContaining({
+          className: 'NeuralTableCellDirective',
+          selector: 'ng-template[neuralTableCell]',
+          contextType: 'NeuralTableCellContext<T>',
+        }),
+      ]),
+    });
+    expect(getComponentContract('neural-toast')).toMatchObject({
+      providers: expect.arrayContaining([
+        expect.objectContaining({ name: 'provideNeuralToast' }),
+      ]),
+      providerRequirements: expect.arrayContaining([
+        expect.objectContaining({
+          name: 'provideNeuralMessages',
+          requirement: 'required',
+        }),
+        expect.objectContaining({
+          name: 'provideNeuralToast',
+          requirement: 'optional',
+        }),
+      ]),
+    });
+    expect(getComponentContract('neural-table')).toMatchObject({
+      methods: expect.arrayContaining([
+        expect.objectContaining({
+          name: 'startRowEdit',
+          returnType: 'void',
+        }),
+        expect.objectContaining({
+          name: 'saveEdit',
+          returnType: 'Promise<boolean>',
+        }),
+      ]),
+    });
+    const examples = getComponentExamples('neural-select', 10);
+    expect(examples.length).toBeGreaterThan(1);
+    expect(
+      examples.some((example) => example.code.includes('<neural-select')),
+    ).toBe(true);
+  });
+
   it('searches deterministically', () => {
     const first = searchComponents('date calendar', 5);
     const second = searchComponents('date calendar', 5);
 
     expect(first).toEqual(second);
     expect(first[0]?.component.id).toBe('date-picker');
+  });
+
+  it('gives canonical component ids priority over shared entry-point aliases', () => {
+    expect(getComponentContract('table')?.className).toBe('NeuralTable');
+    expect(getComponentContract('select')?.className).toBe('NeuralSelect');
   });
 
   it('recommends tri-state checkbox for nullable inherited permission', () => {

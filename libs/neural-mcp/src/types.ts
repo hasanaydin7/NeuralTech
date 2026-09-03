@@ -25,6 +25,38 @@ export interface NeuralComponentOutput {
   readonly description?: string;
 }
 
+export interface NeuralComponentTemplate {
+  readonly name: string;
+  readonly className: string;
+  readonly selector: string;
+  readonly contextType: string;
+}
+
+export interface NeuralComponentProvider {
+  readonly name: string;
+  readonly returnType: string;
+  readonly description?: string;
+}
+
+export interface NeuralProviderRequirement {
+  readonly name: string;
+  readonly requirement: 'required' | 'optional' | 'supported';
+  readonly evidence: string;
+}
+
+export interface NeuralComponentMethod {
+  readonly name: string;
+  readonly signature: string;
+  readonly returnType: string;
+  readonly description?: string;
+}
+
+export interface NeuralComponentExample {
+  readonly title: string;
+  readonly language: string;
+  readonly code: string;
+}
+
 export interface NeuralClassSlotContract {
   readonly name: string;
   readonly type: string;
@@ -57,6 +89,11 @@ export interface NeuralComponentContract {
   readonly inputs: readonly NeuralComponentInput[];
   readonly models: readonly NeuralComponentModel[];
   readonly outputs: readonly NeuralComponentOutput[];
+  readonly templates: readonly NeuralComponentTemplate[];
+  readonly providers: readonly NeuralComponentProvider[];
+  readonly providerRequirements: readonly NeuralProviderRequirement[];
+  readonly methods: readonly NeuralComponentMethod[];
+  readonly examples: readonly NeuralComponentExample[];
   readonly classes: readonly NeuralClassesContract[];
   readonly relatedComponents: readonly string[];
   readonly resources: NeuralComponentResources;
@@ -85,6 +122,47 @@ export interface NeuralSearchMatch {
   readonly component: NeuralComponentContract;
   readonly score: number;
   readonly reason: string;
+}
+
+export type NeuralCompositionKind = 'auto' | 'form' | 'page' | 'table';
+
+export interface NeuralCompositionRequest {
+  readonly goal: string;
+  readonly kind?: NeuralCompositionKind;
+}
+
+export interface NeuralCompositionComponent {
+  readonly id: string;
+  readonly className: string;
+  readonly selector: string;
+  readonly entryPoint: string;
+  readonly role: 'foundation' | 'feature' | 'support';
+  readonly reason: string;
+  readonly requiredInputs: readonly string[];
+  readonly models: readonly string[];
+  readonly outputs: readonly string[];
+  readonly templates: readonly string[];
+}
+
+export interface NeuralCompositionSection {
+  readonly id: string;
+  readonly purpose: string;
+  readonly components: readonly string[];
+}
+
+export interface NeuralCompositionPlan {
+  readonly schemaVersion: 1;
+  readonly kind: Exclude<NeuralCompositionKind, 'auto'>;
+  readonly goal: string;
+  readonly rationale: string;
+  readonly components: readonly NeuralCompositionComponent[];
+  readonly sections: readonly NeuralCompositionSection[];
+  readonly imports: Readonly<Record<string, readonly string[]>>;
+  readonly providers: readonly NeuralProviderRequirement[];
+  readonly state: readonly string[];
+  readonly accessibility: readonly string[];
+  readonly implementationOrder: readonly string[];
+  readonly exampleQueries: readonly string[];
 }
 
 export interface NeuralResourceDescriptor {

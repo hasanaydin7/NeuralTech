@@ -79,12 +79,25 @@ try {
     const tools = await client.request('tools/list', {});
     const toolNames = tools?.tools?.map((tool) => tool.name) ?? [];
     assert(
-      toolNames.length === 9,
-      `Expected 9 tools, received ${toolNames.length}.`,
+      toolNames.length === 15,
+      `Expected 15 tools, received ${toolNames.length}.`,
     );
     assert(
       toolNames.includes('recommend_components'),
       'Recommendation tool is missing.',
+    );
+    assert(
+      toolNames.includes('get_component'),
+      'Component API tool is missing.',
+    );
+    assert(
+      toolNames.includes('get_component_examples'),
+      'Component examples tool is missing.',
+    );
+    assert(toolNames.includes('plan_ui'), 'UI planning tool is missing.');
+    assert(
+      toolNames.includes('suggest_table_structure'),
+      'Table structure tool is missing.',
     );
     assert(
       toolNames.includes('create_theme_recipe'),
@@ -128,6 +141,43 @@ try {
     assert(
       recommendationText.includes('tri-state-checkbox'),
       'MCP recommendation tool did not return TriStateCheckbox.',
+    );
+
+    const componentApi = await client.request('tools/call', {
+      name: 'get_component',
+      arguments: { component: 'neural-select', detail: 'standard' },
+    });
+    assert(
+      componentApi?.structuredContent?.component?.inputs?.some(
+        (input) => input.name === 'options',
+      ),
+      'Structured component API returned no Select options input.',
+    );
+
+    const componentExamples = await client.request('tools/call', {
+      name: 'get_component_examples',
+      arguments: { component: 'neural-select', limit: 3 },
+    });
+    assert(
+      componentExamples?.structuredContent?.examples?.length === 3,
+      'Structured component examples returned the wrong bounded result.',
+    );
+
+    const uiPlan = await client.request('tools/call', {
+      name: 'plan_ui',
+      arguments: {
+        goal: 'Admin user management with search, role filter, table and detail drawer',
+      },
+    });
+    const plannedIds =
+      uiPlan?.structuredContent?.plan?.components?.map(
+        (component) => component.id,
+      ) ?? [];
+    assert(
+      plannedIds.includes('table') &&
+        plannedIds.includes('select') &&
+        plannedIds.includes('neural-drawer'),
+      'UI planning tool returned an incomplete admin table composition.',
     );
 
     const createdTheme = await client.request('tools/call', {

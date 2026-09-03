@@ -8,6 +8,7 @@ export {
   searchComponents,
 } from './catalog.js';
 export { listNeuralResources, readNeuralResource } from './resources.js';
+export { planUi } from './composition.js';
 export { createNeuralMcpServer, serveNeuralMcpStdio } from './server.js';
 export {
   compileThemeRecipeJson,
@@ -27,13 +28,25 @@ export {
 export type {
   NeuralCatalogKind,
   NeuralComponentContract,
+  NeuralComponentExample,
+  NeuralComponentInput,
+  NeuralComponentMethod,
+  NeuralCompositionComponent,
+  NeuralCompositionKind,
+  NeuralCompositionPlan,
+  NeuralCompositionRequest,
+  NeuralCompositionSection,
   NeuralComponentModel,
+  NeuralComponentOutput,
+  NeuralComponentProvider,
   NeuralComponentResources,
+  NeuralComponentTemplate,
   NeuralPackageCatalog,
   NeuralResourceContents,
   NeuralResourceDescriptor,
   NeuralSearchMatch,
   NeuralThemeCatalogEntry,
+  NeuralProviderRequirement,
 } from './types.js';
 
 export type {

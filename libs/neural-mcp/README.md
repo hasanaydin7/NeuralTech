@@ -63,9 +63,40 @@ guidance.
 }
 ```
 
+### `get_component`
+
+Returns the schema-versioned Angular API contract used by coding agents. The
+`standard` detail level includes Signal inputs, models and outputs, typed
+template contexts, required providers, class contract names and the available
+example count without sending full documentation through the context window.
+
+```json
+{
+  "component": "neural-select",
+  "detail": "standard"
+}
+```
+
+Use `detail: "summary"` during discovery and `detail: "full"` only when every
+class slot and embedded example is required. Results are returned as both MCP
+text content and `structuredContent`.
+
+### `get_component_examples`
+
+Returns a bounded list of published examples with their documentation heading,
+language and code.
+
+```json
+{
+  "component": "neural-table",
+  "limit": 3
+}
+```
+
 ### `get_component_contract`
 
-Resolves a component by catalog id, class name, selector or public entry point.
+Legacy full-contract lookup retained for existing clients. New integrations
+should use `get_component` so they can select a token-efficient detail level.
 
 ```json
 {
@@ -84,6 +115,33 @@ network service.
   "limit": 3
 }
 ```
+
+## Composition intelligence
+
+### `plan_ui`
+
+Turns a product requirement into a contract-backed NeuralNg composition. The
+result contains selected primitives and reasons, exact standalone imports,
+provider requirements, structural regions, state ownership, accessibility
+checks, implementation order, and component ids that can be passed directly to
+`get_component_examples`.
+
+```json
+{
+  "goal": "Admin user management with search, role filter, table and detail drawer",
+  "kind": "auto"
+}
+```
+
+`kind` accepts `auto`, `form`, `page`, or `table`. Auto detection is
+deterministic; it does not call another model or network service.
+
+### Structure-specific planners
+
+Use `suggest_form_structure`, `suggest_page_structure`, or
+`suggest_table_structure` when the outer interaction shape is already known.
+Each accepts a non-empty `goal` and returns the same versioned plan contract as
+`plan_ui` with the corresponding kind fixed.
 
 ## Compact theme tools
 
