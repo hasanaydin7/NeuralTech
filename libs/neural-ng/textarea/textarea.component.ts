@@ -12,6 +12,11 @@ import {
 import { NEURAL_FIELD_CONTEXT, NEURAL_NG_CONFIG } from '@neural-ng/core';
 import type { NeuralTextareaResizeMode } from './textarea.types';
 
+export interface NeuralTextareaClasses {
+  /** The native textarea element enhanced by the `neuralTextarea` directive. */
+  readonly root?: string;
+}
+
 @Component({
   // A custom element would lose native textarea and form behavior.
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -23,6 +28,7 @@ import type { NeuralTextareaResizeMode } from './textarea.types';
   template: '',
   host: {
     class: 'neural-textarea-root',
+    '[class]': 'classes().root ?? ""',
     '[class.neural-textarea-base]': '!effectiveUnstyled()',
     '[class.neural-textarea-fluid-base]':
       'effectiveFluid() && !effectiveUnstyled()',
@@ -177,6 +183,7 @@ export class NeuralTextarea {
   readonly fluid = input(false, { transform: booleanAttribute });
   readonly autoResize = input(false, { transform: booleanAttribute });
   readonly resizeMode = input<NeuralTextareaResizeMode>('vertical');
+  readonly classes = input<NeuralTextareaClasses>({});
   readonly effectiveUnstyled = computed(
     () =>
       this.unstyled() ||

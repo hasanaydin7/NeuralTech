@@ -10,3 +10,4 @@ export {
   FieldHintDirective,
   FieldLabelDirective,
 } from './field.component';
+export type { NeuralFieldClasses } from './field.component';

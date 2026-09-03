@@ -4,6 +4,7 @@ export { NeuralToastTemplateDirective } from './toast-template.directive';
 export type { NeuralToastTemplateContext } from './toast-template.types';
 export type {
   NeuralToastConfig,
+  NeuralToastClasses,
   NeuralToastOptions,
   NeuralToastPosition,
 } from './toast.types';

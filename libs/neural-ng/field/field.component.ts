@@ -16,11 +16,25 @@ import {
   type NeuralFieldContext,
 } from '@neural-ng/core';
 
+export interface NeuralFieldClasses {
+  /** The field container that owns state and description relationships. */
+  readonly root?: string;
+  /** Every projected `neuralFieldLabel` element. */
+  readonly label?: string;
+  /** Every projected `neuralFieldControl` element. */
+  readonly control?: string;
+  /** Every projected `neuralFieldHint` element. */
+  readonly hint?: string;
+  /** Every projected `neuralFieldError` element. */
+  readonly error?: string;
+}
+
 @Directive({
   selector: 'label[neuralFieldLabel]',
   standalone: true,
   host: {
     class: 'neural-field__label',
+    '[class]': 'consumerClass()',
     '[class.neural-field-label-base]': '!field.effectiveUnstyled()',
     '[class.neural-field__label--required]': 'field.required()',
     '[attr.for]': 'field.controlId()',
@@ -28,6 +42,7 @@ import {
 })
 export class NeuralFieldLabel {
   readonly field = inject(NEURAL_FIELD_CONTEXT, { host: true });
+  readonly consumerClass = computed(() => this.field.classes?.().label ?? '');
 }
 
 @Directive({
@@ -35,12 +50,14 @@ export class NeuralFieldLabel {
   standalone: true,
   host: {
     class: 'neural-field__hint',
+    '[class]': 'consumerClass()',
     '[class.neural-field-hint-base]': '!field.effectiveUnstyled()',
     '[id]': 'id()',
   },
 })
 export class NeuralFieldHint {
   readonly field = inject(NEURAL_FIELD_CONTEXT, { host: true });
+  readonly consumerClass = computed(() => this.field.classes?.().hint ?? '');
   readonly id = computed(() => this.field.hintId(this));
 }
 
@@ -49,6 +66,7 @@ export class NeuralFieldHint {
   standalone: true,
   host: {
     class: 'neural-field__error',
+    '[class]': 'consumerClass()',
     '[class.neural-field-error-base]': '!field.effectiveUnstyled()',
     '[id]': 'id()',
     '[attr.aria-live]': 'live()',
@@ -56,6 +74,7 @@ export class NeuralFieldHint {
 })
 export class NeuralFieldError {
   readonly field = inject(NEURAL_FIELD_CONTEXT, { host: true });
+  readonly consumerClass = computed(() => this.field.classes?.().error ?? '');
   readonly live = input<'off' | 'polite' | 'assertive'>('polite');
   readonly id = computed(() => this.field.errorId(this));
 }
@@ -65,6 +84,7 @@ export class NeuralFieldError {
   standalone: true,
   host: {
     class: 'neural-field__control',
+    '[class]': 'consumerClass()',
     '[id]': 'field.controlId()',
     '[attr.aria-describedby]': 'field.controlDescribedBy()',
     '[attr.aria-invalid]': "field.invalid() ? 'true' : null",
@@ -77,6 +97,7 @@ export class NeuralFieldError {
 })
 export class NeuralFieldControl {
   readonly field = inject(NEURAL_FIELD_CONTEXT, { host: true });
+  readonly consumerClass = computed(() => this.field.classes?.().control ?? '');
 }
 
 @Component({
@@ -93,6 +114,7 @@ export class NeuralFieldControl {
   template: `<ng-content />`,
   host: {
     class: 'neural-field-root',
+    '[class]': 'classes().root ?? ""',
     '[class.neural-field-base]': '!effectiveUnstyled()',
     '[class.neural-field-fluid-base]': 'fluid() && !effectiveUnstyled()',
     '[class.neural-field--invalid]': 'invalid()',
@@ -181,6 +203,7 @@ export class NeuralField implements NeuralFieldContext {
   readonly fluid = input(false, { transform: booleanAttribute });
   readonly unstyled = input(false, { transform: booleanAttribute });
   readonly describedBy = input('');
+  readonly classes = input<NeuralFieldClasses>({});
 
   readonly hints = contentChildren(NeuralFieldHint, { descendants: true });
   readonly errors = contentChildren(NeuralFieldError, {

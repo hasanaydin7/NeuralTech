@@ -9,6 +9,11 @@ import {
 import { NEURAL_NG_CONFIG } from '@neural-ng/core';
 import type { NeuralButtonGroupOrientation } from './button.types';
 
+export interface NeuralButtonGroupClasses {
+  /** The group container that owns the projected buttons and group semantics. */
+  readonly root?: string;
+}
+
 @Component({
   selector: 'neural-button-group',
   standalone: true,
@@ -125,6 +130,7 @@ export class NeuralButtonGroup {
   readonly orientation = input<NeuralButtonGroupOrientation>('horizontal');
   readonly ariaLabel = input<string | null>(null);
   readonly groupClass = input('');
+  readonly classes = input<NeuralButtonGroupClasses>({});
   readonly unstyled = input(false, { transform: booleanAttribute });
 
   protected readonly effectiveUnstyled = computed(
@@ -137,6 +143,7 @@ export class NeuralButtonGroup {
       `neural-button-group-${this.orientation()}-root`,
       this.effectiveUnstyled() ? '' : 'neural-button-group-base',
       this.groupClass().trim(),
+      this.classes().root,
     ]
       .filter(Boolean)
       .join(' '),

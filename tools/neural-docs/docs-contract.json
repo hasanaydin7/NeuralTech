@@ -5,13 +5,13 @@
       "name": "@neural-ng/core",
       "manifest": "libs/neural-ng/package.json",
       "installKind": "dependency",
-      "docsRoute": "/docs/getting-started/installation"
+      "docsRoute": "/docs/installation"
     },
     {
       "name": "@neural-ng/icons",
       "manifest": "libs/neural-icons/package.json",
       "installKind": "dependency",
-      "docsRoute": "/docs/getting-started/icons"
+      "docsRoute": "/docs/icons"
     },
     {
       "name": "@neural-ng/editor",
@@ -23,13 +23,13 @@
       "name": "@neural-ng/theme",
       "manifest": "libs/neural-theme/package.json",
       "installKind": "devDependency",
-      "docsRoute": "/docs/getting-started/installation"
+      "docsRoute": "/docs/installation"
     },
     {
       "name": "@neural-ng/mcp-server",
       "manifest": "libs/neural-mcp/package.json",
       "installKind": "devDependency",
-      "docsRoute": "/docs/getting-started/installation"
+      "docsRoute": "/docs/installation"
     }
   ],
   "starter": {
@@ -52,21 +52,21 @@
       "id": "toast",
       "entryPoint": "@neural-ng/core/toast",
       "route": "/docs/components/toast",
-      "page": "apps/neural-demo/src/app/docs/pages/toast/toast.page.html",
-      "controller": "apps/neural-demo/src/app/docs/pages/toast/toast.page.ts",
+      "page": "apps/neural-site/src/app/pages/docs/toast/toast.page.html",
+      "controller": "apps/neural-site/src/app/pages/docs/toast/toast.page.ts",
       "readme": "libs/neural-ng/toast/README.md",
       "llms": "libs/neural-ng/toast/llms.txt",
       "requiredSections": [
         "import",
-        "setup",
         "basic",
         "severity",
+        "positions",
         "lifetime",
         "channels",
-        "configuration",
         "unstyled",
-        "accessibility",
-        "api"
+        "live-regions",
+        "inputs",
+        "tokens"
       ]
     }
   ]

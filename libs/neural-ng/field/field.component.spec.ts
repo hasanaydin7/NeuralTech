@@ -30,6 +30,12 @@ import {
       [required]="required()"
       [pending]="pending()"
       [unstyled]="unstyled()"
+      [classes]="{
+        root: 'typed-field',
+        label: 'typed-label',
+        hint: 'typed-hint',
+        error: 'typed-error',
+      }"
     >
       <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
       <label neuralFieldLabel class="consumer-label">Work email</label>
@@ -155,6 +161,14 @@ describe('NeuralField', () => {
     ) as HTMLInputElement;
 
     expect(field.classList).toContain('consumer-field');
+    expect(field.classList).toContain('typed-field');
+    expect(
+      (fixture.nativeElement.querySelector('label') as HTMLElement).classList,
+    ).toContain('typed-label');
+    expect(
+      (fixture.nativeElement.querySelector('[neuralFieldHint]') as HTMLElement)
+        .classList,
+    ).toContain('typed-hint');
     expect(field.classList).toContain('neural-field-fluid-base');
     expect(input.classList).toContain('consumer-control');
     expect(input.classList).toContain('neural-input-fluid-base');

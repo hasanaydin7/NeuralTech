@@ -12,6 +12,11 @@ import {
 import { NEURAL_FIELD_CONTEXT, NEURAL_NG_CONFIG } from '@neural-ng/core';
 import type { NeuralInputSize, NeuralInputVariant } from './input.types';
 
+export interface NeuralInputClasses {
+  /** The native input element enhanced by the `neuralInput` directive. */
+  readonly root?: string;
+}
+
 @Component({
   // A custom element would lose native form behavior.
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -23,6 +28,7 @@ import type { NeuralInputSize, NeuralInputVariant } from './input.types';
   template: '',
   host: {
     class: 'neural-input-root',
+    '[class]': 'consumerClass()',
     '[class.neural-input-base]': '!effectiveUnstyled()',
     '[class.neural-input-small-base]':
       "inputSize() === 'small' && !effectiveUnstyled()",
@@ -197,6 +203,8 @@ export class NeuralInput {
     'outlined',
     { transform: normalizeInputVariant },
   );
+  readonly classes = input<NeuralInputClasses>({});
+  readonly consumerClass = computed(() => this.classes().root ?? '');
   readonly effectiveUnstyled = computed(
     () =>
       this.unstyled() ||

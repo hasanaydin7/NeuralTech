@@ -91,6 +91,22 @@ describe('Neural MCP catalog', () => {
     });
   });
 
+  it('publishes typed class slots from the public source contract', () => {
+    const select = getComponentContract('neural-select');
+    const selectClasses = select?.classes.find(
+      (contract) => contract.typeName === 'NeuralSelectClasses',
+    );
+
+    expect(selectClasses?.slots).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ name: 'root', type: 'string' }),
+        expect.objectContaining({ name: 'panel', type: 'string' }),
+        expect.objectContaining({ name: 'option', type: 'string' }),
+      ]),
+    );
+    expect(selectClasses?.slots.every((slot) => slot.description)).toBe(true);
+  });
+
   it('searches deterministically', () => {
     const first = searchComponents('date calendar', 5);
     const second = searchComponents('date calendar', 5);

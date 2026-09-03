@@ -373,6 +373,69 @@ export const SITE_TYPED_CLASS_CONTRACTS = [
     ],
   },
   {
+    route: "button",
+    entryPoint: "@neural-ng/core/button",
+    typeName: "NeuralButtonClasses",
+    sourcePath: "libs/neural-ng/button/button.component.ts",
+    slots: [
+      {
+        name: "root",
+        type: "string",
+        description:
+          "The native button element and primary styling/layout surface.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "icon",
+        type: "string",
+        description:
+          "The leading or trailing icon rendered from the `icon` input.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "label",
+        type: "string",
+        description: "The text rendered from the `label` input.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "content",
+        type: "string",
+        description:
+          "The projected content container used when `label` is absent.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "loadingIcon",
+        type: "string",
+        description: "The progress icon rendered while `loading` is true.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "loadingLabel",
+        type: "string",
+        description:
+          "The accessible loading text rendered while `loading` is true.",
+        availability: "Whenever rendered",
+      },
+    ],
+  },
+  {
+    route: "button",
+    entryPoint: "@neural-ng/core/button",
+    typeName: "NeuralButtonGroupClasses",
+    sourcePath: "libs/neural-ng/button/button-group.component.ts",
+    slots: [
+      {
+        name: "root",
+        type: "string",
+        description:
+          "The group container that owns the projected buttons and group semantics.",
+        availability: "Whenever rendered",
+      },
+    ],
+  },
+  {
     route: "card",
     entryPoint: "@neural-ng/core/card",
     typeName: "NeuralCardClasses",
@@ -1476,6 +1539,45 @@ export const SITE_TYPED_CLASS_CONTRACTS = [
     ],
   },
   {
+    route: "field",
+    entryPoint: "@neural-ng/core/field",
+    typeName: "NeuralFieldClasses",
+    sourcePath: "libs/neural-ng/field/field.component.ts",
+    slots: [
+      {
+        name: "root",
+        type: "string",
+        description:
+          "The field container that owns state and description relationships.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "label",
+        type: "string",
+        description: "Every projected `neuralFieldLabel` element.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "control",
+        type: "string",
+        description: "Every projected `neuralFieldControl` element.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "hint",
+        type: "string",
+        description: "Every projected `neuralFieldHint` element.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "error",
+        type: "string",
+        description: "Every projected `neuralFieldError` element.",
+        availability: "Whenever rendered",
+      },
+    ],
+  },
+  {
     route: "file-upload",
     entryPoint: "@neural-ng/core/file-upload",
     typeName: "NeuralFileUploadClasses",
@@ -1591,6 +1693,48 @@ export const SITE_TYPED_CLASS_CONTRACTS = [
         name: "message",
         type: "string",
         description: "Classes applied to the message element.",
+        availability: "Whenever rendered",
+      },
+    ],
+  },
+  {
+    route: "input",
+    entryPoint: "@neural-ng/core/input",
+    typeName: "NeuralInputClasses",
+    sourcePath: "libs/neural-ng/input/input.component.ts",
+    slots: [
+      {
+        name: "root",
+        type: "string",
+        description:
+          "The native input element enhanced by the `neuralInput` directive.",
+        availability: "Whenever rendered",
+      },
+    ],
+  },
+  {
+    route: "input",
+    entryPoint: "@neural-ng/core/input",
+    typeName: "NeuralInputGroupClasses",
+    sourcePath: "libs/neural-ng/input/input-group.component.ts",
+    slots: [
+      {
+        name: "root",
+        type: "string",
+        description:
+          "The outer container that owns the icons and projected input.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "startIcon",
+        type: "string",
+        description: "The icon rendered before the projected input.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "endIcon",
+        type: "string",
+        description: "The icon rendered after the projected input.",
         availability: "Whenever rendered",
       },
     ],
@@ -3268,6 +3412,96 @@ export const SITE_TYPED_CLASS_CONTRACTS = [
         type: "string",
         description:
           "Classes applied to the remove icon; use it for size, color and alignment.",
+        availability: "Whenever rendered",
+      },
+    ],
+  },
+  {
+    route: "textarea",
+    entryPoint: "@neural-ng/core/textarea",
+    typeName: "NeuralTextareaClasses",
+    sourcePath: "libs/neural-ng/textarea/textarea.component.ts",
+    slots: [
+      {
+        name: "root",
+        type: "string",
+        description:
+          "The native textarea element enhanced by the `neuralTextarea` directive.",
+        availability: "Whenever rendered",
+      },
+    ],
+  },
+  {
+    route: "toast",
+    entryPoint: "@neural-ng/core/toast",
+    typeName: "NeuralToastClasses",
+    sourcePath: "libs/neural-ng/toast/toast.types.ts",
+    slots: [
+      {
+        name: "root",
+        type: "string",
+        description: "The fixed-position region that owns the toast stack.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "item",
+        type: "string",
+        description: "The wrapper for each rendered notification.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "message",
+        type: "string",
+        description: "The notification article surface.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "icon",
+        type: "string",
+        description: "The semantic severity icon.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "content",
+        type: "string",
+        description: "The container that groups title and detail text.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "title",
+        type: "string",
+        description: "The optional notification title.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "detail",
+        type: "string",
+        description: "The primary notification detail text.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "closeButton",
+        type: "string",
+        description: "The dismiss button rendered for dismissible messages.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "progressTrack",
+        type: "string",
+        description: "The progress track rendered for timed messages.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "progressValue",
+        type: "string",
+        description: "The animated progress value inside the track.",
+        availability: "Whenever rendered",
+      },
+      {
+        name: "liveRegion",
+        type: "string",
+        description:
+          "The visually hidden polite and assertive announcement regions.",
         availability: "Whenever rendered",
       },
     ],

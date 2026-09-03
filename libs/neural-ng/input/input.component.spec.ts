@@ -22,6 +22,7 @@ import { NeuralInput } from './input.component';
       [unstyled]="unstyled()"
       [inputSize]="inputSize()"
       [variant]="variant()"
+      [classes]="{ root: 'typed-input' }"
       [disabled]="disabled()"
       [readOnly]="readonly()"
       [attr.aria-invalid]="invalid()"
@@ -66,6 +67,11 @@ class TemplateInputTestHost {
       fluid
       inputGroupClass="consumer-group"
       iconClass="consumer-icon"
+      [classes]="{
+        root: 'typed-group',
+        startIcon: 'typed-start',
+        endIcon: 'typed-end',
+      }"
     >
       <input neuralInput aria-label="Search users" />
     </neural-input-group>
@@ -101,6 +107,7 @@ describe('NeuralInput', () => {
     expect(input.classList).toContain('consumer-class');
     expect(input.classList).toContain('neural-input-root');
     expect(input.classList).toContain('neural-input-base');
+    expect(input.classList).toContain('typed-input');
   });
 
   it('supports visual sizes without consuming the native size attribute', async () => {
@@ -246,12 +253,15 @@ describe('NeuralInput', () => {
     expect(group.classList).toContain('neural-input-group-base');
     expect(group.classList).toContain('neural-input-group-fluid-base');
     expect(group.classList).toContain('consumer-group');
+    expect(group.classList).toContain('typed-group');
     expect(input.classList).toContain('neural-input-root');
     expect(input.getAttribute('aria-label')).toBe('Search users');
     expect(icons).toHaveLength(2);
     expect(icons[0]?.classList).toContain('nt-search');
     expect(icons[0]?.classList).toContain('consumer-icon');
+    expect(icons[0]?.classList).toContain('typed-start');
     expect(icons[1]?.classList).toContain('nt-user');
+    expect(icons[1]?.classList).toContain('typed-end');
     expect(icons[0]?.getAttribute('aria-hidden')).toBe('true');
   });
 });

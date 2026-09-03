@@ -15,7 +15,7 @@ Message API, its Toast renderer, timezone-safe DatePicker/TimePicker,
 localization, and an optional Signal-based color-mode controller are the first
 public building blocks.
 
-The current package version is `0.1.0-beta.5`.
+The current package version is `0.1.0-beta.8`.
 
 ## Install
 

@@ -152,6 +152,7 @@ function toContract(
     summary: document.summary,
     formContract: document.formContract,
     models: document.models,
+    classes: document.classes,
     relatedComponents: document.relatedComponents,
     resources: document.resources,
   };

@@ -1,6 +1,6 @@
 {
   "name": "@neural-ng/mcp-server",
-  "version": "0.1.0-beta.5",
+  "version": "0.1.0-beta.6",
   "description": "Read-only MCP server for NeuralNg component and compact theme contracts.",
   "mcpName": "io.github.hasanaydin7/neuralng",
   "type": "module",

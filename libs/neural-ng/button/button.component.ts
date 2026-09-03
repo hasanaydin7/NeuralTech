@@ -23,6 +23,21 @@ import type {
   NeuralButtonSize,
 } from './button.types';
 
+export interface NeuralButtonClasses {
+  /** The native button element and primary styling/layout surface. */
+  readonly root?: string;
+  /** The leading or trailing icon rendered from the `icon` input. */
+  readonly icon?: string;
+  /** The text rendered from the `label` input. */
+  readonly label?: string;
+  /** The projected content container used when `label` is absent. */
+  readonly content?: string;
+  /** The progress icon rendered while `loading` is true. */
+  readonly loadingIcon?: string;
+  /** The accessible loading text rendered while `loading` is true. */
+  readonly loadingLabel?: string;
+}
+
 @Component({
   selector: 'neural-button',
   standalone: true,
@@ -61,19 +76,16 @@ import type {
       (pointercancel)="pointerCancel.emit($event)"
     >
       @if (loading()) {
-        <span
-          class="neural-btn-spinner nt nt-loader-3 nt-spin-dual"
-          aria-hidden="true"
-        ></span>
-        <span class="neural-btn-loading-label">{{ loadingLabel() }}</span>
+        <span [class]="loadingIconClass()" aria-hidden="true"></span>
+        <span [class]="loadingLabelClass()">{{ loadingLabel() }}</span>
       } @else {
         @if (icon() && iconPosition() === 'start') {
           <i [class]="iconClass()" aria-hidden="true"></i>
         }
         @if (label()?.trim()) {
-          <span class="neural-btn-label">{{ label() }}</span>
+          <span [class]="labelClass()">{{ label() }}</span>
         } @else {
-          <span class="neural-btn-content"><ng-content></ng-content></span>
+          <span [class]="contentClass()"><ng-content></ng-content></span>
         }
         @if (icon() && iconPosition() === 'end') {
           <i [class]="iconClass()" aria-hidden="true"></i>
@@ -559,6 +571,7 @@ export class NeuralButton {
   });
   readonly badgeAriaLabel = input<string | null>(null);
   readonly badgeClass = input('');
+  readonly classes = input<NeuralButtonClasses>({});
 
   // Applies consumer classes to the native <button>, not the component host.
   readonly buttonClass = input<string>('');
@@ -611,8 +624,29 @@ export class NeuralButton {
     const visualSize = this.effectiveUnstyled()
       ? ''
       : `neural-btn-icon-${this.iconSize() ?? this.size()}-base`;
-    return ['neural-btn-icon', visualSize, icon].filter(Boolean).join(' ');
+    return ['neural-btn-icon', visualSize, icon, this.classes().icon]
+      .filter(Boolean)
+      .join(' ');
   });
+  protected readonly labelClass = computed(() =>
+    ['neural-btn-label', this.classes().label].filter(Boolean).join(' '),
+  );
+  protected readonly contentClass = computed(() =>
+    ['neural-btn-content', this.classes().content].filter(Boolean).join(' '),
+  );
+  protected readonly loadingIconClass = computed(() =>
+    [
+      'neural-btn-spinner nt nt-loader-3 nt-spin-dual',
+      this.classes().loadingIcon,
+    ]
+      .filter(Boolean)
+      .join(' '),
+  );
+  protected readonly loadingLabelClass = computed(() =>
+    ['neural-btn-loading-label', this.classes().loadingLabel]
+      .filter(Boolean)
+      .join(' '),
+  );
 
   protected readonly variantName = computed(() =>
     this.text() ? 'text' : this.outlined() ? 'outlined' : 'solid',
@@ -636,6 +670,7 @@ export class NeuralButton {
         ? ''
         : 'neural-btn-rounded-base',
       this.buttonClass().trim(),
+      this.classes().root,
     ];
 
     return classes.filter(Boolean).join(' ');

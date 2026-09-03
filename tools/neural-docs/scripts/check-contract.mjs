@@ -8,9 +8,9 @@ import {
 
 const contract = await readJson('tools/neural-docs/docs-contract.json');
 const navigation = await readText(
-  'apps/neural-demo/src/app/docs/navigation.ts',
+  'apps/neural-site/src/app/pages/docs/docs-layout.html',
 );
-const routes = await readText('apps/neural-demo/src/app/docs/docs.routes.ts');
+const routes = await readText('apps/neural-site/src/app/app.routes.ts');
 const coreManifest = await readJson('libs/neural-ng/package.json');
 
 for (const packageContract of contract.packages) {
@@ -25,7 +25,7 @@ for (const packageContract of contract.packages) {
 
   assertIncludes(
     navigation,
-    `route: '${packageContract.docsRoute}'`,
+    `routerLink="${packageContract.docsRoute}"`,
     `${packageContract.name} navigation`,
   );
 }
@@ -44,12 +44,12 @@ for (const pilot of contract.pilots) {
 
   assertIncludes(
     navigation,
-    `route: '${pilot.route}'`,
+    `routerLink="${pilot.route}"`,
     `${pilot.id} navigation`,
   );
   assertIncludes(
     routes,
-    `path: '${routePath(pilot.route)}'`,
+    `path: '${routePath(pilot.route).replace(/^components\//, 'components/')}'`,
     `${pilot.id} route`,
   );
 

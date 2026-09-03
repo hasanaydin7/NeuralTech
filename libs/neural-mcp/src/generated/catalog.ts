@@ -5,7 +5,7 @@ import type {
   NeuralThemeCatalogEntry,
 } from '../types.js';
 
-export const GENERATED_SOURCE_HASH = "95d9e6cdf126cb7062816113a0621fa895cc2e6e68077ddb36607ca8f23fbb09";
+export const GENERATED_SOURCE_HASH = "fb45cdefb81bd1080e1616ecda304784a3d3598836a12622979b0dff1a228e84";
 
 export const GENERATED_COMPONENTS = [
   {
@@ -21,6 +21,64 @@ export const GENERATED_COMPONENTS = [
       {
         "name": "value",
         "type": "NeuralAccordionModelValue"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralAccordionClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "expandedPanel",
+            "type": "string",
+            "description": "Classes applied to the expanded panel element."
+          },
+          {
+            "name": "disabledPanel",
+            "type": "string",
+            "description": "Classes applied to the disabled panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "trigger",
+            "type": "string",
+            "description": "Classes applied to the trigger element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "contentInner",
+            "type": "string",
+            "description": "Classes applied to the content inner element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/accordion/accordion.types.ts"
       }
     ],
     "relatedComponents": [
@@ -47,6 +105,64 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Signals-first accessible disclosure groups for Angular 22+. Accordion supports either concise data items or fully projected panel composition.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralAccordionClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "expandedPanel",
+            "type": "string",
+            "description": "Classes applied to the expanded panel element."
+          },
+          {
+            "name": "disabledPanel",
+            "type": "string",
+            "description": "Classes applied to the disabled panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "trigger",
+            "type": "string",
+            "description": "Classes applied to the trigger element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "contentInner",
+            "type": "string",
+            "description": "Classes applied to the content inner element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/accordion/accordion.types.ts"
+      }
+    ],
     "relatedComponents": [
       "accordion",
       "accordion-panel",
@@ -71,6 +187,64 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Signals-first accessible disclosure groups for Angular 22+. Accordion supports either concise data items or fully projected panel composition.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralAccordionClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "expandedPanel",
+            "type": "string",
+            "description": "Classes applied to the expanded panel element."
+          },
+          {
+            "name": "disabledPanel",
+            "type": "string",
+            "description": "Classes applied to the disabled panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "trigger",
+            "type": "string",
+            "description": "Classes applied to the trigger element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "contentInner",
+            "type": "string",
+            "description": "Classes applied to the content inner element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/accordion/accordion.types.ts"
+      }
+    ],
     "relatedComponents": [
       "accordion",
       "accordion-panel",
@@ -95,6 +269,64 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Signals-first accessible disclosure groups for Angular 22+. Accordion supports either concise data items or fully projected panel composition.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralAccordionClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "expandedPanel",
+            "type": "string",
+            "description": "Classes applied to the expanded panel element."
+          },
+          {
+            "name": "disabledPanel",
+            "type": "string",
+            "description": "Classes applied to the disabled panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "trigger",
+            "type": "string",
+            "description": "Classes applied to the trigger element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "contentInner",
+            "type": "string",
+            "description": "Classes applied to the content inner element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/accordion/accordion.types.ts"
+      }
+    ],
     "relatedComponents": [
       "accordion",
       "accordion-header",
@@ -129,6 +361,94 @@ export const GENERATED_COMPONENTS = [
         "type": "string"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralAutoCompleteClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "inputGroup",
+            "type": "string",
+            "description": "Classes applied to the input group element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "clearButton",
+            "type": "string",
+            "description": "Classes applied to the clear button element."
+          },
+          {
+            "name": "dropdownButton",
+            "type": "string",
+            "description": "Classes applied to the dropdown button element."
+          },
+          {
+            "name": "loadingIndicator",
+            "type": "string",
+            "description": "Classes applied to the loading indicator element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "option",
+            "type": "string",
+            "description": "Classes applied to the option element."
+          },
+          {
+            "name": "activeOption",
+            "type": "string",
+            "description": "Classes applied to the active option element."
+          },
+          {
+            "name": "selectedOption",
+            "type": "string",
+            "description": "Classes applied to the selected option element."
+          },
+          {
+            "name": "disabledOption",
+            "type": "string",
+            "description": "Classes applied to the disabled option element."
+          },
+          {
+            "name": "emptyMessage",
+            "type": "string",
+            "description": "Classes applied to the empty message element."
+          },
+          {
+            "name": "loadingMessage",
+            "type": "string",
+            "description": "Classes applied to the loading message element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/auto-complete/auto-complete.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/auto-complete/contract",
@@ -149,6 +469,60 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Image, initials, icon, and custom fallback identities for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralAvatarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "image",
+            "type": "string",
+            "description": "Classes applied to the image element."
+          },
+          {
+            "name": "fallback",
+            "type": "string",
+            "description": "Classes applied to the fallback element."
+          },
+          {
+            "name": "initials",
+            "type": "string",
+            "description": "Classes applied to the initials element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/avatar/avatar.types.ts"
+      },
+      {
+        "typeName": "NeuralAvatarGroupClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "overflow",
+            "type": "string",
+            "description": "Classes applied to the overflow element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/avatar/avatar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "avatar-group"
     ],
@@ -171,6 +545,60 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Image, initials, icon, and custom fallback identities for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralAvatarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "image",
+            "type": "string",
+            "description": "Classes applied to the image element."
+          },
+          {
+            "name": "fallback",
+            "type": "string",
+            "description": "Classes applied to the fallback element."
+          },
+          {
+            "name": "initials",
+            "type": "string",
+            "description": "Classes applied to the initials element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/avatar/avatar.types.ts"
+      },
+      {
+        "typeName": "NeuralAvatarGroupClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "overflow",
+            "type": "string",
+            "description": "Classes applied to the overflow element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/avatar/avatar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "avatar"
     ],
@@ -193,6 +621,29 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Compact status, count, and metadata indicators for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralBadgeClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "description": "Classes applied to the value element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/badge/badge.types.ts"
+      }
+    ],
     "relatedComponents": [
       "badge-directive"
     ],
@@ -215,6 +666,29 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Compact status, count, and metadata indicators for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralBadgeClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "description": "Classes applied to the value element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/badge/badge.types.ts"
+      }
+    ],
     "relatedComponents": [
       "badge"
     ],
@@ -237,6 +711,69 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible, Signals-based breadcrumb navigation for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralBreadcrumbClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "link",
+            "type": "string",
+            "description": "Classes applied to the link element."
+          },
+          {
+            "name": "current",
+            "type": "string",
+            "description": "Classes applied to the current element."
+          },
+          {
+            "name": "disabled",
+            "type": "string",
+            "description": "Classes applied to the disabled element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          },
+          {
+            "name": "overflowItem",
+            "type": "string",
+            "description": "Classes applied to the overflow item element."
+          },
+          {
+            "name": "overflowTrigger",
+            "type": "string",
+            "description": "Classes applied to the overflow trigger element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/breadcrumb/breadcrumb.types.ts"
+      }
+    ],
     "relatedComponents": [
       "breadcrumb-separator-template",
       "breadcrumb-item"
@@ -260,6 +797,69 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible, Signals-based breadcrumb navigation for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralBreadcrumbClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "link",
+            "type": "string",
+            "description": "Classes applied to the link element."
+          },
+          {
+            "name": "current",
+            "type": "string",
+            "description": "Classes applied to the current element."
+          },
+          {
+            "name": "disabled",
+            "type": "string",
+            "description": "Classes applied to the disabled element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          },
+          {
+            "name": "overflowItem",
+            "type": "string",
+            "description": "Classes applied to the overflow item element."
+          },
+          {
+            "name": "overflowTrigger",
+            "type": "string",
+            "description": "Classes applied to the overflow trigger element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/breadcrumb/breadcrumb.types.ts"
+      }
+    ],
     "relatedComponents": [
       "breadcrumb-separator-template",
       "breadcrumb"
@@ -283,6 +883,69 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible, Signals-based breadcrumb navigation for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralBreadcrumbClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "link",
+            "type": "string",
+            "description": "Classes applied to the link element."
+          },
+          {
+            "name": "current",
+            "type": "string",
+            "description": "Classes applied to the current element."
+          },
+          {
+            "name": "disabled",
+            "type": "string",
+            "description": "Classes applied to the disabled element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          },
+          {
+            "name": "overflowItem",
+            "type": "string",
+            "description": "Classes applied to the overflow item element."
+          },
+          {
+            "name": "overflowTrigger",
+            "type": "string",
+            "description": "Classes applied to the overflow trigger element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/breadcrumb/breadcrumb.types.ts"
+      }
+    ],
     "relatedComponents": [
       "breadcrumb-item",
       "breadcrumb"
@@ -306,6 +969,55 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "`NeuralButton` is a standalone, signal-based Angular 22+ component available from the `@neural-ng/core/button` secondary entry point. It renders a native `<button>` and supports themed, class-driven, and headless usage.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralButtonGroupClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The group container that owns the projected buttons and group semantics."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/button/button-group.component.ts"
+      },
+      {
+        "typeName": "NeuralButtonClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The native button element and primary styling/layout surface."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "The leading or trailing icon rendered from the `icon` input."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "The text rendered from the `label` input."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "The projected content container used when `label` is absent."
+          },
+          {
+            "name": "loadingIcon",
+            "type": "string",
+            "description": "The progress icon rendered while `loading` is true."
+          },
+          {
+            "name": "loadingLabel",
+            "type": "string",
+            "description": "The accessible loading text rendered while `loading` is true."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/button/button.component.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-button-group"
     ],
@@ -328,6 +1040,34 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralCardClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/card/card.types.ts"
+      }
+    ],
     "relatedComponents": [
       "card-header",
       "card-body",
@@ -352,6 +1092,34 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralCardClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/card/card.types.ts"
+      }
+    ],
     "relatedComponents": [
       "card",
       "card-header",
@@ -376,6 +1144,34 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralCardClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/card/card.types.ts"
+      }
+    ],
     "relatedComponents": [
       "card",
       "card-header",
@@ -400,6 +1196,34 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralCardClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/card/card.types.ts"
+      }
+    ],
     "relatedComponents": [
       "card",
       "card-body",
@@ -430,6 +1254,39 @@ export const GENERATED_COMPONENTS = [
         "type": "boolean"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralCheckboxClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "control",
+            "type": "string",
+            "description": "Classes applied to the control element."
+          },
+          {
+            "name": "checkedControl",
+            "type": "string",
+            "description": "Classes applied to the checked control element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/checkbox/checkbox.types.ts"
+      }
+    ],
     "relatedComponents": [
       "tri-state-checkbox"
     ],
@@ -452,6 +1309,64 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "ConfirmDialog Beta is a service-driven, native top-layer confirmation dialog for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralConfirmDialogClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Classes applied to the title element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "message",
+            "type": "string",
+            "description": "Classes applied to the message element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "acceptButton",
+            "type": "string",
+            "description": "Classes applied to the accept button element."
+          },
+          {
+            "name": "rejectButton",
+            "type": "string",
+            "description": "Classes applied to the reject button element."
+          },
+          {
+            "name": "buttonIcon",
+            "type": "string",
+            "description": "Classes applied to the button icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/confirm-dialog/confirm-dialog.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/confirm-dialog/contract",
@@ -493,6 +1408,69 @@ export const GENERATED_COMPONENTS = [
         "type": "NeuralDataViewSortOrder"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralDataViewClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "grid",
+            "type": "string",
+            "description": "Classes applied to the grid element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "empty",
+            "type": "string",
+            "description": "Classes applied to the empty element."
+          },
+          {
+            "name": "loading",
+            "type": "string",
+            "description": "Classes applied to the loading element."
+          },
+          {
+            "name": "skeleton",
+            "type": "string",
+            "description": "Classes applied to the skeleton element."
+          },
+          {
+            "name": "paginator",
+            "type": "string",
+            "description": "Classes applied to the paginator element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/data-view/data-view.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/data-view/contract",
@@ -517,6 +1495,319 @@ export const GENERATED_COMPONENTS = [
       {
         "name": "value",
         "type": "NeuralDatePickerValue<TMode, TPickerMode>"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralDatePickerClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "inputGroup",
+            "type": "string",
+            "description": "Classes applied to the input group element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "trigger",
+            "type": "string",
+            "description": "Alias for triggerButton. Both are merged when provided."
+          },
+          {
+            "name": "triggerButton",
+            "type": "string",
+            "description": "Classes applied to the trigger button element."
+          },
+          {
+            "name": "triggerIcon",
+            "type": "string",
+            "description": "Classes applied to the trigger icon element."
+          },
+          {
+            "name": "clearButton",
+            "type": "string",
+            "description": "Classes applied to the clear button element."
+          },
+          {
+            "name": "clearIcon",
+            "type": "string",
+            "description": "Classes applied to the clear icon element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "calendar",
+            "type": "string",
+            "description": "Classes applied to the calendar element."
+          },
+          {
+            "name": "announcement",
+            "type": "string",
+            "description": "Classes applied to the announcement element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Classes applied to the title element."
+          },
+          {
+            "name": "monthLabel",
+            "type": "string",
+            "description": "Classes applied to the month label element."
+          },
+          {
+            "name": "yearToggle",
+            "type": "string",
+            "description": "Classes applied to the year toggle element."
+          },
+          {
+            "name": "monthToggle",
+            "type": "string",
+            "description": "Classes applied to the month toggle element."
+          },
+          {
+            "name": "navigationButton",
+            "type": "string",
+            "description": "Classes applied to the navigation button element."
+          },
+          {
+            "name": "navigationIcon",
+            "type": "string",
+            "description": "Classes applied to the navigation icon element."
+          },
+          {
+            "name": "monthView",
+            "type": "string",
+            "description": "Classes applied to the month view element."
+          },
+          {
+            "name": "monthGrid",
+            "type": "string",
+            "description": "Classes applied to the month grid element."
+          },
+          {
+            "name": "month",
+            "type": "string",
+            "description": "Classes applied to the month element."
+          },
+          {
+            "name": "selectedMonth",
+            "type": "string",
+            "description": "Classes applied to the selected month element."
+          },
+          {
+            "name": "disabledMonth",
+            "type": "string",
+            "description": "Classes applied to the disabled month element."
+          },
+          {
+            "name": "yearView",
+            "type": "string",
+            "description": "Classes applied to the year view element."
+          },
+          {
+            "name": "yearInput",
+            "type": "string",
+            "description": "Classes applied to the year input element."
+          },
+          {
+            "name": "yearGrid",
+            "type": "string",
+            "description": "Classes applied to the year grid element."
+          },
+          {
+            "name": "year",
+            "type": "string",
+            "description": "Classes applied to the year element."
+          },
+          {
+            "name": "selectedYear",
+            "type": "string",
+            "description": "Classes applied to the selected year element."
+          },
+          {
+            "name": "disabledYear",
+            "type": "string",
+            "description": "Classes applied to the disabled year element."
+          },
+          {
+            "name": "weekdays",
+            "type": "string",
+            "description": "Classes applied to the weekdays element."
+          },
+          {
+            "name": "weekday",
+            "type": "string",
+            "description": "Classes applied to the weekday element."
+          },
+          {
+            "name": "grid",
+            "type": "string",
+            "description": "Classes applied to the grid element."
+          },
+          {
+            "name": "week",
+            "type": "string",
+            "description": "Classes applied to the week element."
+          },
+          {
+            "name": "weekNumberHeader",
+            "type": "string",
+            "description": "Classes applied to the week number header element."
+          },
+          {
+            "name": "weekNumber",
+            "type": "string",
+            "description": "Classes applied to the week number element."
+          },
+          {
+            "name": "otherMonthPlaceholder",
+            "type": "string",
+            "description": "Classes applied to the other month placeholder element."
+          },
+          {
+            "name": "day",
+            "type": "string",
+            "description": "Classes applied to the day element."
+          },
+          {
+            "name": "outsideDay",
+            "type": "string",
+            "description": "Classes applied to the outside day element."
+          },
+          {
+            "name": "today",
+            "type": "string",
+            "description": "Classes applied to the today element."
+          },
+          {
+            "name": "selectedDay",
+            "type": "string",
+            "description": "Classes applied to the selected day element."
+          },
+          {
+            "name": "disabledDay",
+            "type": "string",
+            "description": "Classes applied to the disabled day element."
+          },
+          {
+            "name": "rangeStartDay",
+            "type": "string",
+            "description": "Classes applied to the range start day element."
+          },
+          {
+            "name": "rangeEndDay",
+            "type": "string",
+            "description": "Classes applied to the range end day element."
+          },
+          {
+            "name": "rangeDay",
+            "type": "string",
+            "description": "Classes applied to the range day element."
+          },
+          {
+            "name": "rangeStart",
+            "type": "string",
+            "description": "Short aliases retained alongside the explicit day slot names."
+          },
+          {
+            "name": "rangeMiddle",
+            "type": "string",
+            "description": "Classes applied to the range middle element."
+          },
+          {
+            "name": "rangeEnd",
+            "type": "string",
+            "description": "Classes applied to the range end element."
+          },
+          {
+            "name": "rangePreviewDay",
+            "type": "string",
+            "description": "Classes applied to the range preview day element."
+          },
+          {
+            "name": "timePicker",
+            "type": "string",
+            "description": "Classes applied to the time picker element."
+          },
+          {
+            "name": "timeGroup",
+            "type": "string",
+            "description": "Classes applied to the time group element."
+          },
+          {
+            "name": "timeField",
+            "type": "string",
+            "description": "Classes applied to the time field element."
+          },
+          {
+            "name": "timeLabel",
+            "type": "string",
+            "description": "Classes applied to the time label element."
+          },
+          {
+            "name": "timeInput",
+            "type": "string",
+            "description": "Classes applied to the time input element."
+          },
+          {
+            "name": "timeSeparator",
+            "type": "string",
+            "description": "Classes applied to the time separator element."
+          },
+          {
+            "name": "periodButton",
+            "type": "string",
+            "description": "Classes applied to the period button element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "footerAction",
+            "type": "string",
+            "description": "Classes applied to the footer action element."
+          },
+          {
+            "name": "todayAction",
+            "type": "string",
+            "description": "Classes applied to the today action element."
+          },
+          {
+            "name": "clearAction",
+            "type": "string",
+            "description": "Classes applied to the clear action element."
+          },
+          {
+            "name": "cancelAction",
+            "type": "string",
+            "description": "Classes applied to the cancel action element."
+          },
+          {
+            "name": "applyAction",
+            "type": "string",
+            "description": "Classes applied to the apply action element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/date-picker/date-picker.types.ts"
       }
     ],
     "relatedComponents": [],
@@ -549,6 +1840,144 @@ export const GENERATED_COMPONENTS = [
         "type": "string"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralMultiSelectClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "trigger",
+            "type": "string",
+            "description": "Classes applied to the trigger element."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "description": "Classes applied to the value element."
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "description": "Classes applied to the placeholder element."
+          },
+          {
+            "name": "chipList",
+            "type": "string",
+            "description": "Classes applied to the chip list element."
+          },
+          {
+            "name": "chip",
+            "type": "string",
+            "description": "Classes applied to the chip element."
+          },
+          {
+            "name": "chipLabel",
+            "type": "string",
+            "description": "Classes applied to the chip label element."
+          },
+          {
+            "name": "chipRemove",
+            "type": "string",
+            "description": "Classes applied to the chip remove element."
+          },
+          {
+            "name": "clearButton",
+            "type": "string",
+            "description": "Classes applied to the clear button element."
+          },
+          {
+            "name": "dropdownButton",
+            "type": "string",
+            "description": "Classes applied to the dropdown button element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "filter",
+            "type": "string",
+            "description": "Classes applied to the filter element."
+          },
+          {
+            "name": "selectAll",
+            "type": "string",
+            "description": "Classes applied to the select all element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "option",
+            "type": "string",
+            "description": "Classes applied to the option element."
+          },
+          {
+            "name": "optionLabel",
+            "type": "string",
+            "description": "Classes applied to the option label element."
+          },
+          {
+            "name": "checkbox",
+            "type": "string",
+            "description": "Classes applied to the checkbox element."
+          },
+          {
+            "name": "activeOption",
+            "type": "string",
+            "description": "Classes applied to the active option element."
+          },
+          {
+            "name": "selectedOption",
+            "type": "string",
+            "description": "Classes applied to the selected option element."
+          },
+          {
+            "name": "disabledOption",
+            "type": "string",
+            "description": "Classes applied to the disabled option element."
+          },
+          {
+            "name": "emptyMessage",
+            "type": "string",
+            "description": "Classes applied to the empty message element."
+          },
+          {
+            "name": "loadingMessage",
+            "type": "string",
+            "description": "Classes applied to the loading message element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/multi-select/multi-select.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/multi-select/contract",
@@ -569,6 +1998,55 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "`NeuralButton` is a standalone, signal-based Angular 22+ component available from the `@neural-ng/core/button` secondary entry point. It renders a native `<button>` and supports themed, class-driven, and headless usage.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralButtonGroupClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The group container that owns the projected buttons and group semantics."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/button/button-group.component.ts"
+      },
+      {
+        "typeName": "NeuralButtonClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The native button element and primary styling/layout surface."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "The leading or trailing icon rendered from the `icon` input."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "The text rendered from the `label` input."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "The projected content container used when `label` is absent."
+          },
+          {
+            "name": "loadingIcon",
+            "type": "string",
+            "description": "The progress icon rendered while `loading` is true."
+          },
+          {
+            "name": "loadingLabel",
+            "type": "string",
+            "description": "The accessible loading text rendered while `loading` is true."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/button/button.component.ts"
+      }
+    ],
     "relatedComponents": [
       "button"
     ],
@@ -596,6 +2074,54 @@ export const GENERATED_COMPONENTS = [
         "type": "boolean"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralDialogClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "Classes applied to the close button element."
+          },
+          {
+            "name": "closeIcon",
+            "type": "string",
+            "description": "Classes applied to the close icon element."
+          },
+          {
+            "name": "fullScreenButton",
+            "type": "string",
+            "description": "Classes applied to the full screen button element."
+          },
+          {
+            "name": "fullScreenIcon",
+            "type": "string",
+            "description": "Classes applied to the full screen icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/dialog/dialog.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-dialog-initial-focus",
       "neural-dialog-header",
@@ -621,6 +2147,54 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralDialogClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "Classes applied to the close button element."
+          },
+          {
+            "name": "closeIcon",
+            "type": "string",
+            "description": "Classes applied to the close icon element."
+          },
+          {
+            "name": "fullScreenButton",
+            "type": "string",
+            "description": "Classes applied to the full screen button element."
+          },
+          {
+            "name": "fullScreenIcon",
+            "type": "string",
+            "description": "Classes applied to the full screen icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/dialog/dialog.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-dialog-initial-focus",
       "neural-dialog",
@@ -646,6 +2220,54 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralDialogClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "Classes applied to the close button element."
+          },
+          {
+            "name": "closeIcon",
+            "type": "string",
+            "description": "Classes applied to the close icon element."
+          },
+          {
+            "name": "fullScreenButton",
+            "type": "string",
+            "description": "Classes applied to the full screen button element."
+          },
+          {
+            "name": "fullScreenIcon",
+            "type": "string",
+            "description": "Classes applied to the full screen icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/dialog/dialog.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-dialog-initial-focus",
       "neural-dialog",
@@ -671,6 +2293,54 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralDialogClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "Classes applied to the close button element."
+          },
+          {
+            "name": "closeIcon",
+            "type": "string",
+            "description": "Classes applied to the close icon element."
+          },
+          {
+            "name": "fullScreenButton",
+            "type": "string",
+            "description": "Classes applied to the full screen button element."
+          },
+          {
+            "name": "fullScreenIcon",
+            "type": "string",
+            "description": "Classes applied to the full screen icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/dialog/dialog.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-dialog-initial-focus",
       "neural-dialog",
@@ -696,6 +2366,54 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralDialogClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "Classes applied to the close button element."
+          },
+          {
+            "name": "closeIcon",
+            "type": "string",
+            "description": "Classes applied to the close icon element."
+          },
+          {
+            "name": "fullScreenButton",
+            "type": "string",
+            "description": "Classes applied to the full screen button element."
+          },
+          {
+            "name": "fullScreenIcon",
+            "type": "string",
+            "description": "Classes applied to the full screen icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/dialog/dialog.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-dialog",
       "neural-dialog-header",
@@ -721,6 +2439,34 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "`NeuralDivider` separates related content with native separator semantics, logical orientation, optional content, and a fully headless visual contract.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralDividerClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "before",
+            "type": "string",
+            "description": "Classes applied to the before element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "after",
+            "type": "string",
+            "description": "Classes applied to the after element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/divider/divider.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/neural-divider/contract",
@@ -744,6 +2490,44 @@ export const GENERATED_COMPONENTS = [
       {
         "name": "open",
         "type": "boolean"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralDrawerClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "Classes applied to the close button element."
+          },
+          {
+            "name": "closeIcon",
+            "type": "string",
+            "description": "Classes applied to the close icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/drawer/drawer.types.ts"
       }
     ],
     "relatedComponents": [
@@ -771,6 +2555,44 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralDrawerClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "Classes applied to the close button element."
+          },
+          {
+            "name": "closeIcon",
+            "type": "string",
+            "description": "Classes applied to the close icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/drawer/drawer.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-drawer-initial-focus",
       "neural-drawer",
@@ -796,6 +2618,44 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralDrawerClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "Classes applied to the close button element."
+          },
+          {
+            "name": "closeIcon",
+            "type": "string",
+            "description": "Classes applied to the close icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/drawer/drawer.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-drawer-initial-focus",
       "neural-drawer",
@@ -821,6 +2681,44 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralDrawerClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "Classes applied to the close button element."
+          },
+          {
+            "name": "closeIcon",
+            "type": "string",
+            "description": "Classes applied to the close icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/drawer/drawer.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-drawer-initial-focus",
       "neural-drawer",
@@ -846,6 +2744,44 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralDrawerClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "Classes applied to the close button element."
+          },
+          {
+            "name": "closeIcon",
+            "type": "string",
+            "description": "Classes applied to the close icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/drawer/drawer.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-drawer",
       "neural-drawer-header",
@@ -871,6 +2807,39 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralFieldClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The field container that owns state and description relationships."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Every projected `neuralFieldLabel` element."
+          },
+          {
+            "name": "control",
+            "type": "string",
+            "description": "Every projected `neuralFieldControl` element."
+          },
+          {
+            "name": "hint",
+            "type": "string",
+            "description": "Every projected `neuralFieldHint` element."
+          },
+          {
+            "name": "error",
+            "type": "string",
+            "description": "Every projected `neuralFieldError` element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/field/field.component.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-field-label",
       "neural-field-hint",
@@ -896,6 +2865,39 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralFieldClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The field container that owns state and description relationships."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Every projected `neuralFieldLabel` element."
+          },
+          {
+            "name": "control",
+            "type": "string",
+            "description": "Every projected `neuralFieldControl` element."
+          },
+          {
+            "name": "hint",
+            "type": "string",
+            "description": "Every projected `neuralFieldHint` element."
+          },
+          {
+            "name": "error",
+            "type": "string",
+            "description": "Every projected `neuralFieldError` element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/field/field.component.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-field-label",
       "neural-field-hint",
@@ -921,6 +2923,39 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralFieldClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The field container that owns state and description relationships."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Every projected `neuralFieldLabel` element."
+          },
+          {
+            "name": "control",
+            "type": "string",
+            "description": "Every projected `neuralFieldControl` element."
+          },
+          {
+            "name": "hint",
+            "type": "string",
+            "description": "Every projected `neuralFieldHint` element."
+          },
+          {
+            "name": "error",
+            "type": "string",
+            "description": "Every projected `neuralFieldError` element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/field/field.component.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-field-label",
       "neural-field-hint",
@@ -946,6 +2981,39 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralFieldClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The field container that owns state and description relationships."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Every projected `neuralFieldLabel` element."
+          },
+          {
+            "name": "control",
+            "type": "string",
+            "description": "Every projected `neuralFieldControl` element."
+          },
+          {
+            "name": "hint",
+            "type": "string",
+            "description": "Every projected `neuralFieldHint` element."
+          },
+          {
+            "name": "error",
+            "type": "string",
+            "description": "Every projected `neuralFieldError` element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/field/field.component.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-field-label",
       "neural-field-error",
@@ -971,6 +3039,39 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralFieldClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The field container that owns state and description relationships."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Every projected `neuralFieldLabel` element."
+          },
+          {
+            "name": "control",
+            "type": "string",
+            "description": "Every projected `neuralFieldControl` element."
+          },
+          {
+            "name": "hint",
+            "type": "string",
+            "description": "Every projected `neuralFieldHint` element."
+          },
+          {
+            "name": "error",
+            "type": "string",
+            "description": "Every projected `neuralFieldError` element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/field/field.component.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-field-hint",
       "neural-field-error",
@@ -1002,6 +3103,104 @@ export const GENERATED_COMPONENTS = [
         "type": "NeuralFileUploadValue"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralFileUploadClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "dropzone",
+            "type": "string",
+            "description": "Classes applied to the dropzone element."
+          },
+          {
+            "name": "dropzoneIcon",
+            "type": "string",
+            "description": "Classes applied to the dropzone icon element."
+          },
+          {
+            "name": "dropzoneText",
+            "type": "string",
+            "description": "Classes applied to the dropzone text element."
+          },
+          {
+            "name": "chooseButton",
+            "type": "string",
+            "description": "Classes applied to the choose button element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "fileList",
+            "type": "string",
+            "description": "Classes applied to the file list element."
+          },
+          {
+            "name": "fileItem",
+            "type": "string",
+            "description": "Classes applied to the file item element."
+          },
+          {
+            "name": "fileInfo",
+            "type": "string",
+            "description": "Classes applied to the file info element."
+          },
+          {
+            "name": "fileName",
+            "type": "string",
+            "description": "Classes applied to the file name element."
+          },
+          {
+            "name": "fileMeta",
+            "type": "string",
+            "description": "Classes applied to the file meta element."
+          },
+          {
+            "name": "removeButton",
+            "type": "string",
+            "description": "Classes applied to the remove button element."
+          },
+          {
+            "name": "removeIcon",
+            "type": "string",
+            "description": "Classes applied to the remove icon element."
+          },
+          {
+            "name": "clearButton",
+            "type": "string",
+            "description": "Classes applied to the clear button element."
+          },
+          {
+            "name": "clearIcon",
+            "type": "string",
+            "description": "Classes applied to the clear icon element."
+          },
+          {
+            "name": "empty",
+            "type": "string",
+            "description": "Classes applied to the empty element."
+          },
+          {
+            "name": "message",
+            "type": "string",
+            "description": "Classes applied to the message element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/file-upload/file-upload.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/neural-file-upload/contract",
@@ -1022,6 +3221,40 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Native, Signal Forms-ready text input enhancement for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralInputGroupClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The outer container that owns the icons and projected input."
+          },
+          {
+            "name": "startIcon",
+            "type": "string",
+            "description": "The icon rendered before the projected input."
+          },
+          {
+            "name": "endIcon",
+            "type": "string",
+            "description": "The icon rendered after the projected input."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/input/input-group.component.ts"
+      },
+      {
+        "typeName": "NeuralInputClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The native input element enhanced by the `neuralInput` directive."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/input/input.component.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-input-group"
     ],
@@ -1044,6 +3277,40 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Native, Signal Forms-ready text input enhancement for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralInputGroupClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The outer container that owns the icons and projected input."
+          },
+          {
+            "name": "startIcon",
+            "type": "string",
+            "description": "The icon rendered before the projected input."
+          },
+          {
+            "name": "endIcon",
+            "type": "string",
+            "description": "The icon rendered after the projected input."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/input/input-group.component.ts"
+      },
+      {
+        "typeName": "NeuralInputClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The native input element enhanced by the `neuralInput` directive."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/input/input.component.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-input"
     ],
@@ -1072,6 +3339,24 @@ export const GENERATED_COMPONENTS = [
         "type": "string"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralInputMaskClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/input-mask/input-mask.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/neural-input-mask/contract",
@@ -1096,6 +3381,39 @@ export const GENERATED_COMPONENTS = [
       {
         "name": "value",
         "type": "number | null"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralInputNumberClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "decrementButton",
+            "type": "string",
+            "description": "Classes applied to the decrement button element."
+          },
+          {
+            "name": "incrementButton",
+            "type": "string",
+            "description": "Classes applied to the increment button element."
+          },
+          {
+            "name": "buttonIcon",
+            "type": "string",
+            "description": "Classes applied to the button icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/input-number/input-number.types.ts"
       }
     ],
     "relatedComponents": [],
@@ -1124,6 +3442,34 @@ export const GENERATED_COMPONENTS = [
         "type": "string"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralInputOtpClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/input-otp/input-otp.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/neural-input-otp/contract",
@@ -1144,6 +3490,44 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible container and viewport loading blockers for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralLoadingOverlayClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "backdrop",
+            "type": "string",
+            "description": "Classes applied to the backdrop element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "indicator",
+            "type": "string",
+            "description": "Classes applied to the indicator element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/loading-overlay/loading-overlay.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-loading-overlay"
     ],
@@ -1166,6 +3550,44 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible container and viewport loading blockers for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralLoadingOverlayClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "backdrop",
+            "type": "string",
+            "description": "Classes applied to the backdrop element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "indicator",
+            "type": "string",
+            "description": "Classes applied to the indicator element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/loading-overlay/loading-overlay.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-loading-indicator"
     ],
@@ -1193,6 +3615,79 @@ export const GENERATED_COMPONENTS = [
         "type": "boolean"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralMenuClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "groupLabel",
+            "type": "string",
+            "description": "Classes applied to the group label element."
+          },
+          {
+            "name": "groupList",
+            "type": "string",
+            "description": "Classes applied to the group list element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "disabledItem",
+            "type": "string",
+            "description": "Classes applied to the disabled item element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "meta",
+            "type": "string",
+            "description": "Classes applied to the meta element."
+          },
+          {
+            "name": "badge",
+            "type": "string",
+            "description": "Classes applied to the badge element."
+          },
+          {
+            "name": "shortcut",
+            "type": "string",
+            "description": "Classes applied to the shortcut element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/menu/menu.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-menu-trigger",
       "neural-menu-item",
@@ -1218,6 +3713,79 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralMenuClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "groupLabel",
+            "type": "string",
+            "description": "Classes applied to the group label element."
+          },
+          {
+            "name": "groupList",
+            "type": "string",
+            "description": "Classes applied to the group list element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "disabledItem",
+            "type": "string",
+            "description": "Classes applied to the disabled item element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "meta",
+            "type": "string",
+            "description": "Classes applied to the meta element."
+          },
+          {
+            "name": "badge",
+            "type": "string",
+            "description": "Classes applied to the badge element."
+          },
+          {
+            "name": "shortcut",
+            "type": "string",
+            "description": "Classes applied to the shortcut element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/menu/menu.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-menu-trigger",
       "neural-menu",
@@ -1243,6 +3811,79 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralMenuClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "groupLabel",
+            "type": "string",
+            "description": "Classes applied to the group label element."
+          },
+          {
+            "name": "groupList",
+            "type": "string",
+            "description": "Classes applied to the group list element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "disabledItem",
+            "type": "string",
+            "description": "Classes applied to the disabled item element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "meta",
+            "type": "string",
+            "description": "Classes applied to the meta element."
+          },
+          {
+            "name": "badge",
+            "type": "string",
+            "description": "Classes applied to the badge element."
+          },
+          {
+            "name": "shortcut",
+            "type": "string",
+            "description": "Classes applied to the shortcut element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/menu/menu.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-menu-trigger",
       "neural-menu",
@@ -1268,6 +3909,79 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralMenuClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "groupLabel",
+            "type": "string",
+            "description": "Classes applied to the group label element."
+          },
+          {
+            "name": "groupList",
+            "type": "string",
+            "description": "Classes applied to the group list element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "disabledItem",
+            "type": "string",
+            "description": "Classes applied to the disabled item element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "meta",
+            "type": "string",
+            "description": "Classes applied to the meta element."
+          },
+          {
+            "name": "badge",
+            "type": "string",
+            "description": "Classes applied to the badge element."
+          },
+          {
+            "name": "shortcut",
+            "type": "string",
+            "description": "Classes applied to the shortcut element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/menu/menu.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-menu-trigger",
       "neural-menu",
@@ -1293,6 +4007,79 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralMenuClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "groupLabel",
+            "type": "string",
+            "description": "Classes applied to the group label element."
+          },
+          {
+            "name": "groupList",
+            "type": "string",
+            "description": "Classes applied to the group list element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "disabledItem",
+            "type": "string",
+            "description": "Classes applied to the disabled item element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "meta",
+            "type": "string",
+            "description": "Classes applied to the meta element."
+          },
+          {
+            "name": "badge",
+            "type": "string",
+            "description": "Classes applied to the badge element."
+          },
+          {
+            "name": "shortcut",
+            "type": "string",
+            "description": "Classes applied to the shortcut element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/menu/menu.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-menu",
       "neural-menu-item",
@@ -1323,6 +4110,49 @@ export const GENERATED_COMPONENTS = [
         "type": "boolean"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralMessageClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Classes applied to the title element."
+          },
+          {
+            "name": "detail",
+            "type": "string",
+            "description": "Classes applied to the detail element."
+          },
+          {
+            "name": "actions",
+            "type": "string",
+            "description": "Classes applied to the actions element."
+          },
+          {
+            "name": "close",
+            "type": "string",
+            "description": "Classes applied to the close element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/message/message.component.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/neural-message/contract",
@@ -1343,6 +4173,59 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "`NeuralMeterGroup` displays multiple scalar measurements within one known range. Each segment remains an independently named ARIA meter.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralMeterGroupClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "meters",
+            "type": "string",
+            "description": "Classes applied to the meters element."
+          },
+          {
+            "name": "meter",
+            "type": "string",
+            "description": "Classes applied to the meter element."
+          },
+          {
+            "name": "labels",
+            "type": "string",
+            "description": "Classes applied to the labels element."
+          },
+          {
+            "name": "labelItem",
+            "type": "string",
+            "description": "Classes applied to the label item element."
+          },
+          {
+            "name": "marker",
+            "type": "string",
+            "description": "Classes applied to the marker element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "description": "Classes applied to the value element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/meter-group/meter-group.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/neural-meter-group/contract",
@@ -1372,6 +4255,64 @@ export const GENERATED_COMPONENTS = [
         "type": "number"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralPaginatorClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "navigationButton",
+            "type": "string",
+            "description": "Classes applied to the navigation button element."
+          },
+          {
+            "name": "pageButton",
+            "type": "string",
+            "description": "Classes applied to the page button element."
+          },
+          {
+            "name": "activePageButton",
+            "type": "string",
+            "description": "Classes applied to the active page button element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "ellipsis",
+            "type": "string",
+            "description": "Classes applied to the ellipsis element."
+          },
+          {
+            "name": "report",
+            "type": "string",
+            "description": "Classes applied to the report element."
+          },
+          {
+            "name": "pageSize",
+            "type": "string",
+            "description": "Classes applied to the page size element."
+          },
+          {
+            "name": "pageSizeSelect",
+            "type": "string",
+            "description": "Classes applied to the page size select element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/paginator/paginator.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/neural-paginator/contract",
@@ -1397,6 +4338,89 @@ export const GENERATED_COMPONENTS = [
         "type": "readonly string[]"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralPanelMenuClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "itemContainer",
+            "type": "string",
+            "description": "Classes applied to the item container element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "expandedItem",
+            "type": "string",
+            "description": "Classes applied to the expanded item element."
+          },
+          {
+            "name": "disabledItem",
+            "type": "string",
+            "description": "Classes applied to the disabled item element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "meta",
+            "type": "string",
+            "description": "Classes applied to the meta element."
+          },
+          {
+            "name": "badge",
+            "type": "string",
+            "description": "Classes applied to the badge element."
+          },
+          {
+            "name": "shortcut",
+            "type": "string",
+            "description": "Classes applied to the shortcut element."
+          },
+          {
+            "name": "indicator",
+            "type": "string",
+            "description": "Classes applied to the indicator element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "groupInner",
+            "type": "string",
+            "description": "Classes applied to the group inner element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/panel-menu/panel-menu.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-panel-menu-item",
       "neural-panel-menu-separator"
@@ -1420,6 +4444,89 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Signals-first hierarchical navigation and command panels for Angular 22+. PanelMenu is an inline Accordion + Tree pattern. It is not a Sidebar/Drawer and does not require a popup trigger.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralPanelMenuClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "itemContainer",
+            "type": "string",
+            "description": "Classes applied to the item container element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "expandedItem",
+            "type": "string",
+            "description": "Classes applied to the expanded item element."
+          },
+          {
+            "name": "disabledItem",
+            "type": "string",
+            "description": "Classes applied to the disabled item element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "meta",
+            "type": "string",
+            "description": "Classes applied to the meta element."
+          },
+          {
+            "name": "badge",
+            "type": "string",
+            "description": "Classes applied to the badge element."
+          },
+          {
+            "name": "shortcut",
+            "type": "string",
+            "description": "Classes applied to the shortcut element."
+          },
+          {
+            "name": "indicator",
+            "type": "string",
+            "description": "Classes applied to the indicator element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "groupInner",
+            "type": "string",
+            "description": "Classes applied to the group inner element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/panel-menu/panel-menu.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-panel-menu",
       "neural-panel-menu-separator"
@@ -1443,6 +4550,89 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Signals-first hierarchical navigation and command panels for Angular 22+. PanelMenu is an inline Accordion + Tree pattern. It is not a Sidebar/Drawer and does not require a popup trigger.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralPanelMenuClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "itemContainer",
+            "type": "string",
+            "description": "Classes applied to the item container element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "expandedItem",
+            "type": "string",
+            "description": "Classes applied to the expanded item element."
+          },
+          {
+            "name": "disabledItem",
+            "type": "string",
+            "description": "Classes applied to the disabled item element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "meta",
+            "type": "string",
+            "description": "Classes applied to the meta element."
+          },
+          {
+            "name": "badge",
+            "type": "string",
+            "description": "Classes applied to the badge element."
+          },
+          {
+            "name": "shortcut",
+            "type": "string",
+            "description": "Classes applied to the shortcut element."
+          },
+          {
+            "name": "indicator",
+            "type": "string",
+            "description": "Classes applied to the indicator element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "groupInner",
+            "type": "string",
+            "description": "Classes applied to the group inner element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/panel-menu/panel-menu.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-panel-menu",
       "neural-panel-menu-item"
@@ -1480,6 +4670,64 @@ export const GENERATED_COMPONENTS = [
         "type": "boolean"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralPasswordClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "inputGroup",
+            "type": "string",
+            "description": "Classes applied to the input group element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "toggle",
+            "type": "string",
+            "description": "Classes applied to the toggle element."
+          },
+          {
+            "name": "toggleIcon",
+            "type": "string",
+            "description": "Classes applied to the toggle icon element."
+          },
+          {
+            "name": "feedback",
+            "type": "string",
+            "description": "Classes applied to the feedback element."
+          },
+          {
+            "name": "meter",
+            "type": "string",
+            "description": "Classes applied to the meter element."
+          },
+          {
+            "name": "meterBar",
+            "type": "string",
+            "description": "Classes applied to the meter bar element."
+          },
+          {
+            "name": "strengthLabel",
+            "type": "string",
+            "description": "Classes applied to the strength label element."
+          },
+          {
+            "name": "capsLock",
+            "type": "string",
+            "description": "Classes applied to the caps lock element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/password/password.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/neural-password/contract",
@@ -1500,6 +4748,39 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Accessible determinate and indeterminate progress for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralProgressBarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "track",
+            "type": "string",
+            "description": "Classes applied to the track element."
+          },
+          {
+            "name": "buffer",
+            "type": "string",
+            "description": "Classes applied to the buffer element."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "description": "Classes applied to the value element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/progress-bar/progress-bar.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/neural-progress-bar/contract",
@@ -1520,6 +4801,54 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Accessible indeterminate SVG progress for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralProgressSpinnerClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "svg",
+            "type": "string",
+            "description": "Classes applied to the svg element."
+          },
+          {
+            "name": "track",
+            "type": "string",
+            "description": "Classes applied to the track element."
+          },
+          {
+            "name": "indicator",
+            "type": "string",
+            "description": "Classes applied to the indicator element."
+          },
+          {
+            "name": "inner",
+            "type": "string",
+            "description": "Classes applied to the inner element."
+          },
+          {
+            "name": "innerTrack",
+            "type": "string",
+            "description": "Classes applied to the inner track element."
+          },
+          {
+            "name": "innerIndicator",
+            "type": "string",
+            "description": "Classes applied to the inner indicator element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/progress-spinner/progress-spinner.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/neural-progress-spinner/contract",
@@ -1540,6 +4869,54 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Native, Signal-first RadioGroup and Radio components for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralRadioClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "option",
+            "type": "string",
+            "description": "Classes applied to the option element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "control",
+            "type": "string",
+            "description": "Classes applied to the control element."
+          },
+          {
+            "name": "selectedControl",
+            "type": "string",
+            "description": "Classes applied to the selected control element."
+          },
+          {
+            "name": "disabledOption",
+            "type": "string",
+            "description": "Classes applied to the disabled option element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "optionIcon",
+            "type": "string",
+            "description": "Classes applied to the option icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/radio/radio.types.ts"
+      }
+    ],
     "relatedComponents": [
       "radio-group"
     ],
@@ -1565,6 +4942,44 @@ export const GENERATED_COMPONENTS = [
       {
         "name": "open",
         "type": "boolean"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralSidebarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "backdrop",
+            "type": "string",
+            "description": "Classes applied to the backdrop element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/sidebar/sidebar.types.ts"
       }
     ],
     "relatedComponents": [
@@ -1596,6 +5011,44 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralSidebarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "backdrop",
+            "type": "string",
+            "description": "Classes applied to the backdrop element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/sidebar/sidebar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-sidebar-layout",
       "neural-sidebar",
@@ -1625,6 +5078,44 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralSidebarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "backdrop",
+            "type": "string",
+            "description": "Classes applied to the backdrop element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/sidebar/sidebar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-sidebar-layout",
       "neural-sidebar",
@@ -1654,6 +5145,44 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralSidebarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "backdrop",
+            "type": "string",
+            "description": "Classes applied to the backdrop element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/sidebar/sidebar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-sidebar-layout",
       "neural-sidebar",
@@ -1683,6 +5212,44 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralSidebarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "backdrop",
+            "type": "string",
+            "description": "Classes applied to the backdrop element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/sidebar/sidebar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-sidebar-layout",
       "neural-sidebar",
@@ -1712,6 +5279,44 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralSidebarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "backdrop",
+            "type": "string",
+            "description": "Classes applied to the backdrop element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/sidebar/sidebar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-sidebar-layout",
       "neural-sidebar",
@@ -1741,6 +5346,44 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralSidebarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "backdrop",
+            "type": "string",
+            "description": "Classes applied to the backdrop element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/sidebar/sidebar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-sidebar",
       "neural-sidebar-header",
@@ -1770,6 +5413,44 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralSidebarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "backdrop",
+            "type": "string",
+            "description": "Classes applied to the backdrop element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/sidebar/sidebar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-sidebar-layout",
       "neural-sidebar",
@@ -1799,6 +5480,44 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralSidebarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "backdrop",
+            "type": "string",
+            "description": "Classes applied to the backdrop element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/sidebar/sidebar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-sidebar-layout",
       "neural-sidebar",
@@ -1828,6 +5547,24 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "`NeuralSkeleton` provides a lightweight, decorative placeholder for content that is still loading.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralSkeletonClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "effect",
+            "type": "string",
+            "description": "Classes applied to the effect element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/skeleton/skeleton.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/neural-skeleton/contract",
@@ -1848,6 +5585,69 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Modern Angular 22+ Toast renderer for the headless Signal store in `@neural-ng/core/message`. Toast is standalone, SSR-safe, direction-aware, themeable, and fully consumer-stylable.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralToastClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The fixed-position region that owns the toast stack."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "The wrapper for each rendered notification."
+          },
+          {
+            "name": "message",
+            "type": "string",
+            "description": "The notification article surface."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "The semantic severity icon."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "The container that groups title and detail text."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "The optional notification title."
+          },
+          {
+            "name": "detail",
+            "type": "string",
+            "description": "The primary notification detail text."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "The dismiss button rendered for dismissible messages."
+          },
+          {
+            "name": "progressTrack",
+            "type": "string",
+            "description": "The progress track rendered for timed messages."
+          },
+          {
+            "name": "progressValue",
+            "type": "string",
+            "description": "The animated progress value inside the track."
+          },
+          {
+            "name": "liveRegion",
+            "type": "string",
+            "description": "The visually hidden polite and assertive announcement regions."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/toast/toast.types.ts"
+      }
+    ],
     "relatedComponents": [
       "toast"
     ],
@@ -1870,6 +5670,89 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible, Signal-first combobox/listbox for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralSelectClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "trigger",
+            "type": "string",
+            "description": "Classes applied to the trigger element."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "description": "Classes applied to the value element."
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "description": "Classes applied to the placeholder element."
+          },
+          {
+            "name": "dropdownIcon",
+            "type": "string",
+            "description": "Classes applied to the dropdown icon element."
+          },
+          {
+            "name": "clearButton",
+            "type": "string",
+            "description": "Classes applied to the clear button element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "option",
+            "type": "string",
+            "description": "Classes applied to the option element."
+          },
+          {
+            "name": "activeOption",
+            "type": "string",
+            "description": "Classes applied to the active option element."
+          },
+          {
+            "name": "selectedOption",
+            "type": "string",
+            "description": "Classes applied to the selected option element."
+          },
+          {
+            "name": "disabledOption",
+            "type": "string",
+            "description": "Classes applied to the disabled option element."
+          },
+          {
+            "name": "optionIcon",
+            "type": "string",
+            "description": "Classes applied to the option icon element."
+          },
+          {
+            "name": "emptyMessage",
+            "type": "string",
+            "description": "Classes applied to the empty message element."
+          },
+          {
+            "name": "loadingMessage",
+            "type": "string",
+            "description": "Classes applied to the loading message element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/select/select.types.ts"
+      }
+    ],
     "relatedComponents": [
       "select"
     ],
@@ -1897,6 +5780,29 @@ export const GENERATED_COMPONENTS = [
         "type": "boolean"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralPopoverClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "arrow",
+            "type": "string",
+            "description": "Classes applied to the arrow element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/popover/popover.types.ts"
+      }
+    ],
     "relatedComponents": [
       "popover-trigger",
       "popover-initial-focus",
@@ -1921,6 +5827,29 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "`@neural-ng/core/popover` renders arbitrary Angular content in a non-modal, trigger-anchored top-layer panel. It composes the shared Overlay positioner and does not impose Menu item or Dialog layout semantics.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralPopoverClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "arrow",
+            "type": "string",
+            "description": "Classes applied to the arrow element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/popover/popover.types.ts"
+      }
+    ],
     "relatedComponents": [
       "popover-trigger",
       "popover-initial-focus",
@@ -1945,6 +5874,29 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "`@neural-ng/core/popover` renders arbitrary Angular content in a non-modal, trigger-anchored top-layer panel. It composes the shared Overlay positioner and does not impose Menu item or Dialog layout semantics.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralPopoverClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "arrow",
+            "type": "string",
+            "description": "Classes applied to the arrow element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/popover/popover.types.ts"
+      }
+    ],
     "relatedComponents": [
       "popover-trigger",
       "popover",
@@ -1969,6 +5921,29 @@ export const GENERATED_COMPONENTS = [
     "status": "alpha",
     "summary": "`@neural-ng/core/popover` renders arbitrary Angular content in a non-modal, trigger-anchored top-layer panel. It composes the shared Overlay positioner and does not impose Menu item or Dialog layout semantics.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralPopoverClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "arrow",
+            "type": "string",
+            "description": "Classes applied to the arrow element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/popover/popover.types.ts"
+      }
+    ],
     "relatedComponents": [
       "popover-initial-focus",
       "popover",
@@ -1999,6 +5974,54 @@ export const GENERATED_COMPONENTS = [
         "type": "TValue | null"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralRadioClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "option",
+            "type": "string",
+            "description": "Classes applied to the option element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "control",
+            "type": "string",
+            "description": "Classes applied to the control element."
+          },
+          {
+            "name": "selectedControl",
+            "type": "string",
+            "description": "Classes applied to the selected control element."
+          },
+          {
+            "name": "disabledOption",
+            "type": "string",
+            "description": "Classes applied to the disabled option element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "optionIcon",
+            "type": "string",
+            "description": "Classes applied to the option icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/radio/radio.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-radio"
     ],
@@ -2025,6 +6048,89 @@ export const GENERATED_COMPONENTS = [
       {
         "name": "value",
         "type": "TValue | null"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralSelectClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "trigger",
+            "type": "string",
+            "description": "Classes applied to the trigger element."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "description": "Classes applied to the value element."
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "description": "Classes applied to the placeholder element."
+          },
+          {
+            "name": "dropdownIcon",
+            "type": "string",
+            "description": "Classes applied to the dropdown icon element."
+          },
+          {
+            "name": "clearButton",
+            "type": "string",
+            "description": "Classes applied to the clear button element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "option",
+            "type": "string",
+            "description": "Classes applied to the option element."
+          },
+          {
+            "name": "activeOption",
+            "type": "string",
+            "description": "Classes applied to the active option element."
+          },
+          {
+            "name": "selectedOption",
+            "type": "string",
+            "description": "Classes applied to the selected option element."
+          },
+          {
+            "name": "disabledOption",
+            "type": "string",
+            "description": "Classes applied to the disabled option element."
+          },
+          {
+            "name": "optionIcon",
+            "type": "string",
+            "description": "Classes applied to the option icon element."
+          },
+          {
+            "name": "emptyMessage",
+            "type": "string",
+            "description": "Classes applied to the empty message element."
+          },
+          {
+            "name": "loadingMessage",
+            "type": "string",
+            "description": "Classes applied to the loading message element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/select/select.types.ts"
       }
     ],
     "relatedComponents": [
@@ -2055,6 +6161,44 @@ export const GENERATED_COMPONENTS = [
         "type": "NeuralSliderValue"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralSliderClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "description": "Classes applied to the value element."
+          },
+          {
+            "name": "range",
+            "type": "string",
+            "description": "Classes applied to the range element."
+          },
+          {
+            "name": "track",
+            "type": "string",
+            "description": "Classes applied to the track element."
+          },
+          {
+            "name": "fill",
+            "type": "string",
+            "description": "Classes applied to the fill element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/slider/slider.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/slider/contract",
@@ -2081,6 +6225,54 @@ export const GENERATED_COMPONENTS = [
         "type": "boolean"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralSwitchClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "track",
+            "type": "string",
+            "description": "Classes applied to the track element."
+          },
+          {
+            "name": "checkedTrack",
+            "type": "string",
+            "description": "Classes applied to the checked track element."
+          },
+          {
+            "name": "thumb",
+            "type": "string",
+            "description": "Classes applied to the thumb element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "onLabel",
+            "type": "string",
+            "description": "Classes applied to the on label element."
+          },
+          {
+            "name": "offLabel",
+            "type": "string",
+            "description": "Classes applied to the off label element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/switch/switch.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/switch/contract",
@@ -2101,6 +6293,49 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralTabsClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "tab",
+            "type": "string",
+            "description": "Classes applied to the tab element."
+          },
+          {
+            "name": "activeTab",
+            "type": "string",
+            "description": "Classes applied to the active tab element."
+          },
+          {
+            "name": "disabledTab",
+            "type": "string",
+            "description": "Classes applied to the disabled tab element."
+          },
+          {
+            "name": "panels",
+            "type": "string",
+            "description": "Classes applied to the panels element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/tabs/tabs.types.ts"
+      }
+    ],
     "relatedComponents": [
       "tabs",
       "tab-list",
@@ -2126,6 +6361,49 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralTabsClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "tab",
+            "type": "string",
+            "description": "Classes applied to the tab element."
+          },
+          {
+            "name": "activeTab",
+            "type": "string",
+            "description": "Classes applied to the active tab element."
+          },
+          {
+            "name": "disabledTab",
+            "type": "string",
+            "description": "Classes applied to the disabled tab element."
+          },
+          {
+            "name": "panels",
+            "type": "string",
+            "description": "Classes applied to the panels element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/tabs/tabs.types.ts"
+      }
+    ],
     "relatedComponents": [
       "tabs",
       "tab",
@@ -2151,6 +6429,49 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralTabsClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "tab",
+            "type": "string",
+            "description": "Classes applied to the tab element."
+          },
+          {
+            "name": "activeTab",
+            "type": "string",
+            "description": "Classes applied to the active tab element."
+          },
+          {
+            "name": "disabledTab",
+            "type": "string",
+            "description": "Classes applied to the disabled tab element."
+          },
+          {
+            "name": "panels",
+            "type": "string",
+            "description": "Classes applied to the panels element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/tabs/tabs.types.ts"
+      }
+    ],
     "relatedComponents": [
       "tabs",
       "tab-list",
@@ -2176,6 +6497,49 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralTabsClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "tab",
+            "type": "string",
+            "description": "Classes applied to the tab element."
+          },
+          {
+            "name": "activeTab",
+            "type": "string",
+            "description": "Classes applied to the active tab element."
+          },
+          {
+            "name": "disabledTab",
+            "type": "string",
+            "description": "Classes applied to the disabled tab element."
+          },
+          {
+            "name": "panels",
+            "type": "string",
+            "description": "Classes applied to the panels element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/tabs/tabs.types.ts"
+      }
+    ],
     "relatedComponents": [
       "tabs",
       "tab-list",
@@ -2250,6 +6614,289 @@ export const GENERATED_COMPONENTS = [
         "type": "number"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralTableClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "scroll",
+            "type": "string",
+            "description": "Classes applied to the scroll element."
+          },
+          {
+            "name": "table",
+            "type": "string",
+            "description": "Classes applied to the table element."
+          },
+          {
+            "name": "caption",
+            "type": "string",
+            "description": "Classes applied to the caption element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "headerRow",
+            "type": "string",
+            "description": "Classes applied to the header row element."
+          },
+          {
+            "name": "headerCell",
+            "type": "string",
+            "description": "Classes applied to the header cell element."
+          },
+          {
+            "name": "headerGroupRow",
+            "type": "string",
+            "description": "Classes applied to the header group row element."
+          },
+          {
+            "name": "headerGroupCell",
+            "type": "string",
+            "description": "Classes applied to the header group cell element."
+          },
+          {
+            "name": "filterRow",
+            "type": "string",
+            "description": "Classes applied to the filter row element."
+          },
+          {
+            "name": "filterCell",
+            "type": "string",
+            "description": "Classes applied to the filter cell element."
+          },
+          {
+            "name": "filterControl",
+            "type": "string",
+            "description": "Classes applied to the filter control element."
+          },
+          {
+            "name": "filterRange",
+            "type": "string",
+            "description": "Classes applied to the filter range element."
+          },
+          {
+            "name": "sortButton",
+            "type": "string",
+            "description": "Classes applied to the sort button element."
+          },
+          {
+            "name": "sortIcon",
+            "type": "string",
+            "description": "Classes applied to the sort icon element."
+          },
+          {
+            "name": "resizeHandle",
+            "type": "string",
+            "description": "Classes applied to the resize handle element."
+          },
+          {
+            "name": "reorderHandle",
+            "type": "string",
+            "description": "Classes applied to the reorder handle element."
+          },
+          {
+            "name": "dropIndicator",
+            "type": "string",
+            "description": "Classes applied to the drop indicator element."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "description": "Classes applied to the body element."
+          },
+          {
+            "name": "row",
+            "type": "string",
+            "description": "Classes applied to the row element."
+          },
+          {
+            "name": "selectedRow",
+            "type": "string",
+            "description": "Classes applied to the selected row element."
+          },
+          {
+            "name": "disabledRow",
+            "type": "string",
+            "description": "Classes applied to the disabled row element."
+          },
+          {
+            "name": "focusedRow",
+            "type": "string",
+            "description": "Classes applied to the focused row element."
+          },
+          {
+            "name": "cell",
+            "type": "string",
+            "description": "Classes applied to the cell element."
+          },
+          {
+            "name": "editableCell",
+            "type": "string",
+            "description": "Classes applied to the editable cell element."
+          },
+          {
+            "name": "editingCell",
+            "type": "string",
+            "description": "Classes applied to the editing cell element."
+          },
+          {
+            "name": "readOnlyCell",
+            "type": "string",
+            "description": "Classes applied to the read only cell element."
+          },
+          {
+            "name": "disabledCell",
+            "type": "string",
+            "description": "Classes applied to the disabled cell element."
+          },
+          {
+            "name": "editor",
+            "type": "string",
+            "description": "Classes applied to the editor element."
+          },
+          {
+            "name": "editError",
+            "type": "string",
+            "description": "Classes applied to the edit error element."
+          },
+          {
+            "name": "editingRow",
+            "type": "string",
+            "description": "Classes applied to the editing row element."
+          },
+          {
+            "name": "selectionCell",
+            "type": "string",
+            "description": "Classes applied to the selection cell element."
+          },
+          {
+            "name": "selectionControl",
+            "type": "string",
+            "description": "Classes applied to the selection control element."
+          },
+          {
+            "name": "expansionCell",
+            "type": "string",
+            "description": "Classes applied to the expansion cell element."
+          },
+          {
+            "name": "expansionButton",
+            "type": "string",
+            "description": "Classes applied to the expansion button element."
+          },
+          {
+            "name": "expansionRow",
+            "type": "string",
+            "description": "Classes applied to the expansion row element."
+          },
+          {
+            "name": "expansionContent",
+            "type": "string",
+            "description": "Classes applied to the expansion content element."
+          },
+          {
+            "name": "groupHeaderRow",
+            "type": "string",
+            "description": "Classes applied to the group header row element."
+          },
+          {
+            "name": "groupHeaderCell",
+            "type": "string",
+            "description": "Classes applied to the group header cell element."
+          },
+          {
+            "name": "groupToggle",
+            "type": "string",
+            "description": "Classes applied to the group toggle element."
+          },
+          {
+            "name": "groupFooterRow",
+            "type": "string",
+            "description": "Classes applied to the group footer row element."
+          },
+          {
+            "name": "groupFooterCell",
+            "type": "string",
+            "description": "Classes applied to the group footer cell element."
+          },
+          {
+            "name": "stateRow",
+            "type": "string",
+            "description": "Classes applied to the state row element."
+          },
+          {
+            "name": "stateCell",
+            "type": "string",
+            "description": "Classes applied to the state cell element."
+          },
+          {
+            "name": "loading",
+            "type": "string",
+            "description": "Classes applied to the loading element."
+          },
+          {
+            "name": "skeletonRow",
+            "type": "string",
+            "description": "Classes applied to the skeleton row element."
+          },
+          {
+            "name": "skeletonCell",
+            "type": "string",
+            "description": "Classes applied to the skeleton cell element."
+          },
+          {
+            "name": "skeletonLine",
+            "type": "string",
+            "description": "Classes applied to the skeleton line element."
+          },
+          {
+            "name": "empty",
+            "type": "string",
+            "description": "Classes applied to the empty element."
+          },
+          {
+            "name": "error",
+            "type": "string",
+            "description": "Classes applied to the error element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "footerRow",
+            "type": "string",
+            "description": "Classes applied to the footer row element."
+          },
+          {
+            "name": "footerCell",
+            "type": "string",
+            "description": "Classes applied to the footer cell element."
+          },
+          {
+            "name": "footerGroupRow",
+            "type": "string",
+            "description": "Classes applied to the footer group row element."
+          },
+          {
+            "name": "footerGroupCell",
+            "type": "string",
+            "description": "Classes applied to the footer group cell element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/table/table.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/table/contract",
@@ -2273,6 +6920,49 @@ export const GENERATED_COMPONENTS = [
       {
         "name": "value",
         "type": "NeuralTabValue | null"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralTabsClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "tab",
+            "type": "string",
+            "description": "Classes applied to the tab element."
+          },
+          {
+            "name": "activeTab",
+            "type": "string",
+            "description": "Classes applied to the active tab element."
+          },
+          {
+            "name": "disabledTab",
+            "type": "string",
+            "description": "Classes applied to the disabled tab element."
+          },
+          {
+            "name": "panels",
+            "type": "string",
+            "description": "Classes applied to the panels element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/tabs/tabs.types.ts"
       }
     ],
     "relatedComponents": [
@@ -2300,6 +6990,44 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Text-first classification and status labels for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralTagClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "Classes applied to the icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "removeButton",
+            "type": "string",
+            "description": "Classes applied to the remove button element."
+          },
+          {
+            "name": "removeIcon",
+            "type": "string",
+            "description": "Classes applied to the remove icon element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/tag/tag.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/tag/contract",
@@ -2320,6 +7048,19 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Native, Signal Forms-ready multiline text enhancement for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralTextareaClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The native textarea element enhanced by the `neuralTextarea` directive."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/textarea/textarea.component.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/textarea/contract",
@@ -2340,6 +7081,69 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Modern Angular 22+ Toast renderer for the headless Signal store in `@neural-ng/core/message`. Toast is standalone, SSR-safe, direction-aware, themeable, and fully consumer-stylable.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralToastClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "The fixed-position region that owns the toast stack."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "The wrapper for each rendered notification."
+          },
+          {
+            "name": "message",
+            "type": "string",
+            "description": "The notification article surface."
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "description": "The semantic severity icon."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "The container that groups title and detail text."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "The optional notification title."
+          },
+          {
+            "name": "detail",
+            "type": "string",
+            "description": "The primary notification detail text."
+          },
+          {
+            "name": "closeButton",
+            "type": "string",
+            "description": "The dismiss button rendered for dismissible messages."
+          },
+          {
+            "name": "progressTrack",
+            "type": "string",
+            "description": "The progress track rendered for timed messages."
+          },
+          {
+            "name": "progressValue",
+            "type": "string",
+            "description": "The animated progress value inside the track."
+          },
+          {
+            "name": "liveRegion",
+            "type": "string",
+            "description": "The visually hidden polite and assertive announcement regions."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/toast/toast.types.ts"
+      }
+    ],
     "relatedComponents": [
       "neural-toast-template"
     ],
@@ -2362,6 +7166,39 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralToolbarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "start",
+            "type": "string",
+            "description": "Classes applied to the start element."
+          },
+          {
+            "name": "center",
+            "type": "string",
+            "description": "Classes applied to the center element."
+          },
+          {
+            "name": "end",
+            "type": "string",
+            "description": "Classes applied to the end element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/toolbar/toolbar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "toolbar-start",
       "toolbar-center",
@@ -2387,6 +7224,39 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralToolbarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "start",
+            "type": "string",
+            "description": "Classes applied to the start element."
+          },
+          {
+            "name": "center",
+            "type": "string",
+            "description": "Classes applied to the center element."
+          },
+          {
+            "name": "end",
+            "type": "string",
+            "description": "Classes applied to the end element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/toolbar/toolbar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "toolbar",
       "toolbar-start",
@@ -2412,6 +7282,39 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralToolbarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "start",
+            "type": "string",
+            "description": "Classes applied to the start element."
+          },
+          {
+            "name": "center",
+            "type": "string",
+            "description": "Classes applied to the center element."
+          },
+          {
+            "name": "end",
+            "type": "string",
+            "description": "Classes applied to the end element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/toolbar/toolbar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "toolbar",
       "toolbar-start",
@@ -2437,6 +7340,39 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralToolbarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "start",
+            "type": "string",
+            "description": "Classes applied to the start element."
+          },
+          {
+            "name": "center",
+            "type": "string",
+            "description": "Classes applied to the center element."
+          },
+          {
+            "name": "end",
+            "type": "string",
+            "description": "Classes applied to the end element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/toolbar/toolbar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "toolbar",
       "toolbar-start",
@@ -2462,6 +7398,39 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralToolbarClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "start",
+            "type": "string",
+            "description": "Classes applied to the start element."
+          },
+          {
+            "name": "center",
+            "type": "string",
+            "description": "Classes applied to the center element."
+          },
+          {
+            "name": "end",
+            "type": "string",
+            "description": "Classes applied to the end element."
+          },
+          {
+            "name": "separator",
+            "type": "string",
+            "description": "Classes applied to the separator element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/toolbar/toolbar.types.ts"
+      }
+    ],
     "relatedComponents": [
       "toolbar",
       "toolbar-center",
@@ -2487,6 +7456,29 @@ export const GENERATED_COMPONENTS = [
     "status": "beta",
     "summary": "Accessible, text-only tooltips for Angular 22+. Beta.",
     "models": [],
+    "classes": [
+      {
+        "typeName": "NeuralTooltipClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "arrow",
+            "type": "string",
+            "description": "Classes applied to the arrow element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/tooltip/tooltip.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/tooltip/contract",
@@ -2518,6 +7510,109 @@ export const GENERATED_COMPONENTS = [
       {
         "name": "filterValue",
         "type": "string"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralTreeClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "list",
+            "type": "string",
+            "description": "Classes applied to the list element."
+          },
+          {
+            "name": "group",
+            "type": "string",
+            "description": "Classes applied to the group element."
+          },
+          {
+            "name": "node",
+            "type": "string",
+            "description": "Classes applied to the node element."
+          },
+          {
+            "name": "nodeContent",
+            "type": "string",
+            "description": "Classes applied to the node content element."
+          },
+          {
+            "name": "selectedNode",
+            "type": "string",
+            "description": "Classes applied to the selected node element."
+          },
+          {
+            "name": "partialNode",
+            "type": "string",
+            "description": "Classes applied to the partial node element."
+          },
+          {
+            "name": "matchedNode",
+            "type": "string",
+            "description": "Classes applied to the matched node element."
+          },
+          {
+            "name": "toggler",
+            "type": "string",
+            "description": "Classes applied to the toggler element."
+          },
+          {
+            "name": "togglerIcon",
+            "type": "string",
+            "description": "Classes applied to the toggler icon element."
+          },
+          {
+            "name": "nodeIcon",
+            "type": "string",
+            "description": "Classes applied to the node icon element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          },
+          {
+            "name": "checkbox",
+            "type": "string",
+            "description": "Classes applied to the checkbox element."
+          },
+          {
+            "name": "checkboxIcon",
+            "type": "string",
+            "description": "Classes applied to the checkbox icon element."
+          },
+          {
+            "name": "loading",
+            "type": "string",
+            "description": "Classes applied to the loading element."
+          },
+          {
+            "name": "empty",
+            "type": "string",
+            "description": "Classes applied to the empty element."
+          },
+          {
+            "name": "error",
+            "type": "string",
+            "description": "Classes applied to the error element."
+          },
+          {
+            "name": "errorMessage",
+            "type": "string",
+            "description": "Classes applied to the error message element."
+          },
+          {
+            "name": "retry",
+            "type": "string",
+            "description": "Classes applied to the retry element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/tree/tree.types.ts"
       }
     ],
     "relatedComponents": [],
@@ -2554,6 +7649,89 @@ export const GENERATED_COMPONENTS = [
         "type": "string"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralTreeSelectClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "trigger",
+            "type": "string",
+            "description": "Classes applied to the trigger element."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "description": "Classes applied to the value element."
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "description": "Classes applied to the placeholder element."
+          },
+          {
+            "name": "chipList",
+            "type": "string",
+            "description": "Classes applied to the chip list element."
+          },
+          {
+            "name": "chip",
+            "type": "string",
+            "description": "Classes applied to the chip element."
+          },
+          {
+            "name": "chipRemove",
+            "type": "string",
+            "description": "Classes applied to the chip remove element."
+          },
+          {
+            "name": "clearButton",
+            "type": "string",
+            "description": "Classes applied to the clear button element."
+          },
+          {
+            "name": "dropdownButton",
+            "type": "string",
+            "description": "Classes applied to the dropdown button element."
+          },
+          {
+            "name": "panel",
+            "type": "string",
+            "description": "Classes applied to the panel element."
+          },
+          {
+            "name": "header",
+            "type": "string",
+            "description": "Classes applied to the header element."
+          },
+          {
+            "name": "filter",
+            "type": "string",
+            "description": "Classes applied to the filter element."
+          },
+          {
+            "name": "tree",
+            "type": "string",
+            "description": "Classes applied to the tree element."
+          },
+          {
+            "name": "empty",
+            "type": "string",
+            "description": "Classes applied to the empty element."
+          },
+          {
+            "name": "loading",
+            "type": "string",
+            "description": "Classes applied to the loading element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/tree-select/tree-select.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/tree-select/contract",
@@ -2578,6 +7756,39 @@ export const GENERATED_COMPONENTS = [
       {
         "name": "value",
         "type": "boolean | null"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralCheckboxClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "description": "Classes applied to the input element."
+          },
+          {
+            "name": "control",
+            "type": "string",
+            "description": "Classes applied to the control element."
+          },
+          {
+            "name": "checkedControl",
+            "type": "string",
+            "description": "Classes applied to the checked control element."
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "description": "Classes applied to the label element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/checkbox/checkbox.types.ts"
       }
     ],
     "relatedComponents": [
@@ -2607,6 +7818,59 @@ export const GENERATED_COMPONENTS = [
         "type": "number"
       }
     ],
+    "classes": [
+      {
+        "typeName": "NeuralVirtualScrollerClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "viewport",
+            "type": "string",
+            "description": "Classes applied to the viewport element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "spacerBefore",
+            "type": "string",
+            "description": "Classes applied to the spacer before element."
+          },
+          {
+            "name": "items",
+            "type": "string",
+            "description": "Classes applied to the items element."
+          },
+          {
+            "name": "item",
+            "type": "string",
+            "description": "Classes applied to the item element."
+          },
+          {
+            "name": "spacerAfter",
+            "type": "string",
+            "description": "Classes applied to the spacer after element."
+          },
+          {
+            "name": "empty",
+            "type": "string",
+            "description": "Classes applied to the empty element."
+          },
+          {
+            "name": "loading",
+            "type": "string",
+            "description": "Classes applied to the loading element."
+          }
+        ],
+        "sourcePath": "libs/neural-ng/virtual-scroller/virtual-scroller.types.ts"
+      }
+    ],
     "relatedComponents": [],
     "resources": {
       "contract": "neural://components/virtual-scroller/contract",
@@ -2621,7 +7885,7 @@ export const GENERATED_COMPONENTS = [
 
 export const GENERATED_PACKAGE_CATALOG = {
   "packageName": "@neural-ng/core",
-  "version": "0.1.0-beta.7",
+  "version": "0.1.0-beta.8",
   "runtimeEntryPoints": [
     "@neural-ng/core",
     "@neural-ng/core/accordion",

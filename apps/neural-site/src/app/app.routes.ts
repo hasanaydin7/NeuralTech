@@ -243,28 +243,10 @@ export const appRoutes: Routes = [
       },
       {
         path: 'components/button',
-        loadComponent: () =>
-          import('./pages/docs/button/button.page').then(
-            (module) => module.ButtonPage,
+        loadChildren: () =>
+          import('./pages/docs/button/button.routes').then(
+            (module) => module.BUTTON_ROUTES,
           ),
-        title: 'Button — NeuralNg',
-        children: [
-          {
-            path: 'accessibility',
-            title: 'Button Accessibility — NeuralNg',
-            children: [],
-          },
-          {
-            path: 'api',
-            title: 'Button API — NeuralNg',
-            children: [],
-          },
-          {
-            path: 'tokens',
-            title: 'Button Tokens — NeuralNg',
-            children: [],
-          },
-        ],
       },
       {
         path: 'components/auto-complete',
@@ -352,28 +334,10 @@ export const appRoutes: Routes = [
       },
       {
         path: 'components/input',
-        loadComponent: () =>
-          import('./pages/docs/input/input.page').then(
-            (module) => module.InputPage,
+        loadChildren: () =>
+          import('./pages/docs/input/input.routes').then(
+            (module) => module.INPUT_ROUTES,
           ),
-        title: 'Input — NeuralNg',
-        children: [
-          {
-            path: 'accessibility',
-            title: 'Input Accessibility — NeuralNg',
-            children: [],
-          },
-          {
-            path: 'api',
-            title: 'Input API — NeuralNg',
-            children: [],
-          },
-          {
-            path: 'tokens',
-            title: 'Input Tokens — NeuralNg',
-            children: [],
-          },
-        ],
       },
       {
         path: 'components/input-mask',

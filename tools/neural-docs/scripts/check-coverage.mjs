@@ -1,17 +1,17 @@
 import { readText } from './shared.mjs';
 
 const navigation = await readText(
-  'apps/neural-demo/src/app/docs/navigation.ts',
+  'apps/neural-site/src/app/pages/docs/docs-layout.html',
 );
-const routes = await readText('apps/neural-demo/src/app/docs/docs.routes.ts');
+const routes = await readText('apps/neural-site/src/app/app.routes.ts');
 
 const navigationRoutes = new Set(
-  [...navigation.matchAll(/route:\s*'([^']+)'/g)].map((match) => match[1]),
+  [...navigation.matchAll(/routerLink="([^"]+)"/g)].map((match) => match[1]),
 );
 const configuredRoutes = new Set(
   [...routes.matchAll(/path:\s*'([^']+)'/g)]
     .map((match) => match[1])
-    .filter((route) => route && route !== '**')
+    .filter((route) => route && route !== '**' && route !== 'docs')
     .map((route) => `/docs/${route}`),
 );
 

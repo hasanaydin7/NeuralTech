@@ -67,12 +67,19 @@ describe('NeuralButton', () => {
 
   it('applies consumer classes with the structural and component classes', () => {
     fixture.componentRef.setInput('buttonClass', 'consumer-one consumer-two');
+    fixture.componentRef.setInput('classes', {
+      root: 'typed-root',
+      icon: 'typed-icon',
+    });
+    fixture.componentRef.setInput('icon', 'nt nt-check');
     fixture.detectChanges();
 
     expect(button.classList.contains('neural-btn-root')).toBe(true);
     expect(button.classList.contains('neural-btn-base')).toBe(true);
     expect(button.classList.contains('consumer-one')).toBe(true);
     expect(button.classList.contains('consumer-two')).toBe(true);
+    expect(button.classList.contains('typed-root')).toBe(true);
+    expect(button.querySelector('i')?.classList).toContain('typed-icon');
   });
 
   it('supports literal and bound label and icon inputs', () => {

@@ -26,6 +26,7 @@ import type { NeuralTextareaResizeMode } from './textarea.types';
       [unstyled]="unstyled()"
       [autoResize]="autoResize()"
       [resizeMode]="resizeMode()"
+      [classes]="{ root: 'typed-textarea' }"
       [disabled]="disabled()"
       [readOnly]="readonly()"
       [attr.aria-invalid]="invalid()"
@@ -97,6 +98,7 @@ describe('NeuralTextarea', () => {
     expect(textarea.classList).toContain('consumer-class');
     expect(textarea.classList).toContain('neural-textarea-root');
     expect(textarea.classList).toContain('neural-textarea-base');
+    expect(textarea.classList).toContain('typed-textarea');
   });
 
   it('switches resize modes without JavaScript measurement', async () => {

@@ -9,6 +9,15 @@ import {
 } from '@angular/core';
 import { NEURAL_NG_CONFIG } from '@neural-ng/core';
 
+export interface NeuralInputGroupClasses {
+  /** The outer container that owns the icons and projected input. */
+  readonly root?: string;
+  /** The icon rendered before the projected input. */
+  readonly startIcon?: string;
+  /** The icon rendered after the projected input. */
+  readonly endIcon?: string;
+}
+
 @Component({
   selector: 'neural-input-group',
   standalone: true,
@@ -146,6 +155,7 @@ export class NeuralInputGroup {
   readonly unstyled = input(false, { transform: booleanAttribute });
   readonly inputGroupClass = input('');
   readonly iconClass = input('');
+  readonly classes = input<NeuralInputGroupClasses>({});
 
   protected readonly effectiveUnstyled = computed(
     () => this.unstyled() || this.neuralConfig.unstyled,
@@ -158,6 +168,7 @@ export class NeuralInputGroup {
         ? ''
         : 'neural-input-group-fluid-base',
       this.inputGroupClass().trim(),
+      this.classes().root,
     ]
       .filter(Boolean)
       .join(' '),
@@ -166,19 +177,29 @@ export class NeuralInputGroup {
     this.composeIconClass(
       this.startIcon(),
       'neural-input-group-start-icon-root',
+      this.classes().startIcon,
     ),
   );
   protected readonly endIconClass = computed(() =>
-    this.composeIconClass(this.endIcon(), 'neural-input-group-end-icon-root'),
+    this.composeIconClass(
+      this.endIcon(),
+      'neural-input-group-end-icon-root',
+      this.classes().endIcon,
+    ),
   );
 
-  private composeIconClass(icon: string | null, positionClass: string): string {
+  private composeIconClass(
+    icon: string | null,
+    positionClass: string,
+    slotClass: string | undefined,
+  ): string {
     return [
       'neural-input-group-icon-root',
       positionClass,
       this.effectiveUnstyled() ? '' : 'neural-input-group-icon-base',
       icon?.trim(),
       this.iconClass().trim(),
+      slotClass,
     ]
       .filter(Boolean)
       .join(' ');

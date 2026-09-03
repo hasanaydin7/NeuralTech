@@ -83,42 +83,6 @@ for (const pilot of contract.pilots) {
   }
 }
 
-const themeStudio = await readText(
-  'apps/neural-demo/src/app/docs/pages/theme-studio/theme-studio.page.html',
-);
-
-const nativeInteractive = themeStudio.match(
-  /<(button|select|details|summary)\b/i,
-);
-if (nativeInteractive) {
-  throw new Error(
-    `Theme Studio must use NeuralNg controls instead of native <${nativeInteractive[1]}> elements.`,
-  );
-}
-
-for (const match of themeStudio.matchAll(/<(input|textarea)\b([^>]*)>/gi)) {
-  const [, element, attributes] = match;
-  const requiredDirective =
-    element.toLowerCase() === 'input' ? 'neuralInput' : 'neuralTextarea';
-  if (!attributes.includes(requiredDirective)) {
-    throw new Error(
-      `Theme Studio ${element} elements must use the ${requiredDirective} enhancement.`,
-    );
-  }
-}
-
-for (const component of [
-  '<neural-accordion',
-  '<neural-button',
-  '<neural-file-upload',
-  '<neural-progress-bar',
-  '<neural-radio-group',
-  '<neural-select',
-  '<neural-tabs',
-]) {
-  assertIncludes(themeStudio, component, 'Theme Studio NeuralNg control usage');
-}
-
 console.log(
-  'Neural docs examples use installable package entry points and assets.',
+  'Neural site examples use installable package entry points and assets.',
 );

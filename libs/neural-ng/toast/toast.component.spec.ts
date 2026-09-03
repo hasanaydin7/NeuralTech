@@ -144,6 +144,11 @@ describe('ToastComponent', () => {
     const { fixture, service } = createToast();
     fixture.componentRef.setInput('toastClass', 'custom-outlet');
     fixture.componentRef.setInput('messageClass', 'custom-message');
+    fixture.componentRef.setInput('classes', {
+      root: 'typed-outlet',
+      message: 'typed-message',
+      closeButton: 'typed-close',
+    });
     fixture.componentRef.setInput('unstyled', true);
     service.notify({ message: 'Headless message' });
     fixture.detectChanges();
@@ -157,9 +162,12 @@ describe('ToastComponent', () => {
     );
 
     expect(outlet.classList).toContain('custom-outlet');
+    expect(outlet.classList).toContain('typed-outlet');
     expect(message.classList).toContain('custom-message');
+    expect(message.classList).toContain('typed-message');
     expect(message.classList).not.toContain('neural-toast-message-base');
     expect(close.classList).not.toContain('neural-toast-close-base');
+    expect(close.classList).toContain('typed-close');
   });
 
   it('announces important and regular messages through stable live regions', () => {

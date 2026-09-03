@@ -24,7 +24,7 @@ import { NEURAL_TOAST_CONFIG } from './toast.config';
 import { NeuralToastTemplateDirective } from './toast-template.directive';
 import type { NeuralToastTemplateContext } from './toast-template.types';
 import { normalizeToastPosition } from './toast.providers';
-import type { NeuralToastPosition } from './toast.types';
+import type { NeuralToastClasses, NeuralToastPosition } from './toast.types';
 
 const DEFAULT_ICON_CLASSES: Readonly<
   Record<NeuralMessageRecord['severity'], string>
@@ -57,7 +57,7 @@ const DEFAULT_ICON_CLASSES: Readonly<
       (focusout)="onFocusOut($event)"
     >
       <span
-        class="neural-toast-live-region"
+        [class]="liveRegionClass()"
         role="status"
         aria-live="polite"
         aria-atomic="true"
@@ -65,7 +65,7 @@ const DEFAULT_ICON_CLASSES: Readonly<
         {{ politeAnnouncement() }}
       </span>
       <span
-        class="neural-toast-live-region"
+        [class]="liveRegionClass()"
         role="alert"
         aria-live="assertive"
         aria-atomic="true"
@@ -75,7 +75,7 @@ const DEFAULT_ICON_CLASSES: Readonly<
 
       @for (message of visibleMessages(); track message.id) {
         <div
-          class="neural-toast-item"
+          [class]="itemClass()"
           [animate.enter]="animationEnterClass()"
           [animate.leave]="animationLeaveClass()"
         >
@@ -100,13 +100,11 @@ const DEFAULT_ICON_CLASSES: Readonly<
                 <i [class]="computedIconClass(message)" aria-hidden="true"></i>
               }
 
-              <span class="neural-toast-content">
+              <span [class]="contentClass()">
                 @if (message.title) {
-                  <strong class="neural-toast-title">{{
-                    message.title
-                  }}</strong>
+                  <strong [class]="titleClass()">{{ message.title }}</strong>
                 }
-                <span class="neural-toast-detail">{{ message.message }}</span>
+                <span [class]="detailClass()">{{ message.message }}</span>
               </span>
 
               @if (message.dismissible) {
@@ -124,9 +122,9 @@ const DEFAULT_ICON_CLASSES: Readonly<
             }
 
             @if (effectiveShowProgress() && message.duration !== null) {
-              <span class="neural-toast-progress" aria-hidden="true">
+              <span [class]="progressTrackClass()" aria-hidden="true">
                 <span
-                  class="neural-toast-progress-value"
+                  [class]="progressValueClass()"
                   [style.--neural-toast-progress-duration]="
                     message.duration + 'ms'
                   "
@@ -433,6 +431,7 @@ export class NeuralToast {
   readonly messageClass = input('');
   readonly icon = input(true, { transform: booleanAttribute });
   readonly iconClass = input('');
+  readonly classes = input<NeuralToastClasses>({});
   readonly unstyled = input<boolean | undefined, unknown>(undefined, {
     transform: optionalBooleanAttribute,
   });
@@ -496,7 +495,29 @@ export class NeuralToast {
       'neural-toast-root',
       `neural-toast-position-${this.effectivePosition()}`,
       this.toastClass(),
+      this.classes().root,
     ),
+  );
+  protected readonly liveRegionClass = computed(() =>
+    joinClasses('neural-toast-live-region', this.classes().liveRegion),
+  );
+  protected readonly itemClass = computed(() =>
+    joinClasses('neural-toast-item', this.classes().item),
+  );
+  protected readonly contentClass = computed(() =>
+    joinClasses('neural-toast-content', this.classes().content),
+  );
+  protected readonly titleClass = computed(() =>
+    joinClasses('neural-toast-title', this.classes().title),
+  );
+  protected readonly detailClass = computed(() =>
+    joinClasses('neural-toast-detail', this.classes().detail),
+  );
+  protected readonly progressTrackClass = computed(() =>
+    joinClasses('neural-toast-progress', this.classes().progressTrack),
+  );
+  protected readonly progressValueClass = computed(() =>
+    joinClasses('neural-toast-progress-value', this.classes().progressValue),
   );
   protected readonly animationEnterClass = computed(() =>
     this.effectiveAnimated() && !this.effectiveUnstyled()
@@ -547,6 +568,7 @@ export class NeuralToast {
         ? 'neural-toast-message-without-icon'
         : '',
       this.messageClass(),
+      this.classes().message,
     );
   }
 
@@ -554,6 +576,7 @@ export class NeuralToast {
     return joinClasses(
       'neural-toast-close-root',
       this.effectiveUnstyled() ? '' : 'neural-toast-close-base',
+      this.classes().closeButton,
     );
   }
 
@@ -581,6 +604,7 @@ export class NeuralToast {
       customClass
         ? normalizeIconClass(customClass)
         : DEFAULT_ICON_CLASSES[message.severity],
+      this.classes().icon,
     );
   }
 
@@ -868,9 +892,9 @@ function normalizeIconClass(value: string): string {
   return usesNeuralIcon && !hasNeuralBase ? `nt ${value}` : value;
 }
 
-function joinClasses(...classes: string[]): string {
+function joinClasses(...classes: (string | undefined)[]): string {
   return classes
-    .map((value) => value.trim())
+    .map((value) => value?.trim() ?? '')
     .filter(Boolean)
     .join(' ');
 }

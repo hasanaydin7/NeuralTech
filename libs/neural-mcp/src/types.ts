@@ -5,6 +5,18 @@ export interface NeuralComponentModel {
   readonly type: string;
 }
 
+export interface NeuralClassSlotContract {
+  readonly name: string;
+  readonly type: string;
+  readonly description: string;
+}
+
+export interface NeuralClassesContract {
+  readonly typeName: string;
+  readonly sourcePath: string;
+  readonly slots: readonly NeuralClassSlotContract[];
+}
+
 export interface NeuralComponentResources {
   readonly contract: string;
   readonly readme: string;
@@ -22,6 +34,7 @@ export interface NeuralComponentContract {
   readonly summary: string;
   readonly formContract?: string;
   readonly models: readonly NeuralComponentModel[];
+  readonly classes: readonly NeuralClassesContract[];
   readonly relatedComponents: readonly string[];
   readonly resources: NeuralComponentResources;
 }

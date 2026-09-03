@@ -59,19 +59,29 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
   const exportAllFiles = parseExportAllFiles(indexSource);
   const summary = extractSummary(readme ?? llms ?? '', directoryName);
   const declarations = [];
+  const classes = [];
 
   for (const filePath of sourceFiles) {
     if (dirname(filePath) !== entryRoot) continue;
-    if (!/\.(?:component|directive)\.ts$/.test(filePath)) continue;
-
     const source = await readText(filePath);
     const fileStem = `./${basename(filePath, '.ts')}`;
+    const publicFile = exportAllFiles.has(fileStem);
+
+    for (const contract of parseClasses(source)) {
+      const isPublic = exportedNames.has(contract.typeName) || publicFile;
+      if (!isPublic) continue;
+      trackedFiles.add(filePath);
+      classes.push({
+        ...contract,
+        sourcePath: relative(workspaceRoot, filePath).replaceAll('\\', '/'),
+      });
+    }
+
+    if (!/\.(?:component|directive)\.ts$/.test(filePath)) continue;
     const found = parseDeclarations(source);
 
     for (const declaration of found) {
-      const isPublic =
-        exportedNames.has(declaration.className) ||
-        exportAllFiles.has(fileStem);
+      const isPublic = exportedNames.has(declaration.className) || publicFile;
       if (!isPublic) continue;
 
       trackedFiles.add(filePath);
@@ -156,6 +166,7 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
       summary,
       ...(formContract ? { formContract } : {}),
       models,
+      classes,
       relatedComponents: entryIds.filter((relatedId) => relatedId !== id),
       resources: {
         contract: contractUri,
@@ -273,9 +284,65 @@ function parseDeclarations(source) {
   return declarations;
 }
 
+function parseClasses(source) {
+  const contracts = [];
+  const sourceFile = ts.createSourceFile(
+    'neural-classes.ts',
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+
+  for (const statement of sourceFile.statements) {
+    if (!ts.isInterfaceDeclaration(statement)) continue;
+    if (!statement.name.text.endsWith('Classes')) continue;
+    if (!hasExportModifier(statement)) continue;
+
+    contracts.push({
+      typeName: statement.name.text,
+      slots: statement.members.filter(ts.isPropertySignature).map((member) => ({
+        name: member.name.getText(sourceFile).replace(/^['"]|['"]$/g, ''),
+        type: member.type?.getText(sourceFile) ?? 'unknown',
+        description:
+          readJsDoc(member) ||
+          `Classes applied to the ${humanize(member.name.getText(sourceFile))} element.`,
+      })),
+    });
+  }
+
+  return contracts;
+}
+
+function hasExportModifier(node) {
+  return (
+    node.modifiers?.some(
+      (modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword,
+    ) ?? false
+  );
+}
+
+function readJsDoc(node) {
+  return ts
+    .getJSDocCommentsAndTags(node)
+    .map((item) => item.comment)
+    .filter((comment) => typeof comment === 'string')
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function humanize(value) {
+  return value
+    .replace(/^['"]|['"]$/g, '')
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/([A-Z])([A-Z][a-z])/g, '$1 $2')
+    .toLowerCase();
+}
+
 function parseNamedExports(source) {
   const names = new Set();
-  const pattern = /export\s*\{([\s\S]*?)\}\s*from/g;
+  const pattern = /export\s+(?:type\s+)?\{([\s\S]*?)\}\s*from/g;
   let match;
   while ((match = pattern.exec(source))) {
     for (const item of match[1].split(',')) {
