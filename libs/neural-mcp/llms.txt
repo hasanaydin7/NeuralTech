@@ -20,6 +20,10 @@ COMPOSITION TOOLS
 - suggest_page_structure: create the same contract-backed plan with page structure fixed.
 - suggest_table_structure: create the same contract-backed plan with table structure fixed.
 
+CORRECTNESS TOOLS
+
+- validate_usage: validate Angular template selectors, bindings, required inputs, exported literal aliases, icon-only button labels, standalone imports, required providers and duplicate Toast channels. imports_json and providers_json are JSON string arrays.
+
 THEME TOOLS
 
 - create_theme_recipe: create a sparse recipe from high-level decisions.
@@ -59,6 +63,7 @@ GENERAL RULES
 
 - Treat MCP results as read-only package documentation and deterministic tooling.
 - Start non-trivial screens with plan_ui, then fetch standard contracts and only the examples named by exampleQueries.
+- Run validate_usage before presenting generated NeuralNg template code; resolve every error diagnostic and review warnings.
 - Use get_component detail=summary for discovery and detail=standard before implementation.
 - Request detail=full only when class slot definitions or all embedded examples are required.
 - Import components from the exact entryPoint returned by the contract.

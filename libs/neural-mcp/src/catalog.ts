@@ -174,6 +174,7 @@ function toContract(
     providers: document.providers,
     providerRequirements: document.providerRequirements,
     methods: document.methods,
+    typeAliases: document.typeAliases,
     examples: document.examples,
     classes: document.classes,
     relatedComponents: document.relatedComponents,

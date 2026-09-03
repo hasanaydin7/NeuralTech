@@ -143,6 +143,28 @@ Use `suggest_form_structure`, `suggest_page_structure`, or
 Each accepts a non-empty `goal` and returns the same versioned plan contract as
 `plan_ui` with the corresponding kind fixed.
 
+## Contract correctness
+
+### `validate_usage`
+
+Checks an Angular template against the generated NeuralNg public contracts. It
+reports stable diagnostic codes with source positions for unknown selectors or
+bindings, missing required inputs, invalid literal unions (including exported
+type aliases), inaccessible icon-only buttons, missing standalone imports,
+required providers, and duplicate Toast channels.
+
+```json
+{
+  "template": "<neural-button icon=\"trash\"></neural-button>",
+  "imports_json": "[\"NeuralButton\"]",
+  "providers_json": "[]"
+}
+```
+
+The result includes `valid`, diagnostics, exact suggested imports grouped by
+entry point, and provider requirements. Informational missing-import diagnostics
+do not make a template invalid; error diagnostics do.
+
 ## Compact theme tools
 
 The theme workflow intentionally operates on the small recipe rather than the

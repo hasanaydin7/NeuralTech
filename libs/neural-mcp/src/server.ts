@@ -5,6 +5,7 @@ import {
   searchComponents,
 } from './catalog.js';
 import { planUi } from './composition.js';
+import { validateUsage } from './validation.js';
 import { listNeuralResources, readNeuralResource } from './resources.js';
 import {
   compileThemeRecipeJson,
@@ -315,6 +316,40 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
   );
 
   server.registerTool(
+    'validate_usage',
+    {
+      title: 'Validate NeuralNg Angular template usage',
+      description:
+        'Validate NeuralNg selectors and bindings against generated public contracts, including required inputs, literal values, icon-button accessibility, standalone imports, provider requirements, and duplicate Toast channels.',
+      inputSchema: runtime.zod.object({
+        template: runtime.zod.string().min(1),
+        imports_json: runtime.zod.string().optional().default('[]'),
+        providers_json: runtime.zod.string().optional().default('[]'),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      try {
+        return jsonResult({
+          validation: validateUsage({
+            template: readRequiredString(input, 'template'),
+            imports: readStringArrayJson(
+              readOptionalString(input, 'imports_json', '[]'),
+              'imports_json',
+            ),
+            providers: readStringArrayJson(
+              readOptionalString(input, 'providers_json', '[]'),
+              'providers_json',
+            ),
+          }),
+        });
+      } catch (error) {
+        return errorResult(readErrorMessage(error));
+      }
+    },
+  );
+
+  server.registerTool(
     'create_theme_recipe',
     {
       title: 'Create a compact NeuralNg theme recipe',
@@ -559,6 +594,7 @@ function componentView(
     providers: component.providers,
     providerRequirements: component.providerRequirements,
     methods: component.methods,
+    typeAliases: component.typeAliases,
     classTypes: component.classes.map((contract) => contract.typeName),
     exampleCount: component.examples.length,
   };
@@ -603,6 +639,22 @@ function readJsonObject(value: string, label: string): Record<string, unknown> {
     );
   }
   if (!isRecord(parsed)) throw new TypeError(`${label} must be a JSON object.`);
+  return parsed;
+}
+
+function readStringArrayJson(value: string, label: string): string[] {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(value);
+  } catch {
+    throw new TypeError(`${label} must be valid JSON.`);
+  }
+  if (
+    !Array.isArray(parsed) ||
+    parsed.some((item) => typeof item !== 'string')
+  ) {
+    throw new TypeError(`${label} must be a JSON array of strings.`);
+  }
   return parsed;
 }
 

@@ -60,6 +60,7 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
   const summary = extractSummary(readme ?? llms ?? '', directoryName);
   const declarations = [];
   const classes = [];
+  const typeAliases = [];
   const providers = [];
 
   for (const filePath of sourceFiles) {
@@ -85,6 +86,15 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
         ...contract,
         sourcePath: relative(workspaceRoot, filePath).replaceAll('\\', '/'),
       });
+    }
+
+    for (const alias of parseTypeAliases(source)) {
+      const isPublic = exportedNames.has(alias.name) || publicFile;
+      if (!isPublic || typeAliases.some((item) => item.name === alias.name)) {
+        continue;
+      }
+      trackedFiles.add(filePath);
+      typeAliases.push(alias);
     }
 
     if (!/\.ts$/.test(filePath) || /\.spec\.ts$/.test(filePath)) continue;
@@ -201,6 +211,7 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
       methods: declaration.methods.filter((method) =>
         documentationText.includes(`${method.name}(`),
       ),
+      typeAliases,
       examples,
       classes,
       relatedComponents: entryIds.filter((relatedId) => relatedId !== id),
@@ -610,6 +621,25 @@ function parseClasses(source) {
   }
 
   return contracts;
+}
+
+function parseTypeAliases(source) {
+  const aliases = [];
+  const sourceFile = ts.createSourceFile(
+    'neural-types.ts',
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  for (const statement of sourceFile.statements) {
+    if (!ts.isTypeAliasDeclaration(statement)) continue;
+    aliases.push({
+      name: statement.name.text,
+      type: normalizeType(statement.type.getText(sourceFile)),
+    });
+  }
+  return aliases;
 }
 
 function hasExportModifier(node) {

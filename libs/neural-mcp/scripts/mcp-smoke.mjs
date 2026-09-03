@@ -79,8 +79,8 @@ try {
     const tools = await client.request('tools/list', {});
     const toolNames = tools?.tools?.map((tool) => tool.name) ?? [];
     assert(
-      toolNames.length === 15,
-      `Expected 15 tools, received ${toolNames.length}.`,
+      toolNames.length === 16,
+      `Expected 16 tools, received ${toolNames.length}.`,
     );
     assert(
       toolNames.includes('recommend_components'),
@@ -99,6 +99,7 @@ try {
       toolNames.includes('suggest_table_structure'),
       'Table structure tool is missing.',
     );
+    assert(toolNames.includes('validate_usage'), 'Usage validator is missing.');
     assert(
       toolNames.includes('create_theme_recipe'),
       'Theme recipe tool is missing.',
@@ -178,6 +179,20 @@ try {
         plannedIds.includes('select') &&
         plannedIds.includes('neural-drawer'),
       'UI planning tool returned an incomplete admin table composition.',
+    );
+
+    const usageValidation = await client.request('tools/call', {
+      name: 'validate_usage',
+      arguments: {
+        template: '<neural-button icon="trash"></neural-button>',
+        imports_json: JSON.stringify(['NeuralButton']),
+      },
+    });
+    assert(
+      usageValidation?.structuredContent?.validation?.diagnostics?.some(
+        (diagnostic) => diagnostic.code === 'NNG201',
+      ),
+      'Usage validator did not reject an inaccessible icon-only button.',
     );
 
     const createdTheme = await client.request('tools/call', {

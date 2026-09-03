@@ -5,7 +5,7 @@ import type {
   NeuralThemeCatalogEntry,
 } from '../types.js';
 
-export const GENERATED_SOURCE_HASH = "adaef002c2246c78eb265a19677b7f1a163a98c62b4c7bb292726dab508df31f";
+export const GENERATED_SOURCE_HASH = "d84b373e6e3642c6f4c32fa16ca8817d24ee8496cfc0e1323af676f54fcfe7b7";
 
 export const GENERATED_COMPONENTS = [
   {
@@ -133,6 +133,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAccordionValue",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralAccordionModelValue",
+        "type": "| NeuralAccordionValue | readonly NeuralAccordionValue[] | null"
+      },
+      {
+        "name": "NeuralAccordionInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -258,6 +272,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAccordionValue",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralAccordionModelValue",
+        "type": "| NeuralAccordionValue | readonly NeuralAccordionValue[] | null"
+      },
+      {
+        "name": "NeuralAccordionInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -390,6 +418,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAccordionValue",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralAccordionModelValue",
+        "type": "| NeuralAccordionValue | readonly NeuralAccordionValue[] | null"
+      },
+      {
+        "name": "NeuralAccordionInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -529,6 +571,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAccordionValue",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralAccordionModelValue",
+        "type": "| NeuralAccordionValue | readonly NeuralAccordionValue[] | null"
+      },
+      {
+        "name": "NeuralAccordionInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -1051,6 +1107,28 @@ export const GENERATED_COMPONENTS = [
         "returnType": "void"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralAutoCompleteDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralAutoCompleteValueMode",
+        "type": "'option' | 'text'"
+      },
+      {
+        "name": "NeuralAutoCompleteFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralAutoCompleteInteractionSource",
+        "type": "| 'input' | 'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralAutoCompleteSearchReason",
+        "type": "'input' | 'focus' | 'dropdown'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -1340,6 +1418,32 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAvatarSize",
+        "type": "| 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large'"
+      },
+      {
+        "name": "NeuralAvatarShape",
+        "type": "'circle' | 'rounded' | 'square'"
+      },
+      {
+        "name": "NeuralAvatarImageFit",
+        "type": "'cover' | 'contain'"
+      },
+      {
+        "name": "NeuralAvatarLoading",
+        "type": "'eager' | 'lazy'"
+      },
+      {
+        "name": "NeuralAvatarDecoding",
+        "type": "'sync' | 'async' | 'auto'"
+      },
+      {
+        "name": "NeuralAvatarFetchPriority",
+        "type": "'high' | 'low' | 'auto'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -1506,6 +1610,32 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAvatarSize",
+        "type": "| 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large'"
+      },
+      {
+        "name": "NeuralAvatarShape",
+        "type": "'circle' | 'rounded' | 'square'"
+      },
+      {
+        "name": "NeuralAvatarImageFit",
+        "type": "'cover' | 'contain'"
+      },
+      {
+        "name": "NeuralAvatarLoading",
+        "type": "'eager' | 'lazy'"
+      },
+      {
+        "name": "NeuralAvatarDecoding",
+        "type": "'sync' | 'async' | 'auto'"
+      },
+      {
+        "name": "NeuralAvatarFetchPriority",
+        "type": "'high' | 'low' | 'auto'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -1711,6 +1841,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralBadgeSeverity",
+        "type": "| 'primary' | 'secondary' | 'neutral' | 'info' | 'success' | 'warning' | 'error'"
+      },
+      {
+        "name": "NeuralBadgeSize",
+        "type": "'small' | 'medium' | 'large'"
+      },
+      {
+        "name": "NeuralBadgeAriaLive",
+        "type": "'off' | 'polite' | 'assertive'"
+      },
+      {
+        "name": "NeuralBadgePosition",
+        "type": "| 'start' | 'end' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -1887,6 +2035,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralBadgeSeverity",
+        "type": "| 'primary' | 'secondary' | 'neutral' | 'info' | 'success' | 'warning' | 'error'"
+      },
+      {
+        "name": "NeuralBadgeSize",
+        "type": "'small' | 'medium' | 'large'"
+      },
+      {
+        "name": "NeuralBadgeAriaLive",
+        "type": "'off' | 'polite' | 'assertive'"
+      },
+      {
+        "name": "NeuralBadgePosition",
+        "type": "| 'start' | 'end' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -2056,6 +2222,12 @@ export const GENERATED_COMPONENTS = [
         "name": "select",
         "signature": "select(item: NeuralBreadcrumbItem, event: MouseEvent): void",
         "returnType": "void"
+      }
+    ],
+    "typeAliases": [
+      {
+        "name": "NeuralBreadcrumbRouterLink",
+        "type": "string | readonly unknown[] | UrlTree"
       }
     ],
     "examples": [
@@ -2297,6 +2469,12 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralBreadcrumbRouterLink",
+        "type": "string | readonly unknown[] | UrlTree"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -2414,6 +2592,12 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralBreadcrumbRouterLink",
+        "type": "string | readonly unknown[] | UrlTree"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -2770,6 +2954,32 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralButtonBadgePosition",
+        "type": "NeuralBadgePosition"
+      },
+      {
+        "name": "NeuralButtonIconPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralButtonSize",
+        "type": "'small' | 'medium' | 'large'"
+      },
+      {
+        "name": "NeuralButtonIconSize",
+        "type": "'small' | 'medium' | 'large'"
+      },
+      {
+        "name": "NeuralButtonGroupOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralButtonSeverity",
+        "type": "| 'primary' | 'secondary' | 'neutral' | 'info' | 'success' | 'warning' | 'error'"
+      }
+    ],
     "examples": [
       {
         "title": "Setup",
@@ -2970,6 +3180,12 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralCardRole",
+        "type": "'article' | 'region' | 'group' | 'presentation'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -3060,6 +3276,12 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralCardRole",
+        "type": "'article' | 'region' | 'group' | 'presentation'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -3150,6 +3372,12 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralCardRole",
+        "type": "'article' | 'region' | 'group' | 'presentation'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -3240,6 +3468,12 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralCardRole",
+        "type": "'article' | 'region' | 'group' | 'presentation'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -3482,6 +3716,16 @@ export const GENERATED_COMPONENTS = [
         "returnType": "void"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralTriStateCheckboxValue",
+        "type": "boolean | null"
+      },
+      {
+        "name": "NeuralTriStateCheckboxClasses",
+        "type": "NeuralCheckboxClasses & { readonly mixedControl?: string; }"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -3663,6 +3907,20 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralConfirmationResult",
+        "type": "'accepted' | 'rejected' | 'dismissed'"
+      },
+      {
+        "name": "NeuralConfirmationCloseReason",
+        "type": "| 'accept' | 'reject' | 'escape' | 'backdrop' | 'close-button' | 'api' | 'replaced'"
+      },
+      {
+        "name": "NeuralConfirmationAction",
+        "type": "() => | boolean | void | Promise<boolean | void>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -3971,6 +4229,32 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDataViewLayout",
+        "type": "'list' | 'grid'"
+      },
+      {
+        "name": "NeuralDataViewDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralDataViewSortOrder",
+        "type": "1 | -1"
+      },
+      {
+        "name": "NeuralDataViewStateReason",
+        "type": "'page' | 'layout' | 'sort'"
+      },
+      {
+        "name": "NeuralDataViewTrackBy",
+        "type": "(item: T, index: number) => unknown"
+      },
+      {
+        "name": "NeuralDataViewSortComparator",
+        "type": "( first: T, second: T, field: string, order: NeuralDataViewSortOrder, ) => number"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -4524,6 +4808,64 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDatePickerMode",
+        "type": "| 'date' | 'month' | 'year' | 'time' | 'datetime'"
+      },
+      {
+        "name": "NeuralDateSelectionMode",
+        "type": "'single' | 'range' | 'multiple'"
+      },
+      {
+        "name": "NeuralDatePickerUnitValue",
+        "type": "TPickerMode extends 'time' ? NeuralTimeParts : TPickerMode extends 'datetime' ? NeuralDateTimeParts : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDateSelectionValue",
+        "type": "TPickerMode extends 'time' | 'datetime' ? NeuralDatePickerUnitValue<TPickerMode> : TMode extends 'range' ? NeuralDateRange<NeuralDateParts> : TMode extends 'multiple' ? readonly NeuralDateParts[] : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDatePickerValue",
+        "type": "NeuralDateSelectionValue<TMode, TPickerMode> | null"
+      },
+      {
+        "name": "NeuralDatePickerAnyValue",
+        "type": "| NeuralDateParts | NeuralTimeParts | NeuralDateTimeParts | NeuralDateRange | readonly NeuralDateParts[] | null"
+      },
+      {
+        "name": "NeuralDatePickerFooterAction",
+        "type": "| 'today' | 'clear' | 'cancel' | 'apply'"
+      },
+      {
+        "name": "NeuralDayOfWeek",
+        "type": "0 | 1 | 2 | 3 | 4 | 5 | 6"
+      },
+      {
+        "name": "NeuralNativeDateZone",
+        "type": "'local' | 'utc'"
+      },
+      {
+        "name": "NeuralDateDisabledPredicate",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDateFilter",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDatePickerInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralDatePickerView",
+        "type": "'days' | 'months' | 'years'"
+      },
+      {
+        "name": "NeuralDatePickerInvalidField",
+        "type": "| 'date' | 'year' | 'hour' | 'minute' | 'second'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -5388,6 +5730,24 @@ export const GENERATED_COMPONENTS = [
         "returnType": "void"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralMultiSelectDisplay",
+        "type": "'chip' | 'comma'"
+      },
+      {
+        "name": "NeuralMultiSelectDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralMultiSelectFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralMultiSelectInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -5621,6 +5981,28 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAutoCompleteDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralAutoCompleteValueMode",
+        "type": "'option' | 'text'"
+      },
+      {
+        "name": "NeuralAutoCompleteFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralAutoCompleteInteractionSource",
+        "type": "| 'input' | 'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralAutoCompleteSearchReason",
+        "type": "'input' | 'focus' | 'dropdown'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -5808,6 +6190,28 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAutoCompleteDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralAutoCompleteValueMode",
+        "type": "'option' | 'text'"
+      },
+      {
+        "name": "NeuralAutoCompleteFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralAutoCompleteInteractionSource",
+        "type": "| 'input' | 'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralAutoCompleteSearchReason",
+        "type": "'input' | 'focus' | 'dropdown'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -5995,6 +6399,28 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAutoCompleteDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralAutoCompleteValueMode",
+        "type": "'option' | 'text'"
+      },
+      {
+        "name": "NeuralAutoCompleteFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralAutoCompleteInteractionSource",
+        "type": "| 'input' | 'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralAutoCompleteSearchReason",
+        "type": "'input' | 'focus' | 'dropdown'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -6182,6 +6608,28 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAutoCompleteDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralAutoCompleteValueMode",
+        "type": "'option' | 'text'"
+      },
+      {
+        "name": "NeuralAutoCompleteFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralAutoCompleteInteractionSource",
+        "type": "| 'input' | 'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralAutoCompleteSearchReason",
+        "type": "'input' | 'focus' | 'dropdown'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -6369,6 +6817,28 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAutoCompleteDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralAutoCompleteValueMode",
+        "type": "'option' | 'text'"
+      },
+      {
+        "name": "NeuralAutoCompleteFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralAutoCompleteInteractionSource",
+        "type": "| 'input' | 'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralAutoCompleteSearchReason",
+        "type": "'input' | 'focus' | 'dropdown'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -6556,6 +7026,28 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralAutoCompleteDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralAutoCompleteValueMode",
+        "type": "'option' | 'text'"
+      },
+      {
+        "name": "NeuralAutoCompleteFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralAutoCompleteInteractionSource",
+        "type": "| 'input' | 'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralAutoCompleteSearchReason",
+        "type": "'input' | 'focus' | 'dropdown'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -6743,6 +7235,32 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralButtonBadgePosition",
+        "type": "NeuralBadgePosition"
+      },
+      {
+        "name": "NeuralButtonIconPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralButtonSize",
+        "type": "'small' | 'medium' | 'large'"
+      },
+      {
+        "name": "NeuralButtonIconSize",
+        "type": "'small' | 'medium' | 'large'"
+      },
+      {
+        "name": "NeuralButtonGroupOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralButtonSeverity",
+        "type": "| 'primary' | 'secondary' | 'neutral' | 'info' | 'success' | 'warning' | 'error'"
+      }
+    ],
     "examples": [
       {
         "title": "Setup",
@@ -6936,6 +7454,32 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDataViewLayout",
+        "type": "'list' | 'grid'"
+      },
+      {
+        "name": "NeuralDataViewDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralDataViewSortOrder",
+        "type": "1 | -1"
+      },
+      {
+        "name": "NeuralDataViewStateReason",
+        "type": "'page' | 'layout' | 'sort'"
+      },
+      {
+        "name": "NeuralDataViewTrackBy",
+        "type": "(item: T, index: number) => unknown"
+      },
+      {
+        "name": "NeuralDataViewSortComparator",
+        "type": "( first: T, second: T, field: string, order: NeuralDataViewSortOrder, ) => number"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -7088,6 +7632,32 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDataViewLayout",
+        "type": "'list' | 'grid'"
+      },
+      {
+        "name": "NeuralDataViewDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralDataViewSortOrder",
+        "type": "1 | -1"
+      },
+      {
+        "name": "NeuralDataViewStateReason",
+        "type": "'page' | 'layout' | 'sort'"
+      },
+      {
+        "name": "NeuralDataViewTrackBy",
+        "type": "(item: T, index: number) => unknown"
+      },
+      {
+        "name": "NeuralDataViewSortComparator",
+        "type": "( first: T, second: T, field: string, order: NeuralDataViewSortOrder, ) => number"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -7247,6 +7817,32 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDataViewLayout",
+        "type": "'list' | 'grid'"
+      },
+      {
+        "name": "NeuralDataViewDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralDataViewSortOrder",
+        "type": "1 | -1"
+      },
+      {
+        "name": "NeuralDataViewStateReason",
+        "type": "'page' | 'layout' | 'sort'"
+      },
+      {
+        "name": "NeuralDataViewTrackBy",
+        "type": "(item: T, index: number) => unknown"
+      },
+      {
+        "name": "NeuralDataViewSortComparator",
+        "type": "( first: T, second: T, field: string, order: NeuralDataViewSortOrder, ) => number"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -7399,6 +7995,32 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDataViewLayout",
+        "type": "'list' | 'grid'"
+      },
+      {
+        "name": "NeuralDataViewDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralDataViewSortOrder",
+        "type": "1 | -1"
+      },
+      {
+        "name": "NeuralDataViewStateReason",
+        "type": "'page' | 'layout' | 'sort'"
+      },
+      {
+        "name": "NeuralDataViewTrackBy",
+        "type": "(item: T, index: number) => unknown"
+      },
+      {
+        "name": "NeuralDataViewSortComparator",
+        "type": "( first: T, second: T, field: string, order: NeuralDataViewSortOrder, ) => number"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -7558,6 +8180,32 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDataViewLayout",
+        "type": "'list' | 'grid'"
+      },
+      {
+        "name": "NeuralDataViewDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralDataViewSortOrder",
+        "type": "1 | -1"
+      },
+      {
+        "name": "NeuralDataViewStateReason",
+        "type": "'page' | 'layout' | 'sort'"
+      },
+      {
+        "name": "NeuralDataViewTrackBy",
+        "type": "(item: T, index: number) => unknown"
+      },
+      {
+        "name": "NeuralDataViewSortComparator",
+        "type": "( first: T, second: T, field: string, order: NeuralDataViewSortOrder, ) => number"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -7710,6 +8358,32 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDataViewLayout",
+        "type": "'list' | 'grid'"
+      },
+      {
+        "name": "NeuralDataViewDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralDataViewSortOrder",
+        "type": "1 | -1"
+      },
+      {
+        "name": "NeuralDataViewStateReason",
+        "type": "'page' | 'layout' | 'sort'"
+      },
+      {
+        "name": "NeuralDataViewTrackBy",
+        "type": "(item: T, index: number) => unknown"
+      },
+      {
+        "name": "NeuralDataViewSortComparator",
+        "type": "( first: T, second: T, field: string, order: NeuralDataViewSortOrder, ) => number"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -7862,6 +8536,64 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDatePickerMode",
+        "type": "| 'date' | 'month' | 'year' | 'time' | 'datetime'"
+      },
+      {
+        "name": "NeuralDateSelectionMode",
+        "type": "'single' | 'range' | 'multiple'"
+      },
+      {
+        "name": "NeuralDatePickerUnitValue",
+        "type": "TPickerMode extends 'time' ? NeuralTimeParts : TPickerMode extends 'datetime' ? NeuralDateTimeParts : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDateSelectionValue",
+        "type": "TPickerMode extends 'time' | 'datetime' ? NeuralDatePickerUnitValue<TPickerMode> : TMode extends 'range' ? NeuralDateRange<NeuralDateParts> : TMode extends 'multiple' ? readonly NeuralDateParts[] : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDatePickerValue",
+        "type": "NeuralDateSelectionValue<TMode, TPickerMode> | null"
+      },
+      {
+        "name": "NeuralDatePickerAnyValue",
+        "type": "| NeuralDateParts | NeuralTimeParts | NeuralDateTimeParts | NeuralDateRange | readonly NeuralDateParts[] | null"
+      },
+      {
+        "name": "NeuralDatePickerFooterAction",
+        "type": "| 'today' | 'clear' | 'cancel' | 'apply'"
+      },
+      {
+        "name": "NeuralDayOfWeek",
+        "type": "0 | 1 | 2 | 3 | 4 | 5 | 6"
+      },
+      {
+        "name": "NeuralNativeDateZone",
+        "type": "'local' | 'utc'"
+      },
+      {
+        "name": "NeuralDateDisabledPredicate",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDateFilter",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDatePickerInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralDatePickerView",
+        "type": "'days' | 'months' | 'years'"
+      },
+      {
+        "name": "NeuralDatePickerInvalidField",
+        "type": "| 'date' | 'year' | 'hour' | 'minute' | 'second'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -8274,6 +9006,64 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDatePickerMode",
+        "type": "| 'date' | 'month' | 'year' | 'time' | 'datetime'"
+      },
+      {
+        "name": "NeuralDateSelectionMode",
+        "type": "'single' | 'range' | 'multiple'"
+      },
+      {
+        "name": "NeuralDatePickerUnitValue",
+        "type": "TPickerMode extends 'time' ? NeuralTimeParts : TPickerMode extends 'datetime' ? NeuralDateTimeParts : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDateSelectionValue",
+        "type": "TPickerMode extends 'time' | 'datetime' ? NeuralDatePickerUnitValue<TPickerMode> : TMode extends 'range' ? NeuralDateRange<NeuralDateParts> : TMode extends 'multiple' ? readonly NeuralDateParts[] : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDatePickerValue",
+        "type": "NeuralDateSelectionValue<TMode, TPickerMode> | null"
+      },
+      {
+        "name": "NeuralDatePickerAnyValue",
+        "type": "| NeuralDateParts | NeuralTimeParts | NeuralDateTimeParts | NeuralDateRange | readonly NeuralDateParts[] | null"
+      },
+      {
+        "name": "NeuralDatePickerFooterAction",
+        "type": "| 'today' | 'clear' | 'cancel' | 'apply'"
+      },
+      {
+        "name": "NeuralDayOfWeek",
+        "type": "0 | 1 | 2 | 3 | 4 | 5 | 6"
+      },
+      {
+        "name": "NeuralNativeDateZone",
+        "type": "'local' | 'utc'"
+      },
+      {
+        "name": "NeuralDateDisabledPredicate",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDateFilter",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDatePickerInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralDatePickerView",
+        "type": "'days' | 'months' | 'years'"
+      },
+      {
+        "name": "NeuralDatePickerInvalidField",
+        "type": "| 'date' | 'year' | 'hour' | 'minute' | 'second'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -8686,6 +9476,64 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDatePickerMode",
+        "type": "| 'date' | 'month' | 'year' | 'time' | 'datetime'"
+      },
+      {
+        "name": "NeuralDateSelectionMode",
+        "type": "'single' | 'range' | 'multiple'"
+      },
+      {
+        "name": "NeuralDatePickerUnitValue",
+        "type": "TPickerMode extends 'time' ? NeuralTimeParts : TPickerMode extends 'datetime' ? NeuralDateTimeParts : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDateSelectionValue",
+        "type": "TPickerMode extends 'time' | 'datetime' ? NeuralDatePickerUnitValue<TPickerMode> : TMode extends 'range' ? NeuralDateRange<NeuralDateParts> : TMode extends 'multiple' ? readonly NeuralDateParts[] : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDatePickerValue",
+        "type": "NeuralDateSelectionValue<TMode, TPickerMode> | null"
+      },
+      {
+        "name": "NeuralDatePickerAnyValue",
+        "type": "| NeuralDateParts | NeuralTimeParts | NeuralDateTimeParts | NeuralDateRange | readonly NeuralDateParts[] | null"
+      },
+      {
+        "name": "NeuralDatePickerFooterAction",
+        "type": "| 'today' | 'clear' | 'cancel' | 'apply'"
+      },
+      {
+        "name": "NeuralDayOfWeek",
+        "type": "0 | 1 | 2 | 3 | 4 | 5 | 6"
+      },
+      {
+        "name": "NeuralNativeDateZone",
+        "type": "'local' | 'utc'"
+      },
+      {
+        "name": "NeuralDateDisabledPredicate",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDateFilter",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDatePickerInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralDatePickerView",
+        "type": "'days' | 'months' | 'years'"
+      },
+      {
+        "name": "NeuralDatePickerInvalidField",
+        "type": "| 'date' | 'year' | 'hour' | 'minute' | 'second'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -9098,6 +9946,64 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDatePickerMode",
+        "type": "| 'date' | 'month' | 'year' | 'time' | 'datetime'"
+      },
+      {
+        "name": "NeuralDateSelectionMode",
+        "type": "'single' | 'range' | 'multiple'"
+      },
+      {
+        "name": "NeuralDatePickerUnitValue",
+        "type": "TPickerMode extends 'time' ? NeuralTimeParts : TPickerMode extends 'datetime' ? NeuralDateTimeParts : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDateSelectionValue",
+        "type": "TPickerMode extends 'time' | 'datetime' ? NeuralDatePickerUnitValue<TPickerMode> : TMode extends 'range' ? NeuralDateRange<NeuralDateParts> : TMode extends 'multiple' ? readonly NeuralDateParts[] : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDatePickerValue",
+        "type": "NeuralDateSelectionValue<TMode, TPickerMode> | null"
+      },
+      {
+        "name": "NeuralDatePickerAnyValue",
+        "type": "| NeuralDateParts | NeuralTimeParts | NeuralDateTimeParts | NeuralDateRange | readonly NeuralDateParts[] | null"
+      },
+      {
+        "name": "NeuralDatePickerFooterAction",
+        "type": "| 'today' | 'clear' | 'cancel' | 'apply'"
+      },
+      {
+        "name": "NeuralDayOfWeek",
+        "type": "0 | 1 | 2 | 3 | 4 | 5 | 6"
+      },
+      {
+        "name": "NeuralNativeDateZone",
+        "type": "'local' | 'utc'"
+      },
+      {
+        "name": "NeuralDateDisabledPredicate",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDateFilter",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDatePickerInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralDatePickerView",
+        "type": "'days' | 'months' | 'years'"
+      },
+      {
+        "name": "NeuralDatePickerInvalidField",
+        "type": "| 'date' | 'year' | 'hour' | 'minute' | 'second'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -9510,6 +10416,64 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDatePickerMode",
+        "type": "| 'date' | 'month' | 'year' | 'time' | 'datetime'"
+      },
+      {
+        "name": "NeuralDateSelectionMode",
+        "type": "'single' | 'range' | 'multiple'"
+      },
+      {
+        "name": "NeuralDatePickerUnitValue",
+        "type": "TPickerMode extends 'time' ? NeuralTimeParts : TPickerMode extends 'datetime' ? NeuralDateTimeParts : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDateSelectionValue",
+        "type": "TPickerMode extends 'time' | 'datetime' ? NeuralDatePickerUnitValue<TPickerMode> : TMode extends 'range' ? NeuralDateRange<NeuralDateParts> : TMode extends 'multiple' ? readonly NeuralDateParts[] : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDatePickerValue",
+        "type": "NeuralDateSelectionValue<TMode, TPickerMode> | null"
+      },
+      {
+        "name": "NeuralDatePickerAnyValue",
+        "type": "| NeuralDateParts | NeuralTimeParts | NeuralDateTimeParts | NeuralDateRange | readonly NeuralDateParts[] | null"
+      },
+      {
+        "name": "NeuralDatePickerFooterAction",
+        "type": "| 'today' | 'clear' | 'cancel' | 'apply'"
+      },
+      {
+        "name": "NeuralDayOfWeek",
+        "type": "0 | 1 | 2 | 3 | 4 | 5 | 6"
+      },
+      {
+        "name": "NeuralNativeDateZone",
+        "type": "'local' | 'utc'"
+      },
+      {
+        "name": "NeuralDateDisabledPredicate",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDateFilter",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDatePickerInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralDatePickerView",
+        "type": "'days' | 'months' | 'years'"
+      },
+      {
+        "name": "NeuralDatePickerInvalidField",
+        "type": "| 'date' | 'year' | 'hour' | 'minute' | 'second'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -9922,6 +10886,64 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDatePickerMode",
+        "type": "| 'date' | 'month' | 'year' | 'time' | 'datetime'"
+      },
+      {
+        "name": "NeuralDateSelectionMode",
+        "type": "'single' | 'range' | 'multiple'"
+      },
+      {
+        "name": "NeuralDatePickerUnitValue",
+        "type": "TPickerMode extends 'time' ? NeuralTimeParts : TPickerMode extends 'datetime' ? NeuralDateTimeParts : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDateSelectionValue",
+        "type": "TPickerMode extends 'time' | 'datetime' ? NeuralDatePickerUnitValue<TPickerMode> : TMode extends 'range' ? NeuralDateRange<NeuralDateParts> : TMode extends 'multiple' ? readonly NeuralDateParts[] : NeuralDateParts"
+      },
+      {
+        "name": "NeuralDatePickerValue",
+        "type": "NeuralDateSelectionValue<TMode, TPickerMode> | null"
+      },
+      {
+        "name": "NeuralDatePickerAnyValue",
+        "type": "| NeuralDateParts | NeuralTimeParts | NeuralDateTimeParts | NeuralDateRange | readonly NeuralDateParts[] | null"
+      },
+      {
+        "name": "NeuralDatePickerFooterAction",
+        "type": "| 'today' | 'clear' | 'cancel' | 'apply'"
+      },
+      {
+        "name": "NeuralDayOfWeek",
+        "type": "0 | 1 | 2 | 3 | 4 | 5 | 6"
+      },
+      {
+        "name": "NeuralNativeDateZone",
+        "type": "'local' | 'utc'"
+      },
+      {
+        "name": "NeuralDateDisabledPredicate",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDateFilter",
+        "type": "(date: NeuralDateParts) => boolean"
+      },
+      {
+        "name": "NeuralDatePickerInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralDatePickerView",
+        "type": "'days' | 'months' | 'years'"
+      },
+      {
+        "name": "NeuralDatePickerInvalidField",
+        "type": "| 'date' | 'year' | 'hour' | 'minute' | 'second'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -10452,6 +11474,12 @@ export const GENERATED_COMPONENTS = [
         "returnType": "void"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralDialogCloseReason",
+        "type": "| 'api' | 'escape' | 'backdrop' | 'close-button' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -10563,6 +11591,12 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDialogCloseReason",
+        "type": "| 'api' | 'escape' | 'backdrop' | 'close-button' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -10674,6 +11708,12 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDialogCloseReason",
+        "type": "| 'api' | 'escape' | 'backdrop' | 'close-button' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -10785,6 +11825,12 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDialogCloseReason",
+        "type": "| 'api' | 'escape' | 'backdrop' | 'close-button' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -10888,6 +11934,12 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDialogCloseReason",
+        "type": "| 'api' | 'escape' | 'backdrop' | 'close-button' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -11050,6 +12102,20 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDividerOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralDividerAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralDividerType",
+        "type": "'solid' | 'dashed' | 'dotted'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -11253,6 +12319,16 @@ export const GENERATED_COMPONENTS = [
         "returnType": "void"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralDrawerPosition",
+        "type": "'start' | 'end' | 'top' | 'bottom'"
+      },
+      {
+        "name": "NeuralDrawerCloseReason",
+        "type": "| 'api' | 'escape' | 'backdrop' | 'close-button' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -11343,6 +12419,16 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDrawerPosition",
+        "type": "'start' | 'end' | 'top' | 'bottom'"
+      },
+      {
+        "name": "NeuralDrawerCloseReason",
+        "type": "| 'api' | 'escape' | 'backdrop' | 'close-button' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -11433,6 +12519,16 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDrawerPosition",
+        "type": "'start' | 'end' | 'top' | 'bottom'"
+      },
+      {
+        "name": "NeuralDrawerCloseReason",
+        "type": "| 'api' | 'escape' | 'backdrop' | 'close-button' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -11523,6 +12619,16 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDrawerPosition",
+        "type": "'start' | 'end' | 'top' | 'bottom'"
+      },
+      {
+        "name": "NeuralDrawerCloseReason",
+        "type": "| 'api' | 'escape' | 'backdrop' | 'close-button' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -11605,6 +12711,16 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralDrawerPosition",
+        "type": "'start' | 'end' | 'top' | 'bottom'"
+      },
+      {
+        "name": "NeuralDrawerCloseReason",
+        "type": "| 'api' | 'escape' | 'backdrop' | 'close-button' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -11771,6 +12887,7 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [],
     "examples": [
       {
         "title": "Import",
@@ -11874,6 +12991,7 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [],
     "examples": [
       {
         "title": "Import",
@@ -11985,6 +13103,7 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [],
     "examples": [
       {
         "title": "Import",
@@ -12088,6 +13207,7 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [],
     "examples": [
       {
         "title": "Import",
@@ -12191,6 +13311,7 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [],
     "examples": [
       {
         "title": "Import",
@@ -12603,6 +13724,16 @@ export const GENERATED_COMPONENTS = [
         "returnType": "void"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralFileUploadValue",
+        "type": "readonly File[]"
+      },
+      {
+        "name": "NeuralFileRejectionReason",
+        "type": "| 'file-type' | 'file-size' | 'file-count' | 'duplicate'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -12795,6 +13926,16 @@ export const GENERATED_COMPONENTS = [
         "name": "select",
         "signature": "select(): void",
         "returnType": "void"
+      }
+    ],
+    "typeAliases": [
+      {
+        "name": "NeuralInputSize",
+        "type": "'small' | 'medium' | 'large'"
+      },
+      {
+        "name": "NeuralInputVariant",
+        "type": "'outlined' | 'filled'"
       }
     ],
     "examples": [
@@ -13000,6 +14141,16 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralInputSize",
+        "type": "'small' | 'medium' | 'large'"
+      },
+      {
+        "name": "NeuralInputVariant",
+        "type": "'outlined' | 'filled'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -13343,6 +14494,12 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralInputMaskSlot",
+        "type": "'9' | 'a' | '*'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -13687,6 +14844,16 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralInputNumberMode",
+        "type": "'decimal' | 'currency'"
+      },
+      {
+        "name": "NeuralInputNumberCommitSource",
+        "type": "| 'blur' | 'enter' | 'keyboard' | 'button'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -13967,6 +15134,12 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralInputOtpMode",
+        "type": "'numeric' | 'alphanumeric'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -14052,6 +15225,12 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralLoadingOverlayScope",
+        "type": "'container' | 'viewport'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -14282,6 +15461,12 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralLoadingOverlayScope",
+        "type": "'container' | 'viewport'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -14469,6 +15654,28 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMenuPosition",
+        "type": "NeuralOverlayPlacement"
+      },
+      {
+        "name": "NeuralMenuInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      },
+      {
+        "name": "NeuralMenuRouterLink",
+        "type": "string | readonly unknown[] | UrlTree"
+      },
+      {
+        "name": "NeuralMenuGroupItem",
+        "type": "NeuralMenuAction | NeuralMenuSeparator"
+      },
+      {
+        "name": "NeuralMenuEntry",
+        "type": "| NeuralMenuAction | NeuralMenuSeparator | NeuralMenuGroupEntry"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -14659,6 +15866,28 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMenuPosition",
+        "type": "NeuralOverlayPlacement"
+      },
+      {
+        "name": "NeuralMenuInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      },
+      {
+        "name": "NeuralMenuRouterLink",
+        "type": "string | readonly unknown[] | UrlTree"
+      },
+      {
+        "name": "NeuralMenuGroupItem",
+        "type": "NeuralMenuAction | NeuralMenuSeparator"
+      },
+      {
+        "name": "NeuralMenuEntry",
+        "type": "| NeuralMenuAction | NeuralMenuSeparator | NeuralMenuGroupEntry"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -14944,6 +16173,28 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMenuPosition",
+        "type": "NeuralOverlayPlacement"
+      },
+      {
+        "name": "NeuralMenuInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      },
+      {
+        "name": "NeuralMenuRouterLink",
+        "type": "string | readonly unknown[] | UrlTree"
+      },
+      {
+        "name": "NeuralMenuGroupItem",
+        "type": "NeuralMenuAction | NeuralMenuSeparator"
+      },
+      {
+        "name": "NeuralMenuEntry",
+        "type": "| NeuralMenuAction | NeuralMenuSeparator | NeuralMenuGroupEntry"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -15099,6 +16350,28 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMenuPosition",
+        "type": "NeuralOverlayPlacement"
+      },
+      {
+        "name": "NeuralMenuInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      },
+      {
+        "name": "NeuralMenuRouterLink",
+        "type": "string | readonly unknown[] | UrlTree"
+      },
+      {
+        "name": "NeuralMenuGroupItem",
+        "type": "NeuralMenuAction | NeuralMenuSeparator"
+      },
+      {
+        "name": "NeuralMenuEntry",
+        "type": "| NeuralMenuAction | NeuralMenuSeparator | NeuralMenuGroupEntry"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -15260,6 +16533,28 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMenuPosition",
+        "type": "NeuralOverlayPlacement"
+      },
+      {
+        "name": "NeuralMenuInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      },
+      {
+        "name": "NeuralMenuRouterLink",
+        "type": "string | readonly unknown[] | UrlTree"
+      },
+      {
+        "name": "NeuralMenuGroupItem",
+        "type": "NeuralMenuAction | NeuralMenuSeparator"
+      },
+      {
+        "name": "NeuralMenuEntry",
+        "type": "| NeuralMenuAction | NeuralMenuSeparator | NeuralMenuGroupEntry"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -15526,6 +16821,36 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralInlineMessageSeverity",
+        "type": "NeuralMessageSeverity"
+      },
+      {
+        "name": "NeuralMessageVariant",
+        "type": "'filled' | 'outlined' | 'simple'"
+      },
+      {
+        "name": "NeuralMessageSize",
+        "type": "'small' | 'medium' | 'large'"
+      },
+      {
+        "name": "NeuralMessageAriaLive",
+        "type": "'auto' | 'off' | 'polite' | 'assertive'"
+      },
+      {
+        "name": "NeuralMessageSeverity",
+        "type": "| 'primary' | 'secondary' | 'neutral' | 'info' | 'success' | 'warning' | 'error'"
+      },
+      {
+        "name": "NeuralMessageDismissReason",
+        "type": "| 'api' | 'clear' | 'overflow' | 'timeout' | 'user'"
+      },
+      {
+        "name": "NeuralMessagesOptions",
+        "type": "Partial<NeuralMessagesConfig>"
+      }
+    ],
     "examples": [
       {
         "title": "Inline component",
@@ -15737,6 +17062,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMeterGroupOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralMeterGroupLabelPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralMeterGroupLabelOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralMeterValueFormatter",
+        "type": "( value: number, item: NeuralMeterItem, ) => string"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -15877,6 +17220,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMultiSelectDisplay",
+        "type": "'chip' | 'comma'"
+      },
+      {
+        "name": "NeuralMultiSelectDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralMultiSelectFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralMultiSelectInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -16110,6 +17471,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMultiSelectDisplay",
+        "type": "'chip' | 'comma'"
+      },
+      {
+        "name": "NeuralMultiSelectDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralMultiSelectFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralMultiSelectInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -16343,6 +17722,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMultiSelectDisplay",
+        "type": "'chip' | 'comma'"
+      },
+      {
+        "name": "NeuralMultiSelectDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralMultiSelectFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralMultiSelectInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -16576,6 +17973,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMultiSelectDisplay",
+        "type": "'chip' | 'comma'"
+      },
+      {
+        "name": "NeuralMultiSelectDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralMultiSelectFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralMultiSelectInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -16809,6 +18224,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMultiSelectDisplay",
+        "type": "'chip' | 'comma'"
+      },
+      {
+        "name": "NeuralMultiSelectDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralMultiSelectFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralMultiSelectInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -17042,6 +18475,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMultiSelectDisplay",
+        "type": "'chip' | 'comma'"
+      },
+      {
+        "name": "NeuralMultiSelectDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralMultiSelectFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralMultiSelectInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -17275,6 +18726,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralMultiSelectDisplay",
+        "type": "'chip' | 'comma'"
+      },
+      {
+        "name": "NeuralMultiSelectDataMode",
+        "type": "'local' | 'remote'"
+      },
+      {
+        "name": "NeuralMultiSelectFilterMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith'"
+      },
+      {
+        "name": "NeuralMultiSelectInteractionSource",
+        "type": "'keyboard' | 'pointer' | 'api'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -17623,6 +19092,12 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralPaginatorItem",
+        "type": "number | 'start-ellipsis' | 'end-ellipsis'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -17836,6 +19311,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralPanelMenuInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralPanelMenuRouterLink",
+        "type": "string | readonly unknown[] | UrlTree"
+      },
+      {
+        "name": "NeuralPanelMenuEntry",
+        "type": "| NeuralPanelMenuAction | NeuralPanelMenuSeparatorEntry"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -18146,6 +19635,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralPanelMenuInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralPanelMenuRouterLink",
+        "type": "string | readonly unknown[] | UrlTree"
+      },
+      {
+        "name": "NeuralPanelMenuEntry",
+        "type": "| NeuralPanelMenuAction | NeuralPanelMenuSeparatorEntry"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -18305,6 +19808,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralPanelMenuInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralPanelMenuRouterLink",
+        "type": "string | readonly unknown[] | UrlTree"
+      },
+      {
+        "name": "NeuralPanelMenuEntry",
+        "type": "| NeuralPanelMenuAction | NeuralPanelMenuSeparatorEntry"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -18733,6 +20250,12 @@ export const GENERATED_COMPONENTS = [
         "returnType": "void"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralPasswordStrength",
+        "type": "'empty' | 'weak' | 'medium' | 'strong'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -18972,6 +20495,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralProgressBarMode",
+        "type": "'determinate' | 'indeterminate'"
+      },
+      {
+        "name": "NeuralProgressBarSize",
+        "type": "'small' | 'medium' | 'large'"
+      },
+      {
+        "name": "NeuralProgressBarSeverity",
+        "type": "| 'primary' | 'secondary' | 'neutral' | 'info' | 'success' | 'warning' | 'error'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -19193,6 +20730,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralProgressSpinnerSize",
+        "type": "'small' | 'medium' | 'large'"
+      },
+      {
+        "name": "NeuralProgressSpinnerVariant",
+        "type": "'solid' | 'multicolor'"
+      },
+      {
+        "name": "NeuralProgressSpinnerSeverity",
+        "type": "| 'primary' | 'secondary' | 'neutral' | 'info' | 'success' | 'warning' | 'error'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -19334,6 +20885,16 @@ export const GENERATED_COMPONENTS = [
         "name": "focus",
         "signature": "focus(options?: FocusOptions): void",
         "returnType": "void"
+      }
+    ],
+    "typeAliases": [
+      {
+        "name": "NeuralRadioOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralRadioInteractionSource",
+        "type": "'keyboard' | 'pointer'"
       }
     ],
     "examples": [
@@ -19649,6 +21210,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSidebarSide",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralSidebarVariant",
+        "type": "'sidebar' | 'floating' | 'inset'"
+      },
+      {
+        "name": "NeuralSidebarCollapseMode",
+        "type": "'none' | 'icon' | 'offcanvas'"
+      },
+      {
+        "name": "NeuralSidebarIconMenu",
+        "type": "'flyout' | 'hidden'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -19743,6 +21322,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSidebarSide",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralSidebarVariant",
+        "type": "'sidebar' | 'floating' | 'inset'"
+      },
+      {
+        "name": "NeuralSidebarCollapseMode",
+        "type": "'none' | 'icon' | 'offcanvas'"
+      },
+      {
+        "name": "NeuralSidebarIconMenu",
+        "type": "'flyout' | 'hidden'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -19837,6 +21434,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSidebarSide",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralSidebarVariant",
+        "type": "'sidebar' | 'floating' | 'inset'"
+      },
+      {
+        "name": "NeuralSidebarCollapseMode",
+        "type": "'none' | 'icon' | 'offcanvas'"
+      },
+      {
+        "name": "NeuralSidebarIconMenu",
+        "type": "'flyout' | 'hidden'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -19931,6 +21546,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSidebarSide",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralSidebarVariant",
+        "type": "'sidebar' | 'floating' | 'inset'"
+      },
+      {
+        "name": "NeuralSidebarCollapseMode",
+        "type": "'none' | 'icon' | 'offcanvas'"
+      },
+      {
+        "name": "NeuralSidebarIconMenu",
+        "type": "'flyout' | 'hidden'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -20017,6 +21650,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSidebarSide",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralSidebarVariant",
+        "type": "'sidebar' | 'floating' | 'inset'"
+      },
+      {
+        "name": "NeuralSidebarCollapseMode",
+        "type": "'none' | 'icon' | 'offcanvas'"
+      },
+      {
+        "name": "NeuralSidebarIconMenu",
+        "type": "'flyout' | 'hidden'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -20103,6 +21754,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSidebarSide",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralSidebarVariant",
+        "type": "'sidebar' | 'floating' | 'inset'"
+      },
+      {
+        "name": "NeuralSidebarCollapseMode",
+        "type": "'none' | 'icon' | 'offcanvas'"
+      },
+      {
+        "name": "NeuralSidebarIconMenu",
+        "type": "'flyout' | 'hidden'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -20212,6 +21881,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSidebarSide",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralSidebarVariant",
+        "type": "'sidebar' | 'floating' | 'inset'"
+      },
+      {
+        "name": "NeuralSidebarCollapseMode",
+        "type": "'none' | 'icon' | 'offcanvas'"
+      },
+      {
+        "name": "NeuralSidebarIconMenu",
+        "type": "'flyout' | 'hidden'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -20307,6 +21994,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSidebarSide",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralSidebarVariant",
+        "type": "'sidebar' | 'floating' | 'inset'"
+      },
+      {
+        "name": "NeuralSidebarCollapseMode",
+        "type": "'none' | 'icon' | 'offcanvas'"
+      },
+      {
+        "name": "NeuralSidebarIconMenu",
+        "type": "'flyout' | 'hidden'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -20400,6 +22105,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSidebarSide",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralSidebarVariant",
+        "type": "'sidebar' | 'floating' | 'inset'"
+      },
+      {
+        "name": "NeuralSidebarCollapseMode",
+        "type": "'none' | 'icon' | 'offcanvas'"
+      },
+      {
+        "name": "NeuralSidebarIconMenu",
+        "type": "'flyout' | 'hidden'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -20551,6 +22274,16 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSkeletonShape",
+        "type": "'rectangle' | 'rounded' | 'circle'"
+      },
+      {
+        "name": "NeuralSkeletonAnimation",
+        "type": "'pulse' | 'wave' | 'none'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -20705,6 +22438,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -21148,6 +22967,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -21584,6 +23489,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -22020,6 +24011,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -22456,6 +24533,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -22899,6 +25062,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -23342,6 +25591,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -23785,6 +26120,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -24221,6 +26642,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -24657,6 +27164,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -25100,6 +27693,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -25543,6 +28222,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -25979,6 +28744,92 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -26358,6 +29209,16 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralToastPosition",
+        "type": "| 'top-start' | 'top-center' | 'top-end' | 'middle-start' | 'middle-center' | 'middle-end' | 'bottom-start' | 'bottom-center' | 'bottom-end'"
+      },
+      {
+        "name": "NeuralToastOptions",
+        "type": "Partial<NeuralToastConfig>"
+      }
+    ],
     "examples": [
       {
         "title": "Setup",
@@ -26558,6 +29419,32 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTreeKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTreeSelectionMode",
+        "type": "'single' | 'multiple' | 'checkbox'"
+      },
+      {
+        "name": "NeuralTreeCheckboxState",
+        "type": "'checked' | 'partial' | 'unchecked'"
+      },
+      {
+        "name": "NeuralTreeFilterMode",
+        "type": "'lenient' | 'strict'"
+      },
+      {
+        "name": "NeuralTreeTrackBy",
+        "type": "( node: NeuralTreeNode<T>, index: number, ) => unknown"
+      },
+      {
+        "name": "NeuralTreeSelectable",
+        "type": "( node: NeuralTreeNode<T>, ) => boolean"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -26750,6 +29637,32 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTreeKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTreeSelectionMode",
+        "type": "'single' | 'multiple' | 'checkbox'"
+      },
+      {
+        "name": "NeuralTreeCheckboxState",
+        "type": "'checked' | 'partial' | 'unchecked'"
+      },
+      {
+        "name": "NeuralTreeFilterMode",
+        "type": "'lenient' | 'strict'"
+      },
+      {
+        "name": "NeuralTreeTrackBy",
+        "type": "( node: NeuralTreeNode<T>, index: number, ) => unknown"
+      },
+      {
+        "name": "NeuralTreeSelectable",
+        "type": "( node: NeuralTreeNode<T>, ) => boolean"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -26934,6 +29847,32 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTreeKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTreeSelectionMode",
+        "type": "'single' | 'multiple' | 'checkbox'"
+      },
+      {
+        "name": "NeuralTreeCheckboxState",
+        "type": "'checked' | 'partial' | 'unchecked'"
+      },
+      {
+        "name": "NeuralTreeFilterMode",
+        "type": "'lenient' | 'strict'"
+      },
+      {
+        "name": "NeuralTreeTrackBy",
+        "type": "( node: NeuralTreeNode<T>, index: number, ) => unknown"
+      },
+      {
+        "name": "NeuralTreeSelectable",
+        "type": "( node: NeuralTreeNode<T>, ) => boolean"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -27126,6 +30065,32 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTreeKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTreeSelectionMode",
+        "type": "'single' | 'multiple' | 'checkbox'"
+      },
+      {
+        "name": "NeuralTreeCheckboxState",
+        "type": "'checked' | 'partial' | 'unchecked'"
+      },
+      {
+        "name": "NeuralTreeFilterMode",
+        "type": "'lenient' | 'strict'"
+      },
+      {
+        "name": "NeuralTreeTrackBy",
+        "type": "( node: NeuralTreeNode<T>, index: number, ) => unknown"
+      },
+      {
+        "name": "NeuralTreeSelectable",
+        "type": "( node: NeuralTreeNode<T>, ) => boolean"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -27292,6 +30257,16 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTreeSelectValueContext",
+        "type": "| TValue | readonly TValue[] | null"
+      },
+      {
+        "name": "NeuralTreeSelectValue",
+        "type": "| TValue | readonly TValue[] | null"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -27435,6 +30410,16 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTreeSelectValueContext",
+        "type": "| TValue | readonly TValue[] | null"
+      },
+      {
+        "name": "NeuralTreeSelectValue",
+        "type": "| TValue | readonly TValue[] | null"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -27604,6 +30589,32 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTreeKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTreeSelectionMode",
+        "type": "'single' | 'multiple' | 'checkbox'"
+      },
+      {
+        "name": "NeuralTreeCheckboxState",
+        "type": "'checked' | 'partial' | 'unchecked'"
+      },
+      {
+        "name": "NeuralTreeFilterMode",
+        "type": "'lenient' | 'strict'"
+      },
+      {
+        "name": "NeuralTreeTrackBy",
+        "type": "( node: NeuralTreeNode<T>, index: number, ) => unknown"
+      },
+      {
+        "name": "NeuralTreeSelectable",
+        "type": "( node: NeuralTreeNode<T>, ) => boolean"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -27776,6 +30787,20 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralVirtualScrollerOrientation",
+        "type": "'vertical' | 'horizontal'"
+      },
+      {
+        "name": "NeuralVirtualScrollerScrollBehavior",
+        "type": "'auto' | 'smooth'"
+      },
+      {
+        "name": "NeuralVirtualScrollerTrackBy",
+        "type": "( item: T, index: number, ) => unknown"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -27898,6 +30923,20 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralVirtualScrollerOrientation",
+        "type": "'vertical' | 'horizontal'"
+      },
+      {
+        "name": "NeuralVirtualScrollerScrollBehavior",
+        "type": "'auto' | 'smooth'"
+      },
+      {
+        "name": "NeuralVirtualScrollerTrackBy",
+        "type": "( item: T, index: number, ) => unknown"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -28013,6 +31052,20 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralVirtualScrollerOrientation",
+        "type": "'vertical' | 'horizontal'"
+      },
+      {
+        "name": "NeuralVirtualScrollerScrollBehavior",
+        "type": "'auto' | 'smooth'"
+      },
+      {
+        "name": "NeuralVirtualScrollerTrackBy",
+        "type": "( item: T, index: number, ) => unknown"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -28143,6 +31196,16 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSelectInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralSelectAppendTo",
+        "type": "'self' | 'body'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -28444,6 +31507,24 @@ export const GENERATED_COMPONENTS = [
         "returnType": "void"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralPopoverPosition",
+        "type": "NeuralOverlayPlacement"
+      },
+      {
+        "name": "NeuralPopoverFocusOnOpen",
+        "type": "'none' | 'first'"
+      },
+      {
+        "name": "NeuralPopoverRole",
+        "type": "'dialog' | 'region' | null"
+      },
+      {
+        "name": "NeuralPopoverCloseReason",
+        "type": "| 'trigger' | 'outside' | 'escape' | 'close-directive' | 'api' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Basic usage",
@@ -28535,6 +31616,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralPopoverPosition",
+        "type": "NeuralOverlayPlacement"
+      },
+      {
+        "name": "NeuralPopoverFocusOnOpen",
+        "type": "'none' | 'first'"
+      },
+      {
+        "name": "NeuralPopoverRole",
+        "type": "'dialog' | 'region' | null"
+      },
+      {
+        "name": "NeuralPopoverCloseReason",
+        "type": "| 'trigger' | 'outside' | 'escape' | 'close-directive' | 'api' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Basic usage",
@@ -28626,6 +31725,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralPopoverPosition",
+        "type": "NeuralOverlayPlacement"
+      },
+      {
+        "name": "NeuralPopoverFocusOnOpen",
+        "type": "'none' | 'first'"
+      },
+      {
+        "name": "NeuralPopoverRole",
+        "type": "'dialog' | 'region' | null"
+      },
+      {
+        "name": "NeuralPopoverCloseReason",
+        "type": "| 'trigger' | 'outside' | 'escape' | 'close-directive' | 'api' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Basic usage",
@@ -28756,6 +31873,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralPopoverPosition",
+        "type": "NeuralOverlayPlacement"
+      },
+      {
+        "name": "NeuralPopoverFocusOnOpen",
+        "type": "'none' | 'first'"
+      },
+      {
+        "name": "NeuralPopoverRole",
+        "type": "'dialog' | 'region' | null"
+      },
+      {
+        "name": "NeuralPopoverCloseReason",
+        "type": "| 'trigger' | 'outside' | 'escape' | 'close-directive' | 'api' | 'native'"
+      }
+    ],
     "examples": [
       {
         "title": "Basic usage",
@@ -29045,6 +32180,16 @@ export const GENERATED_COMPONENTS = [
         "name": "reset",
         "signature": "reset(): void",
         "returnType": "void"
+      }
+    ],
+    "typeAliases": [
+      {
+        "name": "NeuralRadioOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralRadioInteractionSource",
+        "type": "'keyboard' | 'pointer'"
       }
     ],
     "examples": [
@@ -29439,6 +32584,16 @@ export const GENERATED_COMPONENTS = [
         "returnType": "void"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralSelectInteractionSource",
+        "type": "'keyboard' | 'pointer'"
+      },
+      {
+        "name": "NeuralSelectAppendTo",
+        "type": "'self' | 'body'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -29802,6 +32957,24 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralSliderOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralSliderThumb",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralSliderRangeValue",
+        "type": "[number, number]"
+      },
+      {
+        "name": "NeuralSliderValue",
+        "type": "number | NeuralSliderRangeValue"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -30047,6 +33220,7 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [],
     "examples": [
       {
         "title": "Import",
@@ -30179,6 +33353,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTabValue",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTabsOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralTabsActivationMode",
+        "type": "'automatic' | 'manual'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -30314,6 +33502,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTabValue",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTabsOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralTabsActivationMode",
+        "type": "'automatic' | 'manual'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -30449,6 +33651,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTabValue",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTabsOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralTabsActivationMode",
+        "type": "'automatic' | 'manual'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -30570,6 +33786,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTabValue",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTabsOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralTabsActivationMode",
+        "type": "'automatic' | 'manual'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -31342,6 +34572,92 @@ export const GENERATED_COMPONENTS = [
         "returnType": "boolean"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralTableRowKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTableSortDirection",
+        "type": "'asc' | 'desc'"
+      },
+      {
+        "name": "NeuralTableSortMode",
+        "type": "'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableDataMode",
+        "type": "'client' | 'remote'"
+      },
+      {
+        "name": "NeuralTableSelectionMode",
+        "type": "'none' | 'single' | 'multiple'"
+      },
+      {
+        "name": "NeuralTableSelectionControl",
+        "type": "'auto' | 'checkbox' | 'radio'"
+      },
+      {
+        "name": "NeuralTableSelectAllMode",
+        "type": "'page' | 'filtered' | 'all'"
+      },
+      {
+        "name": "NeuralTableEditMode",
+        "type": "'cell' | 'row'"
+      },
+      {
+        "name": "NeuralTableRowGroupMode",
+        "type": "'subheader' | 'rowspan'"
+      },
+      {
+        "name": "NeuralTableAggregate",
+        "type": "'sum' | 'average' | 'min' | 'max'"
+      },
+      {
+        "name": "NeuralTableStateStorage",
+        "type": "'none' | 'local' | 'session'"
+      },
+      {
+        "name": "NeuralTableLoadingMode",
+        "type": "'message' | 'skeleton'"
+      },
+      {
+        "name": "NeuralTableEditValidationResult",
+        "type": "boolean | string | null | void"
+      },
+      {
+        "name": "NeuralTableDensity",
+        "type": "'compact' | 'comfortable' | 'spacious'"
+      },
+      {
+        "name": "NeuralTableAlign",
+        "type": "'start' | 'center' | 'end'"
+      },
+      {
+        "name": "NeuralTableColumnResizeMode",
+        "type": "'fit' | 'expand'"
+      },
+      {
+        "name": "NeuralTableColumnWidths",
+        "type": "Readonly<Record<string, number>>"
+      },
+      {
+        "name": "NeuralTableColumnOrder",
+        "type": "readonly string[]"
+      },
+      {
+        "name": "NeuralTableFilterType",
+        "type": "| 'text' | 'number' | 'date' | 'boolean' | 'select'"
+      },
+      {
+        "name": "NeuralTableFilterMatchMode",
+        "type": "| 'contains' | 'startsWith' | 'endsWith' | 'equals' | 'notEquals' | 'lt' | 'lte' | 'gt' | 'gte' | 'in' | 'between'"
+      },
+      {
+        "name": "NeuralTableEditValidator",
+        "type": "( event: NeuralTableEditEvent<T> | NeuralTableRowEditEvent<T>, ) => | NeuralTableEditValidationResult | Promise<NeuralTableEditValidationResult>"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -31750,6 +35066,20 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTabValue",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTabsOrientation",
+        "type": "'horizontal' | 'vertical'"
+      },
+      {
+        "name": "NeuralTabsActivationMode",
+        "type": "'automatic' | 'manual'"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -31959,6 +35289,16 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralTagSeverity",
+        "type": "| 'primary' | 'secondary' | 'neutral' | 'info' | 'success' | 'warning' | 'error'"
+      },
+      {
+        "name": "NeuralTagSize",
+        "type": "'small' | 'medium' | 'large'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -32090,6 +35430,12 @@ export const GENERATED_COMPONENTS = [
         "name": "select",
         "signature": "select(): void",
         "returnType": "void"
+      }
+    ],
+    "typeAliases": [
+      {
+        "name": "NeuralTextareaResizeMode",
+        "type": "| 'vertical' | 'horizontal' | 'both' | 'none'"
       }
     ],
     "examples": [
@@ -32314,6 +35660,16 @@ export const GENERATED_COMPONENTS = [
       }
     ],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralToastPosition",
+        "type": "| 'top-start' | 'top-center' | 'top-end' | 'middle-start' | 'middle-center' | 'middle-end' | 'bottom-start' | 'bottom-center' | 'bottom-end'"
+      },
+      {
+        "name": "NeuralToastOptions",
+        "type": "Partial<NeuralToastConfig>"
+      }
+    ],
     "examples": [
       {
         "title": "Setup",
@@ -32557,6 +35913,12 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralToolbarOrientation",
+        "type": "'horizontal' | 'vertical'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -32642,6 +36004,12 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralToolbarOrientation",
+        "type": "'horizontal' | 'vertical'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -32727,6 +36095,12 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralToolbarOrientation",
+        "type": "'horizontal' | 'vertical'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -32812,6 +36186,12 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralToolbarOrientation",
+        "type": "'horizontal' | 'vertical'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -32897,6 +36277,12 @@ export const GENERATED_COMPONENTS = [
     "providers": [],
     "providerRequirements": [],
     "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralToolbarOrientation",
+        "type": "'horizontal' | 'vertical'"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -33057,6 +36443,12 @@ export const GENERATED_COMPONENTS = [
         "name": "hide",
         "signature": "hide(immediate = false): void",
         "returnType": "void"
+      }
+    ],
+    "typeAliases": [
+      {
+        "name": "NeuralTooltipPosition",
+        "type": "NeuralOverlayPlacement"
       }
     ],
     "examples": [
@@ -33403,6 +36795,32 @@ export const GENERATED_COMPONENTS = [
         "name": "collapseAll",
         "signature": "collapseAll(): void",
         "returnType": "void"
+      }
+    ],
+    "typeAliases": [
+      {
+        "name": "NeuralTreeKey",
+        "type": "string | number"
+      },
+      {
+        "name": "NeuralTreeSelectionMode",
+        "type": "'single' | 'multiple' | 'checkbox'"
+      },
+      {
+        "name": "NeuralTreeCheckboxState",
+        "type": "'checked' | 'partial' | 'unchecked'"
+      },
+      {
+        "name": "NeuralTreeFilterMode",
+        "type": "'lenient' | 'strict'"
+      },
+      {
+        "name": "NeuralTreeTrackBy",
+        "type": "( node: NeuralTreeNode<T>, index: number, ) => unknown"
+      },
+      {
+        "name": "NeuralTreeSelectable",
+        "type": "( node: NeuralTreeNode<T>, ) => boolean"
       }
     ],
     "examples": [
@@ -33891,6 +37309,16 @@ export const GENERATED_COMPONENTS = [
         "returnType": "void"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralTreeSelectValueContext",
+        "type": "| TValue | readonly TValue[] | null"
+      },
+      {
+        "name": "NeuralTreeSelectValue",
+        "type": "| TValue | readonly TValue[] | null"
+      }
+    ],
     "examples": [
       {
         "title": "Usage",
@@ -34179,6 +37607,16 @@ export const GENERATED_COMPONENTS = [
         "returnType": "void"
       }
     ],
+    "typeAliases": [
+      {
+        "name": "NeuralTriStateCheckboxValue",
+        "type": "boolean | null"
+      },
+      {
+        "name": "NeuralTriStateCheckboxClasses",
+        "type": "NeuralCheckboxClasses & { readonly mixedControl?: string; }"
+      }
+    ],
     "examples": [
       {
         "title": "Import",
@@ -34437,6 +37875,20 @@ export const GENERATED_COMPONENTS = [
         "name": "scrollToOffset",
         "signature": "scrollToOffset(offset: number, behavior: NeuralVirtualScrollerScrollBehavior = 'auto'): void",
         "returnType": "void"
+      }
+    ],
+    "typeAliases": [
+      {
+        "name": "NeuralVirtualScrollerOrientation",
+        "type": "'vertical' | 'horizontal'"
+      },
+      {
+        "name": "NeuralVirtualScrollerScrollBehavior",
+        "type": "'auto' | 'smooth'"
+      },
+      {
+        "name": "NeuralVirtualScrollerTrackBy",
+        "type": "( item: T, index: number, ) => unknown"
       }
     ],
     "examples": [

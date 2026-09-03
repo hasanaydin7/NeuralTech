@@ -51,6 +51,11 @@ export interface NeuralComponentMethod {
   readonly description?: string;
 }
 
+export interface NeuralTypeAliasContract {
+  readonly name: string;
+  readonly type: string;
+}
+
 export interface NeuralComponentExample {
   readonly title: string;
   readonly language: string;
@@ -93,6 +98,7 @@ export interface NeuralComponentContract {
   readonly providers: readonly NeuralComponentProvider[];
   readonly providerRequirements: readonly NeuralProviderRequirement[];
   readonly methods: readonly NeuralComponentMethod[];
+  readonly typeAliases: readonly NeuralTypeAliasContract[];
   readonly examples: readonly NeuralComponentExample[];
   readonly classes: readonly NeuralClassesContract[];
   readonly relatedComponents: readonly string[];
@@ -163,6 +169,38 @@ export interface NeuralCompositionPlan {
   readonly accessibility: readonly string[];
   readonly implementationOrder: readonly string[];
   readonly exampleQueries: readonly string[];
+}
+
+export type NeuralUsageDiagnosticSeverity = 'error' | 'warning' | 'info';
+
+export interface NeuralUsageDiagnostic {
+  readonly code: string;
+  readonly severity: NeuralUsageDiagnosticSeverity;
+  readonly message: string;
+  readonly line: number;
+  readonly column: number;
+  readonly component?: string;
+  readonly suggestion?: string;
+}
+
+export interface NeuralUsageValidationRequest {
+  readonly template: string;
+  readonly imports?: readonly string[];
+  readonly providers?: readonly string[];
+}
+
+export interface NeuralUsageValidationResult {
+  readonly schemaVersion: 1;
+  readonly valid: boolean;
+  readonly components: readonly string[];
+  readonly diagnostics: readonly NeuralUsageDiagnostic[];
+  readonly suggestedImports: Readonly<Record<string, readonly string[]>>;
+  readonly suggestedProviders: readonly NeuralProviderRequirement[];
+  readonly summary: {
+    readonly errors: number;
+    readonly warnings: number;
+    readonly infos: number;
+  };
 }
 
 export interface NeuralResourceDescriptor {

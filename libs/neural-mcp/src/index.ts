@@ -9,6 +9,7 @@ export {
 } from './catalog.js';
 export { listNeuralResources, readNeuralResource } from './resources.js';
 export { planUi } from './composition.js';
+export { validateUsage } from './validation.js';
 export { createNeuralMcpServer, serveNeuralMcpStdio } from './server.js';
 export {
   compileThemeRecipeJson,
@@ -46,7 +47,12 @@ export type {
   NeuralResourceDescriptor,
   NeuralSearchMatch,
   NeuralThemeCatalogEntry,
+  NeuralTypeAliasContract,
   NeuralProviderRequirement,
+  NeuralUsageDiagnostic,
+  NeuralUsageDiagnosticSeverity,
+  NeuralUsageValidationRequest,
+  NeuralUsageValidationResult,
 } from './types.js';
 
 export type {
