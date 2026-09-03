@@ -3,6 +3,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { basename, extname, join, relative, resolve } from 'node:path';
 import { getComponentContract } from './catalog.js';
 import { planUi } from './composition.js';
+import { validateUsage } from './validation.js';
 import type {
   NeuralConsistentUiSuggestion,
   NeuralProjectComponentUsage,
@@ -68,14 +69,6 @@ export async function inspectNeuralProject(
       const selector = match[1].toLowerCase();
       const contract = getComponentContract(selector);
       if (!contract) {
-        diagnostics.push({
-          code: 'NNP001',
-          severity: 'error',
-          message: `Unknown NeuralNg selector <${selector}>.`,
-          file: source.path,
-          suggestion:
-            'Check the selector with search_components and migrate stale aliases.',
-        });
         continue;
       }
       const usage = usages.get(contract.id) ?? {
@@ -116,6 +109,30 @@ export async function inspectNeuralProject(
         file: source.path,
         suggestion:
           'Use NeuralAppearanceService as the single color-mode and palette owner.',
+      });
+    }
+  }
+
+  const projectImports = [...imports.values()].flatMap((symbols) => [
+    ...symbols,
+  ]);
+  for (const source of sourceResult.sources) {
+    if (!source.content.includes('<neural-')) continue;
+    const validation = validateUsage({
+      template: source.content,
+      imports: projectImports,
+      providers: [...providers],
+    });
+    for (const item of validation.diagnostics) {
+      if (item.severity === 'info' || item.code === 'NNG002') continue;
+      diagnostics.push({
+        code: item.code,
+        severity: item.severity,
+        message: item.message,
+        file: source.path,
+        line: item.line,
+        column: item.column,
+        suggestion: item.suggestion,
       });
     }
   }

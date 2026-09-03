@@ -25,6 +25,13 @@ const GLOBAL_ATTRIBUTES = new Set([
   'dir',
   'lang',
   'hidden',
+  'ngclass',
+  'ngstyle',
+  'ngmodel',
+  'formcontrol',
+  'formcontrolname',
+  'routerlink',
+  'routerlinkactive',
 ]);
 
 export function validateUsage(

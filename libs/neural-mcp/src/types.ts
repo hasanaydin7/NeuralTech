@@ -208,6 +208,8 @@ export interface NeuralProjectDiagnostic {
   readonly severity: 'error' | 'warning' | 'info';
   readonly message: string;
   readonly file?: string;
+  readonly line?: number;
+  readonly column?: number;
   readonly suggestion?: string;
 }
 

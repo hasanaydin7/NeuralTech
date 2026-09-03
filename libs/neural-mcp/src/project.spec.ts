@@ -40,9 +40,26 @@ describe('Neural MCP project awareness', () => {
     expect(suggestion.consistency.introducedComponents).toContain('toolbar');
     expect(suggestion.consistency.guidance.join(' ')).toContain('neutral');
   });
+
+  it('runs correctness diagnostics across existing project templates', async () => {
+    const root = await createWorkspace(
+      '<neural-button icon="trash"></neural-button>',
+    );
+    const inspection = await inspectNeuralProject(root);
+
+    expect(inspection.diagnostics).toContainEqual(
+      expect.objectContaining({
+        code: 'NNG201',
+        file: 'src/app/app.html',
+        line: 1,
+      }),
+    );
+  });
 });
 
-async function createWorkspace(): Promise<string> {
+async function createWorkspace(
+  template = '<neural-button label="Save" />',
+): Promise<string> {
   const root = await mkdtemp(join(tmpdir(), 'neural-project-'));
   roots.push(root);
   await mkdir(join(root, 'src', 'app'), { recursive: true });
@@ -63,9 +80,6 @@ async function createWorkspace(): Promise<string> {
     join(root, 'src', 'app', 'app.ts'),
     "import { NeuralButton } from '@neural-ng/core/button';\nimport { provideNeuralAppearance } from '@neural-ng/core/appearance';\nconst providers = [provideNeuralAppearance()];\n",
   );
-  await writeFile(
-    join(root, 'src', 'app', 'app.html'),
-    '<neural-button label="Save" />',
-  );
+  await writeFile(join(root, 'src', 'app', 'app.html'), template);
   return root;
 }
