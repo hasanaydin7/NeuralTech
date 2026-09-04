@@ -3,7 +3,7 @@
   "name": "io.github.hasanaydin7/neuralng",
   "title": "NeuralNg Angular UI Expert MCP",
   "description": "Read-only agent interface for NeuralNg discovery, UI composition, contract validation, project consistency and theme workflows.",
-  "version": "0.1.0-rc.1",
+  "version": "0.1.0-beta.7",
   "websiteUrl": "https://neuralng.dev/docs/mcp-server",
   "repository": {
     "url": "https://github.com/hasanaydin7/NeuralTech",
@@ -14,7 +14,7 @@
     {
       "registryType": "npm",
       "identifier": "@neural-ng/mcp-server",
-      "version": "0.1.0-rc.1",
+      "version": "0.1.0-beta.7",
       "transport": {
         "type": "stdio"
       }

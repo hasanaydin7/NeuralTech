@@ -1,4 +1,13 @@
-import { getComponentContract } from './catalog.js';
+import {
+  DomElementSchemaRegistry,
+  parseTemplate,
+  TmplAstElement,
+  TmplAstRecursiveVisitor,
+  TmplAstText,
+  VERSION,
+  tmplAstVisitAll,
+} from '@angular/compiler';
+import { listComponents } from './catalog.js';
 import type {
   NeuralComponentContract,
   NeuralProviderRequirement,
@@ -8,12 +17,25 @@ import type {
 } from './types.js';
 
 interface ParsedElement {
-  readonly selector: string;
+  readonly tagName: string;
   readonly start: number;
-  readonly end: number;
-  readonly selfClosing: boolean;
   readonly attributes: ReadonlyMap<string, string | true>;
+  readonly attributeStarts: ReadonlyMap<string, number>;
+  readonly hasProjectedText: boolean;
 }
+
+interface ContractSelectorVariant {
+  readonly contract: NeuralComponentContract;
+  readonly tagName?: string;
+  readonly attributes: readonly string[];
+}
+
+const DOM_SCHEMA = new DomElementSchemaRegistry();
+const CONTRACT_SELECTOR_VARIANTS = listComponents().flatMap((contract) =>
+  contract.selector
+    .split(',')
+    .map((selector) => parseContractSelector(contract, selector.trim())),
+);
 
 const GLOBAL_ATTRIBUTES = new Set([
   'class',
@@ -28,6 +50,7 @@ const GLOBAL_ATTRIBUTES = new Set([
   'ngclass',
   'ngstyle',
   'ngmodel',
+  'formfield',
   'formcontrol',
   'formcontrolname',
   'routerlink',
@@ -43,29 +66,46 @@ export function validateUsage(
 
   const diagnostics: NeuralUsageDiagnostic[] = [];
   const contracts = new Map<string, NeuralComponentContract>();
-  const elements = parseNeuralElements(request.template);
+  const elements = parseAngularElements(request.template, diagnostics);
 
   for (const element of elements) {
-    const contract = getComponentContract(element.selector);
-    if (!contract) {
+    const matchedContracts = matchContracts(element);
+    const elementContract = matchedContracts.find((contract) =>
+      CONTRACT_SELECTOR_VARIANTS.some(
+        (variant) =>
+          variant.contract.id === contract.id &&
+          variant.tagName === element.tagName,
+      ),
+    );
+    if (element.tagName.startsWith('neural-') && !elementContract) {
       diagnostics.push(
         diagnostic(
           request.template,
           element.start,
           'NNG001',
           'error',
-          `Unknown NeuralNg selector <${element.selector}>.`,
-          element.selector,
+          `Unknown NeuralNg selector <${element.tagName}>.`,
+          element.tagName,
           'Use search_components to resolve the intended public selector.',
         ),
       );
-      continue;
     }
-    contracts.set(contract.id, contract);
-    validateBindings(request.template, element, contract, diagnostics);
-    validateRequiredInputs(request.template, element, contract, diagnostics);
-    validateLiteralValues(request.template, element, contract, diagnostics);
-    validateAccessibility(request.template, element, contract, diagnostics);
+    validateUnknownNeuralAttributes(
+      request.template,
+      element,
+      matchedContracts,
+      diagnostics,
+    );
+    if (!matchedContracts.length) continue;
+
+    for (const contract of matchedContracts)
+      contracts.set(contract.id, contract);
+    validateBindings(request.template, element, matchedContracts, diagnostics);
+    for (const contract of matchedContracts) {
+      validateRequiredInputs(request.template, element, contract, diagnostics);
+      validateLiteralValues(request.template, element, contract, diagnostics);
+      validateAccessibility(request.template, element, contract, diagnostics);
+    }
   }
 
   validateDuplicateToastOutlets(request.template, elements, diagnostics);
@@ -78,8 +118,9 @@ export function validateUsage(
     diagnostics.push(
       diagnostic(
         request.template,
-        elements.find((element) => element.selector === contract.selector)
-          ?.start ?? 0,
+        elements.find((element) =>
+          matchContracts(element).some((match) => match.id === contract.id),
+        )?.start ?? 0,
         'NNG101',
         'info',
         `${contract.className} is not listed in the supplied standalone imports.`,
@@ -124,8 +165,14 @@ export function validateUsage(
   };
 
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     valid: summary.errors === 0,
+    syntax: {
+      parser: '@angular/compiler',
+      parserVersion: VERSION.full,
+      valid: !diagnostics.some((item) => item.code === 'NNG000'),
+      errors: diagnostics.filter((item) => item.code === 'NNG000').length,
+    },
     components: [...contracts.keys()],
     diagnostics,
     suggestedImports: groupImports(missingContracts),
@@ -137,33 +184,50 @@ export function validateUsage(
 function validateBindings(
   template: string,
   element: ParsedElement,
-  contract: NeuralComponentContract,
+  contracts: readonly NeuralComponentContract[],
   diagnostics: NeuralUsageDiagnostic[],
 ): void {
-  const inputs = new Set(contract.inputs.map((input) => input.bindingName));
-  const models = new Set(
-    contract.models.map((model) => model.bindingName ?? model.name),
+  const inputs = new Set(
+    contracts.flatMap((contract) =>
+      contract.inputs.map((input) => input.bindingName),
+    ),
   );
-  const outputs = new Set(contract.outputs.map((output) => output.bindingName));
+  const models = new Set(
+    contracts.flatMap((contract) =>
+      contract.models.map((model) => model.bindingName ?? model.name),
+    ),
+  );
+  const outputs = new Set(
+    contracts.flatMap((contract) =>
+      contract.outputs.map((output) => output.bindingName),
+    ),
+  );
+  const selectorAttributes = new Set(
+    CONTRACT_SELECTOR_VARIANTS.filter((variant) =>
+      contracts.some((contract) => contract.id === variant.contract.id),
+    ).flatMap((variant) => variant.attributes),
+  );
 
   for (const rawName of element.attributes.keys()) {
     const binding = classifyBinding(rawName);
     if (!binding || isGlobalAttribute(binding.name)) continue;
     const known =
       binding.kind === 'input'
-        ? inputs.has(binding.name) || models.has(binding.name)
+        ? inputs.has(binding.name) ||
+          models.has(binding.name) ||
+          selectorAttributes.has(binding.name)
         : binding.kind === 'model'
           ? models.has(binding.name)
           : outputs.has(binding.name) || models.has(binding.name);
-    if (known) continue;
+    if (known || isNativeBinding(element.tagName, rawName, binding)) continue;
     diagnostics.push(
       diagnostic(
         template,
-        element.start,
+        element.attributeStarts.get(rawName) ?? element.start,
         'NNG002',
         'error',
-        `Unknown ${binding.kind} binding "${rawName}" on <${element.selector}>.`,
-        contract.id,
+        `Unknown ${binding.kind} binding "${rawName}" on <${element.tagName}>.`,
+        contracts[0]?.id,
         `Use get_component with detail=standard to inspect supported inputs, models, and outputs.`,
       ),
     );
@@ -193,7 +257,7 @@ function validateRequiredInputs(
         element.start,
         'NNG003',
         'error',
-        `<${element.selector}> requires the "${input.bindingName}" input (${input.type}).`,
+        `<${element.tagName}> requires the "${input.bindingName}" input (${input.type}).`,
         contract.id,
         `Bind [${input.bindingName}] to a value of type ${input.type}.`,
       ),
@@ -215,10 +279,10 @@ function validateLiteralValues(
     diagnostics.push(
       diagnostic(
         template,
-        element.start,
+        element.attributeStarts.get(input.bindingName) ?? element.start,
         'NNG004',
         'error',
-        `Invalid literal "${value}" for ${element.selector}.${input.bindingName}.`,
+        `Invalid literal "${value}" for ${element.tagName}.${input.bindingName}.`,
         contract.id,
         `Use one of: ${allowed.join(', ')}.`,
       ),
@@ -238,7 +302,7 @@ function validateAccessibility(
     hasBinding(element, 'label') ||
     hasBinding(element, 'ariaLabel') ||
     hasBinding(element, 'aria-label') ||
-    projectedText(template, element).length > 0;
+    element.hasProjectedText;
   if (!hasIcon || hasLabel) return;
   diagnostics.push(
     diagnostic(
@@ -260,7 +324,7 @@ function validateDuplicateToastOutlets(
 ): void {
   const channels = new Map<string, ParsedElement>();
   for (const element of elements.filter(
-    (item) => item.selector === 'neural-toast',
+    (item) => item.tagName === 'neural-toast',
   )) {
     const channelValue = element.attributes.get('channel');
     const channel = typeof channelValue === 'string' ? channelValue : 'global';
@@ -282,51 +346,175 @@ function validateDuplicateToastOutlets(
   }
 }
 
-function parseNeuralElements(template: string): ParsedElement[] {
-  const elements: ParsedElement[] = [];
-  let cursor = 0;
-  while (cursor < template.length) {
-    const start = template.indexOf('<neural-', cursor);
-    if (start < 0) break;
-    let index = start + 1;
-    let quote = '';
-    while (index < template.length) {
-      const character = template[index];
-      if (quote) {
-        if (character === quote) quote = '';
-      } else if (character === '"' || character === "'") {
-        quote = character;
-      } else if (character === '>') {
-        break;
-      }
-      index += 1;
-    }
-    if (index >= template.length) break;
-    const source = template.slice(start + 1, index);
-    const selector = /^([a-z0-9-]+)/i.exec(source)?.[1]?.toLowerCase();
-    if (selector) {
-      elements.push({
-        selector,
-        start,
-        end: index + 1,
-        selfClosing: /\/\s*$/.test(source),
-        attributes: parseAttributes(source.slice(selector.length)),
-      });
-    }
-    cursor = index + 1;
+function parseAngularElements(
+  template: string,
+  diagnostics: NeuralUsageDiagnostic[],
+): ParsedElement[] {
+  const parsed = parseTemplate(template, 'inline-template.html', {
+    preserveWhitespaces: true,
+    alwaysAttemptHtmlToR3AstConversion: true,
+    enableBlockSyntax: true,
+    enableLetSyntax: true,
+  });
+  for (const error of parsed.errors ?? []) {
+    diagnostics.push(
+      diagnostic(
+        template,
+        error.span.start.offset,
+        'NNG000',
+        'error',
+        `Angular template parse error: ${error.msg}`,
+        undefined,
+        'Fix the Angular template syntax before validating NeuralNg contracts.',
+      ),
+    );
   }
+
+  const elements: ParsedElement[] = [];
+  tmplAstVisitAll(new NeuralElementCollector(template, elements), parsed.nodes);
   return elements;
 }
 
-function parseAttributes(source: string): ReadonlyMap<string, string | true> {
-  const attributes = new Map<string, string | true>();
-  const pattern = /([^\s=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s]+)))?/g;
-  for (const match of source.matchAll(pattern)) {
-    const name = match[1];
-    if (!name || name === '/') continue;
-    attributes.set(name, match[2] ?? match[3] ?? match[4] ?? true);
+class NeuralElementCollector extends TmplAstRecursiveVisitor {
+  constructor(
+    private readonly template: string,
+    private readonly elements: ParsedElement[],
+  ) {
+    super();
   }
-  return attributes;
+
+  override visitElement(element: TmplAstElement): void {
+    this.elements.push(toParsedElement(this.template, element));
+    super.visitElement(element);
+  }
+}
+
+function toParsedElement(
+  template: string,
+  element: TmplAstElement,
+): ParsedElement {
+  const attributes = new Map<string, string | true>();
+  const attributeStarts = new Map<string, number>();
+  for (const attribute of element.attributes) {
+    attributes.set(attribute.name, attribute.value || true);
+    attributeStarts.set(attribute.name, attribute.sourceSpan.start.offset);
+  }
+  for (const binding of [...element.inputs, ...element.outputs]) {
+    const source = template.slice(
+      binding.sourceSpan.start.offset,
+      binding.sourceSpan.end.offset,
+    );
+    const rawName = source.split('=', 1)[0]?.trim();
+    if (!rawName) continue;
+    attributes.set(rawName, true);
+    attributeStarts.set(rawName, binding.sourceSpan.start.offset);
+  }
+
+  const projectedText = new ProjectedTextVisitor();
+  tmplAstVisitAll(projectedText, element.children);
+  return {
+    tagName: element.name.toLowerCase(),
+    start: element.startSourceSpan.start.offset,
+    attributes,
+    attributeStarts,
+    hasProjectedText: projectedText.found,
+  };
+}
+
+class ProjectedTextVisitor extends TmplAstRecursiveVisitor {
+  found = false;
+
+  override visitText(text: TmplAstText): void {
+    if (text.value.trim()) this.found = true;
+  }
+
+  override visitBoundText(): void {
+    this.found = true;
+  }
+}
+
+function parseContractSelector(
+  contract: NeuralComponentContract,
+  selector: string,
+): ContractSelectorVariant {
+  const tagName = /^[a-z][a-z0-9-]*/i.exec(selector)?.[0]?.toLowerCase();
+  const attributes = [...selector.matchAll(/\[([A-Za-z][A-Za-z0-9-]*)\]/g)]
+    .map((match) => match[1])
+    .filter((name): name is string => Boolean(name));
+  return { contract, ...(tagName ? { tagName } : {}), attributes };
+}
+
+function matchContracts(element: ParsedElement): NeuralComponentContract[] {
+  const supplied = new Set(
+    [...element.attributes.keys()]
+      .map(classifyBinding)
+      .filter(
+        (binding): binding is NonNullable<ReturnType<typeof classifyBinding>> =>
+          Boolean(binding),
+      )
+      .map((binding) => binding.name),
+  );
+  const matches = CONTRACT_SELECTOR_VARIANTS.filter(
+    (variant) =>
+      (!variant.tagName || variant.tagName === element.tagName) &&
+      variant.attributes.every((attribute) => supplied.has(attribute)),
+  ).map((variant) => variant.contract);
+  return [
+    ...new Map(matches.map((contract) => [contract.id, contract])).values(),
+  ];
+}
+
+function validateUnknownNeuralAttributes(
+  template: string,
+  element: ParsedElement,
+  contracts: readonly NeuralComponentContract[],
+  diagnostics: NeuralUsageDiagnostic[],
+): void {
+  const knownNames = new Set(
+    contracts.flatMap((contract) => [
+      ...contract.inputs.map((input) => input.bindingName),
+      ...contract.models.map((model) => model.bindingName ?? model.name),
+      ...contract.outputs.map((output) => output.bindingName),
+    ]),
+  );
+  const knownSelectorNames = new Set(
+    CONTRACT_SELECTOR_VARIANTS.flatMap((variant) => variant.attributes),
+  );
+  for (const rawName of element.attributes.keys()) {
+    const binding = classifyBinding(rawName);
+    if (
+      !binding ||
+      !binding.name.startsWith('neural') ||
+      knownNames.has(binding.name) ||
+      knownSelectorNames.has(binding.name)
+    ) {
+      continue;
+    }
+    diagnostics.push(
+      diagnostic(
+        template,
+        element.attributeStarts.get(rawName) ?? element.start,
+        'NNG001',
+        'error',
+        `Unknown NeuralNg directive or binding "${rawName}" on <${element.tagName}>.`,
+        undefined,
+        'Use search_components to resolve the intended public directive or input.',
+      ),
+    );
+  }
+}
+
+function isNativeBinding(
+  tagName: string,
+  rawName: string,
+  binding: NonNullable<ReturnType<typeof classifyBinding>>,
+): boolean {
+  if (tagName.startsWith('neural-')) return false;
+  if (!rawName.startsWith('[') && !rawName.startsWith('(')) return true;
+  if (binding.kind === 'output') {
+    return DOM_SCHEMA.allKnownEventsOfElement(tagName).includes(binding.name);
+  }
+  return DOM_SCHEMA.hasProperty(tagName, binding.name, []);
 }
 
 function classifyBinding(
@@ -373,18 +561,6 @@ function hasBinding(element: ParsedElement, name: string): boolean {
   return [...element.attributes.keys()].some(
     (rawName) => classifyBinding(rawName)?.name === name,
   );
-}
-
-function projectedText(template: string, element: ParsedElement): string {
-  if (element.selfClosing) return '';
-  const close = template.indexOf(`</${element.selector}>`, element.end);
-  if (close < 0) return '';
-  return template
-    .slice(element.end, close)
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/{{[^}]+}}/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
 }
 
 function groupImports(

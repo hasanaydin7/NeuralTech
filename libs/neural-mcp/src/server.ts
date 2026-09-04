@@ -322,7 +322,7 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     {
       title: 'Validate NeuralNg Angular template usage',
       description:
-        'Validate NeuralNg selectors and bindings against generated public contracts, including required inputs, literal values, icon-button accessibility, standalone imports, provider requirements, and duplicate Toast channels.',
+        'Parse an Angular template with @angular/compiler and validate syntax, NeuralNg elements and attribute directives, bindings, required inputs, literal values, icon-button accessibility, standalone imports, provider requirements, and duplicate Toast channels.',
       inputSchema: runtime.zod.object({
         template: runtime.zod.string().min(1),
         imports_json: runtime.zod.string().optional().default('[]'),

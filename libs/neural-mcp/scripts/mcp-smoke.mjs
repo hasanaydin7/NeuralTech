@@ -251,11 +251,33 @@ try {
         imports_json: JSON.stringify(['NeuralButton']),
       },
     });
+    const validation = usageValidation?.structuredContent?.validation;
     assert(
-      usageValidation?.structuredContent?.validation?.diagnostics?.some(
+      validation?.schemaVersion === 2 &&
+        validation?.syntax?.parser === '@angular/compiler' &&
+        validation?.syntax?.valid === true,
+      'Usage validator did not return its Angular parser schema-v2 contract.',
+    );
+    assert(
+      validation?.diagnostics?.some(
         (diagnostic) => diagnostic.code === 'NNG201',
       ),
       'Usage validator did not reject an inaccessible icon-only button.',
+    );
+
+    const invalidAngularTemplate = await client.request('tools/call', {
+      name: 'validate_usage',
+      arguments: {
+        template: '<neural-button><div></neural-button>',
+      },
+    });
+    assert(
+      invalidAngularTemplate?.structuredContent?.validation?.syntax?.valid ===
+        false &&
+        invalidAngularTemplate?.structuredContent?.validation?.diagnostics?.some(
+          (diagnostic) => diagnostic.code === 'NNG000',
+        ),
+      'Usage validator did not expose an Angular parser syntax failure.',
     );
 
     const projectInspection = await client.request('tools/call', {

@@ -28,6 +28,10 @@ assert(
   'MCP server SDK must remain pinned to the verified v2 release.',
 );
 assert(
+  packageJson.dependencies?.['@angular/compiler'] === '^22.0.0',
+  'MCP validation must use the supported Angular 22 template parser.',
+);
+assert(
   packageJson.dependencies?.zod?.startsWith('^4.'),
   'MCP package must use Zod v4 Standard Schema inputs.',
 );
@@ -36,8 +40,10 @@ assert(
   'MCP theme tools must depend on the verified @neural-ng/theme release.',
 );
 assert(
-  !JSON.stringify(packageJson).includes('@angular/'),
-  'Angular leaked into MCP package.',
+  Object.keys(packageJson.dependencies ?? {}).filter((name) =>
+    name.startsWith('@angular/'),
+  ).length === 1,
+  'Only @angular/compiler may enter the MCP runtime dependency graph.',
 );
 
 for (const path of [
@@ -129,6 +135,7 @@ const capabilities = JSON.parse(
 );
 assert(
   capabilities.schemaVersion === 1 &&
+    capabilities.resultSchemas?.usageValidation === 2 &&
     capabilities.toolGroups?.composition?.includes('plan_ui') &&
     capabilities.toolGroups?.correctness?.includes('validate_usage'),
   'Published MCP package is missing its versioned capabilities resource.',
@@ -147,7 +154,7 @@ assert(
 
 console.log(
   `Validated @neural-ng/mcp-server: ${components.length} public declarations, ` +
-    'fixed resources, compact theme tools, and no Angular runtime dependency.',
+    'fixed resources, compact theme tools, and the isolated Angular template parser.',
 );
 
 async function readJson(path) {

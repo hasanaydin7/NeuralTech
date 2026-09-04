@@ -2,6 +2,34 @@ import { describe, expect, it } from 'vitest';
 import { validateUsage } from './validation.js';
 
 describe('Neural MCP usage validation', () => {
+  it('publishes the Angular parser contract in validation schema v2', () => {
+    const result = validateUsage({
+      template: '<neural-button>Save</neural-button>',
+      imports: ['NeuralButton'],
+    });
+
+    expect(result.schemaVersion).toBe(2);
+    expect(result.syntax).toEqual({
+      parser: '@angular/compiler',
+      parserVersion: expect.any(String),
+      valid: true,
+      errors: 0,
+    });
+  });
+
+  it('returns Angular parse failures before contract diagnostics', () => {
+    const result = validateUsage({
+      template: '<neural-button><div></neural-button>',
+    });
+
+    expect(result.valid).toBe(false);
+    expect(result.syntax.valid).toBe(false);
+    expect(result.syntax.errors).toBeGreaterThan(0);
+    expect(result.diagnostics).toContainEqual(
+      expect.objectContaining({ code: 'NNG000', severity: 'error' }),
+    );
+  });
+
   it('rejects an inaccessible icon-only button', () => {
     const result = validateUsage({
       template: '<neural-button icon="trash"></neural-button>',
@@ -56,5 +84,67 @@ describe('Neural MCP usage validation', () => {
     expect(result.diagnostics).toContainEqual(
       expect.objectContaining({ code: 'NNG202', severity: 'warning' }),
     );
+  });
+
+  it('validates components nested in Angular control flow', () => {
+    const result = validateUsage({
+      template: '@if (ready()) { <neural-button icon="trash" /> }',
+      imports: ['NeuralButton'],
+    });
+
+    expect(result.diagnostics).toContainEqual(
+      expect.objectContaining({ code: 'NNG201', component: 'button' }),
+    );
+  });
+
+  it('treats interpolated projected content as an accessible button label', () => {
+    const result = validateUsage({
+      template:
+        '<neural-button icon="save">{{ actionLabel() }}</neural-button>',
+      imports: ['NeuralButton'],
+    });
+
+    expect(result.diagnostics.map((item) => item.code)).not.toContain('NNG201');
+  });
+
+  it('recognizes two-way bindings parsed by Angular', () => {
+    const result = validateUsage({
+      template: '<neural-select [options]="options" [(value)]="selected" />',
+      imports: ['NeuralSelect'],
+    });
+
+    expect(result.diagnostics.map((item) => item.code)).not.toContain('NNG002');
+    expect(result.components).toContain('select');
+  });
+
+  it('recognizes attribute selectors and keeps native DOM bindings valid', () => {
+    const result = validateUsage({
+      template:
+        '<input neuralInput type="search" [disabled]="locked()" (input)="search($event)" />',
+      imports: ['NeuralInput'],
+    });
+
+    expect(result.components).toContain('neural-input');
+    expect(result.diagnostics.map((item) => item.code)).not.toContain('NNG002');
+  });
+
+  it('rejects invented NeuralNg attribute directives', () => {
+    const result = validateUsage({ template: '<div neuralMadeUp></div>' });
+
+    expect(result.diagnostics).toContainEqual(
+      expect.objectContaining({ code: 'NNG001', severity: 'error' }),
+    );
+  });
+
+  it('reports the exact source position of an unknown multiline binding', () => {
+    const result = validateUsage({
+      template: '<neural-button\n  [madeUp]="true"\n>Save</neural-button>',
+      imports: ['NeuralButton'],
+    });
+    const diagnostic = result.diagnostics.find(
+      (item) => item.code === 'NNG002',
+    );
+
+    expect(diagnostic).toEqual(expect.objectContaining({ line: 2, column: 3 }));
   });
 });

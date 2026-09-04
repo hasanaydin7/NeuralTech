@@ -1,6 +1,6 @@
 {
   "name": "@neural-ng/mcp-server",
-  "version": "0.1.0-rc.1",
+  "version": "0.1.0-beta.7",
   "description": "Angular UI expert MCP for NeuralNg discovery, composition, validation, project consistency, and themes.",
   "mcpName": "io.github.hasanaydin7/neuralng",
   "type": "module",
@@ -46,6 +46,7 @@
     "LICENSE"
   ],
   "dependencies": {
+    "@angular/compiler": "^22.0.0",
     "@modelcontextprotocol/server": "2.0.0",
     "@neural-ng/theme": "0.1.0-beta.5",
     "zod": "^4.3.5"

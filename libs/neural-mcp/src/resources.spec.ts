@@ -38,6 +38,7 @@ describe('Neural MCP resources', () => {
       readNeuralResource('neural://server/capabilities')?.text ?? '{}',
     );
     expect(capabilities.schemaVersion).toBe(1);
+    expect(capabilities.resultSchemas.usageValidation).toBe(2);
     expect(capabilities.toolGroups.composition).toContain('plan_ui');
     expect(capabilities.toolGroups.correctness).toContain('validate_usage');
     expect(capabilities.projectInspectionLimits.pathArgumentAccepted).toBe(

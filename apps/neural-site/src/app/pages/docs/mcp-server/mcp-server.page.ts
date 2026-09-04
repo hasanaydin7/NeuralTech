@@ -73,7 +73,7 @@ export class McpServerPage {
     [
       'validate_usage',
       'template, imports_json?, providers_json?',
-      'Check Angular usage, providers, imports and accessibility contracts.',
+      'Parse with Angular compiler and check syntax, APIs, providers, imports and accessibility.',
     ],
     [
       'inspect_neuralng_project',
@@ -120,7 +120,7 @@ export class McpServerPage {
     ],
   ] as const;
 
-  readonly installCode = `npm install --save-dev @neural-ng/mcp-server@0.1.0-rc.1`;
+  readonly installCode = `npm install --save-dev @neural-ng/mcp-server@0.1.0-beta.7`;
 
   readonly configCode = `{
   "mcpServers": {
@@ -131,7 +131,7 @@ export class McpServerPage {
   }
 }`;
 
-  readonly trialCode = `npx -y @neural-ng/mcp-server@0.1.0-rc.1`;
+  readonly trialCode = `npx -y @neural-ng/mcp-server@0.1.0-beta.7`;
 
   readonly searchCode = `{
   "query": "localized date range input",

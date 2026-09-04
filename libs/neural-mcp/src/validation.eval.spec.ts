@@ -4,6 +4,12 @@ import { validateUsage } from './validation.js';
 const invalidCases = [
   ['icon-only button', '<neural-button icon="trash" />', 'NNG201'],
   ['unknown selector', '<neural-made-up />', 'NNG001'],
+  ['unknown attribute directive', '<section neuralMadeUp></section>', 'NNG001'],
+  [
+    'Angular template syntax error',
+    '<neural-button><div></neural-button>',
+    'NNG000',
+  ],
   [
     'unknown binding',
     '<neural-button [madeUp]="true">Save</neural-button>',
@@ -52,5 +58,15 @@ describe('Neural MCP correctness evaluation set', () => {
     expect(
       result.diagnostics.filter((diagnostic) => diagnostic.code === 'NNG002'),
     ).toEqual([]);
+  });
+
+  it('accepts a native NeuralInput composition without DOM false positives', () => {
+    const result = validateUsage({
+      template:
+        '<input neuralInput [disabled]="disabled()" (change)="changed($event)" aria-label="Search" />',
+      imports: ['NeuralInput'],
+    });
+    expect(result.valid).toBe(true);
+    expect(result.components).toContain('neural-input');
   });
 });

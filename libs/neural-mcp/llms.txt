@@ -22,7 +22,7 @@ COMPOSITION TOOLS
 
 CORRECTNESS TOOLS
 
-- validate_usage: validate Angular template selectors, bindings, required inputs, exported literal aliases, icon-only button labels, standalone imports, required providers and duplicate Toast channels. imports_json and providers_json are JSON string arrays.
+- validate_usage: parse templates with @angular/compiler and validate Angular syntax, control-flow descendants, custom elements, attribute directives, property/event/two-way bindings, required inputs, exported literal aliases, icon-only button labels, standalone imports, required providers and duplicate Toast channels. The schema-v2 result reports parser identity/version and NNG000 syntax failures. imports_json and providers_json are JSON string arrays.
 
 PROJECT TOOLS
 

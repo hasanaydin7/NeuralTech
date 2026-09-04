@@ -84,7 +84,7 @@ export function readNeuralResource(
         resultSchemas: {
           componentContract: 2,
           compositionPlan: 1,
-          usageValidation: 1,
+          usageValidation: 2,
           projectInspection: 1,
           consistentUiSuggestion: 1,
         },

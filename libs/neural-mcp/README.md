@@ -153,11 +153,14 @@ Each accepts a non-empty `goal` and returns the same versioned plan contract as
 
 ### `validate_usage`
 
-Checks an Angular template against the generated NeuralNg public contracts. It
-reports stable diagnostic codes with source positions for unknown selectors or
-bindings, missing required inputs, invalid literal unions (including exported
-type aliases), inaccessible icon-only buttons, missing standalone imports,
-required providers, and duplicate Toast channels.
+Parses an Angular template with `@angular/compiler` and checks the resulting AST
+against the generated NeuralNg public contracts. It understands Angular control
+flow, structural directives, interpolation, property/event/two-way bindings,
+custom elements, and NeuralNg attribute selectors on native elements. It
+reports stable diagnostic codes with source positions for Angular syntax
+errors, unknown selectors or bindings, missing required inputs, invalid literal
+unions (including exported type aliases), inaccessible icon-only buttons,
+missing standalone imports, required providers, and duplicate Toast channels.
 
 ```json
 {
@@ -167,9 +170,11 @@ required providers, and duplicate Toast channels.
 }
 ```
 
-The result includes `valid`, diagnostics, exact suggested imports grouped by
-entry point, and provider requirements. Informational missing-import diagnostics
-do not make a template invalid; error diagnostics do.
+The schema-v2 result includes `valid`, parser identity and version, syntax
+status, diagnostics, exact suggested imports grouped by entry point, and
+provider requirements. `NNG000` identifies Angular parse failures before
+contract validation. Informational missing-import diagnostics do not make a
+template invalid; error diagnostics do.
 
 ## Project-aware tools
 

@@ -190,8 +190,14 @@ export interface NeuralUsageValidationRequest {
 }
 
 export interface NeuralUsageValidationResult {
-  readonly schemaVersion: 1;
+  readonly schemaVersion: 2;
   readonly valid: boolean;
+  readonly syntax: {
+    readonly parser: '@angular/compiler';
+    readonly parserVersion: string;
+    readonly valid: boolean;
+    readonly errors: number;
+  };
   readonly components: readonly string[];
   readonly diagnostics: readonly NeuralUsageDiagnostic[];
   readonly suggestedImports: Readonly<Record<string, readonly string[]>>;
