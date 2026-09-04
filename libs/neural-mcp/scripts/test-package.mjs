@@ -13,7 +13,10 @@ assert(
   packageJson.name === '@neural-ng/mcp-server',
   'Unexpected package name.',
 );
-assert(packageJson.version === '0.1.0-beta.6', 'Unexpected package version.');
+assert(
+  /^0\.1\.0(?:-(?:beta|rc)\.\d+)?$/.test(packageJson.version),
+  'Unexpected package version.',
+);
 assert(
   packageJson.mcpName === 'io.github.hasanaydin7/neuralng',
   'Published MCP package must declare its verified registry name.',
@@ -42,6 +45,7 @@ for (const path of [
   'src/index.d.ts',
   'src/cli.js',
   'README.md',
+  'CHANGELOG.md',
   'llms.txt',
   'server.json',
   'LICENSE',
@@ -55,6 +59,15 @@ assert(
   registryMetadata.name === packageJson.mcpName &&
     registryMetadata.version === packageJson.version,
   'Registry metadata must match the published MCP package.',
+);
+const compiledServer = await readFile(
+  join(packageRoot, 'src/server.js'),
+  'utf8',
+);
+assert(
+  !compiledServer.includes('__NEURAL_MCP_PACKAGE_VERSION__') &&
+    compiledServer.includes(packageJson.version),
+  'Runtime server version must be injected from package.json.',
 );
 assert(
   registryMetadata.packages?.[0]?.identifier === packageJson.name &&
@@ -110,6 +123,15 @@ assert(
     .readNeuralResource('neural://themes/schema')
     ?.text?.includes('compact sparse JSON recipe'),
   'Compact theme schema resource is missing.',
+);
+const capabilities = JSON.parse(
+  api.readNeuralResource('neural://server/capabilities')?.text ?? '{}',
+);
+assert(
+  capabilities.schemaVersion === 1 &&
+    capabilities.toolGroups?.composition?.includes('plan_ui') &&
+    capabilities.toolGroups?.correctness?.includes('validate_usage'),
+  'Published MCP package is missing its versioned capabilities resource.',
 );
 assert(
   typeof api.createThemeRecipe === 'function' &&

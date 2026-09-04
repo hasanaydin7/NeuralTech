@@ -1,5 +1,12 @@
 import { spawn } from 'node:child_process';
-import { access, mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import {
+  access,
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  writeFile,
+} from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import process from 'node:process';
 
@@ -74,6 +81,16 @@ try {
       initialized?.protocolVersion,
       'MCP initialize returned no protocol version.',
     );
+    const installedPackage = JSON.parse(
+      await readFile(
+        join(consumerRoot, 'node_modules/@neural-ng/mcp-server/package.json'),
+        'utf8',
+      ),
+    );
+    assert(
+      initialized?.serverInfo?.version === installedPackage.version,
+      `Runtime server version ${initialized?.serverInfo?.version ?? '<missing>'} does not match package ${installedPackage.version}.`,
+    );
     client.notify('notifications/initialized', {});
 
     const tools = await client.request('tools/list', {});
@@ -133,6 +150,31 @@ try {
       'MCP theme schema resource is missing.',
     );
 
+    const capabilities = await client.request('resources/read', {
+      uri: 'neural://server/capabilities',
+    });
+    const capabilityDocument = JSON.parse(
+      capabilities?.contents?.[0]?.text ?? '{}',
+    );
+    const capabilityToolNames = Object.values(
+      capabilityDocument.toolGroups ?? {},
+    )
+      .flat()
+      .sort();
+    assert(
+      capabilityDocument.schemaVersion === 1 &&
+        capabilityDocument.toolGroups?.project?.includes(
+          'inspect_neuralng_project',
+        ) &&
+        capabilityDocument.guarantees?.writesProjectFiles === false,
+      'MCP capabilities resource is incomplete.',
+    );
+    assert(
+      JSON.stringify(capabilityToolNames) ===
+        JSON.stringify([...toolNames].sort()),
+      'MCP capabilities tool groups drifted from tools/list.',
+    );
+
     const contract = await client.request('resources/read', {
       uri: 'neural://components/tri-state-checkbox/contract',
     });
@@ -170,6 +212,19 @@ try {
     assert(
       componentExamples?.structuredContent?.examples?.length === 3,
       'Structured component examples returned the wrong bounded result.',
+    );
+
+    const invalidComponentDetail = await client.request('tools/call', {
+      name: 'get_component',
+      arguments: { component: 'neural-select', detail: 'everything' },
+    });
+    assert(
+      invalidComponentDetail?.isError === true &&
+        invalidComponentDetail?.structuredContent?.error?.schemaVersion === 1 &&
+        invalidComponentDetail?.structuredContent?.error?.message?.includes(
+          'detail must be',
+        ),
+      'Tool errors must include a stable structured error envelope.',
     );
 
     const uiPlan = await client.request('tools/call', {

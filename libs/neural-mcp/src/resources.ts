@@ -17,6 +17,7 @@ import type {
 } from './types.js';
 
 const catalogUri = 'neural://catalog';
+const capabilitiesUri = 'neural://server/capabilities';
 const packageExportsUri = 'neural://package/exports';
 const themesUri = 'neural://themes/catalog';
 const themeSchemaUri = 'neural://themes/schema';
@@ -45,6 +46,70 @@ export function readNeuralResource(
     return withText(
       descriptor,
       JSON.stringify({ components: listComponents() }, null, 2),
+    );
+  }
+  if (uri === capabilitiesUri) {
+    return withText(
+      descriptor,
+      formatJson({
+        schemaVersion: 1,
+        server: 'neural-ng',
+        purpose:
+          'Angular UI expert interface for NeuralNg discovery, composition, correctness, project consistency, and theme workflows.',
+        toolGroups: {
+          discovery: [
+            'search_components',
+            'get_component',
+            'get_component_examples',
+            'recommend_components',
+          ],
+          composition: [
+            'plan_ui',
+            'suggest_form_structure',
+            'suggest_page_structure',
+            'suggest_table_structure',
+          ],
+          correctness: ['validate_usage'],
+          project: ['inspect_neuralng_project', 'suggest_consistent_ui'],
+          theme: [
+            'get_component_theme_contract',
+            'create_theme_recipe',
+            'validate_theme_recipe',
+            'edit_theme_recipe',
+            'diff_theme_recipes',
+            'compile_theme_recipe',
+          ],
+          compatibility: ['get_component_contract'],
+        },
+        resultSchemas: {
+          componentContract: 2,
+          compositionPlan: 1,
+          usageValidation: 1,
+          projectInspection: 1,
+          consistentUiSuggestion: 1,
+        },
+        projectInspectionLimits: {
+          root: 'MCP process working directory only',
+          pathArgumentAccepted: false,
+          maxFiles: 400,
+          maxBytesPerFile: 262144,
+          maxTotalBytes: 5242880,
+          followsSymbolicLinks: false,
+        },
+        guarantees: {
+          deterministic: true,
+          readOnly: true,
+          networkAccess: false,
+          writesProjectFiles: false,
+          executesShellCommands: false,
+        },
+        deprecatedTools: {
+          get_component_contract: {
+            replacement: 'get_component',
+            removalScheduled: false,
+          },
+        },
+      }),
     );
   }
   if (uri === packageExportsUri) {
@@ -144,6 +209,14 @@ function buildResourceDescriptors(): readonly NeuralResourceDescriptor[] {
       mimeType: 'application/json',
       description:
         'Deterministic catalog of public NeuralNg components and directives.',
+    },
+    {
+      name: 'neural-server-capabilities',
+      title: 'NeuralNg MCP capabilities',
+      uri: capabilitiesUri,
+      mimeType: 'application/json',
+      description:
+        'Versioned tool groups, result schemas, safety guarantees, scan limits, and compatibility guidance for agents.',
     },
     {
       name: 'neural-package-exports',

@@ -1,7 +1,8 @@
 # NeuralNg MCP beta exit criteria
 
-The MCP package must not be merged to `main`, versioned, or published from the
-Contract V2 branch until every required gate below is green.
+The MCP package must not be merged to `main`, release-tagged, or published from
+the Contract V2 branch until every required gate below is green. Release
+candidate metadata may be prepared on the branch for tarball host verification.
 
 ## Required gates
 
@@ -26,9 +27,9 @@ Contract V2 branch until every required gate below is green.
       composition, validation, project, and theme tools.
 - [x] CI runs MCP unit tests, build, package contract, and packaged stdio smoke.
 - [ ] Full repository CI passes on the feature branch pull request.
-- [ ] Public tool names and result schemas receive final compatibility review.
-- [ ] Package/server versions and release notes are updated together only after review.
-- [ ] A release candidate is tested from its packed tarball in at least one real coding
+- [x] Public tool names and result schemas receive final compatibility review.
+- [x] Package/server versions and release notes are updated together only after review.
+- [x] A release candidate is tested from its packed tarball in at least one real coding
       agent host before npm publication.
 
 ## Release rule

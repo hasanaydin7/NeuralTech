@@ -20,7 +20,8 @@ import {
 } from './theme.js';
 
 const SERVER_NAME = 'neural-ng';
-const SERVER_VERSION = '0.1.0-beta.6';
+// Replaced from package.json in the packed artifact by prepare-package.mjs.
+const SERVER_VERSION = '__NEURAL_MCP_PACKAGE_VERSION__';
 const serverPackageSpecifier = '@modelcontextprotocol/server';
 const stdioPackageSpecifier = '@modelcontextprotocol/server/stdio';
 const zodPackageSpecifier = 'zod/v4';
@@ -603,6 +604,12 @@ function errorResult(message: string): Record<string, unknown> {
   return {
     isError: true,
     content: [{ type: 'text', text: message }],
+    structuredContent: {
+      error: {
+        schemaVersion: 1,
+        message,
+      },
+    },
   };
 }
 

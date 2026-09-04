@@ -19,9 +19,10 @@
           <p
             class="mt-4 max-w-2xl text-base leading-7 text-[var(--site-text-soft)] sm:text-lg"
           >
-            Give coding agents deterministic access to NeuralNg component
-            contracts, package exports and compact theme recipes without placing
-            MCP runtime code in the Angular application.
+            Give coding agents a deterministic Angular UI expert: discover
+            NeuralNg primitives, plan compositions, validate generated usage,
+            preserve project conventions and build compact theme recipes without
+            placing MCP runtime code in the Angular application.
           </p>
           <div
             class="mt-7 flex flex-wrap gap-4 text-sm font-semibold text-[var(--site-text-muted)]"
@@ -206,6 +207,72 @@
         </div>
       </section>
 
+      <section id="agent-intelligence" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">Angular UI agent intelligence</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          These tools turn requirements into contract-backed compositions,
+          validate generated Angular templates and preserve conventions already
+          present in a project. The server remains deterministic and does not
+          invoke a second model.
+        </p>
+        <div
+          class="mt-6 overflow-hidden rounded-2xl border border-[var(--site-border)]"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[48rem] text-left text-sm">
+              <thead class="bg-[var(--site-surface-soft)]">
+                <tr>
+                  <th class="px-5 py-4 font-black">Tool</th>
+                  <th class="px-5 py-4 font-black">Input</th>
+                  <th class="px-5 py-4 font-black">Purpose</th>
+                </tr>
+              </thead>
+              <tbody
+                class="divide-y divide-[var(--site-border)] bg-[var(--site-surface)]"
+              >
+                @for (row of agentTools; track row[0]) {
+                <tr>
+                  <th
+                    class="px-5 py-4 align-top font-mono text-[var(--neural-color-primary)]"
+                  >
+                    {{ row[0] }}
+                  </th>
+                  <td
+                    class="px-5 py-4 align-top font-mono text-xs text-[var(--site-text-soft)]"
+                  >
+                    {{ row[1] }}
+                  </td>
+                  <td class="px-5 py-4 align-top text-[var(--site-text-soft)]">
+                    {{ row[2] }}
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="mt-6 grid gap-5 lg:grid-cols-2">
+          <div>
+            <h3 class="mb-3 font-black">Plan a screen</h3>
+            <code-view
+              fileName="plan-ui.arguments.json"
+              language="json"
+              [code]="planCode"
+              [theme]="appearance.mode()"
+            />
+          </div>
+          <div>
+            <h3 class="mb-3 font-black">Validate generated usage</h3>
+            <code-view
+              fileName="validate-usage.arguments.json"
+              language="json"
+              [code]="validateCode"
+              [theme]="appearance.mode()"
+            />
+          </div>
+        </div>
+      </section>
+
       <section id="theme-tools" class="scroll-mt-28 pt-16">
         <h2 class="text-2xl font-black">Compact theme tools</h2>
         <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
@@ -332,9 +399,11 @@
       <section id="results" class="scroll-mt-28 pt-16">
         <h2 class="text-2xl font-black">Results and domain errors</h2>
         <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
-          Successful tools return pretty-printed JSON in one text content block.
-          Invalid component references, malformed JSON and rejected theme values
-          return <code>isError: true</code> with a human-readable message.
+          Successful tools return pretty-printed JSON plus machine-readable
+          <code>structuredContent</code>. Invalid component references,
+          malformed JSON and rejected theme values return
+          <code>isError: true</code> with both a human-readable message and a
+          versioned structured error envelope.
         </p>
         <code-view
           class="mt-6 block"
@@ -393,10 +462,10 @@
         <div
           class="mt-5 rounded-2xl border border-amber-400/20 bg-amber-500/10 p-5 text-sm leading-6"
         >
-          The current server is <strong>0.1.0-beta.6</strong> and requires Node
-          <strong>&gt;=24 &lt;25</strong>. Beta tool names, result shapes and
-          catalog contents may still change; pin the exact version in shared
-          repositories.
+          The current release candidate is <strong>0.1.0-rc.1</strong> and
+          requires Node <strong>&gt;=24 &lt;25</strong>. Public tool names and
+          versioned result envelopes are frozen for 0.1.0; pin the exact RC in
+          shared repositories while final host compatibility checks finish.
         </div>
       </section>
 

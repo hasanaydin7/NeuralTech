@@ -1,7 +1,8 @@
 # @neural-ng/mcp-server
 
-Read-only Model Context Protocol server for NeuralNg component discovery,
-contracts, package exports, documentation and compact theme recipe workflows.
+Read-only Angular UI expert interface for NeuralNg component discovery,
+contract-backed composition, usage validation, project-consistent guidance and
+compact theme workflows.
 
 The server is separate from `@neural-ng/core`. Angular applications never load
 an MCP runtime in the browser. Theme tools return recipes, validation results,
@@ -26,6 +27,11 @@ The process uses stdio. Standard output is reserved for MCP JSON-RPC messages;
 fatal diagnostics are written to standard error.
 
 ## Resources
+
+Agent capability discovery:
+
+- `neural://server/capabilities` — versioned tool groups, result schemas,
+  inspection limits, safety guarantees and compatibility guidance
 
 Component and package resources:
 

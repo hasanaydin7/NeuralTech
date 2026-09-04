@@ -11,6 +11,7 @@ describe('Neural MCP resources', () => {
       [...uris].sort((left, right) => left.localeCompare(right, 'en')),
     );
     expect(uris).toContain('neural://catalog');
+    expect(uris).toContain('neural://server/capabilities');
     expect(uris).toContain('neural://components/tri-state-checkbox/contract');
     expect(uris).toContain('neural://themes/schema');
     expect(uris).toContain('neural://themes/presets/neutral');
@@ -33,6 +34,19 @@ describe('Neural MCP resources', () => {
   });
 
   it('exposes package and theme catalogs', () => {
+    const capabilities = JSON.parse(
+      readNeuralResource('neural://server/capabilities')?.text ?? '{}',
+    );
+    expect(capabilities.schemaVersion).toBe(1);
+    expect(capabilities.toolGroups.composition).toContain('plan_ui');
+    expect(capabilities.toolGroups.correctness).toContain('validate_usage');
+    expect(capabilities.projectInspectionLimits.pathArgumentAccepted).toBe(
+      false,
+    );
+    expect(capabilities.guarantees.writesProjectFiles).toBe(false);
+    expect(
+      capabilities.deprecatedTools.get_component_contract.replacement,
+    ).toBe('get_component');
     expect(readNeuralResource('neural://package/exports')?.text).toContain(
       '@neural-ng/core/date-picker',
     );
