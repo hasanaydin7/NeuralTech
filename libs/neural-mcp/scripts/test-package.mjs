@@ -137,7 +137,9 @@ assert(
   capabilities.schemaVersion === 1 &&
     capabilities.resultSchemas?.usageValidation === 2 &&
     capabilities.resultSchemas?.iconSearch === 1 &&
+    capabilities.resultSchemas?.projectInspection === 2 &&
     capabilities.toolGroups?.icons?.includes('search_icons') &&
+    capabilities.toolGroups?.project?.includes('inspect_project') &&
     capabilities.toolGroups?.composition?.includes('plan_ui') &&
     capabilities.toolGroups?.correctness?.includes('validate_usage'),
   'Published MCP package is missing its versioned capabilities resource.',

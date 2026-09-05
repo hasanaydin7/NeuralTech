@@ -393,22 +393,34 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     },
   );
 
+  const inspectProjectHandler = async (): Promise<Record<string, unknown>> => {
+    try {
+      return jsonResult({ inspection: await inspectNeuralProject() });
+    } catch (error) {
+      return errorResult(readErrorMessage(error));
+    }
+  };
   server.registerTool(
-    'inspect_neuralng_project',
+    'inspect_project',
     {
-      title: 'Inspect the current NeuralNg Angular workspace',
+      title: 'Inspect the current Angular project',
       description:
-        'Read a bounded set of source files from the MCP process working directory and report installed versions, used NeuralNg components, exact imports, providers, theme/appearance setup, conventions, and consistency diagnostics.',
+        'Read the bounded MCP working directory and return a schema-v2 Angular compiler-backed inventory of NeuralNg versions, templates, elements and attribute directives, exact imports, providers, icons, theme/appearance setup, conventions, evidence, and diagnostics.',
       inputSchema: runtime.zod.object({}),
       annotations: commonAnnotations,
     },
-    async () => {
-      try {
-        return jsonResult({ inspection: await inspectNeuralProject() });
-      } catch (error) {
-        return errorResult(readErrorMessage(error));
-      }
+    inspectProjectHandler,
+  );
+  server.registerTool(
+    'inspect_neuralng_project',
+    {
+      title: 'Inspect the current NeuralNg Angular workspace (legacy name)',
+      description:
+        'Compatibility alias for inspect_project. It accepts no path and returns the same read-only schema-v2 inspection.',
+      inputSchema: runtime.zod.object({}),
+      annotations: commonAnnotations,
     },
+    inspectProjectHandler,
   );
 
   server.registerTool(

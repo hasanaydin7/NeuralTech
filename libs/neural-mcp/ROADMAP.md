@@ -10,7 +10,7 @@ packaged-host verification where applicable.
 4. [x] `plan_ui`
 5. [x] Angular parser-based `validate_usage`
 6. [x] Icon catalog and `search_icons`
-7. [ ] Read-only `inspect_project`
+7. [x] Read-only `inspect_project`
 8. [ ] `suggest_consistent_ui`
 9. [ ] Evaluation package
 10. [ ] `1.0.0-rc.1`
@@ -25,9 +25,14 @@ Step 6 generates its catalog from the published Neural Icons metadata and
 curated manifest. It covers all 6,184 variants, returns bounded semantic search
 results with exact classes and CSS imports, and excludes brand icons by default.
 
-Steps 7 and 8 have bounded early implementations. They remain incomplete until
-the icon contracts are integrated and the acceptance scenario is evaluated end
-to end.
+Step 7 inspects external and inline Angular templates with the same compiler-AST
+validator used by `validate_usage`. It reports package declarations, workspace
+kind, imports, providers, themes, Appearance ownership, component and icon
+usage, bounded relative-path evidence, summary counts, confidence, limitations,
+and actionable diagnostics without accepting a caller-controlled path.
+
+Step 8 has an early implementation. It remains incomplete until its consistency
+recommendations consume all Stage 7 evidence and pass focused evaluations.
 
 ## Beta exit acceptance scenario
 

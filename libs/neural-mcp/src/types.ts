@@ -263,6 +263,10 @@ export interface NeuralUsageValidationResult {
     readonly errors: number;
   };
   readonly components: readonly string[];
+  readonly componentUsages: readonly {
+    readonly id: string;
+    readonly occurrences: number;
+  }[];
   readonly diagnostics: readonly NeuralUsageDiagnostic[];
   readonly suggestedImports: Readonly<Record<string, readonly string[]>>;
   readonly suggestedProviders: readonly NeuralProviderRequirement[];
@@ -290,21 +294,69 @@ export interface NeuralProjectComponentUsage {
   readonly entryPoint: string;
   readonly occurrences: number;
   readonly files: readonly string[];
+  readonly filesOmitted: number;
+}
+
+export interface NeuralProjectIconUsage {
+  readonly name: string;
+  readonly style: NeuralIconStyle;
+  readonly className: string;
+  readonly occurrences: number;
+  readonly files: readonly string[];
+  readonly filesOmitted: number;
+}
+
+export interface NeuralProjectTemplateInspection {
+  readonly file: string;
+  readonly kind: 'external' | 'inline';
+  readonly owner?: string;
+  readonly importsSource: 'component-metadata' | 'workspace-fallback';
+  readonly components: readonly string[];
+  readonly valid: boolean;
 }
 
 export interface NeuralProjectInspection {
-  readonly schemaVersion: 1;
+  readonly schemaVersion: 2;
   readonly workspace: string;
+  readonly workspaceConfig: {
+    readonly kind: 'angular-cli' | 'nx' | 'angular-package' | 'unknown';
+    readonly packageManager?: string;
+  };
   readonly framework: {
     readonly angularVersion?: string;
     readonly neuralPackages: Readonly<Record<string, string>>;
+    readonly versionSource: 'package.json';
+  };
+  readonly analysis: {
+    readonly engine: '@angular/compiler';
+    readonly confidence: 'complete' | 'partial';
+    readonly limitations: readonly string[];
   };
   readonly files: {
     readonly scanned: number;
     readonly truncated: boolean;
     readonly totalBytes: number;
   };
+  readonly summary: {
+    readonly componentKinds: number;
+    readonly componentOccurrences: number;
+    readonly templateCount: number;
+    readonly invalidTemplates: number;
+    readonly iconKinds: number;
+    readonly iconOccurrences: number;
+    readonly diagnostics: {
+      readonly errors: number;
+      readonly warnings: number;
+      readonly info: number;
+    };
+  };
   readonly components: readonly NeuralProjectComponentUsage[];
+  readonly templates: readonly NeuralProjectTemplateInspection[];
+  readonly icons: {
+    readonly packageVersion?: string;
+    readonly stylesheets: readonly string[];
+    readonly usages: readonly NeuralProjectIconUsage[];
+  };
   readonly imports: Readonly<Record<string, readonly string[]>>;
   readonly themes: readonly string[];
   readonly appearance: {

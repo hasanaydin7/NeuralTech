@@ -73,7 +73,11 @@ export function readNeuralResource(
             'suggest_table_structure',
           ],
           correctness: ['validate_usage'],
-          project: ['inspect_neuralng_project', 'suggest_consistent_ui'],
+          project: [
+            'inspect_project',
+            'inspect_neuralng_project',
+            'suggest_consistent_ui',
+          ],
           theme: [
             'get_component_theme_contract',
             'create_theme_recipe',
@@ -90,7 +94,7 @@ export function readNeuralResource(
           iconSearch: 1,
           compositionPlan: 1,
           usageValidation: 2,
-          projectInspection: 1,
+          projectInspection: 2,
           consistentUiSuggestion: 1,
         },
         projectInspectionLimits: {
@@ -111,6 +115,10 @@ export function readNeuralResource(
         deprecatedTools: {
           get_component_contract: {
             replacement: 'get_component',
+            removalScheduled: false,
+          },
+          inspect_neuralng_project: {
+            replacement: 'inspect_project',
             removalScheduled: false,
           },
         },

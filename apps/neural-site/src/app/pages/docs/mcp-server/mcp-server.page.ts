@@ -77,7 +77,7 @@ export class McpServerPage {
       'Parse with Angular compiler and check syntax, APIs, providers, imports and accessibility.',
     ],
     [
-      'inspect_neuralng_project',
+      'inspect_project',
       'none',
       'Inspect the bounded working directory for existing NeuralNg conventions.',
     ],
@@ -215,7 +215,7 @@ neural://themes/presets
 neural://themes/presets/neutral
 neural://themes/ai-guide`;
 
-  readonly workflowCode = `1. Call inspect_neuralng_project when an existing project is available.
+  readonly workflowCode = `1. Call inspect_project when an existing project is available.
 2. Call plan_ui or a structure-specific planner with the user's requirement.
 3. Fetch standard contracts for selected primitives with get_component.
 4. Fetch only the examples named by the plan's exampleQueries.

@@ -96,8 +96,8 @@ try {
     const tools = await client.request('tools/list', {});
     const toolNames = tools?.tools?.map((tool) => tool.name) ?? [];
     assert(
-      toolNames.length === 19,
-      `Expected 19 tools, received ${toolNames.length}.`,
+      toolNames.length === 20,
+      `Expected 20 tools, received ${toolNames.length}.`,
     );
     assert(
       toolNames.includes('recommend_components'),
@@ -121,6 +121,10 @@ try {
     assert(
       toolNames.includes('inspect_neuralng_project'),
       'Project inspection tool is missing.',
+    );
+    assert(
+      toolNames.includes('inspect_project'),
+      'Canonical project inspection tool is missing.',
     );
     assert(
       toolNames.includes('suggest_consistent_ui'),
@@ -164,9 +168,7 @@ try {
       .sort();
     assert(
       capabilityDocument.schemaVersion === 1 &&
-        capabilityDocument.toolGroups?.project?.includes(
-          'inspect_neuralng_project',
-        ) &&
+        capabilityDocument.toolGroups?.project?.includes('inspect_project') &&
         capabilityDocument.guarantees?.writesProjectFiles === false,
       'MCP capabilities resource is incomplete.',
     );
@@ -308,12 +310,19 @@ try {
     );
 
     const projectInspection = await client.request('tools/call', {
-      name: 'inspect_neuralng_project',
+      name: 'inspect_project',
       arguments: {},
     });
     assert(
-      projectInspection?.structuredContent?.inspection?.framework
-        ?.neuralPackages?.['@neural-ng/mcp-server'],
+      projectInspection?.structuredContent?.inspection?.schemaVersion === 2 &&
+        projectInspection?.structuredContent?.inspection?.analysis?.engine ===
+          '@angular/compiler' &&
+        projectInspection?.structuredContent?.inspection?.framework
+          ?.versionSource === 'package.json' &&
+        typeof projectInspection?.structuredContent?.inspection?.summary
+          ?.templateCount === 'number' &&
+        projectInspection?.structuredContent?.inspection?.framework
+          ?.neuralPackages?.['@neural-ng/mcp-server'],
       'Project inspector did not detect the installed MCP package.',
     );
 

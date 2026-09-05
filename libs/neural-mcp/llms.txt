@@ -30,7 +30,8 @@ CORRECTNESS TOOLS
 
 PROJECT TOOLS
 
-- inspect_neuralng_project: bounded read-only inspection of the MCP working directory for package versions, selectors, imports, providers, theme, Appearance, conventions and diagnostics. It accepts no path.
+- inspect_project: canonical bounded read-only inspection of the MCP working directory. It parses external/inline Angular templates with @angular/compiler and reports package declarations, summary counts, selectors and attribute directives, icon usage, imports, providers, theme, Appearance, conventions, confidence and diagnostics. It accepts no path, follows no symlinks and returns schema v2.
+- inspect_neuralng_project: compatibility alias for inspect_project; new agents should use inspect_project.
 - suggest_consistent_ui: combine current-project inspection with plan_ui and distinguish reused conventions from newly introduced primitives.
 
 THEME TOOLS

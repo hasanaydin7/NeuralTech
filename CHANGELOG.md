@@ -24,6 +24,19 @@
 All notable changes to NeuralNg are documented here. Beta APIs may change
 before the first stable release.
 
+## Unreleased
+
+### Added
+
+- Added canonical, read-only `inspect_project` with schema-v2 Angular compiler
+  template inspection, attribute-directive discovery, Neural Icons usage,
+  summary metrics, explicit confidence and bounded relative-path evidence.
+
+### Changed
+
+- Retained `inspect_neuralng_project` as a compatibility alias while directing
+  new coding agents to `inspect_project`.
+
 ## 0.1.0-beta.7 - 2026-08-31
 
 ### Changed

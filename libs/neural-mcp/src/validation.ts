@@ -66,6 +66,7 @@ export function validateUsage(
 
   const diagnostics: NeuralUsageDiagnostic[] = [];
   const contracts = new Map<string, NeuralComponentContract>();
+  const componentUsageCounts = new Map<string, number>();
   const elements = parseAngularElements(request.template, diagnostics);
 
   for (const element of elements) {
@@ -98,8 +99,13 @@ export function validateUsage(
     );
     if (!matchedContracts.length) continue;
 
-    for (const contract of matchedContracts)
+    for (const contract of matchedContracts) {
       contracts.set(contract.id, contract);
+      componentUsageCounts.set(
+        contract.id,
+        (componentUsageCounts.get(contract.id) ?? 0) + 1,
+      );
+    }
     validateBindings(request.template, element, matchedContracts, diagnostics);
     for (const contract of matchedContracts) {
       validateRequiredInputs(request.template, element, contract, diagnostics);
@@ -174,6 +180,9 @@ export function validateUsage(
       errors: diagnostics.filter((item) => item.code === 'NNG000').length,
     },
     components: [...contracts.keys()],
+    componentUsages: [...componentUsageCounts.entries()].map(
+      ([id, occurrences]) => ({ id, occurrences }),
+    ),
     diagnostics,
     suggestedImports: groupImports(missingContracts),
     suggestedProviders,
@@ -198,9 +207,12 @@ function validateBindings(
     ),
   );
   const outputs = new Set(
-    contracts.flatMap((contract) =>
-      contract.outputs.map((output) => output.bindingName),
-    ),
+    contracts.flatMap((contract) => [
+      ...contract.outputs.map((output) => output.bindingName),
+      ...contract.models.map(
+        (model) => `${model.bindingName ?? model.name}Change`,
+      ),
+    ]),
   );
   const selectorAttributes = new Set(
     CONTRACT_SELECTOR_VARIANTS.filter((variant) =>
@@ -211,6 +223,13 @@ function validateBindings(
   for (const rawName of element.attributes.keys()) {
     const binding = classifyBinding(rawName);
     if (!binding || isGlobalAttribute(binding.name)) continue;
+    if (
+      !rawName.startsWith('[') &&
+      !rawName.startsWith('(') &&
+      binding.name.includes('-')
+    ) {
+      continue;
+    }
     const known =
       binding.kind === 'input'
         ? inputs.has(binding.name) ||
@@ -474,6 +493,9 @@ function validateUnknownNeuralAttributes(
     contracts.flatMap((contract) => [
       ...contract.inputs.map((input) => input.bindingName),
       ...contract.models.map((model) => model.bindingName ?? model.name),
+      ...contract.models.map(
+        (model) => `${model.bindingName ?? model.name}Change`,
+      ),
       ...contract.outputs.map((output) => output.bindingName),
     ]),
   );
@@ -482,6 +504,14 @@ function validateUnknownNeuralAttributes(
   );
   for (const rawName of element.attributes.keys()) {
     const binding = classifyBinding(rawName);
+    if (
+      binding &&
+      !rawName.startsWith('[') &&
+      !rawName.startsWith('(') &&
+      binding.name.includes('-')
+    ) {
+      continue;
+    }
     if (
       !binding ||
       !binding.name.startsWith('neural') ||
