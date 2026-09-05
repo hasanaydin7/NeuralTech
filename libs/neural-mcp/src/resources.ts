@@ -5,6 +5,7 @@ import {
   listComponents,
   listThemes,
 } from './catalog.js';
+import { getIconCatalogSummary } from './icons.js';
 import {
   BUILT_IN_THEME_RECIPES,
   formatJson,
@@ -17,7 +18,9 @@ import type {
 } from './types.js';
 
 const catalogUri = 'neural://catalog';
+const capabilitiesUri = 'neural://server/capabilities';
 const packageExportsUri = 'neural://package/exports';
+const iconsUri = 'neural://icons/catalog';
 const themesUri = 'neural://themes/catalog';
 const themeSchemaUri = 'neural://themes/schema';
 const themePresetsUri = 'neural://themes/presets';
@@ -47,8 +50,89 @@ export function readNeuralResource(
       JSON.stringify({ components: listComponents() }, null, 2),
     );
   }
+  if (uri === capabilitiesUri) {
+    return withText(
+      descriptor,
+      formatJson({
+        schemaVersion: 1,
+        server: 'neural-ng',
+        purpose:
+          'Angular UI expert interface for NeuralNg discovery, icon search, composition, correctness, project consistency, and theme workflows.',
+        toolGroups: {
+          discovery: [
+            'search_components',
+            'get_component',
+            'get_component_examples',
+            'recommend_components',
+          ],
+          icons: ['search_icons'],
+          composition: [
+            'plan_ui',
+            'suggest_form_structure',
+            'suggest_page_structure',
+            'suggest_table_structure',
+          ],
+          correctness: ['validate_usage'],
+          project: [
+            'inspect_project',
+            'inspect_neuralng_project',
+            'suggest_consistent_ui',
+          ],
+          theme: [
+            'get_component_theme_contract',
+            'create_theme_recipe',
+            'validate_theme_recipe',
+            'edit_theme_recipe',
+            'diff_theme_recipes',
+            'compile_theme_recipe',
+          ],
+          compatibility: ['get_component_contract'],
+        },
+        resultSchemas: {
+          componentContract: 2,
+          iconCatalog: 1,
+          iconSearch: 1,
+          compositionPlan: 1,
+          usageValidation: 2,
+          projectInspection: 2,
+          consistentUiSuggestion: 2,
+        },
+        projectInspectionLimits: {
+          root: 'MCP process working directory only',
+          pathArgumentAccepted: false,
+          maxFiles: 400,
+          maxBytesPerFile: 262144,
+          maxTotalBytes: 5242880,
+          followsSymbolicLinks: false,
+        },
+        guarantees: {
+          deterministic: true,
+          readOnly: true,
+          networkAccess: false,
+          writesProjectFiles: false,
+          executesShellCommands: false,
+        },
+        deprecatedTools: {
+          get_component_contract: {
+            replacement: 'get_component',
+            removalScheduled: false,
+          },
+          inspect_neuralng_project: {
+            replacement: 'inspect_project',
+            removalScheduled: false,
+          },
+        },
+      }),
+    );
+  }
   if (uri === packageExportsUri) {
     return withText(descriptor, JSON.stringify(getPackageCatalog(), null, 2));
+  }
+  if (uri === iconsUri) {
+    return withText(
+      descriptor,
+      JSON.stringify(getIconCatalogSummary(), null, 2),
+    );
   }
   if (uri === themesUri) {
     return withText(
@@ -146,12 +230,28 @@ function buildResourceDescriptors(): readonly NeuralResourceDescriptor[] {
         'Deterministic catalog of public NeuralNg components and directives.',
     },
     {
+      name: 'neural-server-capabilities',
+      title: 'NeuralNg MCP capabilities',
+      uri: capabilitiesUri,
+      mimeType: 'application/json',
+      description:
+        'Versioned tool groups, result schemas, safety guarantees, scan limits, and compatibility guidance for agents.',
+    },
+    {
       name: 'neural-package-exports',
       title: 'NeuralNg package exports',
       uri: packageExportsUri,
       mimeType: 'application/json',
       description:
         'Runtime secondary entry points and documented package exports.',
+    },
+    {
+      name: 'neural-icon-catalog',
+      title: 'Neural Icons catalog summary',
+      uri: iconsUri,
+      mimeType: 'application/json',
+      description:
+        'Versioned Neural Icons counts, categories, package metadata, and search policy. Use search_icons for bounded results.',
     },
     {
       name: 'neural-theme-catalog',

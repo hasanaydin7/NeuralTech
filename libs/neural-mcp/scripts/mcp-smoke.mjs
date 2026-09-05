@@ -1,5 +1,12 @@
 import { spawn } from 'node:child_process';
-import { access, mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import {
+  access,
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  writeFile,
+} from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import process from 'node:process';
 
@@ -74,17 +81,54 @@ try {
       initialized?.protocolVersion,
       'MCP initialize returned no protocol version.',
     );
+    const installedPackage = JSON.parse(
+      await readFile(
+        join(consumerRoot, 'node_modules/@neural-ng/mcp-server/package.json'),
+        'utf8',
+      ),
+    );
+    assert(
+      initialized?.serverInfo?.version === installedPackage.version,
+      `Runtime server version ${initialized?.serverInfo?.version ?? '<missing>'} does not match package ${installedPackage.version}.`,
+    );
     client.notify('notifications/initialized', {});
 
     const tools = await client.request('tools/list', {});
     const toolNames = tools?.tools?.map((tool) => tool.name) ?? [];
     assert(
-      toolNames.length === 9,
-      `Expected 9 tools, received ${toolNames.length}.`,
+      toolNames.length === 20,
+      `Expected 20 tools, received ${toolNames.length}.`,
     );
     assert(
       toolNames.includes('recommend_components'),
       'Recommendation tool is missing.',
+    );
+    assert(
+      toolNames.includes('get_component'),
+      'Component API tool is missing.',
+    );
+    assert(
+      toolNames.includes('get_component_examples'),
+      'Component examples tool is missing.',
+    );
+    assert(toolNames.includes('search_icons'), 'Icon search tool is missing.');
+    assert(toolNames.includes('plan_ui'), 'UI planning tool is missing.');
+    assert(
+      toolNames.includes('suggest_table_structure'),
+      'Table structure tool is missing.',
+    );
+    assert(toolNames.includes('validate_usage'), 'Usage validator is missing.');
+    assert(
+      toolNames.includes('inspect_neuralng_project'),
+      'Project inspection tool is missing.',
+    );
+    assert(
+      toolNames.includes('inspect_project'),
+      'Canonical project inspection tool is missing.',
+    );
+    assert(
+      toolNames.includes('suggest_consistent_ui'),
+      'Project-consistent UI tool is missing.',
     );
     assert(
       toolNames.includes('create_theme_recipe'),
@@ -111,6 +155,29 @@ try {
       'MCP theme schema resource is missing.',
     );
 
+    const capabilities = await client.request('resources/read', {
+      uri: 'neural://server/capabilities',
+    });
+    const capabilityDocument = JSON.parse(
+      capabilities?.contents?.[0]?.text ?? '{}',
+    );
+    const capabilityToolNames = Object.values(
+      capabilityDocument.toolGroups ?? {},
+    )
+      .flat()
+      .sort();
+    assert(
+      capabilityDocument.schemaVersion === 1 &&
+        capabilityDocument.toolGroups?.project?.includes('inspect_project') &&
+        capabilityDocument.guarantees?.writesProjectFiles === false,
+      'MCP capabilities resource is incomplete.',
+    );
+    assert(
+      JSON.stringify(capabilityToolNames) ===
+        JSON.stringify([...toolNames].sort()),
+      'MCP capabilities tool groups drifted from tools/list.',
+    );
+
     const contract = await client.request('resources/read', {
       uri: 'neural://components/tri-state-checkbox/contract',
     });
@@ -118,6 +185,32 @@ try {
     assert(
       contractText.includes('FormValueControl<boolean | null>'),
       'MCP contract resource returned the wrong tri-state contract.',
+    );
+
+    const iconCatalog = await client.request('resources/read', {
+      uri: 'neural://icons/catalog',
+    });
+    const iconCatalogDocument = JSON.parse(
+      iconCatalog?.contents?.[0]?.text ?? '{}',
+    );
+    assert(
+      iconCatalogDocument.totals?.icons === 6184 &&
+        iconCatalogDocument.icons === undefined,
+      'MCP icon catalog resource is missing or unbounded.',
+    );
+
+    const iconSearch = await client.request('tools/call', {
+      name: 'search_icons',
+      arguments: { query: 'delete user', limit: 10 },
+    });
+    assert(
+      iconSearch?.structuredContent?.icons?.matches?.some(
+        (match) =>
+          match.icon?.name === 'trash' &&
+          match.icon?.className === 'nt nt-trash' &&
+          match.icon?.cssImports?.outline,
+      ),
+      'Icon search did not resolve delete intent to an installable trash icon.',
     );
 
     const recommendation = await client.request('tools/call', {
@@ -128,6 +221,127 @@ try {
     assert(
       recommendationText.includes('tri-state-checkbox'),
       'MCP recommendation tool did not return TriStateCheckbox.',
+    );
+
+    const componentApi = await client.request('tools/call', {
+      name: 'get_component',
+      arguments: { component: 'neural-select', detail: 'standard' },
+    });
+    assert(
+      componentApi?.structuredContent?.component?.inputs?.some(
+        (input) => input.name === 'options',
+      ),
+      'Structured component API returned no Select options input.',
+    );
+
+    const componentExamples = await client.request('tools/call', {
+      name: 'get_component_examples',
+      arguments: { component: 'neural-select', limit: 3 },
+    });
+    assert(
+      componentExamples?.structuredContent?.examples?.length === 3,
+      'Structured component examples returned the wrong bounded result.',
+    );
+
+    const invalidComponentDetail = await client.request('tools/call', {
+      name: 'get_component',
+      arguments: { component: 'neural-select', detail: 'everything' },
+    });
+    assert(
+      invalidComponentDetail?.isError === true &&
+        invalidComponentDetail?.structuredContent?.error?.schemaVersion === 1 &&
+        invalidComponentDetail?.structuredContent?.error?.message?.includes(
+          'detail must be',
+        ),
+      'Tool errors must include a stable structured error envelope.',
+    );
+
+    const uiPlan = await client.request('tools/call', {
+      name: 'plan_ui',
+      arguments: {
+        goal: 'Admin user management with search, role filter, table and detail drawer',
+      },
+    });
+    const plannedIds =
+      uiPlan?.structuredContent?.plan?.components?.map(
+        (component) => component.id,
+      ) ?? [];
+    assert(
+      plannedIds.includes('table') &&
+        plannedIds.includes('select') &&
+        plannedIds.includes('neural-drawer'),
+      'UI planning tool returned an incomplete admin table composition.',
+    );
+
+    const usageValidation = await client.request('tools/call', {
+      name: 'validate_usage',
+      arguments: {
+        template: '<neural-button icon="trash"></neural-button>',
+        imports_json: JSON.stringify(['NeuralButton']),
+      },
+    });
+    const validation = usageValidation?.structuredContent?.validation;
+    assert(
+      validation?.schemaVersion === 2 &&
+        validation?.syntax?.parser === '@angular/compiler' &&
+        validation?.syntax?.valid === true,
+      'Usage validator did not return its Angular parser schema-v2 contract.',
+    );
+    assert(
+      validation?.diagnostics?.some(
+        (diagnostic) => diagnostic.code === 'NNG201',
+      ),
+      'Usage validator did not reject an inaccessible icon-only button.',
+    );
+
+    const invalidAngularTemplate = await client.request('tools/call', {
+      name: 'validate_usage',
+      arguments: {
+        template: '<neural-button><div></neural-button>',
+      },
+    });
+    assert(
+      invalidAngularTemplate?.structuredContent?.validation?.syntax?.valid ===
+        false &&
+        invalidAngularTemplate?.structuredContent?.validation?.diagnostics?.some(
+          (diagnostic) => diagnostic.code === 'NNG000',
+        ),
+      'Usage validator did not expose an Angular parser syntax failure.',
+    );
+
+    const projectInspection = await client.request('tools/call', {
+      name: 'inspect_project',
+      arguments: {},
+    });
+    assert(
+      projectInspection?.structuredContent?.inspection?.schemaVersion === 2 &&
+        projectInspection?.structuredContent?.inspection?.analysis?.engine ===
+          '@angular/compiler' &&
+        projectInspection?.structuredContent?.inspection?.framework
+          ?.versionSource === 'package.json' &&
+        typeof projectInspection?.structuredContent?.inspection?.summary
+          ?.templateCount === 'number' &&
+        projectInspection?.structuredContent?.inspection?.framework
+          ?.neuralPackages?.['@neural-ng/mcp-server'],
+      'Project inspector did not detect the installed MCP package.',
+    );
+
+    const consistentUi = await client.request('tools/call', {
+      name: 'suggest_consistent_ui',
+      arguments: {
+        goal: 'User table with search, pagination and detail drawer',
+        kind: 'table',
+      },
+    });
+    assert(
+      consistentUi?.structuredContent?.suggestion?.schemaVersion === 2 &&
+        consistentUi?.structuredContent?.suggestion?.plan?.kind === 'table' &&
+        consistentUi?.structuredContent?.suggestion?.consistency?.components
+          ?.length > 0 &&
+        consistentUi?.structuredContent?.suggestion?.consistency?.nextTools
+          ?.at(-1)
+          ?.startsWith('validate_usage'),
+      'Project-consistent UI tool did not return its schema-v2 evidence contract.',
     );
 
     const createdTheme = await client.request('tools/call', {

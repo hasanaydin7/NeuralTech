@@ -52,6 +52,9 @@ jobs:
       - name: Run MCP smoke test
         run: npm run mcp:smoke
 
+      - name: Run MCP beta-exit evaluation suite
+        run: npm run mcp:eval
+
       - name: Check whether MCP version is new
         id: mcp-release
         shell: bash

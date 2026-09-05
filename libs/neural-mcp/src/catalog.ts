@@ -119,12 +119,27 @@ function buildComponentLookup(
   documents: readonly NeuralComponentDocument[],
 ): ReadonlyMap<string, NeuralComponentDocument> {
   const lookup = new Map<string, NeuralComponentDocument>();
+
+  // Canonical declaration identities always win over shared entry-point aliases.
+  // For example, `table` must resolve NeuralTable rather than the first table
+  // template directive encountered in generated catalog order.
   for (const document of documents) {
     const aliases = [
       document.id,
       document.name,
       document.className,
       document.selector,
+    ];
+    for (const alias of aliases) {
+      const normalizedAlias = normalizeReference(alias);
+      if (normalizedAlias && !lookup.has(normalizedAlias)) {
+        lookup.set(normalizedAlias, document);
+      }
+    }
+  }
+
+  for (const document of documents) {
+    const aliases = [
       document.entryPoint,
       document.entryPoint.slice('@neural-ng/core/'.length),
     ];
@@ -142,6 +157,7 @@ function toContract(
   document: NeuralComponentDocument,
 ): NeuralComponentContract {
   return {
+    schemaVersion: document.schemaVersion,
     id: document.id,
     name: document.name,
     className: document.className,
@@ -151,11 +167,28 @@ function toContract(
     status: document.status,
     summary: document.summary,
     formContract: document.formContract,
+    inputs: document.inputs,
     models: document.models,
+    outputs: document.outputs,
+    templates: document.templates,
+    providers: document.providers,
+    providerRequirements: document.providerRequirements,
+    methods: document.methods,
+    typeAliases: document.typeAliases,
+    examples: document.examples,
     classes: document.classes,
     relatedComponents: document.relatedComponents,
     resources: document.resources,
   };
+}
+
+export function getComponentExamples(
+  reference: string,
+  limit = 10,
+): ReadonlyArray<NeuralComponentContract['examples'][number]> {
+  const component = getComponentContract(reference);
+  if (!component) return [];
+  return component.examples.slice(0, clampLimit(limit));
 }
 
 function scoreDocument(

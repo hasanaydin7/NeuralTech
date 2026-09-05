@@ -11,6 +11,8 @@ describe('Neural MCP resources', () => {
       [...uris].sort((left, right) => left.localeCompare(right, 'en')),
     );
     expect(uris).toContain('neural://catalog');
+    expect(uris).toContain('neural://icons/catalog');
+    expect(uris).toContain('neural://server/capabilities');
     expect(uris).toContain('neural://components/tri-state-checkbox/contract');
     expect(uris).toContain('neural://themes/schema');
     expect(uris).toContain('neural://themes/presets/neutral');
@@ -33,6 +35,25 @@ describe('Neural MCP resources', () => {
   });
 
   it('exposes package and theme catalogs', () => {
+    const capabilities = JSON.parse(
+      readNeuralResource('neural://server/capabilities')?.text ?? '{}',
+    );
+    expect(capabilities.schemaVersion).toBe(1);
+    expect(capabilities.resultSchemas.usageValidation).toBe(2);
+    expect(capabilities.resultSchemas.iconSearch).toBe(1);
+    expect(capabilities.toolGroups.icons).toContain('search_icons');
+    expect(capabilities.toolGroups.composition).toContain('plan_ui');
+    expect(capabilities.toolGroups.correctness).toContain('validate_usage');
+    expect(capabilities.toolGroups.project).toContain('inspect_project');
+    expect(capabilities.resultSchemas.projectInspection).toBe(2);
+    expect(capabilities.resultSchemas.consistentUiSuggestion).toBe(2);
+    expect(capabilities.projectInspectionLimits.pathArgumentAccepted).toBe(
+      false,
+    );
+    expect(capabilities.guarantees.writesProjectFiles).toBe(false);
+    expect(
+      capabilities.deprecatedTools.get_component_contract.replacement,
+    ).toBe('get_component');
     expect(readNeuralResource('neural://package/exports')?.text).toContain(
       '@neural-ng/core/date-picker',
     );
@@ -57,5 +78,16 @@ describe('Neural MCP resources', () => {
     expect(readNeuralResource('neural://themes/ai-guide')?.text).toContain(
       'Never emit the resolved 1,348-token graph',
     );
+  });
+
+  it('returns a compact icon catalog rather than all icon names', () => {
+    const icons = JSON.parse(
+      readNeuralResource('neural://icons/catalog')?.text ?? '{}',
+    );
+
+    expect(icons.totals.icons).toBe(6184);
+    expect(icons.categories.length).toBeGreaterThan(30);
+    expect(icons.searchTool).toBe('search_icons');
+    expect(icons.icons).toBeUndefined();
   });
 });

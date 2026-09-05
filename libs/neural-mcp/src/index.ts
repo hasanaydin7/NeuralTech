@@ -8,6 +8,10 @@ export {
   searchComponents,
 } from './catalog.js';
 export { listNeuralResources, readNeuralResource } from './resources.js';
+export { planUi } from './composition.js';
+export { getIconCatalog, getIconCatalogSummary, searchIcons } from './icons.js';
+export { validateUsage } from './validation.js';
+export { inspectNeuralProject, suggestConsistentUi } from './project.js';
 export { createNeuralMcpServer, serveNeuralMcpStdio } from './server.js';
 export {
   compileThemeRecipeJson,
@@ -27,13 +31,41 @@ export {
 export type {
   NeuralCatalogKind,
   NeuralComponentContract,
+  NeuralComponentExample,
+  NeuralComponentInput,
+  NeuralComponentMethod,
+  NeuralCompositionComponent,
+  NeuralCompositionKind,
+  NeuralCompositionPlan,
+  NeuralCompositionRequest,
+  NeuralCompositionSection,
   NeuralComponentModel,
+  NeuralComponentOutput,
+  NeuralComponentProvider,
   NeuralComponentResources,
+  NeuralComponentTemplate,
   NeuralPackageCatalog,
+  NeuralIconCatalog,
+  NeuralIconCatalogEntry,
+  NeuralIconCategory,
+  NeuralIconContract,
+  NeuralIconSearchMatch,
+  NeuralIconSearchResult,
+  NeuralIconStyle,
   NeuralResourceContents,
   NeuralResourceDescriptor,
   NeuralSearchMatch,
   NeuralThemeCatalogEntry,
+  NeuralTypeAliasContract,
+  NeuralProviderRequirement,
+  NeuralConsistentUiSuggestion,
+  NeuralProjectComponentUsage,
+  NeuralProjectDiagnostic,
+  NeuralProjectInspection,
+  NeuralUsageDiagnostic,
+  NeuralUsageDiagnosticSeverity,
+  NeuralUsageValidationRequest,
+  NeuralUsageValidationResult,
 } from './types.js';
 
 export type {

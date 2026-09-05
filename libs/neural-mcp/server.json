@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.hasanaydin7/neuralng",
-  "title": "NeuralNg Component and Theme MCP Server",
-  "description": "Read-only discovery for NeuralNg Angular components, APIs, packages, icons and theme recipes.",
-  "version": "0.1.0-beta.6",
+  "title": "NeuralNg Angular UI Expert MCP",
+  "description": "Read-only agent interface for NeuralNg discovery, icon search, UI composition, contract validation, project consistency and theme workflows.",
+  "version": "1.0.0-rc.1",
   "websiteUrl": "https://neuralng.dev/docs/mcp-server",
   "repository": {
     "url": "https://github.com/hasanaydin7/NeuralTech",
@@ -14,7 +14,7 @@
     {
       "registryType": "npm",
       "identifier": "@neural-ng/mcp-server",
-      "version": "0.1.0-beta.6",
+      "version": "1.0.0-rc.1",
       "transport": {
         "type": "stdio"
       }

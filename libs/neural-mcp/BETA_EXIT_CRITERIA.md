@@ -1,0 +1,32 @@
+# NeuralNg MCP beta exit criteria
+
+The MCP package must not be merged to `main`, release-tagged, or published from
+the Contract V2 branch until every required gate below is green. Release
+candidate metadata may be prepared on the branch for tarball host verification.
+
+## Roadmap gates
+
+- [x] Contract Generator V2 is generated from public Angular source.
+- [x] Component discovery returns versioned contracts and bounded examples.
+- [x] The capability/composition graph is contract-backed.
+- [x] `plan_ui` returns exact imports, providers, state, accessibility checks,
+      and implementation order.
+- [x] `validate_usage` uses the Angular compiler AST and exposes
+      usage-validation schema v2.
+- [x] The Neural Icons catalog and `search_icons` are implemented and tested.
+- [x] Read-only `inspect_project` is compiler-backed, bounded, pathless and
+      integrated with component, validation and icon contracts.
+- [x] `suggest_consistent_ui` returns schema-v2 component evidence, version
+      alignment, import/provider deltas, theme ownership, bounded risks and next
+      validation calls without duplicating the complete inspection payload.
+- [x] The versioned acceptance evaluation package passes deterministically and
+      is enforced in CI with `npm run mcp:eval`.
+- [ ] `1.0.0-rc.1` metadata, release notes, packed artifact, and real coding-agent
+      host verification are completed together.
+
+The detailed order and acceptance scenario are maintained in `ROADMAP.md`.
+
+## Release rule
+
+Do not infer readiness from a successful build alone. Merge only after the unchecked
+items are completed and reviewed. Publishing remains a separate, explicit action.

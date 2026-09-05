@@ -1,8 +1,13 @@
 import {
   getComponentContract,
+  getComponentExamples,
   recommendComponents,
   searchComponents,
 } from './catalog.js';
+import { planUi } from './composition.js';
+import { searchIcons } from './icons.js';
+import { validateUsage } from './validation.js';
+import { inspectNeuralProject, suggestConsistentUi } from './project.js';
 import { listNeuralResources, readNeuralResource } from './resources.js';
 import {
   compileThemeRecipeJson,
@@ -16,7 +21,8 @@ import {
 } from './theme.js';
 
 const SERVER_NAME = 'neural-ng';
-const SERVER_VERSION = '0.1.0-beta.6';
+// Replaced from package.json in the packed artifact by prepare-package.mjs.
+const SERVER_VERSION = '__NEURAL_MCP_PACKAGE_VERSION__';
 const serverPackageSpecifier = '@modelcontextprotocol/server';
 const stdioPackageSpecifier = '@modelcontextprotocol/server/stdio';
 const zodPackageSpecifier = 'zod/v4';
@@ -61,10 +67,16 @@ interface ZodNumberRuntime {
   default(value: number): ZodNumberRuntime;
 }
 
+interface ZodBooleanRuntime {
+  optional(): ZodBooleanRuntime;
+  default(value: boolean): ZodBooleanRuntime;
+}
+
 interface ZodRuntime {
   object(shape: Record<string, unknown>): unknown;
   string(): ZodStringRuntime;
   number(): ZodNumberRuntime;
+  boolean(): ZodBooleanRuntime;
 }
 
 interface ServerModuleRuntime {
@@ -153,6 +165,100 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
   );
 
   server.registerTool(
+    'search_icons',
+    {
+      title: 'Search Neural Icons by UI intent',
+      description:
+        'Search all 6,184 Neural Icons variants by name, category, or common UI intent and return exact CSS classes, smallest category imports, usage markup, and accessibility guidance. Brand icons are excluded unless explicitly requested.',
+      inputSchema: runtime.zod.object({
+        query: runtime.zod.string().min(1),
+        limit: runtime.zod.number().int().min(1).max(50).optional().default(10),
+        style: runtime.zod.string().optional().default('any'),
+        category: runtime.zod.string().optional().default(''),
+        include_brands: runtime.zod.boolean().optional().default(false),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      try {
+        const category = readOptionalString(input, 'category', '').trim();
+        return jsonResult({
+          icons: searchIcons(readRequiredString(input, 'query'), {
+            limit: readNumber(input, 'limit', 10),
+            style: readOptionalString(input, 'style', 'any') as
+              | 'any'
+              | 'outline'
+              | 'filled',
+            ...(category ? { category } : {}),
+            includeBrands: readBoolean(input, 'include_brands', false),
+          }),
+        });
+      } catch (error) {
+        return errorResult(readErrorMessage(error));
+      }
+    },
+  );
+
+  server.registerTool(
+    'get_component',
+    {
+      title: 'Get a structured NeuralNg component API',
+      description:
+        'Resolve a component and return its versioned public API. Use summary for discovery, standard for implementation, or full for every class slot and example.',
+      inputSchema: runtime.zod.object({
+        component: runtime.zod.string().min(1),
+        detail: runtime.zod.string().optional().default('standard'),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      const reference = readRequiredString(input, 'component');
+      const detail = readOptionalString(input, 'detail', 'standard');
+      if (detail !== 'summary' && detail !== 'standard' && detail !== 'full') {
+        return errorResult('detail must be "summary", "standard", or "full".');
+      }
+      const component = getComponentContract(reference);
+      if (!component) {
+        return errorResult(`Unknown NeuralNg component: ${reference}`);
+      }
+      return jsonResult({ component: componentView(component, detail) });
+    },
+  );
+
+  server.registerTool(
+    'get_component_examples',
+    {
+      title: 'Get NeuralNg component examples',
+      description:
+        'Return bounded, executable examples extracted from the published component README with their heading and language.',
+      inputSchema: runtime.zod.object({
+        component: runtime.zod.string().min(1),
+        limit: runtime.zod.number().int().min(1).max(20).optional().default(5),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      const reference = readRequiredString(input, 'component');
+      const component = getComponentContract(reference);
+      if (!component) {
+        return errorResult(`Unknown NeuralNg component: ${reference}`);
+      }
+      return jsonResult({
+        component: {
+          id: component.id,
+          className: component.className,
+          selector: component.selector,
+          entryPoint: component.entryPoint,
+        },
+        examples: getComponentExamples(
+          reference,
+          readNumber(input, 'limit', 5),
+        ),
+      });
+    },
+  );
+
+  server.registerTool(
     'get_component_contract',
     {
       title: 'Get a NeuralNg component contract',
@@ -192,6 +298,167 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
           readNumber(input, 'limit', 5),
         ),
       }),
+  );
+
+  server.registerTool(
+    'plan_ui',
+    {
+      title: 'Plan a NeuralNg UI composition',
+      description:
+        'Turn a product goal into a deterministic, contract-backed component composition with exact imports, providers, state, accessibility checks, and implementation order.',
+      inputSchema: runtime.zod.object({
+        goal: runtime.zod.string().min(1),
+        kind: runtime.zod.string().optional().default('auto'),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      try {
+        const kind = readOptionalString(input, 'kind', 'auto');
+        if (
+          kind !== 'auto' &&
+          kind !== 'form' &&
+          kind !== 'page' &&
+          kind !== 'table'
+        ) {
+          return errorResult(
+            'kind must be "auto", "form", "page", or "table".',
+          );
+        }
+        return jsonResult({
+          plan: planUi({
+            goal: readRequiredString(input, 'goal'),
+            kind,
+          }),
+        });
+      } catch (error) {
+        return errorResult(readErrorMessage(error));
+      }
+    },
+  );
+
+  registerStructureTool(
+    server,
+    runtime,
+    commonAnnotations,
+    'suggest_form_structure',
+    'form',
+  );
+  registerStructureTool(
+    server,
+    runtime,
+    commonAnnotations,
+    'suggest_page_structure',
+    'page',
+  );
+  registerStructureTool(
+    server,
+    runtime,
+    commonAnnotations,
+    'suggest_table_structure',
+    'table',
+  );
+
+  server.registerTool(
+    'validate_usage',
+    {
+      title: 'Validate NeuralNg Angular template usage',
+      description:
+        'Parse an Angular template with @angular/compiler and validate syntax, NeuralNg elements and attribute directives, bindings, required inputs, literal values, icon-button accessibility, standalone imports, provider requirements, and duplicate Toast channels.',
+      inputSchema: runtime.zod.object({
+        template: runtime.zod.string().min(1),
+        imports_json: runtime.zod.string().optional().default('[]'),
+        providers_json: runtime.zod.string().optional().default('[]'),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      try {
+        return jsonResult({
+          validation: validateUsage({
+            template: readRequiredString(input, 'template'),
+            imports: readStringArrayJson(
+              readOptionalString(input, 'imports_json', '[]'),
+              'imports_json',
+            ),
+            providers: readStringArrayJson(
+              readOptionalString(input, 'providers_json', '[]'),
+              'providers_json',
+            ),
+          }),
+        });
+      } catch (error) {
+        return errorResult(readErrorMessage(error));
+      }
+    },
+  );
+
+  const inspectProjectHandler = async (): Promise<Record<string, unknown>> => {
+    try {
+      return jsonResult({ inspection: await inspectNeuralProject() });
+    } catch (error) {
+      return errorResult(readErrorMessage(error));
+    }
+  };
+  server.registerTool(
+    'inspect_project',
+    {
+      title: 'Inspect the current Angular project',
+      description:
+        'Read the bounded MCP working directory and return a schema-v2 Angular compiler-backed inventory of NeuralNg versions, templates, elements and attribute directives, exact imports, providers, icons, theme/appearance setup, conventions, evidence, and diagnostics.',
+      inputSchema: runtime.zod.object({}),
+      annotations: commonAnnotations,
+    },
+    inspectProjectHandler,
+  );
+  server.registerTool(
+    'inspect_neuralng_project',
+    {
+      title: 'Inspect the current NeuralNg Angular workspace (legacy name)',
+      description:
+        'Compatibility alias for inspect_project. It accepts no path and returns the same read-only schema-v2 inspection.',
+      inputSchema: runtime.zod.object({}),
+      annotations: commonAnnotations,
+    },
+    inspectProjectHandler,
+  );
+
+  server.registerTool(
+    'suggest_consistent_ui',
+    {
+      title: 'Plan UI consistent with the current project',
+      description:
+        'Inspect the current Angular workspace and return a schema-v2 consistency plan with component evidence, version alignment, exact import/provider deltas, theme ownership, bounded risks, and validation next steps.',
+      inputSchema: runtime.zod.object({
+        goal: runtime.zod.string().min(1),
+        kind: runtime.zod.string().optional().default('auto'),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      try {
+        const kind = readOptionalString(input, 'kind', 'auto');
+        if (
+          kind !== 'auto' &&
+          kind !== 'form' &&
+          kind !== 'page' &&
+          kind !== 'table'
+        ) {
+          return errorResult(
+            'kind must be "auto", "form", "page", or "table".',
+          );
+        }
+        return jsonResult({
+          suggestion: await suggestConsistentUi(
+            readRequiredString(input, 'goal'),
+            process.cwd(),
+            kind,
+          ),
+        });
+      } catch (error) {
+        return errorResult(readErrorMessage(error));
+      }
+    },
   );
 
   server.registerTool(
@@ -338,6 +605,35 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
   return server;
 }
 
+function registerStructureTool(
+  server: McpServerRuntime,
+  runtime: RuntimeModules,
+  annotations: Record<string, boolean>,
+  name: string,
+  kind: 'form' | 'page' | 'table',
+): void {
+  server.registerTool(
+    name,
+    {
+      title: `Suggest a NeuralNg ${kind} structure`,
+      description: `Return a contract-backed ${kind} composition with exact imports, providers, state ownership, accessibility checks, and implementation order.`,
+      inputSchema: runtime.zod.object({
+        goal: runtime.zod.string().min(1),
+      }),
+      annotations,
+    },
+    async (input) => {
+      try {
+        return jsonResult({
+          plan: planUi({ goal: readRequiredString(input, 'goal'), kind }),
+        });
+      } catch (error) {
+        return errorResult(readErrorMessage(error));
+      }
+    },
+  );
+}
+
 async function loadRuntimeModules(): Promise<RuntimeModules> {
   const [server, stdio, zod] = await Promise.all([
     import(serverPackageSpecifier) as Promise<unknown>,
@@ -365,8 +661,10 @@ async function loadRuntimeModules(): Promise<RuntimeModules> {
 }
 
 function jsonResult(value: unknown): Record<string, unknown> {
+  const structuredContent = isRecord(value) ? value : { result: value };
   return {
     content: [{ type: 'text', text: JSON.stringify(value, null, 2) }],
+    structuredContent,
   };
 }
 
@@ -374,6 +672,49 @@ function errorResult(message: string): Record<string, unknown> {
   return {
     isError: true,
     content: [{ type: 'text', text: message }],
+    structuredContent: {
+      error: {
+        schemaVersion: 1,
+        message,
+      },
+    },
+  };
+}
+
+function componentView(
+  component: NonNullable<ReturnType<typeof getComponentContract>>,
+  detail: 'summary' | 'standard' | 'full',
+): Record<string, unknown> {
+  if (detail === 'full') return { ...component };
+
+  const base = {
+    schemaVersion: component.schemaVersion,
+    id: component.id,
+    name: component.name,
+    className: component.className,
+    kind: component.kind,
+    selector: component.selector,
+    entryPoint: component.entryPoint,
+    status: component.status,
+    summary: component.summary,
+    formContract: component.formContract,
+    relatedComponents: component.relatedComponents,
+    resources: component.resources,
+  };
+  if (detail === 'summary') return base;
+
+  return {
+    ...base,
+    inputs: component.inputs,
+    models: component.models,
+    outputs: component.outputs,
+    templates: component.templates,
+    providers: component.providers,
+    providerRequirements: component.providerRequirements,
+    methods: component.methods,
+    typeAliases: component.typeAliases,
+    classTypes: component.classes.map((contract) => contract.typeName),
+    exampleCount: component.examples.length,
   };
 }
 
@@ -397,6 +738,15 @@ function readNumber(
   return typeof value === 'number' && Number.isFinite(value) ? value : fallback;
 }
 
+function readBoolean(
+  input: Record<string, unknown>,
+  key: string,
+  fallback: boolean,
+): boolean {
+  const value = input[key];
+  return typeof value === 'boolean' ? value : fallback;
+}
+
 function readOptionalString(
   input: Record<string, unknown>,
   key: string,
@@ -416,6 +766,22 @@ function readJsonObject(value: string, label: string): Record<string, unknown> {
     );
   }
   if (!isRecord(parsed)) throw new TypeError(`${label} must be a JSON object.`);
+  return parsed;
+}
+
+function readStringArrayJson(value: string, label: string): string[] {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(value);
+  } catch {
+    throw new TypeError(`${label} must be valid JSON.`);
+  }
+  if (
+    !Array.isArray(parsed) ||
+    parsed.some((item) => typeof item !== 'string')
+  ) {
+    throw new TypeError(`${label} must be a JSON array of strings.`);
+  }
   return parsed;
 }
 

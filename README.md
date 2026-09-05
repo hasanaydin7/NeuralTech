@@ -78,7 +78,7 @@ for application configuration, theming and SSR setup.
 | [`@neural-ng/editor`](https://www.npmjs.com/package/@neural-ng/editor)         | Structured, AI-native and collaboration-ready editor                | `0.1.0-beta.0`  |
 | [`@neural-ng/icons`](https://www.npmjs.com/package/@neural-ng/icons)           | 6,184 framework-independent `nt nt-*` CSS mask icons                | `0.1.0-beta.0`  |
 | [`@neural-ng/theme`](https://www.npmjs.com/package/@neural-ng/theme)           | Typed theme recipe compiler and Tailwind v4 bridge                  | `0.1.0-beta.5`  |
-| [`@neural-ng/mcp-server`](https://www.npmjs.com/package/@neural-ng/mcp-server) | Read-only component discovery and theme tooling for AI agents       | `0.1.0-beta.6`  |
+| [`@neural-ng/mcp-server`](https://www.npmjs.com/package/@neural-ng/mcp-server) | Angular UI expert agent interface for composition and validation    | `1.0.0-rc.1`    |
 
 ## AI-agent workflow
 

@@ -21,6 +21,8 @@ export class McpServerPage {
     ['Architecture', 'architecture'],
     ['Install and connect', 'install'],
     ['Component tools', 'component-tools'],
+    ['Icon tools', 'icon-tools'],
+    ['Agent intelligence', 'agent-intelligence'],
     ['Theme tools', 'theme-tools'],
     ['Resources', 'resources'],
     ['Agent workflow', 'workflow'],
@@ -37,9 +39,19 @@ export class McpServerPage {
       'Search selectors, entry points, summaries, README and llms.txt.',
     ],
     [
+      'get_component',
+      'component, detail?',
+      'Return summary, standard or full schema-versioned API detail.',
+    ],
+    [
+      'get_component_examples',
+      'component, limit?',
+      'Return only the bounded examples needed for implementation.',
+    ],
+    [
       'get_component_contract',
-      'component: string',
-      'Resolve by catalog ID, class, selector or public entry point.',
+      'component',
+      'Legacy full-contract lookup retained for compatibility.',
     ],
     [
       'recommend_components',
@@ -47,6 +59,41 @@ export class McpServerPage {
       'Return deterministic matches for a described UI goal.',
     ],
   ] as const;
+
+  readonly agentTools = [
+    [
+      'plan_ui',
+      'goal, kind?',
+      'Compose a page, form or table with exact imports and implementation order.',
+    ],
+    [
+      'suggest_*_structure',
+      'goal',
+      'Plan a known form, page or table shape without auto-detection.',
+    ],
+    [
+      'validate_usage',
+      'template, imports_json?, providers_json?',
+      'Parse with Angular compiler and check syntax, APIs, providers, imports and accessibility.',
+    ],
+    [
+      'inspect_project',
+      'none',
+      'Inspect the bounded working directory for existing NeuralNg conventions.',
+    ],
+    [
+      'suggest_consistent_ui',
+      'goal, kind?',
+      'Return evidence-backed reuse, version, import, provider, theme and validation decisions.',
+    ],
+  ] as const;
+
+  readonly iconCode = `{
+  "query": "delete user",
+  "style": "outline",
+  "limit": 10,
+  "include_brands": false
+}`;
 
   readonly themeTools = [
     [
@@ -81,7 +128,7 @@ export class McpServerPage {
     ],
   ] as const;
 
-  readonly installCode = `npm install --save-dev @neural-ng/mcp-server@0.1.0-beta.6`;
+  readonly installCode = `npm install --save-dev @neural-ng/mcp-server@1.0.0-rc.1`;
 
   readonly configCode = `{
   "mcpServers": {
@@ -92,7 +139,7 @@ export class McpServerPage {
   }
 }`;
 
-  readonly trialCode = `npx -y @neural-ng/mcp-server@0.1.0-beta.6`;
+  readonly trialCode = `npx -y @neural-ng/mcp-server@1.0.0-rc.1`;
 
   readonly searchCode = `{
   "query": "localized date range input",
@@ -107,6 +154,21 @@ export class McpServerPage {
   "goal": "nullable inherited permission checkbox",
   "limit": 3
 }`;
+
+  readonly planCode = `{
+  "goal": "Admin users with search, role filter, table and detail drawer",
+  "kind": "page"
+}`;
+
+  readonly validateCode = JSON.stringify(
+    {
+      template: '<neural-button icon="trash"></neural-button>',
+      imports_json: JSON.stringify(['NeuralButton']),
+      providers_json: JSON.stringify([]),
+    },
+    null,
+    2,
+  );
 
   readonly createThemeCode = JSON.stringify(
     {
@@ -139,8 +201,10 @@ export class McpServerPage {
     2,
   );
 
-  readonly resourceCode = `neural://catalog
+  readonly resourceCode = `neural://server/capabilities
+neural://catalog
 neural://package/exports
+neural://icons/catalog
 neural://components/button/contract
 neural://components/button/readme
 neural://components/button/llms
@@ -151,12 +215,13 @@ neural://themes/presets
 neural://themes/presets/neutral
 neural://themes/ai-guide`;
 
-  readonly workflowCode = `1. Call search_components with the user's intent.
-2. Call get_component_contract for the selected result.
-3. Read neural://components/{id}/llms for strict usage rules.
-4. Import the exact entryPoint and use the returned selector/models.
-5. Read the README only when examples or deeper behavior are required.
-6. Never invent an input, output, class name or compatibility alias.`;
+  readonly workflowCode = `1. Call inspect_project when an existing project is available.
+2. Call plan_ui or a structure-specific planner with the user's requirement.
+3. Fetch standard contracts for selected primitives with get_component.
+4. Fetch only the examples named by the plan's exampleQueries.
+5. Implement with the returned exact imports, providers and state ownership.
+6. Call validate_usage and resolve every error diagnostic before presenting code.
+7. Never invent an input, output, class slot or compatibility alias.`;
 
   readonly resultCode = `${JSON.stringify(
     {
@@ -166,6 +231,7 @@ neural://themes/ai-guide`;
           text: JSON.stringify({ matches: ['...'] }, null, 2),
         },
       ],
+      structuredContent: { matches: ['...'] },
     },
     null,
     2,
@@ -176,6 +242,9 @@ ${JSON.stringify(
   {
     isError: true,
     content: [{ type: 'text', text: 'Unknown NeuralNg component: ...' }],
+    structuredContent: {
+      error: { schemaVersion: 1, message: 'Unknown NeuralNg component: ...' },
+    },
   },
   null,
   2,

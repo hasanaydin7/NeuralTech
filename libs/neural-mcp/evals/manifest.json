@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "suite": "mcp-beta-exit",
+  "compositionCases": [
+    {
+      "id": "admin-table",
+      "goal": "Admin user table with search, role filter, status badge and detail drawer",
+      "expected": [
+        "table",
+        "neural-paginator",
+        "neural-input",
+        "select",
+        "tag",
+        "neural-drawer"
+      ]
+    },
+    {
+      "id": "registration-form",
+      "goal": "Registration form with password and terms checkbox",
+      "expected": [
+        "neural-field",
+        "neural-input",
+        "neural-password",
+        "checkbox",
+        "button"
+      ]
+    },
+    {
+      "id": "application-shell",
+      "goal": "Application shell with a sidebar navigation rail",
+      "expected": ["neural-sidebar", "neural-menu"]
+    },
+    {
+      "id": "nullable-permission",
+      "goal": "Permission form with nullable inherited tri state",
+      "expected": ["tri-state-checkbox"],
+      "forbidden": ["checkbox"]
+    },
+    {
+      "id": "tree-picker",
+      "goal": "Form with a hierarchical tree picker",
+      "expected": ["tree-select"]
+    },
+    {
+      "id": "profile-upload",
+      "goal": "Profile form with avatar upload attachment and description",
+      "expected": ["neural-file-upload", "textarea"]
+    },
+    {
+      "id": "checkout-values",
+      "goal": "Checkout form with currency amount and date",
+      "expected": ["neural-input-number", "date-picker"]
+    },
+    {
+      "id": "remote-autocomplete",
+      "goal": "Remote autocomplete search suggestion form",
+      "expected": ["auto-complete"]
+    },
+    {
+      "id": "verification-otp",
+      "goal": "Verification form with one time OTP code",
+      "expected": ["neural-input-otp"]
+    },
+    {
+      "id": "settings-controls",
+      "goal": "Settings form with a bounded range slider and mutually exclusive radio options",
+      "expected": ["slider", "radio-group"]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "existing-user-management",
+      "goal": "Design a user-management screen for my existing Angular project with search, role filtering, a table, pagination, a detail drawer, and delete confirmation.",
+      "kind": "table",
+      "expectedComponents": [
+        "table",
+        "neural-paginator",
+        "toolbar",
+        "neural-input",
+        "select",
+        "neural-drawer",
+        "confirm-dialog"
+      ],
+      "requiredGates": [
+        "project-version",
+        "theme-and-patterns",
+        "composition",
+        "exact-contracts",
+        "valid-template",
+        "accessibility-rejection",
+        "provider-rejection",
+        "invented-api-rejection"
+      ]
+    }
+  ]
+}
