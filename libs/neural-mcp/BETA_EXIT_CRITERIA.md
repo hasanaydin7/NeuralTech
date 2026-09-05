@@ -16,8 +16,9 @@ candidate metadata may be prepared on the branch for tarball host verification.
 - [x] The Neural Icons catalog and `search_icons` are implemented and tested.
 - [x] Read-only `inspect_project` is compiler-backed, bounded, pathless and
       integrated with component, validation and icon contracts.
-- [ ] Project-consistent UI suggestions are completed and integrated. The existing
-      planner is an early slice.
+- [x] `suggest_consistent_ui` returns schema-v2 component evidence, version
+      alignment, import/provider deltas, theme ownership, bounded risks and next
+      validation calls without duplicating the complete inspection payload.
 - [ ] The acceptance evaluation package passes deterministically.
 - [ ] `1.0.0-rc.1` metadata, release notes, packed artifact, and real coding-agent
       host verification are completed together.

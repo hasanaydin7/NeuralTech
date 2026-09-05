@@ -11,7 +11,7 @@ packaged-host verification where applicable.
 5. [x] Angular parser-based `validate_usage`
 6. [x] Icon catalog and `search_icons`
 7. [x] Read-only `inspect_project`
-8. [ ] `suggest_consistent_ui`
+8. [x] `suggest_consistent_ui`
 9. [ ] Evaluation package
 10. [ ] `1.0.0-rc.1`
 
@@ -31,8 +31,12 @@ kind, imports, providers, themes, Appearance ownership, component and icon
 usage, bounded relative-path evidence, summary counts, confidence, limitations,
 and actionable diagnostics without accepting a caller-controlled path.
 
-Step 8 has an early implementation. It remains incomplete until its consistency
-recommendations consume all Stage 7 evidence and pass focused evaluations.
+Step 8 returns a focused schema-v2 consistency contract instead of repeating the
+complete inspection payload. It makes evidence-backed reuse/introduce decisions,
+partitions exact import and required-provider deltas, preserves detected theme or
+unstyled ownership, checks the declared Core version against the generated
+catalog, surfaces bounded project risks, and names the next contract/example and
+validation calls.
 
 ## Beta exit acceptance scenario
 

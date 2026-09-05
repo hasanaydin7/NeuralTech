@@ -84,7 +84,7 @@ export class McpServerPage {
     [
       'suggest_consistent_ui',
       'goal, kind?',
-      'Plan against the project and separate reused patterns from new primitives.',
+      'Return evidence-backed reuse, version, import, provider, theme and validation decisions.',
     ],
   ] as const;
 

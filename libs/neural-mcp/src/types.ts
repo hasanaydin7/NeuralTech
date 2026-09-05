@@ -377,13 +377,59 @@ export interface NeuralProjectInspection {
 }
 
 export interface NeuralConsistentUiSuggestion {
-  readonly schemaVersion: 1;
+  readonly schemaVersion: 2;
   readonly plan: NeuralCompositionPlan;
-  readonly project: NeuralProjectInspection;
+  readonly projectContext: {
+    readonly workspace: string;
+    readonly inspectionSchemaVersion: 2;
+    readonly confidence: 'complete' | 'partial';
+    readonly angularVersion?: string;
+    readonly neuralPackages: Readonly<Record<string, string>>;
+    readonly importStyle: NeuralProjectInspection['conventions']['importStyle'];
+    readonly theme: {
+      readonly mode: 'detected' | 'unstyled' | 'undetected';
+      readonly name?: string;
+    };
+    readonly diagnostics: NeuralProjectInspection['summary']['diagnostics'];
+  };
+  readonly compatibility: {
+    readonly catalogCoreVersion: string;
+    readonly declaredCoreVersion?: string;
+    readonly status: 'aligned' | 'review' | 'missing';
+    readonly guidance: string;
+  };
   readonly consistency: {
     readonly reusedComponents: readonly string[];
     readonly introducedComponents: readonly string[];
+    readonly components: readonly {
+      readonly id: string;
+      readonly decision: 'reuse' | 'introduce';
+      readonly occurrences: number;
+      readonly evidence: readonly string[];
+      readonly evidenceOmitted: number;
+      readonly reason: string;
+    }[];
+    readonly imports: {
+      readonly reuse: Readonly<Record<string, readonly string[]>>;
+      readonly add: Readonly<Record<string, readonly string[]>>;
+    };
+    readonly providers: {
+      readonly configured: readonly string[];
+      readonly add: readonly string[];
+    };
+    readonly theme: {
+      readonly decision: 'preserve' | 'preserve-unstyled' | 'adopt-neutral';
+      readonly value: string;
+      readonly reason: string;
+    };
+    readonly risks: readonly {
+      readonly code: string;
+      readonly severity: 'error' | 'warning';
+      readonly message: string;
+      readonly evidence?: string;
+    }[];
     readonly guidance: readonly string[];
+    readonly nextTools: readonly string[];
   };
 }
 

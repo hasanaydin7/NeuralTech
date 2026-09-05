@@ -31,6 +31,9 @@ before the first stable release.
 - Added canonical, read-only `inspect_project` with schema-v2 Angular compiler
   template inspection, attribute-directive discovery, Neural Icons usage,
   summary metrics, explicit confidence and bounded relative-path evidence.
+- Added schema-v2 `suggest_consistent_ui` decisions for component reuse, Core
+  catalog alignment, exact import/provider deltas, theme ownership, bounded
+  risks and next MCP validation calls.
 
 ### Changed
 

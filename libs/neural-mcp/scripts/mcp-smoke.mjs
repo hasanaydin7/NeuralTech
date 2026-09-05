@@ -326,6 +326,24 @@ try {
       'Project inspector did not detect the installed MCP package.',
     );
 
+    const consistentUi = await client.request('tools/call', {
+      name: 'suggest_consistent_ui',
+      arguments: {
+        goal: 'User table with search, pagination and detail drawer',
+        kind: 'table',
+      },
+    });
+    assert(
+      consistentUi?.structuredContent?.suggestion?.schemaVersion === 2 &&
+        consistentUi?.structuredContent?.suggestion?.plan?.kind === 'table' &&
+        consistentUi?.structuredContent?.suggestion?.consistency?.components
+          ?.length > 0 &&
+        consistentUi?.structuredContent?.suggestion?.consistency?.nextTools
+          ?.at(-1)
+          ?.startsWith('validate_usage'),
+      'Project-consistent UI tool did not return its schema-v2 evidence contract.',
+    );
+
     const createdTheme = await client.request('tools/call', {
       name: 'create_theme_recipe',
       arguments: {

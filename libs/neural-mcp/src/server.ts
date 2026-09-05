@@ -428,17 +428,31 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     {
       title: 'Plan UI consistent with the current project',
       description:
-        'Inspect the current Angular workspace, create a contract-backed NeuralNg UI plan, and separate primitives that reuse existing project conventions from newly introduced primitives.',
+        'Inspect the current Angular workspace and return a schema-v2 consistency plan with component evidence, version alignment, exact import/provider deltas, theme ownership, bounded risks, and validation next steps.',
       inputSchema: runtime.zod.object({
         goal: runtime.zod.string().min(1),
+        kind: runtime.zod.string().optional().default('auto'),
       }),
       annotations: commonAnnotations,
     },
     async (input) => {
       try {
+        const kind = readOptionalString(input, 'kind', 'auto');
+        if (
+          kind !== 'auto' &&
+          kind !== 'form' &&
+          kind !== 'page' &&
+          kind !== 'table'
+        ) {
+          return errorResult(
+            'kind must be "auto", "form", "page", or "table".',
+          );
+        }
         return jsonResult({
           suggestion: await suggestConsistentUi(
             readRequiredString(input, 'goal'),
+            process.cwd(),
+            kind,
           ),
         });
       } catch (error) {

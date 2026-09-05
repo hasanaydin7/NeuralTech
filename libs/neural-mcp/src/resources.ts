@@ -95,7 +95,7 @@ export function readNeuralResource(
           compositionPlan: 1,
           usageValidation: 2,
           projectInspection: 2,
-          consistentUiSuggestion: 1,
+          consistentUiSuggestion: 2,
         },
         projectInspectionLimits: {
           root: 'MCP process working directory only',

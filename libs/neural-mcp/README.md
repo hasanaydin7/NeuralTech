@@ -235,10 +235,16 @@ same schema-v2 result. New agents should call `inspect_project`.
 Combines `inspect_project` with the composition engine. It identifies
 which planned primitives already have a project convention, which ones are new,
 and how to preserve the detected theme, unstyled ownership, and import style.
+The schema-v2 result includes per-component relative-path evidence, exact import
+reuse/add partitions, required-provider deltas, declared Core versus catalog
+version alignment, bounded project risks, and explicit next calls to
+`get_component_examples` and `validate_usage`. It returns focused project context
+rather than duplicating the full `inspect_project` result.
 
 ```json
 {
-  "goal": "Add a searchable project table with a detail drawer"
+  "goal": "Add a searchable project table with a detail drawer",
+  "kind": "table"
 }
 ```
 

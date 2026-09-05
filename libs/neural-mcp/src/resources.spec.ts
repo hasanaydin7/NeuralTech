@@ -46,6 +46,7 @@ describe('Neural MCP resources', () => {
     expect(capabilities.toolGroups.correctness).toContain('validate_usage');
     expect(capabilities.toolGroups.project).toContain('inspect_project');
     expect(capabilities.resultSchemas.projectInspection).toBe(2);
+    expect(capabilities.resultSchemas.consistentUiSuggestion).toBe(2);
     expect(capabilities.projectInspectionLimits.pathArgumentAccepted).toBe(
       false,
     );

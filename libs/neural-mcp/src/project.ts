@@ -1,12 +1,13 @@
 import { createHash } from 'node:crypto';
 import { access, readdir, readFile } from 'node:fs/promises';
 import { basename, extname, join, posix, relative, resolve } from 'node:path';
-import { getComponentContract } from './catalog.js';
+import { getComponentContract, getPackageCatalog } from './catalog.js';
 import { planUi } from './composition.js';
 import { getIconCatalog } from './icons.js';
 import { validateUsage } from './validation.js';
 import type {
   NeuralConsistentUiSuggestion,
+  NeuralCompositionKind,
   NeuralProjectComponentUsage,
   NeuralProjectDiagnostic,
   NeuralProjectInspection,
@@ -325,34 +326,186 @@ export async function inspectNeuralProject(
 export async function suggestConsistentUi(
   goal: string,
   workspaceRoot = process.cwd(),
+  kind: NeuralCompositionKind = 'auto',
 ): Promise<NeuralConsistentUiSuggestion> {
   const [project, plan] = await Promise.all([
     inspectNeuralProject(workspaceRoot),
-    Promise.resolve(planUi({ goal })),
+    Promise.resolve(planUi({ goal, kind })),
   ]);
-  const existing = new Set(project.components.map((component) => component.id));
+  const existing = new Map(
+    project.components.map((component) => [component.id, component]),
+  );
   const selected = plan.components.map((component) => component.id);
   const reusedComponents = selected.filter((id) => existing.has(id));
   const introducedComponents = selected.filter((id) => !existing.has(id));
+  const components = plan.components.map((component) => {
+    const usage = existing.get(component.id);
+    return {
+      id: component.id,
+      decision: usage ? ('reuse' as const) : ('introduce' as const),
+      occurrences: usage?.occurrences ?? 0,
+      evidence: usage?.files ?? [],
+      evidenceOmitted: usage?.filesOmitted ?? 0,
+      reason: usage
+        ? `Reuse the project's existing ${component.id} convention; ${usage.occurrences} occurrence(s) were detected.`
+        : `Introduce ${component.id} from its exact ${component.entryPoint} contract because no project usage was detected.`,
+    };
+  });
+  const importDecision = partitionPlanImports(plan.imports, project.imports);
+  const requiredProviders = plan.providers
+    .filter((provider) => provider.requirement === 'required')
+    .map((provider) => provider.name);
+  const configuredProviders = requiredProviders.filter((provider) =>
+    project.providers.includes(provider),
+  );
+  const missingProviders = requiredProviders.filter(
+    (provider) => !project.providers.includes(provider),
+  );
+  const theme = decideProjectTheme(project);
+  const catalogCoreVersion = getPackageCatalog().version;
+  const declaredCoreVersion =
+    project.framework.neuralPackages['@neural-ng/core'];
+  const compatibilityStatus = !declaredCoreVersion
+    ? ('missing' as const)
+    : normalizeVersionFamily(declaredCoreVersion) ===
+        normalizeVersionFamily(catalogCoreVersion)
+      ? ('aligned' as const)
+      : ('review' as const);
+  const relevantFiles = new Set(
+    selected.flatMap((id) => existing.get(id)?.files ?? []),
+  );
+  const projectRisks = project.diagnostics
+    .filter((diagnostic) => diagnostic.severity !== 'info')
+    .sort((left, right) => {
+      const leftRank = left.file && relevantFiles.has(left.file) ? 0 : 1;
+      const rightRank = right.file && relevantFiles.has(right.file) ? 0 : 1;
+      return leftRank - rightRank || compareDiagnostics(left, right);
+    })
+    .slice(0, 10)
+    .map((diagnostic) => ({
+      code: diagnostic.code,
+      severity: diagnostic.severity as 'error' | 'warning',
+      message: diagnostic.message,
+      ...(diagnostic.file
+        ? {
+            evidence: `${diagnostic.file}${diagnostic.line ? `:${diagnostic.line}` : ''}`,
+          }
+        : {}),
+    }));
+  const risks = [
+    ...(project.analysis.confidence === 'partial'
+      ? [
+          {
+            code: 'NNP009',
+            severity: 'warning' as const,
+            message:
+              'Project inspection reached a configured scan limit; consistency evidence may be incomplete.',
+          },
+        ]
+      : []),
+    ...projectRisks,
+  ].slice(0, 10);
   const guidance = [
     reusedComponents.length
       ? `Reuse existing project patterns for: ${reusedComponents.join(', ')}.`
       : 'No selected primitive is currently used; establish one canonical example before repeating it.',
-    project.conventions.preferredTheme
-      ? `Keep the detected ${project.conventions.preferredTheme} theme.`
-      : project.appearance.unstyled
-        ? 'Keep styling ownership in the project because global unstyled mode is active.'
-        : 'Adopt neutral theme or explicitly choose unstyled ownership before implementation.',
+    theme.reason,
     project.conventions.importStyle === 'exact-entry-points'
       ? 'Continue exact secondary entry-point component imports.'
       : 'Use exact secondary entry points for new component imports.',
+    missingProviders.length
+      ? `Add required providers before rendering: ${missingProviders.join(', ')}.`
+      : 'All required providers selected by the plan are already configured.',
+    compatibilityStatus === 'review'
+      ? `The project declares Core ${declaredCoreVersion}; contracts were generated from ${catalogCoreVersion}. Review version-specific APIs before implementation.`
+      : compatibilityStatus === 'missing'
+        ? 'No @neural-ng/core dependency was declared; install a version aligned with the returned contracts.'
+        : `The declared Core version matches the ${catalogCoreVersion} contract catalog.`,
   ];
 
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     plan,
-    project,
-    consistency: { reusedComponents, introducedComponents, guidance },
+    projectContext: {
+      workspace: project.workspace,
+      inspectionSchemaVersion: 2,
+      confidence: project.analysis.confidence,
+      ...(project.framework.angularVersion
+        ? { angularVersion: project.framework.angularVersion }
+        : {}),
+      neuralPackages: project.framework.neuralPackages,
+      importStyle: project.conventions.importStyle,
+      theme: project.conventions.preferredTheme
+        ? { mode: 'detected', name: project.conventions.preferredTheme }
+        : project.appearance.unstyled
+          ? { mode: 'unstyled' }
+          : { mode: 'undetected' },
+      diagnostics: project.summary.diagnostics,
+    },
+    compatibility: {
+      catalogCoreVersion,
+      ...(declaredCoreVersion ? { declaredCoreVersion } : {}),
+      status: compatibilityStatus,
+      guidance: guidance.at(-1) ?? '',
+    },
+    consistency: {
+      reusedComponents,
+      introducedComponents,
+      components,
+      imports: importDecision,
+      providers: { configured: configuredProviders, add: missingProviders },
+      theme,
+      risks,
+      guidance,
+      nextTools: [
+        ...plan.exampleQueries.map(
+          (id) => `get_component_examples(component: ${id})`,
+        ),
+        'validate_usage(template, imports_json, providers_json)',
+      ],
+    },
+  };
+}
+
+function partitionPlanImports(
+  planned: Readonly<Record<string, readonly string[]>>,
+  detected: Readonly<Record<string, readonly string[]>>,
+): NeuralConsistentUiSuggestion['consistency']['imports'] {
+  const reuse: Record<string, string[]> = {};
+  const add: Record<string, string[]> = {};
+  for (const [entryPoint, symbols] of Object.entries(planned)) {
+    const existing = new Set(detected[entryPoint] ?? []);
+    const reused = symbols.filter((symbol) => existing.has(symbol));
+    const missing = symbols.filter((symbol) => !existing.has(symbol));
+    if (reused.length) reuse[entryPoint] = reused;
+    if (missing.length) add[entryPoint] = missing;
+  }
+  return { reuse, add };
+}
+
+function decideProjectTheme(
+  project: NeuralProjectInspection,
+): NeuralConsistentUiSuggestion['consistency']['theme'] {
+  if (project.conventions.preferredTheme) {
+    return {
+      decision: 'preserve',
+      value: project.conventions.preferredTheme,
+      reason: `Preserve the detected ${project.conventions.preferredTheme} theme.`,
+    };
+  }
+  if (project.appearance.unstyled) {
+    return {
+      decision: 'preserve-unstyled',
+      value: 'unstyled',
+      reason:
+        'Preserve application-owned styling because global unstyled mode is active.',
+    };
+  }
+  return {
+    decision: 'adopt-neutral',
+    value: 'neutral',
+    reason:
+      'Adopt the stable neutral theme or deliberately configure unstyled ownership before implementation.',
   };
 }
 
@@ -695,7 +848,7 @@ function extractImports(
 ): Array<{ entryPoint: string; symbols: string[] }> {
   const results: Array<{ entryPoint: string; symbols: string[] }> = [];
   const pattern =
-    /import\s+(?:type\s+)?\{([\s\S]*?)\}\s+from\s+['"](@neural-ng\/(?:core(?:\/[^'"]+)?|editor))['"]/g;
+    /import\s+(?:type\s+)?\{([^}]*)\}\s+from\s+['"](@neural-ng\/(?:core(?:\/[^'"]+)?|editor))['"]/g;
   for (const match of content.matchAll(pattern)) {
     results.push({
       entryPoint: match[2],
@@ -775,7 +928,7 @@ function dependencyVersion(
 }
 
 function normalizeVersionFamily(value: string): string {
-  return /([0-9]+\.[0-9]+\.[0-9]+(?:-[a-z]+)?)/i.exec(value)?.[1] ?? value;
+  return /([0-9]+\.[0-9]+\.[0-9]+(?:-[0-9a-z.-]+)?)/i.exec(value)?.[1] ?? value;
 }
 
 function toComponentUsage(value: MutableUsage): NeuralProjectComponentUsage {

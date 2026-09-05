@@ -32,6 +32,9 @@ describe('Neural MCP project awareness', () => {
     expect(inspection.themes).toContain('neutral');
     expect(inspection.appearance.providerConfigured).toBe(true);
     expect(inspection.conventions.importStyle).toBe('exact-entry-points');
+    expect(inspection.imports['@neural-ng/core/button']).toEqual([
+      'NeuralButton',
+    ]);
     expect(inspection.components).toContainEqual(
       expect.objectContaining({ id: 'button', occurrences: 1 }),
     );
@@ -58,9 +61,92 @@ describe('Neural MCP project awareness', () => {
       root,
     );
 
+    expect(suggestion.schemaVersion).toBe(2);
+    expect(suggestion.compatibility).toEqual(
+      expect.objectContaining({ status: 'aligned' }),
+    );
+    expect(suggestion.projectContext).toEqual(
+      expect.objectContaining({
+        inspectionSchemaVersion: 2,
+        confidence: 'complete',
+        theme: { mode: 'detected', name: 'neutral' },
+      }),
+    );
     expect(suggestion.consistency.reusedComponents).toContain('button');
     expect(suggestion.consistency.introducedComponents).toContain('toolbar');
+    expect(suggestion.consistency.components).toContainEqual(
+      expect.objectContaining({
+        id: 'button',
+        decision: 'reuse',
+        occurrences: 1,
+        evidence: ['src/app/app.html'],
+      }),
+    );
+    expect(suggestion.consistency.imports.reuse).toEqual(
+      expect.objectContaining({
+        '@neural-ng/core/button': ['NeuralButton'],
+      }),
+    );
+    expect(suggestion.consistency.imports.add).toHaveProperty(
+      '@neural-ng/core/toolbar',
+    );
+    expect(suggestion.consistency.theme.decision).toBe('preserve');
     expect(suggestion.consistency.guidance.join(' ')).toContain('neutral');
+    expect(suggestion.consistency.nextTools.at(-1)).toContain('validate_usage');
+  });
+
+  it('returns required provider deltas and a forced plan kind', async () => {
+    const root = await createWorkspace();
+    const suggestion = await suggestConsistentUi(
+      'Show a toast after saving the form',
+      root,
+      'form',
+    );
+
+    expect(suggestion.plan.kind).toBe('form');
+    expect(suggestion.consistency.providers.add).toContain(
+      'provideNeuralMessages',
+    );
+    expect(suggestion.consistency.guidance.join(' ')).toContain(
+      'provideNeuralMessages',
+    );
+  });
+
+  it('requires version review when project and catalog prereleases differ', async () => {
+    const root = await createWorkspace();
+    await writeFile(
+      join(root, 'package.json'),
+      JSON.stringify({
+        dependencies: {
+          '@angular/core': '^22.0.0',
+          '@neural-ng/core': '0.1.0-beta.7',
+        },
+      }),
+    );
+
+    const suggestion = await suggestConsistentUi('Save button', root);
+
+    expect(suggestion.compatibility).toEqual(
+      expect.objectContaining({
+        declaredCoreVersion: '0.1.0-beta.7',
+        catalogCoreVersion: '0.1.0-beta.8',
+        status: 'review',
+      }),
+    );
+  });
+
+  it('prioritizes risks from files that contain selected components', async () => {
+    const root = await createWorkspace(
+      '<neural-button icon="trash"></neural-button>',
+    );
+    const suggestion = await suggestConsistentUi('Save button', root);
+
+    expect(suggestion.consistency.risks[0]).toEqual(
+      expect.objectContaining({
+        code: 'NNG201',
+        evidence: 'src/app/app.html:1',
+      }),
+    );
   });
 
   it('runs correctness diagnostics across existing project templates', async () => {
