@@ -128,7 +128,7 @@ export class McpServerPage {
     ],
   ] as const;
 
-  readonly installCode = `npm install --save-dev @neural-ng/mcp-server@0.1.0-beta.7`;
+  readonly installCode = `npm install --save-dev @neural-ng/mcp-server@1.0.0-rc.1`;
 
   readonly configCode = `{
   "mcpServers": {
@@ -139,7 +139,7 @@ export class McpServerPage {
   }
 }`;
 
-  readonly trialCode = `npx -y @neural-ng/mcp-server@0.1.0-beta.7`;
+  readonly trialCode = `npx -y @neural-ng/mcp-server@1.0.0-rc.1`;
 
   readonly searchCode = `{
   "query": "localized date range input",

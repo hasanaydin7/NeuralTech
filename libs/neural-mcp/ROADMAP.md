@@ -44,6 +44,12 @@ existing-project user-management chain: version/theme/pattern detection,
 contract-backed planning, exact imports, valid template acceptance, and
 rejection of invented APIs, inaccessible icon actions, and missing providers.
 
+Step 10 is in progress. `1.0.0-rc.1` package, registry and runtime metadata are
+aligned, release notes are drafted, and a packed artifact is verified locally.
+The checkbox remains open until that exact artifact completes the acceptance
+scenario inside a separately launched coding-agent host and the branch CI is
+green. Preparation does not authorize npm publication or a merge to `main`.
+
 ## Beta exit acceptance scenario
 
 The server must reliably complete this request:
