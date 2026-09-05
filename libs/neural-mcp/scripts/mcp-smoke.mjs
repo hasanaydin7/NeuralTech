@@ -96,8 +96,8 @@ try {
     const tools = await client.request('tools/list', {});
     const toolNames = tools?.tools?.map((tool) => tool.name) ?? [];
     assert(
-      toolNames.length === 18,
-      `Expected 18 tools, received ${toolNames.length}.`,
+      toolNames.length === 19,
+      `Expected 19 tools, received ${toolNames.length}.`,
     );
     assert(
       toolNames.includes('recommend_components'),
@@ -111,6 +111,7 @@ try {
       toolNames.includes('get_component_examples'),
       'Component examples tool is missing.',
     );
+    assert(toolNames.includes('search_icons'), 'Icon search tool is missing.');
     assert(toolNames.includes('plan_ui'), 'UI planning tool is missing.');
     assert(
       toolNames.includes('suggest_table_structure'),
@@ -182,6 +183,32 @@ try {
     assert(
       contractText.includes('FormValueControl<boolean | null>'),
       'MCP contract resource returned the wrong tri-state contract.',
+    );
+
+    const iconCatalog = await client.request('resources/read', {
+      uri: 'neural://icons/catalog',
+    });
+    const iconCatalogDocument = JSON.parse(
+      iconCatalog?.contents?.[0]?.text ?? '{}',
+    );
+    assert(
+      iconCatalogDocument.totals?.icons === 6184 &&
+        iconCatalogDocument.icons === undefined,
+      'MCP icon catalog resource is missing or unbounded.',
+    );
+
+    const iconSearch = await client.request('tools/call', {
+      name: 'search_icons',
+      arguments: { query: 'delete user', limit: 10 },
+    });
+    assert(
+      iconSearch?.structuredContent?.icons?.matches?.some(
+        (match) =>
+          match.icon?.name === 'trash' &&
+          match.icon?.className === 'nt nt-trash' &&
+          match.icon?.cssImports?.outline,
+      ),
+      'Icon search did not resolve delete intent to an installable trash icon.',
     );
 
     const recommendation = await client.request('tools/call', {

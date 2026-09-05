@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.hasanaydin7/neuralng",
   "title": "NeuralNg Angular UI Expert MCP",
-  "description": "Read-only agent interface for NeuralNg discovery, UI composition, contract validation, project consistency and theme workflows.",
+  "description": "Read-only agent interface for NeuralNg discovery, icon search, UI composition, contract validation, project consistency and theme workflows.",
   "version": "0.1.0-beta.7",
   "websiteUrl": "https://neuralng.dev/docs/mcp-server",
   "repository": {

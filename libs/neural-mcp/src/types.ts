@@ -130,6 +130,70 @@ export interface NeuralSearchMatch {
   readonly reason: string;
 }
 
+export type NeuralIconStyle = 'outline' | 'filled';
+
+export interface NeuralIconCatalogEntry {
+  readonly name: string;
+  readonly category: string;
+  readonly styles: readonly NeuralIconStyle[];
+  readonly effects?: readonly string[];
+  readonly core: boolean;
+}
+
+export interface NeuralIconCategory {
+  readonly name: string;
+  readonly outline: number;
+  readonly filled: number;
+}
+
+export interface NeuralIconCatalog {
+  readonly schemaVersion: 1;
+  readonly packageName: '@neural-ng/icons';
+  readonly packageVersion: string;
+  readonly upstream: {
+    readonly package: string;
+    readonly version: string;
+    readonly license: string;
+  };
+  readonly totals: {
+    readonly icons: number;
+    readonly outline: number;
+    readonly filled: number;
+  };
+  readonly categories: readonly NeuralIconCategory[];
+  readonly icons: readonly NeuralIconCatalogEntry[];
+}
+
+export interface NeuralIconContract extends NeuralIconCatalogEntry {
+  readonly className: string;
+  readonly filledClassName?: string;
+  readonly cssImports: {
+    readonly outline: string;
+    readonly filled?: string;
+  };
+  readonly example: string;
+  readonly accessibility: string;
+}
+
+export interface NeuralIconSearchMatch {
+  readonly icon: NeuralIconContract;
+  readonly score: number;
+  readonly reason: string;
+}
+
+export interface NeuralIconSearchResult {
+  readonly schemaVersion: 1;
+  readonly query: string;
+  readonly filters: {
+    readonly style: NeuralIconStyle | 'any';
+    readonly category?: string;
+    readonly includeBrands: boolean;
+  };
+  readonly totalMatches: number;
+  readonly truncated: boolean;
+  readonly matches: readonly NeuralIconSearchMatch[];
+}
+
 export type NeuralCompositionKind = 'auto' | 'form' | 'page' | 'table';
 
 export interface NeuralCompositionRequest {

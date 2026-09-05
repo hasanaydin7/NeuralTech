@@ -41,6 +41,11 @@ Component and package resources:
 - `neural://components/{id}/readme`
 - `neural://components/{id}/llms`
 
+Icon resources:
+
+- `neural://icons/catalog` — compact package totals, categories, versions and
+  brand-search policy; use `search_icons` for bounded matches
+
 Theme resources:
 
 - `neural://themes/catalog`
@@ -121,6 +126,28 @@ network service.
   "limit": 3
 }
 ```
+
+## Icon intelligence
+
+### `search_icons`
+
+Searches all 6,184 outline and filled Neural Icons variants by exact name,
+category, or common UI intent. Results are bounded and include the exact `nt`
+class, the smallest valid CSS import, ready-to-use markup, supported effects,
+and accessibility guidance. Brand icons are excluded by default.
+
+```json
+{
+  "query": "delete user",
+  "style": "outline",
+  "limit": 10,
+  "include_brands": false
+}
+```
+
+Use `style: "filled"` only when the returned icon lists filled support. Pass a
+category to narrow the deterministic search. Set `include_brands: true` only
+when the product explicitly needs a trademarked brand glyph.
 
 ## Composition intelligence
 

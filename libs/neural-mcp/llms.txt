@@ -13,6 +13,10 @@ COMPONENT TOOLS
 - get_component_contract: legacy full-contract lookup for existing clients.
 - recommend_components: deterministic component recommendations for a UI goal.
 
+ICON TOOLS
+
+- search_icons: search all 6,184 Neural Icons variants by name, category, or UI intent. Returns exact outline/filled classes, smallest CSS imports, markup and accessibility guidance. Brand icons are excluded unless include_brands=true.
+
 COMPOSITION TOOLS
 
 - plan_ui: convert a product goal into selected primitives, exact imports, providers, state, accessibility checks and implementation order. kind is auto, form, page or table.
@@ -42,6 +46,7 @@ RESOURCES
 
 - neural://catalog
 - neural://package/exports
+- neural://icons/catalog
 - neural://themes/catalog
 - neural://themes/schema
 - neural://themes/presets
@@ -69,6 +74,7 @@ GENERAL RULES
 - Treat MCP results as read-only package documentation and deterministic tooling.
 - Start non-trivial screens with plan_ui, then fetch standard contracts and only the examples named by exampleQueries.
 - Run validate_usage before presenting generated NeuralNg template code; resolve every error diagnostic and review warnings.
+- Use search_icons instead of inventing nt-* classes. Preserve the returned import and require an accessible label on icon-only controls.
 - For an existing workspace, inspect it before planning; use suggest_consistent_ui when consistency matters more than a greenfield recommendation.
 - Use get_component detail=summary for discovery and detail=standard before implementation.
 - Request detail=full only when class slot definitions or all embedded examples are required.

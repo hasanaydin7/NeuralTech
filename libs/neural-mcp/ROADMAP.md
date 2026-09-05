@@ -9,7 +9,7 @@ packaged-host verification where applicable.
 3. [x] Capability and composition graph
 4. [x] `plan_ui`
 5. [x] Angular parser-based `validate_usage`
-6. [ ] Icon catalog and `search_icons`
+6. [x] Icon catalog and `search_icons`
 7. [ ] Read-only `inspect_project`
 8. [ ] `suggest_consistent_ui`
 9. [ ] Evaluation package
@@ -20,6 +20,10 @@ metadata in usage-validation schema v2, recognizes element and attribute
 selectors, and covers control flow, two-way bindings, native DOM bindings,
 syntax failures, accessibility, imports, and providers in deterministic and
 packaged-host tests.
+
+Step 6 generates its catalog from the published Neural Icons metadata and
+curated manifest. It covers all 6,184 variants, returns bounded semantic search
+results with exact classes and CSS imports, and excludes brand icons by default.
 
 Steps 7 and 8 have bounded early implementations. They remain incomplete until
 the icon contracts are integrated and the acceptance scenario is evaluated end

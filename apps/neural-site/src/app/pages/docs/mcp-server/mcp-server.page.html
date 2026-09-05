@@ -207,6 +207,33 @@
         </div>
       </section>
 
+      <section id="icon-tools" class="scroll-mt-28 pt-16">
+        <h2 class="text-2xl font-black">
+          Search 6,184 icon variants by intent
+        </h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          <code>search_icons</code> searches the generated Neural Icons catalog
+          by exact name, category or common UI intent. Every bounded result
+          includes an exact outline or filled class, the smallest valid CSS
+          import, markup and accessibility guidance. Brand icons stay excluded
+          unless the caller explicitly opts in.
+        </p>
+        <code-view
+          class="mt-6 block"
+          fileName="search-icons.arguments.json"
+          language="json"
+          [code]="iconCode"
+          [theme]="appearance.mode()"
+        />
+        <div
+          class="mt-5 rounded-2xl border border-blue-400/20 bg-blue-500/10 p-5 text-sm leading-6"
+        >
+          Read <code>neural://icons/catalog</code> for compact category and
+          version metadata. Use the tool for matches; the resource deliberately
+          omits all 5,130 names to protect the agent context window.
+        </div>
+      </section>
+
       <section id="agent-intelligence" class="scroll-mt-28 pt-16">
         <h2 class="text-2xl font-black">Angular UI agent intelligence</h2>
         <p class="mt-3 leading-7 text-[var(--site-text-soft)]">

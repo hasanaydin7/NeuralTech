@@ -17,6 +17,9 @@ All notable changes to `@neural-ng/mcp-server` are documented here.
   provider, and accessibility errors.
 - Added bounded, pathless, symlink-safe project inspection and project-consistent
   UI planning.
+- Added a generated 6,184-variant Neural Icons catalog and `search_icons` with
+  semantic UI-intent matching, style/category filters, exact classes, minimal
+  CSS imports, brand opt-in, and accessibility guidance.
 - Added `neural://server/capabilities` for machine-readable tool groups, schema
   versions, safety guarantees, scan limits, and compatibility guidance.
 

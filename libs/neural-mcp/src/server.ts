@@ -5,6 +5,7 @@ import {
   searchComponents,
 } from './catalog.js';
 import { planUi } from './composition.js';
+import { searchIcons } from './icons.js';
 import { validateUsage } from './validation.js';
 import { inspectNeuralProject, suggestConsistentUi } from './project.js';
 import { listNeuralResources, readNeuralResource } from './resources.js';
@@ -66,10 +67,16 @@ interface ZodNumberRuntime {
   default(value: number): ZodNumberRuntime;
 }
 
+interface ZodBooleanRuntime {
+  optional(): ZodBooleanRuntime;
+  default(value: boolean): ZodBooleanRuntime;
+}
+
 interface ZodRuntime {
   object(shape: Record<string, unknown>): unknown;
   string(): ZodStringRuntime;
   number(): ZodNumberRuntime;
+  boolean(): ZodBooleanRuntime;
 }
 
 interface ServerModuleRuntime {
@@ -155,6 +162,41 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
           readNumber(input, 'limit', 10),
         ),
       }),
+  );
+
+  server.registerTool(
+    'search_icons',
+    {
+      title: 'Search Neural Icons by UI intent',
+      description:
+        'Search all 6,184 Neural Icons variants by name, category, or common UI intent and return exact CSS classes, smallest category imports, usage markup, and accessibility guidance. Brand icons are excluded unless explicitly requested.',
+      inputSchema: runtime.zod.object({
+        query: runtime.zod.string().min(1),
+        limit: runtime.zod.number().int().min(1).max(50).optional().default(10),
+        style: runtime.zod.string().optional().default('any'),
+        category: runtime.zod.string().optional().default(''),
+        include_brands: runtime.zod.boolean().optional().default(false),
+      }),
+      annotations: commonAnnotations,
+    },
+    async (input) => {
+      try {
+        const category = readOptionalString(input, 'category', '').trim();
+        return jsonResult({
+          icons: searchIcons(readRequiredString(input, 'query'), {
+            limit: readNumber(input, 'limit', 10),
+            style: readOptionalString(input, 'style', 'any') as
+              | 'any'
+              | 'outline'
+              | 'filled',
+            ...(category ? { category } : {}),
+            includeBrands: readBoolean(input, 'include_brands', false),
+          }),
+        });
+      } catch (error) {
+        return errorResult(readErrorMessage(error));
+      }
+    },
   );
 
   server.registerTool(
@@ -668,6 +710,15 @@ function readNumber(
 ): number {
   const value = input[key];
   return typeof value === 'number' && Number.isFinite(value) ? value : fallback;
+}
+
+function readBoolean(
+  input: Record<string, unknown>,
+  key: string,
+  fallback: boolean,
+): boolean {
+  const value = input[key];
+  return typeof value === 'boolean' ? value : fallback;
 }
 
 function readOptionalString(

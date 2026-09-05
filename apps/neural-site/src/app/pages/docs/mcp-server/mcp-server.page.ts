@@ -21,6 +21,7 @@ export class McpServerPage {
     ['Architecture', 'architecture'],
     ['Install and connect', 'install'],
     ['Component tools', 'component-tools'],
+    ['Icon tools', 'icon-tools'],
     ['Agent intelligence', 'agent-intelligence'],
     ['Theme tools', 'theme-tools'],
     ['Resources', 'resources'],
@@ -86,6 +87,13 @@ export class McpServerPage {
       'Plan against the project and separate reused patterns from new primitives.',
     ],
   ] as const;
+
+  readonly iconCode = `{
+  "query": "delete user",
+  "style": "outline",
+  "limit": 10,
+  "include_brands": false
+}`;
 
   readonly themeTools = [
     [
@@ -196,6 +204,7 @@ export class McpServerPage {
   readonly resourceCode = `neural://server/capabilities
 neural://catalog
 neural://package/exports
+neural://icons/catalog
 neural://components/button/contract
 neural://components/button/readme
 neural://components/button/llms

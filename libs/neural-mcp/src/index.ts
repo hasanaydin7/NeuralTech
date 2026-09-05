@@ -9,6 +9,7 @@ export {
 } from './catalog.js';
 export { listNeuralResources, readNeuralResource } from './resources.js';
 export { planUi } from './composition.js';
+export { getIconCatalog, getIconCatalogSummary, searchIcons } from './icons.js';
 export { validateUsage } from './validation.js';
 export { inspectNeuralProject, suggestConsistentUi } from './project.js';
 export { createNeuralMcpServer, serveNeuralMcpStdio } from './server.js';
@@ -44,6 +45,13 @@ export type {
   NeuralComponentResources,
   NeuralComponentTemplate,
   NeuralPackageCatalog,
+  NeuralIconCatalog,
+  NeuralIconCatalogEntry,
+  NeuralIconCategory,
+  NeuralIconContract,
+  NeuralIconSearchMatch,
+  NeuralIconSearchResult,
+  NeuralIconStyle,
   NeuralResourceContents,
   NeuralResourceDescriptor,
   NeuralSearchMatch,

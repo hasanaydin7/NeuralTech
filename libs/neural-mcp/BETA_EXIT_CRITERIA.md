@@ -13,7 +13,7 @@ candidate metadata may be prepared on the branch for tarball host verification.
       and implementation order.
 - [x] `validate_usage` uses the Angular compiler AST and exposes
       usage-validation schema v2.
-- [ ] The Neural Icons catalog and `search_icons` are implemented and tested.
+- [x] The Neural Icons catalog and `search_icons` are implemented and tested.
 - [ ] Read-only project inspection is completed and integrated with all preceding
       contracts. The existing bounded implementation is an early slice.
 - [ ] Project-consistent UI suggestions are completed and integrated. The existing

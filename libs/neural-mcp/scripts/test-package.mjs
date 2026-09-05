@@ -136,9 +136,22 @@ const capabilities = JSON.parse(
 assert(
   capabilities.schemaVersion === 1 &&
     capabilities.resultSchemas?.usageValidation === 2 &&
+    capabilities.resultSchemas?.iconSearch === 1 &&
+    capabilities.toolGroups?.icons?.includes('search_icons') &&
     capabilities.toolGroups?.composition?.includes('plan_ui') &&
     capabilities.toolGroups?.correctness?.includes('validate_usage'),
   'Published MCP package is missing its versioned capabilities resource.',
+);
+const iconSearch = api.searchIcons('delete user', { limit: 10 });
+assert(
+  iconSearch.schemaVersion === 1 &&
+    iconSearch.matches.some(
+      (match) =>
+        match.icon.name === 'trash' &&
+        match.icon.className === 'nt nt-trash' &&
+        match.icon.cssImports.outline.includes('@neural-ng/icons/'),
+    ),
+  'Published MCP package icon search contract is incomplete.',
 );
 assert(
   typeof api.createThemeRecipe === 'function' &&
@@ -154,7 +167,7 @@ assert(
 
 console.log(
   `Validated @neural-ng/mcp-server: ${components.length} public declarations, ` +
-    'fixed resources, compact theme tools, and the isolated Angular template parser.',
+    '6,184 icon variants, fixed resources, compact theme tools, and the isolated Angular template parser.',
 );
 
 async function readJson(path) {

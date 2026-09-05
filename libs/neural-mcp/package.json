@@ -1,7 +1,7 @@
 {
   "name": "@neural-ng/mcp-server",
   "version": "0.1.0-beta.7",
-  "description": "Angular UI expert MCP for NeuralNg discovery, composition, validation, project consistency, and themes.",
+  "description": "Angular UI expert MCP for NeuralNg discovery, icon search, composition, validation, project consistency, and themes.",
   "mcpName": "io.github.hasanaydin7/neuralng",
   "type": "module",
   "license": "MIT",
