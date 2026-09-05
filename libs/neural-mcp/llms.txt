@@ -34,6 +34,10 @@ PROJECT TOOLS
 - inspect_neuralng_project: compatibility alias for inspect_project; new agents should use inspect_project.
 - suggest_consistent_ui: return a schema-v2 project-aware plan with evidence-backed reuse/introduce decisions, Core catalog version alignment, exact import/provider deltas, theme ownership, bounded risks and next contract/example/validation calls. Accepts goal and optional kind (auto, form, page or table).
 
+EVALUATION
+
+- npm run mcp:eval: run the versioned beta-exit acceptance manifest and composition regression suite. This is a separate CI gate from unit tests.
+
 THEME TOOLS
 
 - create_theme_recipe: create a sparse recipe from high-level decisions.

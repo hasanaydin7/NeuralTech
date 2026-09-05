@@ -34,6 +34,9 @@ before the first stable release.
 - Added schema-v2 `suggest_consistent_ui` decisions for component reuse, Core
   catalog alignment, exact import/provider deltas, theme ownership, bounded
   risks and next MCP validation calls.
+- Added a versioned MCP beta-exit evaluation manifest, ten composition
+  regressions, an existing-project user-management acceptance chain, and the
+  `npm run mcp:eval` CI gate.
 
 ### Changed
 

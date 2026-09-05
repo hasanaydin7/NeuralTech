@@ -40,6 +40,12 @@
         "command": "npx vitest run --config libs/neural-mcp/vitest.config.mts"
       }
     },
+    "eval": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx vitest run --config libs/neural-mcp/evals/vitest.config.mts"
+      }
+    },
     "package-test": {
       "executor": "nx:run-commands",
       "dependsOn": ["build"],

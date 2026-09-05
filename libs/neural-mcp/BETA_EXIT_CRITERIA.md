@@ -19,7 +19,8 @@ candidate metadata may be prepared on the branch for tarball host verification.
 - [x] `suggest_consistent_ui` returns schema-v2 component evidence, version
       alignment, import/provider deltas, theme ownership, bounded risks and next
       validation calls without duplicating the complete inspection payload.
-- [ ] The acceptance evaluation package passes deterministically.
+- [x] The versioned acceptance evaluation package passes deterministically and
+      is enforced in CI with `npm run mcp:eval`.
 - [ ] `1.0.0-rc.1` metadata, release notes, packed artifact, and real coding-agent
       host verification are completed together.
 

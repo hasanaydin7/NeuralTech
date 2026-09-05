@@ -340,10 +340,17 @@ npx nx run neural-mcp:catalog-check
 ```bash
 npx nx lint neural-mcp
 npx nx test neural-mcp
+npm run mcp:eval
 npx nx build neural-mcp
 npx nx run neural-mcp:package-test
 npx nx run neural-mcp:mcp-smoke
 ```
+
+`mcp:eval` reads the versioned manifest in `evals/manifest.json`. It gates ten
+composition regressions and the beta-exit existing-project user-management
+scenario across inspection, consistency planning, exact contracts, valid
+template acceptance, accessibility, provider requirements, and invented API
+rejection. CI runs it independently from the ordinary unit suite.
 
 `mcp-smoke` packs both `@neural-ng/theme` and the MCP server, installs them into
 an isolated temporary consumer, initializes stdio MCP, reads component and theme

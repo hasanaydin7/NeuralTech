@@ -12,7 +12,7 @@ packaged-host verification where applicable.
 6. [x] Icon catalog and `search_icons`
 7. [x] Read-only `inspect_project`
 8. [x] `suggest_consistent_ui`
-9. [ ] Evaluation package
+9. [x] Evaluation package
 10. [ ] `1.0.0-rc.1`
 
 Step 5 parses Angular templates with `@angular/compiler`, returns parser
@@ -37,6 +37,12 @@ partitions exact import and required-provider deltas, preserves detected theme o
 unstyled ownership, checks the declared Core version against the generated
 catalog, surfaces bounded project risks, and names the next contract/example and
 validation calls.
+
+Step 9 adds a versioned beta-exit manifest and a dedicated `neural-mcp:eval`
+target. The CI gate covers ten composition regressions plus the complete
+existing-project user-management chain: version/theme/pattern detection,
+contract-backed planning, exact imports, valid template acceptance, and
+rejection of invented APIs, inaccessible icon actions, and missing providers.
 
 ## Beta exit acceptance scenario
 

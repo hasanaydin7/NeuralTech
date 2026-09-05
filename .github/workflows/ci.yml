@@ -74,6 +74,9 @@ jobs:
       - name: MCP protocol and packaged consumer smoke test
         run: npm run mcp:smoke
 
+      - name: MCP beta-exit evaluation suite
+        run: npm run mcp:eval
+
       - name: External Angular consumer smoke test
         run: npm run package:smoke
 
