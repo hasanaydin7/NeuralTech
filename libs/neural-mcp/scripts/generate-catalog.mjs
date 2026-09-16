@@ -3,18 +3,25 @@ import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { basename, dirname, join, relative, resolve } from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
+import { format } from 'prettier';
 import ts from 'typescript';
 
 const scriptRoot = dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = resolve(scriptRoot, '../../..');
 const coreRoot = join(workspaceRoot, 'libs/neural-ng');
 const outputPath = join(coreRoot, '../neural-mcp/src/generated/catalog.ts');
+const iconOutputPath = join(coreRoot, '../neural-mcp/src/generated/icons.ts');
+const iconMetadataPath = join(workspaceRoot, 'libs/neural-icons/metadata.json');
+const iconManifestPath = join(workspaceRoot, 'libs/neural-icons/manifest.json');
 const checkOnly = process.argv.includes('--check');
 
-const [workspaceTsConfig, corePackage] = await Promise.all([
-  readJson(join(workspaceRoot, 'tsconfig.base.json')),
-  readJson(join(coreRoot, 'package.json')),
-]);
+const [workspaceTsConfig, corePackage, iconMetadata, iconManifest] =
+  await Promise.all([
+    readJson(join(workspaceRoot, 'tsconfig.base.json')),
+    readJson(join(coreRoot, 'package.json')),
+    readJson(iconMetadataPath),
+    readJson(iconManifestPath),
+  ]);
 
 const runtimeEntries = Object.keys(
   workspaceTsConfig.compilerOptions?.paths ?? {},
@@ -60,12 +67,23 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
   const summary = extractSummary(readme ?? llms ?? '', directoryName);
   const declarations = [];
   const classes = [];
+  const typeAliases = [];
+  const providers = [];
 
   for (const filePath of sourceFiles) {
     if (dirname(filePath) !== entryRoot) continue;
     const source = await readText(filePath);
     const fileStem = `./${basename(filePath, '.ts')}`;
     const publicFile = exportAllFiles.has(fileStem);
+
+    for (const provider of parseProviders(source)) {
+      const isPublic = exportedNames.has(provider.name) || publicFile;
+      if (!isPublic || providers.some((item) => item.name === provider.name)) {
+        continue;
+      }
+      trackedFiles.add(filePath);
+      providers.push(provider);
+    }
 
     for (const contract of parseClasses(source)) {
       const isPublic = exportedNames.has(contract.typeName) || publicFile;
@@ -77,7 +95,16 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
       });
     }
 
-    if (!/\.(?:component|directive)\.ts$/.test(filePath)) continue;
+    for (const alias of parseTypeAliases(source)) {
+      const isPublic = exportedNames.has(alias.name) || publicFile;
+      if (!isPublic || typeAliases.some((item) => item.name === alias.name)) {
+        continue;
+      }
+      trackedFiles.add(filePath);
+      typeAliases.push(alias);
+    }
+
+    if (!/\.ts$/.test(filePath) || /\.spec\.ts$/.test(filePath)) continue;
     const found = parseDeclarations(source);
 
     for (const declaration of found) {
@@ -105,10 +132,26 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
     if ((baseIdCounts.get(baseId) ?? 0) === 1) return baseId;
     return declaration.kind === 'directive' ? `${baseId}-directive` : baseId;
   });
+  const templates = declarations
+    .filter(
+      (declaration) =>
+        declaration.kind === 'directive' &&
+        (declaration.className.includes('Template') ||
+          declaration.selector.startsWith('ng-template[') ||
+          Boolean(declaration.templateContext)),
+    )
+    .map((declaration) => ({
+      name: stripSuffix(declaration.className),
+      className: declaration.className,
+      selector: declaration.selector,
+      contextType: declaration.templateContext ?? 'unknown',
+    }));
+  const examples = extractExamples(readme ?? '');
+  const documentationText = `${readme ?? ''}\n${llms ?? ''}`;
+  const providerRequirements = extractProviderRequirements(documentationText);
 
   for (const [index, declaration] of declarations.entries()) {
     const id = entryIds[index];
-    const models = detectModels(declaration.source, declaration.className);
     const formContract = detectFormContract(
       declaration.source,
       declaration.className,
@@ -117,6 +160,7 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
     const readmeUri = `neural://components/${id}/readme`;
     const llmsUri = `neural://components/${id}/llms`;
     components.push({
+      schemaVersion: 2,
       id,
       name: stripSuffix(declaration.className),
       className: declaration.className,
@@ -165,7 +209,17 @@ for (const [directoryName, entryPoint] of publicDirectoryEntries) {
           : 'alpha',
       summary,
       ...(formContract ? { formContract } : {}),
-      models,
+      inputs: declaration.inputs,
+      models: declaration.models,
+      outputs: declaration.outputs,
+      templates,
+      providers,
+      providerRequirements,
+      methods: declaration.methods.filter((method) =>
+        documentationText.includes(`${method.name}(`),
+      ),
+      typeAliases,
+      examples,
       classes,
       relatedComponents: entryIds.filter((relatedId) => relatedId !== id),
       resources: {
@@ -209,21 +263,64 @@ const packageCatalog = {
 const sourceHash = await hashFiles([...trackedFiles]);
 const generated = `// Generated by libs/neural-mcp/scripts/generate-catalog.mjs. Do not edit.\nimport type {\n  NeuralComponentDocument,\n  NeuralPackageCatalog,\n  NeuralThemeCatalogEntry,\n} from '../types.js';\n\nexport const GENERATED_SOURCE_HASH = ${JSON.stringify(sourceHash)};\n\nexport const GENERATED_COMPONENTS = ${JSON.stringify(components, null, 2)} satisfies readonly NeuralComponentDocument[];\n\nexport const GENERATED_PACKAGE_CATALOG = ${JSON.stringify(packageCatalog, null, 2)} satisfies NeuralPackageCatalog;\n\nexport const GENERATED_THEMES = ${JSON.stringify(themes, null, 2)} satisfies readonly NeuralThemeCatalogEntry[];\n`;
 
+const coreIconNames = new Set(iconManifest.icons.map((icon) => icon.name));
+const iconCatalog = {
+  schemaVersion: 1,
+  packageName: iconMetadata.package,
+  packageVersion: iconMetadata.version,
+  upstream: iconMetadata.upstream,
+  totals: iconMetadata.totals,
+  categories: iconMetadata.categories,
+  icons: iconMetadata.icons.map((icon) => ({
+    ...icon,
+    core: coreIconNames.has(icon.name),
+  })),
+};
+assertIconCatalog(iconCatalog);
+const generatedIcons = await format(
+  `// Generated by libs/neural-mcp/scripts/generate-catalog.mjs from libs/neural-icons metadata. Do not edit.\nimport type { NeuralIconCatalog } from '../types.js';\n\nexport const GENERATED_ICON_CATALOG = ${JSON.stringify(iconCatalog, null, 2)} satisfies NeuralIconCatalog;\n`,
+  { parser: 'typescript', singleQuote: true },
+);
+
 const current = await readOptional(outputPath);
+const currentIcons = await readOptional(iconOutputPath);
 if (checkOnly) {
   if (current !== generated) {
     throw new Error(
       'Neural MCP catalog is stale. Run `node libs/neural-mcp/scripts/generate-catalog.mjs`.',
     );
   }
+  if (currentIcons !== generatedIcons) {
+    throw new Error(
+      'Neural MCP icon catalog is stale. Run `node libs/neural-mcp/scripts/generate-catalog.mjs`.',
+    );
+  }
   console.log(
-    `Neural MCP catalog is current: ${components.length} public declarations, ${runtimeEntries.length} runtime entry points.`,
+    `Neural MCP catalog is current: ${components.length} public declarations, ${runtimeEntries.length} runtime entry points, ${iconMetadata.totals.icons} icon variants.`,
   );
 } else {
   await writeFile(outputPath, generated, 'utf8');
+  await writeFile(iconOutputPath, generatedIcons, 'utf8');
   console.log(
-    `Generated Neural MCP catalog: ${components.length} public declarations, ${runtimeEntries.length} runtime entry points.`,
+    `Generated Neural MCP catalog: ${components.length} public declarations, ${runtimeEntries.length} runtime entry points, ${iconMetadata.totals.icons} icon variants.`,
   );
+}
+
+function assertIconCatalog(catalog) {
+  if (
+    catalog.packageName !== '@neural-ng/icons' ||
+    catalog.totals.icons !== 6184 ||
+    catalog.totals.outline !== 5130 ||
+    catalog.totals.filled !== 1054 ||
+    catalog.icons.length !== catalog.totals.outline
+  ) {
+    throw new Error('Unexpected Neural Icons metadata contract.');
+  }
+  const names = new Set();
+  for (const icon of catalog.icons) {
+    if (names.has(icon.name)) throw new Error(`Duplicate icon: ${icon.name}`);
+    names.add(icon.name);
+  }
 }
 
 function parseDeclarations(source) {
@@ -277,11 +374,273 @@ function parseDeclarations(source) {
         className: statement.name.text,
         kind: decoratorName.text === 'Component' ? 'component' : 'directive',
         selector: selector.text,
+        templateContext: parseTemplateContext(statement, sourceFile),
+        ...parseSignalContracts(statement, sourceFile),
+        methods: parsePublicMethods(statement, sourceFile),
       });
     }
   }
 
   return declarations;
+}
+
+function parseTemplateContext(classDeclaration, sourceFile) {
+  for (const member of classDeclaration.members) {
+    if (
+      ts.isMethodDeclaration(member) &&
+      member.name?.getText(sourceFile) === 'ngTemplateContextGuard' &&
+      member.type &&
+      ts.isTypePredicateNode(member.type)
+    ) {
+      return member.type.type?.getText(sourceFile) ?? 'unknown';
+    }
+    if (!ts.isPropertyDeclaration(member) || !member.initializer) continue;
+    let contextType;
+    const visit = (node) => {
+      if (
+        !contextType &&
+        ts.isTypeReferenceNode(node) &&
+        node.typeName.getText(sourceFile) === 'TemplateRef'
+      ) {
+        contextType = node.typeArguments?.[0]?.getText(sourceFile);
+      }
+      if (!contextType) ts.forEachChild(node, visit);
+    };
+    visit(member.initializer);
+    if (contextType) return normalizeType(contextType);
+  }
+  return undefined;
+}
+
+function parseProviders(source) {
+  const providers = [];
+  const sourceFile = ts.createSourceFile(
+    'neural-providers.ts',
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  for (const statement of sourceFile.statements) {
+    if (!ts.isFunctionDeclaration(statement) || !statement.name) continue;
+    if (!statement.name.text.startsWith('provideNeural')) continue;
+    providers.push({
+      name: statement.name.text,
+      returnType: statement.type?.getText(sourceFile) ?? 'unknown',
+      ...(readJsDoc(statement) ? { description: readJsDoc(statement) } : {}),
+    });
+  }
+  return providers;
+}
+
+function parsePublicMethods(classDeclaration, sourceFile) {
+  const methods = [];
+  for (const member of classDeclaration.members) {
+    if (!ts.isMethodDeclaration(member) || !member.name) continue;
+    const name = member.name.getText(sourceFile);
+    if (!/^[A-Za-z_$][\w$]*$/.test(name) || name.startsWith('ng')) continue;
+    const modifiers = new Set(member.modifiers?.map((item) => item.kind) ?? []);
+    if (
+      modifiers.has(ts.SyntaxKind.PrivateKeyword) ||
+      modifiers.has(ts.SyntaxKind.ProtectedKeyword) ||
+      modifiers.has(ts.SyntaxKind.StaticKeyword)
+    ) {
+      continue;
+    }
+    const parameters = member.parameters
+      .map((parameter) => parameter.getText(sourceFile))
+      .join(', ');
+    const returnType = member.type?.getText(sourceFile) ?? 'unknown';
+    methods.push({
+      name,
+      signature: `${name}(${parameters}): ${returnType}`,
+      returnType: normalizeType(returnType),
+      ...(readJsDoc(member) ? { description: readJsDoc(member) } : {}),
+    });
+  }
+  return methods;
+}
+
+function extractProviderRequirements(documentation) {
+  const priorities = { supported: 0, optional: 1, required: 2 };
+  const requirements = new Map();
+  for (const rawLine of documentation.replace(/\r\n/g, '\n').split('\n')) {
+    const line = rawLine.trim();
+    const names = [...line.matchAll(/\b(provideNeural[A-Z]\w*)\s*\(/g)].map(
+      (match) => match[1],
+    );
+    for (const name of names) {
+      const normalized = line.toLowerCase();
+      const requirement = /\brequired\b|\bmust\b/.test(normalized)
+        ? 'required'
+        : /\boptional\b/.test(normalized)
+          ? 'optional'
+          : 'supported';
+      const current = requirements.get(name);
+      if (
+        !current ||
+        priorities[requirement] > priorities[current.requirement]
+      ) {
+        requirements.set(name, { name, requirement, evidence: line });
+      }
+    }
+  }
+  return [...requirements.values()].sort((left, right) =>
+    compareText(left.name, right.name),
+  );
+}
+
+function extractExamples(markdown) {
+  const examples = [];
+  const lines = markdown.replace(/\r\n/g, '\n').split('\n');
+  let heading = 'Usage';
+  for (let index = 0; index < lines.length; index += 1) {
+    const headingMatch = /^(#{2,4})\s+(.+)$/.exec(lines[index]);
+    if (headingMatch?.[2]) {
+      heading = headingMatch[2].replace(/`/g, '').trim();
+      continue;
+    }
+    const fence = /^```([a-zA-Z0-9_-]*)\s*$/.exec(lines[index]);
+    if (!fence) continue;
+    const code = [];
+    index += 1;
+    while (index < lines.length && !/^```\s*$/.test(lines[index])) {
+      code.push(lines[index]);
+      index += 1;
+    }
+    const value = code.join('\n').trim();
+    if (!value) continue;
+    examples.push({
+      title: heading,
+      language: fence[1] || 'text',
+      code: value,
+    });
+  }
+  return examples;
+}
+
+function parseSignalContracts(classDeclaration, sourceFile) {
+  const inputs = [];
+  const models = [];
+  const outputs = [];
+
+  for (const member of classDeclaration.members) {
+    if (!ts.isPropertyDeclaration(member) || !member.initializer) continue;
+    if (
+      !ts.isIdentifier(member.name) ||
+      !ts.isCallExpression(member.initializer)
+    ) {
+      continue;
+    }
+
+    const call = member.initializer;
+    const signalKind = getSignalKind(call.expression);
+    if (!signalKind) continue;
+
+    const name = member.name.text;
+    const description = readJsDoc(member) || undefined;
+    const typeArgument = call.typeArguments?.[0]?.getText(sourceFile);
+    const required = signalKind === 'input.required';
+    const optionsIndex = signalKind === 'output' || required ? 0 : 1;
+    const options = call.arguments[optionsIndex];
+    const bindingName = readStringProperty(options, 'alias') ?? name;
+
+    if (signalKind === 'output') {
+      outputs.push({
+        name,
+        bindingName,
+        type: typeArgument ? normalizeType(typeArgument) : 'void',
+        ...(description ? { description } : {}),
+      });
+      continue;
+    }
+
+    const defaultExpression = required ? undefined : call.arguments[0];
+    const type = typeArgument
+      ? normalizeType(typeArgument)
+      : inferExpressionType(defaultExpression, sourceFile);
+    const defaultValue = defaultExpression?.getText(sourceFile);
+
+    if (signalKind === 'model') {
+      models.push({
+        name,
+        bindingName,
+        type,
+        ...(defaultValue ? { defaultValue } : {}),
+        ...(description ? { description } : {}),
+      });
+      continue;
+    }
+
+    const transform = readExpressionProperty(options, 'transform', sourceFile);
+    inputs.push({
+      name,
+      bindingName,
+      type,
+      required,
+      ...(defaultValue ? { defaultValue } : {}),
+      ...(transform ? { transform } : {}),
+      ...(description ? { description } : {}),
+    });
+  }
+
+  return { inputs, models, outputs };
+}
+
+function getSignalKind(expression) {
+  if (ts.isIdentifier(expression)) {
+    if (expression.text === 'input') return 'input';
+    if (expression.text === 'model') return 'model';
+    if (expression.text === 'output') return 'output';
+  }
+  if (
+    ts.isPropertyAccessExpression(expression) &&
+    ts.isIdentifier(expression.expression) &&
+    expression.expression.text === 'input' &&
+    expression.name.text === 'required'
+  ) {
+    return 'input.required';
+  }
+  return undefined;
+}
+
+function readStringProperty(expression, name) {
+  const value = readObjectProperty(expression, name);
+  return value && ts.isStringLiteralLike(value) ? value.text : undefined;
+}
+
+function readExpressionProperty(expression, name, sourceFile) {
+  return readObjectProperty(expression, name)?.getText(sourceFile);
+}
+
+function readObjectProperty(expression, name) {
+  if (!expression || !ts.isObjectLiteralExpression(expression))
+    return undefined;
+  const property = expression.properties.find(
+    (candidate) =>
+      ts.isPropertyAssignment(candidate) &&
+      ((ts.isIdentifier(candidate.name) && candidate.name.text === name) ||
+        (ts.isStringLiteralLike(candidate.name) &&
+          candidate.name.text === name)),
+  );
+  return property && ts.isPropertyAssignment(property)
+    ? property.initializer
+    : undefined;
+}
+
+function inferExpressionType(expression, sourceFile) {
+  if (!expression) return 'unknown';
+  if (
+    expression.kind === ts.SyntaxKind.TrueKeyword ||
+    expression.kind === ts.SyntaxKind.FalseKeyword
+  ) {
+    return 'boolean';
+  }
+  if (ts.isNumericLiteral(expression)) return 'number';
+  if (ts.isStringLiteralLike(expression)) return 'string';
+  if (expression.kind === ts.SyntaxKind.NullKeyword) return 'null';
+  if (ts.isArrayLiteralExpression(expression)) return 'readonly unknown[]';
+  return inferLiteralType(expression.getText(sourceFile));
 }
 
 function parseClasses(source) {
@@ -312,6 +671,25 @@ function parseClasses(source) {
   }
 
   return contracts;
+}
+
+function parseTypeAliases(source) {
+  const aliases = [];
+  const sourceFile = ts.createSourceFile(
+    'neural-types.ts',
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  for (const statement of sourceFile.statements) {
+    if (!ts.isTypeAliasDeclaration(statement)) continue;
+    aliases.push({
+      name: statement.name.text,
+      type: normalizeType(statement.type.getText(sourceFile)),
+    });
+  }
+  return aliases;
 }
 
 function hasExportModifier(node) {
@@ -384,44 +762,6 @@ function detectFormContract(source, className) {
   return generic
     ? `FormValueControl<${normalizeType(generic.content)}>`
     : undefined;
-}
-
-function detectModels(source, className) {
-  const start = findClassStart(source, className);
-  if (start < 0) return [];
-  const nextDecorator = source.indexOf('\n@Component', start + 1);
-  const nextDirective = source.indexOf('\n@Directive', start + 1);
-  const boundaries = [nextDecorator, nextDirective].filter(
-    (value) => value > start,
-  );
-  const end = boundaries.length ? Math.min(...boundaries) : source.length;
-  const classSource = source.slice(start, end);
-  const models = [];
-  const pattern = /readonly\s+(\w+)\s*=\s*model\b/g;
-  let match;
-  while ((match = pattern.exec(classSource))) {
-    let cursor = pattern.lastIndex;
-    while (/\s/.test(classSource[cursor] ?? '')) cursor += 1;
-    const generic =
-      classSource[cursor] === '<'
-        ? readBalanced(classSource, cursor, '<', '>')
-        : undefined;
-    if (generic) cursor = generic.end + 1;
-    while (/\s/.test(classSource[cursor] ?? '')) cursor += 1;
-    const initializer =
-      classSource[cursor] === '('
-        ? readBalanced(classSource, cursor, '(', ')')
-        : undefined;
-    if (!initializer) continue;
-    pattern.lastIndex = initializer.end + 1;
-    models.push({
-      name: match[1],
-      type: generic
-        ? normalizeType(generic.content)
-        : inferLiteralType(initializer.content.trim()),
-    });
-  }
-  return models;
 }
 
 function readBalanced(source, start, open, close) {

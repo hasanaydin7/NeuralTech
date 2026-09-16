@@ -6,11 +6,40 @@ RUN
 npx -y @neural-ng/mcp-server
 
 COMPONENT TOOLS
+
 - search_components: search selectors, entry points, README and llms.txt text.
-- get_component_contract: resolve exact public selector/model/form contracts.
+- get_component: resolve a schema-versioned structured Angular API contract.
+- get_component_examples: return bounded published examples with language and heading.
+- get_component_contract: legacy full-contract lookup for existing clients.
 - recommend_components: deterministic component recommendations for a UI goal.
 
+ICON TOOLS
+
+- search_icons: search all 6,184 Neural Icons variants by name, category, or UI intent. Returns exact outline/filled classes, smallest CSS imports, markup and accessibility guidance. Brand icons are excluded unless include_brands=true.
+
+COMPOSITION TOOLS
+
+- plan_ui: convert a product goal into selected primitives, exact imports, providers, state, accessibility checks and implementation order. kind is auto, form, page or table.
+- suggest_form_structure: create the same contract-backed plan with form structure fixed.
+- suggest_page_structure: create the same contract-backed plan with page structure fixed.
+- suggest_table_structure: create the same contract-backed plan with table structure fixed.
+
+CORRECTNESS TOOLS
+
+- validate_usage: parse templates with @angular/compiler and validate Angular syntax, control-flow descendants, custom elements, attribute directives, property/event/two-way bindings, required inputs, exported literal aliases, icon-only button labels, standalone imports, required providers and duplicate Toast channels. The schema-v2 result reports parser identity/version and NNG000 syntax failures. imports_json and providers_json are JSON string arrays.
+
+PROJECT TOOLS
+
+- inspect_project: canonical bounded read-only inspection of the MCP working directory. It parses external/inline Angular templates with @angular/compiler and reports package declarations, summary counts, selectors and attribute directives, icon usage, imports, providers, theme, Appearance, conventions, confidence and diagnostics. It accepts no path, follows no symlinks and returns schema v2.
+- inspect_neuralng_project: compatibility alias for inspect_project; new agents should use inspect_project.
+- suggest_consistent_ui: return a schema-v2 project-aware plan with evidence-backed reuse/introduce decisions, Core catalog version alignment, exact import/provider deltas, theme ownership, bounded risks and next contract/example/validation calls. Accepts goal and optional kind (auto, form, page or table).
+
+EVALUATION
+
+- npm run mcp:eval: run the versioned beta-exit acceptance manifest and composition regression suite. This is a separate CI gate from unit tests.
+
 THEME TOOLS
+
 - create_theme_recipe: create a sparse recipe from high-level decisions.
 - validate_theme_recipe: validate compact JSON against schema and token contract.
 - edit_theme_recipe: apply safe dotted set/unset changes and revalidate.
@@ -19,8 +48,10 @@ THEME TOOLS
 - compile_theme_recipe: return summary, diagnostics and artifact sizes, not full CSS.
 
 RESOURCES
+
 - neural://catalog
 - neural://package/exports
+- neural://icons/catalog
 - neural://themes/catalog
 - neural://themes/schema
 - neural://themes/presets
@@ -34,6 +65,7 @@ RESOURCES
 - neural://components/{id}/llms
 
 THEME RULES
+
 - Choose neutral, glass, mist, or futuristic as the compact recipe base.
 - Work on the compact recipe; do not emit or request all 1,348 resolved tokens.
 - Read only the target component theme contract before adding component overrides.
@@ -43,13 +75,21 @@ THEME RULES
 - Use `npx neural-theme build` to write CSS, tokens, reports and type artifacts.
 
 GENERAL RULES
+
 - Treat MCP results as read-only package documentation and deterministic tooling.
+- Start non-trivial screens with plan_ui, then fetch standard contracts and only the examples named by exampleQueries.
+- Run validate_usage before presenting generated NeuralNg template code; resolve every error diagnostic and review warnings.
+- Use search_icons instead of inventing nt-* classes. Preserve the returned import and require an accessible label on icon-only controls.
+- For an existing workspace, inspect it before planning; use suggest_consistent_ui when consistency matters more than a greenfield recommendation.
+- Use get_component detail=summary for discovery and detail=standard before implementation.
+- Request detail=full only when class slot definitions or all embedded examples are required.
 - Import components from the exact entryPoint returned by the contract.
 - Use returned selectors and model names; do not invent aliases.
 - The server does not edit projects, execute shell commands, install packages,
   access the network or read arbitrary filesystem paths.
 
 THEME QUALITY AND MIGRATION
+
 - Prefer presets with quality=release unless the user explicitly requests preview styling.
 - Neutral is release quality; Glass, Mist, and Futuristic are experimental preview presets.
 - Theme validation rejects declaration injection, external CSS URLs and malformed aliases.
