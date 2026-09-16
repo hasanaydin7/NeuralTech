@@ -62,6 +62,12 @@ for (const path of [
 const api = await import(pathToFileURL(join(packageRoot, 'src/index.js')).href);
 const registryMetadata = await readJson('server.json');
 assert(
+  typeof registryMetadata.description === 'string' &&
+    registryMetadata.description.length > 0 &&
+    registryMetadata.description.length <= 100,
+  'Registry description must contain between 1 and 100 characters.',
+);
+assert(
   registryMetadata.name === packageJson.mcpName &&
     registryMetadata.version === packageJson.version,
   'Registry metadata must match the published MCP package.',
