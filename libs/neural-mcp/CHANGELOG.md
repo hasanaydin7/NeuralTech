@@ -44,12 +44,21 @@ All notable changes to `@neural-ng/mcp-server` are documented here.
 
 ### Verification
 
-- Passed 76 deterministic unit tests and 13 versioned beta-exit evaluations.
+- Passed 105 deterministic unit tests and 17 versioned beta-exit evaluations.
+- Passed installed Core/MCP/Theme stdio, strict Angular compilation, and Chromium
+  acceptance. A separate real coding-agent run produced the screen without manual
+  fixture repairs and passed pagination, search, role filter, details, and delete
+  cancellation/confirmation (see `HOST_ACCEPTANCE.md`).
 - Passed package contract validation and packed stdio MCP initialization,
   resource discovery, tool listing, project inspection, consistency planning,
   usage validation, icon search, and theme compilation.
 
 ### Known RC boundary
+
+- Template validation is not full TypeScript type checking or runtime testing.
+  Project TypeScript import/provider/theme extraction remains heuristic.
+  The real-host exercise required one compiler correction and two validator
+  argument-format retries; icon rendering was not visually verified.
 
 - The generated component contract catalog currently covers `@neural-ng/core`.
   Project inspection inventories `@neural-ng/editor` imports but leaves unknown

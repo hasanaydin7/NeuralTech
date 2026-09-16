@@ -326,6 +326,8 @@ export interface NeuralProjectInspection {
     readonly angularVersion?: string;
     readonly neuralPackages: Readonly<Record<string, string>>;
     readonly versionSource: 'package.json';
+    readonly installedCoreVersion?: string;
+    readonly installedAngularVersion?: string;
   };
   readonly analysis: {
     readonly engine: '@angular/compiler';
@@ -395,6 +397,7 @@ export interface NeuralConsistentUiSuggestion {
   readonly compatibility: {
     readonly catalogCoreVersion: string;
     readonly declaredCoreVersion?: string;
+    readonly installedCoreVersion?: string;
     readonly status: 'aligned' | 'review' | 'missing';
     readonly guidance: string;
   };

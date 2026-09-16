@@ -189,6 +189,16 @@ errors, unknown selectors or bindings, missing required inputs, invalid literal
 unions (including exported type aliases), inaccessible icon-only buttons,
 missing standalone imports, required providers, and duplicate Toast channels.
 
+Explicit `ng-template` directives (such as `neuralTableCell`) and their nested
+components are checked too. Event listeners do not satisfy required inputs;
+model outputs use their generated `Change` suffix. String-literal property
+bindings are checked against input unions, and empty static or string-literal
+accessible labels do not satisfy the icon-only button check.
+
+This is a template contract checker, not a full Angular application compiler.
+Dynamic expression types, runtime label values, template context types, and
+application behavior still require Angular compilation and application tests.
+
 ```json
 {
   "template": "<neural-button icon=\"trash\"></neural-button>",
@@ -218,11 +228,18 @@ same diagnostics as `validate_usage`.
 
 The scan is read-only and accepts no filesystem path. It skips dependencies,
 build output, VCS data, tests, declarations, and symlinks. Work is bounded to
-400 source files, 256 KiB per file, and 5 MiB in total; the result explicitly
+400 source files, 256 KiB per file, 5 MiB in total, and 10,000 directory entries;
+oversized files are rejected before their contents are read. The result explicitly
 reports truncation and analysis confidence. Absolute paths are not returned,
 and component/icon evidence is capped at 25 relative paths per item while
-`filesOmitted` preserves the omitted count. Package versions are declarations
-from the workspace `package.json`, not claims about runtime resolution.
+`filesOmitted` preserves the omitted count. `angularVersion` and `neuralPackages`
+contain declarations from the workspace `package.json`. Optional
+`installedCoreVersion` and `installedAngularVersion` separately report exact
+versions read from the corresponding local `node_modules` package manifests.
+Only bounded metadata within the workspace is read, not dependency source code.
+Core compatibility prefers installed metadata when available; dependency ranges
+without that evidence require review. Independently released Core, Icons, Theme,
+and MCP packages are not required to share a version.
 Diagnostics validate selectors and APIs present in the generated MCP catalog;
 an unknown selector from a separate package remains visible instead of being
 silently treated as valid.

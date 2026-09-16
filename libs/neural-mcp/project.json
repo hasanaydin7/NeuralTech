@@ -46,6 +46,16 @@
         "command": "npx vitest run --config libs/neural-mcp/evals/vitest.config.mts"
       }
     },
+    "consumer-e2e": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "build",
+        { "target": "build", "projects": ["neural-ng", "neural-theme"] }
+      ],
+      "options": {
+        "command": "node libs/neural-mcp/evals/installed-consumer.mjs"
+      }
+    },
     "package-test": {
       "executor": "nx:run-commands",
       "dependsOn": ["build"],

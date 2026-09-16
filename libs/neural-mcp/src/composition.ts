@@ -58,6 +58,7 @@ export function planUi(
   const candidates = baseCandidates(kind);
   addGoalCandidates(candidates, normalized, kind);
   const components = resolveCandidates(candidates);
+  const hasTable = components.some((component) => component.id === 'table');
   const sections = buildSections(candidates, components);
 
   return {
@@ -69,18 +70,16 @@ export function planUi(
     sections,
     imports: buildImports(components),
     providers: mergeProviders(components),
-    state: buildState(kind, normalized),
-    accessibility: buildAccessibility(kind, normalized),
-    implementationOrder: buildImplementationOrder(kind, normalized),
+    state: buildState(kind, normalized, hasTable),
+    accessibility: buildAccessibility(kind, normalized, hasTable),
+    implementationOrder: buildImplementationOrder(normalized, hasTable),
     exampleQueries: components.slice(0, 6).map((component) => component.id),
   };
 }
 
 function resolveKind(kind: NeuralCompositionKind, goal: string): PlanKind {
   if (kind !== 'auto') return kind;
-  if (
-    containsAny(goal, ['table', 'grid', 'rows', 'admin users', 'data list'])
-  ) {
+  if (hasTableIntent(goal)) {
     return 'table';
   }
   if (
@@ -109,7 +108,7 @@ function baseCandidates(kind: PlanKind): Candidate[] {
       candidate(
         'neural-paginator',
         'support',
-        'Keeps paging state explicit and reusable.',
+        'Renders visible paging controls. Table paginate only slices client rows; share pageIndex/pageSize between table and paginator and bind totalItems to the filtered row count.',
         'content',
       ),
       candidate(
@@ -169,6 +168,22 @@ function addGoalCandidates(
   goal: string,
   kind: PlanKind,
 ): void {
+  // An explicit page/form kind must not discard a requested data-table region.
+  if (kind !== 'table' && hasTableIntent(goal)) {
+    candidates.push(...baseCandidates('table'));
+  } else if (
+    kind !== 'table' &&
+    /\b(pagination|paginator|paging)\b/.test(goal)
+  ) {
+    candidates.push(
+      candidate(
+        'neural-paginator',
+        'support',
+        'Renders visible paging controls bound to the content region paging state.',
+        'content',
+      ),
+    );
+  }
   if (
     kind !== 'form' &&
     containsAny(goal, [
@@ -177,6 +192,10 @@ function addGoalCandidates(
       'create',
       'add action',
       'primary action',
+      'delete',
+      'remove',
+      'row action',
+      'detail drawer',
     ])
   ) {
     candidates.push(
@@ -472,7 +491,10 @@ function addGoalCandidates(
       ),
     );
   }
-  if (kind === 'table' && containsAny(goal, ['status', 'state badge'])) {
+  if (
+    (kind === 'table' || hasTableIntent(goal)) &&
+    containsAny(goal, ['status', 'state badge'])
+  ) {
     candidates.push(
       candidate(
         'tag',
@@ -580,13 +602,23 @@ function mergeProviders(
   );
 }
 
-function buildState(kind: PlanKind, goal: string): string[] {
+function buildState(kind: PlanKind, goal: string, hasTable: boolean): string[] {
   const state =
     kind === 'table'
       ? ['rows', 'loading', 'page', 'pageSize', 'sort', 'filters', 'selection']
       : kind === 'form'
         ? ['form value', 'validation status', 'submitting', 'submit result']
         : ['route/view state', 'loading', 'operation feedback'];
+  if (hasTable)
+    state.push(
+      'rows',
+      'loading',
+      'page',
+      'pageSize',
+      'sort',
+      'filters',
+      'selection',
+    );
   if (containsAny(goal, ['detail', 'drawer', 'dialog', 'modal']))
     state.push('selected item', 'details open state');
   if (containsAny(goal, ['remote', 'server', 'async']))
@@ -594,7 +626,11 @@ function buildState(kind: PlanKind, goal: string): string[] {
   return [...new Set(state)];
 }
 
-function buildAccessibility(kind: PlanKind, goal: string): string[] {
+function buildAccessibility(
+  kind: PlanKind,
+  goal: string,
+  hasTable: boolean,
+): string[] {
   const checks = [
     'Give every icon-only button an accessible ariaLabel.',
     'Preserve visible focus and logical start/end direction behavior.',
@@ -604,7 +640,7 @@ function buildAccessibility(kind: PlanKind, goal: string): string[] {
     checks.push(
       'Associate every control with NeuralField label, hint, and error content.',
     );
-  if (kind === 'table')
+  if (hasTable)
     checks.push(
       'Keep column headers semantic and announce sort state; provide a non-table mobile fallback when columns cannot fit.',
     );
@@ -619,7 +655,7 @@ function buildAccessibility(kind: PlanKind, goal: string): string[] {
   return checks;
 }
 
-function buildImplementationOrder(kind: PlanKind, goal: string): string[] {
+function buildImplementationOrder(goal: string, hasTable: boolean): string[] {
   const steps = [
     'Define typed domain data and local/remote state before writing the template.',
     'Import each standalone NeuralNg declaration from its component entry point.',
@@ -627,11 +663,12 @@ function buildImplementationOrder(kind: PlanKind, goal: string): string[] {
     'Add loading, empty, error, and success behavior.',
     'Verify keyboard, screen-reader, RTL, SSR/hydration, and narrow viewport behavior.',
   ];
-  if (kind === 'table')
+  if (hasTable)
     steps.splice(
       3,
       0,
       'Keep filter, sort, page, and selection state controlled so remote data can replace local data safely.',
+      'Render NeuralPaginator for visible navigation; table paginate only slices client rows. Share pageIndex/pageSize between table and paginator and derive totalItems from filtered rows (or the server total). Do not slice client rows twice. Reset page after filtering and clamp it after deletion.',
     );
   if (containsAny(goal, ['toast', 'notification']))
     steps.splice(
@@ -665,6 +702,10 @@ function candidate(
 
 function containsAny(value: string, needles: readonly string[]): boolean {
   return needles.some((needle) => value.includes(needle));
+}
+
+function hasTableIntent(goal: string): boolean {
+  return /\b(table|grid|rows|admin users|data list)\b/.test(goal);
 }
 
 function normalize(value: string): string {

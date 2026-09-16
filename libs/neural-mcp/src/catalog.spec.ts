@@ -9,6 +9,14 @@ import {
 } from './catalog.js';
 
 describe('Neural MCP catalog', () => {
+  it('explains that table pagination needs separately rendered controls', () => {
+    const paginate = getComponentContract('table')?.inputs.find(
+      (input) => input.bindingName === 'paginate',
+    );
+    expect(paginate?.description).toContain('Does not render paging');
+    expect(paginate?.description).toContain('@neural-ng/core/paginator');
+    expect(paginate?.description).toContain('pageIndex/pageSize');
+  });
   it('covers public NeuralNg declarations and runtime entry points', () => {
     const components = listComponents();
     const packageCatalog = getPackageCatalog();

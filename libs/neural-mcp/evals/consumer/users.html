@@ -1,0 +1,44 @@
+<neural-toolbar ariaLabel="User management actions">
+  <input
+    neuralInput
+    aria-label="Search users"
+    [value]="query()"
+    (input)="search($event)"
+  />
+  <neural-select
+    [options]="roles"
+    [value]="role()"
+    (valueChange)="filterRole($event)"
+    ariaLabel="Filter by role"
+  />
+</neural-toolbar>
+<neural-table
+  [columns]="columns"
+  [value]="pageUsers()"
+  rowKey="id"
+  ariaLabel="Users"
+>
+  <ng-template neuralTableCell="actions" let-row="row">
+    <neural-button
+      ariaLabel="View user details"
+      icon="nt nt-eye"
+      (clicked)="showDetails(row)"
+    />
+    <neural-button
+      ariaLabel="Delete user"
+      icon="nt nt-trash"
+      (clicked)="requestDelete(row)"
+    />
+  </ng-template>
+</neural-table>
+<neural-paginator
+  [totalItems]="filteredUsers().length"
+  [(pageIndex)]="pageIndex"
+  [(pageSize)]="pageSize"
+/>
+<neural-drawer [(open)]="detailsOpen" ariaLabel="User details">
+  @if (selectedUser(); as user) {
+  <p>{{ user.name }}</p>
+  }
+</neural-drawer>
+<neural-confirm-dialog />

@@ -106,6 +106,9 @@ jobs:
       - name: Run landing browser tests
         run: npm run e2e:site:chromium
 
+      - name: MCP installed-package Angular and browser acceptance
+        run: npm run mcp:consumer:e2e
+
       - name: Upload Playwright report
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4

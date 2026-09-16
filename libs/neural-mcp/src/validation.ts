@@ -1,8 +1,11 @@
 import {
+  ASTWithSource,
   DomElementSchemaRegistry,
+  LiteralPrimitive,
   parseTemplate,
   TmplAstElement,
   TmplAstRecursiveVisitor,
+  TmplAstTemplate,
   TmplAstText,
   VERSION,
   tmplAstVisitAll,
@@ -237,7 +240,7 @@ function validateBindings(
           selectorAttributes.has(binding.name)
         : binding.kind === 'model'
           ? models.has(binding.name)
-          : outputs.has(binding.name) || models.has(binding.name);
+          : outputs.has(binding.name);
     if (known || isNativeBinding(element.tagName, rawName, binding)) continue;
     diagnostics.push(
       diagnostic(
@@ -264,7 +267,7 @@ function validateRequiredInputs(
       .map(classifyBinding)
       .filter(
         (binding): binding is NonNullable<ReturnType<typeof classifyBinding>> =>
-          Boolean(binding),
+          Boolean(binding && binding.kind !== 'output'),
       )
       .map((binding) => binding.name),
   );
@@ -291,14 +294,17 @@ function validateLiteralValues(
   diagnostics: NeuralUsageDiagnostic[],
 ): void {
   for (const input of contract.inputs) {
-    const value = element.attributes.get(input.bindingName);
+    const rawName = element.attributes.has(`[${input.bindingName}]`)
+      ? `[${input.bindingName}]`
+      : input.bindingName;
+    const value = element.attributes.get(rawName);
     if (typeof value !== 'string') continue;
     const allowed = literalUnion(input.type, contract);
     if (!allowed.length || allowed.includes(value)) continue;
     diagnostics.push(
       diagnostic(
         template,
-        element.attributeStarts.get(input.bindingName) ?? element.start,
+        element.attributeStarts.get(rawName) ?? element.start,
         'NNG004',
         'error',
         `Invalid literal "${value}" for ${element.tagName}.${input.bindingName}.`,
@@ -318,9 +324,10 @@ function validateAccessibility(
   if (contract.id !== 'button') return;
   const hasIcon = hasBinding(element, 'icon');
   const hasLabel =
-    hasBinding(element, 'label') ||
-    hasBinding(element, 'ariaLabel') ||
-    hasBinding(element, 'aria-label') ||
+    hasNonEmptyInput(element, 'label') ||
+    hasNonEmptyInput(element, 'ariaLabel') ||
+    hasNonEmptyInput(element, 'aria-label') ||
+    hasNonEmptyInput(element, 'attr.aria-label') ||
     element.hasProjectedText;
   if (!hasIcon || hasLabel) return;
   diagnostics.push(
@@ -406,16 +413,25 @@ class NeuralElementCollector extends TmplAstRecursiveVisitor {
     this.elements.push(toParsedElement(this.template, element));
     super.visitElement(element);
   }
+
+  override visitTemplate(template: TmplAstTemplate): void {
+    // Structural shorthand produces a synthetic template around a real element.
+    // Collect explicit ng-template hosts only; the child visitor handles the rest.
+    if (template.tagName === 'ng-template') {
+      this.elements.push(toParsedElement(this.template, template));
+    }
+    super.visitTemplate(template);
+  }
 }
 
 function toParsedElement(
   template: string,
-  element: TmplAstElement,
+  element: TmplAstElement | TmplAstTemplate,
 ): ParsedElement {
   const attributes = new Map<string, string | true>();
   const attributeStarts = new Map<string, number>();
   for (const attribute of element.attributes) {
-    attributes.set(attribute.name, attribute.value || true);
+    attributes.set(attribute.name, attribute.value);
     attributeStarts.set(attribute.name, attribute.sourceSpan.start.offset);
   }
   for (const binding of [...element.inputs, ...element.outputs]) {
@@ -425,14 +441,25 @@ function toParsedElement(
     );
     const rawName = source.split('=', 1)[0]?.trim();
     if (!rawName) continue;
-    attributes.set(rawName, true);
+    const expression = 'value' in binding ? binding.value : undefined;
+    const ast =
+      expression instanceof ASTWithSource ? expression.ast : expression;
+    attributes.set(
+      rawName,
+      ast instanceof LiteralPrimitive && typeof ast.value === 'string'
+        ? ast.value
+        : true,
+    );
     attributeStarts.set(rawName, binding.sourceSpan.start.offset);
   }
 
   const projectedText = new ProjectedTextVisitor();
   tmplAstVisitAll(projectedText, element.children);
   return {
-    tagName: element.name.toLowerCase(),
+    tagName:
+      element instanceof TmplAstElement
+        ? element.name.toLowerCase()
+        : 'ng-template',
     start: element.startSourceSpan.start.offset,
     attributes,
     attributeStarts,
@@ -469,7 +496,7 @@ function matchContracts(element: ParsedElement): NeuralComponentContract[] {
       .map(classifyBinding)
       .filter(
         (binding): binding is NonNullable<ReturnType<typeof classifyBinding>> =>
-          Boolean(binding),
+          Boolean(binding && binding.kind !== 'output'),
       )
       .map((binding) => binding.name),
   );
@@ -591,6 +618,17 @@ function hasBinding(element: ParsedElement, name: string): boolean {
   return [...element.attributes.keys()].some(
     (rawName) => classifyBinding(rawName)?.name === name,
   );
+}
+
+function hasNonEmptyInput(element: ParsedElement, name: string): boolean {
+  return [...element.attributes.entries()].some(([rawName, value]) => {
+    const binding = classifyBinding(rawName);
+    return (
+      binding?.name === name &&
+      binding.kind !== 'output' &&
+      (value === true || Boolean(value.trim()))
+    );
+  });
 }
 
 function groupImports(

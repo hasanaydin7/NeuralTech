@@ -160,6 +160,50 @@ describe('MCP beta-exit evaluation package', () => {
       ]),
     );
   });
+
+  it('resolves and validates action-cell template contracts, including nested actions', () => {
+    const cell = getComponentContract('NeuralTableCellDirective');
+    const button = getComponentContract('button');
+    expect(cell).toBeDefined();
+    expect(button).toBeDefined();
+    if (!cell || !button) throw new Error('Missing action-cell contracts');
+
+    const template = `<ng-template neuralTableCell="actions" let-row="row">
+  <neural-button icon="nt nt-trash" ariaLabel="Delete user" />
+</ng-template>`;
+    const discovery = validateUsage({ template });
+    expect(discovery.suggestedImports[cell.entryPoint]).toContain(
+      cell.className,
+    );
+    expect(discovery.suggestedImports[button.entryPoint]).toContain(
+      button.className,
+    );
+
+    const imports = Object.values(discovery.suggestedImports).flat();
+    const valid = validateUsage({ template, imports });
+    expect(valid.valid).toBe(true);
+    expect(valid.summary).toEqual({ errors: 0, warnings: 0, infos: 0 });
+    expect(valid.components).toEqual(
+      expect.arrayContaining([cell.id, button.id]),
+    );
+
+    const invalid = validateUsage({
+      template: template
+        .replace('ariaLabel="Delete user"', 'ariaLabel=""')
+        .replace(
+          'neuralTableCell="actions"',
+          'neuralTableCell="actions" [inventedCell]="true"',
+        ),
+      imports,
+    });
+    expect(invalid.valid).toBe(false);
+    expect(invalid.diagnostics).toContainEqual(
+      expect.objectContaining({ code: 'NNG002', component: cell.id }),
+    );
+    expect(invalid.diagnostics).toContainEqual(
+      expect.objectContaining({ code: 'NNG201', component: button.id }),
+    );
+  });
 });
 
 const validUserManagementTemplate = `

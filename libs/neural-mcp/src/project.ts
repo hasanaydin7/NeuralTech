@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { access, readdir, readFile } from 'node:fs/promises';
+import { access, lstat, open, opendir, realpath } from 'node:fs/promises';
 import { basename, extname, join, posix, relative, resolve } from 'node:path';
 import { getComponentContract, getPackageCatalog } from './catalog.js';
 import { planUi } from './composition.js';
@@ -18,6 +18,7 @@ const MAX_FILES = 400;
 const MAX_FILE_BYTES = 256 * 1024;
 const MAX_TOTAL_BYTES = 5 * 1024 * 1024;
 const MAX_EVIDENCE_FILES = 25;
+const MAX_DIRECTORY_ENTRIES = 10_000;
 const SOURCE_EXTENSIONS = new Set(['.ts', '.html', '.css', '.scss']);
 const IGNORED_DIRECTORIES = new Set([
   '.git',
@@ -182,16 +183,23 @@ export async function inspectNeuralProject(
 
   const neuralPackages = collectNeuralPackages(packageJson);
   const angularVersion = dependencyVersion(packageJson, '@angular/core');
-  const versionFamilies = new Set(
-    Object.values(neuralPackages).map(normalizeVersionFamily).filter(Boolean),
-  );
-  if (versionFamilies.size > 1) {
+  const [installedCoreVersion, installedAngularVersion] = await Promise.all([
+    installedVersion(root, '@neural-ng/core'),
+    installedVersion(root, '@angular/core'),
+  ]);
+  const declaredCore = neuralPackages['@neural-ng/core'];
+  if (
+    (installedCoreVersion || declaredCore) &&
+    exactVersion(installedCoreVersion ?? declaredCore) !==
+      exactVersion(getPackageCatalog().version)
+  ) {
     diagnostics.push({
       code: 'NNP002',
       severity: 'warning',
       message:
-        'Installed @neural-ng packages do not share the same version family.',
-      suggestion: 'Align NeuralNg package versions before generating new UI.',
+        'The installed or declared Core dependency is not an exact match for the generated Core catalog.',
+      suggestion:
+        'Verify the resolved Core version before using these contracts. NeuralNg packages are independently versioned.',
     });
   }
   if (usages.size > 0 && themes.size === 0 && !unstyled) {
@@ -267,6 +275,8 @@ export async function inspectNeuralProject(
       angularVersion,
       neuralPackages,
       versionSource: 'package.json',
+      ...(installedCoreVersion ? { installedCoreVersion } : {}),
+      ...(installedAngularVersion ? { installedAngularVersion } : {}),
     },
     analysis: {
       engine: '@angular/compiler',
@@ -365,10 +375,11 @@ export async function suggestConsistentUi(
   const catalogCoreVersion = getPackageCatalog().version;
   const declaredCoreVersion =
     project.framework.neuralPackages['@neural-ng/core'];
-  const compatibilityStatus = !declaredCoreVersion
+  const installedCoreVersion = project.framework.installedCoreVersion;
+  const evaluatedVersion = installedCoreVersion ?? declaredCoreVersion;
+  const compatibilityStatus = !evaluatedVersion
     ? ('missing' as const)
-    : normalizeVersionFamily(declaredCoreVersion) ===
-        normalizeVersionFamily(catalogCoreVersion)
+    : exactVersion(evaluatedVersion) === exactVersion(catalogCoreVersion)
       ? ('aligned' as const)
       : ('review' as const);
   const relevantFiles = new Set(
@@ -417,10 +428,10 @@ export async function suggestConsistentUi(
       ? `Add required providers before rendering: ${missingProviders.join(', ')}.`
       : 'All required providers selected by the plan are already configured.',
     compatibilityStatus === 'review'
-      ? `The project declares Core ${declaredCoreVersion}; contracts were generated from ${catalogCoreVersion}. Review version-specific APIs before implementation.`
+      ? `The project ${installedCoreVersion ? 'has installed' : 'declares'} Core ${evaluatedVersion}; contracts were generated from ${catalogCoreVersion}. Review version-specific APIs before implementation.`
       : compatibilityStatus === 'missing'
         ? 'No @neural-ng/core dependency was declared; install a version aligned with the returned contracts.'
-        : `The declared Core version matches the ${catalogCoreVersion} contract catalog.`,
+        : `The ${installedCoreVersion ? 'installed' : 'declared'} Core version matches the ${catalogCoreVersion} contract catalog.`,
   ];
 
   return {
@@ -445,6 +456,7 @@ export async function suggestConsistentUi(
     compatibility: {
       catalogCoreVersion,
       ...(declaredCoreVersion ? { declaredCoreVersion } : {}),
+      ...(installedCoreVersion ? { installedCoreVersion } : {}),
       status: compatibilityStatus,
       guidance: guidance.at(-1) ?? '',
     },
@@ -771,13 +783,22 @@ async function readProjectSources(root: string): Promise<{
   const sources: SourceRecord[] = [];
   let totalBytes = 0;
   let truncated = false;
+  let visitedEntries = 0;
 
   const visit = async (directory: string): Promise<void> => {
     if (truncated) return;
-    let entries;
+    const entries = [];
     try {
-      entries = await readdir(directory, { withFileTypes: true });
+      const handle = await opendir(directory);
+      for await (const entry of handle) {
+        if (++visitedEntries > MAX_DIRECTORY_ENTRIES) {
+          truncated = true;
+          break;
+        }
+        entries.push(entry);
+      }
     } catch {
+      truncated = true;
       return;
     }
     entries.sort((left, right) => left.name.localeCompare(right.name, 'en'));
@@ -801,8 +822,12 @@ async function readProjectSources(root: string): Promise<{
         continue;
       let content: string;
       try {
-        content = await readFile(absolute, 'utf8');
+        content = await readBoundedFile(
+          absolute,
+          Math.min(MAX_FILE_BYTES, MAX_TOTAL_BYTES - totalBytes),
+        );
       } catch {
+        truncated = true;
         continue;
       }
       const bytes = Buffer.byteLength(content);
@@ -827,19 +852,63 @@ async function readPackageJson(
   diagnostics: NeuralProjectDiagnostic[],
 ): Promise<Record<string, unknown>> {
   try {
-    return JSON.parse(
-      await readFile(join(root, 'package.json'), 'utf8'),
-    ) as Record<string, unknown>;
+    const value: unknown = JSON.parse(
+      await readBoundedFile(join(root, 'package.json'), MAX_FILE_BYTES),
+    );
+    if (!value || typeof value !== 'object' || Array.isArray(value)) {
+      throw new TypeError('package.json must contain an object');
+    }
+    return value as Record<string, unknown>;
   } catch {
     diagnostics.push({
       code: 'NNP000',
       severity: 'warning',
       message:
-        'No readable package.json was found at the MCP process working directory.',
+        'No readable, regular package.json object within the 256 KiB limit was found at the MCP process working directory.',
       suggestion:
         'Start the MCP server with the Angular workspace as its current working directory.',
     });
     return {};
+  }
+}
+
+async function readBoundedFile(path: string, limit: number): Promise<string> {
+  const metadata = await lstat(path);
+  if (
+    !metadata.isFile() ||
+    metadata.isSymbolicLink() ||
+    metadata.size > limit
+  ) {
+    throw new Error('File is not regular or exceeds the inspection limit');
+  }
+  const handle = await open(path, 'r');
+  try {
+    const current = await handle.stat();
+    if (
+      !current.isFile() ||
+      current.size > limit ||
+      current.ino !== metadata.ino ||
+      current.dev !== metadata.dev
+    ) {
+      throw new Error('File changed or exceeds the inspection limit');
+    }
+    // A file may grow after stat: never allocate or read its unbounded contents.
+    const buffer = Buffer.alloc(limit + 1);
+    let total = 0;
+    while (total < buffer.length) {
+      const { bytesRead } = await handle.read(
+        buffer,
+        total,
+        buffer.length - total,
+        null,
+      );
+      if (!bytesRead) break;
+      total += bytesRead;
+    }
+    if (total > limit) throw new Error('File grew past the inspection limit');
+    return buffer.subarray(0, total).toString('utf8');
+  } finally {
+    await handle.close();
   }
 }
 
@@ -927,8 +996,42 @@ function dependencyVersion(
   return undefined;
 }
 
-function normalizeVersionFamily(value: string): string {
-  return /([0-9]+\.[0-9]+\.[0-9]+(?:-[0-9a-z.-]+)?)/i.exec(value)?.[1] ?? value;
+function exactVersion(value = ''): string | undefined {
+  // A range or file/git reference is not evidence of a resolved installation.
+  return /^v?([0-9]+\.[0-9]+\.[0-9]+(?:-[0-9a-z.-]+)?(?:\+[0-9a-z.-]+)?)$/i.exec(
+    value.trim(),
+  )?.[1];
+}
+
+async function installedVersion(
+  root: string,
+  name: '@neural-ng/core' | '@angular/core',
+): Promise<string | undefined> {
+  try {
+    const path = await realpath(
+      join(root, 'node_modules', name, 'package.json'),
+    );
+    const base = await realpath(root);
+    const local = relative(base, path);
+    if (local.startsWith('..') || resolve(base, local) !== path)
+      return undefined;
+    const value: unknown = JSON.parse(
+      await readBoundedFile(path, MAX_FILE_BYTES),
+    );
+    if (
+      !value ||
+      typeof value !== 'object' ||
+      !('name' in value) ||
+      value.name !== name ||
+      !('version' in value)
+    )
+      return undefined;
+    return typeof value.version === 'string'
+      ? exactVersion(value.version)
+      : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 function toComponentUsage(value: MutableUsage): NeuralProjectComponentUsage {

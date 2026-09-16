@@ -13,6 +13,91 @@ afterEach(async () => {
 });
 
 describe('Neural MCP project awareness', () => {
+  it('prefers installed Core metadata over the dependency declaration', async () => {
+    const root = await createWorkspace();
+    const directory = join(root, 'node_modules', '@neural-ng', 'core');
+    await mkdir(directory, { recursive: true });
+    await writeFile(
+      join(directory, 'package.json'),
+      JSON.stringify({ name: '@neural-ng/core', version: '0.1.0-beta.7' }),
+    );
+    const inspection = await inspectNeuralProject(root);
+    expect(inspection.framework.installedCoreVersion).toBe('0.1.0-beta.7');
+    const suggestion = await suggestConsistentUi('Save button', root);
+    expect(suggestion.compatibility).toEqual(
+      expect.objectContaining({
+        declaredCoreVersion: '0.1.0-beta.8',
+        installedCoreVersion: '0.1.0-beta.7',
+        status: 'review',
+      }),
+    );
+  });
+
+  it.each(['null', '[]', 'true'])(
+    'reports an invalid package manifest without crashing: %s',
+    async (manifest) => {
+      const root = await createWorkspace();
+      await writeFile(join(root, 'package.json'), manifest);
+      const inspection = await inspectNeuralProject(root);
+      expect(inspection.diagnostics).toContainEqual(
+        expect.objectContaining({ code: 'NNP000' }),
+      );
+    },
+  );
+
+  it('excludes oversized sources and reports partial inspection', async () => {
+    const root = await createWorkspace();
+    await writeFile(
+      join(root, 'src', 'oversized.ts'),
+      'x'.repeat(256 * 1024 + 1),
+    );
+    const inspection = await inspectNeuralProject(root);
+    expect(inspection.analysis.confidence).toBe('partial');
+  });
+
+  it('applies the read limit to the package manifest as well', async () => {
+    const root = await createWorkspace();
+    await writeFile(
+      join(root, 'package.json'),
+      JSON.stringify({ padding: 'x'.repeat(256 * 1024) }),
+    );
+    const inspection = await inspectNeuralProject(root);
+    expect(inspection.diagnostics).toContainEqual(
+      expect.objectContaining({ code: 'NNP000' }),
+    );
+  });
+
+  it('does not require independently released NeuralNg packages to share a version', async () => {
+    const inspection = await inspectNeuralProject(await createWorkspace());
+    expect(inspection.framework.neuralPackages['@neural-ng/icons']).toBe(
+      '0.1.0-beta.0',
+    );
+    expect(inspection.diagnostics).not.toContainEqual(
+      expect.objectContaining({ code: 'NNP002' }),
+    );
+  });
+
+  it.each([
+    '^0.1.0-beta.8',
+    '~0.1.0-beta.8',
+    '>=0.1.0-beta.8',
+    'file:../core-0.1.0-beta.8',
+    'latest',
+  ])('requires resolved-version review for %s', async (version) => {
+    const root = await createWorkspace();
+    await writeFile(
+      join(root, 'package.json'),
+      JSON.stringify({
+        dependencies: {
+          '@angular/core': '^22.0.0',
+          '@neural-ng/core': version,
+        },
+      }),
+    );
+    const suggestion = await suggestConsistentUi('Save button', root);
+    expect(suggestion.compatibility.status).toBe('review');
+  });
+
   it('detects installed packages, exact imports, appearance, theme and component usage', async () => {
     const root = await createWorkspace();
     const inspection = await inspectNeuralProject(root);

@@ -22,6 +22,7 @@
     "e2e:site:chromium": "playwright test --config=apps/neural-site-e2e/playwright.config.mts --project=chromium",
     "mcp:smoke": "nx run neural-mcp:mcp-smoke",
     "mcp:eval": "nx run neural-mcp:eval",
+    "mcp:consumer:e2e": "nx run neural-mcp:consumer-e2e",
     "docs:contract": "nx run neural-docs:contract-check",
     "docs:examples": "nx run neural-docs:example-check",
     "docs:coverage": "nx run neural-docs:coverage",

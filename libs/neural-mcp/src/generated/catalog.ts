@@ -5,7 +5,7 @@ import type {
   NeuralThemeCatalogEntry,
 } from '../types.js';
 
-export const GENERATED_SOURCE_HASH = "d84b373e6e3642c6f4c32fa16ca8817d24ee8496cfc0e1323af676f54fcfe7b7";
+export const GENERATED_SOURCE_HASH = "f62b60ec5050a4946cf59b2cad99baf00563057b34f1d9181df058f993259de3";
 
 export const GENERATED_COMPONENTS = [
   {
@@ -34055,7 +34055,8 @@ export const GENERATED_COMPONENTS = [
         "type": "boolean",
         "required": false,
         "defaultValue": "false",
-        "transform": "booleanAttribute"
+        "transform": "booleanAttribute",
+        "description": "Slice client-side rows using pageIndex and pageSize. Does not render paging controls. Compose NeuralPaginator from `@neural-ng/core/paginator`, share pageIndex/pageSize, and bind its totalItems to the filtered row count. In server dataMode, supply the current page from the server instead."
       },
       {
         "name": "totalItems",

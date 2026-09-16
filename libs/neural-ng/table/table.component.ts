@@ -955,6 +955,12 @@ export class NeuralTable<T = unknown> {
   readonly footerGroups = input<readonly NeuralTableHeaderGroup[]>([]);
   readonly pageIndex = model(0);
   readonly pageSize = model(10);
+  /**
+   * Slice client-side rows using pageIndex and pageSize. Does not render paging
+   * controls. Compose NeuralPaginator from `@neural-ng/core/paginator`, share
+   * pageIndex/pageSize, and bind its totalItems to the filtered row count.
+   * In server dataMode, supply the current page from the server instead.
+   */
   readonly paginate = input(false, { transform: booleanAttribute });
   readonly totalItems = input<number | null>(null);
   readonly loading = input(false, { transform: booleanAttribute });
