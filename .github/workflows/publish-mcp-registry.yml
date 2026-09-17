@@ -1,0 +1,64 @@
+name: Publish MCP Registry metadata
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: npm-production
+  cancel-in-progress: false
+
+jobs:
+  registry:
+    name: Register an already published MCP package
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+
+      - name: Require matching published npm metadata
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          import { execFileSync } from 'node:child_process';
+          import assert from 'node:assert/strict';
+          const manifest = JSON.parse(readFileSync('libs/neural-mcp/package.json', 'utf8'));
+          const metadata = JSON.parse(readFileSync('libs/neural-mcp/server.json', 'utf8'));
+          assert.equal(metadata.name, manifest.mcpName);
+          assert.equal(metadata.version, manifest.version);
+          assert.ok(metadata.description.length > 0 && metadata.description.length <= 100);
+          assert.equal(metadata.packages.length, 1);
+          assert.equal(metadata.packages[0].identifier, manifest.name);
+          assert.equal(metadata.packages[0].version, manifest.version);
+          const published = JSON.parse(execFileSync('npm', ['view', `${manifest.name}@${manifest.version}`, '--json'], { encoding: 'utf8' }));
+          assert.equal(published.version, manifest.version);
+          assert.equal(published.mcpName, manifest.mcpName);
+          NODE
+
+      - name: Install verified MCP publisher
+        env:
+          MCP_PUBLISHER_VERSION: v1.8.1
+          MCP_PUBLISHER_SHA256: a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc
+        run: |
+          curl --fail --location --silent --show-error \
+            "https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}/mcp-publisher_linux_amd64.tar.gz" \
+            --output mcp-publisher.tar.gz
+          printf '%s  %s\n' "$MCP_PUBLISHER_SHA256" mcp-publisher.tar.gz | sha256sum --check --strict
+          tar -xzf mcp-publisher.tar.gz mcp-publisher
+          chmod +x mcp-publisher
+
+      - name: Validate and publish registry metadata only
+        run: |
+          ./mcp-publisher validate libs/neural-mcp/server.json
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish libs/neural-mcp/server.json
