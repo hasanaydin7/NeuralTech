@@ -18,7 +18,7 @@ Canonical project links:
 - `@neural-ng/icons`: 6,184 `nt nt-*` CSS mask icons.
 - `@neural-ng/editor`: structured, AI-native and collaboration-ready editor.
 - `@neural-ng/theme`: compact recipe compiler, diagnostics and Tailwind v4 bridge.
-- `@neural-ng/mcp-server`: read-only component discovery and theme tooling over stdio.
+- `@neural-ng/mcp-server`: read-only Angular UI contracts, composition, template validation, icon search and project-aware guidance over stdio. Current release: `1.0.0-rc.2` (RC, not final 1.0); Node.js 24.x required.
 
 ## Install
 
@@ -50,16 +50,17 @@ The installed package is the source of truth for its version. Hosted docs may de
 Run the local stdio server:
 
 ```bash
-npx -y @neural-ng/mcp-server
+npx -y @neural-ng/mcp-server@1.0.0-rc.2
 ```
 
-Recommended discovery sequence:
+Recommended workflow (start the MCP process in the Angular project directory):
 
-1. Call `search_components` with the capability or problem statement.
-2. Call `get_component_contract` for the selected result.
-3. Read `neural://components/{id}/llms` for strict generation rules.
-4. Read `neural://components/{id}/readme` only when implementation detail is still needed.
-5. Use `recommend_components` for ambiguous compositions, then verify every returned contract.
+1. Call `inspect_project` to identify installed versions, theme and existing usage.
+2. Call `suggest_consistent_ui` for project-aware composition, or `plan_ui` for a standalone plan. Use `search_components` for targeted discovery.
+3. Call `get_component` and `get_component_examples` for exact imports, inputs, providers and bounded examples. `get_component_contract` remains a compatibility alias.
+4. Use `search_icons` for real icon names and required CSS imports. Read component llms/README resources when additional detail is needed.
+5. Call `validate_usage` on the actual generated template. Pass `imports_json` and `providers_json` as JSON arrays of declaration/provider names, not import maps.
+6. Run Angular strict compilation and browser tests. MCP template validation does not typecheck every expression or prove runtime behavior; TypeScript project metadata extraction is heuristic.
 
 Theme tools create and validate compact recipes. They do not write consumer files or return the complete generated CSS graph through model context.
 

@@ -10,8 +10,12 @@ diffs and compile summaries; they do not write files or execute shell commands.
 
 ## Run
 
+Current published release: `1.0.0-rc.2` (release candidate, not final 1.0).
+Requires Node.js 24.x. Pin the version for reproducible agent environments;
+`@latest` currently resolves to this RC.
+
 ```bash
-npx -y @neural-ng/mcp-server
+npx -y @neural-ng/mcp-server@1.0.0-rc.2
 ```
 
 Generic MCP client configuration:
@@ -19,7 +23,7 @@ Generic MCP client configuration:
 ```json
 {
   "command": "npx",
-  "args": ["-y", "@neural-ng/mcp-server"]
+  "args": ["-y", "@neural-ng/mcp-server@1.0.0-rc.2"]
 }
 ```
 

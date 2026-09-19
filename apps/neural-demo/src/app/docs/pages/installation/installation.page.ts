@@ -17,13 +17,13 @@ export class InstallationPage {
 npm install --save-dev @neural-ng/theme @neural-ng/mcp-server`;
 
   readonly localTarballCommand = `npm install \\
-  D:\\NeuralTech-Packages\\neural-ng-core-0.1.0-beta.0.tgz \\
+  D:\\NeuralTech-Packages\\neural-ng-core-0.1.0-beta.8.tgz \\
   D:\\NeuralTech-Packages\\neural-ng-icons-0.1.0-beta.0.tgz \\
-  D:\\NeuralTech-Packages\\neural-ng-editor-0.1.0-beta.0.tgz
+  D:\\NeuralTech-Packages\\neural-ng-editor-0.1.0-beta.1.tgz
 
 npm install --save-dev \\
-  D:\\NeuralTech-Packages\\neural-ng-theme-0.1.0-beta.0.tgz \\
-  D:\\NeuralTech-Packages\\neural-ng-mcp-server-0.1.0-beta.0.tgz`;
+  D:\\NeuralTech-Packages\\neural-ng-theme-0.1.0-beta.5.tgz \\
+  D:\\NeuralTech-Packages\\neural-ng-mcp-server-1.0.0-rc.2.tgz`;
 
   readonly tailwindInstall = `npm install --save-dev tailwindcss @tailwindcss/postcss postcss`;
 

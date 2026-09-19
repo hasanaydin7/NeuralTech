@@ -74,8 +74,10 @@ the original failed agent output was not repaired or relabeled as successful.
 
 ## Final integration gate
 
-- [ ] CI is green for the final feature-branch commit, including the new
-      installed-consumer browser job. Local successes do not satisfy this gate.
+- [x] Release implementation commit `71a3176` passed all CI jobs, including the
+      installed-consumer browser job ([run 35153952646](https://github.com/hasanaydin7/NeuralTech/actions/runs/35153952646)).
+      Main merge `eea7561` also passed [run 35160061179](https://github.com/hasanaydin7/NeuralTech/actions/runs/35160061179).
+      Future changes must pass their own CI; this evidence covers the RC release.
 
 Project inspection uses heuristic TypeScript import/provider/theme extraction;
 it is not a TypeScript semantic compiler. Template validation does not prove

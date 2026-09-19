@@ -18,27 +18,27 @@
     "prebuild": "npm run theme:build"
   },
   "dependencies": {
-    "@angular/common": "~22.0.4",
-    "@angular/compiler": "~22.0.4",
-    "@angular/core": "~22.0.4",
-    "@angular/forms": "~22.0.4",
-    "@angular/platform-browser": "~22.0.4",
-    "@neural-ng/core": "0.1.0-beta.0",
-    "@neural-ng/editor": "0.1.0-beta.0",
+    "@angular/common": "~22.1.7",
+    "@angular/compiler": "~22.1.7",
+    "@angular/core": "~22.1.7",
+    "@angular/forms": "~22.1.7",
+    "@angular/platform-browser": "~22.1.7",
+    "@neural-ng/core": "0.1.0-beta.8",
+    "@neural-ng/editor": "0.1.0-beta.1",
     "@neural-ng/icons": "0.1.0-beta.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular/build": "~22.0.4",
-    "@angular/cli": "~22.0.4",
-    "@angular/compiler-cli": "~22.0.4",
-    "@neural-ng/mcp-server": "0.1.0-beta.0",
+    "@angular/build": "~22.1.8",
+    "@angular/cli": "~22.1.8",
+    "@angular/compiler-cli": "~22.1.7",
+    "@neural-ng/mcp-server": "1.0.0-rc.2",
     "@playwright/test": "^1.37.0",
     "@tailwindcss/postcss": "^4.3.3",
-    "postcss": "^8.4.5",
+    "postcss": "^8.5.18",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
-    "@neural-ng/theme": "0.1.0-beta.0"
+    "@neural-ng/theme": "0.1.0-beta.5"
   }
 }
