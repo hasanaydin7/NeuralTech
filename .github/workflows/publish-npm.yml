@@ -72,16 +72,8 @@ jobs:
 
       - name: Wait for MCP package availability
         if: steps.mcp-release.outputs.publish == 'true'
-        shell: bash
-        run: |
-          for attempt in {1..12}; do
-            if npm view "@neural-ng/mcp-server@${{ steps.mcp-release.outputs.version }}" version >/dev/null 2>&1; then
-              exit 0
-            fi
-            sleep 5
-          done
-          echo "@neural-ng/mcp-server@${{ steps.mcp-release.outputs.version }} did not become available in time." >&2
-          exit 1
+        timeout-minutes: 11
+        run: node tools/wait-for-npm-package.mjs
 
       - name: Install verified MCP publisher
         if: steps.mcp-release.outputs.publish == 'true'

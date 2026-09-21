@@ -50,6 +50,9 @@ jobs:
       - name: Audit dependency security
         run: npm audit --audit-level=high
 
+      - name: Test npm registry availability polling
+        run: node --test tools/wait-for-npm-package.test.mjs
+
       - name: Lint
         run: npm run lint
 
