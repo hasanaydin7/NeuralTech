@@ -26,6 +26,17 @@ before the first stable release.
 
 ## Unreleased
 
+## Security maintenance - 2026-09-19
+
+- Release MCP `1.0.0-rc.2` with the patched Angular parser dependency floor.
+- Release Editor `0.1.0-beta.1` with Tiptap dependency floors raised to `^3.31.3`.
+- Update workspace Angular/Nx tooling and scoped security overrides; add a CI
+  audit gate for high and critical findings. Five moderate development-only
+  findings remain documented in `SECURITY.md`; the production audit is clean.
+- Align README, landing, agent documentation and starter package versions.
+
+## Previously unreleased changes
+
 ### Added
 
 - Added canonical, read-only `inspect_project` with schema-v2 Angular compiler

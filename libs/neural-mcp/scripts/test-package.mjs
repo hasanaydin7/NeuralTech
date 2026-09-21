@@ -28,7 +28,7 @@ assert(
   'MCP server SDK must remain pinned to the verified v2 release.',
 );
 assert(
-  packageJson.dependencies?.['@angular/compiler'] === '^22.0.0',
+  packageJson.dependencies?.['@angular/compiler'] === '^22.1.7',
   'MCP validation must use the supported Angular 22 template parser.',
 );
 assert(

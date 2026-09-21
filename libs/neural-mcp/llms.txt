@@ -1,9 +1,10 @@
 # @neural-ng/mcp-server
 
-Read-only NeuralNg MCP server for component contracts and compact theme recipes.
+Read-only Angular UI expert for NeuralNg contracts, composition, validation, icons and project-aware themes.
+Current release: 1.0.0-rc.2 (release candidate). Requires Node.js 24.x.
 
 RUN
-npx -y @neural-ng/mcp-server
+npx -y @neural-ng/mcp-server@1.0.0-rc.2
 
 COMPONENT TOOLS
 

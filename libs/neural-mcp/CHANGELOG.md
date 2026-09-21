@@ -2,7 +2,18 @@
 
 All notable changes to `@neural-ng/mcp-server` are documented here.
 
-## 1.0.0-rc.1 - Unreleased
+## 1.0.0-rc.2 - 2026-09-19
+
+### Fixed
+
+- Raised the Angular template parser dependency floor to `^22.1.7`.
+- Updated agent setup documentation and reproducible installation examples.
+- Verified packed-package project inspection, composition, validation, strict
+  Angular compilation and the Chromium user-management acceptance scenario.
+
+This remains a release candidate, not the final 1.0 release.
+
+## 1.0.0-rc.1 - 2026-09-17
 
 ### Added
 
