@@ -172,6 +172,8 @@ If NeuralNg saves you time, you can support its development by starring the
 repository, sharing it, contributing fixes, or sponsoring ongoing work through
 the **Sponsor** button at the top of the repository.
 
+[Sponsor NeuralNg on GitHub](https://github.com/sponsors/hasanaydin7)
+
 ## License
 
 NeuralNg is released under the [MIT License](./LICENSE).
