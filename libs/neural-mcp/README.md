@@ -10,12 +10,12 @@ diffs and compile summaries; they do not write files or execute shell commands.
 
 ## Run
 
-Current published release: `1.0.0-rc.2` (release candidate, not final 1.0).
+Current published release: `1.0.0-rc.3` (release candidate, not final 1.0).
 Requires Node.js 24.x. Pin the version for reproducible agent environments;
 `@latest` currently resolves to this RC.
 
 ```bash
-npx -y @neural-ng/mcp-server@1.0.0-rc.2
+npx -y @neural-ng/mcp-server@1.0.0-rc.3
 ```
 
 Generic MCP client configuration:
@@ -23,7 +23,7 @@ Generic MCP client configuration:
 ```json
 {
   "command": "npx",
-  "args": ["-y", "@neural-ng/mcp-server@1.0.0-rc.2"]
+  "args": ["-y", "@neural-ng/mcp-server@1.0.0-rc.3"]
 }
 ```
 
@@ -32,9 +32,8 @@ fatal diagnostics are written to standard error.
 
 ## Tool output contracts
 
-Development status: the output contracts, native validator arrays and expanded
-inspection confidence fields below are unreleased changes on this branch;
-they are not available in the published `1.0.0-rc.2` package yet.
+Since `1.0.0-rc.3`, tools expose output contracts, the validator accepts native
+arrays and project inspection separates scan coverage from semantic confidence.
 
 All 20 tools advertise an `outputSchema` in `tools/list`. The server validates
 successful `structuredContent` before returning it. Invalid output becomes a

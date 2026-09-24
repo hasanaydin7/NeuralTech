@@ -1,12 +1,12 @@
 # @neural-ng/mcp-server
 
 Read-only Angular UI expert for NeuralNg contracts, composition, validation, icons and project-aware themes.
-Current release: 1.0.0-rc.2 (release candidate). Requires Node.js 24.x.
+Current release: 1.0.0-rc.3 (release candidate). Requires Node.js 24.x.
 
 RUN
-npx -y @neural-ng/mcp-server@1.0.0-rc.2
+npx -y @neural-ng/mcp-server@1.0.0-rc.3
 
-CONTRACT RULES (development changes; not yet published)
+CONTRACT RULES (since 1.0.0-rc.3)
 - validate_usage prefers imports/providers as native string arrays; legacy *_json strings remain accepted.
 - Do not pass import maps. If both representations are provided, their normalized name sets must match.
 - Every tool advertises outputSchema and validates successful structuredContent. Errors use isError and the schema-v1 error envelope.
