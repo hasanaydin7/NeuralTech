@@ -33,7 +33,7 @@
     "@angular/build": "~22.1.8",
     "@angular/cli": "~22.1.8",
     "@angular/compiler-cli": "~22.1.7",
-    "@neural-ng/mcp-server": "1.0.0-rc.2",
+    "@neural-ng/mcp-server": "1.0.0-rc.3",
     "@playwright/test": "^1.37.0",
     "@tailwindcss/postcss": "^4.3.3",
     "postcss": "^8.5.18",

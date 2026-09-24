@@ -26,6 +26,14 @@ before the first stable release.
 
 ## Unreleased
 
+## MCP contract hardening - 2026-09-24
+
+- Release MCP `1.0.0-rc.3` with native validator arrays and backward-compatible
+  JSON inputs, output contracts for all 20 tools and runtime result validation.
+- Separate project scan coverage from heuristic semantic confidence and expose
+  installed-version evidence, contract trust limits and verification actions.
+- Keep the package in release-candidate status; this is not final 1.0.
+
 ## Security maintenance - 2026-09-19
 
 - Release MCP `1.0.0-rc.2` with the patched Angular parser dependency floor.

@@ -18,7 +18,7 @@ Canonical project links:
 - `@neural-ng/icons`: 6,184 `nt nt-*` CSS mask icons.
 - `@neural-ng/editor`: structured, AI-native and collaboration-ready editor.
 - `@neural-ng/theme`: compact recipe compiler, diagnostics and Tailwind v4 bridge.
-- `@neural-ng/mcp-server`: read-only Angular UI contracts, composition, template validation, icon search and project-aware guidance over stdio. Current release: `1.0.0-rc.2` (RC, not final 1.0); Node.js 24.x required.
+- `@neural-ng/mcp-server`: read-only Angular UI contracts, composition, template validation, icon search and project-aware guidance over stdio. Current release: `1.0.0-rc.3` (RC, not final 1.0); Node.js 24.x required.
 
 ## Install
 
@@ -50,7 +50,7 @@ The installed package is the source of truth for its version. Hosted docs may de
 Run the local stdio server:
 
 ```bash
-npx -y @neural-ng/mcp-server@1.0.0-rc.2
+npx -y @neural-ng/mcp-server@1.0.0-rc.3
 ```
 
 Recommended workflow (start the MCP process in the Angular project directory):
