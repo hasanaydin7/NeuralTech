@@ -71,7 +71,7 @@
     "yjs": "^13.6.31"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~22.1.8",
+    "@angular-devkit/build-angular": "~22.2.0",
     "@angular-devkit/core": "~22.1.8",
     "@angular-devkit/schematics": "~22.1.8",
     "@angular/build": "~22.1.8",
