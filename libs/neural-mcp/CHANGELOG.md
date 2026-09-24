@@ -2,6 +2,18 @@
 
 All notable changes to `@neural-ng/mcp-server` are documented here.
 
+## Unreleased
+
+### Added
+
+- Native `imports` and `providers` arrays for `validate_usage`, with legacy
+  JSON-string compatibility and explicit rejection of conflicting inputs.
+- Advertised output schemas and runtime result validation for all 20 tools,
+  with schema snapshots and packaged stdio compatibility checks.
+- Separate project scan coverage and heuristic semantic confidence, plus
+  installed-versus-declared version evidence, contract trust limits and
+  required verification actions.
+
 ## 1.0.0-rc.2 - 2026-09-19
 
 ### Fixed

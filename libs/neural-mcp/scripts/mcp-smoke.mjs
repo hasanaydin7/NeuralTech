@@ -94,6 +94,56 @@ try {
     client.notify('notifications/initialized', {});
 
     const tools = await client.request('tools/list', {});
+    assert(
+      tools?.tools?.every(
+        (tool) =>
+          tool.outputSchema?.type === 'object' &&
+          Object.keys(tool.outputSchema.properties ?? {}).length > 0,
+      ),
+      'Every tool must advertise a non-empty structured output schema.',
+    );
+    const validatorSchema = tools.tools.find(
+      (tool) => tool.name === 'validate_usage',
+    )?.inputSchema;
+    assert(
+      validatorSchema?.properties?.imports?.type === 'array' &&
+        validatorSchema?.properties?.providers?.type === 'array',
+      'Validator must advertise native arrays.',
+    );
+    const typedArguments = {
+      template: '<neural-button icon="trash" ariaLabel="Delete" />',
+      imports: ['NeuralButton'],
+      providers: [],
+    };
+    const typedValidation = await client.request('tools/call', {
+      name: 'validate_usage',
+      arguments: typedArguments,
+    });
+    const legacyValidation = await client.request('tools/call', {
+      name: 'validate_usage',
+      arguments: {
+        template: typedArguments.template,
+        imports_json: JSON.stringify(typedArguments.imports),
+        providers_json: '[]',
+      },
+    });
+    assert(
+      !typedValidation.isError &&
+        JSON.stringify(typedValidation.structuredContent) ===
+          JSON.stringify(legacyValidation.structuredContent),
+      'Typed/legacy validation must return equivalent structured results.',
+    );
+    const conflictingValidation = await client.request('tools/call', {
+      name: 'validate_usage',
+      arguments: { ...typedArguments, imports_json: '[]' },
+    });
+    assert(
+      conflictingValidation.isError &&
+        conflictingValidation.structuredContent?.error?.message?.includes(
+          'conflict',
+        ),
+      'Conflicting representations must fail explicitly.',
+    );
     const toolNames = tools?.tools?.map((tool) => tool.name) ?? [];
     assert(
       toolNames.length === 20,

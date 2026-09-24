@@ -331,7 +331,13 @@ export interface NeuralProjectInspection {
   };
   readonly analysis: {
     readonly engine: '@angular/compiler';
+    /** @deprecated Scan completeness only. Use scanCoverage and semanticConfidence. */
     readonly confidence: 'complete' | 'partial';
+    readonly scanCoverage: 'complete' | 'partial';
+    readonly semanticConfidence: 'heuristic' | 'insufficient';
+    readonly templateStrategy: 'angular-ast';
+    readonly metadataStrategy: 'static-heuristic';
+    readonly compilationVerified: false;
     readonly limitations: readonly string[];
   };
   readonly files: {
@@ -384,7 +390,11 @@ export interface NeuralConsistentUiSuggestion {
   readonly projectContext: {
     readonly workspace: string;
     readonly inspectionSchemaVersion: 2;
+    /** @deprecated Scan completeness only; not semantic correctness. */
     readonly confidence: 'complete' | 'partial';
+    readonly scanCoverage: 'complete' | 'partial';
+    readonly semanticConfidence: 'heuristic' | 'insufficient';
+    readonly compilationVerified: false;
     readonly angularVersion?: string;
     readonly neuralPackages: Readonly<Record<string, string>>;
     readonly importStyle: NeuralProjectInspection['conventions']['importStyle'];
@@ -399,6 +409,13 @@ export interface NeuralConsistentUiSuggestion {
     readonly declaredCoreVersion?: string;
     readonly installedCoreVersion?: string;
     readonly status: 'aligned' | 'review' | 'missing';
+    readonly evidenceSource: 'installed' | 'declared' | 'missing';
+    readonly contractUsability:
+      | 'verified-version'
+      | 'review-required'
+      | 'unavailable';
+    readonly unverifiedAspects: readonly string[];
+    readonly requiredActions: readonly string[];
     readonly guidance: string;
   };
   readonly consistency: {

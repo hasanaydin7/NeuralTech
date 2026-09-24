@@ -13,6 +13,41 @@ afterEach(async () => {
 });
 
 describe('Neural MCP project awareness', () => {
+  it('separates declaration alignment from verified installed version evidence', async () => {
+    const root = await createWorkspace();
+    const declared = await suggestConsistentUi('Save button', root);
+    expect(declared.compatibility.status).toBe('aligned');
+    expect(declared.compatibility.evidenceSource).toBe('declared');
+    expect(declared.compatibility.contractUsability).toBe('review-required');
+    expect(declared.projectContext.semanticConfidence).toBe('heuristic');
+    expect(declared.projectContext.compilationVerified).toBe(false);
+    const directory = join(root, 'node_modules', '@neural-ng', 'core');
+    await mkdir(directory, { recursive: true });
+    await writeFile(
+      join(directory, 'package.json'),
+      JSON.stringify({
+        name: '@neural-ng/core',
+        version: declared.compatibility.catalogCoreVersion,
+      }),
+    );
+    const installed = await suggestConsistentUi('Save button', root);
+    expect(installed.compatibility.evidenceSource).toBe('installed');
+    expect(installed.compatibility.contractUsability).toBe('verified-version');
+    expect(installed.compatibility.unverifiedAspects).toContain(
+      'runtime behavior and complete accessibility compliance',
+    );
+    expect(installed.projectContext.compilationVerified).toBe(false);
+  });
+
+  it('does not claim authoritative APIs when Core is missing', async () => {
+    const root = await createWorkspace();
+    await writeFile(join(root, 'package.json'), '{}');
+    const result = await suggestConsistentUi('Save button', root);
+    expect(result.compatibility.contractUsability).toBe('unavailable');
+    expect(result.compatibility.evidenceSource).toBe('missing');
+    expect(result.compatibility.requiredActions.length).toBeGreaterThan(0);
+  });
+
   it('prefers installed Core metadata over the dependency declaration', async () => {
     const root = await createWorkspace();
     const directory = join(root, 'node_modules', '@neural-ng', 'core');
@@ -53,6 +88,9 @@ describe('Neural MCP project awareness', () => {
     );
     const inspection = await inspectNeuralProject(root);
     expect(inspection.analysis.confidence).toBe('partial');
+    expect(inspection.analysis.scanCoverage).toBe('partial');
+    expect(inspection.analysis.semanticConfidence).toBe('insufficient');
+    expect(inspection.analysis.compilationVerified).toBe(false);
   });
 
   it('applies the read limit to the package manifest as well', async () => {
@@ -96,6 +134,10 @@ describe('Neural MCP project awareness', () => {
     );
     const suggestion = await suggestConsistentUi('Save button', root);
     expect(suggestion.compatibility.status).toBe('review');
+    expect(suggestion.compatibility.contractUsability).toBe('review-required');
+    expect(suggestion.compatibility.unverifiedAspects).toContain(
+      'installed-version-specific selectors, inputs, outputs, imports and providers',
+    );
   });
 
   it('detects installed packages, exact imports, appearance, theme and component usage', async () => {
@@ -109,6 +151,10 @@ describe('Neural MCP project awareness', () => {
     });
     expect(inspection.analysis.engine).toBe('@angular/compiler');
     expect(inspection.analysis.confidence).toBe('complete');
+    expect(inspection.analysis.scanCoverage).toBe('complete');
+    expect(inspection.analysis.semanticConfidence).toBe('heuristic');
+    expect(inspection.analysis.metadataStrategy).toBe('static-heuristic');
+    expect(inspection.analysis.compilationVerified).toBe(false);
     expect(inspection.framework.angularVersion).toBe('^22.0.0');
     expect(inspection.framework.versionSource).toBe('package.json');
     expect(inspection.framework.neuralPackages['@neural-ng/core']).toBe(

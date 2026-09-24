@@ -281,7 +281,18 @@ export async function inspectNeuralProject(
     analysis: {
       engine: '@angular/compiler',
       confidence: sourceResult.truncated ? 'partial' : 'complete',
+      scanCoverage: sourceResult.truncated ? 'partial' : 'complete',
+      semanticConfidence:
+        sourceResult.truncated ||
+        diagnostics.some((item) => item.severity === 'error')
+          ? 'insufficient'
+          : 'heuristic',
+      templateStrategy: 'angular-ast',
+      metadataStrategy: 'static-heuristic',
+      compilationVerified: false,
       limitations: [
+        'Legacy confidence reports scan coverage only, not semantic correctness. Complete scans still use heuristic TypeScript metadata extraction.',
+        'Import/provider/theme detection is not TypeScript symbol resolution; absence of diagnostics does not prove correctness or runtime behavior.',
         'Static inspection does not execute Angular code, providers, or dynamic imports.',
         'Templates without discoverable component metadata use workspace-wide NeuralNg imports as a fallback.',
         'Selector and API diagnostics cover component contracts present in the generated MCP catalog; unknown separate-package selectors remain explicit.',
@@ -404,7 +415,7 @@ export async function suggestConsistentUi(
         : {}),
     }));
   const risks = [
-    ...(project.analysis.confidence === 'partial'
+    ...(project.analysis.scanCoverage === 'partial'
       ? [
           {
             code: 'NNP009',
@@ -426,7 +437,7 @@ export async function suggestConsistentUi(
       : 'Use exact secondary entry points for new component imports.',
     missingProviders.length
       ? `Add required providers before rendering: ${missingProviders.join(', ')}.`
-      : 'All required providers selected by the plan are already configured.',
+      : 'All required provider names selected by the plan were detected heuristically; verify their runtime scope and configuration.',
     compatibilityStatus === 'review'
       ? `The project ${installedCoreVersion ? 'has installed' : 'declares'} Core ${evaluatedVersion}; contracts were generated from ${catalogCoreVersion}. Review version-specific APIs before implementation.`
       : compatibilityStatus === 'missing'
@@ -441,6 +452,9 @@ export async function suggestConsistentUi(
       workspace: project.workspace,
       inspectionSchemaVersion: 2,
       confidence: project.analysis.confidence,
+      scanCoverage: project.analysis.scanCoverage,
+      semanticConfidence: project.analysis.semanticConfidence,
+      compilationVerified: false,
       ...(project.framework.angularVersion
         ? { angularVersion: project.framework.angularVersion }
         : {}),
@@ -458,6 +472,35 @@ export async function suggestConsistentUi(
       ...(declaredCoreVersion ? { declaredCoreVersion } : {}),
       ...(installedCoreVersion ? { installedCoreVersion } : {}),
       status: compatibilityStatus,
+      evidenceSource: installedCoreVersion
+        ? 'installed'
+        : declaredCoreVersion
+          ? 'declared'
+          : 'missing',
+      contractUsability:
+        compatibilityStatus === 'missing'
+          ? 'unavailable'
+          : compatibilityStatus === 'aligned' && installedCoreVersion
+            ? 'verified-version'
+            : 'review-required',
+      unverifiedAspects: [
+        ...(compatibilityStatus === 'aligned' && installedCoreVersion
+          ? []
+          : [
+              'installed-version-specific selectors, inputs, outputs, imports and providers',
+            ]),
+        'TypeScript expression and template context types',
+        'provider runtime scopes, dynamic imports and theme ownership',
+        'runtime behavior and complete accessibility compliance',
+      ],
+      requiredActions: [
+        ...(compatibilityStatus === 'aligned' && installedCoreVersion
+          ? []
+          : [
+              'Resolve the installed Core version and use an MCP catalog matching it before treating API diagnostics as authoritative.',
+            ]),
+        'Compile with Angular strictTemplates and verify runtime interactions in browser tests.',
+      ],
       guidance: guidance.at(-1) ?? '',
     },
     consistency: {
@@ -473,7 +516,7 @@ export async function suggestConsistentUi(
         ...plan.exampleQueries.map(
           (id) => `get_component_examples(component: ${id})`,
         ),
-        'validate_usage(template, imports_json, providers_json)',
+        'validate_usage(template, imports, providers)',
       ],
     },
   };

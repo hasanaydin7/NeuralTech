@@ -7,6 +7,11 @@ import {
 import { planUi } from './composition.js';
 import { searchIcons } from './icons.js';
 import { validateUsage } from './validation.js';
+import { getToolOutputSchema, toolErrorSchema } from './output-schemas.js';
+import {
+  resolveValidationInput,
+  validationInputSchema,
+} from './validation-input.js';
 import { inspectNeuralProject, suggestConsistentUi } from './project.js';
 import { listNeuralResources, readNeuralResource } from './resources.js';
 import {
@@ -143,7 +148,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     openWorldHint: false,
   };
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'search_components',
     {
       title: 'Search NeuralNg components',
@@ -164,7 +170,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
       }),
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'search_icons',
     {
       title: 'Search Neural Icons by UI intent',
@@ -199,7 +206,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     },
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'get_component',
     {
       title: 'Get a structured NeuralNg component API',
@@ -225,7 +233,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     },
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'get_component_examples',
     {
       title: 'Get NeuralNg component examples',
@@ -258,7 +267,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     },
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'get_component_contract',
     {
       title: 'Get a NeuralNg component contract',
@@ -279,7 +289,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     },
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'recommend_components',
     {
       title: 'Recommend NeuralNg components',
@@ -300,7 +311,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
       }),
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'plan_ui',
     {
       title: 'Plan a NeuralNg UI composition',
@@ -359,33 +371,20 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     'table',
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'validate_usage',
     {
       title: 'Validate NeuralNg Angular template usage',
       description:
         'Parse an Angular template with @angular/compiler and validate syntax, NeuralNg elements and attribute directives, bindings, required inputs, literal values, icon-button accessibility, standalone imports, provider requirements, and duplicate Toast channels.',
-      inputSchema: runtime.zod.object({
-        template: runtime.zod.string().min(1),
-        imports_json: runtime.zod.string().optional().default('[]'),
-        providers_json: runtime.zod.string().optional().default('[]'),
-      }),
+      inputSchema: validationInputSchema,
       annotations: commonAnnotations,
     },
     async (input) => {
       try {
         return jsonResult({
-          validation: validateUsage({
-            template: readRequiredString(input, 'template'),
-            imports: readStringArrayJson(
-              readOptionalString(input, 'imports_json', '[]'),
-              'imports_json',
-            ),
-            providers: readStringArrayJson(
-              readOptionalString(input, 'providers_json', '[]'),
-              'providers_json',
-            ),
-          }),
+          validation: validateUsage(resolveValidationInput(input)),
         });
       } catch (error) {
         return errorResult(readErrorMessage(error));
@@ -400,7 +399,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
       return errorResult(readErrorMessage(error));
     }
   };
-  server.registerTool(
+  registerContractTool(
+    server,
     'inspect_project',
     {
       title: 'Inspect the current Angular project',
@@ -411,7 +411,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     },
     inspectProjectHandler,
   );
-  server.registerTool(
+  registerContractTool(
+    server,
     'inspect_neuralng_project',
     {
       title: 'Inspect the current NeuralNg Angular workspace (legacy name)',
@@ -423,7 +424,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     inspectProjectHandler,
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'suggest_consistent_ui',
     {
       title: 'Plan UI consistent with the current project',
@@ -461,7 +463,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     },
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'create_theme_recipe',
     {
       title: 'Create a compact NeuralNg theme recipe',
@@ -491,7 +494,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     },
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'validate_theme_recipe',
     {
       title: 'Validate a NeuralNg theme recipe',
@@ -508,7 +512,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
       ),
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'edit_theme_recipe',
     {
       title: 'Edit a compact NeuralNg theme recipe',
@@ -529,7 +534,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
       ),
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'diff_theme_recipes',
     {
       title: 'Diff compact NeuralNg theme recipes',
@@ -555,7 +561,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     },
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'get_component_theme_contract',
     {
       title: 'Get a component-scoped NeuralNg theme contract',
@@ -585,7 +592,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     },
   );
 
-  server.registerTool(
+  registerContractTool(
+    server,
     'compile_theme_recipe',
     {
       title: 'Compile a NeuralNg theme recipe summary',
@@ -612,7 +620,8 @@ function registerStructureTool(
   name: string,
   kind: 'form' | 'page' | 'table',
 ): void {
-  server.registerTool(
+  registerContractTool(
+    server,
     name,
     {
       title: `Suggest a NeuralNg ${kind} structure`,
@@ -658,6 +667,32 @@ async function loadRuntimeModules(): Promise<RuntimeModules> {
     stdio: stdio as unknown as StdioModuleRuntime,
     zod,
   };
+}
+
+export function registerContractTool(
+  server: McpServerRuntime,
+  name: string,
+  config: Record<string, unknown>,
+  handler: (input: Record<string, unknown>) => Promise<Record<string, unknown>>,
+): void {
+  const outputSchema = getToolOutputSchema(name);
+  server.registerTool(name, { ...config, outputSchema }, async (input) => {
+    try {
+      const result = await handler(input);
+      const schema =
+        result['isError'] === true ? toolErrorSchema : outputSchema;
+      const checked = schema.safeParse(result['structuredContent']);
+      if (!checked.success) {
+        // Never expose a malformed successful result or project data in the error.
+        return errorResult(
+          `Output contract violation for ${name}. Report this MCP server defect.`,
+        );
+      }
+      return result;
+    } catch (error) {
+      return errorResult(readErrorMessage(error));
+    }
+  });
 }
 
 function jsonResult(value: unknown): Record<string, unknown> {
@@ -766,22 +801,6 @@ function readJsonObject(value: string, label: string): Record<string, unknown> {
     );
   }
   if (!isRecord(parsed)) throw new TypeError(`${label} must be a JSON object.`);
-  return parsed;
-}
-
-function readStringArrayJson(value: string, label: string): string[] {
-  let parsed: unknown;
-  try {
-    parsed = JSON.parse(value);
-  } catch {
-    throw new TypeError(`${label} must be valid JSON.`);
-  }
-  if (
-    !Array.isArray(parsed) ||
-    parsed.some((item) => typeof item !== 'string')
-  ) {
-    throw new TypeError(`${label} must be a JSON array of strings.`);
-  }
   return parsed;
 }
 

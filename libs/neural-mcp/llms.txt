@@ -6,6 +6,13 @@ Current release: 1.0.0-rc.2 (release candidate). Requires Node.js 24.x.
 RUN
 npx -y @neural-ng/mcp-server@1.0.0-rc.2
 
+CONTRACT RULES (development changes; not yet published)
+- validate_usage prefers imports/providers as native string arrays; legacy *_json strings remain accepted.
+- Do not pass import maps. If both representations are provided, their normalized name sets must match.
+- Every tool advertises outputSchema and validates successful structuredContent. Errors use isError and the schema-v1 error envelope.
+- scanCoverage is not semantic certainty. semanticConfidence remains heuristic/insufficient and compilationVerified is false.
+- compatibility.contractUsability verifies the installed version only. Follow unverifiedAspects and requiredActions before treating catalog APIs as installed-project facts.
+
 COMPONENT TOOLS
 
 - search_components: search selectors, entry points, README and llms.txt text.
@@ -27,7 +34,7 @@ COMPOSITION TOOLS
 
 CORRECTNESS TOOLS
 
-- validate_usage: parse templates with @angular/compiler and validate Angular syntax, control-flow descendants, custom elements, attribute directives, property/event/two-way bindings, required inputs, exported literal aliases, icon-only button labels, standalone imports, required providers and duplicate Toast channels. The schema-v2 result reports parser identity/version and NNG000 syntax failures. imports_json and providers_json are JSON string arrays.
+- validate_usage: parse templates with @angular/compiler and validate Angular syntax, control-flow descendants, custom elements, attribute directives, property/event/two-way bindings, required inputs, exported literal aliases, icon-only button labels, standalone imports, required providers and duplicate Toast channels. The schema-v2 result reports parser identity/version and NNG000 syntax failures. Prefer imports/providers arrays; *_json fields are legacy JSON-encoded arrays.
 
 PROJECT TOOLS
 
