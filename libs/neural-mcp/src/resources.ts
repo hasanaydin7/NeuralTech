@@ -89,6 +89,7 @@ export function readNeuralResource(
           compatibility: ['get_component_contract'],
         },
         resultSchemas: {
+          toolOutputContracts: 1,
           componentContract: 2,
           iconCatalog: 1,
           iconSearch: 1,
@@ -106,6 +107,7 @@ export function readNeuralResource(
           followsSymbolicLinks: false,
         },
         guarantees: {
+          toolOutputValidation: true,
           deterministic: true,
           readOnly: true,
           networkAccess: false,
@@ -121,6 +123,23 @@ export function readNeuralResource(
             replacement: 'inspect_project',
             removalScheduled: false,
           },
+        },
+        validationInputs: {
+          preferred: ['template', 'imports', 'providers'],
+          legacy: ['imports_json', 'providers_json'],
+          conflictPolicy:
+            'Both forms may be supplied only when their normalized name sets agree.',
+        },
+        inspectionSemantics: {
+          scanCoverage:
+            'complete/partial describes bounded file enumeration only.',
+          semanticConfidence:
+            'heuristic/insufficient; metadata is not TypeScript symbol resolution.',
+          legacyConfidence:
+            'Deprecated alias for scan coverage, not semantic confidence.',
+          compilationVerified: false,
+          contractUsability:
+            'Only an exact installed Core/catalog match verifies the contract version, never runtime correctness.',
         },
       }),
     );

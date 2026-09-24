@@ -30,6 +30,23 @@ Generic MCP client configuration:
 The process uses stdio. Standard output is reserved for MCP JSON-RPC messages;
 fatal diagnostics are written to standard error.
 
+## Tool output contracts
+
+Development status: the output contracts, native validator arrays and expanded
+inspection confidence fields below are unreleased changes on this branch;
+they are not available in the published `1.0.0-rc.2` package yet.
+
+All 20 tools advertise an `outputSchema` in `tools/list`. The server validates
+successful `structuredContent` before returning it. Invalid output becomes a
+tool error rather than a success. Tool-handler errors keep `isError: true` and the
+separate `{error: {schemaVersion: 1, message}}` contract; they are not successful
+instances of the advertised result schema.
+
+Existing result envelopes and schema versions are retained. New fields are
+additive; consumers must tolerate unknown fields. Required-field removals or
+type changes require an explicit result-schema version change. Snapshot tests
+lock the published JSON schema shapes, alongside actual-output and negative tests.
+
 ## Resources
 
 Agent capability discovery:
@@ -206,10 +223,16 @@ application behavior still require Angular compilation and application tests.
 ```json
 {
   "template": "<neural-button icon=\"trash\"></neural-button>",
-  "imports_json": "[\"NeuralButton\"]",
-  "providers_json": "[]"
+  "imports": ["NeuralButton"],
+  "providers": []
 }
 ```
+
+Use native arrays of non-empty declaration/provider names. Legacy `imports_json`
+and `providers_json` JSON strings remain supported; do not pass an import map.
+If both forms are sent, their trimmed, deduplicated name sets must agree;
+conflicting or malformed values return an explicit tool error. Omitted fields
+retain the previous empty-array defaults.
 
 The schema-v2 result includes `valid`, parser identity and version, syntax
 status, diagnostics, exact suggested imports grouped by entry point, and
@@ -234,7 +257,13 @@ The scan is read-only and accepts no filesystem path. It skips dependencies,
 build output, VCS data, tests, declarations, and symlinks. Work is bounded to
 400 source files, 256 KiB per file, 5 MiB in total, and 10,000 directory entries;
 oversized files are rejected before their contents are read. The result explicitly
-reports truncation and analysis confidence. Absolute paths are not returned,
+reports truncation and analysis confidence. `analysis.scanCoverage` reports only
+whether bounded enumeration completed. `analysis.semanticConfidence` is
+`heuristic` or `insufficient`, never a claim of compiler-level correctness.
+Templates use Angular AST parsing, while import/provider/theme metadata uses
+static heuristics. `compilationVerified` is always false. The legacy `confidence`
+field is retained as a deprecated alias for scan completeness, not semantic
+certainty. Absolute paths are not returned,
 and component/icon evidence is capped at 25 relative paths per item while
 `filesOmitted` preserves the omitted count. `angularVersion` and `neuralPackages`
 contain declarations from the workspace `package.json`. Optional
@@ -261,6 +290,14 @@ reuse/add partitions, required-provider deltas, declared Core versus catalog
 version alignment, bounded project risks, and explicit next calls to
 `get_component_examples` and `validate_usage`. It returns focused project context
 rather than duplicating the full `inspect_project` result.
+
+`compatibility.evidenceSource` distinguishes installed metadata from declarations.
+`contractUsability` is `verified-version` only for an exact installed Core/catalog
+match, `review-required` for declarations or mismatches, and `unavailable` when
+Core is missing. `verified-version` verifies only version alignment, not runtime
+correctness. `unverifiedAspects` names the APIs and behaviors that cannot be
+trusted yet; `requiredActions` explains version resolution, strict compilation
+and browser verification. The legacy `status` field is retained for compatibility.
 
 ```json
 {
