@@ -1,10 +1,16 @@
 # @neural-ng/mcp-server
 
 Read-only Angular UI expert for NeuralNg contracts, composition, validation, icons and project-aware themes.
-Current release: 1.0.0-rc.3 (release candidate). Requires Node.js 24.x.
+Current release: 1.0.0-rc.4 (release candidate). Requires Node.js 24.x.
 
 RUN
-npx -y @neural-ng/mcp-server@1.0.0-rc.3
+npx -y @neural-ng/mcp-server@1.0.0-rc.4
+
+RC.4 ADDITIONS
+- Editor contracts are generated from @neural-ng/editor with independent packageName/packageVersion evidence.
+- search_components accepts omitted/empty query for a bounded catalog preview.
+- Theme tools prefer options/recipe/patch/left/right as native objects. Legacy *_json remains accepted; conflicting forms are errors.
+- CSS warnings NNP011/NNP012 are limited heuristics, not cascade or browser verification. :where alone is not an error.
 
 CONTRACT RULES (since 1.0.0-rc.3)
 - validate_usage prefers imports/providers as native string arrays; legacy *_json strings remain accepted.

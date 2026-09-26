@@ -35,8 +35,8 @@ export class McpServerPage {
   readonly componentTools = [
     [
       'search_components',
-      'query: string, limit?: 1..20',
-      'Search selectors, entry points, summaries, README and llms.txt.',
+      'query?: string, limit?: 1..20',
+      'Search Core and Editor contracts; an omitted or empty query browses a bounded list.',
     ],
     [
       'get_component',
@@ -73,7 +73,7 @@ export class McpServerPage {
     ],
     [
       'validate_usage',
-      'template, imports_json?, providers_json?',
+      'template, imports?, providers?',
       'Parse with Angular compiler and check syntax, APIs, providers, imports and accessibility.',
     ],
     [
@@ -98,24 +98,20 @@ export class McpServerPage {
   readonly themeTools = [
     [
       'create_theme_recipe',
-      'name, options_json?',
+      'name, options?',
       'Create and validate a compact sparse recipe.',
     ],
     [
       'validate_theme_recipe',
-      'recipe_json',
+      'recipe',
       'Validate schema, aliases and token ownership.',
     ],
     [
       'edit_theme_recipe',
-      'recipe_json, patch_json',
+      'recipe, patch',
       'Apply bounded dotted set/unset operations and revalidate.',
     ],
-    [
-      'diff_theme_recipes',
-      'left_json, right_json',
-      'Return changed recipe paths only.',
-    ],
+    ['diff_theme_recipes', 'left, right', 'Return changed recipe paths only.'],
     [
       'get_component_theme_contract',
       'component, detail?',
@@ -123,12 +119,12 @@ export class McpServerPage {
     ],
     [
       'compile_theme_recipe',
-      'recipe_json',
+      'recipe',
       'Return diagnostics, summary, sizes and integration instructions.',
     ],
   ] as const;
 
-  readonly installCode = `npm install --save-dev @neural-ng/mcp-server@1.0.0-rc.3`;
+  readonly installCode = `npm install --save-dev @neural-ng/mcp-server@1.0.0-rc.4`;
 
   readonly configCode = `{
   "mcpServers": {
@@ -139,7 +135,7 @@ export class McpServerPage {
   }
 }`;
 
-  readonly trialCode = `npx -y @neural-ng/mcp-server@1.0.0-rc.3`;
+  readonly trialCode = `npx -y @neural-ng/mcp-server@1.0.0-rc.4`;
 
   readonly searchCode = `{
   "query": "localized date range input",
@@ -163,8 +159,8 @@ export class McpServerPage {
   readonly validateCode = JSON.stringify(
     {
       template: '<neural-button icon="trash"></neural-button>',
-      imports_json: JSON.stringify(['NeuralButton']),
-      providers_json: JSON.stringify([]),
+      imports: ['NeuralButton'],
+      providers: [],
     },
     null,
     2,
@@ -173,11 +169,11 @@ export class McpServerPage {
   readonly createThemeCode = JSON.stringify(
     {
       name: 'violet-workspace',
-      options_json: JSON.stringify({
+      options: {
         preset: 'neutral',
         primary: '#7c3aed',
         radius: 'large',
-      }),
+      },
     },
     null,
     2,
@@ -185,17 +181,17 @@ export class McpServerPage {
 
   readonly editThemeCode = JSON.stringify(
     {
-      recipe_json: JSON.stringify({
+      recipe: {
         schemaVersion: 1,
         name: 'violet-workspace',
         extends: 'neutral',
-      }),
-      patch_json: JSON.stringify({
+      },
+      patch: {
         set: {
           'color.primary': '#7c3aed',
           'shape.radius': 'large',
         },
-      }),
+      },
     },
     null,
     2,
@@ -221,7 +217,8 @@ neural://themes/ai-guide`;
 4. Fetch only the examples named by the plan's exampleQueries.
 5. Implement with the returned exact imports, providers and state ownership.
 6. Call validate_usage and resolve every error diagnostic before presenting code.
-7. Never invent an input, output, class slot or compatibility alias.`;
+7. Compile with Angular strictTemplates and verify browser behavior; MCP validation is not a compilation guarantee.
+8. Never invent an input, output, class slot or compatibility alias.`;
 
   readonly resultCode = `${JSON.stringify(
     {

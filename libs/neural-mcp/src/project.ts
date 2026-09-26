@@ -5,6 +5,7 @@ import { getComponentContract, getPackageCatalog } from './catalog.js';
 import { planUi } from './composition.js';
 import { getIconCatalog } from './icons.js';
 import { validateUsage } from './validation.js';
+import { inspectStyleRisks } from './style-risks.js';
 import type {
   NeuralConsistentUiSuggestion,
   NeuralCompositionKind,
@@ -134,6 +135,7 @@ export async function inspectNeuralProject(
     ...symbols,
   ]);
   const templates = extractProjectTemplates(sourceResult.sources);
+  diagnostics.push(...inspectStyleRisks(sourceResult.sources, templates));
   const templateInspections: NeuralProjectTemplateInspection[] = [];
   for (const template of templates) {
     const templateImports = template.imports ?? projectImports;
@@ -183,10 +185,33 @@ export async function inspectNeuralProject(
 
   const neuralPackages = collectNeuralPackages(packageJson);
   const angularVersion = dependencyVersion(packageJson, '@angular/core');
-  const [installedCoreVersion, installedAngularVersion] = await Promise.all([
+  const [
+    installedCoreVersion,
+    installedAngularVersion,
+    installedEditorVersion,
+  ] = await Promise.all([
     installedVersion(root, '@neural-ng/core'),
     installedVersion(root, '@angular/core'),
+    installedVersion(root, '@neural-ng/editor'),
   ]);
+  const editorCatalog = getPackageCatalog().companionPackages?.find(
+    (pkg) => pkg.packageName === '@neural-ng/editor',
+  );
+  const editorVersion =
+    installedEditorVersion ?? neuralPackages['@neural-ng/editor'];
+  if (
+    editorCatalog &&
+    editorVersion &&
+    exactVersion(editorVersion) !== exactVersion(editorCatalog.version)
+  ) {
+    diagnostics.push({
+      code: 'NNP010',
+      severity: 'warning',
+      message: `Editor ${editorVersion} does not exactly match catalog ${editorCatalog.version}.`,
+      suggestion:
+        'Resolve the installed Editor version and verify its APIs independently of Core before treating diagnostics as authoritative.',
+    });
+  }
   const declaredCore = neuralPackages['@neural-ng/core'];
   if (
     (installedCoreVersion || declaredCore) &&
@@ -272,6 +297,7 @@ export async function inspectNeuralProject(
     workspace: `${basename(root)}:${fingerprint(root)}`,
     workspaceConfig,
     framework: {
+      ...(installedEditorVersion ? { installedEditorVersion } : {}),
       angularVersion,
       neuralPackages,
       versionSource: 'package.json',
@@ -291,6 +317,7 @@ export async function inspectNeuralProject(
       metadataStrategy: 'static-heuristic',
       compilationVerified: false,
       limitations: [
+        'CSS checks are heuristic hints for flat external CSS with static selectors and root !important tokens, not computed-style or visual validation. Inline styles, Sass, cascade layers, dynamic classes and runtime theme interactions need browser checks.',
         'Legacy confidence reports scan coverage only, not semantic correctness. Complete scans still use heuristic TypeScript metadata extraction.',
         'Import/provider/theme detection is not TypeScript symbol resolution; absence of diagnostics does not prove correctness or runtime behavior.',
         'Static inspection does not execute Angular code, providers, or dynamic imports.',
@@ -1048,7 +1075,7 @@ function exactVersion(value = ''): string | undefined {
 
 async function installedVersion(
   root: string,
-  name: '@neural-ng/core' | '@angular/core',
+  name: '@neural-ng/core' | '@angular/core' | '@neural-ng/editor',
 ): Promise<string | undefined> {
   try {
     const path = await realpath(

@@ -703,6 +703,12 @@ exports[`tool output contracts > publishes stable JSON schemas for all 20 tools 
             },
             "type": "array",
           },
+          "packageName": {
+            "type": "string",
+          },
+          "packageVersion": {
+            "type": "string",
+          },
           "providerRequirements": {
             "items": {
               "additionalProperties": {},
@@ -1074,6 +1080,12 @@ exports[`tool output contracts > publishes stable JSON schemas for all 20 tools 
               "type": "object",
             },
             "type": "array",
+          },
+          "packageName": {
+            "type": "string",
+          },
+          "packageVersion": {
+            "type": "string",
           },
           "providerRequirements": {
             "items": {
@@ -1602,6 +1614,9 @@ exports[`tool output contracts > publishes stable JSON schemas for all 20 tools 
               "installedCoreVersion": {
                 "type": "string",
               },
+              "installedEditorVersion": {
+                "type": "string",
+              },
               "neuralPackages": {
                 "additionalProperties": {
                   "type": "string",
@@ -2114,6 +2129,9 @@ exports[`tool output contracts > publishes stable JSON schemas for all 20 tools 
                 "type": "string",
               },
               "installedCoreVersion": {
+                "type": "string",
+              },
+              "installedEditorVersion": {
                 "type": "string",
               },
               "neuralPackages": {
@@ -2817,6 +2835,12 @@ exports[`tool output contracts > publishes stable JSON schemas for all 20 tools 
                   },
                   "type": "array",
                 },
+                "packageName": {
+                  "type": "string",
+                },
+                "packageVersion": {
+                  "type": "string",
+                },
                 "providerRequirements": {
                   "items": {
                     "additionalProperties": {},
@@ -3218,6 +3242,12 @@ exports[`tool output contracts > publishes stable JSON schemas for all 20 tools 
                     "type": "object",
                   },
                   "type": "array",
+                },
+                "packageName": {
+                  "type": "string",
+                },
+                "packageVersion": {
+                  "type": "string",
                 },
                 "providerRequirements": {
                   "items": {

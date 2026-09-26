@@ -88,6 +88,8 @@ export interface NeuralComponentContract {
   readonly kind: NeuralCatalogKind;
   readonly selector: string;
   readonly entryPoint: string;
+  readonly packageName?: string;
+  readonly packageVersion?: string;
   readonly status: 'alpha' | 'beta';
   readonly summary: string;
   readonly formContract?: string;
@@ -116,6 +118,7 @@ export interface NeuralPackageCatalog {
   readonly version: string;
   readonly runtimeEntryPoints: readonly string[];
   readonly documentedExports: readonly string[];
+  readonly companionPackages?: readonly NeuralPackageCatalog[];
 }
 
 export interface NeuralThemeCatalogEntry {
@@ -327,6 +330,7 @@ export interface NeuralProjectInspection {
     readonly neuralPackages: Readonly<Record<string, string>>;
     readonly versionSource: 'package.json';
     readonly installedCoreVersion?: string;
+    readonly installedEditorVersion?: string;
     readonly installedAngularVersion?: string;
   };
   readonly analysis: {

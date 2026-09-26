@@ -26,6 +26,16 @@ before the first stable release.
 
 ## Unreleased
 
+## MCP ecosystem and Editor overlay fixes - 2026-09-26
+
+- Release MCP `1.0.0-rc.4` with Editor contracts, native theme objects,
+  bounded empty-query discovery and limited CSS risk diagnostics.
+- Release Editor `0.1.0-beta.2`; align landing and agent documentation.
+
+- Fix Editor command-palette visibility when an application does not provide a
+  global hidden reset: the structural closed-state rule now overrides its grid
+  layout. Add Chromium checks for isolated CSS and Ctrl+K dismissal paths.
+
 ## MCP contract hardening - 2026-09-24
 
 - Release MCP `1.0.0-rc.3` with native validator arrays and backward-compatible

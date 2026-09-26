@@ -51,7 +51,14 @@ export function searchComponents(
   limit = 10,
 ): readonly NeuralSearchMatch[] {
   const normalizedQuery = normalize(query);
-  if (!normalizedQuery) return [];
+  if (!normalizedQuery) {
+    return GENERATED_COMPONENTS.slice(0, clampLimit(limit)).map((document) => ({
+      component: toContract(document),
+      score: 0,
+      reason:
+        'Catalog browse (stable id order); provide a query to rank matches.',
+    }));
+  }
 
   const boundedLimit = clampLimit(limit);
   const tokens = uniqueTokens(normalizedQuery);
@@ -164,6 +171,8 @@ function toContract(
     kind: document.kind,
     selector: document.selector,
     entryPoint: document.entryPoint,
+    packageName: document.packageName,
+    packageVersion: document.packageVersion,
     status: document.status,
     summary: document.summary,
     formContract: document.formContract,
@@ -220,6 +229,8 @@ function scoreDocument(
   if (docs.includes(normalizedQuery)) score += 12;
 
   for (const token of tokens) {
+    // Prefer a directly named component over its similarly documented templates.
+    if (selector === `neural-${token}`) score += 45;
     if (id === token || name === token) score += 45;
     else if (id.includes(token) || name.includes(token)) score += 24;
     if (className.includes(token)) score += 14;

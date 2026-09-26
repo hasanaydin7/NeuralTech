@@ -64,6 +64,8 @@ const componentBase = {
   kind: z.enum(['component', 'directive']),
   selector: s,
   entryPoint: s,
+  packageName: s.optional(),
+  packageVersion: s.optional(),
   status: z.enum(['alpha', 'beta']),
   summary: s,
   formContract: s.optional(),
@@ -194,6 +196,7 @@ const inspection = o({
     neuralPackages: stringMap,
     versionSource: z.literal('package.json'),
     installedCoreVersion: s.optional(),
+    installedEditorVersion: s.optional(),
     installedAngularVersion: s.optional(),
   }),
   analysis: o({

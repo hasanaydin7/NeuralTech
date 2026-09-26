@@ -7,6 +7,11 @@ import {
 import { planUi } from './composition.js';
 import { searchIcons } from './icons.js';
 import { validateUsage } from './validation.js';
+import {
+  themeObjectFields,
+  resolveThemeObject,
+  resolveThemeJson,
+} from './theme-input.js';
 import { getToolOutputSchema, toolErrorSchema } from './output-schemas.js';
 import {
   resolveValidationInput,
@@ -154,9 +159,9 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     {
       title: 'Search NeuralNg components',
       description:
-        'Search the deterministic NeuralNg component catalog, README files, and llms.txt guidance.',
+        'Search the deterministic NeuralNg component catalog, README files, and llms.txt guidance. Omit query or use an empty string to browse a bounded list in stable id order.',
       inputSchema: runtime.zod.object({
-        query: runtime.zod.string().min(1),
+        query: runtime.zod.string().optional().default(''),
         limit: runtime.zod.number().int().min(1).max(20).optional().default(10),
       }),
       annotations: commonAnnotations,
@@ -164,7 +169,7 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     async (input) =>
       jsonResult({
         matches: searchComponents(
-          readRequiredString(input, 'query'),
+          readOptionalString(input, 'query', ''),
           readNumber(input, 'limit', 10),
         ),
       }),
@@ -472,16 +477,13 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
         'Create a deterministic sparse recipe from high-level brand and interface decisions. Pass optional fields as a compact JSON object.',
       inputSchema: runtime.zod.object({
         name: runtime.zod.string().min(1),
-        options_json: runtime.zod.string().optional().default('{}'),
+        ...themeObjectFields('options'),
       }),
       annotations: commonAnnotations,
     },
     async (input) => {
       try {
-        const options = readJsonObject(
-          readOptionalString(input, 'options_json', '{}'),
-          'options_json',
-        );
+        const options = resolveThemeObject(input, 'options', true);
         const recipe = createThemeRecipe({
           name: readRequiredString(input, 'name'),
           ...readThemeCreateOptions(options),
@@ -502,13 +504,13 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
       description:
         'Validate compact recipe JSON against the published schema and the complete Core and Editor token contract.',
       inputSchema: runtime.zod.object({
-        recipe_json: runtime.zod.string().min(2),
+        ...themeObjectFields('recipe'),
       }),
       annotations: commonAnnotations,
     },
     async (input) =>
       jsonResult(
-        await validateThemeRecipeJson(readRequiredString(input, 'recipe_json')),
+        await validateThemeRecipeJson(resolveThemeJson(input, 'recipe')),
       ),
   );
 
@@ -520,16 +522,16 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
       description:
         'Apply a safe sparse patch with dotted set paths and unset paths, then validate the resulting recipe.',
       inputSchema: runtime.zod.object({
-        recipe_json: runtime.zod.string().min(2),
-        patch_json: runtime.zod.string().min(2),
+        ...themeObjectFields('recipe'),
+        ...themeObjectFields('patch'),
       }),
       annotations: commonAnnotations,
     },
     async (input) =>
       jsonResult(
         await editThemeRecipeJson(
-          readRequiredString(input, 'recipe_json'),
-          readRequiredString(input, 'patch_json'),
+          resolveThemeJson(input, 'recipe'),
+          resolveThemeJson(input, 'patch'),
         ),
       ),
   );
@@ -542,8 +544,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
       description:
         'Return only the deterministic dotted paths that differ between two compact recipes.',
       inputSchema: runtime.zod.object({
-        left_json: runtime.zod.string().min(2),
-        right_json: runtime.zod.string().min(2),
+        ...themeObjectFields('left'),
+        ...themeObjectFields('right'),
       }),
       annotations: commonAnnotations,
     },
@@ -551,8 +553,8 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
       try {
         return jsonResult({
           changes: diffThemeRecipeJson(
-            readRequiredString(input, 'left_json'),
-            readRequiredString(input, 'right_json'),
+            resolveThemeJson(input, 'left'),
+            resolveThemeJson(input, 'right'),
           ),
         });
       } catch (error) {
@@ -600,13 +602,13 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
       description:
         'Compile and validate a compact recipe, returning summary, diagnostics, artifact byte sizes and integration instructions without emitting the full token graph.',
       inputSchema: runtime.zod.object({
-        recipe_json: runtime.zod.string().min(2),
+        ...themeObjectFields('recipe'),
       }),
       annotations: commonAnnotations,
     },
     async (input) =>
       jsonResult(
-        await compileThemeRecipeJson(readRequiredString(input, 'recipe_json')),
+        await compileThemeRecipeJson(resolveThemeJson(input, 'recipe')),
       ),
   );
 
@@ -730,6 +732,8 @@ function componentView(
     kind: component.kind,
     selector: component.selector,
     entryPoint: component.entryPoint,
+    packageName: component.packageName,
+    packageVersion: component.packageVersion,
     status: component.status,
     summary: component.summary,
     formContract: component.formContract,
@@ -789,19 +793,6 @@ function readOptionalString(
 ): string {
   const value = input[key];
   return typeof value === 'string' ? value : fallback;
-}
-
-function readJsonObject(value: string, label: string): Record<string, unknown> {
-  let parsed: unknown;
-  try {
-    parsed = JSON.parse(value) as unknown;
-  } catch (error) {
-    throw new SyntaxError(
-      `${label} must be valid JSON: ${error instanceof Error ? error.message : String(error)}`,
-    );
-  }
-  if (!isRecord(parsed)) throw new TypeError(`${label} must be a JSON object.`);
-  return parsed;
 }
 
 function readThemeCreateOptions(

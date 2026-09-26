@@ -130,6 +130,25 @@ export function readNeuralResource(
           conflictPolicy:
             'Both forms may be supplied only when their normalized name sets agree.',
         },
+        themeInputs: {
+          preferred: ['options', 'recipe', 'patch', 'left', 'right'],
+          encoding:
+            'Native JSON objects; legacy *_json strings remain accepted.',
+          conflictPolicy:
+            'Both forms must be structurally equivalent; object key order is ignored.',
+        },
+        catalogPackages: [
+          getPackageCatalog(),
+          ...(getPackageCatalog().companionPackages ?? []),
+        ].map((pkg) => ({ name: pkg.packageName, version: pkg.version })),
+        cssInspection: {
+          strategy: 'bounded-heuristic',
+          diagnostics: [
+            'NNP011: hidden/display risk',
+            'NNP012: root token !important risk',
+          ],
+          computedStylesVerified: false,
+        },
         inspectionSemantics: {
           scanCoverage:
             'complete/partial describes bounded file enumeration only.',
