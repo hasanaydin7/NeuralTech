@@ -136,6 +136,11 @@ function buildComponentLookup(
       document.name,
       document.className,
       document.selector,
+      // Primary element selectors have the same short-name convention across
+      // Core and companion packages. Do not infer aliases from helper directives.
+      ...(/^neural-[a-z0-9-]+$/.test(document.selector)
+        ? [document.selector.slice('neural-'.length)]
+        : []),
     ];
     for (const alias of aliases) {
       const normalizedAlias = normalizeReference(alias);
@@ -148,7 +153,9 @@ function buildComponentLookup(
   for (const document of documents) {
     const aliases = [
       document.entryPoint,
-      document.entryPoint.slice('@neural-ng/core/'.length),
+      ...(document.entryPoint.startsWith('@neural-ng/core/')
+        ? [document.entryPoint.slice('@neural-ng/core/'.length)]
+        : []),
     ];
     for (const alias of aliases) {
       const normalizedAlias = normalizeReference(alias);

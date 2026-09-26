@@ -474,7 +474,7 @@ function buildServer(runtime: RuntimeModules): McpServerRuntime {
     {
       title: 'Create a compact NeuralNg theme recipe',
       description:
-        'Create a deterministic sparse recipe from high-level brand and interface decisions. Pass optional fields as a compact JSON object.',
+        'Create a deterministic sparse recipe from high-level brand and interface decisions. options accepts string fields: description, preset, primary, surface, radius, border, density, elevation, motion, typographyScale. Use options: {} for neutral defaults. Use preset, not extends; extends belongs to the returned recipe.',
       inputSchema: runtime.zod.object({
         name: runtime.zod.string().min(1),
         ...themeObjectFields('options'),
@@ -812,7 +812,9 @@ function readThemeCreateOptions(
   ]);
   for (const key of Object.keys(input)) {
     if (!allowed.has(key))
-      throw new TypeError(`Unknown theme recipe option: ${key}.`);
+      throw new TypeError(
+        `Unknown theme recipe option: ${key}. Allowed options: ${[...allowed].join(', ')}. Use preset, not extends; options: {} selects neutral defaults.`,
+      );
     if (typeof input[key] !== 'string') {
       throw new TypeError(`Theme recipe option ${key} must be a string.`);
     }

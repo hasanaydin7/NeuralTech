@@ -462,11 +462,22 @@ try {
     }
     const editor = await client.request('tools/call', {
       name: 'get_component',
-      arguments: { component: 'neural-editor' },
+      arguments: { component: 'editor' },
     });
     assert(
       editor.structuredContent?.component?.entryPoint === '@neural-ng/editor',
       'Editor must resolve from its own package.',
+    );
+    const badCreateOption = await client.request('tools/call', {
+      name: 'create_theme_recipe',
+      arguments: { name: 'bad-option', options: { extends: 'neutral' } },
+    });
+    assert(
+      badCreateOption.isError &&
+        badCreateOption.structuredContent.error.message.includes(
+          'Use preset, not extends',
+        ),
+      'Invalid create options must explain the correct input contract.',
     );
     const editorUsage = await client.request('tools/call', {
       name: 'validate_usage',

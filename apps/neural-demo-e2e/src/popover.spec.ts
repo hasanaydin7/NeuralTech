@@ -21,20 +21,24 @@ test.describe('Popover', () => {
     await expect(trigger).toHaveAttribute('aria-expanded', 'true');
     await expect(panel).toBeVisible();
 
-    const triggerBox = await trigger.boundingBox();
-    const panelBox = await panel.boundingBox();
-    expect(triggerBox).not.toBeNull();
-    expect(panelBox).not.toBeNull();
-    expect(panelBox?.y ?? 0).toBeGreaterThanOrEqual(
-      (triggerBox?.y ?? 0) + (triggerBox?.height ?? 0),
-    );
-    expect(
-      Math.abs(
-        (triggerBox?.x ?? 0) +
-          (triggerBox?.width ?? 0) -
-          ((panelBox?.x ?? 0) + (panelBox?.width ?? 0)),
-      ),
-    ).toBeLessThanOrEqual(2);
+    // Visibility precedes Floating UI positioning and the enter transition.
+    // Retry the same geometry contract instead of sampling an animation frame.
+    await expect(async () => {
+      const triggerBox = await trigger.boundingBox();
+      const panelBox = await panel.boundingBox();
+      expect(triggerBox).not.toBeNull();
+      expect(panelBox).not.toBeNull();
+      expect(panelBox?.y ?? 0).toBeGreaterThanOrEqual(
+        (triggerBox?.y ?? 0) + (triggerBox?.height ?? 0),
+      );
+      expect(
+        Math.abs(
+          (triggerBox?.x ?? 0) +
+            (triggerBox?.width ?? 0) -
+            ((panelBox?.x ?? 0) + (panelBox?.width ?? 0)),
+        ),
+      ).toBeLessThanOrEqual(2);
+    }).toPass();
 
     await page.keyboard.press('Escape');
     await expect(panel).toBeHidden();

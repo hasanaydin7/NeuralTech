@@ -2,6 +2,15 @@
 
 All notable changes to `@neural-ng/mcp-server` are documented here.
 
+## Unreleased
+
+- Resolve companion element short names such as `editor` consistently with Core,
+  without generating truncated aliases from non-Core package names.
+- Describe accepted theme-creation options and explain `preset` versus recipe
+  `extends` in error recovery.
+- Add project-layout acceptance coverage and record fresh published-rc.4 agent
+  and Chromium evidence, with Appearance explicitly deferred.
+
 ## 1.0.0-rc.4 - 2026-09-26
 
 - Generate Editor API contracts from its own public entry point and sources;
