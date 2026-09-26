@@ -158,7 +158,12 @@ test.describe('NeuralNg Button', () => {
 
     await page.getByRole('button', { name: 'Mist Theme' }).click();
     await expect(showcase).toHaveAttribute('data-neural-theme', 'mist');
-    await expect(standardButton).toHaveCSS('background-color', 'rgb(2, 6, 23)');
+    // Mist defines text-strong as #17252a; the solid neutral button uses it.
+    // The old Glass value could pass before the theme transition settled.
+    await expect(standardButton).toHaveCSS(
+      'background-color',
+      'rgb(23, 37, 42)',
+    );
 
     await page.getByRole('button', { name: 'Futuristic Theme' }).click();
     await expect(showcase).toHaveAttribute('data-neural-theme', 'futuristic');

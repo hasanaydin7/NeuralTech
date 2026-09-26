@@ -427,6 +427,23 @@ npx nx run neural-mcp:catalog-check
 
 ## Quality commands
 
+### V1 support boundary
+
+- Runtime: Node 24, with contracts generated for the Core and Editor versions
+  returned by each tool. An independently versioned Editor remains beta even if
+  the MCP server becomes stable.
+- Project inspection recognizes Angular CLI, Nx and Angular package layouts
+  from the configured working directory. The layout acceptance fixtures exercise
+  metadata/template inspection, not independent builds of all workspace types.
+  Start at the workspace root; nested package resolution, path aliases and
+  cross-application provider scope are not TypeScript compiler resolution.
+- Template validation is not Angular type checking or an accessibility audit.
+  Run strict Angular compilation and browser tests on generated screens.
+- CSS diagnostics are bounded static hints, not computed styles or cascade
+  analysis. Appearance switching is deferred and is not certified by v1.
+- See RC4_ACCEPTANCE.md for actual agent retries, artifact identity and browser
+  checks. Passing one scenario does not guarantee arbitrary generated UI.
+
 ```bash
 npx nx lint neural-mcp
 npx nx test neural-mcp

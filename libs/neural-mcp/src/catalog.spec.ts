@@ -10,6 +10,17 @@ import {
 } from './catalog.js';
 
 describe('Neural MCP catalog', () => {
+  it('resolves companion short names without creating truncated Core aliases', () => {
+    expect(getComponentContract('editor')?.className).toBe('NeuralEditor');
+    expect(getComponentContract('editor')?.entryPoint).toBe(
+      '@neural-ng/editor',
+    );
+    expect(getComponentContract('NeuralEditor')?.selector).toBe(
+      'neural-editor',
+    );
+    expect(getComponentContract('tor')).toBeUndefined();
+    expect(getComponentContract('table')?.className).toBe('NeuralTable');
+  });
   it('validates Editor APIs rather than merely suppressing unknown selectors', () => {
     const valid = validateUsage({
       template:

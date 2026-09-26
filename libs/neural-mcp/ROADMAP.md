@@ -45,7 +45,7 @@ contract-backed planning, exact imports, valid template acceptance, and
 rejection of invented APIs, inaccessible icon actions, and missing providers.
 
 Step 10 completed: see HOST_ACCEPTANCE.md for the historical rc.1 real-agent
-user-management run. RC releases through rc.3 are published; the old host report
+user-management run. RC releases through rc.4 are published; the old host report
 does not certify later artifacts or every UI scenario.
 
 ## Stable release gates after rc.3 feedback
@@ -53,10 +53,15 @@ does not certify later artifacts or every UI scenario.
 - [x] Verify Editor contracts and independent package compatibility in packed-host tests.
 - [x] Verify native theme objects and bounded empty-query discovery over stdio.
 - [x] Document and test CSS hints without promising cascade/runtime correctness.
-- [ ] Run a fresh real coding-agent acceptance against the candidate artifact.
-- [ ] Verify icon rendering, Appearance switching and overlay close behavior in a browser.
-- [ ] Exercise additional project layouts and record explicit support limits.
+- [x] Run a fresh real coding-agent acceptance against published rc.4; see RC4_ACCEPTANCE.md.
+- [x] Verify generated icon rendering, overlay dismissal and focus restoration in Chromium.
+- [x] Exercise Angular CLI, Nx and Angular package inspection layouts and record limits.
+- [x] Verify post-rc.4 lookup/guidance fixes in packed stdio smoke.
 - [ ] Review evidence, pass branch CI, then approve stable 1.0 publication separately.
+
+Appearance switching and a full CSS cascade/runtime analysis engine are deferred
+by product decision. They are not certified by v1 acceptance and must remain
+explicit limitations. Editor command-palette dismissal is covered separately.
 
 ## Beta exit acceptance scenario
 
@@ -76,5 +81,6 @@ For that scenario it must:
 - reject invented NeuralNg APIs; and
 - return a structured, versioned contract.
 
-Do not merge, tag `1.0.0-rc.1`, or publish a stable release until the complete
-scenario passes in the evaluation package and in a real coding-agent host.
+Do not publish stable 1.0 until candidate verification and CI/review pass.
+Historical rc.1 and published rc.4 reports are evidence for their exact artifacts,
+not automatic certification of later changes.
