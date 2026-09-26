@@ -13,12 +13,12 @@ diffs and compile summaries; they do not write files or execute shell commands.
 Since rc.4, the catalog covers Editor, theme tools accept native objects,
 empty queries support bounded browsing and project inspection reports CSS risk hints.
 
-Current published release: `1.0.0-rc.4` (release candidate, not final 1.0).
+Current release: `1.0.0` (stable MCP interface).
 Requires Node.js 24.x. Pin the version for reproducible agent environments;
-`@latest` currently resolves to this RC.
+`@latest` selects the latest published release.
 
 ```bash
-npx -y @neural-ng/mcp-server@1.0.0-rc.4
+npx -y @neural-ng/mcp-server@1.0.0
 ```
 
 Generic MCP client configuration:
@@ -26,7 +26,7 @@ Generic MCP client configuration:
 ```json
 {
   "command": "npx",
-  "args": ["-y", "@neural-ng/mcp-server@1.0.0-rc.4"]
+  "args": ["-y", "@neural-ng/mcp-server@1.0.0"]
 }
 ```
 

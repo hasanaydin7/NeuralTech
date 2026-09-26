@@ -2,7 +2,12 @@
 
 All notable changes to `@neural-ng/mcp-server` are documented here.
 
-## Unreleased
+## 1.0.0 - 2026-09-26
+
+- Release the stable MCP interface following published-rc.4 real-agent acceptance,
+  independent Chromium verification, package protocol checks and CI. Core and
+  Editor remain independently versioned; Appearance and full CSS cascade
+  analysis are explicitly outside the v1 acceptance scope.
 
 - Resolve companion element short names such as `editor` consistently with Core,
   without generating truncated aliases from non-Core package names.

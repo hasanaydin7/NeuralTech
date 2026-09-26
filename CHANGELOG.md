@@ -1,3 +1,11 @@
+## MCP 1.0.0 - 2026-09-26
+
+- Release the stable Angular UI expert MCP interface with verified composition,
+  Core/Editor contracts, native tool arguments and project inspection.
+- Record real-agent and Chromium acceptance; fix Editor short-name discovery and
+  improve theme option guidance. Core, Editor, Theme and Icons versions are unchanged.
+- Appearance switching and full CSS cascade analysis remain outside v1 scope.
+
 ## Mist Theme
 
 - Added the experimental Mist Core and Editor theme with calm translucent surfaces, desaturated teal emphasis, restrained shadows, and light/dark modes.
