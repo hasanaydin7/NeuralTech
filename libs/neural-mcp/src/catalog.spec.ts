@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { validateUsage } from './validation.js';
 import {
   getComponentContract,
   getComponentExamples,
@@ -9,6 +10,52 @@ import {
 } from './catalog.js';
 
 describe('Neural MCP catalog', () => {
+  it('validates Editor APIs rather than merely suppressing unknown selectors', () => {
+    const valid = validateUsage({
+      template:
+        '<neural-editor><ng-template neuralEditorToolbar></ng-template></neural-editor>',
+      imports: ['NeuralEditor', 'NeuralEditorToolbarTemplate'],
+    });
+    expect(
+      valid.diagnostics.some(
+        (item) => item.code === 'NNG001' || item.code === 'NNG002',
+      ),
+    ).toBe(false);
+    const invalid = validateUsage({
+      template: '<neural-editor [inventedApi]="true" />',
+      imports: ['NeuralEditor'],
+    });
+    expect(invalid.diagnostics.some((item) => item.code === 'NNG002')).toBe(
+      true,
+    );
+    expect(
+      validateUsage({ template: '<neural-imaginary />' }).diagnostics.some(
+        (item) => item.code === 'NNG001',
+      ),
+    ).toBe(true);
+  });
+  it('browses a deterministic bounded catalog without a search term', () => {
+    expect(searchComponents('', 3)).toHaveLength(3);
+    expect(searchComponents('   ', 3)).toEqual(searchComponents('', 3));
+    expect(searchComponents('', 999)).toHaveLength(20);
+  });
+  it('generates editor contracts with independent package identity', () => {
+    const editor = getComponentContract('neural-editor');
+    expect(editor).toMatchObject({
+      entryPoint: '@neural-ng/editor',
+      packageName: '@neural-ng/editor',
+      packageVersion: '0.1.0-beta.2',
+    });
+    expect(editor?.inputs.length).toBeGreaterThan(10);
+    expect(
+      editor?.classes.some((item) => item.typeName === 'NeuralEditorClasses'),
+    ).toBe(true);
+    expect(
+      searchComponents('rich text editor', 5).some(
+        (match) => match.component.selector === 'neural-editor',
+      ),
+    ).toBe(true);
+  });
   it('explains that table pagination needs separately rendered controls', () => {
     const paginate = getComponentContract('table')?.inputs.find(
       (input) => input.bindingName === 'paginate',
@@ -27,7 +74,9 @@ describe('Neural MCP catalog', () => {
     );
     expect(
       components.every((component) =>
-        packageCatalog.runtimeEntryPoints.includes(component.entryPoint),
+        [packageCatalog, ...(packageCatalog.companionPackages ?? [])].some(
+          (pkg) => pkg.runtimeEntryPoints.includes(component.entryPoint),
+        ),
       ),
     ).toBe(true);
   });

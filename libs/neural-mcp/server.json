@@ -3,7 +3,7 @@
   "name": "io.github.hasanaydin7/neuralng",
   "title": "NeuralNg Angular UI Expert MCP",
   "description": "Angular UI expert for NeuralNg discovery, composition, validation, icons and project-aware themes.",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.0-rc.4",
   "websiteUrl": "https://neuralng.dev/docs/mcp-server",
   "repository": {
     "url": "https://github.com/hasanaydin7/NeuralTech",
@@ -14,7 +14,7 @@
     {
       "registryType": "npm",
       "identifier": "@neural-ng/mcp-server",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "transport": {
         "type": "stdio"
       }

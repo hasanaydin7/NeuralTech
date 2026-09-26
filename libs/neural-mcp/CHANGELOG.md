@@ -2,6 +2,15 @@
 
 All notable changes to `@neural-ng/mcp-server` are documented here.
 
+## 1.0.0-rc.4 - 2026-09-26
+
+- Generate Editor API contracts from its own public entry point and sources;
+  include independent package identity and project version warnings.
+- Accept native theme objects alongside legacy JSON strings, rejecting conflicts.
+- Browse a bounded component list with omitted or empty search queries.
+- Add heuristic CSS warnings for hidden/display and root token priority risks,
+  explicitly without claiming computed-style or runtime validation.
+
 ## 1.0.0-rc.3 - 2026-09-24
 
 ### Added

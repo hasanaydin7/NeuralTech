@@ -10,12 +10,15 @@ diffs and compile summaries; they do not write files or execute shell commands.
 
 ## Run
 
-Current published release: `1.0.0-rc.3` (release candidate, not final 1.0).
+Since rc.4, the catalog covers Editor, theme tools accept native objects,
+empty queries support bounded browsing and project inspection reports CSS risk hints.
+
+Current published release: `1.0.0-rc.4` (release candidate, not final 1.0).
 Requires Node.js 24.x. Pin the version for reproducible agent environments;
 `@latest` currently resolves to this RC.
 
 ```bash
-npx -y @neural-ng/mcp-server@1.0.0-rc.3
+npx -y @neural-ng/mcp-server@1.0.0-rc.4
 ```
 
 Generic MCP client configuration:
@@ -23,7 +26,7 @@ Generic MCP client configuration:
 ```json
 {
   "command": "npx",
-  "args": ["-y", "@neural-ng/mcp-server@1.0.0-rc.3"]
+  "args": ["-y", "@neural-ng/mcp-server@1.0.0-rc.4"]
 }
 ```
 
@@ -83,6 +86,10 @@ filesystem path and does not read arbitrary files.
 ## Component tools
 
 ### `search_components`
+
+Omit `query`, or pass an empty/whitespace string, to browse at most `limit`
+contracts in stable id order (default 10, maximum 20). Non-empty queries rank
+matches. Browsing is a bounded preview, not an exhaustive paginated listing.
 
 Searches public selectors, entry points, summaries, README files and `llms.txt`
 guidance.
@@ -241,6 +248,24 @@ template invalid; error diagnostics do.
 
 ## Project-aware tools
 
+The generated catalog covers Core and the independently versioned
+`@neural-ng/editor`, including Editor template directives, inputs, outputs and
+typed classes. Contracts expose `packageName` and `packageVersion`;
+`neural://package/exports` retains the Core fields and adds `companionPackages`.
+`installedEditorVersion` reports locally resolved Editor metadata. `NNP010`
+warns when Editor and its catalog version differ; matching Core alone does not
+verify Editor APIs. Unrecognized selectors still produce diagnostics.
+
+CSS checks emit warnings, not runtime verdicts: `NNP011` detects a flat CSS
+display rule matching a statically identifiable element using `hidden`;
+`NNP012` flags root NeuralNg token declarations with `!important`. A later
+protective rule may make an NNP011 warning harmless. The check does not compute
+the cascade, resolve imports or evaluate Sass, inline component styles,
+dynamic selectors or theme interactions. `:where(:root, ...)` alone is not a
+bug. Verify Appearance switching and hidden overlays in a real browser.
+The hint pass is capped at 1000 hidden elements, 2000 rules and 100 warnings;
+`NNP013` reports those limits. This cap is independent of file scan coverage.
+
 ### `inspect_project`
 
 Inspects the Angular workspace used as the MCP process working directory and
@@ -307,6 +332,13 @@ and browser verification. The legacy `status` field is retained for compatibilit
 
 ## Compact theme tools
 
+Native objects are preferred since rc.4. Use
+`options` with creation, `recipe` with validation/compilation, `recipe` plus
+`patch` with editing and `left` plus `right` with diffing. Existing `*_json`
+strings remain supported. Both forms must be structurally equal when supplied
+together (object key order is ignored; array order matters). Missing required
+objects, non-object values and malformed/conflicting legacy inputs are errors.
+
 The theme workflow intentionally operates on the small recipe rather than the
 resolved 1,348-token Core and Editor graph.
 
@@ -315,7 +347,7 @@ resolved 1,348-token Core and Editor graph.
 ```json
 {
   "name": "violet-workspace",
-  "options_json": "{\"preset\":\"glass\",\"primary\":\"#7c3aed\",\"radius\":\"large\"}"
+  "options": { "preset": "glass", "primary": "#7c3aed", "radius": "large" }
 }
 ```
 
@@ -323,7 +355,7 @@ resolved 1,348-token Core and Editor graph.
 
 ```json
 {
-  "recipe_json": "{\"schemaVersion\":1,\"name\":\"violet-workspace\",\"extends\":\"neutral\"}"
+  "recipe": { "schemaVersion": 1, "name": "violet-workspace", "extends": "neutral" }
 }
 ```
 
@@ -335,8 +367,8 @@ and unknown component tokens before compilation.
 
 ```json
 {
-  "recipe_json": "{\"schemaVersion\":1,\"name\":\"violet-workspace\",\"extends\":\"neutral\"}",
-  "patch_json": "{\"set\":{\"color.primary\":\"#7c3aed\",\"shape.radius\":\"large\"}}"
+  "recipe": { "schemaVersion": 1, "name": "violet-workspace", "extends": "neutral" },
+  "patch": { "set": { "color.primary": "#7c3aed", "shape.radius": "large" } }
 }
 ```
 
@@ -381,6 +413,7 @@ npx neural-theme build
 The committed component catalog is generated from:
 
 - `tsconfig.base.json` public `@neural-ng/core/*` paths;
+- the public `@neural-ng/editor` entry point and its independently versioned manifest;
 - each public secondary entry point's `index.ts`;
 - public Angular component and directive selectors;
 - package exports, README files and `llms.txt` files.

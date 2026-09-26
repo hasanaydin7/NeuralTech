@@ -14,11 +14,19 @@ Canonical project links:
 
 ## Package map
 
+MCP rc.4 covers Core and Editor contracts with independent package versions.
+Theme tools accept native options/recipe/patch/left/right objects; validate_usage
+accepts imports/providers arrays. Legacy *_json inputs remain supported, but
+conflicting representations are rejected. Empty component search browses a bounded
+list. All 20 tools validate structured outputs. Project CSS warnings are limited
+heuristics, not computed-style analysis; Angular compilation and browser testing
+remain necessary.
+
 - `@neural-ng/core`: Angular components, services, localization and theme tokens.
 - `@neural-ng/icons`: 6,184 `nt nt-*` CSS mask icons.
 - `@neural-ng/editor`: structured, AI-native and collaboration-ready editor.
 - `@neural-ng/theme`: compact recipe compiler, diagnostics and Tailwind v4 bridge.
-- `@neural-ng/mcp-server`: read-only Angular UI contracts, composition, template validation, icon search and project-aware guidance over stdio. Current release: `1.0.0-rc.3` (RC, not final 1.0); Node.js 24.x required.
+- `@neural-ng/mcp-server`: read-only Angular UI contracts, composition, template validation, icon search and project-aware guidance over stdio. Current release: `1.0.0-rc.4` (RC, not final 1.0); Node.js 24.x required.
 
 ## Install
 
@@ -50,7 +58,7 @@ The installed package is the source of truth for its version. Hosted docs may de
 Run the local stdio server:
 
 ```bash
-npx -y @neural-ng/mcp-server@1.0.0-rc.3
+npx -y @neural-ng/mcp-server@1.0.0-rc.4
 ```
 
 Recommended workflow (start the MCP process in the Angular project directory):
@@ -59,7 +67,7 @@ Recommended workflow (start the MCP process in the Angular project directory):
 2. Call `suggest_consistent_ui` for project-aware composition, or `plan_ui` for a standalone plan. Use `search_components` for targeted discovery.
 3. Call `get_component` and `get_component_examples` for exact imports, inputs, providers and bounded examples. `get_component_contract` remains a compatibility alias.
 4. Use `search_icons` for real icon names and required CSS imports. Read component llms/README resources when additional detail is needed.
-5. Call `validate_usage` on the actual generated template. Pass `imports_json` and `providers_json` as JSON arrays of declaration/provider names, not import maps.
+5. Call `validate_usage` on the actual generated template. Pass `imports` and `providers` as native arrays of declaration/provider names, not import maps. Then compile with Angular strictTemplates and verify browser interactions.
 6. Run Angular strict compilation and browser tests. MCP template validation does not typecheck every expression or prove runtime behavior; TypeScript project metadata extraction is heuristic.
 
 Theme tools create and validate compact recipes. They do not write consumer files or return the complete generated CSS graph through model context.

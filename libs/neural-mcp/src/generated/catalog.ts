@@ -5,7 +5,7 @@ import type {
   NeuralThemeCatalogEntry,
 } from '../types.js';
 
-export const GENERATED_SOURCE_HASH = "f62b60ec5050a4946cf59b2cad99baf00563057b34f1d9181df058f993259de3";
+export const GENERATED_SOURCE_HASH = "bb48da9d8b0255b0d366f304ff20b28e58a2ea272eafc3ab625adf043196ab71";
 
 export const GENERATED_COMPONENTS = [
   {
@@ -16,6 +16,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-accordion",
     "entryPoint": "@neural-ng/core/accordion",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signals-first accessible disclosure groups for Angular 22+. Accordion supports either concise data items or fully projected panel composition.",
     "inputs": [
@@ -249,6 +251,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-accordion-content",
     "entryPoint": "@neural-ng/core/accordion",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signals-first accessible disclosure groups for Angular 22+. Accordion supports either concise data items or fully projected panel composition.",
     "inputs": [
@@ -388,6 +392,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-accordion-header",
     "entryPoint": "@neural-ng/core/accordion",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signals-first accessible disclosure groups for Angular 22+. Accordion supports either concise data items or fully projected panel composition.",
     "inputs": [
@@ -534,6 +540,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-accordion-panel",
     "entryPoint": "@neural-ng/core/accordion",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signals-first accessible disclosure groups for Angular 22+. Accordion supports either concise data items or fully projected panel composition.",
     "inputs": [
@@ -687,6 +695,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-auto-complete",
     "entryPoint": "@neural-ng/core/auto-complete",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Editable, accessible and headless-ready suggestions for Angular 22+.",
     "formContract": "FormValueControl<TValue | string | null>",
@@ -1264,6 +1274,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-avatar",
     "entryPoint": "@neural-ng/core/avatar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Image, initials, icon, and custom fallback identities for Angular 22+.",
     "inputs": [
@@ -1550,6 +1562,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-avatar-group",
     "entryPoint": "@neural-ng/core/avatar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Image, initials, icon, and custom fallback identities for Angular 22+.",
     "inputs": [
@@ -1742,6 +1756,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-badge",
     "entryPoint": "@neural-ng/core/badge",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Compact status, count, and metadata indicators for Angular 22+.",
     "inputs": [
@@ -1929,6 +1945,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralBadge], [neuralBadgeDot]",
     "entryPoint": "@neural-ng/core/badge",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Compact status, count, and metadata indicators for Angular 22+.",
     "inputs": [
@@ -2123,6 +2141,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-breadcrumb",
     "entryPoint": "@neural-ng/core/breadcrumb",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible, Signals-based breadcrumb navigation for Angular 22+.",
     "inputs": [
@@ -2331,6 +2351,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-breadcrumb-item",
     "entryPoint": "@neural-ng/core/breadcrumb",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible, Signals-based breadcrumb navigation for Angular 22+.",
     "inputs": [
@@ -2576,6 +2598,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralBreadcrumbSeparator]",
     "entryPoint": "@neural-ng/core/breadcrumb",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible, Signals-based breadcrumb navigation for Angular 22+.",
     "inputs": [],
@@ -2699,6 +2723,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-button",
     "entryPoint": "@neural-ng/core/button",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "`NeuralButton` is a standalone, signal-based Angular 22+ component available from the `@neural-ng/core/button` secondary entry point. It renders a native `<button>` and supports themed, class-driven, and headless usage.",
     "inputs": [
@@ -3121,6 +3147,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-card",
     "entryPoint": "@neural-ng/core/card",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
     "inputs": [
@@ -3253,6 +3281,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-card-body",
     "entryPoint": "@neural-ng/core/card",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
     "inputs": [
@@ -3349,6 +3379,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-card-footer",
     "entryPoint": "@neural-ng/core/card",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
     "inputs": [
@@ -3445,6 +3477,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-card-header",
     "entryPoint": "@neural-ng/core/card",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Card Beta is a composable, headless-capable content container. It uses native `article`, `header`, and `footer` elements while keeping visual ownership in CSS classes and design tokens.",
     "inputs": [
@@ -3541,6 +3575,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-checkbox",
     "entryPoint": "@neural-ng/core/checkbox",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Checkbox Beta provides native, Signal-first binary and tri-state controls for Angular 22+. The two value contracts are intentionally separate so every Angular Forms adapter sees one stable model type.",
     "formContract": "FormCheckboxControl",
@@ -3811,6 +3847,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-confirm-dialog",
     "entryPoint": "@neural-ng/core/confirm-dialog",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "ConfirmDialog Beta is a service-driven, native top-layer confirmation dialog for Angular 22+.",
     "inputs": [
@@ -4014,6 +4052,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-data-view",
     "entryPoint": "@neural-ng/core/data-view",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "DataView Beta presents an immutable collection as a semantic list or responsive grid with typed templates, controlled Signal state, stable local sorting, remote request state, and Paginator composition.",
     "inputs": [
@@ -4355,6 +4395,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-date-picker",
     "entryPoint": "@neural-ng/core/date-picker",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. The canonical standalone export is `NeuralDatePicker`; `DatePickerComponent` is retained as a deprecated compatibility alias.",
     "formContract": "FormValueControl<NeuralDatePickerValue<TMode, TPickerMode>>",
@@ -5220,12 +5262,5150 @@ export const GENERATED_COMPONENTS = [
   },
   {
     "schemaVersion": 2,
+    "id": "editor-ai-review-template",
+    "name": "EditorAiReviewTemplate",
+    "className": "EditorAiReviewTemplateDirective",
+    "kind": "directive",
+    "selector": "ng-template[neuralEditorAiReview]",
+    "entryPoint": "@neural-ng/editor",
+    "packageName": "@neural-ng/editor",
+    "packageVersion": "0.1.0-beta.2",
+    "status": "beta",
+    "summary": "Status: **Beta**. The canonical standalone export is `NeuralEditor`; `EditorComponent` remains a deprecated compatibility alias.",
+    "inputs": [],
+    "models": [],
+    "outputs": [],
+    "templates": [
+      {
+        "name": "EditorAiReviewTemplate",
+        "className": "EditorAiReviewTemplateDirective",
+        "selector": "ng-template[neuralEditorAiReview]",
+        "contextType": "NeuralEditorAiReviewTemplateContext"
+      },
+      {
+        "name": "EditorBubbleMenuTemplate",
+        "className": "EditorBubbleMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorBubbleMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorFloatingMenuTemplate",
+        "className": "EditorFloatingMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorFloatingMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorLinkPopoverTemplate",
+        "className": "EditorLinkPopoverTemplateDirective",
+        "selector": "ng-template[neuralEditorLinkPopover]",
+        "contextType": "NeuralEditorLinkPopoverTemplateContext"
+      },
+      {
+        "name": "EditorSlashMenuTemplate",
+        "className": "EditorSlashMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorSlashMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorSlashCommand>"
+      },
+      {
+        "name": "EditorMentionMenuTemplate",
+        "className": "EditorMentionMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorMentionMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorMentionItem>"
+      },
+      {
+        "name": "EditorCommandPaletteTemplate",
+        "className": "EditorCommandPaletteTemplateDirective",
+        "selector": "ng-template[neuralEditorCommandPalette]",
+        "contextType": "NeuralEditorCommandPaletteTemplateContext"
+      },
+      {
+        "name": "EditorToolbarTemplate",
+        "className": "EditorToolbarTemplateDirective",
+        "selector": "ng-template[neuralEditorToolbar]",
+        "contextType": "NeuralEditorToolbarTemplateContext"
+      }
+    ],
+    "providers": [],
+    "providerRequirements": [],
+    "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralEditorValue",
+        "type": "NeuralEditorDocument"
+      },
+      {
+        "name": "NeuralEditorExtension",
+        "type": "AnyExtension"
+      },
+      {
+        "name": "NeuralEditorUpdateSource",
+        "type": "'user' | 'command' | 'remote'"
+      },
+      {
+        "name": "NeuralEditorFocusPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralEditorTextAlign",
+        "type": "'left' | 'center' | 'right' | 'justify'"
+      },
+      {
+        "name": "NeuralEditorColorKind",
+        "type": "'text' | 'highlight'"
+      },
+      {
+        "name": "NeuralEditorMenuAppendTo",
+        "type": "'body' | 'editor' | HTMLElement"
+      },
+      {
+        "name": "NeuralEditorSuggestionPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'"
+      },
+      {
+        "name": "NeuralEditorCommandSource",
+        "type": "'slash' | 'command-palette'"
+      },
+      {
+        "name": "NeuralEditorMenuPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'"
+      },
+      {
+        "name": "NeuralEditorNodeIdGenerator",
+        "type": "( context: NeuralEditorNodeIdContext, ) => string"
+      },
+      {
+        "name": "NeuralEditorInsertPosition",
+        "type": "| 'before' | 'after' | 'inside-start' | 'inside-end'"
+      },
+      {
+        "name": "NeuralEditorOperation",
+        "type": "| NeuralEditorInsertOperation | NeuralEditorReplaceOperation | NeuralEditorDeleteOperation | NeuralEditorUpdateNodeOperation"
+      },
+      {
+        "name": "NeuralEditorOperationErrorCode",
+        "type": "| 'not-editable' | 'revision-conflict' | 'empty-batch' | 'invalid-target' | 'target-not-found' | 'invalid-content' | 'schema-violation' | 'protected-attribute' | 'operation-failed'"
+      },
+      {
+        "name": "NeuralEditorOperationValidationResult",
+        "type": "| { readonly valid: true; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly operationCount: number; } | { readonly valid: false; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorOperationApplyResult",
+        "type": "| { readonly status: 'applied'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly operationCount: number; readonly document: NeuralEditorDocument; } | { readonly status: 'conflict'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; } | { readonly status: 'rejected'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorSuggestionProvider",
+        "type": "( query: string, context: NeuralEditorSuggestionProviderContext, ) => readonly T[] | Promise<readonly T[]>"
+      },
+      {
+        "name": "NeuralEditorCommand",
+        "type": "| 'undo' | 'redo' | 'paragraph' | 'heading-1' | 'heading-2' | 'heading-3' | 'bold' | 'italic' | 'underline' | 'strike' | 'code' | 'bullet-list' | 'ordered-list' | 'task-list' | 'blockquote' | 'code-block' | 'align-left' | 'align-center' | 'align-right' | 'align-justify' | 'link' | 'image' | 'horizontal-rule' | 'clear-formatting' | 'insert-table' | 'delete-table' | 'add-row-before' | 'add-row-after' | 'delete-row' | 'add-column-before' | 'add-column-after' | 'delete-column' | 'merge-cells' | 'split-cell' | 'toggle-header-row'"
+      },
+      {
+        "name": "NeuralEditorToolbarItem",
+        "type": "| NeuralEditorToolbarCommandItem | NeuralEditorToolbarColorItem | NeuralEditorToolbarTableItem | NeuralEditorToolbarSeparatorItem"
+      },
+      {
+        "name": "NeuralEditorAiAction",
+        "type": "| 'rewrite' | 'shorten' | 'expand' | 'summarize' | 'fix-grammar' | 'change-tone' | 'translate' | 'custom'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewErrorCode",
+        "type": "| 'invalid-proposal' | 'revision-conflict' | 'validation-failed' | 'editor-not-ready'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewResult",
+        "type": "| { readonly status: 'previewed'; readonly proposal: NeuralEditorAiProposal; readonly operationCount: number; } | { readonly status: 'conflict' | 'rejected'; readonly proposal: NeuralEditorAiProposal; readonly error: NeuralEditorAiPreviewError; }"
+      },
+      {
+        "name": "NeuralEditorAiProposalRejectionReason",
+        "type": "| 'user' | 'replaced' | 'editor-state' | 'validation' | 'apply-rejected'"
+      },
+      {
+        "name": "NeuralEditorAiConflictReason",
+        "type": "| 'revision-conflict' | 'document-changed'"
+      },
+      {
+        "name": "NeuralEditorCollaborationStatus",
+        "type": "| 'disabled' | 'connecting' | 'connected' | 'synced' | 'disconnected' | 'error'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangesMode",
+        "type": "'off' | 'suggesting'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangeKind",
+        "type": "'insertion' | 'deletion'"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Install",
+        "language": "bash",
+        "code": "npm install @neural-ng/editor"
+      },
+      {
+        "title": "Install",
+        "language": "ts",
+        "code": "import {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});"
+      },
+      {
+        "title": "Install",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />"
+      },
+      {
+        "title": "Theme",
+        "language": "css",
+        "code": "@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "export interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "async handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "const request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "readonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Controller",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />"
+      },
+      {
+        "title": "Controller",
+        "language": "ts",
+        "code": "editor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });"
+      },
+      {
+        "title": "Toolbar",
+        "language": "ts",
+        "code": "readonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "ts",
+        "code": "const uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});"
+      },
+      {
+        "title": "Context menus and positioning",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "ts",
+        "code": "import { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "html",
+        "code": "<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />"
+      },
+      {
+        "title": "Version snapshots",
+        "language": "ts",
+        "code": "interface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}"
+      },
+      {
+        "title": "Collaboration controller methods",
+        "language": "ts",
+        "code": "controller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralEditorClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "toolbar",
+            "type": "string",
+            "description": "Classes applied to the toolbar element."
+          },
+          {
+            "name": "toolbarButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar button element."
+          },
+          {
+            "name": "toolbarButtonIcon",
+            "type": "string",
+            "description": "Classes applied to the toolbar button icon element."
+          },
+          {
+            "name": "toolbarSeparator",
+            "type": "string",
+            "description": "Classes applied to the toolbar separator element."
+          },
+          {
+            "name": "toolbarMenu",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu element."
+          },
+          {
+            "name": "toolbarMenuButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu button element."
+          },
+          {
+            "name": "toolbarMenuPanel",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu panel element."
+          },
+          {
+            "name": "toolbarMenuAction",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu action element."
+          },
+          {
+            "name": "toolbarColorOption",
+            "type": "string",
+            "description": "Classes applied to the toolbar color option element."
+          },
+          {
+            "name": "toolbarColorSwatch",
+            "type": "string",
+            "description": "Classes applied to the toolbar color swatch element."
+          },
+          {
+            "name": "bubbleMenu",
+            "type": "string",
+            "description": "Classes applied to the bubble menu element."
+          },
+          {
+            "name": "bubbleMenuButton",
+            "type": "string",
+            "description": "Classes applied to the bubble menu button element."
+          },
+          {
+            "name": "floatingMenu",
+            "type": "string",
+            "description": "Classes applied to the floating menu element."
+          },
+          {
+            "name": "floatingMenuButton",
+            "type": "string",
+            "description": "Classes applied to the floating menu button element."
+          },
+          {
+            "name": "linkPopover",
+            "type": "string",
+            "description": "Classes applied to the link popover element."
+          },
+          {
+            "name": "linkPopoverInput",
+            "type": "string",
+            "description": "Classes applied to the link popover input element."
+          },
+          {
+            "name": "linkPopoverAction",
+            "type": "string",
+            "description": "Classes applied to the link popover action element."
+          },
+          {
+            "name": "slashMenu",
+            "type": "string",
+            "description": "Classes applied to the slash menu element."
+          },
+          {
+            "name": "mentionMenu",
+            "type": "string",
+            "description": "Classes applied to the mention menu element."
+          },
+          {
+            "name": "suggestionList",
+            "type": "string",
+            "description": "Classes applied to the suggestion list element."
+          },
+          {
+            "name": "suggestionItem",
+            "type": "string",
+            "description": "Classes applied to the suggestion item element."
+          },
+          {
+            "name": "suggestionItemIcon",
+            "type": "string",
+            "description": "Classes applied to the suggestion item icon element."
+          },
+          {
+            "name": "suggestionItemContent",
+            "type": "string",
+            "description": "Classes applied to the suggestion item content element."
+          },
+          {
+            "name": "suggestionItemLabel",
+            "type": "string",
+            "description": "Classes applied to the suggestion item label element."
+          },
+          {
+            "name": "suggestionItemDescription",
+            "type": "string",
+            "description": "Classes applied to the suggestion item description element."
+          },
+          {
+            "name": "suggestionState",
+            "type": "string",
+            "description": "Classes applied to the suggestion state element."
+          },
+          {
+            "name": "commandPalette",
+            "type": "string",
+            "description": "Classes applied to the command palette element."
+          },
+          {
+            "name": "commandPaletteBackdrop",
+            "type": "string",
+            "description": "Classes applied to the command palette backdrop element."
+          },
+          {
+            "name": "commandPalettePanel",
+            "type": "string",
+            "description": "Classes applied to the command palette panel element."
+          },
+          {
+            "name": "commandPaletteInput",
+            "type": "string",
+            "description": "Classes applied to the command palette input element."
+          },
+          {
+            "name": "commandPaletteList",
+            "type": "string",
+            "description": "Classes applied to the command palette list element."
+          },
+          {
+            "name": "commandPaletteItem",
+            "type": "string",
+            "description": "Classes applied to the command palette item element."
+          },
+          {
+            "name": "aiReview",
+            "type": "string",
+            "description": "Classes applied to the ai review element."
+          },
+          {
+            "name": "aiReviewSummary",
+            "type": "string",
+            "description": "Classes applied to the ai review summary element."
+          },
+          {
+            "name": "aiReviewProgress",
+            "type": "string",
+            "description": "Classes applied to the ai review progress element."
+          },
+          {
+            "name": "aiReviewActions",
+            "type": "string",
+            "description": "Classes applied to the ai review actions element."
+          },
+          {
+            "name": "aiReviewButton",
+            "type": "string",
+            "description": "Classes applied to the ai review button element."
+          },
+          {
+            "name": "collaborationBar",
+            "type": "string",
+            "description": "Classes applied to the collaboration bar element."
+          },
+          {
+            "name": "collaborationStatus",
+            "type": "string",
+            "description": "Classes applied to the collaboration status element."
+          },
+          {
+            "name": "presenceList",
+            "type": "string",
+            "description": "Classes applied to the presence list element."
+          },
+          {
+            "name": "presenceItem",
+            "type": "string",
+            "description": "Classes applied to the presence item element."
+          },
+          {
+            "name": "collaborationPanel",
+            "type": "string",
+            "description": "Classes applied to the collaboration panel element."
+          },
+          {
+            "name": "collaborationSection",
+            "type": "string",
+            "description": "Classes applied to the collaboration section element."
+          },
+          {
+            "name": "collaborationSectionTitle",
+            "type": "string",
+            "description": "Classes applied to the collaboration section title element."
+          },
+          {
+            "name": "collaborationInput",
+            "type": "string",
+            "description": "Classes applied to the collaboration input element."
+          },
+          {
+            "name": "collaborationButton",
+            "type": "string",
+            "description": "Classes applied to the collaboration button element."
+          },
+          {
+            "name": "commentThread",
+            "type": "string",
+            "description": "Classes applied to the comment thread element."
+          },
+          {
+            "name": "commentMessage",
+            "type": "string",
+            "description": "Classes applied to the comment message element."
+          },
+          {
+            "name": "trackedChange",
+            "type": "string",
+            "description": "Classes applied to the tracked change element."
+          },
+          {
+            "name": "snapshotItem",
+            "type": "string",
+            "description": "Classes applied to the snapshot item element."
+          },
+          {
+            "name": "surface",
+            "type": "string",
+            "description": "Classes applied to the surface element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "characterCount",
+            "type": "string",
+            "description": "Classes applied to the character count element."
+          },
+          {
+            "name": "wordCount",
+            "type": "string",
+            "description": "Classes applied to the word count element."
+          }
+        ],
+        "sourcePath": "libs/neural-editor/editor.types.ts"
+      }
+    ],
+    "relatedComponents": [
+      "editor-bubble-menu-template",
+      "editor-floating-menu-template",
+      "editor-link-popover-template",
+      "editor-slash-menu-template",
+      "editor-mention-menu-template",
+      "editor-command-palette-template",
+      "editor-toolbar-template",
+      "neural-editor"
+    ],
+    "resources": {
+      "contract": "neural://components/editor-ai-review-template/contract",
+      "readme": "neural://components/editor-ai-review-template/readme",
+      "llms": "neural://components/editor-ai-review-template/llms"
+    },
+    "sourceDirectory": "libs/neural-editor",
+    "readme": "# Editor\n\nStatus: **Beta**. The canonical standalone export is `NeuralEditor`;\n`EditorComponent` remains a deprecated compatibility alias.\n\nSignal-first structured rich-text editing for Angular 22+. NeuralNg Editor uses\nTiptap 3 and ProseMirror internally, while its canonical form value remains a\n`NeuralEditorDocument` JSON tree. HTML is derived output, never the model.\n\n## Install\n\nInstall the complete Editor runtime with one command:\n\n```bash\nnpm install @neural-ng/editor\n```\n\nThe package installs Tiptap, ProseMirror, Floating UI, Yjs, and the required\nNeuralNg core runtime. Applications do not install those Editor internals\nindividually. A realtime collaboration transport such as `y-websocket` or a\nHocuspocus provider remains application-owned and is only needed when that\nfeature is enabled.\n\n```ts\nimport {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});\n```\n\n```html\n<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />\n```\n\nEditor implements `FormValueControl<NeuralEditorDocument>`. Use the same\ncomponent with `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`.\nDo not implement a second `ControlValueAccessor`.\n\n`EditorComponent` remains a deprecated compatibility alias. New code should\nimport the canonical `NeuralEditor` runtime.\n\n## Public API contract\n\nThe standalone package contract is documented in [`API_FREEZE.md`](./API_FREEZE.md).\nImport only from `@neural-ng/editor`; deep imports and internal rendering\ncomponents are unsupported. The freeze document is the source of truth for\ncomponent inputs/outputs, controller methods, template contexts, class slots,\nutilities, and package asset entry points.\n\n### Theme\n\nImport the matching Core and Editor token files:\n\n```css\n@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';\n```\n\nExperimental presets follow the same two-file rule: import the matching Core\npreset first, then the Editor preset. The optional Tailwind bridge remains\n`@neural-ng/core/themes/tailwind.css`.\n\n## Ownership boundary\n\nEditor owns structured editing, toolbar commands, selection state, undo/redo,\nJSON output, HTML/text derivation, accessibility, and Angular Forms\nintegration. It does not save documents, call HTTP APIs, upload image files,\ninvoke AI models, connect collaboration providers, or sanitize backend output. Those\nresponsibilities belong to application services or explicit extensions.\n\n## Canonical value\n\nThe model is never HTML, Markdown, or a format-dependent union:\n\n```ts\nexport interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}\n```\n\nThe current Beta schema and interaction layer includes:\n\n- paragraph and heading alignment: `left`, `center`, `right`, `justify`\n- text color through a `textStyle` mark\n- multicolor highlight marks\n- `taskList` and `taskItem` nodes\n- `table`, `tableRow`, `tableHeader`, and `tableCell` nodes\n- `image` nodes containing persistent URLs, alt text, title, width, and height\n- BubbleMenu, FloatingMenu, and a selection-aware link popover\n- slash commands, async mentions, and a searchable command palette\n\nPersist a schema version beside long-lived documents:\n\n```ts\nconst stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;\n```\n\nUse the serializers for external representations:\n\n```ts\nconst html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());\n```\n\nThe default serializers include the current Beta schema, including image and\nmention nodes. Pass the matching custom extension set when converting documents\nwith additional nodes or marks.\n\n## Stable node IDs and structured operations\n\nThe Beta contract enables Tiptap `UniqueID` by default. Identified nodes receive a\n`neuralId` attribute in canonical JSON. The default list covers block nodes,\nlist items, tables and cells, images, and horizontal rules. Configure this at\ninitialization time:\n\n```html\n<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />\n```\n\nUse `nodeIdGenerator` only when the application requires a custom ID strategy.\nThe generator must return a non-empty, globally unique, stable string. Disable\nthe feature with `[enableNodeIds]=\"false\"` only when the document will never use\nstructured operations, AI review, comments, or collaboration adapters.\n\nThe controller exposes a document-only revision signal and node lookup:\n\n```ts\nconst revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);\n```\n\nBuild and apply atomic, schema-checked operation batches through the controller:\n\n```ts\nconst batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}\n```\n\nSupported operations are `insert`, `replace`, `delete`, and `update-node`.\nPrefer `nodeId` targets. Numeric `from`/`to` targets are accepted for captured\nselection ranges and are mapped across earlier operations in the same batch.\nA batch is built fully before dispatch, so one invalid operation rejects the\nwhole batch without partial document changes.\n\n`baseRevision` prevents stale edits. If the document changes after a batch is\ncreated, `applyOperations()` returns `status: 'conflict'` and emits\n`operationConflict`. Successful and rejected batches emit `operationsApplied`\nand `operationsRejected` respectively.\n\nNode IDs are protected identity. Inserted content cannot choose IDs;\n`UniqueID` assigns them. A compatible single-node replacement preserves the\ntarget ID by default. `update-node` cannot change the configured ID attribute.\n\nInternal IDs are excluded from HTML by default:\n\n```ts\nconst publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);\n```\n\nPersist canonical JSON with IDs. Do not use generated HTML as the source of\ntruth for operations.\n\n## AI requests and reviewable proposals\n\nEditor remains provider-neutral. It never calls OpenAI, Anthropic, or any other\nmodel directly. Request work through the controller and handle the event in\napplication code:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />\n```\n\n```ts\nasync handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}\n```\n\n`requestAi()` captures the canonical JSON document, document revision, current\nselection range, selected text, selected JSON content, and stable node IDs. The\napplication service returns a `NeuralEditorAiProposal` containing only the\nstructured operations from the current Beta contract.\n\nPreview is non-destructive. Insertions, deletions, replacements, and attribute\nupdates are rendered as ProseMirror decorations while `[(value)]` remains\nunchanged. Only `acceptAiProposal()` applies the complete operation batch in one\ntransaction. `rejectAiProposal()` removes the preview without touching the\nmodel.\n\n```ts\nconst request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});\n```\n\nA proposal is rejected as a conflict when its `baseRevision` no longer matches\nthe editor revision. Editing the document while a preview is active also clears\nthe preview and emits `aiOperationConflict`. Do not silently overwrite the base\nrevision or force stale operations onto new content.\n\nThe default review bar appends to `menuAppendTo` and supports previous/next,\naccept, reject, Escape, mobile layout, themes, and `unstyled`. Replace it with a\ntyped template when needed:\n\n```html\n<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>\n```\n\n`controller.aiReview()` exposes the active review state and\n`controller.aiRequestPending()` reports unresolved requests. The Beta contract keeps a\nsingle active proposal; `getActiveAiProposals()` therefore returns zero or one\nproposal while preserving room for a future multi-proposal adapter.\n\n## Slash commands, mentions, and command palette\n\nType `/` in a paragraph to open the default slash menu. The default commands\ninsert headings, lists, tasks, quotes, code blocks, tables, images, and dividers.\nReplace the defaults with `slashCommands`, or provide `slashCommandProvider` for\nasync or remote filtering. Providers receive an `AbortSignal`; stop stale work\nwhen it is aborted.\n\nMentions are enabled only when `mentionProvider` is present:\n\n```ts\nreadonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });\n```\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />\n```\n\nThe canonical mention node persists only stable identity and display data:\n\n```ts\n{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}\n```\n\nProvider-only `metadata` is not written to the document. Keep authorization,\nprofiles, and mutable user data in application services.\n\nPress `Ctrl+K` or `Cmd+K`, or call `controller.openCommandPalette()`, to open the\nsearchable command palette. Set `commandPaletteItems` to replace its defaults.\nSlash, mention, command-palette, bubble, floating, link, and toolbar overlays are\ncoordinated so only the relevant layer remains open. Suggestion menus and the\npalette use the same `menuAppendTo` target; `body` remains the default to avoid\noverflow clipping.\n\nProject complete menu UIs when needed:\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>\n```\n\nUse the supplied context callbacks. Do not query the editor DOM, manually\nposition suggestion panels, or insert mention HTML yourself.\n\n## Controller\n\n`editorReady` exposes a stable NeuralNg controller instead of the raw Tiptap\ninstance:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />\n```\n\n```ts\neditor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });\n```\n\nTable commands are contextual. Row, column, cell, and delete commands become\navailable when the current selection is inside a table. Use controller commands\ninstead of mutating JSON nodes or editing the `contenteditable` DOM.\n\n## Toolbar\n\nToolbar palettes and table actions use NeuralNg Popover rather than native `details` menus. Popover renders through the browser top layer, so panels are not clipped by editor or card overflow. Opening one toolbar popover closes the previously open auto popover; no `appendTo=\"body\"` option or DOM reparenting is needed.\n\nThe default toolbar contains:\n\n- undo and redo\n- paragraph and H1-H3\n- bold, italic, underline, strike, and inline code\n- text-color and highlight palettes\n- left, center, right, and justified alignment\n- bullet, ordered, and task lists\n- blockquote and code block\n- link editing\n- table insertion and contextual table commands\n- horizontal rule and clear formatting\n\nCustomize the palettes without changing the document type:\n\n```ts\nreadonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;\n```\n\n```html\n<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />\n```\n\nReplace the toolbar model with `toolbarItems`, or project a complete toolbar:\n\n```html\n<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>\n```\n\n## Images and FileUpload\n\nThe toolbar and floating menu emit `imageInsertRequest`; Editor never uploads a\n`File`. Application code selects and validates the file with FileUpload, sends\nit to a media service, then inserts only the persistent URL:\n\n```html\n<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />\n```\n\n```ts\nconst uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});\n```\n\nBase64 sources are rejected by the controller and default Image extension.\nEnable `allowBase64Images` only for a deliberate application requirement. Do\nnot persist `File`, blob URLs, or temporary object URLs in editor JSON.\n\n## Context menus and positioning\n\nBubble, floating, and link menus use Tiptap's Floating UI-based extensions.\n`menuAppendTo` defaults to `body`, which avoids clipping by editor, card, dialog,\nor overflow containers. Use `menuAppendTo=\"editor\"` only when the menu must stay\ninside the editor stacking context, or bind a specific `HTMLElement`.\n\n```html\n<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>\n```\n\nUse `ng-template[neuralEditorLinkPopover]` for a custom link form. Default menus\nare keyboard reachable, expose toolbar/dialog roles, stay within the viewport,\nand switch to compact horizontally scrollable layouts on narrow screens.\n\n## Extensions\n\n`extensions` appends Tiptap extensions. Top-level extension names are\nlast-write-wins. To replace the default schema, set\n`includeDefaultExtensions=\"false\"` and provide the complete extension set.\nExtension configuration is initialization-time in this Beta release.\n\n## Security and persistence\n\nJSON is not a security boundary. Validate the document schema, URLs, colors,\ntable attributes, pasted content, and custom node attributes on the server.\nSanitize generated HTML for its final rendering context. Do not trust content\nsolely because the editor accepted it.\n\n## Styling\n\nUse the neutral, glass, mist, or futuristic themes, or set `unstyled` locally or\nglobally. Structural `*-root` hooks remain while visual `*-base` classes are\nremoved. `NeuralEditorClasses` includes typed slots for toolbar menus, palette\noptions, slash and mention suggestions, the command palette, BubbleMenu,\nFloatingMenu, link popover controls, the editing surface, content, footer, and\ncounters.\n\n## Collaboration and review\n\nEditor collaboration is provider-neutral. The component receives an initialized\nYjs document and, optionally, a provider that exposes awareness and connection\nevents. NeuralNg does not create rooms, authenticate users, or persist Yjs\nupdates.\n\n```ts\nimport { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);\n```\n\n```html\n<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />\n```\n\nWhen `collaboration` is present:\n\n- The Yjs document is the live collaborative source of truth.\n- Editor waits for provider sync by default before mounting.\n- StarterKit undo/redo is disabled because Collaboration owns history.\n- External `value` writes are not pushed into the collaborative document.\n- `editorUpdate.source` is `remote` for collaboration-origin transactions.\n- Presence is read from the provider awareness `user` field and is never\n  persisted as document content.\n- `disconnectOnDestroy` is opt-in because provider lifetime normally belongs to\n  the application.\n\n### Provider contract\n\nThe optional provider is structural, so Hocuspocus, y-websocket, or another Yjs\nprovider can be adapted without making it a NeuralNg dependency. It may expose\n`connect`, `disconnect`, `synced`, `on`, `off`, and `awareness`.\n\nTreat `document`, `provider`, `field`, and `fragment` as initialization-only.\nWhen the room or collaborative field changes, destroy and recreate the Editor\ninstance instead of mutating the collaboration config in place.\n\nFor providers with custom event names, pass `whenSynced` and resolve it when the\ninitial room synchronization is complete. Do not seed `value` before sync. Seed\nan empty Yjs fragment in application code after synchronization instead.\n\n### Comments\n\nComments use a lightweight inline `neuralComment` mark and thread data stored in\na dedicated Yjs map. Without collaboration, the same API uses an in-memory\nrepository. The default panel supports creating, replying, resolving, reopening,\nselecting, and deleting threads through `NeuralEditorController`.\n\nComments in the Beta contract are plain-text thread messages. Authentication,\nauthorization, mentions, notifications, and server-side moderation remain\napplication responsibilities.\n\n### Tracked changes\n\nSet `trackedChangesMode=\"suggesting\"` to track local text insertions and\ndeletions. Remote Yjs transactions are ignored, so each client attributes only\nits own edits. Changes can be accepted or rejected individually or as a batch.\n\nThe Beta contract tracks text insertions and deletions. Mark changes, complex block\nreplacement, overlapping suggestions, and production audit policy are not part\nof this Beta contract.\n\n### Version snapshots\n\n`snapshots` is a controlled model containing portable JSON checkpoints:\n\n```ts\ninterface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}\n```\n\nThe built-in snapshot model intentionally does not persist Yjs binary updates.\nStore snapshots in application code, and use a provider/backend-specific Yjs\nhistory service when exact CRDT history, branching, or audit-grade restoration\nis required.\n\n### Collaboration controller methods\n\n```ts\ncontroller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);\n```\n\nThe default collaboration panel is enabled whenever collaboration, comments,\ntracked changes, or snapshots are enabled. Set `showCollaborationPanel=\"false\"`\nto render an application-owned review surface using the controller signals.\n",
+    "llms": "# @neural-ng/editor\n\nImport canonical `NeuralEditor` from `@neural-ng/editor`. `EditorComponent` is\na deprecated compatibility alias. The selector remains `<neural-editor>`.\n\n## Public API boundary\n\n- Treat `API_FREEZE.md` as the authoritative standalone package contract.\n- Import only from `@neural-ng/editor`. Never deep-import source files.\n- Use `NeuralEditor`, the exported template directives, public types,\n  constants, serializers, pure helpers, and `NeuralEditorController`.\n- Internal toolbar, menu, review, and collaboration-panel renderer components\n  are not public API. Customize through class slots and template directives.\n- Do not use raw Tiptap/ProseMirror operation or tracked-change helpers. Use the\n  controller methods so revisions, events, forms, and collaboration rules stay\n  consistent.\n\n## Canonical rules\n\n- Install only `@neural-ng/editor`. Tiptap, ProseMirror, Floating UI, Yjs, and the required NeuralNg core runtime are package-managed dependencies.\n- Install a realtime collaboration transport/provider separately only when collaboration is enabled.\n- Import `NeuralEditor` from `@neural-ng/editor`.\n- Bind only `NeuralEditorDocument` JSON to `[(value)]`, `[formField]`,\n  `[formControl]`, or `[(ngModel)]`. Never bind HTML or Markdown strings and\n  never create a string-or-JSON value union.\n- The empty value is a `doc` containing an empty paragraph. Do not use `null` as\n  the normal empty state.\n- Treat editor values as immutable. Do not mutate node, mark, attribute, or\n  content arrays in place.\n\n## Beta schema, identity, menus, AI review, and collaboration\n\n- Text alignment is stored on paragraph or heading attributes as `textAlign`.\n- Text color is stored in a `textStyle` mark with a `color` attribute.\n- Highlight is stored in a `highlight` mark and may include a `color` attribute.\n- Tasks use `taskList` and `taskItem`; task state is the boolean `checked`\n  attribute on `taskItem`.\n- Tables use `table`, `tableRow`, `tableHeader`, and `tableCell` nodes.\n- Images use an `image` node. Persist a stable HTTP(S) URL and optional alt,\n  title, width, and height attributes. Never persist File objects, blob URLs,\n  or temporary object URLs.\n- Mentions use `mention` nodes with stable `id` and `label` attributes. Provider-only\n  metadata is not persisted. Do not copy avatars, permissions, or mutable profile\n  objects into editor JSON.\n- Do not invent HTML-only state that cannot be represented by the configured\n  JSON schema.\n\n## Commands\n\n- Use the `NeuralEditorController` from `editorReady` for all programmatic\n  edits. Do not query, replace, or mutate the `contenteditable` DOM.\n- Use `setTextAlign()`, `setTextColor()`, `setHighlight()`,\n  `toggleTaskList()`, `insertTable()`, `insertImage()`, and menu controller\n  methods for Alpha 2.3 features.\n- Table row, column, merge, split, header, and delete commands are contextual;\n  call `controller.can(command)` before presenting a custom enabled action.\n- Use `toolbarItems` for the built-in toolbar or project\n  `ng-template[neuralEditorToolbar]` with `let-editor` for a custom toolbar.\n- Built-in color and table menus use NeuralNg Popover in the browser top layer. Do not replace them with native `details`, custom absolute-positioned panels, or `appendTo=\"body\"` logic. Only one auto popover remains open at a time.\n- Use `(imageInsertRequest)` to open FileUpload or an application media picker.\n  Upload outside Editor, then call `event.controller.insertImage()` with the\n  persistent URL. Editor must not send HTTP requests.\n- BubbleMenu appears for a text or image selection. FloatingMenu appears for an\n  empty paragraph. Link editing uses the same contextual bubble layer so only\n  one contextual menu is active.\n- Context menus append to `body` by default. Use `menuAppendTo=\"editor\"` or a\n  concrete HTMLElement only when the containing stacking context is required.\n- Customize menus with `neuralEditorBubbleMenu`, `neuralEditorFloatingMenu`,\n  and `neuralEditorLinkPopover` templates. Use the supplied controller and link\n  context callbacks; do not access the raw Tiptap instance or position menus\n  manually.\n- `textColors` and `highlightColors` configure UI palettes only. They do not\n  constrain externally loaded JSON; validate allowed values in application and\n  server code when a restricted palette is required.\n\n## Node identity and structured operations\n\n- Node IDs are enabled by default. Canonical JSON stores the configured\n  `nodeIdAttribute` (`neuralId` by default) on identified nodes.\n- Keep node IDs stable and unique. Do not derive IDs from array indexes,\n  document positions, visible text, or mutable labels.\n- Use `identifiedNodeTypes` and `nodeIdGenerator` only as initialization-time\n  configuration. Disable `enableNodeIds` only when no operation, AI review,\n  comment, or collaboration layer will address nodes.\n- Prefer `controller.getNodeById()` and `controller.getNodeIdAt()` over walking\n  the `contenteditable` DOM or assuming ProseMirror positions remain stable.\n- Create batches with `controller.createOperationBatch()`. It captures the\n  current document-only revision. Validate with `validateOperations()` and\n  apply with `applyOperations()`.\n- Supported operation types are `insert`, `replace`, `delete`, and\n  `update-node`. Prefer `{ nodeId }` targets. Use `{ from, to }` only for a\n  captured selection range from the same base revision.\n- Operation batches are atomic. Never apply operations one by one in\n  application code. One invalid target, node, attribute, or schema placement\n  rejects the whole batch without partial changes.\n- Treat `status: 'conflict'` as a required rebase/retry boundary. Never force a\n  stale batch onto a newer document or silently replace its `baseRevision`.\n- Inserted operation content cannot choose internal node IDs. Compatible\n  single-node replacements preserve the target ID by default. The protected ID\n  attribute cannot be changed with `update-node`.\n- Listen to `operationsApplied`, `operationsRejected`, and `operationConflict`\n  for application side effects. The form model changes only after a successful\n  atomic dispatch.\n- `editorDocumentToHtml()` omits node IDs by default. Use\n  `{ includeNodeIds: true }` only for diagnostics or explicit round trips.\n  Persist canonical JSON, not generated HTML, as the addressable source.\n- Use `editorDocumentWithNodeIds()` to migrate legacy JSON before storing or\n  sending it to an AI operation service.\n\n## Slash, mention, and command-palette behavior\n\n- Type `/` in a paragraph for the slash menu. Configure static commands through\n  `slashCommands` or use `slashCommandProvider`; a provider replaces default\n  filtering for that request.\n- Enable mentions with `mentionProvider`. It may return synchronously or\n  asynchronously. Honor the provider context `AbortSignal` and discard stale\n  network work when it aborts.\n- Press `Ctrl+K`/`Cmd+K` or call `controller.openCommandPalette()` for global\n  editor commands. Configure `commandPaletteItems`; do not create document-wide\n  key listeners in application code.\n- Listen to `commandExecuted` and `mentionSelected` only for user-action side\n  effects. The canonical model still changes through normal editor transactions.\n- Use `neuralEditorSlashMenu`, `neuralEditorMentionMenu`, and\n  `neuralEditorCommandPalette` for custom rendering. Use the supplied signals,\n  selection callbacks, and close callbacks. Do not access Tiptap plugin state or\n  manually mount/reposition overlays.\n- Suggestion and context overlays are mutually coordinated. Keep\n  `menuAppendTo=\"body\"` unless a deliberate editor-local stacking context is\n  required.\n- Slash commands and palette items execute local controller operations. They do\n  not imply HTTP, AI, upload, or persistence behavior.\n\n## AI request and review rules\n\n- NeuralNg Editor does not call AI providers. Use `controller.requestAi()` and\n  handle `(aiRequest)` in application code.\n- Send the request's structured document, selection snapshot, stable node IDs,\n  schema version, and base revision to the application-owned AI service. Do not\n  scrape the `contenteditable` DOM and do not send generated HTML as the\n  canonical source.\n- AI services must return `NeuralEditorAiProposal` values containing only\n  supported structured operations. Never return raw executable JavaScript,\n  mutate the editor directly, or inject unsanitized HTML.\n- Call `controller.previewAiProposal()` before applying a proposal. Preview uses\n  ephemeral ProseMirror decorations and must not change `[(value)]`.\n- Apply changes only after explicit user approval with\n  `controller.acceptAiProposal()`. Reject with `rejectAiProposal()`; rejection\n  removes decorations and leaves the canonical JSON unchanged.\n- Respect `baseRevision`. Treat `aiOperationConflict` as a required rebase or\n  fresh-request boundary. Never replace a stale proposal's revision with the\n  current revision.\n- A normal document edit invalidates the active preview. Do not keep stale\n  visual suggestions visible after user edits.\n- Use `(aiProposalPreviewed)`, `(aiProposalAccepted)`,\n  `(aiProposalRejected)`, `(aiOperationConflict)`, and\n  `(aiRequestCancelled)` for side effects and analytics.\n- Customize the review UI with `ng-template[neuralEditorAiReview]`. Use the\n  supplied callbacks and signals; do not mount another overlay, duplicate\n  accept/reject state, or apply operations outside the controller.\n- The default review UI follows `menuAppendTo`, supports mobile layout, and is\n  part of the shared overlay coordination model.\n\n## Conversion and persistence\n\n- Use `editorDocumentFromHtml()` to import HTML and\n  `editorDocumentToHtml()`/`editorDocumentToText()` for derived output.\n- The default serializers understand the current Beta schema, including images and mentions. Pass the\n  exact custom extension set when the document contains additional nodes or\n  marks.\n- Save documents in application code and persist a schema version beside\n  long-lived JSON.\n- Editor does not save data, upload files, call AI models, open collaboration\n  connections, or perform backend sanitization.\n\n## Security\n\n- JSON is not a security boundary. Validate document structure, links, colors,\n  table attributes, pasted content, and custom node attributes on the server.\n- Sanitize generated HTML for its final destination.\n- Never treat client-side toolbar palettes or schema checks as authorization or\n  backend validation.\n\n## Integration\n\n- `extensions` are initialization-time in the alpha API and append to the\n  defaults with top-level last-write-wins behavior.\n- To replace StarterKit or the default schema, disable\n  `includeDefaultExtensions` and provide every required extension.\n- `readonly` keeps content readable and selectable while blocking edits.\n  `disabled` also removes the editor from normal keyboard interaction.\n- Use `unstyled` or global unstyled mode for headless rendering. Structural\n  classes and ARIA relationships remain.\n\n## Collaboration, comments, tracked changes, and snapshots\n\nUse `NeuralEditorCollaborationConfig` with an application-owned `Y.Doc`.\nNeuralNg does not create a collaboration backend, room, token, or provider.\nThe optional provider must expose the small structural provider contract.\n\nWhen collaboration is enabled, the Yjs document is the live source of truth.\nDo not initialize the editor with remote content before the provider has synced.\nDo not bind autosave logic to every remote update without throttling and origin\nchecks. Collaboration disables StarterKit history and uses Yjs collaboration\nundo/redo.\nTreat `collaboration.document`, `provider`, `field`, and `fragment` as\ninitialization-only. Recreate the Editor when the room or field changes.\n\nPass `collaborationUser` with stable `id`, `name`, and `color` values. Presence\ncomes from provider awareness and is ephemeral. Never persist awareness state as\ncanonical editor content.\n\nUse `enableComments` for inline plain-text comment threads. Thread data is stored\nin the configured Yjs comments map when collaboration is active. Authentication,\npermissions, notifications, moderation, and server persistence belong to the\napplication.\n\nUse `trackedChangesMode=\"suggesting\"` to record local text insertions and\ndeletions as review marks. Remote collaboration transactions are deliberately\nignored. Alpha 4 tracked changes are not an audit log and do not cover every\npossible structural or formatting edit.\n\nUse `[(snapshots)]` for portable JSON checkpoints. Snapshot creation does not\nupload or persist anything. Save snapshots in application code. For exact CRDT\nhistory or compliance-grade versioning, use a backend/provider history system.\n\nNever combine independent Yjs documents for the same room. Never seed content on\nan unsynchronized collaborative document. Do not mutate `Y.Doc` content and the\nEditor `value` independently.\n"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "editor-bubble-menu-template",
+    "name": "EditorBubbleMenuTemplate",
+    "className": "EditorBubbleMenuTemplateDirective",
+    "kind": "directive",
+    "selector": "ng-template[neuralEditorBubbleMenu]",
+    "entryPoint": "@neural-ng/editor",
+    "packageName": "@neural-ng/editor",
+    "packageVersion": "0.1.0-beta.2",
+    "status": "beta",
+    "summary": "Status: **Beta**. The canonical standalone export is `NeuralEditor`; `EditorComponent` remains a deprecated compatibility alias.",
+    "inputs": [],
+    "models": [],
+    "outputs": [],
+    "templates": [
+      {
+        "name": "EditorAiReviewTemplate",
+        "className": "EditorAiReviewTemplateDirective",
+        "selector": "ng-template[neuralEditorAiReview]",
+        "contextType": "NeuralEditorAiReviewTemplateContext"
+      },
+      {
+        "name": "EditorBubbleMenuTemplate",
+        "className": "EditorBubbleMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorBubbleMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorFloatingMenuTemplate",
+        "className": "EditorFloatingMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorFloatingMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorLinkPopoverTemplate",
+        "className": "EditorLinkPopoverTemplateDirective",
+        "selector": "ng-template[neuralEditorLinkPopover]",
+        "contextType": "NeuralEditorLinkPopoverTemplateContext"
+      },
+      {
+        "name": "EditorSlashMenuTemplate",
+        "className": "EditorSlashMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorSlashMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorSlashCommand>"
+      },
+      {
+        "name": "EditorMentionMenuTemplate",
+        "className": "EditorMentionMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorMentionMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorMentionItem>"
+      },
+      {
+        "name": "EditorCommandPaletteTemplate",
+        "className": "EditorCommandPaletteTemplateDirective",
+        "selector": "ng-template[neuralEditorCommandPalette]",
+        "contextType": "NeuralEditorCommandPaletteTemplateContext"
+      },
+      {
+        "name": "EditorToolbarTemplate",
+        "className": "EditorToolbarTemplateDirective",
+        "selector": "ng-template[neuralEditorToolbar]",
+        "contextType": "NeuralEditorToolbarTemplateContext"
+      }
+    ],
+    "providers": [],
+    "providerRequirements": [],
+    "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralEditorValue",
+        "type": "NeuralEditorDocument"
+      },
+      {
+        "name": "NeuralEditorExtension",
+        "type": "AnyExtension"
+      },
+      {
+        "name": "NeuralEditorUpdateSource",
+        "type": "'user' | 'command' | 'remote'"
+      },
+      {
+        "name": "NeuralEditorFocusPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralEditorTextAlign",
+        "type": "'left' | 'center' | 'right' | 'justify'"
+      },
+      {
+        "name": "NeuralEditorColorKind",
+        "type": "'text' | 'highlight'"
+      },
+      {
+        "name": "NeuralEditorMenuAppendTo",
+        "type": "'body' | 'editor' | HTMLElement"
+      },
+      {
+        "name": "NeuralEditorSuggestionPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'"
+      },
+      {
+        "name": "NeuralEditorCommandSource",
+        "type": "'slash' | 'command-palette'"
+      },
+      {
+        "name": "NeuralEditorMenuPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'"
+      },
+      {
+        "name": "NeuralEditorNodeIdGenerator",
+        "type": "( context: NeuralEditorNodeIdContext, ) => string"
+      },
+      {
+        "name": "NeuralEditorInsertPosition",
+        "type": "| 'before' | 'after' | 'inside-start' | 'inside-end'"
+      },
+      {
+        "name": "NeuralEditorOperation",
+        "type": "| NeuralEditorInsertOperation | NeuralEditorReplaceOperation | NeuralEditorDeleteOperation | NeuralEditorUpdateNodeOperation"
+      },
+      {
+        "name": "NeuralEditorOperationErrorCode",
+        "type": "| 'not-editable' | 'revision-conflict' | 'empty-batch' | 'invalid-target' | 'target-not-found' | 'invalid-content' | 'schema-violation' | 'protected-attribute' | 'operation-failed'"
+      },
+      {
+        "name": "NeuralEditorOperationValidationResult",
+        "type": "| { readonly valid: true; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly operationCount: number; } | { readonly valid: false; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorOperationApplyResult",
+        "type": "| { readonly status: 'applied'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly operationCount: number; readonly document: NeuralEditorDocument; } | { readonly status: 'conflict'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; } | { readonly status: 'rejected'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorSuggestionProvider",
+        "type": "( query: string, context: NeuralEditorSuggestionProviderContext, ) => readonly T[] | Promise<readonly T[]>"
+      },
+      {
+        "name": "NeuralEditorCommand",
+        "type": "| 'undo' | 'redo' | 'paragraph' | 'heading-1' | 'heading-2' | 'heading-3' | 'bold' | 'italic' | 'underline' | 'strike' | 'code' | 'bullet-list' | 'ordered-list' | 'task-list' | 'blockquote' | 'code-block' | 'align-left' | 'align-center' | 'align-right' | 'align-justify' | 'link' | 'image' | 'horizontal-rule' | 'clear-formatting' | 'insert-table' | 'delete-table' | 'add-row-before' | 'add-row-after' | 'delete-row' | 'add-column-before' | 'add-column-after' | 'delete-column' | 'merge-cells' | 'split-cell' | 'toggle-header-row'"
+      },
+      {
+        "name": "NeuralEditorToolbarItem",
+        "type": "| NeuralEditorToolbarCommandItem | NeuralEditorToolbarColorItem | NeuralEditorToolbarTableItem | NeuralEditorToolbarSeparatorItem"
+      },
+      {
+        "name": "NeuralEditorAiAction",
+        "type": "| 'rewrite' | 'shorten' | 'expand' | 'summarize' | 'fix-grammar' | 'change-tone' | 'translate' | 'custom'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewErrorCode",
+        "type": "| 'invalid-proposal' | 'revision-conflict' | 'validation-failed' | 'editor-not-ready'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewResult",
+        "type": "| { readonly status: 'previewed'; readonly proposal: NeuralEditorAiProposal; readonly operationCount: number; } | { readonly status: 'conflict' | 'rejected'; readonly proposal: NeuralEditorAiProposal; readonly error: NeuralEditorAiPreviewError; }"
+      },
+      {
+        "name": "NeuralEditorAiProposalRejectionReason",
+        "type": "| 'user' | 'replaced' | 'editor-state' | 'validation' | 'apply-rejected'"
+      },
+      {
+        "name": "NeuralEditorAiConflictReason",
+        "type": "| 'revision-conflict' | 'document-changed'"
+      },
+      {
+        "name": "NeuralEditorCollaborationStatus",
+        "type": "| 'disabled' | 'connecting' | 'connected' | 'synced' | 'disconnected' | 'error'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangesMode",
+        "type": "'off' | 'suggesting'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangeKind",
+        "type": "'insertion' | 'deletion'"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Install",
+        "language": "bash",
+        "code": "npm install @neural-ng/editor"
+      },
+      {
+        "title": "Install",
+        "language": "ts",
+        "code": "import {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});"
+      },
+      {
+        "title": "Install",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />"
+      },
+      {
+        "title": "Theme",
+        "language": "css",
+        "code": "@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "export interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "async handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "const request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "readonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Controller",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />"
+      },
+      {
+        "title": "Controller",
+        "language": "ts",
+        "code": "editor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });"
+      },
+      {
+        "title": "Toolbar",
+        "language": "ts",
+        "code": "readonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "ts",
+        "code": "const uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});"
+      },
+      {
+        "title": "Context menus and positioning",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "ts",
+        "code": "import { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "html",
+        "code": "<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />"
+      },
+      {
+        "title": "Version snapshots",
+        "language": "ts",
+        "code": "interface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}"
+      },
+      {
+        "title": "Collaboration controller methods",
+        "language": "ts",
+        "code": "controller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralEditorClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "toolbar",
+            "type": "string",
+            "description": "Classes applied to the toolbar element."
+          },
+          {
+            "name": "toolbarButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar button element."
+          },
+          {
+            "name": "toolbarButtonIcon",
+            "type": "string",
+            "description": "Classes applied to the toolbar button icon element."
+          },
+          {
+            "name": "toolbarSeparator",
+            "type": "string",
+            "description": "Classes applied to the toolbar separator element."
+          },
+          {
+            "name": "toolbarMenu",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu element."
+          },
+          {
+            "name": "toolbarMenuButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu button element."
+          },
+          {
+            "name": "toolbarMenuPanel",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu panel element."
+          },
+          {
+            "name": "toolbarMenuAction",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu action element."
+          },
+          {
+            "name": "toolbarColorOption",
+            "type": "string",
+            "description": "Classes applied to the toolbar color option element."
+          },
+          {
+            "name": "toolbarColorSwatch",
+            "type": "string",
+            "description": "Classes applied to the toolbar color swatch element."
+          },
+          {
+            "name": "bubbleMenu",
+            "type": "string",
+            "description": "Classes applied to the bubble menu element."
+          },
+          {
+            "name": "bubbleMenuButton",
+            "type": "string",
+            "description": "Classes applied to the bubble menu button element."
+          },
+          {
+            "name": "floatingMenu",
+            "type": "string",
+            "description": "Classes applied to the floating menu element."
+          },
+          {
+            "name": "floatingMenuButton",
+            "type": "string",
+            "description": "Classes applied to the floating menu button element."
+          },
+          {
+            "name": "linkPopover",
+            "type": "string",
+            "description": "Classes applied to the link popover element."
+          },
+          {
+            "name": "linkPopoverInput",
+            "type": "string",
+            "description": "Classes applied to the link popover input element."
+          },
+          {
+            "name": "linkPopoverAction",
+            "type": "string",
+            "description": "Classes applied to the link popover action element."
+          },
+          {
+            "name": "slashMenu",
+            "type": "string",
+            "description": "Classes applied to the slash menu element."
+          },
+          {
+            "name": "mentionMenu",
+            "type": "string",
+            "description": "Classes applied to the mention menu element."
+          },
+          {
+            "name": "suggestionList",
+            "type": "string",
+            "description": "Classes applied to the suggestion list element."
+          },
+          {
+            "name": "suggestionItem",
+            "type": "string",
+            "description": "Classes applied to the suggestion item element."
+          },
+          {
+            "name": "suggestionItemIcon",
+            "type": "string",
+            "description": "Classes applied to the suggestion item icon element."
+          },
+          {
+            "name": "suggestionItemContent",
+            "type": "string",
+            "description": "Classes applied to the suggestion item content element."
+          },
+          {
+            "name": "suggestionItemLabel",
+            "type": "string",
+            "description": "Classes applied to the suggestion item label element."
+          },
+          {
+            "name": "suggestionItemDescription",
+            "type": "string",
+            "description": "Classes applied to the suggestion item description element."
+          },
+          {
+            "name": "suggestionState",
+            "type": "string",
+            "description": "Classes applied to the suggestion state element."
+          },
+          {
+            "name": "commandPalette",
+            "type": "string",
+            "description": "Classes applied to the command palette element."
+          },
+          {
+            "name": "commandPaletteBackdrop",
+            "type": "string",
+            "description": "Classes applied to the command palette backdrop element."
+          },
+          {
+            "name": "commandPalettePanel",
+            "type": "string",
+            "description": "Classes applied to the command palette panel element."
+          },
+          {
+            "name": "commandPaletteInput",
+            "type": "string",
+            "description": "Classes applied to the command palette input element."
+          },
+          {
+            "name": "commandPaletteList",
+            "type": "string",
+            "description": "Classes applied to the command palette list element."
+          },
+          {
+            "name": "commandPaletteItem",
+            "type": "string",
+            "description": "Classes applied to the command palette item element."
+          },
+          {
+            "name": "aiReview",
+            "type": "string",
+            "description": "Classes applied to the ai review element."
+          },
+          {
+            "name": "aiReviewSummary",
+            "type": "string",
+            "description": "Classes applied to the ai review summary element."
+          },
+          {
+            "name": "aiReviewProgress",
+            "type": "string",
+            "description": "Classes applied to the ai review progress element."
+          },
+          {
+            "name": "aiReviewActions",
+            "type": "string",
+            "description": "Classes applied to the ai review actions element."
+          },
+          {
+            "name": "aiReviewButton",
+            "type": "string",
+            "description": "Classes applied to the ai review button element."
+          },
+          {
+            "name": "collaborationBar",
+            "type": "string",
+            "description": "Classes applied to the collaboration bar element."
+          },
+          {
+            "name": "collaborationStatus",
+            "type": "string",
+            "description": "Classes applied to the collaboration status element."
+          },
+          {
+            "name": "presenceList",
+            "type": "string",
+            "description": "Classes applied to the presence list element."
+          },
+          {
+            "name": "presenceItem",
+            "type": "string",
+            "description": "Classes applied to the presence item element."
+          },
+          {
+            "name": "collaborationPanel",
+            "type": "string",
+            "description": "Classes applied to the collaboration panel element."
+          },
+          {
+            "name": "collaborationSection",
+            "type": "string",
+            "description": "Classes applied to the collaboration section element."
+          },
+          {
+            "name": "collaborationSectionTitle",
+            "type": "string",
+            "description": "Classes applied to the collaboration section title element."
+          },
+          {
+            "name": "collaborationInput",
+            "type": "string",
+            "description": "Classes applied to the collaboration input element."
+          },
+          {
+            "name": "collaborationButton",
+            "type": "string",
+            "description": "Classes applied to the collaboration button element."
+          },
+          {
+            "name": "commentThread",
+            "type": "string",
+            "description": "Classes applied to the comment thread element."
+          },
+          {
+            "name": "commentMessage",
+            "type": "string",
+            "description": "Classes applied to the comment message element."
+          },
+          {
+            "name": "trackedChange",
+            "type": "string",
+            "description": "Classes applied to the tracked change element."
+          },
+          {
+            "name": "snapshotItem",
+            "type": "string",
+            "description": "Classes applied to the snapshot item element."
+          },
+          {
+            "name": "surface",
+            "type": "string",
+            "description": "Classes applied to the surface element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "characterCount",
+            "type": "string",
+            "description": "Classes applied to the character count element."
+          },
+          {
+            "name": "wordCount",
+            "type": "string",
+            "description": "Classes applied to the word count element."
+          }
+        ],
+        "sourcePath": "libs/neural-editor/editor.types.ts"
+      }
+    ],
+    "relatedComponents": [
+      "editor-ai-review-template",
+      "editor-floating-menu-template",
+      "editor-link-popover-template",
+      "editor-slash-menu-template",
+      "editor-mention-menu-template",
+      "editor-command-palette-template",
+      "editor-toolbar-template",
+      "neural-editor"
+    ],
+    "resources": {
+      "contract": "neural://components/editor-bubble-menu-template/contract",
+      "readme": "neural://components/editor-bubble-menu-template/readme",
+      "llms": "neural://components/editor-bubble-menu-template/llms"
+    },
+    "sourceDirectory": "libs/neural-editor",
+    "readme": "# Editor\n\nStatus: **Beta**. The canonical standalone export is `NeuralEditor`;\n`EditorComponent` remains a deprecated compatibility alias.\n\nSignal-first structured rich-text editing for Angular 22+. NeuralNg Editor uses\nTiptap 3 and ProseMirror internally, while its canonical form value remains a\n`NeuralEditorDocument` JSON tree. HTML is derived output, never the model.\n\n## Install\n\nInstall the complete Editor runtime with one command:\n\n```bash\nnpm install @neural-ng/editor\n```\n\nThe package installs Tiptap, ProseMirror, Floating UI, Yjs, and the required\nNeuralNg core runtime. Applications do not install those Editor internals\nindividually. A realtime collaboration transport such as `y-websocket` or a\nHocuspocus provider remains application-owned and is only needed when that\nfeature is enabled.\n\n```ts\nimport {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});\n```\n\n```html\n<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />\n```\n\nEditor implements `FormValueControl<NeuralEditorDocument>`. Use the same\ncomponent with `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`.\nDo not implement a second `ControlValueAccessor`.\n\n`EditorComponent` remains a deprecated compatibility alias. New code should\nimport the canonical `NeuralEditor` runtime.\n\n## Public API contract\n\nThe standalone package contract is documented in [`API_FREEZE.md`](./API_FREEZE.md).\nImport only from `@neural-ng/editor`; deep imports and internal rendering\ncomponents are unsupported. The freeze document is the source of truth for\ncomponent inputs/outputs, controller methods, template contexts, class slots,\nutilities, and package asset entry points.\n\n### Theme\n\nImport the matching Core and Editor token files:\n\n```css\n@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';\n```\n\nExperimental presets follow the same two-file rule: import the matching Core\npreset first, then the Editor preset. The optional Tailwind bridge remains\n`@neural-ng/core/themes/tailwind.css`.\n\n## Ownership boundary\n\nEditor owns structured editing, toolbar commands, selection state, undo/redo,\nJSON output, HTML/text derivation, accessibility, and Angular Forms\nintegration. It does not save documents, call HTTP APIs, upload image files,\ninvoke AI models, connect collaboration providers, or sanitize backend output. Those\nresponsibilities belong to application services or explicit extensions.\n\n## Canonical value\n\nThe model is never HTML, Markdown, or a format-dependent union:\n\n```ts\nexport interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}\n```\n\nThe current Beta schema and interaction layer includes:\n\n- paragraph and heading alignment: `left`, `center`, `right`, `justify`\n- text color through a `textStyle` mark\n- multicolor highlight marks\n- `taskList` and `taskItem` nodes\n- `table`, `tableRow`, `tableHeader`, and `tableCell` nodes\n- `image` nodes containing persistent URLs, alt text, title, width, and height\n- BubbleMenu, FloatingMenu, and a selection-aware link popover\n- slash commands, async mentions, and a searchable command palette\n\nPersist a schema version beside long-lived documents:\n\n```ts\nconst stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;\n```\n\nUse the serializers for external representations:\n\n```ts\nconst html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());\n```\n\nThe default serializers include the current Beta schema, including image and\nmention nodes. Pass the matching custom extension set when converting documents\nwith additional nodes or marks.\n\n## Stable node IDs and structured operations\n\nThe Beta contract enables Tiptap `UniqueID` by default. Identified nodes receive a\n`neuralId` attribute in canonical JSON. The default list covers block nodes,\nlist items, tables and cells, images, and horizontal rules. Configure this at\ninitialization time:\n\n```html\n<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />\n```\n\nUse `nodeIdGenerator` only when the application requires a custom ID strategy.\nThe generator must return a non-empty, globally unique, stable string. Disable\nthe feature with `[enableNodeIds]=\"false\"` only when the document will never use\nstructured operations, AI review, comments, or collaboration adapters.\n\nThe controller exposes a document-only revision signal and node lookup:\n\n```ts\nconst revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);\n```\n\nBuild and apply atomic, schema-checked operation batches through the controller:\n\n```ts\nconst batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}\n```\n\nSupported operations are `insert`, `replace`, `delete`, and `update-node`.\nPrefer `nodeId` targets. Numeric `from`/`to` targets are accepted for captured\nselection ranges and are mapped across earlier operations in the same batch.\nA batch is built fully before dispatch, so one invalid operation rejects the\nwhole batch without partial document changes.\n\n`baseRevision` prevents stale edits. If the document changes after a batch is\ncreated, `applyOperations()` returns `status: 'conflict'` and emits\n`operationConflict`. Successful and rejected batches emit `operationsApplied`\nand `operationsRejected` respectively.\n\nNode IDs are protected identity. Inserted content cannot choose IDs;\n`UniqueID` assigns them. A compatible single-node replacement preserves the\ntarget ID by default. `update-node` cannot change the configured ID attribute.\n\nInternal IDs are excluded from HTML by default:\n\n```ts\nconst publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);\n```\n\nPersist canonical JSON with IDs. Do not use generated HTML as the source of\ntruth for operations.\n\n## AI requests and reviewable proposals\n\nEditor remains provider-neutral. It never calls OpenAI, Anthropic, or any other\nmodel directly. Request work through the controller and handle the event in\napplication code:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />\n```\n\n```ts\nasync handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}\n```\n\n`requestAi()` captures the canonical JSON document, document revision, current\nselection range, selected text, selected JSON content, and stable node IDs. The\napplication service returns a `NeuralEditorAiProposal` containing only the\nstructured operations from the current Beta contract.\n\nPreview is non-destructive. Insertions, deletions, replacements, and attribute\nupdates are rendered as ProseMirror decorations while `[(value)]` remains\nunchanged. Only `acceptAiProposal()` applies the complete operation batch in one\ntransaction. `rejectAiProposal()` removes the preview without touching the\nmodel.\n\n```ts\nconst request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});\n```\n\nA proposal is rejected as a conflict when its `baseRevision` no longer matches\nthe editor revision. Editing the document while a preview is active also clears\nthe preview and emits `aiOperationConflict`. Do not silently overwrite the base\nrevision or force stale operations onto new content.\n\nThe default review bar appends to `menuAppendTo` and supports previous/next,\naccept, reject, Escape, mobile layout, themes, and `unstyled`. Replace it with a\ntyped template when needed:\n\n```html\n<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>\n```\n\n`controller.aiReview()` exposes the active review state and\n`controller.aiRequestPending()` reports unresolved requests. The Beta contract keeps a\nsingle active proposal; `getActiveAiProposals()` therefore returns zero or one\nproposal while preserving room for a future multi-proposal adapter.\n\n## Slash commands, mentions, and command palette\n\nType `/` in a paragraph to open the default slash menu. The default commands\ninsert headings, lists, tasks, quotes, code blocks, tables, images, and dividers.\nReplace the defaults with `slashCommands`, or provide `slashCommandProvider` for\nasync or remote filtering. Providers receive an `AbortSignal`; stop stale work\nwhen it is aborted.\n\nMentions are enabled only when `mentionProvider` is present:\n\n```ts\nreadonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });\n```\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />\n```\n\nThe canonical mention node persists only stable identity and display data:\n\n```ts\n{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}\n```\n\nProvider-only `metadata` is not written to the document. Keep authorization,\nprofiles, and mutable user data in application services.\n\nPress `Ctrl+K` or `Cmd+K`, or call `controller.openCommandPalette()`, to open the\nsearchable command palette. Set `commandPaletteItems` to replace its defaults.\nSlash, mention, command-palette, bubble, floating, link, and toolbar overlays are\ncoordinated so only the relevant layer remains open. Suggestion menus and the\npalette use the same `menuAppendTo` target; `body` remains the default to avoid\noverflow clipping.\n\nProject complete menu UIs when needed:\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>\n```\n\nUse the supplied context callbacks. Do not query the editor DOM, manually\nposition suggestion panels, or insert mention HTML yourself.\n\n## Controller\n\n`editorReady` exposes a stable NeuralNg controller instead of the raw Tiptap\ninstance:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />\n```\n\n```ts\neditor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });\n```\n\nTable commands are contextual. Row, column, cell, and delete commands become\navailable when the current selection is inside a table. Use controller commands\ninstead of mutating JSON nodes or editing the `contenteditable` DOM.\n\n## Toolbar\n\nToolbar palettes and table actions use NeuralNg Popover rather than native `details` menus. Popover renders through the browser top layer, so panels are not clipped by editor or card overflow. Opening one toolbar popover closes the previously open auto popover; no `appendTo=\"body\"` option or DOM reparenting is needed.\n\nThe default toolbar contains:\n\n- undo and redo\n- paragraph and H1-H3\n- bold, italic, underline, strike, and inline code\n- text-color and highlight palettes\n- left, center, right, and justified alignment\n- bullet, ordered, and task lists\n- blockquote and code block\n- link editing\n- table insertion and contextual table commands\n- horizontal rule and clear formatting\n\nCustomize the palettes without changing the document type:\n\n```ts\nreadonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;\n```\n\n```html\n<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />\n```\n\nReplace the toolbar model with `toolbarItems`, or project a complete toolbar:\n\n```html\n<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>\n```\n\n## Images and FileUpload\n\nThe toolbar and floating menu emit `imageInsertRequest`; Editor never uploads a\n`File`. Application code selects and validates the file with FileUpload, sends\nit to a media service, then inserts only the persistent URL:\n\n```html\n<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />\n```\n\n```ts\nconst uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});\n```\n\nBase64 sources are rejected by the controller and default Image extension.\nEnable `allowBase64Images` only for a deliberate application requirement. Do\nnot persist `File`, blob URLs, or temporary object URLs in editor JSON.\n\n## Context menus and positioning\n\nBubble, floating, and link menus use Tiptap's Floating UI-based extensions.\n`menuAppendTo` defaults to `body`, which avoids clipping by editor, card, dialog,\nor overflow containers. Use `menuAppendTo=\"editor\"` only when the menu must stay\ninside the editor stacking context, or bind a specific `HTMLElement`.\n\n```html\n<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>\n```\n\nUse `ng-template[neuralEditorLinkPopover]` for a custom link form. Default menus\nare keyboard reachable, expose toolbar/dialog roles, stay within the viewport,\nand switch to compact horizontally scrollable layouts on narrow screens.\n\n## Extensions\n\n`extensions` appends Tiptap extensions. Top-level extension names are\nlast-write-wins. To replace the default schema, set\n`includeDefaultExtensions=\"false\"` and provide the complete extension set.\nExtension configuration is initialization-time in this Beta release.\n\n## Security and persistence\n\nJSON is not a security boundary. Validate the document schema, URLs, colors,\ntable attributes, pasted content, and custom node attributes on the server.\nSanitize generated HTML for its final rendering context. Do not trust content\nsolely because the editor accepted it.\n\n## Styling\n\nUse the neutral, glass, mist, or futuristic themes, or set `unstyled` locally or\nglobally. Structural `*-root` hooks remain while visual `*-base` classes are\nremoved. `NeuralEditorClasses` includes typed slots for toolbar menus, palette\noptions, slash and mention suggestions, the command palette, BubbleMenu,\nFloatingMenu, link popover controls, the editing surface, content, footer, and\ncounters.\n\n## Collaboration and review\n\nEditor collaboration is provider-neutral. The component receives an initialized\nYjs document and, optionally, a provider that exposes awareness and connection\nevents. NeuralNg does not create rooms, authenticate users, or persist Yjs\nupdates.\n\n```ts\nimport { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);\n```\n\n```html\n<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />\n```\n\nWhen `collaboration` is present:\n\n- The Yjs document is the live collaborative source of truth.\n- Editor waits for provider sync by default before mounting.\n- StarterKit undo/redo is disabled because Collaboration owns history.\n- External `value` writes are not pushed into the collaborative document.\n- `editorUpdate.source` is `remote` for collaboration-origin transactions.\n- Presence is read from the provider awareness `user` field and is never\n  persisted as document content.\n- `disconnectOnDestroy` is opt-in because provider lifetime normally belongs to\n  the application.\n\n### Provider contract\n\nThe optional provider is structural, so Hocuspocus, y-websocket, or another Yjs\nprovider can be adapted without making it a NeuralNg dependency. It may expose\n`connect`, `disconnect`, `synced`, `on`, `off`, and `awareness`.\n\nTreat `document`, `provider`, `field`, and `fragment` as initialization-only.\nWhen the room or collaborative field changes, destroy and recreate the Editor\ninstance instead of mutating the collaboration config in place.\n\nFor providers with custom event names, pass `whenSynced` and resolve it when the\ninitial room synchronization is complete. Do not seed `value` before sync. Seed\nan empty Yjs fragment in application code after synchronization instead.\n\n### Comments\n\nComments use a lightweight inline `neuralComment` mark and thread data stored in\na dedicated Yjs map. Without collaboration, the same API uses an in-memory\nrepository. The default panel supports creating, replying, resolving, reopening,\nselecting, and deleting threads through `NeuralEditorController`.\n\nComments in the Beta contract are plain-text thread messages. Authentication,\nauthorization, mentions, notifications, and server-side moderation remain\napplication responsibilities.\n\n### Tracked changes\n\nSet `trackedChangesMode=\"suggesting\"` to track local text insertions and\ndeletions. Remote Yjs transactions are ignored, so each client attributes only\nits own edits. Changes can be accepted or rejected individually or as a batch.\n\nThe Beta contract tracks text insertions and deletions. Mark changes, complex block\nreplacement, overlapping suggestions, and production audit policy are not part\nof this Beta contract.\n\n### Version snapshots\n\n`snapshots` is a controlled model containing portable JSON checkpoints:\n\n```ts\ninterface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}\n```\n\nThe built-in snapshot model intentionally does not persist Yjs binary updates.\nStore snapshots in application code, and use a provider/backend-specific Yjs\nhistory service when exact CRDT history, branching, or audit-grade restoration\nis required.\n\n### Collaboration controller methods\n\n```ts\ncontroller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);\n```\n\nThe default collaboration panel is enabled whenever collaboration, comments,\ntracked changes, or snapshots are enabled. Set `showCollaborationPanel=\"false\"`\nto render an application-owned review surface using the controller signals.\n",
+    "llms": "# @neural-ng/editor\n\nImport canonical `NeuralEditor` from `@neural-ng/editor`. `EditorComponent` is\na deprecated compatibility alias. The selector remains `<neural-editor>`.\n\n## Public API boundary\n\n- Treat `API_FREEZE.md` as the authoritative standalone package contract.\n- Import only from `@neural-ng/editor`. Never deep-import source files.\n- Use `NeuralEditor`, the exported template directives, public types,\n  constants, serializers, pure helpers, and `NeuralEditorController`.\n- Internal toolbar, menu, review, and collaboration-panel renderer components\n  are not public API. Customize through class slots and template directives.\n- Do not use raw Tiptap/ProseMirror operation or tracked-change helpers. Use the\n  controller methods so revisions, events, forms, and collaboration rules stay\n  consistent.\n\n## Canonical rules\n\n- Install only `@neural-ng/editor`. Tiptap, ProseMirror, Floating UI, Yjs, and the required NeuralNg core runtime are package-managed dependencies.\n- Install a realtime collaboration transport/provider separately only when collaboration is enabled.\n- Import `NeuralEditor` from `@neural-ng/editor`.\n- Bind only `NeuralEditorDocument` JSON to `[(value)]`, `[formField]`,\n  `[formControl]`, or `[(ngModel)]`. Never bind HTML or Markdown strings and\n  never create a string-or-JSON value union.\n- The empty value is a `doc` containing an empty paragraph. Do not use `null` as\n  the normal empty state.\n- Treat editor values as immutable. Do not mutate node, mark, attribute, or\n  content arrays in place.\n\n## Beta schema, identity, menus, AI review, and collaboration\n\n- Text alignment is stored on paragraph or heading attributes as `textAlign`.\n- Text color is stored in a `textStyle` mark with a `color` attribute.\n- Highlight is stored in a `highlight` mark and may include a `color` attribute.\n- Tasks use `taskList` and `taskItem`; task state is the boolean `checked`\n  attribute on `taskItem`.\n- Tables use `table`, `tableRow`, `tableHeader`, and `tableCell` nodes.\n- Images use an `image` node. Persist a stable HTTP(S) URL and optional alt,\n  title, width, and height attributes. Never persist File objects, blob URLs,\n  or temporary object URLs.\n- Mentions use `mention` nodes with stable `id` and `label` attributes. Provider-only\n  metadata is not persisted. Do not copy avatars, permissions, or mutable profile\n  objects into editor JSON.\n- Do not invent HTML-only state that cannot be represented by the configured\n  JSON schema.\n\n## Commands\n\n- Use the `NeuralEditorController` from `editorReady` for all programmatic\n  edits. Do not query, replace, or mutate the `contenteditable` DOM.\n- Use `setTextAlign()`, `setTextColor()`, `setHighlight()`,\n  `toggleTaskList()`, `insertTable()`, `insertImage()`, and menu controller\n  methods for Alpha 2.3 features.\n- Table row, column, merge, split, header, and delete commands are contextual;\n  call `controller.can(command)` before presenting a custom enabled action.\n- Use `toolbarItems` for the built-in toolbar or project\n  `ng-template[neuralEditorToolbar]` with `let-editor` for a custom toolbar.\n- Built-in color and table menus use NeuralNg Popover in the browser top layer. Do not replace them with native `details`, custom absolute-positioned panels, or `appendTo=\"body\"` logic. Only one auto popover remains open at a time.\n- Use `(imageInsertRequest)` to open FileUpload or an application media picker.\n  Upload outside Editor, then call `event.controller.insertImage()` with the\n  persistent URL. Editor must not send HTTP requests.\n- BubbleMenu appears for a text or image selection. FloatingMenu appears for an\n  empty paragraph. Link editing uses the same contextual bubble layer so only\n  one contextual menu is active.\n- Context menus append to `body` by default. Use `menuAppendTo=\"editor\"` or a\n  concrete HTMLElement only when the containing stacking context is required.\n- Customize menus with `neuralEditorBubbleMenu`, `neuralEditorFloatingMenu`,\n  and `neuralEditorLinkPopover` templates. Use the supplied controller and link\n  context callbacks; do not access the raw Tiptap instance or position menus\n  manually.\n- `textColors` and `highlightColors` configure UI palettes only. They do not\n  constrain externally loaded JSON; validate allowed values in application and\n  server code when a restricted palette is required.\n\n## Node identity and structured operations\n\n- Node IDs are enabled by default. Canonical JSON stores the configured\n  `nodeIdAttribute` (`neuralId` by default) on identified nodes.\n- Keep node IDs stable and unique. Do not derive IDs from array indexes,\n  document positions, visible text, or mutable labels.\n- Use `identifiedNodeTypes` and `nodeIdGenerator` only as initialization-time\n  configuration. Disable `enableNodeIds` only when no operation, AI review,\n  comment, or collaboration layer will address nodes.\n- Prefer `controller.getNodeById()` and `controller.getNodeIdAt()` over walking\n  the `contenteditable` DOM or assuming ProseMirror positions remain stable.\n- Create batches with `controller.createOperationBatch()`. It captures the\n  current document-only revision. Validate with `validateOperations()` and\n  apply with `applyOperations()`.\n- Supported operation types are `insert`, `replace`, `delete`, and\n  `update-node`. Prefer `{ nodeId }` targets. Use `{ from, to }` only for a\n  captured selection range from the same base revision.\n- Operation batches are atomic. Never apply operations one by one in\n  application code. One invalid target, node, attribute, or schema placement\n  rejects the whole batch without partial changes.\n- Treat `status: 'conflict'` as a required rebase/retry boundary. Never force a\n  stale batch onto a newer document or silently replace its `baseRevision`.\n- Inserted operation content cannot choose internal node IDs. Compatible\n  single-node replacements preserve the target ID by default. The protected ID\n  attribute cannot be changed with `update-node`.\n- Listen to `operationsApplied`, `operationsRejected`, and `operationConflict`\n  for application side effects. The form model changes only after a successful\n  atomic dispatch.\n- `editorDocumentToHtml()` omits node IDs by default. Use\n  `{ includeNodeIds: true }` only for diagnostics or explicit round trips.\n  Persist canonical JSON, not generated HTML, as the addressable source.\n- Use `editorDocumentWithNodeIds()` to migrate legacy JSON before storing or\n  sending it to an AI operation service.\n\n## Slash, mention, and command-palette behavior\n\n- Type `/` in a paragraph for the slash menu. Configure static commands through\n  `slashCommands` or use `slashCommandProvider`; a provider replaces default\n  filtering for that request.\n- Enable mentions with `mentionProvider`. It may return synchronously or\n  asynchronously. Honor the provider context `AbortSignal` and discard stale\n  network work when it aborts.\n- Press `Ctrl+K`/`Cmd+K` or call `controller.openCommandPalette()` for global\n  editor commands. Configure `commandPaletteItems`; do not create document-wide\n  key listeners in application code.\n- Listen to `commandExecuted` and `mentionSelected` only for user-action side\n  effects. The canonical model still changes through normal editor transactions.\n- Use `neuralEditorSlashMenu`, `neuralEditorMentionMenu`, and\n  `neuralEditorCommandPalette` for custom rendering. Use the supplied signals,\n  selection callbacks, and close callbacks. Do not access Tiptap plugin state or\n  manually mount/reposition overlays.\n- Suggestion and context overlays are mutually coordinated. Keep\n  `menuAppendTo=\"body\"` unless a deliberate editor-local stacking context is\n  required.\n- Slash commands and palette items execute local controller operations. They do\n  not imply HTTP, AI, upload, or persistence behavior.\n\n## AI request and review rules\n\n- NeuralNg Editor does not call AI providers. Use `controller.requestAi()` and\n  handle `(aiRequest)` in application code.\n- Send the request's structured document, selection snapshot, stable node IDs,\n  schema version, and base revision to the application-owned AI service. Do not\n  scrape the `contenteditable` DOM and do not send generated HTML as the\n  canonical source.\n- AI services must return `NeuralEditorAiProposal` values containing only\n  supported structured operations. Never return raw executable JavaScript,\n  mutate the editor directly, or inject unsanitized HTML.\n- Call `controller.previewAiProposal()` before applying a proposal. Preview uses\n  ephemeral ProseMirror decorations and must not change `[(value)]`.\n- Apply changes only after explicit user approval with\n  `controller.acceptAiProposal()`. Reject with `rejectAiProposal()`; rejection\n  removes decorations and leaves the canonical JSON unchanged.\n- Respect `baseRevision`. Treat `aiOperationConflict` as a required rebase or\n  fresh-request boundary. Never replace a stale proposal's revision with the\n  current revision.\n- A normal document edit invalidates the active preview. Do not keep stale\n  visual suggestions visible after user edits.\n- Use `(aiProposalPreviewed)`, `(aiProposalAccepted)`,\n  `(aiProposalRejected)`, `(aiOperationConflict)`, and\n  `(aiRequestCancelled)` for side effects and analytics.\n- Customize the review UI with `ng-template[neuralEditorAiReview]`. Use the\n  supplied callbacks and signals; do not mount another overlay, duplicate\n  accept/reject state, or apply operations outside the controller.\n- The default review UI follows `menuAppendTo`, supports mobile layout, and is\n  part of the shared overlay coordination model.\n\n## Conversion and persistence\n\n- Use `editorDocumentFromHtml()` to import HTML and\n  `editorDocumentToHtml()`/`editorDocumentToText()` for derived output.\n- The default serializers understand the current Beta schema, including images and mentions. Pass the\n  exact custom extension set when the document contains additional nodes or\n  marks.\n- Save documents in application code and persist a schema version beside\n  long-lived JSON.\n- Editor does not save data, upload files, call AI models, open collaboration\n  connections, or perform backend sanitization.\n\n## Security\n\n- JSON is not a security boundary. Validate document structure, links, colors,\n  table attributes, pasted content, and custom node attributes on the server.\n- Sanitize generated HTML for its final destination.\n- Never treat client-side toolbar palettes or schema checks as authorization or\n  backend validation.\n\n## Integration\n\n- `extensions` are initialization-time in the alpha API and append to the\n  defaults with top-level last-write-wins behavior.\n- To replace StarterKit or the default schema, disable\n  `includeDefaultExtensions` and provide every required extension.\n- `readonly` keeps content readable and selectable while blocking edits.\n  `disabled` also removes the editor from normal keyboard interaction.\n- Use `unstyled` or global unstyled mode for headless rendering. Structural\n  classes and ARIA relationships remain.\n\n## Collaboration, comments, tracked changes, and snapshots\n\nUse `NeuralEditorCollaborationConfig` with an application-owned `Y.Doc`.\nNeuralNg does not create a collaboration backend, room, token, or provider.\nThe optional provider must expose the small structural provider contract.\n\nWhen collaboration is enabled, the Yjs document is the live source of truth.\nDo not initialize the editor with remote content before the provider has synced.\nDo not bind autosave logic to every remote update without throttling and origin\nchecks. Collaboration disables StarterKit history and uses Yjs collaboration\nundo/redo.\nTreat `collaboration.document`, `provider`, `field`, and `fragment` as\ninitialization-only. Recreate the Editor when the room or field changes.\n\nPass `collaborationUser` with stable `id`, `name`, and `color` values. Presence\ncomes from provider awareness and is ephemeral. Never persist awareness state as\ncanonical editor content.\n\nUse `enableComments` for inline plain-text comment threads. Thread data is stored\nin the configured Yjs comments map when collaboration is active. Authentication,\npermissions, notifications, moderation, and server persistence belong to the\napplication.\n\nUse `trackedChangesMode=\"suggesting\"` to record local text insertions and\ndeletions as review marks. Remote collaboration transactions are deliberately\nignored. Alpha 4 tracked changes are not an audit log and do not cover every\npossible structural or formatting edit.\n\nUse `[(snapshots)]` for portable JSON checkpoints. Snapshot creation does not\nupload or persist anything. Save snapshots in application code. For exact CRDT\nhistory or compliance-grade versioning, use a backend/provider history system.\n\nNever combine independent Yjs documents for the same room. Never seed content on\nan unsynchronized collaborative document. Do not mutate `Y.Doc` content and the\nEditor `value` independently.\n"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "editor-command-palette-template",
+    "name": "EditorCommandPaletteTemplate",
+    "className": "EditorCommandPaletteTemplateDirective",
+    "kind": "directive",
+    "selector": "ng-template[neuralEditorCommandPalette]",
+    "entryPoint": "@neural-ng/editor",
+    "packageName": "@neural-ng/editor",
+    "packageVersion": "0.1.0-beta.2",
+    "status": "beta",
+    "summary": "Status: **Beta**. The canonical standalone export is `NeuralEditor`; `EditorComponent` remains a deprecated compatibility alias.",
+    "inputs": [],
+    "models": [],
+    "outputs": [],
+    "templates": [
+      {
+        "name": "EditorAiReviewTemplate",
+        "className": "EditorAiReviewTemplateDirective",
+        "selector": "ng-template[neuralEditorAiReview]",
+        "contextType": "NeuralEditorAiReviewTemplateContext"
+      },
+      {
+        "name": "EditorBubbleMenuTemplate",
+        "className": "EditorBubbleMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorBubbleMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorFloatingMenuTemplate",
+        "className": "EditorFloatingMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorFloatingMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorLinkPopoverTemplate",
+        "className": "EditorLinkPopoverTemplateDirective",
+        "selector": "ng-template[neuralEditorLinkPopover]",
+        "contextType": "NeuralEditorLinkPopoverTemplateContext"
+      },
+      {
+        "name": "EditorSlashMenuTemplate",
+        "className": "EditorSlashMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorSlashMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorSlashCommand>"
+      },
+      {
+        "name": "EditorMentionMenuTemplate",
+        "className": "EditorMentionMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorMentionMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorMentionItem>"
+      },
+      {
+        "name": "EditorCommandPaletteTemplate",
+        "className": "EditorCommandPaletteTemplateDirective",
+        "selector": "ng-template[neuralEditorCommandPalette]",
+        "contextType": "NeuralEditorCommandPaletteTemplateContext"
+      },
+      {
+        "name": "EditorToolbarTemplate",
+        "className": "EditorToolbarTemplateDirective",
+        "selector": "ng-template[neuralEditorToolbar]",
+        "contextType": "NeuralEditorToolbarTemplateContext"
+      }
+    ],
+    "providers": [],
+    "providerRequirements": [],
+    "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralEditorValue",
+        "type": "NeuralEditorDocument"
+      },
+      {
+        "name": "NeuralEditorExtension",
+        "type": "AnyExtension"
+      },
+      {
+        "name": "NeuralEditorUpdateSource",
+        "type": "'user' | 'command' | 'remote'"
+      },
+      {
+        "name": "NeuralEditorFocusPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralEditorTextAlign",
+        "type": "'left' | 'center' | 'right' | 'justify'"
+      },
+      {
+        "name": "NeuralEditorColorKind",
+        "type": "'text' | 'highlight'"
+      },
+      {
+        "name": "NeuralEditorMenuAppendTo",
+        "type": "'body' | 'editor' | HTMLElement"
+      },
+      {
+        "name": "NeuralEditorSuggestionPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'"
+      },
+      {
+        "name": "NeuralEditorCommandSource",
+        "type": "'slash' | 'command-palette'"
+      },
+      {
+        "name": "NeuralEditorMenuPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'"
+      },
+      {
+        "name": "NeuralEditorNodeIdGenerator",
+        "type": "( context: NeuralEditorNodeIdContext, ) => string"
+      },
+      {
+        "name": "NeuralEditorInsertPosition",
+        "type": "| 'before' | 'after' | 'inside-start' | 'inside-end'"
+      },
+      {
+        "name": "NeuralEditorOperation",
+        "type": "| NeuralEditorInsertOperation | NeuralEditorReplaceOperation | NeuralEditorDeleteOperation | NeuralEditorUpdateNodeOperation"
+      },
+      {
+        "name": "NeuralEditorOperationErrorCode",
+        "type": "| 'not-editable' | 'revision-conflict' | 'empty-batch' | 'invalid-target' | 'target-not-found' | 'invalid-content' | 'schema-violation' | 'protected-attribute' | 'operation-failed'"
+      },
+      {
+        "name": "NeuralEditorOperationValidationResult",
+        "type": "| { readonly valid: true; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly operationCount: number; } | { readonly valid: false; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorOperationApplyResult",
+        "type": "| { readonly status: 'applied'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly operationCount: number; readonly document: NeuralEditorDocument; } | { readonly status: 'conflict'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; } | { readonly status: 'rejected'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorSuggestionProvider",
+        "type": "( query: string, context: NeuralEditorSuggestionProviderContext, ) => readonly T[] | Promise<readonly T[]>"
+      },
+      {
+        "name": "NeuralEditorCommand",
+        "type": "| 'undo' | 'redo' | 'paragraph' | 'heading-1' | 'heading-2' | 'heading-3' | 'bold' | 'italic' | 'underline' | 'strike' | 'code' | 'bullet-list' | 'ordered-list' | 'task-list' | 'blockquote' | 'code-block' | 'align-left' | 'align-center' | 'align-right' | 'align-justify' | 'link' | 'image' | 'horizontal-rule' | 'clear-formatting' | 'insert-table' | 'delete-table' | 'add-row-before' | 'add-row-after' | 'delete-row' | 'add-column-before' | 'add-column-after' | 'delete-column' | 'merge-cells' | 'split-cell' | 'toggle-header-row'"
+      },
+      {
+        "name": "NeuralEditorToolbarItem",
+        "type": "| NeuralEditorToolbarCommandItem | NeuralEditorToolbarColorItem | NeuralEditorToolbarTableItem | NeuralEditorToolbarSeparatorItem"
+      },
+      {
+        "name": "NeuralEditorAiAction",
+        "type": "| 'rewrite' | 'shorten' | 'expand' | 'summarize' | 'fix-grammar' | 'change-tone' | 'translate' | 'custom'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewErrorCode",
+        "type": "| 'invalid-proposal' | 'revision-conflict' | 'validation-failed' | 'editor-not-ready'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewResult",
+        "type": "| { readonly status: 'previewed'; readonly proposal: NeuralEditorAiProposal; readonly operationCount: number; } | { readonly status: 'conflict' | 'rejected'; readonly proposal: NeuralEditorAiProposal; readonly error: NeuralEditorAiPreviewError; }"
+      },
+      {
+        "name": "NeuralEditorAiProposalRejectionReason",
+        "type": "| 'user' | 'replaced' | 'editor-state' | 'validation' | 'apply-rejected'"
+      },
+      {
+        "name": "NeuralEditorAiConflictReason",
+        "type": "| 'revision-conflict' | 'document-changed'"
+      },
+      {
+        "name": "NeuralEditorCollaborationStatus",
+        "type": "| 'disabled' | 'connecting' | 'connected' | 'synced' | 'disconnected' | 'error'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangesMode",
+        "type": "'off' | 'suggesting'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangeKind",
+        "type": "'insertion' | 'deletion'"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Install",
+        "language": "bash",
+        "code": "npm install @neural-ng/editor"
+      },
+      {
+        "title": "Install",
+        "language": "ts",
+        "code": "import {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});"
+      },
+      {
+        "title": "Install",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />"
+      },
+      {
+        "title": "Theme",
+        "language": "css",
+        "code": "@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "export interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "async handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "const request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "readonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Controller",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />"
+      },
+      {
+        "title": "Controller",
+        "language": "ts",
+        "code": "editor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });"
+      },
+      {
+        "title": "Toolbar",
+        "language": "ts",
+        "code": "readonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "ts",
+        "code": "const uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});"
+      },
+      {
+        "title": "Context menus and positioning",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "ts",
+        "code": "import { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "html",
+        "code": "<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />"
+      },
+      {
+        "title": "Version snapshots",
+        "language": "ts",
+        "code": "interface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}"
+      },
+      {
+        "title": "Collaboration controller methods",
+        "language": "ts",
+        "code": "controller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralEditorClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "toolbar",
+            "type": "string",
+            "description": "Classes applied to the toolbar element."
+          },
+          {
+            "name": "toolbarButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar button element."
+          },
+          {
+            "name": "toolbarButtonIcon",
+            "type": "string",
+            "description": "Classes applied to the toolbar button icon element."
+          },
+          {
+            "name": "toolbarSeparator",
+            "type": "string",
+            "description": "Classes applied to the toolbar separator element."
+          },
+          {
+            "name": "toolbarMenu",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu element."
+          },
+          {
+            "name": "toolbarMenuButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu button element."
+          },
+          {
+            "name": "toolbarMenuPanel",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu panel element."
+          },
+          {
+            "name": "toolbarMenuAction",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu action element."
+          },
+          {
+            "name": "toolbarColorOption",
+            "type": "string",
+            "description": "Classes applied to the toolbar color option element."
+          },
+          {
+            "name": "toolbarColorSwatch",
+            "type": "string",
+            "description": "Classes applied to the toolbar color swatch element."
+          },
+          {
+            "name": "bubbleMenu",
+            "type": "string",
+            "description": "Classes applied to the bubble menu element."
+          },
+          {
+            "name": "bubbleMenuButton",
+            "type": "string",
+            "description": "Classes applied to the bubble menu button element."
+          },
+          {
+            "name": "floatingMenu",
+            "type": "string",
+            "description": "Classes applied to the floating menu element."
+          },
+          {
+            "name": "floatingMenuButton",
+            "type": "string",
+            "description": "Classes applied to the floating menu button element."
+          },
+          {
+            "name": "linkPopover",
+            "type": "string",
+            "description": "Classes applied to the link popover element."
+          },
+          {
+            "name": "linkPopoverInput",
+            "type": "string",
+            "description": "Classes applied to the link popover input element."
+          },
+          {
+            "name": "linkPopoverAction",
+            "type": "string",
+            "description": "Classes applied to the link popover action element."
+          },
+          {
+            "name": "slashMenu",
+            "type": "string",
+            "description": "Classes applied to the slash menu element."
+          },
+          {
+            "name": "mentionMenu",
+            "type": "string",
+            "description": "Classes applied to the mention menu element."
+          },
+          {
+            "name": "suggestionList",
+            "type": "string",
+            "description": "Classes applied to the suggestion list element."
+          },
+          {
+            "name": "suggestionItem",
+            "type": "string",
+            "description": "Classes applied to the suggestion item element."
+          },
+          {
+            "name": "suggestionItemIcon",
+            "type": "string",
+            "description": "Classes applied to the suggestion item icon element."
+          },
+          {
+            "name": "suggestionItemContent",
+            "type": "string",
+            "description": "Classes applied to the suggestion item content element."
+          },
+          {
+            "name": "suggestionItemLabel",
+            "type": "string",
+            "description": "Classes applied to the suggestion item label element."
+          },
+          {
+            "name": "suggestionItemDescription",
+            "type": "string",
+            "description": "Classes applied to the suggestion item description element."
+          },
+          {
+            "name": "suggestionState",
+            "type": "string",
+            "description": "Classes applied to the suggestion state element."
+          },
+          {
+            "name": "commandPalette",
+            "type": "string",
+            "description": "Classes applied to the command palette element."
+          },
+          {
+            "name": "commandPaletteBackdrop",
+            "type": "string",
+            "description": "Classes applied to the command palette backdrop element."
+          },
+          {
+            "name": "commandPalettePanel",
+            "type": "string",
+            "description": "Classes applied to the command palette panel element."
+          },
+          {
+            "name": "commandPaletteInput",
+            "type": "string",
+            "description": "Classes applied to the command palette input element."
+          },
+          {
+            "name": "commandPaletteList",
+            "type": "string",
+            "description": "Classes applied to the command palette list element."
+          },
+          {
+            "name": "commandPaletteItem",
+            "type": "string",
+            "description": "Classes applied to the command palette item element."
+          },
+          {
+            "name": "aiReview",
+            "type": "string",
+            "description": "Classes applied to the ai review element."
+          },
+          {
+            "name": "aiReviewSummary",
+            "type": "string",
+            "description": "Classes applied to the ai review summary element."
+          },
+          {
+            "name": "aiReviewProgress",
+            "type": "string",
+            "description": "Classes applied to the ai review progress element."
+          },
+          {
+            "name": "aiReviewActions",
+            "type": "string",
+            "description": "Classes applied to the ai review actions element."
+          },
+          {
+            "name": "aiReviewButton",
+            "type": "string",
+            "description": "Classes applied to the ai review button element."
+          },
+          {
+            "name": "collaborationBar",
+            "type": "string",
+            "description": "Classes applied to the collaboration bar element."
+          },
+          {
+            "name": "collaborationStatus",
+            "type": "string",
+            "description": "Classes applied to the collaboration status element."
+          },
+          {
+            "name": "presenceList",
+            "type": "string",
+            "description": "Classes applied to the presence list element."
+          },
+          {
+            "name": "presenceItem",
+            "type": "string",
+            "description": "Classes applied to the presence item element."
+          },
+          {
+            "name": "collaborationPanel",
+            "type": "string",
+            "description": "Classes applied to the collaboration panel element."
+          },
+          {
+            "name": "collaborationSection",
+            "type": "string",
+            "description": "Classes applied to the collaboration section element."
+          },
+          {
+            "name": "collaborationSectionTitle",
+            "type": "string",
+            "description": "Classes applied to the collaboration section title element."
+          },
+          {
+            "name": "collaborationInput",
+            "type": "string",
+            "description": "Classes applied to the collaboration input element."
+          },
+          {
+            "name": "collaborationButton",
+            "type": "string",
+            "description": "Classes applied to the collaboration button element."
+          },
+          {
+            "name": "commentThread",
+            "type": "string",
+            "description": "Classes applied to the comment thread element."
+          },
+          {
+            "name": "commentMessage",
+            "type": "string",
+            "description": "Classes applied to the comment message element."
+          },
+          {
+            "name": "trackedChange",
+            "type": "string",
+            "description": "Classes applied to the tracked change element."
+          },
+          {
+            "name": "snapshotItem",
+            "type": "string",
+            "description": "Classes applied to the snapshot item element."
+          },
+          {
+            "name": "surface",
+            "type": "string",
+            "description": "Classes applied to the surface element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "characterCount",
+            "type": "string",
+            "description": "Classes applied to the character count element."
+          },
+          {
+            "name": "wordCount",
+            "type": "string",
+            "description": "Classes applied to the word count element."
+          }
+        ],
+        "sourcePath": "libs/neural-editor/editor.types.ts"
+      }
+    ],
+    "relatedComponents": [
+      "editor-ai-review-template",
+      "editor-bubble-menu-template",
+      "editor-floating-menu-template",
+      "editor-link-popover-template",
+      "editor-slash-menu-template",
+      "editor-mention-menu-template",
+      "editor-toolbar-template",
+      "neural-editor"
+    ],
+    "resources": {
+      "contract": "neural://components/editor-command-palette-template/contract",
+      "readme": "neural://components/editor-command-palette-template/readme",
+      "llms": "neural://components/editor-command-palette-template/llms"
+    },
+    "sourceDirectory": "libs/neural-editor",
+    "readme": "# Editor\n\nStatus: **Beta**. The canonical standalone export is `NeuralEditor`;\n`EditorComponent` remains a deprecated compatibility alias.\n\nSignal-first structured rich-text editing for Angular 22+. NeuralNg Editor uses\nTiptap 3 and ProseMirror internally, while its canonical form value remains a\n`NeuralEditorDocument` JSON tree. HTML is derived output, never the model.\n\n## Install\n\nInstall the complete Editor runtime with one command:\n\n```bash\nnpm install @neural-ng/editor\n```\n\nThe package installs Tiptap, ProseMirror, Floating UI, Yjs, and the required\nNeuralNg core runtime. Applications do not install those Editor internals\nindividually. A realtime collaboration transport such as `y-websocket` or a\nHocuspocus provider remains application-owned and is only needed when that\nfeature is enabled.\n\n```ts\nimport {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});\n```\n\n```html\n<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />\n```\n\nEditor implements `FormValueControl<NeuralEditorDocument>`. Use the same\ncomponent with `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`.\nDo not implement a second `ControlValueAccessor`.\n\n`EditorComponent` remains a deprecated compatibility alias. New code should\nimport the canonical `NeuralEditor` runtime.\n\n## Public API contract\n\nThe standalone package contract is documented in [`API_FREEZE.md`](./API_FREEZE.md).\nImport only from `@neural-ng/editor`; deep imports and internal rendering\ncomponents are unsupported. The freeze document is the source of truth for\ncomponent inputs/outputs, controller methods, template contexts, class slots,\nutilities, and package asset entry points.\n\n### Theme\n\nImport the matching Core and Editor token files:\n\n```css\n@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';\n```\n\nExperimental presets follow the same two-file rule: import the matching Core\npreset first, then the Editor preset. The optional Tailwind bridge remains\n`@neural-ng/core/themes/tailwind.css`.\n\n## Ownership boundary\n\nEditor owns structured editing, toolbar commands, selection state, undo/redo,\nJSON output, HTML/text derivation, accessibility, and Angular Forms\nintegration. It does not save documents, call HTTP APIs, upload image files,\ninvoke AI models, connect collaboration providers, or sanitize backend output. Those\nresponsibilities belong to application services or explicit extensions.\n\n## Canonical value\n\nThe model is never HTML, Markdown, or a format-dependent union:\n\n```ts\nexport interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}\n```\n\nThe current Beta schema and interaction layer includes:\n\n- paragraph and heading alignment: `left`, `center`, `right`, `justify`\n- text color through a `textStyle` mark\n- multicolor highlight marks\n- `taskList` and `taskItem` nodes\n- `table`, `tableRow`, `tableHeader`, and `tableCell` nodes\n- `image` nodes containing persistent URLs, alt text, title, width, and height\n- BubbleMenu, FloatingMenu, and a selection-aware link popover\n- slash commands, async mentions, and a searchable command palette\n\nPersist a schema version beside long-lived documents:\n\n```ts\nconst stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;\n```\n\nUse the serializers for external representations:\n\n```ts\nconst html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());\n```\n\nThe default serializers include the current Beta schema, including image and\nmention nodes. Pass the matching custom extension set when converting documents\nwith additional nodes or marks.\n\n## Stable node IDs and structured operations\n\nThe Beta contract enables Tiptap `UniqueID` by default. Identified nodes receive a\n`neuralId` attribute in canonical JSON. The default list covers block nodes,\nlist items, tables and cells, images, and horizontal rules. Configure this at\ninitialization time:\n\n```html\n<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />\n```\n\nUse `nodeIdGenerator` only when the application requires a custom ID strategy.\nThe generator must return a non-empty, globally unique, stable string. Disable\nthe feature with `[enableNodeIds]=\"false\"` only when the document will never use\nstructured operations, AI review, comments, or collaboration adapters.\n\nThe controller exposes a document-only revision signal and node lookup:\n\n```ts\nconst revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);\n```\n\nBuild and apply atomic, schema-checked operation batches through the controller:\n\n```ts\nconst batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}\n```\n\nSupported operations are `insert`, `replace`, `delete`, and `update-node`.\nPrefer `nodeId` targets. Numeric `from`/`to` targets are accepted for captured\nselection ranges and are mapped across earlier operations in the same batch.\nA batch is built fully before dispatch, so one invalid operation rejects the\nwhole batch without partial document changes.\n\n`baseRevision` prevents stale edits. If the document changes after a batch is\ncreated, `applyOperations()` returns `status: 'conflict'` and emits\n`operationConflict`. Successful and rejected batches emit `operationsApplied`\nand `operationsRejected` respectively.\n\nNode IDs are protected identity. Inserted content cannot choose IDs;\n`UniqueID` assigns them. A compatible single-node replacement preserves the\ntarget ID by default. `update-node` cannot change the configured ID attribute.\n\nInternal IDs are excluded from HTML by default:\n\n```ts\nconst publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);\n```\n\nPersist canonical JSON with IDs. Do not use generated HTML as the source of\ntruth for operations.\n\n## AI requests and reviewable proposals\n\nEditor remains provider-neutral. It never calls OpenAI, Anthropic, or any other\nmodel directly. Request work through the controller and handle the event in\napplication code:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />\n```\n\n```ts\nasync handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}\n```\n\n`requestAi()` captures the canonical JSON document, document revision, current\nselection range, selected text, selected JSON content, and stable node IDs. The\napplication service returns a `NeuralEditorAiProposal` containing only the\nstructured operations from the current Beta contract.\n\nPreview is non-destructive. Insertions, deletions, replacements, and attribute\nupdates are rendered as ProseMirror decorations while `[(value)]` remains\nunchanged. Only `acceptAiProposal()` applies the complete operation batch in one\ntransaction. `rejectAiProposal()` removes the preview without touching the\nmodel.\n\n```ts\nconst request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});\n```\n\nA proposal is rejected as a conflict when its `baseRevision` no longer matches\nthe editor revision. Editing the document while a preview is active also clears\nthe preview and emits `aiOperationConflict`. Do not silently overwrite the base\nrevision or force stale operations onto new content.\n\nThe default review bar appends to `menuAppendTo` and supports previous/next,\naccept, reject, Escape, mobile layout, themes, and `unstyled`. Replace it with a\ntyped template when needed:\n\n```html\n<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>\n```\n\n`controller.aiReview()` exposes the active review state and\n`controller.aiRequestPending()` reports unresolved requests. The Beta contract keeps a\nsingle active proposal; `getActiveAiProposals()` therefore returns zero or one\nproposal while preserving room for a future multi-proposal adapter.\n\n## Slash commands, mentions, and command palette\n\nType `/` in a paragraph to open the default slash menu. The default commands\ninsert headings, lists, tasks, quotes, code blocks, tables, images, and dividers.\nReplace the defaults with `slashCommands`, or provide `slashCommandProvider` for\nasync or remote filtering. Providers receive an `AbortSignal`; stop stale work\nwhen it is aborted.\n\nMentions are enabled only when `mentionProvider` is present:\n\n```ts\nreadonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });\n```\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />\n```\n\nThe canonical mention node persists only stable identity and display data:\n\n```ts\n{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}\n```\n\nProvider-only `metadata` is not written to the document. Keep authorization,\nprofiles, and mutable user data in application services.\n\nPress `Ctrl+K` or `Cmd+K`, or call `controller.openCommandPalette()`, to open the\nsearchable command palette. Set `commandPaletteItems` to replace its defaults.\nSlash, mention, command-palette, bubble, floating, link, and toolbar overlays are\ncoordinated so only the relevant layer remains open. Suggestion menus and the\npalette use the same `menuAppendTo` target; `body` remains the default to avoid\noverflow clipping.\n\nProject complete menu UIs when needed:\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>\n```\n\nUse the supplied context callbacks. Do not query the editor DOM, manually\nposition suggestion panels, or insert mention HTML yourself.\n\n## Controller\n\n`editorReady` exposes a stable NeuralNg controller instead of the raw Tiptap\ninstance:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />\n```\n\n```ts\neditor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });\n```\n\nTable commands are contextual. Row, column, cell, and delete commands become\navailable when the current selection is inside a table. Use controller commands\ninstead of mutating JSON nodes or editing the `contenteditable` DOM.\n\n## Toolbar\n\nToolbar palettes and table actions use NeuralNg Popover rather than native `details` menus. Popover renders through the browser top layer, so panels are not clipped by editor or card overflow. Opening one toolbar popover closes the previously open auto popover; no `appendTo=\"body\"` option or DOM reparenting is needed.\n\nThe default toolbar contains:\n\n- undo and redo\n- paragraph and H1-H3\n- bold, italic, underline, strike, and inline code\n- text-color and highlight palettes\n- left, center, right, and justified alignment\n- bullet, ordered, and task lists\n- blockquote and code block\n- link editing\n- table insertion and contextual table commands\n- horizontal rule and clear formatting\n\nCustomize the palettes without changing the document type:\n\n```ts\nreadonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;\n```\n\n```html\n<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />\n```\n\nReplace the toolbar model with `toolbarItems`, or project a complete toolbar:\n\n```html\n<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>\n```\n\n## Images and FileUpload\n\nThe toolbar and floating menu emit `imageInsertRequest`; Editor never uploads a\n`File`. Application code selects and validates the file with FileUpload, sends\nit to a media service, then inserts only the persistent URL:\n\n```html\n<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />\n```\n\n```ts\nconst uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});\n```\n\nBase64 sources are rejected by the controller and default Image extension.\nEnable `allowBase64Images` only for a deliberate application requirement. Do\nnot persist `File`, blob URLs, or temporary object URLs in editor JSON.\n\n## Context menus and positioning\n\nBubble, floating, and link menus use Tiptap's Floating UI-based extensions.\n`menuAppendTo` defaults to `body`, which avoids clipping by editor, card, dialog,\nor overflow containers. Use `menuAppendTo=\"editor\"` only when the menu must stay\ninside the editor stacking context, or bind a specific `HTMLElement`.\n\n```html\n<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>\n```\n\nUse `ng-template[neuralEditorLinkPopover]` for a custom link form. Default menus\nare keyboard reachable, expose toolbar/dialog roles, stay within the viewport,\nand switch to compact horizontally scrollable layouts on narrow screens.\n\n## Extensions\n\n`extensions` appends Tiptap extensions. Top-level extension names are\nlast-write-wins. To replace the default schema, set\n`includeDefaultExtensions=\"false\"` and provide the complete extension set.\nExtension configuration is initialization-time in this Beta release.\n\n## Security and persistence\n\nJSON is not a security boundary. Validate the document schema, URLs, colors,\ntable attributes, pasted content, and custom node attributes on the server.\nSanitize generated HTML for its final rendering context. Do not trust content\nsolely because the editor accepted it.\n\n## Styling\n\nUse the neutral, glass, mist, or futuristic themes, or set `unstyled` locally or\nglobally. Structural `*-root` hooks remain while visual `*-base` classes are\nremoved. `NeuralEditorClasses` includes typed slots for toolbar menus, palette\noptions, slash and mention suggestions, the command palette, BubbleMenu,\nFloatingMenu, link popover controls, the editing surface, content, footer, and\ncounters.\n\n## Collaboration and review\n\nEditor collaboration is provider-neutral. The component receives an initialized\nYjs document and, optionally, a provider that exposes awareness and connection\nevents. NeuralNg does not create rooms, authenticate users, or persist Yjs\nupdates.\n\n```ts\nimport { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);\n```\n\n```html\n<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />\n```\n\nWhen `collaboration` is present:\n\n- The Yjs document is the live collaborative source of truth.\n- Editor waits for provider sync by default before mounting.\n- StarterKit undo/redo is disabled because Collaboration owns history.\n- External `value` writes are not pushed into the collaborative document.\n- `editorUpdate.source` is `remote` for collaboration-origin transactions.\n- Presence is read from the provider awareness `user` field and is never\n  persisted as document content.\n- `disconnectOnDestroy` is opt-in because provider lifetime normally belongs to\n  the application.\n\n### Provider contract\n\nThe optional provider is structural, so Hocuspocus, y-websocket, or another Yjs\nprovider can be adapted without making it a NeuralNg dependency. It may expose\n`connect`, `disconnect`, `synced`, `on`, `off`, and `awareness`.\n\nTreat `document`, `provider`, `field`, and `fragment` as initialization-only.\nWhen the room or collaborative field changes, destroy and recreate the Editor\ninstance instead of mutating the collaboration config in place.\n\nFor providers with custom event names, pass `whenSynced` and resolve it when the\ninitial room synchronization is complete. Do not seed `value` before sync. Seed\nan empty Yjs fragment in application code after synchronization instead.\n\n### Comments\n\nComments use a lightweight inline `neuralComment` mark and thread data stored in\na dedicated Yjs map. Without collaboration, the same API uses an in-memory\nrepository. The default panel supports creating, replying, resolving, reopening,\nselecting, and deleting threads through `NeuralEditorController`.\n\nComments in the Beta contract are plain-text thread messages. Authentication,\nauthorization, mentions, notifications, and server-side moderation remain\napplication responsibilities.\n\n### Tracked changes\n\nSet `trackedChangesMode=\"suggesting\"` to track local text insertions and\ndeletions. Remote Yjs transactions are ignored, so each client attributes only\nits own edits. Changes can be accepted or rejected individually or as a batch.\n\nThe Beta contract tracks text insertions and deletions. Mark changes, complex block\nreplacement, overlapping suggestions, and production audit policy are not part\nof this Beta contract.\n\n### Version snapshots\n\n`snapshots` is a controlled model containing portable JSON checkpoints:\n\n```ts\ninterface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}\n```\n\nThe built-in snapshot model intentionally does not persist Yjs binary updates.\nStore snapshots in application code, and use a provider/backend-specific Yjs\nhistory service when exact CRDT history, branching, or audit-grade restoration\nis required.\n\n### Collaboration controller methods\n\n```ts\ncontroller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);\n```\n\nThe default collaboration panel is enabled whenever collaboration, comments,\ntracked changes, or snapshots are enabled. Set `showCollaborationPanel=\"false\"`\nto render an application-owned review surface using the controller signals.\n",
+    "llms": "# @neural-ng/editor\n\nImport canonical `NeuralEditor` from `@neural-ng/editor`. `EditorComponent` is\na deprecated compatibility alias. The selector remains `<neural-editor>`.\n\n## Public API boundary\n\n- Treat `API_FREEZE.md` as the authoritative standalone package contract.\n- Import only from `@neural-ng/editor`. Never deep-import source files.\n- Use `NeuralEditor`, the exported template directives, public types,\n  constants, serializers, pure helpers, and `NeuralEditorController`.\n- Internal toolbar, menu, review, and collaboration-panel renderer components\n  are not public API. Customize through class slots and template directives.\n- Do not use raw Tiptap/ProseMirror operation or tracked-change helpers. Use the\n  controller methods so revisions, events, forms, and collaboration rules stay\n  consistent.\n\n## Canonical rules\n\n- Install only `@neural-ng/editor`. Tiptap, ProseMirror, Floating UI, Yjs, and the required NeuralNg core runtime are package-managed dependencies.\n- Install a realtime collaboration transport/provider separately only when collaboration is enabled.\n- Import `NeuralEditor` from `@neural-ng/editor`.\n- Bind only `NeuralEditorDocument` JSON to `[(value)]`, `[formField]`,\n  `[formControl]`, or `[(ngModel)]`. Never bind HTML or Markdown strings and\n  never create a string-or-JSON value union.\n- The empty value is a `doc` containing an empty paragraph. Do not use `null` as\n  the normal empty state.\n- Treat editor values as immutable. Do not mutate node, mark, attribute, or\n  content arrays in place.\n\n## Beta schema, identity, menus, AI review, and collaboration\n\n- Text alignment is stored on paragraph or heading attributes as `textAlign`.\n- Text color is stored in a `textStyle` mark with a `color` attribute.\n- Highlight is stored in a `highlight` mark and may include a `color` attribute.\n- Tasks use `taskList` and `taskItem`; task state is the boolean `checked`\n  attribute on `taskItem`.\n- Tables use `table`, `tableRow`, `tableHeader`, and `tableCell` nodes.\n- Images use an `image` node. Persist a stable HTTP(S) URL and optional alt,\n  title, width, and height attributes. Never persist File objects, blob URLs,\n  or temporary object URLs.\n- Mentions use `mention` nodes with stable `id` and `label` attributes. Provider-only\n  metadata is not persisted. Do not copy avatars, permissions, or mutable profile\n  objects into editor JSON.\n- Do not invent HTML-only state that cannot be represented by the configured\n  JSON schema.\n\n## Commands\n\n- Use the `NeuralEditorController` from `editorReady` for all programmatic\n  edits. Do not query, replace, or mutate the `contenteditable` DOM.\n- Use `setTextAlign()`, `setTextColor()`, `setHighlight()`,\n  `toggleTaskList()`, `insertTable()`, `insertImage()`, and menu controller\n  methods for Alpha 2.3 features.\n- Table row, column, merge, split, header, and delete commands are contextual;\n  call `controller.can(command)` before presenting a custom enabled action.\n- Use `toolbarItems` for the built-in toolbar or project\n  `ng-template[neuralEditorToolbar]` with `let-editor` for a custom toolbar.\n- Built-in color and table menus use NeuralNg Popover in the browser top layer. Do not replace them with native `details`, custom absolute-positioned panels, or `appendTo=\"body\"` logic. Only one auto popover remains open at a time.\n- Use `(imageInsertRequest)` to open FileUpload or an application media picker.\n  Upload outside Editor, then call `event.controller.insertImage()` with the\n  persistent URL. Editor must not send HTTP requests.\n- BubbleMenu appears for a text or image selection. FloatingMenu appears for an\n  empty paragraph. Link editing uses the same contextual bubble layer so only\n  one contextual menu is active.\n- Context menus append to `body` by default. Use `menuAppendTo=\"editor\"` or a\n  concrete HTMLElement only when the containing stacking context is required.\n- Customize menus with `neuralEditorBubbleMenu`, `neuralEditorFloatingMenu`,\n  and `neuralEditorLinkPopover` templates. Use the supplied controller and link\n  context callbacks; do not access the raw Tiptap instance or position menus\n  manually.\n- `textColors` and `highlightColors` configure UI palettes only. They do not\n  constrain externally loaded JSON; validate allowed values in application and\n  server code when a restricted palette is required.\n\n## Node identity and structured operations\n\n- Node IDs are enabled by default. Canonical JSON stores the configured\n  `nodeIdAttribute` (`neuralId` by default) on identified nodes.\n- Keep node IDs stable and unique. Do not derive IDs from array indexes,\n  document positions, visible text, or mutable labels.\n- Use `identifiedNodeTypes` and `nodeIdGenerator` only as initialization-time\n  configuration. Disable `enableNodeIds` only when no operation, AI review,\n  comment, or collaboration layer will address nodes.\n- Prefer `controller.getNodeById()` and `controller.getNodeIdAt()` over walking\n  the `contenteditable` DOM or assuming ProseMirror positions remain stable.\n- Create batches with `controller.createOperationBatch()`. It captures the\n  current document-only revision. Validate with `validateOperations()` and\n  apply with `applyOperations()`.\n- Supported operation types are `insert`, `replace`, `delete`, and\n  `update-node`. Prefer `{ nodeId }` targets. Use `{ from, to }` only for a\n  captured selection range from the same base revision.\n- Operation batches are atomic. Never apply operations one by one in\n  application code. One invalid target, node, attribute, or schema placement\n  rejects the whole batch without partial changes.\n- Treat `status: 'conflict'` as a required rebase/retry boundary. Never force a\n  stale batch onto a newer document or silently replace its `baseRevision`.\n- Inserted operation content cannot choose internal node IDs. Compatible\n  single-node replacements preserve the target ID by default. The protected ID\n  attribute cannot be changed with `update-node`.\n- Listen to `operationsApplied`, `operationsRejected`, and `operationConflict`\n  for application side effects. The form model changes only after a successful\n  atomic dispatch.\n- `editorDocumentToHtml()` omits node IDs by default. Use\n  `{ includeNodeIds: true }` only for diagnostics or explicit round trips.\n  Persist canonical JSON, not generated HTML, as the addressable source.\n- Use `editorDocumentWithNodeIds()` to migrate legacy JSON before storing or\n  sending it to an AI operation service.\n\n## Slash, mention, and command-palette behavior\n\n- Type `/` in a paragraph for the slash menu. Configure static commands through\n  `slashCommands` or use `slashCommandProvider`; a provider replaces default\n  filtering for that request.\n- Enable mentions with `mentionProvider`. It may return synchronously or\n  asynchronously. Honor the provider context `AbortSignal` and discard stale\n  network work when it aborts.\n- Press `Ctrl+K`/`Cmd+K` or call `controller.openCommandPalette()` for global\n  editor commands. Configure `commandPaletteItems`; do not create document-wide\n  key listeners in application code.\n- Listen to `commandExecuted` and `mentionSelected` only for user-action side\n  effects. The canonical model still changes through normal editor transactions.\n- Use `neuralEditorSlashMenu`, `neuralEditorMentionMenu`, and\n  `neuralEditorCommandPalette` for custom rendering. Use the supplied signals,\n  selection callbacks, and close callbacks. Do not access Tiptap plugin state or\n  manually mount/reposition overlays.\n- Suggestion and context overlays are mutually coordinated. Keep\n  `menuAppendTo=\"body\"` unless a deliberate editor-local stacking context is\n  required.\n- Slash commands and palette items execute local controller operations. They do\n  not imply HTTP, AI, upload, or persistence behavior.\n\n## AI request and review rules\n\n- NeuralNg Editor does not call AI providers. Use `controller.requestAi()` and\n  handle `(aiRequest)` in application code.\n- Send the request's structured document, selection snapshot, stable node IDs,\n  schema version, and base revision to the application-owned AI service. Do not\n  scrape the `contenteditable` DOM and do not send generated HTML as the\n  canonical source.\n- AI services must return `NeuralEditorAiProposal` values containing only\n  supported structured operations. Never return raw executable JavaScript,\n  mutate the editor directly, or inject unsanitized HTML.\n- Call `controller.previewAiProposal()` before applying a proposal. Preview uses\n  ephemeral ProseMirror decorations and must not change `[(value)]`.\n- Apply changes only after explicit user approval with\n  `controller.acceptAiProposal()`. Reject with `rejectAiProposal()`; rejection\n  removes decorations and leaves the canonical JSON unchanged.\n- Respect `baseRevision`. Treat `aiOperationConflict` as a required rebase or\n  fresh-request boundary. Never replace a stale proposal's revision with the\n  current revision.\n- A normal document edit invalidates the active preview. Do not keep stale\n  visual suggestions visible after user edits.\n- Use `(aiProposalPreviewed)`, `(aiProposalAccepted)`,\n  `(aiProposalRejected)`, `(aiOperationConflict)`, and\n  `(aiRequestCancelled)` for side effects and analytics.\n- Customize the review UI with `ng-template[neuralEditorAiReview]`. Use the\n  supplied callbacks and signals; do not mount another overlay, duplicate\n  accept/reject state, or apply operations outside the controller.\n- The default review UI follows `menuAppendTo`, supports mobile layout, and is\n  part of the shared overlay coordination model.\n\n## Conversion and persistence\n\n- Use `editorDocumentFromHtml()` to import HTML and\n  `editorDocumentToHtml()`/`editorDocumentToText()` for derived output.\n- The default serializers understand the current Beta schema, including images and mentions. Pass the\n  exact custom extension set when the document contains additional nodes or\n  marks.\n- Save documents in application code and persist a schema version beside\n  long-lived JSON.\n- Editor does not save data, upload files, call AI models, open collaboration\n  connections, or perform backend sanitization.\n\n## Security\n\n- JSON is not a security boundary. Validate document structure, links, colors,\n  table attributes, pasted content, and custom node attributes on the server.\n- Sanitize generated HTML for its final destination.\n- Never treat client-side toolbar palettes or schema checks as authorization or\n  backend validation.\n\n## Integration\n\n- `extensions` are initialization-time in the alpha API and append to the\n  defaults with top-level last-write-wins behavior.\n- To replace StarterKit or the default schema, disable\n  `includeDefaultExtensions` and provide every required extension.\n- `readonly` keeps content readable and selectable while blocking edits.\n  `disabled` also removes the editor from normal keyboard interaction.\n- Use `unstyled` or global unstyled mode for headless rendering. Structural\n  classes and ARIA relationships remain.\n\n## Collaboration, comments, tracked changes, and snapshots\n\nUse `NeuralEditorCollaborationConfig` with an application-owned `Y.Doc`.\nNeuralNg does not create a collaboration backend, room, token, or provider.\nThe optional provider must expose the small structural provider contract.\n\nWhen collaboration is enabled, the Yjs document is the live source of truth.\nDo not initialize the editor with remote content before the provider has synced.\nDo not bind autosave logic to every remote update without throttling and origin\nchecks. Collaboration disables StarterKit history and uses Yjs collaboration\nundo/redo.\nTreat `collaboration.document`, `provider`, `field`, and `fragment` as\ninitialization-only. Recreate the Editor when the room or field changes.\n\nPass `collaborationUser` with stable `id`, `name`, and `color` values. Presence\ncomes from provider awareness and is ephemeral. Never persist awareness state as\ncanonical editor content.\n\nUse `enableComments` for inline plain-text comment threads. Thread data is stored\nin the configured Yjs comments map when collaboration is active. Authentication,\npermissions, notifications, moderation, and server persistence belong to the\napplication.\n\nUse `trackedChangesMode=\"suggesting\"` to record local text insertions and\ndeletions as review marks. Remote collaboration transactions are deliberately\nignored. Alpha 4 tracked changes are not an audit log and do not cover every\npossible structural or formatting edit.\n\nUse `[(snapshots)]` for portable JSON checkpoints. Snapshot creation does not\nupload or persist anything. Save snapshots in application code. For exact CRDT\nhistory or compliance-grade versioning, use a backend/provider history system.\n\nNever combine independent Yjs documents for the same room. Never seed content on\nan unsynchronized collaborative document. Do not mutate `Y.Doc` content and the\nEditor `value` independently.\n"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "editor-floating-menu-template",
+    "name": "EditorFloatingMenuTemplate",
+    "className": "EditorFloatingMenuTemplateDirective",
+    "kind": "directive",
+    "selector": "ng-template[neuralEditorFloatingMenu]",
+    "entryPoint": "@neural-ng/editor",
+    "packageName": "@neural-ng/editor",
+    "packageVersion": "0.1.0-beta.2",
+    "status": "beta",
+    "summary": "Status: **Beta**. The canonical standalone export is `NeuralEditor`; `EditorComponent` remains a deprecated compatibility alias.",
+    "inputs": [],
+    "models": [],
+    "outputs": [],
+    "templates": [
+      {
+        "name": "EditorAiReviewTemplate",
+        "className": "EditorAiReviewTemplateDirective",
+        "selector": "ng-template[neuralEditorAiReview]",
+        "contextType": "NeuralEditorAiReviewTemplateContext"
+      },
+      {
+        "name": "EditorBubbleMenuTemplate",
+        "className": "EditorBubbleMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorBubbleMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorFloatingMenuTemplate",
+        "className": "EditorFloatingMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorFloatingMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorLinkPopoverTemplate",
+        "className": "EditorLinkPopoverTemplateDirective",
+        "selector": "ng-template[neuralEditorLinkPopover]",
+        "contextType": "NeuralEditorLinkPopoverTemplateContext"
+      },
+      {
+        "name": "EditorSlashMenuTemplate",
+        "className": "EditorSlashMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorSlashMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorSlashCommand>"
+      },
+      {
+        "name": "EditorMentionMenuTemplate",
+        "className": "EditorMentionMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorMentionMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorMentionItem>"
+      },
+      {
+        "name": "EditorCommandPaletteTemplate",
+        "className": "EditorCommandPaletteTemplateDirective",
+        "selector": "ng-template[neuralEditorCommandPalette]",
+        "contextType": "NeuralEditorCommandPaletteTemplateContext"
+      },
+      {
+        "name": "EditorToolbarTemplate",
+        "className": "EditorToolbarTemplateDirective",
+        "selector": "ng-template[neuralEditorToolbar]",
+        "contextType": "NeuralEditorToolbarTemplateContext"
+      }
+    ],
+    "providers": [],
+    "providerRequirements": [],
+    "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralEditorValue",
+        "type": "NeuralEditorDocument"
+      },
+      {
+        "name": "NeuralEditorExtension",
+        "type": "AnyExtension"
+      },
+      {
+        "name": "NeuralEditorUpdateSource",
+        "type": "'user' | 'command' | 'remote'"
+      },
+      {
+        "name": "NeuralEditorFocusPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralEditorTextAlign",
+        "type": "'left' | 'center' | 'right' | 'justify'"
+      },
+      {
+        "name": "NeuralEditorColorKind",
+        "type": "'text' | 'highlight'"
+      },
+      {
+        "name": "NeuralEditorMenuAppendTo",
+        "type": "'body' | 'editor' | HTMLElement"
+      },
+      {
+        "name": "NeuralEditorSuggestionPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'"
+      },
+      {
+        "name": "NeuralEditorCommandSource",
+        "type": "'slash' | 'command-palette'"
+      },
+      {
+        "name": "NeuralEditorMenuPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'"
+      },
+      {
+        "name": "NeuralEditorNodeIdGenerator",
+        "type": "( context: NeuralEditorNodeIdContext, ) => string"
+      },
+      {
+        "name": "NeuralEditorInsertPosition",
+        "type": "| 'before' | 'after' | 'inside-start' | 'inside-end'"
+      },
+      {
+        "name": "NeuralEditorOperation",
+        "type": "| NeuralEditorInsertOperation | NeuralEditorReplaceOperation | NeuralEditorDeleteOperation | NeuralEditorUpdateNodeOperation"
+      },
+      {
+        "name": "NeuralEditorOperationErrorCode",
+        "type": "| 'not-editable' | 'revision-conflict' | 'empty-batch' | 'invalid-target' | 'target-not-found' | 'invalid-content' | 'schema-violation' | 'protected-attribute' | 'operation-failed'"
+      },
+      {
+        "name": "NeuralEditorOperationValidationResult",
+        "type": "| { readonly valid: true; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly operationCount: number; } | { readonly valid: false; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorOperationApplyResult",
+        "type": "| { readonly status: 'applied'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly operationCount: number; readonly document: NeuralEditorDocument; } | { readonly status: 'conflict'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; } | { readonly status: 'rejected'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorSuggestionProvider",
+        "type": "( query: string, context: NeuralEditorSuggestionProviderContext, ) => readonly T[] | Promise<readonly T[]>"
+      },
+      {
+        "name": "NeuralEditorCommand",
+        "type": "| 'undo' | 'redo' | 'paragraph' | 'heading-1' | 'heading-2' | 'heading-3' | 'bold' | 'italic' | 'underline' | 'strike' | 'code' | 'bullet-list' | 'ordered-list' | 'task-list' | 'blockquote' | 'code-block' | 'align-left' | 'align-center' | 'align-right' | 'align-justify' | 'link' | 'image' | 'horizontal-rule' | 'clear-formatting' | 'insert-table' | 'delete-table' | 'add-row-before' | 'add-row-after' | 'delete-row' | 'add-column-before' | 'add-column-after' | 'delete-column' | 'merge-cells' | 'split-cell' | 'toggle-header-row'"
+      },
+      {
+        "name": "NeuralEditorToolbarItem",
+        "type": "| NeuralEditorToolbarCommandItem | NeuralEditorToolbarColorItem | NeuralEditorToolbarTableItem | NeuralEditorToolbarSeparatorItem"
+      },
+      {
+        "name": "NeuralEditorAiAction",
+        "type": "| 'rewrite' | 'shorten' | 'expand' | 'summarize' | 'fix-grammar' | 'change-tone' | 'translate' | 'custom'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewErrorCode",
+        "type": "| 'invalid-proposal' | 'revision-conflict' | 'validation-failed' | 'editor-not-ready'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewResult",
+        "type": "| { readonly status: 'previewed'; readonly proposal: NeuralEditorAiProposal; readonly operationCount: number; } | { readonly status: 'conflict' | 'rejected'; readonly proposal: NeuralEditorAiProposal; readonly error: NeuralEditorAiPreviewError; }"
+      },
+      {
+        "name": "NeuralEditorAiProposalRejectionReason",
+        "type": "| 'user' | 'replaced' | 'editor-state' | 'validation' | 'apply-rejected'"
+      },
+      {
+        "name": "NeuralEditorAiConflictReason",
+        "type": "| 'revision-conflict' | 'document-changed'"
+      },
+      {
+        "name": "NeuralEditorCollaborationStatus",
+        "type": "| 'disabled' | 'connecting' | 'connected' | 'synced' | 'disconnected' | 'error'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangesMode",
+        "type": "'off' | 'suggesting'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangeKind",
+        "type": "'insertion' | 'deletion'"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Install",
+        "language": "bash",
+        "code": "npm install @neural-ng/editor"
+      },
+      {
+        "title": "Install",
+        "language": "ts",
+        "code": "import {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});"
+      },
+      {
+        "title": "Install",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />"
+      },
+      {
+        "title": "Theme",
+        "language": "css",
+        "code": "@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "export interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "async handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "const request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "readonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Controller",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />"
+      },
+      {
+        "title": "Controller",
+        "language": "ts",
+        "code": "editor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });"
+      },
+      {
+        "title": "Toolbar",
+        "language": "ts",
+        "code": "readonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "ts",
+        "code": "const uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});"
+      },
+      {
+        "title": "Context menus and positioning",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "ts",
+        "code": "import { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "html",
+        "code": "<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />"
+      },
+      {
+        "title": "Version snapshots",
+        "language": "ts",
+        "code": "interface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}"
+      },
+      {
+        "title": "Collaboration controller methods",
+        "language": "ts",
+        "code": "controller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralEditorClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "toolbar",
+            "type": "string",
+            "description": "Classes applied to the toolbar element."
+          },
+          {
+            "name": "toolbarButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar button element."
+          },
+          {
+            "name": "toolbarButtonIcon",
+            "type": "string",
+            "description": "Classes applied to the toolbar button icon element."
+          },
+          {
+            "name": "toolbarSeparator",
+            "type": "string",
+            "description": "Classes applied to the toolbar separator element."
+          },
+          {
+            "name": "toolbarMenu",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu element."
+          },
+          {
+            "name": "toolbarMenuButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu button element."
+          },
+          {
+            "name": "toolbarMenuPanel",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu panel element."
+          },
+          {
+            "name": "toolbarMenuAction",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu action element."
+          },
+          {
+            "name": "toolbarColorOption",
+            "type": "string",
+            "description": "Classes applied to the toolbar color option element."
+          },
+          {
+            "name": "toolbarColorSwatch",
+            "type": "string",
+            "description": "Classes applied to the toolbar color swatch element."
+          },
+          {
+            "name": "bubbleMenu",
+            "type": "string",
+            "description": "Classes applied to the bubble menu element."
+          },
+          {
+            "name": "bubbleMenuButton",
+            "type": "string",
+            "description": "Classes applied to the bubble menu button element."
+          },
+          {
+            "name": "floatingMenu",
+            "type": "string",
+            "description": "Classes applied to the floating menu element."
+          },
+          {
+            "name": "floatingMenuButton",
+            "type": "string",
+            "description": "Classes applied to the floating menu button element."
+          },
+          {
+            "name": "linkPopover",
+            "type": "string",
+            "description": "Classes applied to the link popover element."
+          },
+          {
+            "name": "linkPopoverInput",
+            "type": "string",
+            "description": "Classes applied to the link popover input element."
+          },
+          {
+            "name": "linkPopoverAction",
+            "type": "string",
+            "description": "Classes applied to the link popover action element."
+          },
+          {
+            "name": "slashMenu",
+            "type": "string",
+            "description": "Classes applied to the slash menu element."
+          },
+          {
+            "name": "mentionMenu",
+            "type": "string",
+            "description": "Classes applied to the mention menu element."
+          },
+          {
+            "name": "suggestionList",
+            "type": "string",
+            "description": "Classes applied to the suggestion list element."
+          },
+          {
+            "name": "suggestionItem",
+            "type": "string",
+            "description": "Classes applied to the suggestion item element."
+          },
+          {
+            "name": "suggestionItemIcon",
+            "type": "string",
+            "description": "Classes applied to the suggestion item icon element."
+          },
+          {
+            "name": "suggestionItemContent",
+            "type": "string",
+            "description": "Classes applied to the suggestion item content element."
+          },
+          {
+            "name": "suggestionItemLabel",
+            "type": "string",
+            "description": "Classes applied to the suggestion item label element."
+          },
+          {
+            "name": "suggestionItemDescription",
+            "type": "string",
+            "description": "Classes applied to the suggestion item description element."
+          },
+          {
+            "name": "suggestionState",
+            "type": "string",
+            "description": "Classes applied to the suggestion state element."
+          },
+          {
+            "name": "commandPalette",
+            "type": "string",
+            "description": "Classes applied to the command palette element."
+          },
+          {
+            "name": "commandPaletteBackdrop",
+            "type": "string",
+            "description": "Classes applied to the command palette backdrop element."
+          },
+          {
+            "name": "commandPalettePanel",
+            "type": "string",
+            "description": "Classes applied to the command palette panel element."
+          },
+          {
+            "name": "commandPaletteInput",
+            "type": "string",
+            "description": "Classes applied to the command palette input element."
+          },
+          {
+            "name": "commandPaletteList",
+            "type": "string",
+            "description": "Classes applied to the command palette list element."
+          },
+          {
+            "name": "commandPaletteItem",
+            "type": "string",
+            "description": "Classes applied to the command palette item element."
+          },
+          {
+            "name": "aiReview",
+            "type": "string",
+            "description": "Classes applied to the ai review element."
+          },
+          {
+            "name": "aiReviewSummary",
+            "type": "string",
+            "description": "Classes applied to the ai review summary element."
+          },
+          {
+            "name": "aiReviewProgress",
+            "type": "string",
+            "description": "Classes applied to the ai review progress element."
+          },
+          {
+            "name": "aiReviewActions",
+            "type": "string",
+            "description": "Classes applied to the ai review actions element."
+          },
+          {
+            "name": "aiReviewButton",
+            "type": "string",
+            "description": "Classes applied to the ai review button element."
+          },
+          {
+            "name": "collaborationBar",
+            "type": "string",
+            "description": "Classes applied to the collaboration bar element."
+          },
+          {
+            "name": "collaborationStatus",
+            "type": "string",
+            "description": "Classes applied to the collaboration status element."
+          },
+          {
+            "name": "presenceList",
+            "type": "string",
+            "description": "Classes applied to the presence list element."
+          },
+          {
+            "name": "presenceItem",
+            "type": "string",
+            "description": "Classes applied to the presence item element."
+          },
+          {
+            "name": "collaborationPanel",
+            "type": "string",
+            "description": "Classes applied to the collaboration panel element."
+          },
+          {
+            "name": "collaborationSection",
+            "type": "string",
+            "description": "Classes applied to the collaboration section element."
+          },
+          {
+            "name": "collaborationSectionTitle",
+            "type": "string",
+            "description": "Classes applied to the collaboration section title element."
+          },
+          {
+            "name": "collaborationInput",
+            "type": "string",
+            "description": "Classes applied to the collaboration input element."
+          },
+          {
+            "name": "collaborationButton",
+            "type": "string",
+            "description": "Classes applied to the collaboration button element."
+          },
+          {
+            "name": "commentThread",
+            "type": "string",
+            "description": "Classes applied to the comment thread element."
+          },
+          {
+            "name": "commentMessage",
+            "type": "string",
+            "description": "Classes applied to the comment message element."
+          },
+          {
+            "name": "trackedChange",
+            "type": "string",
+            "description": "Classes applied to the tracked change element."
+          },
+          {
+            "name": "snapshotItem",
+            "type": "string",
+            "description": "Classes applied to the snapshot item element."
+          },
+          {
+            "name": "surface",
+            "type": "string",
+            "description": "Classes applied to the surface element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "characterCount",
+            "type": "string",
+            "description": "Classes applied to the character count element."
+          },
+          {
+            "name": "wordCount",
+            "type": "string",
+            "description": "Classes applied to the word count element."
+          }
+        ],
+        "sourcePath": "libs/neural-editor/editor.types.ts"
+      }
+    ],
+    "relatedComponents": [
+      "editor-ai-review-template",
+      "editor-bubble-menu-template",
+      "editor-link-popover-template",
+      "editor-slash-menu-template",
+      "editor-mention-menu-template",
+      "editor-command-palette-template",
+      "editor-toolbar-template",
+      "neural-editor"
+    ],
+    "resources": {
+      "contract": "neural://components/editor-floating-menu-template/contract",
+      "readme": "neural://components/editor-floating-menu-template/readme",
+      "llms": "neural://components/editor-floating-menu-template/llms"
+    },
+    "sourceDirectory": "libs/neural-editor",
+    "readme": "# Editor\n\nStatus: **Beta**. The canonical standalone export is `NeuralEditor`;\n`EditorComponent` remains a deprecated compatibility alias.\n\nSignal-first structured rich-text editing for Angular 22+. NeuralNg Editor uses\nTiptap 3 and ProseMirror internally, while its canonical form value remains a\n`NeuralEditorDocument` JSON tree. HTML is derived output, never the model.\n\n## Install\n\nInstall the complete Editor runtime with one command:\n\n```bash\nnpm install @neural-ng/editor\n```\n\nThe package installs Tiptap, ProseMirror, Floating UI, Yjs, and the required\nNeuralNg core runtime. Applications do not install those Editor internals\nindividually. A realtime collaboration transport such as `y-websocket` or a\nHocuspocus provider remains application-owned and is only needed when that\nfeature is enabled.\n\n```ts\nimport {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});\n```\n\n```html\n<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />\n```\n\nEditor implements `FormValueControl<NeuralEditorDocument>`. Use the same\ncomponent with `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`.\nDo not implement a second `ControlValueAccessor`.\n\n`EditorComponent` remains a deprecated compatibility alias. New code should\nimport the canonical `NeuralEditor` runtime.\n\n## Public API contract\n\nThe standalone package contract is documented in [`API_FREEZE.md`](./API_FREEZE.md).\nImport only from `@neural-ng/editor`; deep imports and internal rendering\ncomponents are unsupported. The freeze document is the source of truth for\ncomponent inputs/outputs, controller methods, template contexts, class slots,\nutilities, and package asset entry points.\n\n### Theme\n\nImport the matching Core and Editor token files:\n\n```css\n@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';\n```\n\nExperimental presets follow the same two-file rule: import the matching Core\npreset first, then the Editor preset. The optional Tailwind bridge remains\n`@neural-ng/core/themes/tailwind.css`.\n\n## Ownership boundary\n\nEditor owns structured editing, toolbar commands, selection state, undo/redo,\nJSON output, HTML/text derivation, accessibility, and Angular Forms\nintegration. It does not save documents, call HTTP APIs, upload image files,\ninvoke AI models, connect collaboration providers, or sanitize backend output. Those\nresponsibilities belong to application services or explicit extensions.\n\n## Canonical value\n\nThe model is never HTML, Markdown, or a format-dependent union:\n\n```ts\nexport interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}\n```\n\nThe current Beta schema and interaction layer includes:\n\n- paragraph and heading alignment: `left`, `center`, `right`, `justify`\n- text color through a `textStyle` mark\n- multicolor highlight marks\n- `taskList` and `taskItem` nodes\n- `table`, `tableRow`, `tableHeader`, and `tableCell` nodes\n- `image` nodes containing persistent URLs, alt text, title, width, and height\n- BubbleMenu, FloatingMenu, and a selection-aware link popover\n- slash commands, async mentions, and a searchable command palette\n\nPersist a schema version beside long-lived documents:\n\n```ts\nconst stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;\n```\n\nUse the serializers for external representations:\n\n```ts\nconst html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());\n```\n\nThe default serializers include the current Beta schema, including image and\nmention nodes. Pass the matching custom extension set when converting documents\nwith additional nodes or marks.\n\n## Stable node IDs and structured operations\n\nThe Beta contract enables Tiptap `UniqueID` by default. Identified nodes receive a\n`neuralId` attribute in canonical JSON. The default list covers block nodes,\nlist items, tables and cells, images, and horizontal rules. Configure this at\ninitialization time:\n\n```html\n<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />\n```\n\nUse `nodeIdGenerator` only when the application requires a custom ID strategy.\nThe generator must return a non-empty, globally unique, stable string. Disable\nthe feature with `[enableNodeIds]=\"false\"` only when the document will never use\nstructured operations, AI review, comments, or collaboration adapters.\n\nThe controller exposes a document-only revision signal and node lookup:\n\n```ts\nconst revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);\n```\n\nBuild and apply atomic, schema-checked operation batches through the controller:\n\n```ts\nconst batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}\n```\n\nSupported operations are `insert`, `replace`, `delete`, and `update-node`.\nPrefer `nodeId` targets. Numeric `from`/`to` targets are accepted for captured\nselection ranges and are mapped across earlier operations in the same batch.\nA batch is built fully before dispatch, so one invalid operation rejects the\nwhole batch without partial document changes.\n\n`baseRevision` prevents stale edits. If the document changes after a batch is\ncreated, `applyOperations()` returns `status: 'conflict'` and emits\n`operationConflict`. Successful and rejected batches emit `operationsApplied`\nand `operationsRejected` respectively.\n\nNode IDs are protected identity. Inserted content cannot choose IDs;\n`UniqueID` assigns them. A compatible single-node replacement preserves the\ntarget ID by default. `update-node` cannot change the configured ID attribute.\n\nInternal IDs are excluded from HTML by default:\n\n```ts\nconst publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);\n```\n\nPersist canonical JSON with IDs. Do not use generated HTML as the source of\ntruth for operations.\n\n## AI requests and reviewable proposals\n\nEditor remains provider-neutral. It never calls OpenAI, Anthropic, or any other\nmodel directly. Request work through the controller and handle the event in\napplication code:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />\n```\n\n```ts\nasync handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}\n```\n\n`requestAi()` captures the canonical JSON document, document revision, current\nselection range, selected text, selected JSON content, and stable node IDs. The\napplication service returns a `NeuralEditorAiProposal` containing only the\nstructured operations from the current Beta contract.\n\nPreview is non-destructive. Insertions, deletions, replacements, and attribute\nupdates are rendered as ProseMirror decorations while `[(value)]` remains\nunchanged. Only `acceptAiProposal()` applies the complete operation batch in one\ntransaction. `rejectAiProposal()` removes the preview without touching the\nmodel.\n\n```ts\nconst request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});\n```\n\nA proposal is rejected as a conflict when its `baseRevision` no longer matches\nthe editor revision. Editing the document while a preview is active also clears\nthe preview and emits `aiOperationConflict`. Do not silently overwrite the base\nrevision or force stale operations onto new content.\n\nThe default review bar appends to `menuAppendTo` and supports previous/next,\naccept, reject, Escape, mobile layout, themes, and `unstyled`. Replace it with a\ntyped template when needed:\n\n```html\n<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>\n```\n\n`controller.aiReview()` exposes the active review state and\n`controller.aiRequestPending()` reports unresolved requests. The Beta contract keeps a\nsingle active proposal; `getActiveAiProposals()` therefore returns zero or one\nproposal while preserving room for a future multi-proposal adapter.\n\n## Slash commands, mentions, and command palette\n\nType `/` in a paragraph to open the default slash menu. The default commands\ninsert headings, lists, tasks, quotes, code blocks, tables, images, and dividers.\nReplace the defaults with `slashCommands`, or provide `slashCommandProvider` for\nasync or remote filtering. Providers receive an `AbortSignal`; stop stale work\nwhen it is aborted.\n\nMentions are enabled only when `mentionProvider` is present:\n\n```ts\nreadonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });\n```\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />\n```\n\nThe canonical mention node persists only stable identity and display data:\n\n```ts\n{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}\n```\n\nProvider-only `metadata` is not written to the document. Keep authorization,\nprofiles, and mutable user data in application services.\n\nPress `Ctrl+K` or `Cmd+K`, or call `controller.openCommandPalette()`, to open the\nsearchable command palette. Set `commandPaletteItems` to replace its defaults.\nSlash, mention, command-palette, bubble, floating, link, and toolbar overlays are\ncoordinated so only the relevant layer remains open. Suggestion menus and the\npalette use the same `menuAppendTo` target; `body` remains the default to avoid\noverflow clipping.\n\nProject complete menu UIs when needed:\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>\n```\n\nUse the supplied context callbacks. Do not query the editor DOM, manually\nposition suggestion panels, or insert mention HTML yourself.\n\n## Controller\n\n`editorReady` exposes a stable NeuralNg controller instead of the raw Tiptap\ninstance:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />\n```\n\n```ts\neditor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });\n```\n\nTable commands are contextual. Row, column, cell, and delete commands become\navailable when the current selection is inside a table. Use controller commands\ninstead of mutating JSON nodes or editing the `contenteditable` DOM.\n\n## Toolbar\n\nToolbar palettes and table actions use NeuralNg Popover rather than native `details` menus. Popover renders through the browser top layer, so panels are not clipped by editor or card overflow. Opening one toolbar popover closes the previously open auto popover; no `appendTo=\"body\"` option or DOM reparenting is needed.\n\nThe default toolbar contains:\n\n- undo and redo\n- paragraph and H1-H3\n- bold, italic, underline, strike, and inline code\n- text-color and highlight palettes\n- left, center, right, and justified alignment\n- bullet, ordered, and task lists\n- blockquote and code block\n- link editing\n- table insertion and contextual table commands\n- horizontal rule and clear formatting\n\nCustomize the palettes without changing the document type:\n\n```ts\nreadonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;\n```\n\n```html\n<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />\n```\n\nReplace the toolbar model with `toolbarItems`, or project a complete toolbar:\n\n```html\n<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>\n```\n\n## Images and FileUpload\n\nThe toolbar and floating menu emit `imageInsertRequest`; Editor never uploads a\n`File`. Application code selects and validates the file with FileUpload, sends\nit to a media service, then inserts only the persistent URL:\n\n```html\n<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />\n```\n\n```ts\nconst uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});\n```\n\nBase64 sources are rejected by the controller and default Image extension.\nEnable `allowBase64Images` only for a deliberate application requirement. Do\nnot persist `File`, blob URLs, or temporary object URLs in editor JSON.\n\n## Context menus and positioning\n\nBubble, floating, and link menus use Tiptap's Floating UI-based extensions.\n`menuAppendTo` defaults to `body`, which avoids clipping by editor, card, dialog,\nor overflow containers. Use `menuAppendTo=\"editor\"` only when the menu must stay\ninside the editor stacking context, or bind a specific `HTMLElement`.\n\n```html\n<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>\n```\n\nUse `ng-template[neuralEditorLinkPopover]` for a custom link form. Default menus\nare keyboard reachable, expose toolbar/dialog roles, stay within the viewport,\nand switch to compact horizontally scrollable layouts on narrow screens.\n\n## Extensions\n\n`extensions` appends Tiptap extensions. Top-level extension names are\nlast-write-wins. To replace the default schema, set\n`includeDefaultExtensions=\"false\"` and provide the complete extension set.\nExtension configuration is initialization-time in this Beta release.\n\n## Security and persistence\n\nJSON is not a security boundary. Validate the document schema, URLs, colors,\ntable attributes, pasted content, and custom node attributes on the server.\nSanitize generated HTML for its final rendering context. Do not trust content\nsolely because the editor accepted it.\n\n## Styling\n\nUse the neutral, glass, mist, or futuristic themes, or set `unstyled` locally or\nglobally. Structural `*-root` hooks remain while visual `*-base` classes are\nremoved. `NeuralEditorClasses` includes typed slots for toolbar menus, palette\noptions, slash and mention suggestions, the command palette, BubbleMenu,\nFloatingMenu, link popover controls, the editing surface, content, footer, and\ncounters.\n\n## Collaboration and review\n\nEditor collaboration is provider-neutral. The component receives an initialized\nYjs document and, optionally, a provider that exposes awareness and connection\nevents. NeuralNg does not create rooms, authenticate users, or persist Yjs\nupdates.\n\n```ts\nimport { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);\n```\n\n```html\n<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />\n```\n\nWhen `collaboration` is present:\n\n- The Yjs document is the live collaborative source of truth.\n- Editor waits for provider sync by default before mounting.\n- StarterKit undo/redo is disabled because Collaboration owns history.\n- External `value` writes are not pushed into the collaborative document.\n- `editorUpdate.source` is `remote` for collaboration-origin transactions.\n- Presence is read from the provider awareness `user` field and is never\n  persisted as document content.\n- `disconnectOnDestroy` is opt-in because provider lifetime normally belongs to\n  the application.\n\n### Provider contract\n\nThe optional provider is structural, so Hocuspocus, y-websocket, or another Yjs\nprovider can be adapted without making it a NeuralNg dependency. It may expose\n`connect`, `disconnect`, `synced`, `on`, `off`, and `awareness`.\n\nTreat `document`, `provider`, `field`, and `fragment` as initialization-only.\nWhen the room or collaborative field changes, destroy and recreate the Editor\ninstance instead of mutating the collaboration config in place.\n\nFor providers with custom event names, pass `whenSynced` and resolve it when the\ninitial room synchronization is complete. Do not seed `value` before sync. Seed\nan empty Yjs fragment in application code after synchronization instead.\n\n### Comments\n\nComments use a lightweight inline `neuralComment` mark and thread data stored in\na dedicated Yjs map. Without collaboration, the same API uses an in-memory\nrepository. The default panel supports creating, replying, resolving, reopening,\nselecting, and deleting threads through `NeuralEditorController`.\n\nComments in the Beta contract are plain-text thread messages. Authentication,\nauthorization, mentions, notifications, and server-side moderation remain\napplication responsibilities.\n\n### Tracked changes\n\nSet `trackedChangesMode=\"suggesting\"` to track local text insertions and\ndeletions. Remote Yjs transactions are ignored, so each client attributes only\nits own edits. Changes can be accepted or rejected individually or as a batch.\n\nThe Beta contract tracks text insertions and deletions. Mark changes, complex block\nreplacement, overlapping suggestions, and production audit policy are not part\nof this Beta contract.\n\n### Version snapshots\n\n`snapshots` is a controlled model containing portable JSON checkpoints:\n\n```ts\ninterface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}\n```\n\nThe built-in snapshot model intentionally does not persist Yjs binary updates.\nStore snapshots in application code, and use a provider/backend-specific Yjs\nhistory service when exact CRDT history, branching, or audit-grade restoration\nis required.\n\n### Collaboration controller methods\n\n```ts\ncontroller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);\n```\n\nThe default collaboration panel is enabled whenever collaboration, comments,\ntracked changes, or snapshots are enabled. Set `showCollaborationPanel=\"false\"`\nto render an application-owned review surface using the controller signals.\n",
+    "llms": "# @neural-ng/editor\n\nImport canonical `NeuralEditor` from `@neural-ng/editor`. `EditorComponent` is\na deprecated compatibility alias. The selector remains `<neural-editor>`.\n\n## Public API boundary\n\n- Treat `API_FREEZE.md` as the authoritative standalone package contract.\n- Import only from `@neural-ng/editor`. Never deep-import source files.\n- Use `NeuralEditor`, the exported template directives, public types,\n  constants, serializers, pure helpers, and `NeuralEditorController`.\n- Internal toolbar, menu, review, and collaboration-panel renderer components\n  are not public API. Customize through class slots and template directives.\n- Do not use raw Tiptap/ProseMirror operation or tracked-change helpers. Use the\n  controller methods so revisions, events, forms, and collaboration rules stay\n  consistent.\n\n## Canonical rules\n\n- Install only `@neural-ng/editor`. Tiptap, ProseMirror, Floating UI, Yjs, and the required NeuralNg core runtime are package-managed dependencies.\n- Install a realtime collaboration transport/provider separately only when collaboration is enabled.\n- Import `NeuralEditor` from `@neural-ng/editor`.\n- Bind only `NeuralEditorDocument` JSON to `[(value)]`, `[formField]`,\n  `[formControl]`, or `[(ngModel)]`. Never bind HTML or Markdown strings and\n  never create a string-or-JSON value union.\n- The empty value is a `doc` containing an empty paragraph. Do not use `null` as\n  the normal empty state.\n- Treat editor values as immutable. Do not mutate node, mark, attribute, or\n  content arrays in place.\n\n## Beta schema, identity, menus, AI review, and collaboration\n\n- Text alignment is stored on paragraph or heading attributes as `textAlign`.\n- Text color is stored in a `textStyle` mark with a `color` attribute.\n- Highlight is stored in a `highlight` mark and may include a `color` attribute.\n- Tasks use `taskList` and `taskItem`; task state is the boolean `checked`\n  attribute on `taskItem`.\n- Tables use `table`, `tableRow`, `tableHeader`, and `tableCell` nodes.\n- Images use an `image` node. Persist a stable HTTP(S) URL and optional alt,\n  title, width, and height attributes. Never persist File objects, blob URLs,\n  or temporary object URLs.\n- Mentions use `mention` nodes with stable `id` and `label` attributes. Provider-only\n  metadata is not persisted. Do not copy avatars, permissions, or mutable profile\n  objects into editor JSON.\n- Do not invent HTML-only state that cannot be represented by the configured\n  JSON schema.\n\n## Commands\n\n- Use the `NeuralEditorController` from `editorReady` for all programmatic\n  edits. Do not query, replace, or mutate the `contenteditable` DOM.\n- Use `setTextAlign()`, `setTextColor()`, `setHighlight()`,\n  `toggleTaskList()`, `insertTable()`, `insertImage()`, and menu controller\n  methods for Alpha 2.3 features.\n- Table row, column, merge, split, header, and delete commands are contextual;\n  call `controller.can(command)` before presenting a custom enabled action.\n- Use `toolbarItems` for the built-in toolbar or project\n  `ng-template[neuralEditorToolbar]` with `let-editor` for a custom toolbar.\n- Built-in color and table menus use NeuralNg Popover in the browser top layer. Do not replace them with native `details`, custom absolute-positioned panels, or `appendTo=\"body\"` logic. Only one auto popover remains open at a time.\n- Use `(imageInsertRequest)` to open FileUpload or an application media picker.\n  Upload outside Editor, then call `event.controller.insertImage()` with the\n  persistent URL. Editor must not send HTTP requests.\n- BubbleMenu appears for a text or image selection. FloatingMenu appears for an\n  empty paragraph. Link editing uses the same contextual bubble layer so only\n  one contextual menu is active.\n- Context menus append to `body` by default. Use `menuAppendTo=\"editor\"` or a\n  concrete HTMLElement only when the containing stacking context is required.\n- Customize menus with `neuralEditorBubbleMenu`, `neuralEditorFloatingMenu`,\n  and `neuralEditorLinkPopover` templates. Use the supplied controller and link\n  context callbacks; do not access the raw Tiptap instance or position menus\n  manually.\n- `textColors` and `highlightColors` configure UI palettes only. They do not\n  constrain externally loaded JSON; validate allowed values in application and\n  server code when a restricted palette is required.\n\n## Node identity and structured operations\n\n- Node IDs are enabled by default. Canonical JSON stores the configured\n  `nodeIdAttribute` (`neuralId` by default) on identified nodes.\n- Keep node IDs stable and unique. Do not derive IDs from array indexes,\n  document positions, visible text, or mutable labels.\n- Use `identifiedNodeTypes` and `nodeIdGenerator` only as initialization-time\n  configuration. Disable `enableNodeIds` only when no operation, AI review,\n  comment, or collaboration layer will address nodes.\n- Prefer `controller.getNodeById()` and `controller.getNodeIdAt()` over walking\n  the `contenteditable` DOM or assuming ProseMirror positions remain stable.\n- Create batches with `controller.createOperationBatch()`. It captures the\n  current document-only revision. Validate with `validateOperations()` and\n  apply with `applyOperations()`.\n- Supported operation types are `insert`, `replace`, `delete`, and\n  `update-node`. Prefer `{ nodeId }` targets. Use `{ from, to }` only for a\n  captured selection range from the same base revision.\n- Operation batches are atomic. Never apply operations one by one in\n  application code. One invalid target, node, attribute, or schema placement\n  rejects the whole batch without partial changes.\n- Treat `status: 'conflict'` as a required rebase/retry boundary. Never force a\n  stale batch onto a newer document or silently replace its `baseRevision`.\n- Inserted operation content cannot choose internal node IDs. Compatible\n  single-node replacements preserve the target ID by default. The protected ID\n  attribute cannot be changed with `update-node`.\n- Listen to `operationsApplied`, `operationsRejected`, and `operationConflict`\n  for application side effects. The form model changes only after a successful\n  atomic dispatch.\n- `editorDocumentToHtml()` omits node IDs by default. Use\n  `{ includeNodeIds: true }` only for diagnostics or explicit round trips.\n  Persist canonical JSON, not generated HTML, as the addressable source.\n- Use `editorDocumentWithNodeIds()` to migrate legacy JSON before storing or\n  sending it to an AI operation service.\n\n## Slash, mention, and command-palette behavior\n\n- Type `/` in a paragraph for the slash menu. Configure static commands through\n  `slashCommands` or use `slashCommandProvider`; a provider replaces default\n  filtering for that request.\n- Enable mentions with `mentionProvider`. It may return synchronously or\n  asynchronously. Honor the provider context `AbortSignal` and discard stale\n  network work when it aborts.\n- Press `Ctrl+K`/`Cmd+K` or call `controller.openCommandPalette()` for global\n  editor commands. Configure `commandPaletteItems`; do not create document-wide\n  key listeners in application code.\n- Listen to `commandExecuted` and `mentionSelected` only for user-action side\n  effects. The canonical model still changes through normal editor transactions.\n- Use `neuralEditorSlashMenu`, `neuralEditorMentionMenu`, and\n  `neuralEditorCommandPalette` for custom rendering. Use the supplied signals,\n  selection callbacks, and close callbacks. Do not access Tiptap plugin state or\n  manually mount/reposition overlays.\n- Suggestion and context overlays are mutually coordinated. Keep\n  `menuAppendTo=\"body\"` unless a deliberate editor-local stacking context is\n  required.\n- Slash commands and palette items execute local controller operations. They do\n  not imply HTTP, AI, upload, or persistence behavior.\n\n## AI request and review rules\n\n- NeuralNg Editor does not call AI providers. Use `controller.requestAi()` and\n  handle `(aiRequest)` in application code.\n- Send the request's structured document, selection snapshot, stable node IDs,\n  schema version, and base revision to the application-owned AI service. Do not\n  scrape the `contenteditable` DOM and do not send generated HTML as the\n  canonical source.\n- AI services must return `NeuralEditorAiProposal` values containing only\n  supported structured operations. Never return raw executable JavaScript,\n  mutate the editor directly, or inject unsanitized HTML.\n- Call `controller.previewAiProposal()` before applying a proposal. Preview uses\n  ephemeral ProseMirror decorations and must not change `[(value)]`.\n- Apply changes only after explicit user approval with\n  `controller.acceptAiProposal()`. Reject with `rejectAiProposal()`; rejection\n  removes decorations and leaves the canonical JSON unchanged.\n- Respect `baseRevision`. Treat `aiOperationConflict` as a required rebase or\n  fresh-request boundary. Never replace a stale proposal's revision with the\n  current revision.\n- A normal document edit invalidates the active preview. Do not keep stale\n  visual suggestions visible after user edits.\n- Use `(aiProposalPreviewed)`, `(aiProposalAccepted)`,\n  `(aiProposalRejected)`, `(aiOperationConflict)`, and\n  `(aiRequestCancelled)` for side effects and analytics.\n- Customize the review UI with `ng-template[neuralEditorAiReview]`. Use the\n  supplied callbacks and signals; do not mount another overlay, duplicate\n  accept/reject state, or apply operations outside the controller.\n- The default review UI follows `menuAppendTo`, supports mobile layout, and is\n  part of the shared overlay coordination model.\n\n## Conversion and persistence\n\n- Use `editorDocumentFromHtml()` to import HTML and\n  `editorDocumentToHtml()`/`editorDocumentToText()` for derived output.\n- The default serializers understand the current Beta schema, including images and mentions. Pass the\n  exact custom extension set when the document contains additional nodes or\n  marks.\n- Save documents in application code and persist a schema version beside\n  long-lived JSON.\n- Editor does not save data, upload files, call AI models, open collaboration\n  connections, or perform backend sanitization.\n\n## Security\n\n- JSON is not a security boundary. Validate document structure, links, colors,\n  table attributes, pasted content, and custom node attributes on the server.\n- Sanitize generated HTML for its final destination.\n- Never treat client-side toolbar palettes or schema checks as authorization or\n  backend validation.\n\n## Integration\n\n- `extensions` are initialization-time in the alpha API and append to the\n  defaults with top-level last-write-wins behavior.\n- To replace StarterKit or the default schema, disable\n  `includeDefaultExtensions` and provide every required extension.\n- `readonly` keeps content readable and selectable while blocking edits.\n  `disabled` also removes the editor from normal keyboard interaction.\n- Use `unstyled` or global unstyled mode for headless rendering. Structural\n  classes and ARIA relationships remain.\n\n## Collaboration, comments, tracked changes, and snapshots\n\nUse `NeuralEditorCollaborationConfig` with an application-owned `Y.Doc`.\nNeuralNg does not create a collaboration backend, room, token, or provider.\nThe optional provider must expose the small structural provider contract.\n\nWhen collaboration is enabled, the Yjs document is the live source of truth.\nDo not initialize the editor with remote content before the provider has synced.\nDo not bind autosave logic to every remote update without throttling and origin\nchecks. Collaboration disables StarterKit history and uses Yjs collaboration\nundo/redo.\nTreat `collaboration.document`, `provider`, `field`, and `fragment` as\ninitialization-only. Recreate the Editor when the room or field changes.\n\nPass `collaborationUser` with stable `id`, `name`, and `color` values. Presence\ncomes from provider awareness and is ephemeral. Never persist awareness state as\ncanonical editor content.\n\nUse `enableComments` for inline plain-text comment threads. Thread data is stored\nin the configured Yjs comments map when collaboration is active. Authentication,\npermissions, notifications, moderation, and server persistence belong to the\napplication.\n\nUse `trackedChangesMode=\"suggesting\"` to record local text insertions and\ndeletions as review marks. Remote collaboration transactions are deliberately\nignored. Alpha 4 tracked changes are not an audit log and do not cover every\npossible structural or formatting edit.\n\nUse `[(snapshots)]` for portable JSON checkpoints. Snapshot creation does not\nupload or persist anything. Save snapshots in application code. For exact CRDT\nhistory or compliance-grade versioning, use a backend/provider history system.\n\nNever combine independent Yjs documents for the same room. Never seed content on\nan unsynchronized collaborative document. Do not mutate `Y.Doc` content and the\nEditor `value` independently.\n"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "editor-link-popover-template",
+    "name": "EditorLinkPopoverTemplate",
+    "className": "EditorLinkPopoverTemplateDirective",
+    "kind": "directive",
+    "selector": "ng-template[neuralEditorLinkPopover]",
+    "entryPoint": "@neural-ng/editor",
+    "packageName": "@neural-ng/editor",
+    "packageVersion": "0.1.0-beta.2",
+    "status": "beta",
+    "summary": "Status: **Beta**. The canonical standalone export is `NeuralEditor`; `EditorComponent` remains a deprecated compatibility alias.",
+    "inputs": [],
+    "models": [],
+    "outputs": [],
+    "templates": [
+      {
+        "name": "EditorAiReviewTemplate",
+        "className": "EditorAiReviewTemplateDirective",
+        "selector": "ng-template[neuralEditorAiReview]",
+        "contextType": "NeuralEditorAiReviewTemplateContext"
+      },
+      {
+        "name": "EditorBubbleMenuTemplate",
+        "className": "EditorBubbleMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorBubbleMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorFloatingMenuTemplate",
+        "className": "EditorFloatingMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorFloatingMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorLinkPopoverTemplate",
+        "className": "EditorLinkPopoverTemplateDirective",
+        "selector": "ng-template[neuralEditorLinkPopover]",
+        "contextType": "NeuralEditorLinkPopoverTemplateContext"
+      },
+      {
+        "name": "EditorSlashMenuTemplate",
+        "className": "EditorSlashMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorSlashMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorSlashCommand>"
+      },
+      {
+        "name": "EditorMentionMenuTemplate",
+        "className": "EditorMentionMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorMentionMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorMentionItem>"
+      },
+      {
+        "name": "EditorCommandPaletteTemplate",
+        "className": "EditorCommandPaletteTemplateDirective",
+        "selector": "ng-template[neuralEditorCommandPalette]",
+        "contextType": "NeuralEditorCommandPaletteTemplateContext"
+      },
+      {
+        "name": "EditorToolbarTemplate",
+        "className": "EditorToolbarTemplateDirective",
+        "selector": "ng-template[neuralEditorToolbar]",
+        "contextType": "NeuralEditorToolbarTemplateContext"
+      }
+    ],
+    "providers": [],
+    "providerRequirements": [],
+    "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralEditorValue",
+        "type": "NeuralEditorDocument"
+      },
+      {
+        "name": "NeuralEditorExtension",
+        "type": "AnyExtension"
+      },
+      {
+        "name": "NeuralEditorUpdateSource",
+        "type": "'user' | 'command' | 'remote'"
+      },
+      {
+        "name": "NeuralEditorFocusPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralEditorTextAlign",
+        "type": "'left' | 'center' | 'right' | 'justify'"
+      },
+      {
+        "name": "NeuralEditorColorKind",
+        "type": "'text' | 'highlight'"
+      },
+      {
+        "name": "NeuralEditorMenuAppendTo",
+        "type": "'body' | 'editor' | HTMLElement"
+      },
+      {
+        "name": "NeuralEditorSuggestionPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'"
+      },
+      {
+        "name": "NeuralEditorCommandSource",
+        "type": "'slash' | 'command-palette'"
+      },
+      {
+        "name": "NeuralEditorMenuPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'"
+      },
+      {
+        "name": "NeuralEditorNodeIdGenerator",
+        "type": "( context: NeuralEditorNodeIdContext, ) => string"
+      },
+      {
+        "name": "NeuralEditorInsertPosition",
+        "type": "| 'before' | 'after' | 'inside-start' | 'inside-end'"
+      },
+      {
+        "name": "NeuralEditorOperation",
+        "type": "| NeuralEditorInsertOperation | NeuralEditorReplaceOperation | NeuralEditorDeleteOperation | NeuralEditorUpdateNodeOperation"
+      },
+      {
+        "name": "NeuralEditorOperationErrorCode",
+        "type": "| 'not-editable' | 'revision-conflict' | 'empty-batch' | 'invalid-target' | 'target-not-found' | 'invalid-content' | 'schema-violation' | 'protected-attribute' | 'operation-failed'"
+      },
+      {
+        "name": "NeuralEditorOperationValidationResult",
+        "type": "| { readonly valid: true; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly operationCount: number; } | { readonly valid: false; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorOperationApplyResult",
+        "type": "| { readonly status: 'applied'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly operationCount: number; readonly document: NeuralEditorDocument; } | { readonly status: 'conflict'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; } | { readonly status: 'rejected'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorSuggestionProvider",
+        "type": "( query: string, context: NeuralEditorSuggestionProviderContext, ) => readonly T[] | Promise<readonly T[]>"
+      },
+      {
+        "name": "NeuralEditorCommand",
+        "type": "| 'undo' | 'redo' | 'paragraph' | 'heading-1' | 'heading-2' | 'heading-3' | 'bold' | 'italic' | 'underline' | 'strike' | 'code' | 'bullet-list' | 'ordered-list' | 'task-list' | 'blockquote' | 'code-block' | 'align-left' | 'align-center' | 'align-right' | 'align-justify' | 'link' | 'image' | 'horizontal-rule' | 'clear-formatting' | 'insert-table' | 'delete-table' | 'add-row-before' | 'add-row-after' | 'delete-row' | 'add-column-before' | 'add-column-after' | 'delete-column' | 'merge-cells' | 'split-cell' | 'toggle-header-row'"
+      },
+      {
+        "name": "NeuralEditorToolbarItem",
+        "type": "| NeuralEditorToolbarCommandItem | NeuralEditorToolbarColorItem | NeuralEditorToolbarTableItem | NeuralEditorToolbarSeparatorItem"
+      },
+      {
+        "name": "NeuralEditorAiAction",
+        "type": "| 'rewrite' | 'shorten' | 'expand' | 'summarize' | 'fix-grammar' | 'change-tone' | 'translate' | 'custom'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewErrorCode",
+        "type": "| 'invalid-proposal' | 'revision-conflict' | 'validation-failed' | 'editor-not-ready'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewResult",
+        "type": "| { readonly status: 'previewed'; readonly proposal: NeuralEditorAiProposal; readonly operationCount: number; } | { readonly status: 'conflict' | 'rejected'; readonly proposal: NeuralEditorAiProposal; readonly error: NeuralEditorAiPreviewError; }"
+      },
+      {
+        "name": "NeuralEditorAiProposalRejectionReason",
+        "type": "| 'user' | 'replaced' | 'editor-state' | 'validation' | 'apply-rejected'"
+      },
+      {
+        "name": "NeuralEditorAiConflictReason",
+        "type": "| 'revision-conflict' | 'document-changed'"
+      },
+      {
+        "name": "NeuralEditorCollaborationStatus",
+        "type": "| 'disabled' | 'connecting' | 'connected' | 'synced' | 'disconnected' | 'error'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangesMode",
+        "type": "'off' | 'suggesting'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangeKind",
+        "type": "'insertion' | 'deletion'"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Install",
+        "language": "bash",
+        "code": "npm install @neural-ng/editor"
+      },
+      {
+        "title": "Install",
+        "language": "ts",
+        "code": "import {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});"
+      },
+      {
+        "title": "Install",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />"
+      },
+      {
+        "title": "Theme",
+        "language": "css",
+        "code": "@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "export interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "async handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "const request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "readonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Controller",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />"
+      },
+      {
+        "title": "Controller",
+        "language": "ts",
+        "code": "editor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });"
+      },
+      {
+        "title": "Toolbar",
+        "language": "ts",
+        "code": "readonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "ts",
+        "code": "const uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});"
+      },
+      {
+        "title": "Context menus and positioning",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "ts",
+        "code": "import { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "html",
+        "code": "<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />"
+      },
+      {
+        "title": "Version snapshots",
+        "language": "ts",
+        "code": "interface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}"
+      },
+      {
+        "title": "Collaboration controller methods",
+        "language": "ts",
+        "code": "controller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralEditorClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "toolbar",
+            "type": "string",
+            "description": "Classes applied to the toolbar element."
+          },
+          {
+            "name": "toolbarButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar button element."
+          },
+          {
+            "name": "toolbarButtonIcon",
+            "type": "string",
+            "description": "Classes applied to the toolbar button icon element."
+          },
+          {
+            "name": "toolbarSeparator",
+            "type": "string",
+            "description": "Classes applied to the toolbar separator element."
+          },
+          {
+            "name": "toolbarMenu",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu element."
+          },
+          {
+            "name": "toolbarMenuButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu button element."
+          },
+          {
+            "name": "toolbarMenuPanel",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu panel element."
+          },
+          {
+            "name": "toolbarMenuAction",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu action element."
+          },
+          {
+            "name": "toolbarColorOption",
+            "type": "string",
+            "description": "Classes applied to the toolbar color option element."
+          },
+          {
+            "name": "toolbarColorSwatch",
+            "type": "string",
+            "description": "Classes applied to the toolbar color swatch element."
+          },
+          {
+            "name": "bubbleMenu",
+            "type": "string",
+            "description": "Classes applied to the bubble menu element."
+          },
+          {
+            "name": "bubbleMenuButton",
+            "type": "string",
+            "description": "Classes applied to the bubble menu button element."
+          },
+          {
+            "name": "floatingMenu",
+            "type": "string",
+            "description": "Classes applied to the floating menu element."
+          },
+          {
+            "name": "floatingMenuButton",
+            "type": "string",
+            "description": "Classes applied to the floating menu button element."
+          },
+          {
+            "name": "linkPopover",
+            "type": "string",
+            "description": "Classes applied to the link popover element."
+          },
+          {
+            "name": "linkPopoverInput",
+            "type": "string",
+            "description": "Classes applied to the link popover input element."
+          },
+          {
+            "name": "linkPopoverAction",
+            "type": "string",
+            "description": "Classes applied to the link popover action element."
+          },
+          {
+            "name": "slashMenu",
+            "type": "string",
+            "description": "Classes applied to the slash menu element."
+          },
+          {
+            "name": "mentionMenu",
+            "type": "string",
+            "description": "Classes applied to the mention menu element."
+          },
+          {
+            "name": "suggestionList",
+            "type": "string",
+            "description": "Classes applied to the suggestion list element."
+          },
+          {
+            "name": "suggestionItem",
+            "type": "string",
+            "description": "Classes applied to the suggestion item element."
+          },
+          {
+            "name": "suggestionItemIcon",
+            "type": "string",
+            "description": "Classes applied to the suggestion item icon element."
+          },
+          {
+            "name": "suggestionItemContent",
+            "type": "string",
+            "description": "Classes applied to the suggestion item content element."
+          },
+          {
+            "name": "suggestionItemLabel",
+            "type": "string",
+            "description": "Classes applied to the suggestion item label element."
+          },
+          {
+            "name": "suggestionItemDescription",
+            "type": "string",
+            "description": "Classes applied to the suggestion item description element."
+          },
+          {
+            "name": "suggestionState",
+            "type": "string",
+            "description": "Classes applied to the suggestion state element."
+          },
+          {
+            "name": "commandPalette",
+            "type": "string",
+            "description": "Classes applied to the command palette element."
+          },
+          {
+            "name": "commandPaletteBackdrop",
+            "type": "string",
+            "description": "Classes applied to the command palette backdrop element."
+          },
+          {
+            "name": "commandPalettePanel",
+            "type": "string",
+            "description": "Classes applied to the command palette panel element."
+          },
+          {
+            "name": "commandPaletteInput",
+            "type": "string",
+            "description": "Classes applied to the command palette input element."
+          },
+          {
+            "name": "commandPaletteList",
+            "type": "string",
+            "description": "Classes applied to the command palette list element."
+          },
+          {
+            "name": "commandPaletteItem",
+            "type": "string",
+            "description": "Classes applied to the command palette item element."
+          },
+          {
+            "name": "aiReview",
+            "type": "string",
+            "description": "Classes applied to the ai review element."
+          },
+          {
+            "name": "aiReviewSummary",
+            "type": "string",
+            "description": "Classes applied to the ai review summary element."
+          },
+          {
+            "name": "aiReviewProgress",
+            "type": "string",
+            "description": "Classes applied to the ai review progress element."
+          },
+          {
+            "name": "aiReviewActions",
+            "type": "string",
+            "description": "Classes applied to the ai review actions element."
+          },
+          {
+            "name": "aiReviewButton",
+            "type": "string",
+            "description": "Classes applied to the ai review button element."
+          },
+          {
+            "name": "collaborationBar",
+            "type": "string",
+            "description": "Classes applied to the collaboration bar element."
+          },
+          {
+            "name": "collaborationStatus",
+            "type": "string",
+            "description": "Classes applied to the collaboration status element."
+          },
+          {
+            "name": "presenceList",
+            "type": "string",
+            "description": "Classes applied to the presence list element."
+          },
+          {
+            "name": "presenceItem",
+            "type": "string",
+            "description": "Classes applied to the presence item element."
+          },
+          {
+            "name": "collaborationPanel",
+            "type": "string",
+            "description": "Classes applied to the collaboration panel element."
+          },
+          {
+            "name": "collaborationSection",
+            "type": "string",
+            "description": "Classes applied to the collaboration section element."
+          },
+          {
+            "name": "collaborationSectionTitle",
+            "type": "string",
+            "description": "Classes applied to the collaboration section title element."
+          },
+          {
+            "name": "collaborationInput",
+            "type": "string",
+            "description": "Classes applied to the collaboration input element."
+          },
+          {
+            "name": "collaborationButton",
+            "type": "string",
+            "description": "Classes applied to the collaboration button element."
+          },
+          {
+            "name": "commentThread",
+            "type": "string",
+            "description": "Classes applied to the comment thread element."
+          },
+          {
+            "name": "commentMessage",
+            "type": "string",
+            "description": "Classes applied to the comment message element."
+          },
+          {
+            "name": "trackedChange",
+            "type": "string",
+            "description": "Classes applied to the tracked change element."
+          },
+          {
+            "name": "snapshotItem",
+            "type": "string",
+            "description": "Classes applied to the snapshot item element."
+          },
+          {
+            "name": "surface",
+            "type": "string",
+            "description": "Classes applied to the surface element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "characterCount",
+            "type": "string",
+            "description": "Classes applied to the character count element."
+          },
+          {
+            "name": "wordCount",
+            "type": "string",
+            "description": "Classes applied to the word count element."
+          }
+        ],
+        "sourcePath": "libs/neural-editor/editor.types.ts"
+      }
+    ],
+    "relatedComponents": [
+      "editor-ai-review-template",
+      "editor-bubble-menu-template",
+      "editor-floating-menu-template",
+      "editor-slash-menu-template",
+      "editor-mention-menu-template",
+      "editor-command-palette-template",
+      "editor-toolbar-template",
+      "neural-editor"
+    ],
+    "resources": {
+      "contract": "neural://components/editor-link-popover-template/contract",
+      "readme": "neural://components/editor-link-popover-template/readme",
+      "llms": "neural://components/editor-link-popover-template/llms"
+    },
+    "sourceDirectory": "libs/neural-editor",
+    "readme": "# Editor\n\nStatus: **Beta**. The canonical standalone export is `NeuralEditor`;\n`EditorComponent` remains a deprecated compatibility alias.\n\nSignal-first structured rich-text editing for Angular 22+. NeuralNg Editor uses\nTiptap 3 and ProseMirror internally, while its canonical form value remains a\n`NeuralEditorDocument` JSON tree. HTML is derived output, never the model.\n\n## Install\n\nInstall the complete Editor runtime with one command:\n\n```bash\nnpm install @neural-ng/editor\n```\n\nThe package installs Tiptap, ProseMirror, Floating UI, Yjs, and the required\nNeuralNg core runtime. Applications do not install those Editor internals\nindividually. A realtime collaboration transport such as `y-websocket` or a\nHocuspocus provider remains application-owned and is only needed when that\nfeature is enabled.\n\n```ts\nimport {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});\n```\n\n```html\n<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />\n```\n\nEditor implements `FormValueControl<NeuralEditorDocument>`. Use the same\ncomponent with `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`.\nDo not implement a second `ControlValueAccessor`.\n\n`EditorComponent` remains a deprecated compatibility alias. New code should\nimport the canonical `NeuralEditor` runtime.\n\n## Public API contract\n\nThe standalone package contract is documented in [`API_FREEZE.md`](./API_FREEZE.md).\nImport only from `@neural-ng/editor`; deep imports and internal rendering\ncomponents are unsupported. The freeze document is the source of truth for\ncomponent inputs/outputs, controller methods, template contexts, class slots,\nutilities, and package asset entry points.\n\n### Theme\n\nImport the matching Core and Editor token files:\n\n```css\n@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';\n```\n\nExperimental presets follow the same two-file rule: import the matching Core\npreset first, then the Editor preset. The optional Tailwind bridge remains\n`@neural-ng/core/themes/tailwind.css`.\n\n## Ownership boundary\n\nEditor owns structured editing, toolbar commands, selection state, undo/redo,\nJSON output, HTML/text derivation, accessibility, and Angular Forms\nintegration. It does not save documents, call HTTP APIs, upload image files,\ninvoke AI models, connect collaboration providers, or sanitize backend output. Those\nresponsibilities belong to application services or explicit extensions.\n\n## Canonical value\n\nThe model is never HTML, Markdown, or a format-dependent union:\n\n```ts\nexport interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}\n```\n\nThe current Beta schema and interaction layer includes:\n\n- paragraph and heading alignment: `left`, `center`, `right`, `justify`\n- text color through a `textStyle` mark\n- multicolor highlight marks\n- `taskList` and `taskItem` nodes\n- `table`, `tableRow`, `tableHeader`, and `tableCell` nodes\n- `image` nodes containing persistent URLs, alt text, title, width, and height\n- BubbleMenu, FloatingMenu, and a selection-aware link popover\n- slash commands, async mentions, and a searchable command palette\n\nPersist a schema version beside long-lived documents:\n\n```ts\nconst stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;\n```\n\nUse the serializers for external representations:\n\n```ts\nconst html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());\n```\n\nThe default serializers include the current Beta schema, including image and\nmention nodes. Pass the matching custom extension set when converting documents\nwith additional nodes or marks.\n\n## Stable node IDs and structured operations\n\nThe Beta contract enables Tiptap `UniqueID` by default. Identified nodes receive a\n`neuralId` attribute in canonical JSON. The default list covers block nodes,\nlist items, tables and cells, images, and horizontal rules. Configure this at\ninitialization time:\n\n```html\n<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />\n```\n\nUse `nodeIdGenerator` only when the application requires a custom ID strategy.\nThe generator must return a non-empty, globally unique, stable string. Disable\nthe feature with `[enableNodeIds]=\"false\"` only when the document will never use\nstructured operations, AI review, comments, or collaboration adapters.\n\nThe controller exposes a document-only revision signal and node lookup:\n\n```ts\nconst revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);\n```\n\nBuild and apply atomic, schema-checked operation batches through the controller:\n\n```ts\nconst batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}\n```\n\nSupported operations are `insert`, `replace`, `delete`, and `update-node`.\nPrefer `nodeId` targets. Numeric `from`/`to` targets are accepted for captured\nselection ranges and are mapped across earlier operations in the same batch.\nA batch is built fully before dispatch, so one invalid operation rejects the\nwhole batch without partial document changes.\n\n`baseRevision` prevents stale edits. If the document changes after a batch is\ncreated, `applyOperations()` returns `status: 'conflict'` and emits\n`operationConflict`. Successful and rejected batches emit `operationsApplied`\nand `operationsRejected` respectively.\n\nNode IDs are protected identity. Inserted content cannot choose IDs;\n`UniqueID` assigns them. A compatible single-node replacement preserves the\ntarget ID by default. `update-node` cannot change the configured ID attribute.\n\nInternal IDs are excluded from HTML by default:\n\n```ts\nconst publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);\n```\n\nPersist canonical JSON with IDs. Do not use generated HTML as the source of\ntruth for operations.\n\n## AI requests and reviewable proposals\n\nEditor remains provider-neutral. It never calls OpenAI, Anthropic, or any other\nmodel directly. Request work through the controller and handle the event in\napplication code:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />\n```\n\n```ts\nasync handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}\n```\n\n`requestAi()` captures the canonical JSON document, document revision, current\nselection range, selected text, selected JSON content, and stable node IDs. The\napplication service returns a `NeuralEditorAiProposal` containing only the\nstructured operations from the current Beta contract.\n\nPreview is non-destructive. Insertions, deletions, replacements, and attribute\nupdates are rendered as ProseMirror decorations while `[(value)]` remains\nunchanged. Only `acceptAiProposal()` applies the complete operation batch in one\ntransaction. `rejectAiProposal()` removes the preview without touching the\nmodel.\n\n```ts\nconst request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});\n```\n\nA proposal is rejected as a conflict when its `baseRevision` no longer matches\nthe editor revision. Editing the document while a preview is active also clears\nthe preview and emits `aiOperationConflict`. Do not silently overwrite the base\nrevision or force stale operations onto new content.\n\nThe default review bar appends to `menuAppendTo` and supports previous/next,\naccept, reject, Escape, mobile layout, themes, and `unstyled`. Replace it with a\ntyped template when needed:\n\n```html\n<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>\n```\n\n`controller.aiReview()` exposes the active review state and\n`controller.aiRequestPending()` reports unresolved requests. The Beta contract keeps a\nsingle active proposal; `getActiveAiProposals()` therefore returns zero or one\nproposal while preserving room for a future multi-proposal adapter.\n\n## Slash commands, mentions, and command palette\n\nType `/` in a paragraph to open the default slash menu. The default commands\ninsert headings, lists, tasks, quotes, code blocks, tables, images, and dividers.\nReplace the defaults with `slashCommands`, or provide `slashCommandProvider` for\nasync or remote filtering. Providers receive an `AbortSignal`; stop stale work\nwhen it is aborted.\n\nMentions are enabled only when `mentionProvider` is present:\n\n```ts\nreadonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });\n```\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />\n```\n\nThe canonical mention node persists only stable identity and display data:\n\n```ts\n{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}\n```\n\nProvider-only `metadata` is not written to the document. Keep authorization,\nprofiles, and mutable user data in application services.\n\nPress `Ctrl+K` or `Cmd+K`, or call `controller.openCommandPalette()`, to open the\nsearchable command palette. Set `commandPaletteItems` to replace its defaults.\nSlash, mention, command-palette, bubble, floating, link, and toolbar overlays are\ncoordinated so only the relevant layer remains open. Suggestion menus and the\npalette use the same `menuAppendTo` target; `body` remains the default to avoid\noverflow clipping.\n\nProject complete menu UIs when needed:\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>\n```\n\nUse the supplied context callbacks. Do not query the editor DOM, manually\nposition suggestion panels, or insert mention HTML yourself.\n\n## Controller\n\n`editorReady` exposes a stable NeuralNg controller instead of the raw Tiptap\ninstance:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />\n```\n\n```ts\neditor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });\n```\n\nTable commands are contextual. Row, column, cell, and delete commands become\navailable when the current selection is inside a table. Use controller commands\ninstead of mutating JSON nodes or editing the `contenteditable` DOM.\n\n## Toolbar\n\nToolbar palettes and table actions use NeuralNg Popover rather than native `details` menus. Popover renders through the browser top layer, so panels are not clipped by editor or card overflow. Opening one toolbar popover closes the previously open auto popover; no `appendTo=\"body\"` option or DOM reparenting is needed.\n\nThe default toolbar contains:\n\n- undo and redo\n- paragraph and H1-H3\n- bold, italic, underline, strike, and inline code\n- text-color and highlight palettes\n- left, center, right, and justified alignment\n- bullet, ordered, and task lists\n- blockquote and code block\n- link editing\n- table insertion and contextual table commands\n- horizontal rule and clear formatting\n\nCustomize the palettes without changing the document type:\n\n```ts\nreadonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;\n```\n\n```html\n<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />\n```\n\nReplace the toolbar model with `toolbarItems`, or project a complete toolbar:\n\n```html\n<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>\n```\n\n## Images and FileUpload\n\nThe toolbar and floating menu emit `imageInsertRequest`; Editor never uploads a\n`File`. Application code selects and validates the file with FileUpload, sends\nit to a media service, then inserts only the persistent URL:\n\n```html\n<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />\n```\n\n```ts\nconst uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});\n```\n\nBase64 sources are rejected by the controller and default Image extension.\nEnable `allowBase64Images` only for a deliberate application requirement. Do\nnot persist `File`, blob URLs, or temporary object URLs in editor JSON.\n\n## Context menus and positioning\n\nBubble, floating, and link menus use Tiptap's Floating UI-based extensions.\n`menuAppendTo` defaults to `body`, which avoids clipping by editor, card, dialog,\nor overflow containers. Use `menuAppendTo=\"editor\"` only when the menu must stay\ninside the editor stacking context, or bind a specific `HTMLElement`.\n\n```html\n<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>\n```\n\nUse `ng-template[neuralEditorLinkPopover]` for a custom link form. Default menus\nare keyboard reachable, expose toolbar/dialog roles, stay within the viewport,\nand switch to compact horizontally scrollable layouts on narrow screens.\n\n## Extensions\n\n`extensions` appends Tiptap extensions. Top-level extension names are\nlast-write-wins. To replace the default schema, set\n`includeDefaultExtensions=\"false\"` and provide the complete extension set.\nExtension configuration is initialization-time in this Beta release.\n\n## Security and persistence\n\nJSON is not a security boundary. Validate the document schema, URLs, colors,\ntable attributes, pasted content, and custom node attributes on the server.\nSanitize generated HTML for its final rendering context. Do not trust content\nsolely because the editor accepted it.\n\n## Styling\n\nUse the neutral, glass, mist, or futuristic themes, or set `unstyled` locally or\nglobally. Structural `*-root` hooks remain while visual `*-base` classes are\nremoved. `NeuralEditorClasses` includes typed slots for toolbar menus, palette\noptions, slash and mention suggestions, the command palette, BubbleMenu,\nFloatingMenu, link popover controls, the editing surface, content, footer, and\ncounters.\n\n## Collaboration and review\n\nEditor collaboration is provider-neutral. The component receives an initialized\nYjs document and, optionally, a provider that exposes awareness and connection\nevents. NeuralNg does not create rooms, authenticate users, or persist Yjs\nupdates.\n\n```ts\nimport { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);\n```\n\n```html\n<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />\n```\n\nWhen `collaboration` is present:\n\n- The Yjs document is the live collaborative source of truth.\n- Editor waits for provider sync by default before mounting.\n- StarterKit undo/redo is disabled because Collaboration owns history.\n- External `value` writes are not pushed into the collaborative document.\n- `editorUpdate.source` is `remote` for collaboration-origin transactions.\n- Presence is read from the provider awareness `user` field and is never\n  persisted as document content.\n- `disconnectOnDestroy` is opt-in because provider lifetime normally belongs to\n  the application.\n\n### Provider contract\n\nThe optional provider is structural, so Hocuspocus, y-websocket, or another Yjs\nprovider can be adapted without making it a NeuralNg dependency. It may expose\n`connect`, `disconnect`, `synced`, `on`, `off`, and `awareness`.\n\nTreat `document`, `provider`, `field`, and `fragment` as initialization-only.\nWhen the room or collaborative field changes, destroy and recreate the Editor\ninstance instead of mutating the collaboration config in place.\n\nFor providers with custom event names, pass `whenSynced` and resolve it when the\ninitial room synchronization is complete. Do not seed `value` before sync. Seed\nan empty Yjs fragment in application code after synchronization instead.\n\n### Comments\n\nComments use a lightweight inline `neuralComment` mark and thread data stored in\na dedicated Yjs map. Without collaboration, the same API uses an in-memory\nrepository. The default panel supports creating, replying, resolving, reopening,\nselecting, and deleting threads through `NeuralEditorController`.\n\nComments in the Beta contract are plain-text thread messages. Authentication,\nauthorization, mentions, notifications, and server-side moderation remain\napplication responsibilities.\n\n### Tracked changes\n\nSet `trackedChangesMode=\"suggesting\"` to track local text insertions and\ndeletions. Remote Yjs transactions are ignored, so each client attributes only\nits own edits. Changes can be accepted or rejected individually or as a batch.\n\nThe Beta contract tracks text insertions and deletions. Mark changes, complex block\nreplacement, overlapping suggestions, and production audit policy are not part\nof this Beta contract.\n\n### Version snapshots\n\n`snapshots` is a controlled model containing portable JSON checkpoints:\n\n```ts\ninterface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}\n```\n\nThe built-in snapshot model intentionally does not persist Yjs binary updates.\nStore snapshots in application code, and use a provider/backend-specific Yjs\nhistory service when exact CRDT history, branching, or audit-grade restoration\nis required.\n\n### Collaboration controller methods\n\n```ts\ncontroller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);\n```\n\nThe default collaboration panel is enabled whenever collaboration, comments,\ntracked changes, or snapshots are enabled. Set `showCollaborationPanel=\"false\"`\nto render an application-owned review surface using the controller signals.\n",
+    "llms": "# @neural-ng/editor\n\nImport canonical `NeuralEditor` from `@neural-ng/editor`. `EditorComponent` is\na deprecated compatibility alias. The selector remains `<neural-editor>`.\n\n## Public API boundary\n\n- Treat `API_FREEZE.md` as the authoritative standalone package contract.\n- Import only from `@neural-ng/editor`. Never deep-import source files.\n- Use `NeuralEditor`, the exported template directives, public types,\n  constants, serializers, pure helpers, and `NeuralEditorController`.\n- Internal toolbar, menu, review, and collaboration-panel renderer components\n  are not public API. Customize through class slots and template directives.\n- Do not use raw Tiptap/ProseMirror operation or tracked-change helpers. Use the\n  controller methods so revisions, events, forms, and collaboration rules stay\n  consistent.\n\n## Canonical rules\n\n- Install only `@neural-ng/editor`. Tiptap, ProseMirror, Floating UI, Yjs, and the required NeuralNg core runtime are package-managed dependencies.\n- Install a realtime collaboration transport/provider separately only when collaboration is enabled.\n- Import `NeuralEditor` from `@neural-ng/editor`.\n- Bind only `NeuralEditorDocument` JSON to `[(value)]`, `[formField]`,\n  `[formControl]`, or `[(ngModel)]`. Never bind HTML or Markdown strings and\n  never create a string-or-JSON value union.\n- The empty value is a `doc` containing an empty paragraph. Do not use `null` as\n  the normal empty state.\n- Treat editor values as immutable. Do not mutate node, mark, attribute, or\n  content arrays in place.\n\n## Beta schema, identity, menus, AI review, and collaboration\n\n- Text alignment is stored on paragraph or heading attributes as `textAlign`.\n- Text color is stored in a `textStyle` mark with a `color` attribute.\n- Highlight is stored in a `highlight` mark and may include a `color` attribute.\n- Tasks use `taskList` and `taskItem`; task state is the boolean `checked`\n  attribute on `taskItem`.\n- Tables use `table`, `tableRow`, `tableHeader`, and `tableCell` nodes.\n- Images use an `image` node. Persist a stable HTTP(S) URL and optional alt,\n  title, width, and height attributes. Never persist File objects, blob URLs,\n  or temporary object URLs.\n- Mentions use `mention` nodes with stable `id` and `label` attributes. Provider-only\n  metadata is not persisted. Do not copy avatars, permissions, or mutable profile\n  objects into editor JSON.\n- Do not invent HTML-only state that cannot be represented by the configured\n  JSON schema.\n\n## Commands\n\n- Use the `NeuralEditorController` from `editorReady` for all programmatic\n  edits. Do not query, replace, or mutate the `contenteditable` DOM.\n- Use `setTextAlign()`, `setTextColor()`, `setHighlight()`,\n  `toggleTaskList()`, `insertTable()`, `insertImage()`, and menu controller\n  methods for Alpha 2.3 features.\n- Table row, column, merge, split, header, and delete commands are contextual;\n  call `controller.can(command)` before presenting a custom enabled action.\n- Use `toolbarItems` for the built-in toolbar or project\n  `ng-template[neuralEditorToolbar]` with `let-editor` for a custom toolbar.\n- Built-in color and table menus use NeuralNg Popover in the browser top layer. Do not replace them with native `details`, custom absolute-positioned panels, or `appendTo=\"body\"` logic. Only one auto popover remains open at a time.\n- Use `(imageInsertRequest)` to open FileUpload or an application media picker.\n  Upload outside Editor, then call `event.controller.insertImage()` with the\n  persistent URL. Editor must not send HTTP requests.\n- BubbleMenu appears for a text or image selection. FloatingMenu appears for an\n  empty paragraph. Link editing uses the same contextual bubble layer so only\n  one contextual menu is active.\n- Context menus append to `body` by default. Use `menuAppendTo=\"editor\"` or a\n  concrete HTMLElement only when the containing stacking context is required.\n- Customize menus with `neuralEditorBubbleMenu`, `neuralEditorFloatingMenu`,\n  and `neuralEditorLinkPopover` templates. Use the supplied controller and link\n  context callbacks; do not access the raw Tiptap instance or position menus\n  manually.\n- `textColors` and `highlightColors` configure UI palettes only. They do not\n  constrain externally loaded JSON; validate allowed values in application and\n  server code when a restricted palette is required.\n\n## Node identity and structured operations\n\n- Node IDs are enabled by default. Canonical JSON stores the configured\n  `nodeIdAttribute` (`neuralId` by default) on identified nodes.\n- Keep node IDs stable and unique. Do not derive IDs from array indexes,\n  document positions, visible text, or mutable labels.\n- Use `identifiedNodeTypes` and `nodeIdGenerator` only as initialization-time\n  configuration. Disable `enableNodeIds` only when no operation, AI review,\n  comment, or collaboration layer will address nodes.\n- Prefer `controller.getNodeById()` and `controller.getNodeIdAt()` over walking\n  the `contenteditable` DOM or assuming ProseMirror positions remain stable.\n- Create batches with `controller.createOperationBatch()`. It captures the\n  current document-only revision. Validate with `validateOperations()` and\n  apply with `applyOperations()`.\n- Supported operation types are `insert`, `replace`, `delete`, and\n  `update-node`. Prefer `{ nodeId }` targets. Use `{ from, to }` only for a\n  captured selection range from the same base revision.\n- Operation batches are atomic. Never apply operations one by one in\n  application code. One invalid target, node, attribute, or schema placement\n  rejects the whole batch without partial changes.\n- Treat `status: 'conflict'` as a required rebase/retry boundary. Never force a\n  stale batch onto a newer document or silently replace its `baseRevision`.\n- Inserted operation content cannot choose internal node IDs. Compatible\n  single-node replacements preserve the target ID by default. The protected ID\n  attribute cannot be changed with `update-node`.\n- Listen to `operationsApplied`, `operationsRejected`, and `operationConflict`\n  for application side effects. The form model changes only after a successful\n  atomic dispatch.\n- `editorDocumentToHtml()` omits node IDs by default. Use\n  `{ includeNodeIds: true }` only for diagnostics or explicit round trips.\n  Persist canonical JSON, not generated HTML, as the addressable source.\n- Use `editorDocumentWithNodeIds()` to migrate legacy JSON before storing or\n  sending it to an AI operation service.\n\n## Slash, mention, and command-palette behavior\n\n- Type `/` in a paragraph for the slash menu. Configure static commands through\n  `slashCommands` or use `slashCommandProvider`; a provider replaces default\n  filtering for that request.\n- Enable mentions with `mentionProvider`. It may return synchronously or\n  asynchronously. Honor the provider context `AbortSignal` and discard stale\n  network work when it aborts.\n- Press `Ctrl+K`/`Cmd+K` or call `controller.openCommandPalette()` for global\n  editor commands. Configure `commandPaletteItems`; do not create document-wide\n  key listeners in application code.\n- Listen to `commandExecuted` and `mentionSelected` only for user-action side\n  effects. The canonical model still changes through normal editor transactions.\n- Use `neuralEditorSlashMenu`, `neuralEditorMentionMenu`, and\n  `neuralEditorCommandPalette` for custom rendering. Use the supplied signals,\n  selection callbacks, and close callbacks. Do not access Tiptap plugin state or\n  manually mount/reposition overlays.\n- Suggestion and context overlays are mutually coordinated. Keep\n  `menuAppendTo=\"body\"` unless a deliberate editor-local stacking context is\n  required.\n- Slash commands and palette items execute local controller operations. They do\n  not imply HTTP, AI, upload, or persistence behavior.\n\n## AI request and review rules\n\n- NeuralNg Editor does not call AI providers. Use `controller.requestAi()` and\n  handle `(aiRequest)` in application code.\n- Send the request's structured document, selection snapshot, stable node IDs,\n  schema version, and base revision to the application-owned AI service. Do not\n  scrape the `contenteditable` DOM and do not send generated HTML as the\n  canonical source.\n- AI services must return `NeuralEditorAiProposal` values containing only\n  supported structured operations. Never return raw executable JavaScript,\n  mutate the editor directly, or inject unsanitized HTML.\n- Call `controller.previewAiProposal()` before applying a proposal. Preview uses\n  ephemeral ProseMirror decorations and must not change `[(value)]`.\n- Apply changes only after explicit user approval with\n  `controller.acceptAiProposal()`. Reject with `rejectAiProposal()`; rejection\n  removes decorations and leaves the canonical JSON unchanged.\n- Respect `baseRevision`. Treat `aiOperationConflict` as a required rebase or\n  fresh-request boundary. Never replace a stale proposal's revision with the\n  current revision.\n- A normal document edit invalidates the active preview. Do not keep stale\n  visual suggestions visible after user edits.\n- Use `(aiProposalPreviewed)`, `(aiProposalAccepted)`,\n  `(aiProposalRejected)`, `(aiOperationConflict)`, and\n  `(aiRequestCancelled)` for side effects and analytics.\n- Customize the review UI with `ng-template[neuralEditorAiReview]`. Use the\n  supplied callbacks and signals; do not mount another overlay, duplicate\n  accept/reject state, or apply operations outside the controller.\n- The default review UI follows `menuAppendTo`, supports mobile layout, and is\n  part of the shared overlay coordination model.\n\n## Conversion and persistence\n\n- Use `editorDocumentFromHtml()` to import HTML and\n  `editorDocumentToHtml()`/`editorDocumentToText()` for derived output.\n- The default serializers understand the current Beta schema, including images and mentions. Pass the\n  exact custom extension set when the document contains additional nodes or\n  marks.\n- Save documents in application code and persist a schema version beside\n  long-lived JSON.\n- Editor does not save data, upload files, call AI models, open collaboration\n  connections, or perform backend sanitization.\n\n## Security\n\n- JSON is not a security boundary. Validate document structure, links, colors,\n  table attributes, pasted content, and custom node attributes on the server.\n- Sanitize generated HTML for its final destination.\n- Never treat client-side toolbar palettes or schema checks as authorization or\n  backend validation.\n\n## Integration\n\n- `extensions` are initialization-time in the alpha API and append to the\n  defaults with top-level last-write-wins behavior.\n- To replace StarterKit or the default schema, disable\n  `includeDefaultExtensions` and provide every required extension.\n- `readonly` keeps content readable and selectable while blocking edits.\n  `disabled` also removes the editor from normal keyboard interaction.\n- Use `unstyled` or global unstyled mode for headless rendering. Structural\n  classes and ARIA relationships remain.\n\n## Collaboration, comments, tracked changes, and snapshots\n\nUse `NeuralEditorCollaborationConfig` with an application-owned `Y.Doc`.\nNeuralNg does not create a collaboration backend, room, token, or provider.\nThe optional provider must expose the small structural provider contract.\n\nWhen collaboration is enabled, the Yjs document is the live source of truth.\nDo not initialize the editor with remote content before the provider has synced.\nDo not bind autosave logic to every remote update without throttling and origin\nchecks. Collaboration disables StarterKit history and uses Yjs collaboration\nundo/redo.\nTreat `collaboration.document`, `provider`, `field`, and `fragment` as\ninitialization-only. Recreate the Editor when the room or field changes.\n\nPass `collaborationUser` with stable `id`, `name`, and `color` values. Presence\ncomes from provider awareness and is ephemeral. Never persist awareness state as\ncanonical editor content.\n\nUse `enableComments` for inline plain-text comment threads. Thread data is stored\nin the configured Yjs comments map when collaboration is active. Authentication,\npermissions, notifications, moderation, and server persistence belong to the\napplication.\n\nUse `trackedChangesMode=\"suggesting\"` to record local text insertions and\ndeletions as review marks. Remote collaboration transactions are deliberately\nignored. Alpha 4 tracked changes are not an audit log and do not cover every\npossible structural or formatting edit.\n\nUse `[(snapshots)]` for portable JSON checkpoints. Snapshot creation does not\nupload or persist anything. Save snapshots in application code. For exact CRDT\nhistory or compliance-grade versioning, use a backend/provider history system.\n\nNever combine independent Yjs documents for the same room. Never seed content on\nan unsynchronized collaborative document. Do not mutate `Y.Doc` content and the\nEditor `value` independently.\n"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "editor-mention-menu-template",
+    "name": "EditorMentionMenuTemplate",
+    "className": "EditorMentionMenuTemplateDirective",
+    "kind": "directive",
+    "selector": "ng-template[neuralEditorMentionMenu]",
+    "entryPoint": "@neural-ng/editor",
+    "packageName": "@neural-ng/editor",
+    "packageVersion": "0.1.0-beta.2",
+    "status": "beta",
+    "summary": "Status: **Beta**. The canonical standalone export is `NeuralEditor`; `EditorComponent` remains a deprecated compatibility alias.",
+    "inputs": [],
+    "models": [],
+    "outputs": [],
+    "templates": [
+      {
+        "name": "EditorAiReviewTemplate",
+        "className": "EditorAiReviewTemplateDirective",
+        "selector": "ng-template[neuralEditorAiReview]",
+        "contextType": "NeuralEditorAiReviewTemplateContext"
+      },
+      {
+        "name": "EditorBubbleMenuTemplate",
+        "className": "EditorBubbleMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorBubbleMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorFloatingMenuTemplate",
+        "className": "EditorFloatingMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorFloatingMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorLinkPopoverTemplate",
+        "className": "EditorLinkPopoverTemplateDirective",
+        "selector": "ng-template[neuralEditorLinkPopover]",
+        "contextType": "NeuralEditorLinkPopoverTemplateContext"
+      },
+      {
+        "name": "EditorSlashMenuTemplate",
+        "className": "EditorSlashMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorSlashMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorSlashCommand>"
+      },
+      {
+        "name": "EditorMentionMenuTemplate",
+        "className": "EditorMentionMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorMentionMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorMentionItem>"
+      },
+      {
+        "name": "EditorCommandPaletteTemplate",
+        "className": "EditorCommandPaletteTemplateDirective",
+        "selector": "ng-template[neuralEditorCommandPalette]",
+        "contextType": "NeuralEditorCommandPaletteTemplateContext"
+      },
+      {
+        "name": "EditorToolbarTemplate",
+        "className": "EditorToolbarTemplateDirective",
+        "selector": "ng-template[neuralEditorToolbar]",
+        "contextType": "NeuralEditorToolbarTemplateContext"
+      }
+    ],
+    "providers": [],
+    "providerRequirements": [],
+    "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralEditorValue",
+        "type": "NeuralEditorDocument"
+      },
+      {
+        "name": "NeuralEditorExtension",
+        "type": "AnyExtension"
+      },
+      {
+        "name": "NeuralEditorUpdateSource",
+        "type": "'user' | 'command' | 'remote'"
+      },
+      {
+        "name": "NeuralEditorFocusPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralEditorTextAlign",
+        "type": "'left' | 'center' | 'right' | 'justify'"
+      },
+      {
+        "name": "NeuralEditorColorKind",
+        "type": "'text' | 'highlight'"
+      },
+      {
+        "name": "NeuralEditorMenuAppendTo",
+        "type": "'body' | 'editor' | HTMLElement"
+      },
+      {
+        "name": "NeuralEditorSuggestionPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'"
+      },
+      {
+        "name": "NeuralEditorCommandSource",
+        "type": "'slash' | 'command-palette'"
+      },
+      {
+        "name": "NeuralEditorMenuPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'"
+      },
+      {
+        "name": "NeuralEditorNodeIdGenerator",
+        "type": "( context: NeuralEditorNodeIdContext, ) => string"
+      },
+      {
+        "name": "NeuralEditorInsertPosition",
+        "type": "| 'before' | 'after' | 'inside-start' | 'inside-end'"
+      },
+      {
+        "name": "NeuralEditorOperation",
+        "type": "| NeuralEditorInsertOperation | NeuralEditorReplaceOperation | NeuralEditorDeleteOperation | NeuralEditorUpdateNodeOperation"
+      },
+      {
+        "name": "NeuralEditorOperationErrorCode",
+        "type": "| 'not-editable' | 'revision-conflict' | 'empty-batch' | 'invalid-target' | 'target-not-found' | 'invalid-content' | 'schema-violation' | 'protected-attribute' | 'operation-failed'"
+      },
+      {
+        "name": "NeuralEditorOperationValidationResult",
+        "type": "| { readonly valid: true; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly operationCount: number; } | { readonly valid: false; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorOperationApplyResult",
+        "type": "| { readonly status: 'applied'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly operationCount: number; readonly document: NeuralEditorDocument; } | { readonly status: 'conflict'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; } | { readonly status: 'rejected'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorSuggestionProvider",
+        "type": "( query: string, context: NeuralEditorSuggestionProviderContext, ) => readonly T[] | Promise<readonly T[]>"
+      },
+      {
+        "name": "NeuralEditorCommand",
+        "type": "| 'undo' | 'redo' | 'paragraph' | 'heading-1' | 'heading-2' | 'heading-3' | 'bold' | 'italic' | 'underline' | 'strike' | 'code' | 'bullet-list' | 'ordered-list' | 'task-list' | 'blockquote' | 'code-block' | 'align-left' | 'align-center' | 'align-right' | 'align-justify' | 'link' | 'image' | 'horizontal-rule' | 'clear-formatting' | 'insert-table' | 'delete-table' | 'add-row-before' | 'add-row-after' | 'delete-row' | 'add-column-before' | 'add-column-after' | 'delete-column' | 'merge-cells' | 'split-cell' | 'toggle-header-row'"
+      },
+      {
+        "name": "NeuralEditorToolbarItem",
+        "type": "| NeuralEditorToolbarCommandItem | NeuralEditorToolbarColorItem | NeuralEditorToolbarTableItem | NeuralEditorToolbarSeparatorItem"
+      },
+      {
+        "name": "NeuralEditorAiAction",
+        "type": "| 'rewrite' | 'shorten' | 'expand' | 'summarize' | 'fix-grammar' | 'change-tone' | 'translate' | 'custom'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewErrorCode",
+        "type": "| 'invalid-proposal' | 'revision-conflict' | 'validation-failed' | 'editor-not-ready'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewResult",
+        "type": "| { readonly status: 'previewed'; readonly proposal: NeuralEditorAiProposal; readonly operationCount: number; } | { readonly status: 'conflict' | 'rejected'; readonly proposal: NeuralEditorAiProposal; readonly error: NeuralEditorAiPreviewError; }"
+      },
+      {
+        "name": "NeuralEditorAiProposalRejectionReason",
+        "type": "| 'user' | 'replaced' | 'editor-state' | 'validation' | 'apply-rejected'"
+      },
+      {
+        "name": "NeuralEditorAiConflictReason",
+        "type": "| 'revision-conflict' | 'document-changed'"
+      },
+      {
+        "name": "NeuralEditorCollaborationStatus",
+        "type": "| 'disabled' | 'connecting' | 'connected' | 'synced' | 'disconnected' | 'error'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangesMode",
+        "type": "'off' | 'suggesting'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangeKind",
+        "type": "'insertion' | 'deletion'"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Install",
+        "language": "bash",
+        "code": "npm install @neural-ng/editor"
+      },
+      {
+        "title": "Install",
+        "language": "ts",
+        "code": "import {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});"
+      },
+      {
+        "title": "Install",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />"
+      },
+      {
+        "title": "Theme",
+        "language": "css",
+        "code": "@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "export interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "async handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "const request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "readonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Controller",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />"
+      },
+      {
+        "title": "Controller",
+        "language": "ts",
+        "code": "editor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });"
+      },
+      {
+        "title": "Toolbar",
+        "language": "ts",
+        "code": "readonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "ts",
+        "code": "const uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});"
+      },
+      {
+        "title": "Context menus and positioning",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "ts",
+        "code": "import { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "html",
+        "code": "<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />"
+      },
+      {
+        "title": "Version snapshots",
+        "language": "ts",
+        "code": "interface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}"
+      },
+      {
+        "title": "Collaboration controller methods",
+        "language": "ts",
+        "code": "controller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralEditorClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "toolbar",
+            "type": "string",
+            "description": "Classes applied to the toolbar element."
+          },
+          {
+            "name": "toolbarButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar button element."
+          },
+          {
+            "name": "toolbarButtonIcon",
+            "type": "string",
+            "description": "Classes applied to the toolbar button icon element."
+          },
+          {
+            "name": "toolbarSeparator",
+            "type": "string",
+            "description": "Classes applied to the toolbar separator element."
+          },
+          {
+            "name": "toolbarMenu",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu element."
+          },
+          {
+            "name": "toolbarMenuButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu button element."
+          },
+          {
+            "name": "toolbarMenuPanel",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu panel element."
+          },
+          {
+            "name": "toolbarMenuAction",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu action element."
+          },
+          {
+            "name": "toolbarColorOption",
+            "type": "string",
+            "description": "Classes applied to the toolbar color option element."
+          },
+          {
+            "name": "toolbarColorSwatch",
+            "type": "string",
+            "description": "Classes applied to the toolbar color swatch element."
+          },
+          {
+            "name": "bubbleMenu",
+            "type": "string",
+            "description": "Classes applied to the bubble menu element."
+          },
+          {
+            "name": "bubbleMenuButton",
+            "type": "string",
+            "description": "Classes applied to the bubble menu button element."
+          },
+          {
+            "name": "floatingMenu",
+            "type": "string",
+            "description": "Classes applied to the floating menu element."
+          },
+          {
+            "name": "floatingMenuButton",
+            "type": "string",
+            "description": "Classes applied to the floating menu button element."
+          },
+          {
+            "name": "linkPopover",
+            "type": "string",
+            "description": "Classes applied to the link popover element."
+          },
+          {
+            "name": "linkPopoverInput",
+            "type": "string",
+            "description": "Classes applied to the link popover input element."
+          },
+          {
+            "name": "linkPopoverAction",
+            "type": "string",
+            "description": "Classes applied to the link popover action element."
+          },
+          {
+            "name": "slashMenu",
+            "type": "string",
+            "description": "Classes applied to the slash menu element."
+          },
+          {
+            "name": "mentionMenu",
+            "type": "string",
+            "description": "Classes applied to the mention menu element."
+          },
+          {
+            "name": "suggestionList",
+            "type": "string",
+            "description": "Classes applied to the suggestion list element."
+          },
+          {
+            "name": "suggestionItem",
+            "type": "string",
+            "description": "Classes applied to the suggestion item element."
+          },
+          {
+            "name": "suggestionItemIcon",
+            "type": "string",
+            "description": "Classes applied to the suggestion item icon element."
+          },
+          {
+            "name": "suggestionItemContent",
+            "type": "string",
+            "description": "Classes applied to the suggestion item content element."
+          },
+          {
+            "name": "suggestionItemLabel",
+            "type": "string",
+            "description": "Classes applied to the suggestion item label element."
+          },
+          {
+            "name": "suggestionItemDescription",
+            "type": "string",
+            "description": "Classes applied to the suggestion item description element."
+          },
+          {
+            "name": "suggestionState",
+            "type": "string",
+            "description": "Classes applied to the suggestion state element."
+          },
+          {
+            "name": "commandPalette",
+            "type": "string",
+            "description": "Classes applied to the command palette element."
+          },
+          {
+            "name": "commandPaletteBackdrop",
+            "type": "string",
+            "description": "Classes applied to the command palette backdrop element."
+          },
+          {
+            "name": "commandPalettePanel",
+            "type": "string",
+            "description": "Classes applied to the command palette panel element."
+          },
+          {
+            "name": "commandPaletteInput",
+            "type": "string",
+            "description": "Classes applied to the command palette input element."
+          },
+          {
+            "name": "commandPaletteList",
+            "type": "string",
+            "description": "Classes applied to the command palette list element."
+          },
+          {
+            "name": "commandPaletteItem",
+            "type": "string",
+            "description": "Classes applied to the command palette item element."
+          },
+          {
+            "name": "aiReview",
+            "type": "string",
+            "description": "Classes applied to the ai review element."
+          },
+          {
+            "name": "aiReviewSummary",
+            "type": "string",
+            "description": "Classes applied to the ai review summary element."
+          },
+          {
+            "name": "aiReviewProgress",
+            "type": "string",
+            "description": "Classes applied to the ai review progress element."
+          },
+          {
+            "name": "aiReviewActions",
+            "type": "string",
+            "description": "Classes applied to the ai review actions element."
+          },
+          {
+            "name": "aiReviewButton",
+            "type": "string",
+            "description": "Classes applied to the ai review button element."
+          },
+          {
+            "name": "collaborationBar",
+            "type": "string",
+            "description": "Classes applied to the collaboration bar element."
+          },
+          {
+            "name": "collaborationStatus",
+            "type": "string",
+            "description": "Classes applied to the collaboration status element."
+          },
+          {
+            "name": "presenceList",
+            "type": "string",
+            "description": "Classes applied to the presence list element."
+          },
+          {
+            "name": "presenceItem",
+            "type": "string",
+            "description": "Classes applied to the presence item element."
+          },
+          {
+            "name": "collaborationPanel",
+            "type": "string",
+            "description": "Classes applied to the collaboration panel element."
+          },
+          {
+            "name": "collaborationSection",
+            "type": "string",
+            "description": "Classes applied to the collaboration section element."
+          },
+          {
+            "name": "collaborationSectionTitle",
+            "type": "string",
+            "description": "Classes applied to the collaboration section title element."
+          },
+          {
+            "name": "collaborationInput",
+            "type": "string",
+            "description": "Classes applied to the collaboration input element."
+          },
+          {
+            "name": "collaborationButton",
+            "type": "string",
+            "description": "Classes applied to the collaboration button element."
+          },
+          {
+            "name": "commentThread",
+            "type": "string",
+            "description": "Classes applied to the comment thread element."
+          },
+          {
+            "name": "commentMessage",
+            "type": "string",
+            "description": "Classes applied to the comment message element."
+          },
+          {
+            "name": "trackedChange",
+            "type": "string",
+            "description": "Classes applied to the tracked change element."
+          },
+          {
+            "name": "snapshotItem",
+            "type": "string",
+            "description": "Classes applied to the snapshot item element."
+          },
+          {
+            "name": "surface",
+            "type": "string",
+            "description": "Classes applied to the surface element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "characterCount",
+            "type": "string",
+            "description": "Classes applied to the character count element."
+          },
+          {
+            "name": "wordCount",
+            "type": "string",
+            "description": "Classes applied to the word count element."
+          }
+        ],
+        "sourcePath": "libs/neural-editor/editor.types.ts"
+      }
+    ],
+    "relatedComponents": [
+      "editor-ai-review-template",
+      "editor-bubble-menu-template",
+      "editor-floating-menu-template",
+      "editor-link-popover-template",
+      "editor-slash-menu-template",
+      "editor-command-palette-template",
+      "editor-toolbar-template",
+      "neural-editor"
+    ],
+    "resources": {
+      "contract": "neural://components/editor-mention-menu-template/contract",
+      "readme": "neural://components/editor-mention-menu-template/readme",
+      "llms": "neural://components/editor-mention-menu-template/llms"
+    },
+    "sourceDirectory": "libs/neural-editor",
+    "readme": "# Editor\n\nStatus: **Beta**. The canonical standalone export is `NeuralEditor`;\n`EditorComponent` remains a deprecated compatibility alias.\n\nSignal-first structured rich-text editing for Angular 22+. NeuralNg Editor uses\nTiptap 3 and ProseMirror internally, while its canonical form value remains a\n`NeuralEditorDocument` JSON tree. HTML is derived output, never the model.\n\n## Install\n\nInstall the complete Editor runtime with one command:\n\n```bash\nnpm install @neural-ng/editor\n```\n\nThe package installs Tiptap, ProseMirror, Floating UI, Yjs, and the required\nNeuralNg core runtime. Applications do not install those Editor internals\nindividually. A realtime collaboration transport such as `y-websocket` or a\nHocuspocus provider remains application-owned and is only needed when that\nfeature is enabled.\n\n```ts\nimport {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});\n```\n\n```html\n<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />\n```\n\nEditor implements `FormValueControl<NeuralEditorDocument>`. Use the same\ncomponent with `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`.\nDo not implement a second `ControlValueAccessor`.\n\n`EditorComponent` remains a deprecated compatibility alias. New code should\nimport the canonical `NeuralEditor` runtime.\n\n## Public API contract\n\nThe standalone package contract is documented in [`API_FREEZE.md`](./API_FREEZE.md).\nImport only from `@neural-ng/editor`; deep imports and internal rendering\ncomponents are unsupported. The freeze document is the source of truth for\ncomponent inputs/outputs, controller methods, template contexts, class slots,\nutilities, and package asset entry points.\n\n### Theme\n\nImport the matching Core and Editor token files:\n\n```css\n@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';\n```\n\nExperimental presets follow the same two-file rule: import the matching Core\npreset first, then the Editor preset. The optional Tailwind bridge remains\n`@neural-ng/core/themes/tailwind.css`.\n\n## Ownership boundary\n\nEditor owns structured editing, toolbar commands, selection state, undo/redo,\nJSON output, HTML/text derivation, accessibility, and Angular Forms\nintegration. It does not save documents, call HTTP APIs, upload image files,\ninvoke AI models, connect collaboration providers, or sanitize backend output. Those\nresponsibilities belong to application services or explicit extensions.\n\n## Canonical value\n\nThe model is never HTML, Markdown, or a format-dependent union:\n\n```ts\nexport interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}\n```\n\nThe current Beta schema and interaction layer includes:\n\n- paragraph and heading alignment: `left`, `center`, `right`, `justify`\n- text color through a `textStyle` mark\n- multicolor highlight marks\n- `taskList` and `taskItem` nodes\n- `table`, `tableRow`, `tableHeader`, and `tableCell` nodes\n- `image` nodes containing persistent URLs, alt text, title, width, and height\n- BubbleMenu, FloatingMenu, and a selection-aware link popover\n- slash commands, async mentions, and a searchable command palette\n\nPersist a schema version beside long-lived documents:\n\n```ts\nconst stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;\n```\n\nUse the serializers for external representations:\n\n```ts\nconst html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());\n```\n\nThe default serializers include the current Beta schema, including image and\nmention nodes. Pass the matching custom extension set when converting documents\nwith additional nodes or marks.\n\n## Stable node IDs and structured operations\n\nThe Beta contract enables Tiptap `UniqueID` by default. Identified nodes receive a\n`neuralId` attribute in canonical JSON. The default list covers block nodes,\nlist items, tables and cells, images, and horizontal rules. Configure this at\ninitialization time:\n\n```html\n<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />\n```\n\nUse `nodeIdGenerator` only when the application requires a custom ID strategy.\nThe generator must return a non-empty, globally unique, stable string. Disable\nthe feature with `[enableNodeIds]=\"false\"` only when the document will never use\nstructured operations, AI review, comments, or collaboration adapters.\n\nThe controller exposes a document-only revision signal and node lookup:\n\n```ts\nconst revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);\n```\n\nBuild and apply atomic, schema-checked operation batches through the controller:\n\n```ts\nconst batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}\n```\n\nSupported operations are `insert`, `replace`, `delete`, and `update-node`.\nPrefer `nodeId` targets. Numeric `from`/`to` targets are accepted for captured\nselection ranges and are mapped across earlier operations in the same batch.\nA batch is built fully before dispatch, so one invalid operation rejects the\nwhole batch without partial document changes.\n\n`baseRevision` prevents stale edits. If the document changes after a batch is\ncreated, `applyOperations()` returns `status: 'conflict'` and emits\n`operationConflict`. Successful and rejected batches emit `operationsApplied`\nand `operationsRejected` respectively.\n\nNode IDs are protected identity. Inserted content cannot choose IDs;\n`UniqueID` assigns them. A compatible single-node replacement preserves the\ntarget ID by default. `update-node` cannot change the configured ID attribute.\n\nInternal IDs are excluded from HTML by default:\n\n```ts\nconst publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);\n```\n\nPersist canonical JSON with IDs. Do not use generated HTML as the source of\ntruth for operations.\n\n## AI requests and reviewable proposals\n\nEditor remains provider-neutral. It never calls OpenAI, Anthropic, or any other\nmodel directly. Request work through the controller and handle the event in\napplication code:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />\n```\n\n```ts\nasync handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}\n```\n\n`requestAi()` captures the canonical JSON document, document revision, current\nselection range, selected text, selected JSON content, and stable node IDs. The\napplication service returns a `NeuralEditorAiProposal` containing only the\nstructured operations from the current Beta contract.\n\nPreview is non-destructive. Insertions, deletions, replacements, and attribute\nupdates are rendered as ProseMirror decorations while `[(value)]` remains\nunchanged. Only `acceptAiProposal()` applies the complete operation batch in one\ntransaction. `rejectAiProposal()` removes the preview without touching the\nmodel.\n\n```ts\nconst request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});\n```\n\nA proposal is rejected as a conflict when its `baseRevision` no longer matches\nthe editor revision. Editing the document while a preview is active also clears\nthe preview and emits `aiOperationConflict`. Do not silently overwrite the base\nrevision or force stale operations onto new content.\n\nThe default review bar appends to `menuAppendTo` and supports previous/next,\naccept, reject, Escape, mobile layout, themes, and `unstyled`. Replace it with a\ntyped template when needed:\n\n```html\n<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>\n```\n\n`controller.aiReview()` exposes the active review state and\n`controller.aiRequestPending()` reports unresolved requests. The Beta contract keeps a\nsingle active proposal; `getActiveAiProposals()` therefore returns zero or one\nproposal while preserving room for a future multi-proposal adapter.\n\n## Slash commands, mentions, and command palette\n\nType `/` in a paragraph to open the default slash menu. The default commands\ninsert headings, lists, tasks, quotes, code blocks, tables, images, and dividers.\nReplace the defaults with `slashCommands`, or provide `slashCommandProvider` for\nasync or remote filtering. Providers receive an `AbortSignal`; stop stale work\nwhen it is aborted.\n\nMentions are enabled only when `mentionProvider` is present:\n\n```ts\nreadonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });\n```\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />\n```\n\nThe canonical mention node persists only stable identity and display data:\n\n```ts\n{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}\n```\n\nProvider-only `metadata` is not written to the document. Keep authorization,\nprofiles, and mutable user data in application services.\n\nPress `Ctrl+K` or `Cmd+K`, or call `controller.openCommandPalette()`, to open the\nsearchable command palette. Set `commandPaletteItems` to replace its defaults.\nSlash, mention, command-palette, bubble, floating, link, and toolbar overlays are\ncoordinated so only the relevant layer remains open. Suggestion menus and the\npalette use the same `menuAppendTo` target; `body` remains the default to avoid\noverflow clipping.\n\nProject complete menu UIs when needed:\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>\n```\n\nUse the supplied context callbacks. Do not query the editor DOM, manually\nposition suggestion panels, or insert mention HTML yourself.\n\n## Controller\n\n`editorReady` exposes a stable NeuralNg controller instead of the raw Tiptap\ninstance:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />\n```\n\n```ts\neditor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });\n```\n\nTable commands are contextual. Row, column, cell, and delete commands become\navailable when the current selection is inside a table. Use controller commands\ninstead of mutating JSON nodes or editing the `contenteditable` DOM.\n\n## Toolbar\n\nToolbar palettes and table actions use NeuralNg Popover rather than native `details` menus. Popover renders through the browser top layer, so panels are not clipped by editor or card overflow. Opening one toolbar popover closes the previously open auto popover; no `appendTo=\"body\"` option or DOM reparenting is needed.\n\nThe default toolbar contains:\n\n- undo and redo\n- paragraph and H1-H3\n- bold, italic, underline, strike, and inline code\n- text-color and highlight palettes\n- left, center, right, and justified alignment\n- bullet, ordered, and task lists\n- blockquote and code block\n- link editing\n- table insertion and contextual table commands\n- horizontal rule and clear formatting\n\nCustomize the palettes without changing the document type:\n\n```ts\nreadonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;\n```\n\n```html\n<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />\n```\n\nReplace the toolbar model with `toolbarItems`, or project a complete toolbar:\n\n```html\n<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>\n```\n\n## Images and FileUpload\n\nThe toolbar and floating menu emit `imageInsertRequest`; Editor never uploads a\n`File`. Application code selects and validates the file with FileUpload, sends\nit to a media service, then inserts only the persistent URL:\n\n```html\n<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />\n```\n\n```ts\nconst uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});\n```\n\nBase64 sources are rejected by the controller and default Image extension.\nEnable `allowBase64Images` only for a deliberate application requirement. Do\nnot persist `File`, blob URLs, or temporary object URLs in editor JSON.\n\n## Context menus and positioning\n\nBubble, floating, and link menus use Tiptap's Floating UI-based extensions.\n`menuAppendTo` defaults to `body`, which avoids clipping by editor, card, dialog,\nor overflow containers. Use `menuAppendTo=\"editor\"` only when the menu must stay\ninside the editor stacking context, or bind a specific `HTMLElement`.\n\n```html\n<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>\n```\n\nUse `ng-template[neuralEditorLinkPopover]` for a custom link form. Default menus\nare keyboard reachable, expose toolbar/dialog roles, stay within the viewport,\nand switch to compact horizontally scrollable layouts on narrow screens.\n\n## Extensions\n\n`extensions` appends Tiptap extensions. Top-level extension names are\nlast-write-wins. To replace the default schema, set\n`includeDefaultExtensions=\"false\"` and provide the complete extension set.\nExtension configuration is initialization-time in this Beta release.\n\n## Security and persistence\n\nJSON is not a security boundary. Validate the document schema, URLs, colors,\ntable attributes, pasted content, and custom node attributes on the server.\nSanitize generated HTML for its final rendering context. Do not trust content\nsolely because the editor accepted it.\n\n## Styling\n\nUse the neutral, glass, mist, or futuristic themes, or set `unstyled` locally or\nglobally. Structural `*-root` hooks remain while visual `*-base` classes are\nremoved. `NeuralEditorClasses` includes typed slots for toolbar menus, palette\noptions, slash and mention suggestions, the command palette, BubbleMenu,\nFloatingMenu, link popover controls, the editing surface, content, footer, and\ncounters.\n\n## Collaboration and review\n\nEditor collaboration is provider-neutral. The component receives an initialized\nYjs document and, optionally, a provider that exposes awareness and connection\nevents. NeuralNg does not create rooms, authenticate users, or persist Yjs\nupdates.\n\n```ts\nimport { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);\n```\n\n```html\n<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />\n```\n\nWhen `collaboration` is present:\n\n- The Yjs document is the live collaborative source of truth.\n- Editor waits for provider sync by default before mounting.\n- StarterKit undo/redo is disabled because Collaboration owns history.\n- External `value` writes are not pushed into the collaborative document.\n- `editorUpdate.source` is `remote` for collaboration-origin transactions.\n- Presence is read from the provider awareness `user` field and is never\n  persisted as document content.\n- `disconnectOnDestroy` is opt-in because provider lifetime normally belongs to\n  the application.\n\n### Provider contract\n\nThe optional provider is structural, so Hocuspocus, y-websocket, or another Yjs\nprovider can be adapted without making it a NeuralNg dependency. It may expose\n`connect`, `disconnect`, `synced`, `on`, `off`, and `awareness`.\n\nTreat `document`, `provider`, `field`, and `fragment` as initialization-only.\nWhen the room or collaborative field changes, destroy and recreate the Editor\ninstance instead of mutating the collaboration config in place.\n\nFor providers with custom event names, pass `whenSynced` and resolve it when the\ninitial room synchronization is complete. Do not seed `value` before sync. Seed\nan empty Yjs fragment in application code after synchronization instead.\n\n### Comments\n\nComments use a lightweight inline `neuralComment` mark and thread data stored in\na dedicated Yjs map. Without collaboration, the same API uses an in-memory\nrepository. The default panel supports creating, replying, resolving, reopening,\nselecting, and deleting threads through `NeuralEditorController`.\n\nComments in the Beta contract are plain-text thread messages. Authentication,\nauthorization, mentions, notifications, and server-side moderation remain\napplication responsibilities.\n\n### Tracked changes\n\nSet `trackedChangesMode=\"suggesting\"` to track local text insertions and\ndeletions. Remote Yjs transactions are ignored, so each client attributes only\nits own edits. Changes can be accepted or rejected individually or as a batch.\n\nThe Beta contract tracks text insertions and deletions. Mark changes, complex block\nreplacement, overlapping suggestions, and production audit policy are not part\nof this Beta contract.\n\n### Version snapshots\n\n`snapshots` is a controlled model containing portable JSON checkpoints:\n\n```ts\ninterface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}\n```\n\nThe built-in snapshot model intentionally does not persist Yjs binary updates.\nStore snapshots in application code, and use a provider/backend-specific Yjs\nhistory service when exact CRDT history, branching, or audit-grade restoration\nis required.\n\n### Collaboration controller methods\n\n```ts\ncontroller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);\n```\n\nThe default collaboration panel is enabled whenever collaboration, comments,\ntracked changes, or snapshots are enabled. Set `showCollaborationPanel=\"false\"`\nto render an application-owned review surface using the controller signals.\n",
+    "llms": "# @neural-ng/editor\n\nImport canonical `NeuralEditor` from `@neural-ng/editor`. `EditorComponent` is\na deprecated compatibility alias. The selector remains `<neural-editor>`.\n\n## Public API boundary\n\n- Treat `API_FREEZE.md` as the authoritative standalone package contract.\n- Import only from `@neural-ng/editor`. Never deep-import source files.\n- Use `NeuralEditor`, the exported template directives, public types,\n  constants, serializers, pure helpers, and `NeuralEditorController`.\n- Internal toolbar, menu, review, and collaboration-panel renderer components\n  are not public API. Customize through class slots and template directives.\n- Do not use raw Tiptap/ProseMirror operation or tracked-change helpers. Use the\n  controller methods so revisions, events, forms, and collaboration rules stay\n  consistent.\n\n## Canonical rules\n\n- Install only `@neural-ng/editor`. Tiptap, ProseMirror, Floating UI, Yjs, and the required NeuralNg core runtime are package-managed dependencies.\n- Install a realtime collaboration transport/provider separately only when collaboration is enabled.\n- Import `NeuralEditor` from `@neural-ng/editor`.\n- Bind only `NeuralEditorDocument` JSON to `[(value)]`, `[formField]`,\n  `[formControl]`, or `[(ngModel)]`. Never bind HTML or Markdown strings and\n  never create a string-or-JSON value union.\n- The empty value is a `doc` containing an empty paragraph. Do not use `null` as\n  the normal empty state.\n- Treat editor values as immutable. Do not mutate node, mark, attribute, or\n  content arrays in place.\n\n## Beta schema, identity, menus, AI review, and collaboration\n\n- Text alignment is stored on paragraph or heading attributes as `textAlign`.\n- Text color is stored in a `textStyle` mark with a `color` attribute.\n- Highlight is stored in a `highlight` mark and may include a `color` attribute.\n- Tasks use `taskList` and `taskItem`; task state is the boolean `checked`\n  attribute on `taskItem`.\n- Tables use `table`, `tableRow`, `tableHeader`, and `tableCell` nodes.\n- Images use an `image` node. Persist a stable HTTP(S) URL and optional alt,\n  title, width, and height attributes. Never persist File objects, blob URLs,\n  or temporary object URLs.\n- Mentions use `mention` nodes with stable `id` and `label` attributes. Provider-only\n  metadata is not persisted. Do not copy avatars, permissions, or mutable profile\n  objects into editor JSON.\n- Do not invent HTML-only state that cannot be represented by the configured\n  JSON schema.\n\n## Commands\n\n- Use the `NeuralEditorController` from `editorReady` for all programmatic\n  edits. Do not query, replace, or mutate the `contenteditable` DOM.\n- Use `setTextAlign()`, `setTextColor()`, `setHighlight()`,\n  `toggleTaskList()`, `insertTable()`, `insertImage()`, and menu controller\n  methods for Alpha 2.3 features.\n- Table row, column, merge, split, header, and delete commands are contextual;\n  call `controller.can(command)` before presenting a custom enabled action.\n- Use `toolbarItems` for the built-in toolbar or project\n  `ng-template[neuralEditorToolbar]` with `let-editor` for a custom toolbar.\n- Built-in color and table menus use NeuralNg Popover in the browser top layer. Do not replace them with native `details`, custom absolute-positioned panels, or `appendTo=\"body\"` logic. Only one auto popover remains open at a time.\n- Use `(imageInsertRequest)` to open FileUpload or an application media picker.\n  Upload outside Editor, then call `event.controller.insertImage()` with the\n  persistent URL. Editor must not send HTTP requests.\n- BubbleMenu appears for a text or image selection. FloatingMenu appears for an\n  empty paragraph. Link editing uses the same contextual bubble layer so only\n  one contextual menu is active.\n- Context menus append to `body` by default. Use `menuAppendTo=\"editor\"` or a\n  concrete HTMLElement only when the containing stacking context is required.\n- Customize menus with `neuralEditorBubbleMenu`, `neuralEditorFloatingMenu`,\n  and `neuralEditorLinkPopover` templates. Use the supplied controller and link\n  context callbacks; do not access the raw Tiptap instance or position menus\n  manually.\n- `textColors` and `highlightColors` configure UI palettes only. They do not\n  constrain externally loaded JSON; validate allowed values in application and\n  server code when a restricted palette is required.\n\n## Node identity and structured operations\n\n- Node IDs are enabled by default. Canonical JSON stores the configured\n  `nodeIdAttribute` (`neuralId` by default) on identified nodes.\n- Keep node IDs stable and unique. Do not derive IDs from array indexes,\n  document positions, visible text, or mutable labels.\n- Use `identifiedNodeTypes` and `nodeIdGenerator` only as initialization-time\n  configuration. Disable `enableNodeIds` only when no operation, AI review,\n  comment, or collaboration layer will address nodes.\n- Prefer `controller.getNodeById()` and `controller.getNodeIdAt()` over walking\n  the `contenteditable` DOM or assuming ProseMirror positions remain stable.\n- Create batches with `controller.createOperationBatch()`. It captures the\n  current document-only revision. Validate with `validateOperations()` and\n  apply with `applyOperations()`.\n- Supported operation types are `insert`, `replace`, `delete`, and\n  `update-node`. Prefer `{ nodeId }` targets. Use `{ from, to }` only for a\n  captured selection range from the same base revision.\n- Operation batches are atomic. Never apply operations one by one in\n  application code. One invalid target, node, attribute, or schema placement\n  rejects the whole batch without partial changes.\n- Treat `status: 'conflict'` as a required rebase/retry boundary. Never force a\n  stale batch onto a newer document or silently replace its `baseRevision`.\n- Inserted operation content cannot choose internal node IDs. Compatible\n  single-node replacements preserve the target ID by default. The protected ID\n  attribute cannot be changed with `update-node`.\n- Listen to `operationsApplied`, `operationsRejected`, and `operationConflict`\n  for application side effects. The form model changes only after a successful\n  atomic dispatch.\n- `editorDocumentToHtml()` omits node IDs by default. Use\n  `{ includeNodeIds: true }` only for diagnostics or explicit round trips.\n  Persist canonical JSON, not generated HTML, as the addressable source.\n- Use `editorDocumentWithNodeIds()` to migrate legacy JSON before storing or\n  sending it to an AI operation service.\n\n## Slash, mention, and command-palette behavior\n\n- Type `/` in a paragraph for the slash menu. Configure static commands through\n  `slashCommands` or use `slashCommandProvider`; a provider replaces default\n  filtering for that request.\n- Enable mentions with `mentionProvider`. It may return synchronously or\n  asynchronously. Honor the provider context `AbortSignal` and discard stale\n  network work when it aborts.\n- Press `Ctrl+K`/`Cmd+K` or call `controller.openCommandPalette()` for global\n  editor commands. Configure `commandPaletteItems`; do not create document-wide\n  key listeners in application code.\n- Listen to `commandExecuted` and `mentionSelected` only for user-action side\n  effects. The canonical model still changes through normal editor transactions.\n- Use `neuralEditorSlashMenu`, `neuralEditorMentionMenu`, and\n  `neuralEditorCommandPalette` for custom rendering. Use the supplied signals,\n  selection callbacks, and close callbacks. Do not access Tiptap plugin state or\n  manually mount/reposition overlays.\n- Suggestion and context overlays are mutually coordinated. Keep\n  `menuAppendTo=\"body\"` unless a deliberate editor-local stacking context is\n  required.\n- Slash commands and palette items execute local controller operations. They do\n  not imply HTTP, AI, upload, or persistence behavior.\n\n## AI request and review rules\n\n- NeuralNg Editor does not call AI providers. Use `controller.requestAi()` and\n  handle `(aiRequest)` in application code.\n- Send the request's structured document, selection snapshot, stable node IDs,\n  schema version, and base revision to the application-owned AI service. Do not\n  scrape the `contenteditable` DOM and do not send generated HTML as the\n  canonical source.\n- AI services must return `NeuralEditorAiProposal` values containing only\n  supported structured operations. Never return raw executable JavaScript,\n  mutate the editor directly, or inject unsanitized HTML.\n- Call `controller.previewAiProposal()` before applying a proposal. Preview uses\n  ephemeral ProseMirror decorations and must not change `[(value)]`.\n- Apply changes only after explicit user approval with\n  `controller.acceptAiProposal()`. Reject with `rejectAiProposal()`; rejection\n  removes decorations and leaves the canonical JSON unchanged.\n- Respect `baseRevision`. Treat `aiOperationConflict` as a required rebase or\n  fresh-request boundary. Never replace a stale proposal's revision with the\n  current revision.\n- A normal document edit invalidates the active preview. Do not keep stale\n  visual suggestions visible after user edits.\n- Use `(aiProposalPreviewed)`, `(aiProposalAccepted)`,\n  `(aiProposalRejected)`, `(aiOperationConflict)`, and\n  `(aiRequestCancelled)` for side effects and analytics.\n- Customize the review UI with `ng-template[neuralEditorAiReview]`. Use the\n  supplied callbacks and signals; do not mount another overlay, duplicate\n  accept/reject state, or apply operations outside the controller.\n- The default review UI follows `menuAppendTo`, supports mobile layout, and is\n  part of the shared overlay coordination model.\n\n## Conversion and persistence\n\n- Use `editorDocumentFromHtml()` to import HTML and\n  `editorDocumentToHtml()`/`editorDocumentToText()` for derived output.\n- The default serializers understand the current Beta schema, including images and mentions. Pass the\n  exact custom extension set when the document contains additional nodes or\n  marks.\n- Save documents in application code and persist a schema version beside\n  long-lived JSON.\n- Editor does not save data, upload files, call AI models, open collaboration\n  connections, or perform backend sanitization.\n\n## Security\n\n- JSON is not a security boundary. Validate document structure, links, colors,\n  table attributes, pasted content, and custom node attributes on the server.\n- Sanitize generated HTML for its final destination.\n- Never treat client-side toolbar palettes or schema checks as authorization or\n  backend validation.\n\n## Integration\n\n- `extensions` are initialization-time in the alpha API and append to the\n  defaults with top-level last-write-wins behavior.\n- To replace StarterKit or the default schema, disable\n  `includeDefaultExtensions` and provide every required extension.\n- `readonly` keeps content readable and selectable while blocking edits.\n  `disabled` also removes the editor from normal keyboard interaction.\n- Use `unstyled` or global unstyled mode for headless rendering. Structural\n  classes and ARIA relationships remain.\n\n## Collaboration, comments, tracked changes, and snapshots\n\nUse `NeuralEditorCollaborationConfig` with an application-owned `Y.Doc`.\nNeuralNg does not create a collaboration backend, room, token, or provider.\nThe optional provider must expose the small structural provider contract.\n\nWhen collaboration is enabled, the Yjs document is the live source of truth.\nDo not initialize the editor with remote content before the provider has synced.\nDo not bind autosave logic to every remote update without throttling and origin\nchecks. Collaboration disables StarterKit history and uses Yjs collaboration\nundo/redo.\nTreat `collaboration.document`, `provider`, `field`, and `fragment` as\ninitialization-only. Recreate the Editor when the room or field changes.\n\nPass `collaborationUser` with stable `id`, `name`, and `color` values. Presence\ncomes from provider awareness and is ephemeral. Never persist awareness state as\ncanonical editor content.\n\nUse `enableComments` for inline plain-text comment threads. Thread data is stored\nin the configured Yjs comments map when collaboration is active. Authentication,\npermissions, notifications, moderation, and server persistence belong to the\napplication.\n\nUse `trackedChangesMode=\"suggesting\"` to record local text insertions and\ndeletions as review marks. Remote collaboration transactions are deliberately\nignored. Alpha 4 tracked changes are not an audit log and do not cover every\npossible structural or formatting edit.\n\nUse `[(snapshots)]` for portable JSON checkpoints. Snapshot creation does not\nupload or persist anything. Save snapshots in application code. For exact CRDT\nhistory or compliance-grade versioning, use a backend/provider history system.\n\nNever combine independent Yjs documents for the same room. Never seed content on\nan unsynchronized collaborative document. Do not mutate `Y.Doc` content and the\nEditor `value` independently.\n"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "editor-slash-menu-template",
+    "name": "EditorSlashMenuTemplate",
+    "className": "EditorSlashMenuTemplateDirective",
+    "kind": "directive",
+    "selector": "ng-template[neuralEditorSlashMenu]",
+    "entryPoint": "@neural-ng/editor",
+    "packageName": "@neural-ng/editor",
+    "packageVersion": "0.1.0-beta.2",
+    "status": "beta",
+    "summary": "Status: **Beta**. The canonical standalone export is `NeuralEditor`; `EditorComponent` remains a deprecated compatibility alias.",
+    "inputs": [],
+    "models": [],
+    "outputs": [],
+    "templates": [
+      {
+        "name": "EditorAiReviewTemplate",
+        "className": "EditorAiReviewTemplateDirective",
+        "selector": "ng-template[neuralEditorAiReview]",
+        "contextType": "NeuralEditorAiReviewTemplateContext"
+      },
+      {
+        "name": "EditorBubbleMenuTemplate",
+        "className": "EditorBubbleMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorBubbleMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorFloatingMenuTemplate",
+        "className": "EditorFloatingMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorFloatingMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorLinkPopoverTemplate",
+        "className": "EditorLinkPopoverTemplateDirective",
+        "selector": "ng-template[neuralEditorLinkPopover]",
+        "contextType": "NeuralEditorLinkPopoverTemplateContext"
+      },
+      {
+        "name": "EditorSlashMenuTemplate",
+        "className": "EditorSlashMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorSlashMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorSlashCommand>"
+      },
+      {
+        "name": "EditorMentionMenuTemplate",
+        "className": "EditorMentionMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorMentionMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorMentionItem>"
+      },
+      {
+        "name": "EditorCommandPaletteTemplate",
+        "className": "EditorCommandPaletteTemplateDirective",
+        "selector": "ng-template[neuralEditorCommandPalette]",
+        "contextType": "NeuralEditorCommandPaletteTemplateContext"
+      },
+      {
+        "name": "EditorToolbarTemplate",
+        "className": "EditorToolbarTemplateDirective",
+        "selector": "ng-template[neuralEditorToolbar]",
+        "contextType": "NeuralEditorToolbarTemplateContext"
+      }
+    ],
+    "providers": [],
+    "providerRequirements": [],
+    "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralEditorValue",
+        "type": "NeuralEditorDocument"
+      },
+      {
+        "name": "NeuralEditorExtension",
+        "type": "AnyExtension"
+      },
+      {
+        "name": "NeuralEditorUpdateSource",
+        "type": "'user' | 'command' | 'remote'"
+      },
+      {
+        "name": "NeuralEditorFocusPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralEditorTextAlign",
+        "type": "'left' | 'center' | 'right' | 'justify'"
+      },
+      {
+        "name": "NeuralEditorColorKind",
+        "type": "'text' | 'highlight'"
+      },
+      {
+        "name": "NeuralEditorMenuAppendTo",
+        "type": "'body' | 'editor' | HTMLElement"
+      },
+      {
+        "name": "NeuralEditorSuggestionPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'"
+      },
+      {
+        "name": "NeuralEditorCommandSource",
+        "type": "'slash' | 'command-palette'"
+      },
+      {
+        "name": "NeuralEditorMenuPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'"
+      },
+      {
+        "name": "NeuralEditorNodeIdGenerator",
+        "type": "( context: NeuralEditorNodeIdContext, ) => string"
+      },
+      {
+        "name": "NeuralEditorInsertPosition",
+        "type": "| 'before' | 'after' | 'inside-start' | 'inside-end'"
+      },
+      {
+        "name": "NeuralEditorOperation",
+        "type": "| NeuralEditorInsertOperation | NeuralEditorReplaceOperation | NeuralEditorDeleteOperation | NeuralEditorUpdateNodeOperation"
+      },
+      {
+        "name": "NeuralEditorOperationErrorCode",
+        "type": "| 'not-editable' | 'revision-conflict' | 'empty-batch' | 'invalid-target' | 'target-not-found' | 'invalid-content' | 'schema-violation' | 'protected-attribute' | 'operation-failed'"
+      },
+      {
+        "name": "NeuralEditorOperationValidationResult",
+        "type": "| { readonly valid: true; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly operationCount: number; } | { readonly valid: false; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorOperationApplyResult",
+        "type": "| { readonly status: 'applied'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly operationCount: number; readonly document: NeuralEditorDocument; } | { readonly status: 'conflict'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; } | { readonly status: 'rejected'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorSuggestionProvider",
+        "type": "( query: string, context: NeuralEditorSuggestionProviderContext, ) => readonly T[] | Promise<readonly T[]>"
+      },
+      {
+        "name": "NeuralEditorCommand",
+        "type": "| 'undo' | 'redo' | 'paragraph' | 'heading-1' | 'heading-2' | 'heading-3' | 'bold' | 'italic' | 'underline' | 'strike' | 'code' | 'bullet-list' | 'ordered-list' | 'task-list' | 'blockquote' | 'code-block' | 'align-left' | 'align-center' | 'align-right' | 'align-justify' | 'link' | 'image' | 'horizontal-rule' | 'clear-formatting' | 'insert-table' | 'delete-table' | 'add-row-before' | 'add-row-after' | 'delete-row' | 'add-column-before' | 'add-column-after' | 'delete-column' | 'merge-cells' | 'split-cell' | 'toggle-header-row'"
+      },
+      {
+        "name": "NeuralEditorToolbarItem",
+        "type": "| NeuralEditorToolbarCommandItem | NeuralEditorToolbarColorItem | NeuralEditorToolbarTableItem | NeuralEditorToolbarSeparatorItem"
+      },
+      {
+        "name": "NeuralEditorAiAction",
+        "type": "| 'rewrite' | 'shorten' | 'expand' | 'summarize' | 'fix-grammar' | 'change-tone' | 'translate' | 'custom'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewErrorCode",
+        "type": "| 'invalid-proposal' | 'revision-conflict' | 'validation-failed' | 'editor-not-ready'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewResult",
+        "type": "| { readonly status: 'previewed'; readonly proposal: NeuralEditorAiProposal; readonly operationCount: number; } | { readonly status: 'conflict' | 'rejected'; readonly proposal: NeuralEditorAiProposal; readonly error: NeuralEditorAiPreviewError; }"
+      },
+      {
+        "name": "NeuralEditorAiProposalRejectionReason",
+        "type": "| 'user' | 'replaced' | 'editor-state' | 'validation' | 'apply-rejected'"
+      },
+      {
+        "name": "NeuralEditorAiConflictReason",
+        "type": "| 'revision-conflict' | 'document-changed'"
+      },
+      {
+        "name": "NeuralEditorCollaborationStatus",
+        "type": "| 'disabled' | 'connecting' | 'connected' | 'synced' | 'disconnected' | 'error'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangesMode",
+        "type": "'off' | 'suggesting'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangeKind",
+        "type": "'insertion' | 'deletion'"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Install",
+        "language": "bash",
+        "code": "npm install @neural-ng/editor"
+      },
+      {
+        "title": "Install",
+        "language": "ts",
+        "code": "import {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});"
+      },
+      {
+        "title": "Install",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />"
+      },
+      {
+        "title": "Theme",
+        "language": "css",
+        "code": "@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "export interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "async handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "const request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "readonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Controller",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />"
+      },
+      {
+        "title": "Controller",
+        "language": "ts",
+        "code": "editor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });"
+      },
+      {
+        "title": "Toolbar",
+        "language": "ts",
+        "code": "readonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "ts",
+        "code": "const uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});"
+      },
+      {
+        "title": "Context menus and positioning",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "ts",
+        "code": "import { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "html",
+        "code": "<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />"
+      },
+      {
+        "title": "Version snapshots",
+        "language": "ts",
+        "code": "interface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}"
+      },
+      {
+        "title": "Collaboration controller methods",
+        "language": "ts",
+        "code": "controller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralEditorClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "toolbar",
+            "type": "string",
+            "description": "Classes applied to the toolbar element."
+          },
+          {
+            "name": "toolbarButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar button element."
+          },
+          {
+            "name": "toolbarButtonIcon",
+            "type": "string",
+            "description": "Classes applied to the toolbar button icon element."
+          },
+          {
+            "name": "toolbarSeparator",
+            "type": "string",
+            "description": "Classes applied to the toolbar separator element."
+          },
+          {
+            "name": "toolbarMenu",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu element."
+          },
+          {
+            "name": "toolbarMenuButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu button element."
+          },
+          {
+            "name": "toolbarMenuPanel",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu panel element."
+          },
+          {
+            "name": "toolbarMenuAction",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu action element."
+          },
+          {
+            "name": "toolbarColorOption",
+            "type": "string",
+            "description": "Classes applied to the toolbar color option element."
+          },
+          {
+            "name": "toolbarColorSwatch",
+            "type": "string",
+            "description": "Classes applied to the toolbar color swatch element."
+          },
+          {
+            "name": "bubbleMenu",
+            "type": "string",
+            "description": "Classes applied to the bubble menu element."
+          },
+          {
+            "name": "bubbleMenuButton",
+            "type": "string",
+            "description": "Classes applied to the bubble menu button element."
+          },
+          {
+            "name": "floatingMenu",
+            "type": "string",
+            "description": "Classes applied to the floating menu element."
+          },
+          {
+            "name": "floatingMenuButton",
+            "type": "string",
+            "description": "Classes applied to the floating menu button element."
+          },
+          {
+            "name": "linkPopover",
+            "type": "string",
+            "description": "Classes applied to the link popover element."
+          },
+          {
+            "name": "linkPopoverInput",
+            "type": "string",
+            "description": "Classes applied to the link popover input element."
+          },
+          {
+            "name": "linkPopoverAction",
+            "type": "string",
+            "description": "Classes applied to the link popover action element."
+          },
+          {
+            "name": "slashMenu",
+            "type": "string",
+            "description": "Classes applied to the slash menu element."
+          },
+          {
+            "name": "mentionMenu",
+            "type": "string",
+            "description": "Classes applied to the mention menu element."
+          },
+          {
+            "name": "suggestionList",
+            "type": "string",
+            "description": "Classes applied to the suggestion list element."
+          },
+          {
+            "name": "suggestionItem",
+            "type": "string",
+            "description": "Classes applied to the suggestion item element."
+          },
+          {
+            "name": "suggestionItemIcon",
+            "type": "string",
+            "description": "Classes applied to the suggestion item icon element."
+          },
+          {
+            "name": "suggestionItemContent",
+            "type": "string",
+            "description": "Classes applied to the suggestion item content element."
+          },
+          {
+            "name": "suggestionItemLabel",
+            "type": "string",
+            "description": "Classes applied to the suggestion item label element."
+          },
+          {
+            "name": "suggestionItemDescription",
+            "type": "string",
+            "description": "Classes applied to the suggestion item description element."
+          },
+          {
+            "name": "suggestionState",
+            "type": "string",
+            "description": "Classes applied to the suggestion state element."
+          },
+          {
+            "name": "commandPalette",
+            "type": "string",
+            "description": "Classes applied to the command palette element."
+          },
+          {
+            "name": "commandPaletteBackdrop",
+            "type": "string",
+            "description": "Classes applied to the command palette backdrop element."
+          },
+          {
+            "name": "commandPalettePanel",
+            "type": "string",
+            "description": "Classes applied to the command palette panel element."
+          },
+          {
+            "name": "commandPaletteInput",
+            "type": "string",
+            "description": "Classes applied to the command palette input element."
+          },
+          {
+            "name": "commandPaletteList",
+            "type": "string",
+            "description": "Classes applied to the command palette list element."
+          },
+          {
+            "name": "commandPaletteItem",
+            "type": "string",
+            "description": "Classes applied to the command palette item element."
+          },
+          {
+            "name": "aiReview",
+            "type": "string",
+            "description": "Classes applied to the ai review element."
+          },
+          {
+            "name": "aiReviewSummary",
+            "type": "string",
+            "description": "Classes applied to the ai review summary element."
+          },
+          {
+            "name": "aiReviewProgress",
+            "type": "string",
+            "description": "Classes applied to the ai review progress element."
+          },
+          {
+            "name": "aiReviewActions",
+            "type": "string",
+            "description": "Classes applied to the ai review actions element."
+          },
+          {
+            "name": "aiReviewButton",
+            "type": "string",
+            "description": "Classes applied to the ai review button element."
+          },
+          {
+            "name": "collaborationBar",
+            "type": "string",
+            "description": "Classes applied to the collaboration bar element."
+          },
+          {
+            "name": "collaborationStatus",
+            "type": "string",
+            "description": "Classes applied to the collaboration status element."
+          },
+          {
+            "name": "presenceList",
+            "type": "string",
+            "description": "Classes applied to the presence list element."
+          },
+          {
+            "name": "presenceItem",
+            "type": "string",
+            "description": "Classes applied to the presence item element."
+          },
+          {
+            "name": "collaborationPanel",
+            "type": "string",
+            "description": "Classes applied to the collaboration panel element."
+          },
+          {
+            "name": "collaborationSection",
+            "type": "string",
+            "description": "Classes applied to the collaboration section element."
+          },
+          {
+            "name": "collaborationSectionTitle",
+            "type": "string",
+            "description": "Classes applied to the collaboration section title element."
+          },
+          {
+            "name": "collaborationInput",
+            "type": "string",
+            "description": "Classes applied to the collaboration input element."
+          },
+          {
+            "name": "collaborationButton",
+            "type": "string",
+            "description": "Classes applied to the collaboration button element."
+          },
+          {
+            "name": "commentThread",
+            "type": "string",
+            "description": "Classes applied to the comment thread element."
+          },
+          {
+            "name": "commentMessage",
+            "type": "string",
+            "description": "Classes applied to the comment message element."
+          },
+          {
+            "name": "trackedChange",
+            "type": "string",
+            "description": "Classes applied to the tracked change element."
+          },
+          {
+            "name": "snapshotItem",
+            "type": "string",
+            "description": "Classes applied to the snapshot item element."
+          },
+          {
+            "name": "surface",
+            "type": "string",
+            "description": "Classes applied to the surface element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "characterCount",
+            "type": "string",
+            "description": "Classes applied to the character count element."
+          },
+          {
+            "name": "wordCount",
+            "type": "string",
+            "description": "Classes applied to the word count element."
+          }
+        ],
+        "sourcePath": "libs/neural-editor/editor.types.ts"
+      }
+    ],
+    "relatedComponents": [
+      "editor-ai-review-template",
+      "editor-bubble-menu-template",
+      "editor-floating-menu-template",
+      "editor-link-popover-template",
+      "editor-mention-menu-template",
+      "editor-command-palette-template",
+      "editor-toolbar-template",
+      "neural-editor"
+    ],
+    "resources": {
+      "contract": "neural://components/editor-slash-menu-template/contract",
+      "readme": "neural://components/editor-slash-menu-template/readme",
+      "llms": "neural://components/editor-slash-menu-template/llms"
+    },
+    "sourceDirectory": "libs/neural-editor",
+    "readme": "# Editor\n\nStatus: **Beta**. The canonical standalone export is `NeuralEditor`;\n`EditorComponent` remains a deprecated compatibility alias.\n\nSignal-first structured rich-text editing for Angular 22+. NeuralNg Editor uses\nTiptap 3 and ProseMirror internally, while its canonical form value remains a\n`NeuralEditorDocument` JSON tree. HTML is derived output, never the model.\n\n## Install\n\nInstall the complete Editor runtime with one command:\n\n```bash\nnpm install @neural-ng/editor\n```\n\nThe package installs Tiptap, ProseMirror, Floating UI, Yjs, and the required\nNeuralNg core runtime. Applications do not install those Editor internals\nindividually. A realtime collaboration transport such as `y-websocket` or a\nHocuspocus provider remains application-owned and is only needed when that\nfeature is enabled.\n\n```ts\nimport {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});\n```\n\n```html\n<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />\n```\n\nEditor implements `FormValueControl<NeuralEditorDocument>`. Use the same\ncomponent with `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`.\nDo not implement a second `ControlValueAccessor`.\n\n`EditorComponent` remains a deprecated compatibility alias. New code should\nimport the canonical `NeuralEditor` runtime.\n\n## Public API contract\n\nThe standalone package contract is documented in [`API_FREEZE.md`](./API_FREEZE.md).\nImport only from `@neural-ng/editor`; deep imports and internal rendering\ncomponents are unsupported. The freeze document is the source of truth for\ncomponent inputs/outputs, controller methods, template contexts, class slots,\nutilities, and package asset entry points.\n\n### Theme\n\nImport the matching Core and Editor token files:\n\n```css\n@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';\n```\n\nExperimental presets follow the same two-file rule: import the matching Core\npreset first, then the Editor preset. The optional Tailwind bridge remains\n`@neural-ng/core/themes/tailwind.css`.\n\n## Ownership boundary\n\nEditor owns structured editing, toolbar commands, selection state, undo/redo,\nJSON output, HTML/text derivation, accessibility, and Angular Forms\nintegration. It does not save documents, call HTTP APIs, upload image files,\ninvoke AI models, connect collaboration providers, or sanitize backend output. Those\nresponsibilities belong to application services or explicit extensions.\n\n## Canonical value\n\nThe model is never HTML, Markdown, or a format-dependent union:\n\n```ts\nexport interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}\n```\n\nThe current Beta schema and interaction layer includes:\n\n- paragraph and heading alignment: `left`, `center`, `right`, `justify`\n- text color through a `textStyle` mark\n- multicolor highlight marks\n- `taskList` and `taskItem` nodes\n- `table`, `tableRow`, `tableHeader`, and `tableCell` nodes\n- `image` nodes containing persistent URLs, alt text, title, width, and height\n- BubbleMenu, FloatingMenu, and a selection-aware link popover\n- slash commands, async mentions, and a searchable command palette\n\nPersist a schema version beside long-lived documents:\n\n```ts\nconst stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;\n```\n\nUse the serializers for external representations:\n\n```ts\nconst html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());\n```\n\nThe default serializers include the current Beta schema, including image and\nmention nodes. Pass the matching custom extension set when converting documents\nwith additional nodes or marks.\n\n## Stable node IDs and structured operations\n\nThe Beta contract enables Tiptap `UniqueID` by default. Identified nodes receive a\n`neuralId` attribute in canonical JSON. The default list covers block nodes,\nlist items, tables and cells, images, and horizontal rules. Configure this at\ninitialization time:\n\n```html\n<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />\n```\n\nUse `nodeIdGenerator` only when the application requires a custom ID strategy.\nThe generator must return a non-empty, globally unique, stable string. Disable\nthe feature with `[enableNodeIds]=\"false\"` only when the document will never use\nstructured operations, AI review, comments, or collaboration adapters.\n\nThe controller exposes a document-only revision signal and node lookup:\n\n```ts\nconst revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);\n```\n\nBuild and apply atomic, schema-checked operation batches through the controller:\n\n```ts\nconst batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}\n```\n\nSupported operations are `insert`, `replace`, `delete`, and `update-node`.\nPrefer `nodeId` targets. Numeric `from`/`to` targets are accepted for captured\nselection ranges and are mapped across earlier operations in the same batch.\nA batch is built fully before dispatch, so one invalid operation rejects the\nwhole batch without partial document changes.\n\n`baseRevision` prevents stale edits. If the document changes after a batch is\ncreated, `applyOperations()` returns `status: 'conflict'` and emits\n`operationConflict`. Successful and rejected batches emit `operationsApplied`\nand `operationsRejected` respectively.\n\nNode IDs are protected identity. Inserted content cannot choose IDs;\n`UniqueID` assigns them. A compatible single-node replacement preserves the\ntarget ID by default. `update-node` cannot change the configured ID attribute.\n\nInternal IDs are excluded from HTML by default:\n\n```ts\nconst publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);\n```\n\nPersist canonical JSON with IDs. Do not use generated HTML as the source of\ntruth for operations.\n\n## AI requests and reviewable proposals\n\nEditor remains provider-neutral. It never calls OpenAI, Anthropic, or any other\nmodel directly. Request work through the controller and handle the event in\napplication code:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />\n```\n\n```ts\nasync handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}\n```\n\n`requestAi()` captures the canonical JSON document, document revision, current\nselection range, selected text, selected JSON content, and stable node IDs. The\napplication service returns a `NeuralEditorAiProposal` containing only the\nstructured operations from the current Beta contract.\n\nPreview is non-destructive. Insertions, deletions, replacements, and attribute\nupdates are rendered as ProseMirror decorations while `[(value)]` remains\nunchanged. Only `acceptAiProposal()` applies the complete operation batch in one\ntransaction. `rejectAiProposal()` removes the preview without touching the\nmodel.\n\n```ts\nconst request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});\n```\n\nA proposal is rejected as a conflict when its `baseRevision` no longer matches\nthe editor revision. Editing the document while a preview is active also clears\nthe preview and emits `aiOperationConflict`. Do not silently overwrite the base\nrevision or force stale operations onto new content.\n\nThe default review bar appends to `menuAppendTo` and supports previous/next,\naccept, reject, Escape, mobile layout, themes, and `unstyled`. Replace it with a\ntyped template when needed:\n\n```html\n<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>\n```\n\n`controller.aiReview()` exposes the active review state and\n`controller.aiRequestPending()` reports unresolved requests. The Beta contract keeps a\nsingle active proposal; `getActiveAiProposals()` therefore returns zero or one\nproposal while preserving room for a future multi-proposal adapter.\n\n## Slash commands, mentions, and command palette\n\nType `/` in a paragraph to open the default slash menu. The default commands\ninsert headings, lists, tasks, quotes, code blocks, tables, images, and dividers.\nReplace the defaults with `slashCommands`, or provide `slashCommandProvider` for\nasync or remote filtering. Providers receive an `AbortSignal`; stop stale work\nwhen it is aborted.\n\nMentions are enabled only when `mentionProvider` is present:\n\n```ts\nreadonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });\n```\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />\n```\n\nThe canonical mention node persists only stable identity and display data:\n\n```ts\n{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}\n```\n\nProvider-only `metadata` is not written to the document. Keep authorization,\nprofiles, and mutable user data in application services.\n\nPress `Ctrl+K` or `Cmd+K`, or call `controller.openCommandPalette()`, to open the\nsearchable command palette. Set `commandPaletteItems` to replace its defaults.\nSlash, mention, command-palette, bubble, floating, link, and toolbar overlays are\ncoordinated so only the relevant layer remains open. Suggestion menus and the\npalette use the same `menuAppendTo` target; `body` remains the default to avoid\noverflow clipping.\n\nProject complete menu UIs when needed:\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>\n```\n\nUse the supplied context callbacks. Do not query the editor DOM, manually\nposition suggestion panels, or insert mention HTML yourself.\n\n## Controller\n\n`editorReady` exposes a stable NeuralNg controller instead of the raw Tiptap\ninstance:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />\n```\n\n```ts\neditor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });\n```\n\nTable commands are contextual. Row, column, cell, and delete commands become\navailable when the current selection is inside a table. Use controller commands\ninstead of mutating JSON nodes or editing the `contenteditable` DOM.\n\n## Toolbar\n\nToolbar palettes and table actions use NeuralNg Popover rather than native `details` menus. Popover renders through the browser top layer, so panels are not clipped by editor or card overflow. Opening one toolbar popover closes the previously open auto popover; no `appendTo=\"body\"` option or DOM reparenting is needed.\n\nThe default toolbar contains:\n\n- undo and redo\n- paragraph and H1-H3\n- bold, italic, underline, strike, and inline code\n- text-color and highlight palettes\n- left, center, right, and justified alignment\n- bullet, ordered, and task lists\n- blockquote and code block\n- link editing\n- table insertion and contextual table commands\n- horizontal rule and clear formatting\n\nCustomize the palettes without changing the document type:\n\n```ts\nreadonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;\n```\n\n```html\n<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />\n```\n\nReplace the toolbar model with `toolbarItems`, or project a complete toolbar:\n\n```html\n<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>\n```\n\n## Images and FileUpload\n\nThe toolbar and floating menu emit `imageInsertRequest`; Editor never uploads a\n`File`. Application code selects and validates the file with FileUpload, sends\nit to a media service, then inserts only the persistent URL:\n\n```html\n<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />\n```\n\n```ts\nconst uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});\n```\n\nBase64 sources are rejected by the controller and default Image extension.\nEnable `allowBase64Images` only for a deliberate application requirement. Do\nnot persist `File`, blob URLs, or temporary object URLs in editor JSON.\n\n## Context menus and positioning\n\nBubble, floating, and link menus use Tiptap's Floating UI-based extensions.\n`menuAppendTo` defaults to `body`, which avoids clipping by editor, card, dialog,\nor overflow containers. Use `menuAppendTo=\"editor\"` only when the menu must stay\ninside the editor stacking context, or bind a specific `HTMLElement`.\n\n```html\n<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>\n```\n\nUse `ng-template[neuralEditorLinkPopover]` for a custom link form. Default menus\nare keyboard reachable, expose toolbar/dialog roles, stay within the viewport,\nand switch to compact horizontally scrollable layouts on narrow screens.\n\n## Extensions\n\n`extensions` appends Tiptap extensions. Top-level extension names are\nlast-write-wins. To replace the default schema, set\n`includeDefaultExtensions=\"false\"` and provide the complete extension set.\nExtension configuration is initialization-time in this Beta release.\n\n## Security and persistence\n\nJSON is not a security boundary. Validate the document schema, URLs, colors,\ntable attributes, pasted content, and custom node attributes on the server.\nSanitize generated HTML for its final rendering context. Do not trust content\nsolely because the editor accepted it.\n\n## Styling\n\nUse the neutral, glass, mist, or futuristic themes, or set `unstyled` locally or\nglobally. Structural `*-root` hooks remain while visual `*-base` classes are\nremoved. `NeuralEditorClasses` includes typed slots for toolbar menus, palette\noptions, slash and mention suggestions, the command palette, BubbleMenu,\nFloatingMenu, link popover controls, the editing surface, content, footer, and\ncounters.\n\n## Collaboration and review\n\nEditor collaboration is provider-neutral. The component receives an initialized\nYjs document and, optionally, a provider that exposes awareness and connection\nevents. NeuralNg does not create rooms, authenticate users, or persist Yjs\nupdates.\n\n```ts\nimport { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);\n```\n\n```html\n<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />\n```\n\nWhen `collaboration` is present:\n\n- The Yjs document is the live collaborative source of truth.\n- Editor waits for provider sync by default before mounting.\n- StarterKit undo/redo is disabled because Collaboration owns history.\n- External `value` writes are not pushed into the collaborative document.\n- `editorUpdate.source` is `remote` for collaboration-origin transactions.\n- Presence is read from the provider awareness `user` field and is never\n  persisted as document content.\n- `disconnectOnDestroy` is opt-in because provider lifetime normally belongs to\n  the application.\n\n### Provider contract\n\nThe optional provider is structural, so Hocuspocus, y-websocket, or another Yjs\nprovider can be adapted without making it a NeuralNg dependency. It may expose\n`connect`, `disconnect`, `synced`, `on`, `off`, and `awareness`.\n\nTreat `document`, `provider`, `field`, and `fragment` as initialization-only.\nWhen the room or collaborative field changes, destroy and recreate the Editor\ninstance instead of mutating the collaboration config in place.\n\nFor providers with custom event names, pass `whenSynced` and resolve it when the\ninitial room synchronization is complete. Do not seed `value` before sync. Seed\nan empty Yjs fragment in application code after synchronization instead.\n\n### Comments\n\nComments use a lightweight inline `neuralComment` mark and thread data stored in\na dedicated Yjs map. Without collaboration, the same API uses an in-memory\nrepository. The default panel supports creating, replying, resolving, reopening,\nselecting, and deleting threads through `NeuralEditorController`.\n\nComments in the Beta contract are plain-text thread messages. Authentication,\nauthorization, mentions, notifications, and server-side moderation remain\napplication responsibilities.\n\n### Tracked changes\n\nSet `trackedChangesMode=\"suggesting\"` to track local text insertions and\ndeletions. Remote Yjs transactions are ignored, so each client attributes only\nits own edits. Changes can be accepted or rejected individually or as a batch.\n\nThe Beta contract tracks text insertions and deletions. Mark changes, complex block\nreplacement, overlapping suggestions, and production audit policy are not part\nof this Beta contract.\n\n### Version snapshots\n\n`snapshots` is a controlled model containing portable JSON checkpoints:\n\n```ts\ninterface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}\n```\n\nThe built-in snapshot model intentionally does not persist Yjs binary updates.\nStore snapshots in application code, and use a provider/backend-specific Yjs\nhistory service when exact CRDT history, branching, or audit-grade restoration\nis required.\n\n### Collaboration controller methods\n\n```ts\ncontroller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);\n```\n\nThe default collaboration panel is enabled whenever collaboration, comments,\ntracked changes, or snapshots are enabled. Set `showCollaborationPanel=\"false\"`\nto render an application-owned review surface using the controller signals.\n",
+    "llms": "# @neural-ng/editor\n\nImport canonical `NeuralEditor` from `@neural-ng/editor`. `EditorComponent` is\na deprecated compatibility alias. The selector remains `<neural-editor>`.\n\n## Public API boundary\n\n- Treat `API_FREEZE.md` as the authoritative standalone package contract.\n- Import only from `@neural-ng/editor`. Never deep-import source files.\n- Use `NeuralEditor`, the exported template directives, public types,\n  constants, serializers, pure helpers, and `NeuralEditorController`.\n- Internal toolbar, menu, review, and collaboration-panel renderer components\n  are not public API. Customize through class slots and template directives.\n- Do not use raw Tiptap/ProseMirror operation or tracked-change helpers. Use the\n  controller methods so revisions, events, forms, and collaboration rules stay\n  consistent.\n\n## Canonical rules\n\n- Install only `@neural-ng/editor`. Tiptap, ProseMirror, Floating UI, Yjs, and the required NeuralNg core runtime are package-managed dependencies.\n- Install a realtime collaboration transport/provider separately only when collaboration is enabled.\n- Import `NeuralEditor` from `@neural-ng/editor`.\n- Bind only `NeuralEditorDocument` JSON to `[(value)]`, `[formField]`,\n  `[formControl]`, or `[(ngModel)]`. Never bind HTML or Markdown strings and\n  never create a string-or-JSON value union.\n- The empty value is a `doc` containing an empty paragraph. Do not use `null` as\n  the normal empty state.\n- Treat editor values as immutable. Do not mutate node, mark, attribute, or\n  content arrays in place.\n\n## Beta schema, identity, menus, AI review, and collaboration\n\n- Text alignment is stored on paragraph or heading attributes as `textAlign`.\n- Text color is stored in a `textStyle` mark with a `color` attribute.\n- Highlight is stored in a `highlight` mark and may include a `color` attribute.\n- Tasks use `taskList` and `taskItem`; task state is the boolean `checked`\n  attribute on `taskItem`.\n- Tables use `table`, `tableRow`, `tableHeader`, and `tableCell` nodes.\n- Images use an `image` node. Persist a stable HTTP(S) URL and optional alt,\n  title, width, and height attributes. Never persist File objects, blob URLs,\n  or temporary object URLs.\n- Mentions use `mention` nodes with stable `id` and `label` attributes. Provider-only\n  metadata is not persisted. Do not copy avatars, permissions, or mutable profile\n  objects into editor JSON.\n- Do not invent HTML-only state that cannot be represented by the configured\n  JSON schema.\n\n## Commands\n\n- Use the `NeuralEditorController` from `editorReady` for all programmatic\n  edits. Do not query, replace, or mutate the `contenteditable` DOM.\n- Use `setTextAlign()`, `setTextColor()`, `setHighlight()`,\n  `toggleTaskList()`, `insertTable()`, `insertImage()`, and menu controller\n  methods for Alpha 2.3 features.\n- Table row, column, merge, split, header, and delete commands are contextual;\n  call `controller.can(command)` before presenting a custom enabled action.\n- Use `toolbarItems` for the built-in toolbar or project\n  `ng-template[neuralEditorToolbar]` with `let-editor` for a custom toolbar.\n- Built-in color and table menus use NeuralNg Popover in the browser top layer. Do not replace them with native `details`, custom absolute-positioned panels, or `appendTo=\"body\"` logic. Only one auto popover remains open at a time.\n- Use `(imageInsertRequest)` to open FileUpload or an application media picker.\n  Upload outside Editor, then call `event.controller.insertImage()` with the\n  persistent URL. Editor must not send HTTP requests.\n- BubbleMenu appears for a text or image selection. FloatingMenu appears for an\n  empty paragraph. Link editing uses the same contextual bubble layer so only\n  one contextual menu is active.\n- Context menus append to `body` by default. Use `menuAppendTo=\"editor\"` or a\n  concrete HTMLElement only when the containing stacking context is required.\n- Customize menus with `neuralEditorBubbleMenu`, `neuralEditorFloatingMenu`,\n  and `neuralEditorLinkPopover` templates. Use the supplied controller and link\n  context callbacks; do not access the raw Tiptap instance or position menus\n  manually.\n- `textColors` and `highlightColors` configure UI palettes only. They do not\n  constrain externally loaded JSON; validate allowed values in application and\n  server code when a restricted palette is required.\n\n## Node identity and structured operations\n\n- Node IDs are enabled by default. Canonical JSON stores the configured\n  `nodeIdAttribute` (`neuralId` by default) on identified nodes.\n- Keep node IDs stable and unique. Do not derive IDs from array indexes,\n  document positions, visible text, or mutable labels.\n- Use `identifiedNodeTypes` and `nodeIdGenerator` only as initialization-time\n  configuration. Disable `enableNodeIds` only when no operation, AI review,\n  comment, or collaboration layer will address nodes.\n- Prefer `controller.getNodeById()` and `controller.getNodeIdAt()` over walking\n  the `contenteditable` DOM or assuming ProseMirror positions remain stable.\n- Create batches with `controller.createOperationBatch()`. It captures the\n  current document-only revision. Validate with `validateOperations()` and\n  apply with `applyOperations()`.\n- Supported operation types are `insert`, `replace`, `delete`, and\n  `update-node`. Prefer `{ nodeId }` targets. Use `{ from, to }` only for a\n  captured selection range from the same base revision.\n- Operation batches are atomic. Never apply operations one by one in\n  application code. One invalid target, node, attribute, or schema placement\n  rejects the whole batch without partial changes.\n- Treat `status: 'conflict'` as a required rebase/retry boundary. Never force a\n  stale batch onto a newer document or silently replace its `baseRevision`.\n- Inserted operation content cannot choose internal node IDs. Compatible\n  single-node replacements preserve the target ID by default. The protected ID\n  attribute cannot be changed with `update-node`.\n- Listen to `operationsApplied`, `operationsRejected`, and `operationConflict`\n  for application side effects. The form model changes only after a successful\n  atomic dispatch.\n- `editorDocumentToHtml()` omits node IDs by default. Use\n  `{ includeNodeIds: true }` only for diagnostics or explicit round trips.\n  Persist canonical JSON, not generated HTML, as the addressable source.\n- Use `editorDocumentWithNodeIds()` to migrate legacy JSON before storing or\n  sending it to an AI operation service.\n\n## Slash, mention, and command-palette behavior\n\n- Type `/` in a paragraph for the slash menu. Configure static commands through\n  `slashCommands` or use `slashCommandProvider`; a provider replaces default\n  filtering for that request.\n- Enable mentions with `mentionProvider`. It may return synchronously or\n  asynchronously. Honor the provider context `AbortSignal` and discard stale\n  network work when it aborts.\n- Press `Ctrl+K`/`Cmd+K` or call `controller.openCommandPalette()` for global\n  editor commands. Configure `commandPaletteItems`; do not create document-wide\n  key listeners in application code.\n- Listen to `commandExecuted` and `mentionSelected` only for user-action side\n  effects. The canonical model still changes through normal editor transactions.\n- Use `neuralEditorSlashMenu`, `neuralEditorMentionMenu`, and\n  `neuralEditorCommandPalette` for custom rendering. Use the supplied signals,\n  selection callbacks, and close callbacks. Do not access Tiptap plugin state or\n  manually mount/reposition overlays.\n- Suggestion and context overlays are mutually coordinated. Keep\n  `menuAppendTo=\"body\"` unless a deliberate editor-local stacking context is\n  required.\n- Slash commands and palette items execute local controller operations. They do\n  not imply HTTP, AI, upload, or persistence behavior.\n\n## AI request and review rules\n\n- NeuralNg Editor does not call AI providers. Use `controller.requestAi()` and\n  handle `(aiRequest)` in application code.\n- Send the request's structured document, selection snapshot, stable node IDs,\n  schema version, and base revision to the application-owned AI service. Do not\n  scrape the `contenteditable` DOM and do not send generated HTML as the\n  canonical source.\n- AI services must return `NeuralEditorAiProposal` values containing only\n  supported structured operations. Never return raw executable JavaScript,\n  mutate the editor directly, or inject unsanitized HTML.\n- Call `controller.previewAiProposal()` before applying a proposal. Preview uses\n  ephemeral ProseMirror decorations and must not change `[(value)]`.\n- Apply changes only after explicit user approval with\n  `controller.acceptAiProposal()`. Reject with `rejectAiProposal()`; rejection\n  removes decorations and leaves the canonical JSON unchanged.\n- Respect `baseRevision`. Treat `aiOperationConflict` as a required rebase or\n  fresh-request boundary. Never replace a stale proposal's revision with the\n  current revision.\n- A normal document edit invalidates the active preview. Do not keep stale\n  visual suggestions visible after user edits.\n- Use `(aiProposalPreviewed)`, `(aiProposalAccepted)`,\n  `(aiProposalRejected)`, `(aiOperationConflict)`, and\n  `(aiRequestCancelled)` for side effects and analytics.\n- Customize the review UI with `ng-template[neuralEditorAiReview]`. Use the\n  supplied callbacks and signals; do not mount another overlay, duplicate\n  accept/reject state, or apply operations outside the controller.\n- The default review UI follows `menuAppendTo`, supports mobile layout, and is\n  part of the shared overlay coordination model.\n\n## Conversion and persistence\n\n- Use `editorDocumentFromHtml()` to import HTML and\n  `editorDocumentToHtml()`/`editorDocumentToText()` for derived output.\n- The default serializers understand the current Beta schema, including images and mentions. Pass the\n  exact custom extension set when the document contains additional nodes or\n  marks.\n- Save documents in application code and persist a schema version beside\n  long-lived JSON.\n- Editor does not save data, upload files, call AI models, open collaboration\n  connections, or perform backend sanitization.\n\n## Security\n\n- JSON is not a security boundary. Validate document structure, links, colors,\n  table attributes, pasted content, and custom node attributes on the server.\n- Sanitize generated HTML for its final destination.\n- Never treat client-side toolbar palettes or schema checks as authorization or\n  backend validation.\n\n## Integration\n\n- `extensions` are initialization-time in the alpha API and append to the\n  defaults with top-level last-write-wins behavior.\n- To replace StarterKit or the default schema, disable\n  `includeDefaultExtensions` and provide every required extension.\n- `readonly` keeps content readable and selectable while blocking edits.\n  `disabled` also removes the editor from normal keyboard interaction.\n- Use `unstyled` or global unstyled mode for headless rendering. Structural\n  classes and ARIA relationships remain.\n\n## Collaboration, comments, tracked changes, and snapshots\n\nUse `NeuralEditorCollaborationConfig` with an application-owned `Y.Doc`.\nNeuralNg does not create a collaboration backend, room, token, or provider.\nThe optional provider must expose the small structural provider contract.\n\nWhen collaboration is enabled, the Yjs document is the live source of truth.\nDo not initialize the editor with remote content before the provider has synced.\nDo not bind autosave logic to every remote update without throttling and origin\nchecks. Collaboration disables StarterKit history and uses Yjs collaboration\nundo/redo.\nTreat `collaboration.document`, `provider`, `field`, and `fragment` as\ninitialization-only. Recreate the Editor when the room or field changes.\n\nPass `collaborationUser` with stable `id`, `name`, and `color` values. Presence\ncomes from provider awareness and is ephemeral. Never persist awareness state as\ncanonical editor content.\n\nUse `enableComments` for inline plain-text comment threads. Thread data is stored\nin the configured Yjs comments map when collaboration is active. Authentication,\npermissions, notifications, moderation, and server persistence belong to the\napplication.\n\nUse `trackedChangesMode=\"suggesting\"` to record local text insertions and\ndeletions as review marks. Remote collaboration transactions are deliberately\nignored. Alpha 4 tracked changes are not an audit log and do not cover every\npossible structural or formatting edit.\n\nUse `[(snapshots)]` for portable JSON checkpoints. Snapshot creation does not\nupload or persist anything. Save snapshots in application code. For exact CRDT\nhistory or compliance-grade versioning, use a backend/provider history system.\n\nNever combine independent Yjs documents for the same room. Never seed content on\nan unsynchronized collaborative document. Do not mutate `Y.Doc` content and the\nEditor `value` independently.\n"
+  },
+  {
+    "schemaVersion": 2,
+    "id": "editor-toolbar-template",
+    "name": "EditorToolbarTemplate",
+    "className": "EditorToolbarTemplateDirective",
+    "kind": "directive",
+    "selector": "ng-template[neuralEditorToolbar]",
+    "entryPoint": "@neural-ng/editor",
+    "packageName": "@neural-ng/editor",
+    "packageVersion": "0.1.0-beta.2",
+    "status": "beta",
+    "summary": "Status: **Beta**. The canonical standalone export is `NeuralEditor`; `EditorComponent` remains a deprecated compatibility alias.",
+    "inputs": [],
+    "models": [],
+    "outputs": [],
+    "templates": [
+      {
+        "name": "EditorAiReviewTemplate",
+        "className": "EditorAiReviewTemplateDirective",
+        "selector": "ng-template[neuralEditorAiReview]",
+        "contextType": "NeuralEditorAiReviewTemplateContext"
+      },
+      {
+        "name": "EditorBubbleMenuTemplate",
+        "className": "EditorBubbleMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorBubbleMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorFloatingMenuTemplate",
+        "className": "EditorFloatingMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorFloatingMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorLinkPopoverTemplate",
+        "className": "EditorLinkPopoverTemplateDirective",
+        "selector": "ng-template[neuralEditorLinkPopover]",
+        "contextType": "NeuralEditorLinkPopoverTemplateContext"
+      },
+      {
+        "name": "EditorSlashMenuTemplate",
+        "className": "EditorSlashMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorSlashMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorSlashCommand>"
+      },
+      {
+        "name": "EditorMentionMenuTemplate",
+        "className": "EditorMentionMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorMentionMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorMentionItem>"
+      },
+      {
+        "name": "EditorCommandPaletteTemplate",
+        "className": "EditorCommandPaletteTemplateDirective",
+        "selector": "ng-template[neuralEditorCommandPalette]",
+        "contextType": "NeuralEditorCommandPaletteTemplateContext"
+      },
+      {
+        "name": "EditorToolbarTemplate",
+        "className": "EditorToolbarTemplateDirective",
+        "selector": "ng-template[neuralEditorToolbar]",
+        "contextType": "NeuralEditorToolbarTemplateContext"
+      }
+    ],
+    "providers": [],
+    "providerRequirements": [],
+    "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralEditorValue",
+        "type": "NeuralEditorDocument"
+      },
+      {
+        "name": "NeuralEditorExtension",
+        "type": "AnyExtension"
+      },
+      {
+        "name": "NeuralEditorUpdateSource",
+        "type": "'user' | 'command' | 'remote'"
+      },
+      {
+        "name": "NeuralEditorFocusPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralEditorTextAlign",
+        "type": "'left' | 'center' | 'right' | 'justify'"
+      },
+      {
+        "name": "NeuralEditorColorKind",
+        "type": "'text' | 'highlight'"
+      },
+      {
+        "name": "NeuralEditorMenuAppendTo",
+        "type": "'body' | 'editor' | HTMLElement"
+      },
+      {
+        "name": "NeuralEditorSuggestionPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'"
+      },
+      {
+        "name": "NeuralEditorCommandSource",
+        "type": "'slash' | 'command-palette'"
+      },
+      {
+        "name": "NeuralEditorMenuPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'"
+      },
+      {
+        "name": "NeuralEditorNodeIdGenerator",
+        "type": "( context: NeuralEditorNodeIdContext, ) => string"
+      },
+      {
+        "name": "NeuralEditorInsertPosition",
+        "type": "| 'before' | 'after' | 'inside-start' | 'inside-end'"
+      },
+      {
+        "name": "NeuralEditorOperation",
+        "type": "| NeuralEditorInsertOperation | NeuralEditorReplaceOperation | NeuralEditorDeleteOperation | NeuralEditorUpdateNodeOperation"
+      },
+      {
+        "name": "NeuralEditorOperationErrorCode",
+        "type": "| 'not-editable' | 'revision-conflict' | 'empty-batch' | 'invalid-target' | 'target-not-found' | 'invalid-content' | 'schema-violation' | 'protected-attribute' | 'operation-failed'"
+      },
+      {
+        "name": "NeuralEditorOperationValidationResult",
+        "type": "| { readonly valid: true; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly operationCount: number; } | { readonly valid: false; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorOperationApplyResult",
+        "type": "| { readonly status: 'applied'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly operationCount: number; readonly document: NeuralEditorDocument; } | { readonly status: 'conflict'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; } | { readonly status: 'rejected'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorSuggestionProvider",
+        "type": "( query: string, context: NeuralEditorSuggestionProviderContext, ) => readonly T[] | Promise<readonly T[]>"
+      },
+      {
+        "name": "NeuralEditorCommand",
+        "type": "| 'undo' | 'redo' | 'paragraph' | 'heading-1' | 'heading-2' | 'heading-3' | 'bold' | 'italic' | 'underline' | 'strike' | 'code' | 'bullet-list' | 'ordered-list' | 'task-list' | 'blockquote' | 'code-block' | 'align-left' | 'align-center' | 'align-right' | 'align-justify' | 'link' | 'image' | 'horizontal-rule' | 'clear-formatting' | 'insert-table' | 'delete-table' | 'add-row-before' | 'add-row-after' | 'delete-row' | 'add-column-before' | 'add-column-after' | 'delete-column' | 'merge-cells' | 'split-cell' | 'toggle-header-row'"
+      },
+      {
+        "name": "NeuralEditorToolbarItem",
+        "type": "| NeuralEditorToolbarCommandItem | NeuralEditorToolbarColorItem | NeuralEditorToolbarTableItem | NeuralEditorToolbarSeparatorItem"
+      },
+      {
+        "name": "NeuralEditorAiAction",
+        "type": "| 'rewrite' | 'shorten' | 'expand' | 'summarize' | 'fix-grammar' | 'change-tone' | 'translate' | 'custom'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewErrorCode",
+        "type": "| 'invalid-proposal' | 'revision-conflict' | 'validation-failed' | 'editor-not-ready'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewResult",
+        "type": "| { readonly status: 'previewed'; readonly proposal: NeuralEditorAiProposal; readonly operationCount: number; } | { readonly status: 'conflict' | 'rejected'; readonly proposal: NeuralEditorAiProposal; readonly error: NeuralEditorAiPreviewError; }"
+      },
+      {
+        "name": "NeuralEditorAiProposalRejectionReason",
+        "type": "| 'user' | 'replaced' | 'editor-state' | 'validation' | 'apply-rejected'"
+      },
+      {
+        "name": "NeuralEditorAiConflictReason",
+        "type": "| 'revision-conflict' | 'document-changed'"
+      },
+      {
+        "name": "NeuralEditorCollaborationStatus",
+        "type": "| 'disabled' | 'connecting' | 'connected' | 'synced' | 'disconnected' | 'error'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangesMode",
+        "type": "'off' | 'suggesting'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangeKind",
+        "type": "'insertion' | 'deletion'"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Install",
+        "language": "bash",
+        "code": "npm install @neural-ng/editor"
+      },
+      {
+        "title": "Install",
+        "language": "ts",
+        "code": "import {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});"
+      },
+      {
+        "title": "Install",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />"
+      },
+      {
+        "title": "Theme",
+        "language": "css",
+        "code": "@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "export interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "async handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "const request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "readonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Controller",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />"
+      },
+      {
+        "title": "Controller",
+        "language": "ts",
+        "code": "editor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });"
+      },
+      {
+        "title": "Toolbar",
+        "language": "ts",
+        "code": "readonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "ts",
+        "code": "const uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});"
+      },
+      {
+        "title": "Context menus and positioning",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "ts",
+        "code": "import { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "html",
+        "code": "<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />"
+      },
+      {
+        "title": "Version snapshots",
+        "language": "ts",
+        "code": "interface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}"
+      },
+      {
+        "title": "Collaboration controller methods",
+        "language": "ts",
+        "code": "controller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralEditorClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "toolbar",
+            "type": "string",
+            "description": "Classes applied to the toolbar element."
+          },
+          {
+            "name": "toolbarButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar button element."
+          },
+          {
+            "name": "toolbarButtonIcon",
+            "type": "string",
+            "description": "Classes applied to the toolbar button icon element."
+          },
+          {
+            "name": "toolbarSeparator",
+            "type": "string",
+            "description": "Classes applied to the toolbar separator element."
+          },
+          {
+            "name": "toolbarMenu",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu element."
+          },
+          {
+            "name": "toolbarMenuButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu button element."
+          },
+          {
+            "name": "toolbarMenuPanel",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu panel element."
+          },
+          {
+            "name": "toolbarMenuAction",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu action element."
+          },
+          {
+            "name": "toolbarColorOption",
+            "type": "string",
+            "description": "Classes applied to the toolbar color option element."
+          },
+          {
+            "name": "toolbarColorSwatch",
+            "type": "string",
+            "description": "Classes applied to the toolbar color swatch element."
+          },
+          {
+            "name": "bubbleMenu",
+            "type": "string",
+            "description": "Classes applied to the bubble menu element."
+          },
+          {
+            "name": "bubbleMenuButton",
+            "type": "string",
+            "description": "Classes applied to the bubble menu button element."
+          },
+          {
+            "name": "floatingMenu",
+            "type": "string",
+            "description": "Classes applied to the floating menu element."
+          },
+          {
+            "name": "floatingMenuButton",
+            "type": "string",
+            "description": "Classes applied to the floating menu button element."
+          },
+          {
+            "name": "linkPopover",
+            "type": "string",
+            "description": "Classes applied to the link popover element."
+          },
+          {
+            "name": "linkPopoverInput",
+            "type": "string",
+            "description": "Classes applied to the link popover input element."
+          },
+          {
+            "name": "linkPopoverAction",
+            "type": "string",
+            "description": "Classes applied to the link popover action element."
+          },
+          {
+            "name": "slashMenu",
+            "type": "string",
+            "description": "Classes applied to the slash menu element."
+          },
+          {
+            "name": "mentionMenu",
+            "type": "string",
+            "description": "Classes applied to the mention menu element."
+          },
+          {
+            "name": "suggestionList",
+            "type": "string",
+            "description": "Classes applied to the suggestion list element."
+          },
+          {
+            "name": "suggestionItem",
+            "type": "string",
+            "description": "Classes applied to the suggestion item element."
+          },
+          {
+            "name": "suggestionItemIcon",
+            "type": "string",
+            "description": "Classes applied to the suggestion item icon element."
+          },
+          {
+            "name": "suggestionItemContent",
+            "type": "string",
+            "description": "Classes applied to the suggestion item content element."
+          },
+          {
+            "name": "suggestionItemLabel",
+            "type": "string",
+            "description": "Classes applied to the suggestion item label element."
+          },
+          {
+            "name": "suggestionItemDescription",
+            "type": "string",
+            "description": "Classes applied to the suggestion item description element."
+          },
+          {
+            "name": "suggestionState",
+            "type": "string",
+            "description": "Classes applied to the suggestion state element."
+          },
+          {
+            "name": "commandPalette",
+            "type": "string",
+            "description": "Classes applied to the command palette element."
+          },
+          {
+            "name": "commandPaletteBackdrop",
+            "type": "string",
+            "description": "Classes applied to the command palette backdrop element."
+          },
+          {
+            "name": "commandPalettePanel",
+            "type": "string",
+            "description": "Classes applied to the command palette panel element."
+          },
+          {
+            "name": "commandPaletteInput",
+            "type": "string",
+            "description": "Classes applied to the command palette input element."
+          },
+          {
+            "name": "commandPaletteList",
+            "type": "string",
+            "description": "Classes applied to the command palette list element."
+          },
+          {
+            "name": "commandPaletteItem",
+            "type": "string",
+            "description": "Classes applied to the command palette item element."
+          },
+          {
+            "name": "aiReview",
+            "type": "string",
+            "description": "Classes applied to the ai review element."
+          },
+          {
+            "name": "aiReviewSummary",
+            "type": "string",
+            "description": "Classes applied to the ai review summary element."
+          },
+          {
+            "name": "aiReviewProgress",
+            "type": "string",
+            "description": "Classes applied to the ai review progress element."
+          },
+          {
+            "name": "aiReviewActions",
+            "type": "string",
+            "description": "Classes applied to the ai review actions element."
+          },
+          {
+            "name": "aiReviewButton",
+            "type": "string",
+            "description": "Classes applied to the ai review button element."
+          },
+          {
+            "name": "collaborationBar",
+            "type": "string",
+            "description": "Classes applied to the collaboration bar element."
+          },
+          {
+            "name": "collaborationStatus",
+            "type": "string",
+            "description": "Classes applied to the collaboration status element."
+          },
+          {
+            "name": "presenceList",
+            "type": "string",
+            "description": "Classes applied to the presence list element."
+          },
+          {
+            "name": "presenceItem",
+            "type": "string",
+            "description": "Classes applied to the presence item element."
+          },
+          {
+            "name": "collaborationPanel",
+            "type": "string",
+            "description": "Classes applied to the collaboration panel element."
+          },
+          {
+            "name": "collaborationSection",
+            "type": "string",
+            "description": "Classes applied to the collaboration section element."
+          },
+          {
+            "name": "collaborationSectionTitle",
+            "type": "string",
+            "description": "Classes applied to the collaboration section title element."
+          },
+          {
+            "name": "collaborationInput",
+            "type": "string",
+            "description": "Classes applied to the collaboration input element."
+          },
+          {
+            "name": "collaborationButton",
+            "type": "string",
+            "description": "Classes applied to the collaboration button element."
+          },
+          {
+            "name": "commentThread",
+            "type": "string",
+            "description": "Classes applied to the comment thread element."
+          },
+          {
+            "name": "commentMessage",
+            "type": "string",
+            "description": "Classes applied to the comment message element."
+          },
+          {
+            "name": "trackedChange",
+            "type": "string",
+            "description": "Classes applied to the tracked change element."
+          },
+          {
+            "name": "snapshotItem",
+            "type": "string",
+            "description": "Classes applied to the snapshot item element."
+          },
+          {
+            "name": "surface",
+            "type": "string",
+            "description": "Classes applied to the surface element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "characterCount",
+            "type": "string",
+            "description": "Classes applied to the character count element."
+          },
+          {
+            "name": "wordCount",
+            "type": "string",
+            "description": "Classes applied to the word count element."
+          }
+        ],
+        "sourcePath": "libs/neural-editor/editor.types.ts"
+      }
+    ],
+    "relatedComponents": [
+      "editor-ai-review-template",
+      "editor-bubble-menu-template",
+      "editor-floating-menu-template",
+      "editor-link-popover-template",
+      "editor-slash-menu-template",
+      "editor-mention-menu-template",
+      "editor-command-palette-template",
+      "neural-editor"
+    ],
+    "resources": {
+      "contract": "neural://components/editor-toolbar-template/contract",
+      "readme": "neural://components/editor-toolbar-template/readme",
+      "llms": "neural://components/editor-toolbar-template/llms"
+    },
+    "sourceDirectory": "libs/neural-editor",
+    "readme": "# Editor\n\nStatus: **Beta**. The canonical standalone export is `NeuralEditor`;\n`EditorComponent` remains a deprecated compatibility alias.\n\nSignal-first structured rich-text editing for Angular 22+. NeuralNg Editor uses\nTiptap 3 and ProseMirror internally, while its canonical form value remains a\n`NeuralEditorDocument` JSON tree. HTML is derived output, never the model.\n\n## Install\n\nInstall the complete Editor runtime with one command:\n\n```bash\nnpm install @neural-ng/editor\n```\n\nThe package installs Tiptap, ProseMirror, Floating UI, Yjs, and the required\nNeuralNg core runtime. Applications do not install those Editor internals\nindividually. A realtime collaboration transport such as `y-websocket` or a\nHocuspocus provider remains application-owned and is only needed when that\nfeature is enabled.\n\n```ts\nimport {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});\n```\n\n```html\n<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />\n```\n\nEditor implements `FormValueControl<NeuralEditorDocument>`. Use the same\ncomponent with `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`.\nDo not implement a second `ControlValueAccessor`.\n\n`EditorComponent` remains a deprecated compatibility alias. New code should\nimport the canonical `NeuralEditor` runtime.\n\n## Public API contract\n\nThe standalone package contract is documented in [`API_FREEZE.md`](./API_FREEZE.md).\nImport only from `@neural-ng/editor`; deep imports and internal rendering\ncomponents are unsupported. The freeze document is the source of truth for\ncomponent inputs/outputs, controller methods, template contexts, class slots,\nutilities, and package asset entry points.\n\n### Theme\n\nImport the matching Core and Editor token files:\n\n```css\n@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';\n```\n\nExperimental presets follow the same two-file rule: import the matching Core\npreset first, then the Editor preset. The optional Tailwind bridge remains\n`@neural-ng/core/themes/tailwind.css`.\n\n## Ownership boundary\n\nEditor owns structured editing, toolbar commands, selection state, undo/redo,\nJSON output, HTML/text derivation, accessibility, and Angular Forms\nintegration. It does not save documents, call HTTP APIs, upload image files,\ninvoke AI models, connect collaboration providers, or sanitize backend output. Those\nresponsibilities belong to application services or explicit extensions.\n\n## Canonical value\n\nThe model is never HTML, Markdown, or a format-dependent union:\n\n```ts\nexport interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}\n```\n\nThe current Beta schema and interaction layer includes:\n\n- paragraph and heading alignment: `left`, `center`, `right`, `justify`\n- text color through a `textStyle` mark\n- multicolor highlight marks\n- `taskList` and `taskItem` nodes\n- `table`, `tableRow`, `tableHeader`, and `tableCell` nodes\n- `image` nodes containing persistent URLs, alt text, title, width, and height\n- BubbleMenu, FloatingMenu, and a selection-aware link popover\n- slash commands, async mentions, and a searchable command palette\n\nPersist a schema version beside long-lived documents:\n\n```ts\nconst stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;\n```\n\nUse the serializers for external representations:\n\n```ts\nconst html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());\n```\n\nThe default serializers include the current Beta schema, including image and\nmention nodes. Pass the matching custom extension set when converting documents\nwith additional nodes or marks.\n\n## Stable node IDs and structured operations\n\nThe Beta contract enables Tiptap `UniqueID` by default. Identified nodes receive a\n`neuralId` attribute in canonical JSON. The default list covers block nodes,\nlist items, tables and cells, images, and horizontal rules. Configure this at\ninitialization time:\n\n```html\n<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />\n```\n\nUse `nodeIdGenerator` only when the application requires a custom ID strategy.\nThe generator must return a non-empty, globally unique, stable string. Disable\nthe feature with `[enableNodeIds]=\"false\"` only when the document will never use\nstructured operations, AI review, comments, or collaboration adapters.\n\nThe controller exposes a document-only revision signal and node lookup:\n\n```ts\nconst revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);\n```\n\nBuild and apply atomic, schema-checked operation batches through the controller:\n\n```ts\nconst batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}\n```\n\nSupported operations are `insert`, `replace`, `delete`, and `update-node`.\nPrefer `nodeId` targets. Numeric `from`/`to` targets are accepted for captured\nselection ranges and are mapped across earlier operations in the same batch.\nA batch is built fully before dispatch, so one invalid operation rejects the\nwhole batch without partial document changes.\n\n`baseRevision` prevents stale edits. If the document changes after a batch is\ncreated, `applyOperations()` returns `status: 'conflict'` and emits\n`operationConflict`. Successful and rejected batches emit `operationsApplied`\nand `operationsRejected` respectively.\n\nNode IDs are protected identity. Inserted content cannot choose IDs;\n`UniqueID` assigns them. A compatible single-node replacement preserves the\ntarget ID by default. `update-node` cannot change the configured ID attribute.\n\nInternal IDs are excluded from HTML by default:\n\n```ts\nconst publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);\n```\n\nPersist canonical JSON with IDs. Do not use generated HTML as the source of\ntruth for operations.\n\n## AI requests and reviewable proposals\n\nEditor remains provider-neutral. It never calls OpenAI, Anthropic, or any other\nmodel directly. Request work through the controller and handle the event in\napplication code:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />\n```\n\n```ts\nasync handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}\n```\n\n`requestAi()` captures the canonical JSON document, document revision, current\nselection range, selected text, selected JSON content, and stable node IDs. The\napplication service returns a `NeuralEditorAiProposal` containing only the\nstructured operations from the current Beta contract.\n\nPreview is non-destructive. Insertions, deletions, replacements, and attribute\nupdates are rendered as ProseMirror decorations while `[(value)]` remains\nunchanged. Only `acceptAiProposal()` applies the complete operation batch in one\ntransaction. `rejectAiProposal()` removes the preview without touching the\nmodel.\n\n```ts\nconst request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});\n```\n\nA proposal is rejected as a conflict when its `baseRevision` no longer matches\nthe editor revision. Editing the document while a preview is active also clears\nthe preview and emits `aiOperationConflict`. Do not silently overwrite the base\nrevision or force stale operations onto new content.\n\nThe default review bar appends to `menuAppendTo` and supports previous/next,\naccept, reject, Escape, mobile layout, themes, and `unstyled`. Replace it with a\ntyped template when needed:\n\n```html\n<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>\n```\n\n`controller.aiReview()` exposes the active review state and\n`controller.aiRequestPending()` reports unresolved requests. The Beta contract keeps a\nsingle active proposal; `getActiveAiProposals()` therefore returns zero or one\nproposal while preserving room for a future multi-proposal adapter.\n\n## Slash commands, mentions, and command palette\n\nType `/` in a paragraph to open the default slash menu. The default commands\ninsert headings, lists, tasks, quotes, code blocks, tables, images, and dividers.\nReplace the defaults with `slashCommands`, or provide `slashCommandProvider` for\nasync or remote filtering. Providers receive an `AbortSignal`; stop stale work\nwhen it is aborted.\n\nMentions are enabled only when `mentionProvider` is present:\n\n```ts\nreadonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });\n```\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />\n```\n\nThe canonical mention node persists only stable identity and display data:\n\n```ts\n{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}\n```\n\nProvider-only `metadata` is not written to the document. Keep authorization,\nprofiles, and mutable user data in application services.\n\nPress `Ctrl+K` or `Cmd+K`, or call `controller.openCommandPalette()`, to open the\nsearchable command palette. Set `commandPaletteItems` to replace its defaults.\nSlash, mention, command-palette, bubble, floating, link, and toolbar overlays are\ncoordinated so only the relevant layer remains open. Suggestion menus and the\npalette use the same `menuAppendTo` target; `body` remains the default to avoid\noverflow clipping.\n\nProject complete menu UIs when needed:\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>\n```\n\nUse the supplied context callbacks. Do not query the editor DOM, manually\nposition suggestion panels, or insert mention HTML yourself.\n\n## Controller\n\n`editorReady` exposes a stable NeuralNg controller instead of the raw Tiptap\ninstance:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />\n```\n\n```ts\neditor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });\n```\n\nTable commands are contextual. Row, column, cell, and delete commands become\navailable when the current selection is inside a table. Use controller commands\ninstead of mutating JSON nodes or editing the `contenteditable` DOM.\n\n## Toolbar\n\nToolbar palettes and table actions use NeuralNg Popover rather than native `details` menus. Popover renders through the browser top layer, so panels are not clipped by editor or card overflow. Opening one toolbar popover closes the previously open auto popover; no `appendTo=\"body\"` option or DOM reparenting is needed.\n\nThe default toolbar contains:\n\n- undo and redo\n- paragraph and H1-H3\n- bold, italic, underline, strike, and inline code\n- text-color and highlight palettes\n- left, center, right, and justified alignment\n- bullet, ordered, and task lists\n- blockquote and code block\n- link editing\n- table insertion and contextual table commands\n- horizontal rule and clear formatting\n\nCustomize the palettes without changing the document type:\n\n```ts\nreadonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;\n```\n\n```html\n<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />\n```\n\nReplace the toolbar model with `toolbarItems`, or project a complete toolbar:\n\n```html\n<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>\n```\n\n## Images and FileUpload\n\nThe toolbar and floating menu emit `imageInsertRequest`; Editor never uploads a\n`File`. Application code selects and validates the file with FileUpload, sends\nit to a media service, then inserts only the persistent URL:\n\n```html\n<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />\n```\n\n```ts\nconst uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});\n```\n\nBase64 sources are rejected by the controller and default Image extension.\nEnable `allowBase64Images` only for a deliberate application requirement. Do\nnot persist `File`, blob URLs, or temporary object URLs in editor JSON.\n\n## Context menus and positioning\n\nBubble, floating, and link menus use Tiptap's Floating UI-based extensions.\n`menuAppendTo` defaults to `body`, which avoids clipping by editor, card, dialog,\nor overflow containers. Use `menuAppendTo=\"editor\"` only when the menu must stay\ninside the editor stacking context, or bind a specific `HTMLElement`.\n\n```html\n<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>\n```\n\nUse `ng-template[neuralEditorLinkPopover]` for a custom link form. Default menus\nare keyboard reachable, expose toolbar/dialog roles, stay within the viewport,\nand switch to compact horizontally scrollable layouts on narrow screens.\n\n## Extensions\n\n`extensions` appends Tiptap extensions. Top-level extension names are\nlast-write-wins. To replace the default schema, set\n`includeDefaultExtensions=\"false\"` and provide the complete extension set.\nExtension configuration is initialization-time in this Beta release.\n\n## Security and persistence\n\nJSON is not a security boundary. Validate the document schema, URLs, colors,\ntable attributes, pasted content, and custom node attributes on the server.\nSanitize generated HTML for its final rendering context. Do not trust content\nsolely because the editor accepted it.\n\n## Styling\n\nUse the neutral, glass, mist, or futuristic themes, or set `unstyled` locally or\nglobally. Structural `*-root` hooks remain while visual `*-base` classes are\nremoved. `NeuralEditorClasses` includes typed slots for toolbar menus, palette\noptions, slash and mention suggestions, the command palette, BubbleMenu,\nFloatingMenu, link popover controls, the editing surface, content, footer, and\ncounters.\n\n## Collaboration and review\n\nEditor collaboration is provider-neutral. The component receives an initialized\nYjs document and, optionally, a provider that exposes awareness and connection\nevents. NeuralNg does not create rooms, authenticate users, or persist Yjs\nupdates.\n\n```ts\nimport { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);\n```\n\n```html\n<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />\n```\n\nWhen `collaboration` is present:\n\n- The Yjs document is the live collaborative source of truth.\n- Editor waits for provider sync by default before mounting.\n- StarterKit undo/redo is disabled because Collaboration owns history.\n- External `value` writes are not pushed into the collaborative document.\n- `editorUpdate.source` is `remote` for collaboration-origin transactions.\n- Presence is read from the provider awareness `user` field and is never\n  persisted as document content.\n- `disconnectOnDestroy` is opt-in because provider lifetime normally belongs to\n  the application.\n\n### Provider contract\n\nThe optional provider is structural, so Hocuspocus, y-websocket, or another Yjs\nprovider can be adapted without making it a NeuralNg dependency. It may expose\n`connect`, `disconnect`, `synced`, `on`, `off`, and `awareness`.\n\nTreat `document`, `provider`, `field`, and `fragment` as initialization-only.\nWhen the room or collaborative field changes, destroy and recreate the Editor\ninstance instead of mutating the collaboration config in place.\n\nFor providers with custom event names, pass `whenSynced` and resolve it when the\ninitial room synchronization is complete. Do not seed `value` before sync. Seed\nan empty Yjs fragment in application code after synchronization instead.\n\n### Comments\n\nComments use a lightweight inline `neuralComment` mark and thread data stored in\na dedicated Yjs map. Without collaboration, the same API uses an in-memory\nrepository. The default panel supports creating, replying, resolving, reopening,\nselecting, and deleting threads through `NeuralEditorController`.\n\nComments in the Beta contract are plain-text thread messages. Authentication,\nauthorization, mentions, notifications, and server-side moderation remain\napplication responsibilities.\n\n### Tracked changes\n\nSet `trackedChangesMode=\"suggesting\"` to track local text insertions and\ndeletions. Remote Yjs transactions are ignored, so each client attributes only\nits own edits. Changes can be accepted or rejected individually or as a batch.\n\nThe Beta contract tracks text insertions and deletions. Mark changes, complex block\nreplacement, overlapping suggestions, and production audit policy are not part\nof this Beta contract.\n\n### Version snapshots\n\n`snapshots` is a controlled model containing portable JSON checkpoints:\n\n```ts\ninterface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}\n```\n\nThe built-in snapshot model intentionally does not persist Yjs binary updates.\nStore snapshots in application code, and use a provider/backend-specific Yjs\nhistory service when exact CRDT history, branching, or audit-grade restoration\nis required.\n\n### Collaboration controller methods\n\n```ts\ncontroller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);\n```\n\nThe default collaboration panel is enabled whenever collaboration, comments,\ntracked changes, or snapshots are enabled. Set `showCollaborationPanel=\"false\"`\nto render an application-owned review surface using the controller signals.\n",
+    "llms": "# @neural-ng/editor\n\nImport canonical `NeuralEditor` from `@neural-ng/editor`. `EditorComponent` is\na deprecated compatibility alias. The selector remains `<neural-editor>`.\n\n## Public API boundary\n\n- Treat `API_FREEZE.md` as the authoritative standalone package contract.\n- Import only from `@neural-ng/editor`. Never deep-import source files.\n- Use `NeuralEditor`, the exported template directives, public types,\n  constants, serializers, pure helpers, and `NeuralEditorController`.\n- Internal toolbar, menu, review, and collaboration-panel renderer components\n  are not public API. Customize through class slots and template directives.\n- Do not use raw Tiptap/ProseMirror operation or tracked-change helpers. Use the\n  controller methods so revisions, events, forms, and collaboration rules stay\n  consistent.\n\n## Canonical rules\n\n- Install only `@neural-ng/editor`. Tiptap, ProseMirror, Floating UI, Yjs, and the required NeuralNg core runtime are package-managed dependencies.\n- Install a realtime collaboration transport/provider separately only when collaboration is enabled.\n- Import `NeuralEditor` from `@neural-ng/editor`.\n- Bind only `NeuralEditorDocument` JSON to `[(value)]`, `[formField]`,\n  `[formControl]`, or `[(ngModel)]`. Never bind HTML or Markdown strings and\n  never create a string-or-JSON value union.\n- The empty value is a `doc` containing an empty paragraph. Do not use `null` as\n  the normal empty state.\n- Treat editor values as immutable. Do not mutate node, mark, attribute, or\n  content arrays in place.\n\n## Beta schema, identity, menus, AI review, and collaboration\n\n- Text alignment is stored on paragraph or heading attributes as `textAlign`.\n- Text color is stored in a `textStyle` mark with a `color` attribute.\n- Highlight is stored in a `highlight` mark and may include a `color` attribute.\n- Tasks use `taskList` and `taskItem`; task state is the boolean `checked`\n  attribute on `taskItem`.\n- Tables use `table`, `tableRow`, `tableHeader`, and `tableCell` nodes.\n- Images use an `image` node. Persist a stable HTTP(S) URL and optional alt,\n  title, width, and height attributes. Never persist File objects, blob URLs,\n  or temporary object URLs.\n- Mentions use `mention` nodes with stable `id` and `label` attributes. Provider-only\n  metadata is not persisted. Do not copy avatars, permissions, or mutable profile\n  objects into editor JSON.\n- Do not invent HTML-only state that cannot be represented by the configured\n  JSON schema.\n\n## Commands\n\n- Use the `NeuralEditorController` from `editorReady` for all programmatic\n  edits. Do not query, replace, or mutate the `contenteditable` DOM.\n- Use `setTextAlign()`, `setTextColor()`, `setHighlight()`,\n  `toggleTaskList()`, `insertTable()`, `insertImage()`, and menu controller\n  methods for Alpha 2.3 features.\n- Table row, column, merge, split, header, and delete commands are contextual;\n  call `controller.can(command)` before presenting a custom enabled action.\n- Use `toolbarItems` for the built-in toolbar or project\n  `ng-template[neuralEditorToolbar]` with `let-editor` for a custom toolbar.\n- Built-in color and table menus use NeuralNg Popover in the browser top layer. Do not replace them with native `details`, custom absolute-positioned panels, or `appendTo=\"body\"` logic. Only one auto popover remains open at a time.\n- Use `(imageInsertRequest)` to open FileUpload or an application media picker.\n  Upload outside Editor, then call `event.controller.insertImage()` with the\n  persistent URL. Editor must not send HTTP requests.\n- BubbleMenu appears for a text or image selection. FloatingMenu appears for an\n  empty paragraph. Link editing uses the same contextual bubble layer so only\n  one contextual menu is active.\n- Context menus append to `body` by default. Use `menuAppendTo=\"editor\"` or a\n  concrete HTMLElement only when the containing stacking context is required.\n- Customize menus with `neuralEditorBubbleMenu`, `neuralEditorFloatingMenu`,\n  and `neuralEditorLinkPopover` templates. Use the supplied controller and link\n  context callbacks; do not access the raw Tiptap instance or position menus\n  manually.\n- `textColors` and `highlightColors` configure UI palettes only. They do not\n  constrain externally loaded JSON; validate allowed values in application and\n  server code when a restricted palette is required.\n\n## Node identity and structured operations\n\n- Node IDs are enabled by default. Canonical JSON stores the configured\n  `nodeIdAttribute` (`neuralId` by default) on identified nodes.\n- Keep node IDs stable and unique. Do not derive IDs from array indexes,\n  document positions, visible text, or mutable labels.\n- Use `identifiedNodeTypes` and `nodeIdGenerator` only as initialization-time\n  configuration. Disable `enableNodeIds` only when no operation, AI review,\n  comment, or collaboration layer will address nodes.\n- Prefer `controller.getNodeById()` and `controller.getNodeIdAt()` over walking\n  the `contenteditable` DOM or assuming ProseMirror positions remain stable.\n- Create batches with `controller.createOperationBatch()`. It captures the\n  current document-only revision. Validate with `validateOperations()` and\n  apply with `applyOperations()`.\n- Supported operation types are `insert`, `replace`, `delete`, and\n  `update-node`. Prefer `{ nodeId }` targets. Use `{ from, to }` only for a\n  captured selection range from the same base revision.\n- Operation batches are atomic. Never apply operations one by one in\n  application code. One invalid target, node, attribute, or schema placement\n  rejects the whole batch without partial changes.\n- Treat `status: 'conflict'` as a required rebase/retry boundary. Never force a\n  stale batch onto a newer document or silently replace its `baseRevision`.\n- Inserted operation content cannot choose internal node IDs. Compatible\n  single-node replacements preserve the target ID by default. The protected ID\n  attribute cannot be changed with `update-node`.\n- Listen to `operationsApplied`, `operationsRejected`, and `operationConflict`\n  for application side effects. The form model changes only after a successful\n  atomic dispatch.\n- `editorDocumentToHtml()` omits node IDs by default. Use\n  `{ includeNodeIds: true }` only for diagnostics or explicit round trips.\n  Persist canonical JSON, not generated HTML, as the addressable source.\n- Use `editorDocumentWithNodeIds()` to migrate legacy JSON before storing or\n  sending it to an AI operation service.\n\n## Slash, mention, and command-palette behavior\n\n- Type `/` in a paragraph for the slash menu. Configure static commands through\n  `slashCommands` or use `slashCommandProvider`; a provider replaces default\n  filtering for that request.\n- Enable mentions with `mentionProvider`. It may return synchronously or\n  asynchronously. Honor the provider context `AbortSignal` and discard stale\n  network work when it aborts.\n- Press `Ctrl+K`/`Cmd+K` or call `controller.openCommandPalette()` for global\n  editor commands. Configure `commandPaletteItems`; do not create document-wide\n  key listeners in application code.\n- Listen to `commandExecuted` and `mentionSelected` only for user-action side\n  effects. The canonical model still changes through normal editor transactions.\n- Use `neuralEditorSlashMenu`, `neuralEditorMentionMenu`, and\n  `neuralEditorCommandPalette` for custom rendering. Use the supplied signals,\n  selection callbacks, and close callbacks. Do not access Tiptap plugin state or\n  manually mount/reposition overlays.\n- Suggestion and context overlays are mutually coordinated. Keep\n  `menuAppendTo=\"body\"` unless a deliberate editor-local stacking context is\n  required.\n- Slash commands and palette items execute local controller operations. They do\n  not imply HTTP, AI, upload, or persistence behavior.\n\n## AI request and review rules\n\n- NeuralNg Editor does not call AI providers. Use `controller.requestAi()` and\n  handle `(aiRequest)` in application code.\n- Send the request's structured document, selection snapshot, stable node IDs,\n  schema version, and base revision to the application-owned AI service. Do not\n  scrape the `contenteditable` DOM and do not send generated HTML as the\n  canonical source.\n- AI services must return `NeuralEditorAiProposal` values containing only\n  supported structured operations. Never return raw executable JavaScript,\n  mutate the editor directly, or inject unsanitized HTML.\n- Call `controller.previewAiProposal()` before applying a proposal. Preview uses\n  ephemeral ProseMirror decorations and must not change `[(value)]`.\n- Apply changes only after explicit user approval with\n  `controller.acceptAiProposal()`. Reject with `rejectAiProposal()`; rejection\n  removes decorations and leaves the canonical JSON unchanged.\n- Respect `baseRevision`. Treat `aiOperationConflict` as a required rebase or\n  fresh-request boundary. Never replace a stale proposal's revision with the\n  current revision.\n- A normal document edit invalidates the active preview. Do not keep stale\n  visual suggestions visible after user edits.\n- Use `(aiProposalPreviewed)`, `(aiProposalAccepted)`,\n  `(aiProposalRejected)`, `(aiOperationConflict)`, and\n  `(aiRequestCancelled)` for side effects and analytics.\n- Customize the review UI with `ng-template[neuralEditorAiReview]`. Use the\n  supplied callbacks and signals; do not mount another overlay, duplicate\n  accept/reject state, or apply operations outside the controller.\n- The default review UI follows `menuAppendTo`, supports mobile layout, and is\n  part of the shared overlay coordination model.\n\n## Conversion and persistence\n\n- Use `editorDocumentFromHtml()` to import HTML and\n  `editorDocumentToHtml()`/`editorDocumentToText()` for derived output.\n- The default serializers understand the current Beta schema, including images and mentions. Pass the\n  exact custom extension set when the document contains additional nodes or\n  marks.\n- Save documents in application code and persist a schema version beside\n  long-lived JSON.\n- Editor does not save data, upload files, call AI models, open collaboration\n  connections, or perform backend sanitization.\n\n## Security\n\n- JSON is not a security boundary. Validate document structure, links, colors,\n  table attributes, pasted content, and custom node attributes on the server.\n- Sanitize generated HTML for its final destination.\n- Never treat client-side toolbar palettes or schema checks as authorization or\n  backend validation.\n\n## Integration\n\n- `extensions` are initialization-time in the alpha API and append to the\n  defaults with top-level last-write-wins behavior.\n- To replace StarterKit or the default schema, disable\n  `includeDefaultExtensions` and provide every required extension.\n- `readonly` keeps content readable and selectable while blocking edits.\n  `disabled` also removes the editor from normal keyboard interaction.\n- Use `unstyled` or global unstyled mode for headless rendering. Structural\n  classes and ARIA relationships remain.\n\n## Collaboration, comments, tracked changes, and snapshots\n\nUse `NeuralEditorCollaborationConfig` with an application-owned `Y.Doc`.\nNeuralNg does not create a collaboration backend, room, token, or provider.\nThe optional provider must expose the small structural provider contract.\n\nWhen collaboration is enabled, the Yjs document is the live source of truth.\nDo not initialize the editor with remote content before the provider has synced.\nDo not bind autosave logic to every remote update without throttling and origin\nchecks. Collaboration disables StarterKit history and uses Yjs collaboration\nundo/redo.\nTreat `collaboration.document`, `provider`, `field`, and `fragment` as\ninitialization-only. Recreate the Editor when the room or field changes.\n\nPass `collaborationUser` with stable `id`, `name`, and `color` values. Presence\ncomes from provider awareness and is ephemeral. Never persist awareness state as\ncanonical editor content.\n\nUse `enableComments` for inline plain-text comment threads. Thread data is stored\nin the configured Yjs comments map when collaboration is active. Authentication,\npermissions, notifications, moderation, and server persistence belong to the\napplication.\n\nUse `trackedChangesMode=\"suggesting\"` to record local text insertions and\ndeletions as review marks. Remote collaboration transactions are deliberately\nignored. Alpha 4 tracked changes are not an audit log and do not cover every\npossible structural or formatting edit.\n\nUse `[(snapshots)]` for portable JSON checkpoints. Snapshot creation does not\nupload or persist anything. Save snapshots in application code. For exact CRDT\nhistory or compliance-grade versioning, use a backend/provider history system.\n\nNever combine independent Yjs documents for the same room. Never seed content on\nan unsynchronized collaborative document. Do not mutate `Y.Doc` content and the\nEditor `value` independently.\n"
+  },
+  {
+    "schemaVersion": 2,
     "id": "multi-select",
     "name": "NeuralMultiSelect",
     "className": "NeuralMultiSelect",
     "kind": "component",
     "selector": "neural-multi-select",
     "entryPoint": "@neural-ng/core/multi-select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, accessible multiple selection for Angular 22+.",
     "formContract": "FormValueControl<readonly TValue[]>",
@@ -5929,6 +11109,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralAutoCompleteClearIcon]",
     "entryPoint": "@neural-ng/core/auto-complete",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Editable, accessible and headless-ready suggestions for Angular 22+.",
     "inputs": [],
@@ -6138,6 +11320,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralAutoCompleteDropdownIcon]",
     "entryPoint": "@neural-ng/core/auto-complete",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Editable, accessible and headless-ready suggestions for Angular 22+.",
     "inputs": [],
@@ -6347,6 +11531,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralAutoCompleteEmpty]",
     "entryPoint": "@neural-ng/core/auto-complete",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Editable, accessible and headless-ready suggestions for Angular 22+.",
     "inputs": [],
@@ -6556,6 +11742,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralAutoCompleteGroup]",
     "entryPoint": "@neural-ng/core/auto-complete",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Editable, accessible and headless-ready suggestions for Angular 22+.",
     "inputs": [],
@@ -6765,6 +11953,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralAutoCompleteLoading]",
     "entryPoint": "@neural-ng/core/auto-complete",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Editable, accessible and headless-ready suggestions for Angular 22+.",
     "inputs": [],
@@ -6974,6 +12164,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralAutoCompleteOption]",
     "entryPoint": "@neural-ng/core/auto-complete",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Editable, accessible and headless-ready suggestions for Angular 22+.",
     "inputs": [],
@@ -7183,6 +12375,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-button-group",
     "entryPoint": "@neural-ng/core/button",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "`NeuralButton` is a standalone, signal-based Angular 22+ component available from the `@neural-ng/core/button` secondary entry point. It renders a native `<button>` and supports themed, class-driven, and headless usage.",
     "inputs": [
@@ -7402,6 +12596,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDataViewEmpty]",
     "entryPoint": "@neural-ng/core/data-view",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "DataView Beta presents an immutable collection as a semantic list or responsive grid with typed templates, controlled Signal state, stable local sorting, remote request state, and Paginator composition.",
     "inputs": [],
@@ -7580,6 +12776,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDataViewFooter]",
     "entryPoint": "@neural-ng/core/data-view",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "DataView Beta presents an immutable collection as a semantic list or responsive grid with typed templates, controlled Signal state, stable local sorting, remote request state, and Paginator composition.",
     "inputs": [],
@@ -7758,6 +12956,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDataViewGridItem]",
     "entryPoint": "@neural-ng/core/data-view",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "DataView Beta presents an immutable collection as a semantic list or responsive grid with typed templates, controlled Signal state, stable local sorting, remote request state, and Paginator composition.",
     "inputs": [
@@ -7943,6 +13143,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDataViewHeader]",
     "entryPoint": "@neural-ng/core/data-view",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "DataView Beta presents an immutable collection as a semantic list or responsive grid with typed templates, controlled Signal state, stable local sorting, remote request state, and Paginator composition.",
     "inputs": [],
@@ -8121,6 +13323,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDataViewListItem]",
     "entryPoint": "@neural-ng/core/data-view",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "DataView Beta presents an immutable collection as a semantic list or responsive grid with typed templates, controlled Signal state, stable local sorting, remote request state, and Paginator composition.",
     "inputs": [
@@ -8306,6 +13510,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDataViewLoading]",
     "entryPoint": "@neural-ng/core/data-view",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "DataView Beta presents an immutable collection as a semantic list or responsive grid with typed templates, controlled Signal state, stable local sorting, remote request state, and Paginator composition.",
     "inputs": [],
@@ -8484,6 +13690,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDatePickerDay]",
     "entryPoint": "@neural-ng/core/date-picker",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. The canonical standalone export is `NeuralDatePicker`; `DatePickerComponent` is retained as a deprecated compatibility alias.",
     "inputs": [],
@@ -8954,6 +14162,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDatePickerFooter]",
     "entryPoint": "@neural-ng/core/date-picker",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. The canonical standalone export is `NeuralDatePicker`; `DatePickerComponent` is retained as a deprecated compatibility alias.",
     "inputs": [],
@@ -9424,6 +14634,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDatePickerHeader]",
     "entryPoint": "@neural-ng/core/date-picker",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. The canonical standalone export is `NeuralDatePicker`; `DatePickerComponent` is retained as a deprecated compatibility alias.",
     "inputs": [],
@@ -9894,6 +15106,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDatePickerNextIcon]",
     "entryPoint": "@neural-ng/core/date-picker",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. The canonical standalone export is `NeuralDatePicker`; `DatePickerComponent` is retained as a deprecated compatibility alias.",
     "inputs": [],
@@ -10364,6 +15578,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDatePickerPreviousIcon]",
     "entryPoint": "@neural-ng/core/date-picker",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. The canonical standalone export is `NeuralDatePicker`; `DatePickerComponent` is retained as a deprecated compatibility alias.",
     "inputs": [],
@@ -10834,6 +16050,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralDatePickerTriggerIcon]",
     "entryPoint": "@neural-ng/core/date-picker",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. The canonical standalone export is `NeuralDatePicker`; `DatePickerComponent` is retained as a deprecated compatibility alias.",
     "inputs": [],
@@ -11304,6 +16522,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-dialog",
     "entryPoint": "@neural-ng/core/dialog",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
     "inputs": [
@@ -11568,6 +16788,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-dialog-body",
     "entryPoint": "@neural-ng/core/dialog",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
     "inputs": [
@@ -11685,6 +16907,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-dialog-footer",
     "entryPoint": "@neural-ng/core/dialog",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
     "inputs": [
@@ -11802,6 +17026,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-dialog-header",
     "entryPoint": "@neural-ng/core/dialog",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
     "inputs": [
@@ -11919,6 +17145,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralDialogInitialFocus]",
     "entryPoint": "@neural-ng/core/dialog",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Dialog Beta is the native, Signals-first modal and non-modal composition primitive for Angular 22+.",
     "inputs": [],
@@ -12028,6 +17256,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-divider",
     "entryPoint": "@neural-ng/core/divider",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "`NeuralDivider` separates related content with native separator semantics, logical orientation, optional content, and a fully headless visual contract.",
     "inputs": [
@@ -12179,6 +17409,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-drawer",
     "entryPoint": "@neural-ng/core/drawer",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
     "inputs": [
@@ -12402,6 +17634,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-drawer-body",
     "entryPoint": "@neural-ng/core/drawer",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
     "inputs": [
@@ -12502,6 +17736,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-drawer-footer",
     "entryPoint": "@neural-ng/core/drawer",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
     "inputs": [
@@ -12602,6 +17838,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-drawer-header",
     "entryPoint": "@neural-ng/core/drawer",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
     "inputs": [
@@ -12702,6 +17940,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralDrawerInitialFocus]",
     "entryPoint": "@neural-ng/core/drawer",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Native top-layer, Signal-first edge panels for Angular 22+.",
     "inputs": [],
@@ -12788,12 +18028,1285 @@ export const GENERATED_COMPONENTS = [
   },
   {
     "schemaVersion": 2,
+    "id": "neural-editor",
+    "name": "NeuralEditor",
+    "className": "NeuralEditor",
+    "kind": "component",
+    "selector": "neural-editor",
+    "entryPoint": "@neural-ng/editor",
+    "packageName": "@neural-ng/editor",
+    "packageVersion": "0.1.0-beta.2",
+    "status": "beta",
+    "summary": "Status: **Beta**. The canonical standalone export is `NeuralEditor`; `EditorComponent` remains a deprecated compatibility alias.",
+    "formContract": "FormValueControl<NeuralEditorValue>",
+    "inputs": [
+      {
+        "name": "disabled",
+        "bindingName": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "readonly",
+        "bindingName": "readonly",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "required",
+        "bindingName": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "invalid",
+        "bindingName": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "pending",
+        "bindingName": "pending",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "touched",
+        "bindingName": "touched",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "dirty",
+        "bindingName": "dirty",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "placeholder",
+        "bindingName": "placeholder",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "autofocus",
+        "bindingName": "autofocus",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "spellcheck",
+        "bindingName": "spellcheck",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showToolbar",
+        "bindingName": "showToolbar",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showCharacterCount",
+        "bindingName": "showCharacterCount",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showWordCount",
+        "bindingName": "showWordCount",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showBubbleMenu",
+        "bindingName": "showBubbleMenu",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showFloatingMenu",
+        "bindingName": "showFloatingMenu",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showLinkPopover",
+        "bindingName": "showLinkPopover",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showSlashMenu",
+        "bindingName": "showSlashMenu",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showMentionMenu",
+        "bindingName": "showMentionMenu",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showCommandPalette",
+        "bindingName": "showCommandPalette",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showAiReview",
+        "bindingName": "showAiReview",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "collaboration",
+        "bindingName": "collaboration",
+        "type": "NeuralEditorCollaborationConfig | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "collaborationUser",
+        "bindingName": "collaborationUser",
+        "type": "NeuralEditorCollaborationUser | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "enableComments",
+        "bindingName": "enableComments",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "trackedChangesMode",
+        "bindingName": "trackedChangesMode",
+        "type": "NeuralEditorTrackedChangesMode",
+        "required": false,
+        "defaultValue": "'off'"
+      },
+      {
+        "name": "enableSnapshots",
+        "bindingName": "enableSnapshots",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "showCollaborationPanel",
+        "bindingName": "showCollaborationPanel",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "allowBase64Images",
+        "bindingName": "allowBase64Images",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "enableNodeIds",
+        "bindingName": "enableNodeIds",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "nodeIdAttribute",
+        "bindingName": "nodeIdAttribute",
+        "type": "unknown",
+        "required": false,
+        "defaultValue": "NEURAL_EDITOR_DEFAULT_NODE_ID_ATTRIBUTE"
+      },
+      {
+        "name": "identifiedNodeTypes",
+        "bindingName": "identifiedNodeTypes",
+        "type": "readonly string[]",
+        "required": false,
+        "defaultValue": "NEURAL_EDITOR_DEFAULT_IDENTIFIED_NODE_TYPES"
+      },
+      {
+        "name": "nodeIdGenerator",
+        "bindingName": "nodeIdGenerator",
+        "type": "NeuralEditorNodeIdGenerator",
+        "required": false,
+        "defaultValue": "createNeuralEditorNodeId"
+      },
+      {
+        "name": "menuAppendTo",
+        "bindingName": "menuAppendTo",
+        "type": "NeuralEditorMenuAppendTo",
+        "required": false,
+        "defaultValue": "'body'"
+      },
+      {
+        "name": "bubbleMenuPlacement",
+        "bindingName": "bubbleMenuPlacement",
+        "type": "NeuralEditorMenuPlacement",
+        "required": false,
+        "defaultValue": "'top'"
+      },
+      {
+        "name": "floatingMenuPlacement",
+        "bindingName": "floatingMenuPlacement",
+        "type": "NeuralEditorMenuPlacement",
+        "required": false,
+        "defaultValue": "'left-start'"
+      },
+      {
+        "name": "slashMenuPlacement",
+        "bindingName": "slashMenuPlacement",
+        "type": "NeuralEditorSuggestionPlacement",
+        "required": false,
+        "defaultValue": "'bottom-start'"
+      },
+      {
+        "name": "mentionMenuPlacement",
+        "bindingName": "mentionMenuPlacement",
+        "type": "NeuralEditorSuggestionPlacement",
+        "required": false,
+        "defaultValue": "'bottom-start'"
+      },
+      {
+        "name": "slashDebounce",
+        "bindingName": "slashDebounce",
+        "type": "number",
+        "required": false,
+        "defaultValue": "0",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "mentionDebounce",
+        "bindingName": "mentionDebounce",
+        "type": "number",
+        "required": false,
+        "defaultValue": "150",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "mentionTrigger",
+        "bindingName": "mentionTrigger",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'@'"
+      },
+      {
+        "name": "mentionMinimumQueryLength",
+        "bindingName": "mentionMinimumQueryLength",
+        "type": "number",
+        "required": false,
+        "defaultValue": "0",
+        "transform": "numberAttribute"
+      },
+      {
+        "name": "slashCommands",
+        "bindingName": "slashCommands",
+        "type": "readonly NeuralEditorSlashCommand[] | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "slashCommandProvider",
+        "bindingName": "slashCommandProvider",
+        "type": "NeuralEditorSuggestionProvider<NeuralEditorSlashCommand> | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "mentionProvider",
+        "bindingName": "mentionProvider",
+        "type": "NeuralEditorSuggestionProvider<NeuralEditorMentionItem> | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "commandPaletteItems",
+        "bindingName": "commandPaletteItems",
+        "type": "readonly NeuralEditorCommandPaletteItem[] | null",
+        "required": false,
+        "defaultValue": "null"
+      },
+      {
+        "name": "includeDefaultExtensions",
+        "bindingName": "includeDefaultExtensions",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "extensions",
+        "bindingName": "extensions",
+        "type": "readonly NeuralEditorExtension[]",
+        "required": false,
+        "defaultValue": "[]"
+      },
+      {
+        "name": "toolbarItems",
+        "bindingName": "toolbarItems",
+        "type": "readonly NeuralEditorToolbarItem[]",
+        "required": false,
+        "defaultValue": "NEURAL_EDITOR_DEFAULT_TOOLBAR"
+      },
+      {
+        "name": "textColors",
+        "bindingName": "textColors",
+        "type": "readonly NeuralEditorColorOption[]",
+        "required": false,
+        "defaultValue": "NEURAL_EDITOR_DEFAULT_TEXT_COLORS"
+      },
+      {
+        "name": "highlightColors",
+        "bindingName": "highlightColors",
+        "type": "readonly NeuralEditorColorOption[]",
+        "required": false,
+        "defaultValue": "NEURAL_EDITOR_DEFAULT_HIGHLIGHT_COLORS"
+      },
+      {
+        "name": "messages",
+        "bindingName": "messages",
+        "type": "Partial<NeuralEditorMessages>",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "name",
+        "bindingName": "name",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "editorId",
+        "bindingName": "editorId",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabel",
+        "bindingName": "ariaLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaLabelledBy",
+        "bindingName": "ariaLabelledBy",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "ariaDescription",
+        "bindingName": "ariaDescription",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "fluid",
+        "bindingName": "fluid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "unstyled",
+        "bindingName": "unstyled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "transform": "booleanAttribute"
+      },
+      {
+        "name": "editorClass",
+        "bindingName": "editorClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "contentClass",
+        "bindingName": "contentClass",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''"
+      },
+      {
+        "name": "classes",
+        "bindingName": "classes",
+        "type": "NeuralEditorClasses",
+        "required": false,
+        "defaultValue": "{}"
+      },
+      {
+        "name": "maxCharacters",
+        "bindingName": "maxCharacters",
+        "type": "number | undefined",
+        "required": false,
+        "defaultValue": "undefined",
+        "transform": "optionalNumberAttribute"
+      }
+    ],
+    "models": [
+      {
+        "name": "value",
+        "bindingName": "value",
+        "type": "NeuralEditorValue",
+        "defaultValue": "createNeuralEditorEmptyDocument()"
+      },
+      {
+        "name": "snapshots",
+        "bindingName": "snapshots",
+        "type": "readonly NeuralEditorSnapshot[]",
+        "defaultValue": "[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "editorReady",
+        "bindingName": "editorReady",
+        "type": "NeuralEditorController"
+      },
+      {
+        "name": "editorUpdate",
+        "bindingName": "editorUpdate",
+        "type": "NeuralEditorUpdateEvent"
+      },
+      {
+        "name": "selectionChange",
+        "bindingName": "selectionChange",
+        "type": "NeuralEditorSelectionEvent"
+      },
+      {
+        "name": "imageInsertRequest",
+        "bindingName": "imageInsertRequest",
+        "type": "NeuralEditorImageInsertRequestEvent"
+      },
+      {
+        "name": "commandExecuted",
+        "bindingName": "commandExecuted",
+        "type": "NeuralEditorCommandExecutedEvent"
+      },
+      {
+        "name": "mentionSelected",
+        "bindingName": "mentionSelected",
+        "type": "NeuralEditorMentionSelectedEvent"
+      },
+      {
+        "name": "operationsApplied",
+        "bindingName": "operationsApplied",
+        "type": "NeuralEditorOperationsAppliedEvent"
+      },
+      {
+        "name": "operationsRejected",
+        "bindingName": "operationsRejected",
+        "type": "NeuralEditorOperationsRejectedEvent"
+      },
+      {
+        "name": "operationConflict",
+        "bindingName": "operationConflict",
+        "type": "NeuralEditorOperationConflictEvent"
+      },
+      {
+        "name": "aiRequest",
+        "bindingName": "aiRequest",
+        "type": "NeuralEditorAiRequestEvent"
+      },
+      {
+        "name": "aiRequestCancelled",
+        "bindingName": "aiRequestCancelled",
+        "type": "NeuralEditorAiRequestCancelledEvent"
+      },
+      {
+        "name": "aiProposalPreviewed",
+        "bindingName": "aiProposalPreviewed",
+        "type": "NeuralEditorAiProposalEvent"
+      },
+      {
+        "name": "aiProposalAccepted",
+        "bindingName": "aiProposalAccepted",
+        "type": "NeuralEditorAiProposalAcceptedEvent"
+      },
+      {
+        "name": "aiProposalRejected",
+        "bindingName": "aiProposalRejected",
+        "type": "NeuralEditorAiProposalRejectedEvent"
+      },
+      {
+        "name": "aiOperationConflict",
+        "bindingName": "aiOperationConflict",
+        "type": "NeuralEditorAiConflictEvent"
+      },
+      {
+        "name": "collaborationStatusChange",
+        "bindingName": "collaborationStatusChange",
+        "type": "NeuralEditorCollaborationStatusEvent"
+      },
+      {
+        "name": "presenceChange",
+        "bindingName": "presenceChange",
+        "type": "NeuralEditorPresenceChangeEvent"
+      },
+      {
+        "name": "commentCreated",
+        "bindingName": "commentCreated",
+        "type": "NeuralEditorCommentEvent"
+      },
+      {
+        "name": "commentUpdated",
+        "bindingName": "commentUpdated",
+        "type": "NeuralEditorCommentEvent"
+      },
+      {
+        "name": "commentDeleted",
+        "bindingName": "commentDeleted",
+        "type": "NeuralEditorCommentDeletedEvent"
+      },
+      {
+        "name": "trackedChangeAccepted",
+        "bindingName": "trackedChangeAccepted",
+        "type": "NeuralEditorTrackedChangeEvent"
+      },
+      {
+        "name": "trackedChangeRejected",
+        "bindingName": "trackedChangeRejected",
+        "type": "NeuralEditorTrackedChangeEvent"
+      },
+      {
+        "name": "snapshotCreated",
+        "bindingName": "snapshotCreated",
+        "type": "NeuralEditorSnapshotEvent"
+      },
+      {
+        "name": "snapshotRestored",
+        "bindingName": "snapshotRestored",
+        "type": "NeuralEditorSnapshotEvent"
+      },
+      {
+        "name": "snapshotDeleted",
+        "bindingName": "snapshotDeleted",
+        "type": "NeuralEditorSnapshotEvent"
+      },
+      {
+        "name": "editorFocus",
+        "bindingName": "editorFocus",
+        "type": "FocusEvent"
+      },
+      {
+        "name": "editorBlur",
+        "bindingName": "editorBlur",
+        "type": "FocusEvent"
+      },
+      {
+        "name": "contentError",
+        "bindingName": "contentError",
+        "type": "NeuralEditorContentErrorEvent"
+      },
+      {
+        "name": "editorPaste",
+        "bindingName": "editorPaste",
+        "type": "ClipboardEvent"
+      },
+      {
+        "name": "editorDrop",
+        "bindingName": "editorDrop",
+        "type": "DragEvent"
+      },
+      {
+        "name": "touch",
+        "bindingName": "touch",
+        "type": "void"
+      }
+    ],
+    "templates": [
+      {
+        "name": "EditorAiReviewTemplate",
+        "className": "EditorAiReviewTemplateDirective",
+        "selector": "ng-template[neuralEditorAiReview]",
+        "contextType": "NeuralEditorAiReviewTemplateContext"
+      },
+      {
+        "name": "EditorBubbleMenuTemplate",
+        "className": "EditorBubbleMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorBubbleMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorFloatingMenuTemplate",
+        "className": "EditorFloatingMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorFloatingMenu]",
+        "contextType": "NeuralEditorMenuTemplateContext"
+      },
+      {
+        "name": "EditorLinkPopoverTemplate",
+        "className": "EditorLinkPopoverTemplateDirective",
+        "selector": "ng-template[neuralEditorLinkPopover]",
+        "contextType": "NeuralEditorLinkPopoverTemplateContext"
+      },
+      {
+        "name": "EditorSlashMenuTemplate",
+        "className": "EditorSlashMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorSlashMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorSlashCommand>"
+      },
+      {
+        "name": "EditorMentionMenuTemplate",
+        "className": "EditorMentionMenuTemplateDirective",
+        "selector": "ng-template[neuralEditorMentionMenu]",
+        "contextType": "NeuralEditorSuggestionMenuTemplateContext<NeuralEditorMentionItem>"
+      },
+      {
+        "name": "EditorCommandPaletteTemplate",
+        "className": "EditorCommandPaletteTemplateDirective",
+        "selector": "ng-template[neuralEditorCommandPalette]",
+        "contextType": "NeuralEditorCommandPaletteTemplateContext"
+      },
+      {
+        "name": "EditorToolbarTemplate",
+        "className": "EditorToolbarTemplateDirective",
+        "selector": "ng-template[neuralEditorToolbar]",
+        "contextType": "NeuralEditorToolbarTemplateContext"
+      }
+    ],
+    "providers": [],
+    "providerRequirements": [],
+    "methods": [],
+    "typeAliases": [
+      {
+        "name": "NeuralEditorValue",
+        "type": "NeuralEditorDocument"
+      },
+      {
+        "name": "NeuralEditorExtension",
+        "type": "AnyExtension"
+      },
+      {
+        "name": "NeuralEditorUpdateSource",
+        "type": "'user' | 'command' | 'remote'"
+      },
+      {
+        "name": "NeuralEditorFocusPosition",
+        "type": "'start' | 'end'"
+      },
+      {
+        "name": "NeuralEditorTextAlign",
+        "type": "'left' | 'center' | 'right' | 'justify'"
+      },
+      {
+        "name": "NeuralEditorColorKind",
+        "type": "'text' | 'highlight'"
+      },
+      {
+        "name": "NeuralEditorMenuAppendTo",
+        "type": "'body' | 'editor' | HTMLElement"
+      },
+      {
+        "name": "NeuralEditorSuggestionPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'"
+      },
+      {
+        "name": "NeuralEditorCommandSource",
+        "type": "'slash' | 'command-palette'"
+      },
+      {
+        "name": "NeuralEditorMenuPlacement",
+        "type": "| 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'"
+      },
+      {
+        "name": "NeuralEditorNodeIdGenerator",
+        "type": "( context: NeuralEditorNodeIdContext, ) => string"
+      },
+      {
+        "name": "NeuralEditorInsertPosition",
+        "type": "| 'before' | 'after' | 'inside-start' | 'inside-end'"
+      },
+      {
+        "name": "NeuralEditorOperation",
+        "type": "| NeuralEditorInsertOperation | NeuralEditorReplaceOperation | NeuralEditorDeleteOperation | NeuralEditorUpdateNodeOperation"
+      },
+      {
+        "name": "NeuralEditorOperationErrorCode",
+        "type": "| 'not-editable' | 'revision-conflict' | 'empty-batch' | 'invalid-target' | 'target-not-found' | 'invalid-content' | 'schema-violation' | 'protected-attribute' | 'operation-failed'"
+      },
+      {
+        "name": "NeuralEditorOperationValidationResult",
+        "type": "| { readonly valid: true; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly operationCount: number; } | { readonly valid: false; readonly batchId: string; readonly baseRevision: number; readonly currentRevision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorOperationApplyResult",
+        "type": "| { readonly status: 'applied'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly operationCount: number; readonly document: NeuralEditorDocument; } | { readonly status: 'conflict'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; } | { readonly status: 'rejected'; readonly batchId: string; readonly baseRevision: number; readonly revision: number; readonly error: NeuralEditorOperationError; }"
+      },
+      {
+        "name": "NeuralEditorSuggestionProvider",
+        "type": "( query: string, context: NeuralEditorSuggestionProviderContext, ) => readonly T[] | Promise<readonly T[]>"
+      },
+      {
+        "name": "NeuralEditorCommand",
+        "type": "| 'undo' | 'redo' | 'paragraph' | 'heading-1' | 'heading-2' | 'heading-3' | 'bold' | 'italic' | 'underline' | 'strike' | 'code' | 'bullet-list' | 'ordered-list' | 'task-list' | 'blockquote' | 'code-block' | 'align-left' | 'align-center' | 'align-right' | 'align-justify' | 'link' | 'image' | 'horizontal-rule' | 'clear-formatting' | 'insert-table' | 'delete-table' | 'add-row-before' | 'add-row-after' | 'delete-row' | 'add-column-before' | 'add-column-after' | 'delete-column' | 'merge-cells' | 'split-cell' | 'toggle-header-row'"
+      },
+      {
+        "name": "NeuralEditorToolbarItem",
+        "type": "| NeuralEditorToolbarCommandItem | NeuralEditorToolbarColorItem | NeuralEditorToolbarTableItem | NeuralEditorToolbarSeparatorItem"
+      },
+      {
+        "name": "NeuralEditorAiAction",
+        "type": "| 'rewrite' | 'shorten' | 'expand' | 'summarize' | 'fix-grammar' | 'change-tone' | 'translate' | 'custom'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewErrorCode",
+        "type": "| 'invalid-proposal' | 'revision-conflict' | 'validation-failed' | 'editor-not-ready'"
+      },
+      {
+        "name": "NeuralEditorAiPreviewResult",
+        "type": "| { readonly status: 'previewed'; readonly proposal: NeuralEditorAiProposal; readonly operationCount: number; } | { readonly status: 'conflict' | 'rejected'; readonly proposal: NeuralEditorAiProposal; readonly error: NeuralEditorAiPreviewError; }"
+      },
+      {
+        "name": "NeuralEditorAiProposalRejectionReason",
+        "type": "| 'user' | 'replaced' | 'editor-state' | 'validation' | 'apply-rejected'"
+      },
+      {
+        "name": "NeuralEditorAiConflictReason",
+        "type": "| 'revision-conflict' | 'document-changed'"
+      },
+      {
+        "name": "NeuralEditorCollaborationStatus",
+        "type": "| 'disabled' | 'connecting' | 'connected' | 'synced' | 'disconnected' | 'error'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangesMode",
+        "type": "'off' | 'suggesting'"
+      },
+      {
+        "name": "NeuralEditorTrackedChangeKind",
+        "type": "'insertion' | 'deletion'"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Install",
+        "language": "bash",
+        "code": "npm install @neural-ng/editor"
+      },
+      {
+        "title": "Install",
+        "language": "ts",
+        "code": "import {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});"
+      },
+      {
+        "title": "Install",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />"
+      },
+      {
+        "title": "Theme",
+        "language": "css",
+        "code": "@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "export interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;"
+      },
+      {
+        "title": "Canonical value",
+        "language": "ts",
+        "code": "const html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}"
+      },
+      {
+        "title": "Stable node IDs and structured operations",
+        "language": "ts",
+        "code": "const publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "async handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "ts",
+        "code": "const request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});"
+      },
+      {
+        "title": "AI requests and reviewable proposals",
+        "language": "html",
+        "code": "<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "readonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "ts",
+        "code": "{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}"
+      },
+      {
+        "title": "Slash commands, mentions, and command palette",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Controller",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />"
+      },
+      {
+        "title": "Controller",
+        "language": "ts",
+        "code": "editor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });"
+      },
+      {
+        "title": "Toolbar",
+        "language": "ts",
+        "code": "readonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />"
+      },
+      {
+        "title": "Toolbar",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />"
+      },
+      {
+        "title": "Images and FileUpload",
+        "language": "ts",
+        "code": "const uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});"
+      },
+      {
+        "title": "Context menus and positioning",
+        "language": "html",
+        "code": "<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "ts",
+        "code": "import { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);"
+      },
+      {
+        "title": "Collaboration and review",
+        "language": "html",
+        "code": "<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />"
+      },
+      {
+        "title": "Version snapshots",
+        "language": "ts",
+        "code": "interface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}"
+      },
+      {
+        "title": "Collaboration controller methods",
+        "language": "ts",
+        "code": "controller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);"
+      }
+    ],
+    "classes": [
+      {
+        "typeName": "NeuralEditorClasses",
+        "slots": [
+          {
+            "name": "root",
+            "type": "string",
+            "description": "Classes applied to the root element."
+          },
+          {
+            "name": "toolbar",
+            "type": "string",
+            "description": "Classes applied to the toolbar element."
+          },
+          {
+            "name": "toolbarButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar button element."
+          },
+          {
+            "name": "toolbarButtonIcon",
+            "type": "string",
+            "description": "Classes applied to the toolbar button icon element."
+          },
+          {
+            "name": "toolbarSeparator",
+            "type": "string",
+            "description": "Classes applied to the toolbar separator element."
+          },
+          {
+            "name": "toolbarMenu",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu element."
+          },
+          {
+            "name": "toolbarMenuButton",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu button element."
+          },
+          {
+            "name": "toolbarMenuPanel",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu panel element."
+          },
+          {
+            "name": "toolbarMenuAction",
+            "type": "string",
+            "description": "Classes applied to the toolbar menu action element."
+          },
+          {
+            "name": "toolbarColorOption",
+            "type": "string",
+            "description": "Classes applied to the toolbar color option element."
+          },
+          {
+            "name": "toolbarColorSwatch",
+            "type": "string",
+            "description": "Classes applied to the toolbar color swatch element."
+          },
+          {
+            "name": "bubbleMenu",
+            "type": "string",
+            "description": "Classes applied to the bubble menu element."
+          },
+          {
+            "name": "bubbleMenuButton",
+            "type": "string",
+            "description": "Classes applied to the bubble menu button element."
+          },
+          {
+            "name": "floatingMenu",
+            "type": "string",
+            "description": "Classes applied to the floating menu element."
+          },
+          {
+            "name": "floatingMenuButton",
+            "type": "string",
+            "description": "Classes applied to the floating menu button element."
+          },
+          {
+            "name": "linkPopover",
+            "type": "string",
+            "description": "Classes applied to the link popover element."
+          },
+          {
+            "name": "linkPopoverInput",
+            "type": "string",
+            "description": "Classes applied to the link popover input element."
+          },
+          {
+            "name": "linkPopoverAction",
+            "type": "string",
+            "description": "Classes applied to the link popover action element."
+          },
+          {
+            "name": "slashMenu",
+            "type": "string",
+            "description": "Classes applied to the slash menu element."
+          },
+          {
+            "name": "mentionMenu",
+            "type": "string",
+            "description": "Classes applied to the mention menu element."
+          },
+          {
+            "name": "suggestionList",
+            "type": "string",
+            "description": "Classes applied to the suggestion list element."
+          },
+          {
+            "name": "suggestionItem",
+            "type": "string",
+            "description": "Classes applied to the suggestion item element."
+          },
+          {
+            "name": "suggestionItemIcon",
+            "type": "string",
+            "description": "Classes applied to the suggestion item icon element."
+          },
+          {
+            "name": "suggestionItemContent",
+            "type": "string",
+            "description": "Classes applied to the suggestion item content element."
+          },
+          {
+            "name": "suggestionItemLabel",
+            "type": "string",
+            "description": "Classes applied to the suggestion item label element."
+          },
+          {
+            "name": "suggestionItemDescription",
+            "type": "string",
+            "description": "Classes applied to the suggestion item description element."
+          },
+          {
+            "name": "suggestionState",
+            "type": "string",
+            "description": "Classes applied to the suggestion state element."
+          },
+          {
+            "name": "commandPalette",
+            "type": "string",
+            "description": "Classes applied to the command palette element."
+          },
+          {
+            "name": "commandPaletteBackdrop",
+            "type": "string",
+            "description": "Classes applied to the command palette backdrop element."
+          },
+          {
+            "name": "commandPalettePanel",
+            "type": "string",
+            "description": "Classes applied to the command palette panel element."
+          },
+          {
+            "name": "commandPaletteInput",
+            "type": "string",
+            "description": "Classes applied to the command palette input element."
+          },
+          {
+            "name": "commandPaletteList",
+            "type": "string",
+            "description": "Classes applied to the command palette list element."
+          },
+          {
+            "name": "commandPaletteItem",
+            "type": "string",
+            "description": "Classes applied to the command palette item element."
+          },
+          {
+            "name": "aiReview",
+            "type": "string",
+            "description": "Classes applied to the ai review element."
+          },
+          {
+            "name": "aiReviewSummary",
+            "type": "string",
+            "description": "Classes applied to the ai review summary element."
+          },
+          {
+            "name": "aiReviewProgress",
+            "type": "string",
+            "description": "Classes applied to the ai review progress element."
+          },
+          {
+            "name": "aiReviewActions",
+            "type": "string",
+            "description": "Classes applied to the ai review actions element."
+          },
+          {
+            "name": "aiReviewButton",
+            "type": "string",
+            "description": "Classes applied to the ai review button element."
+          },
+          {
+            "name": "collaborationBar",
+            "type": "string",
+            "description": "Classes applied to the collaboration bar element."
+          },
+          {
+            "name": "collaborationStatus",
+            "type": "string",
+            "description": "Classes applied to the collaboration status element."
+          },
+          {
+            "name": "presenceList",
+            "type": "string",
+            "description": "Classes applied to the presence list element."
+          },
+          {
+            "name": "presenceItem",
+            "type": "string",
+            "description": "Classes applied to the presence item element."
+          },
+          {
+            "name": "collaborationPanel",
+            "type": "string",
+            "description": "Classes applied to the collaboration panel element."
+          },
+          {
+            "name": "collaborationSection",
+            "type": "string",
+            "description": "Classes applied to the collaboration section element."
+          },
+          {
+            "name": "collaborationSectionTitle",
+            "type": "string",
+            "description": "Classes applied to the collaboration section title element."
+          },
+          {
+            "name": "collaborationInput",
+            "type": "string",
+            "description": "Classes applied to the collaboration input element."
+          },
+          {
+            "name": "collaborationButton",
+            "type": "string",
+            "description": "Classes applied to the collaboration button element."
+          },
+          {
+            "name": "commentThread",
+            "type": "string",
+            "description": "Classes applied to the comment thread element."
+          },
+          {
+            "name": "commentMessage",
+            "type": "string",
+            "description": "Classes applied to the comment message element."
+          },
+          {
+            "name": "trackedChange",
+            "type": "string",
+            "description": "Classes applied to the tracked change element."
+          },
+          {
+            "name": "snapshotItem",
+            "type": "string",
+            "description": "Classes applied to the snapshot item element."
+          },
+          {
+            "name": "surface",
+            "type": "string",
+            "description": "Classes applied to the surface element."
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "description": "Classes applied to the content element."
+          },
+          {
+            "name": "footer",
+            "type": "string",
+            "description": "Classes applied to the footer element."
+          },
+          {
+            "name": "characterCount",
+            "type": "string",
+            "description": "Classes applied to the character count element."
+          },
+          {
+            "name": "wordCount",
+            "type": "string",
+            "description": "Classes applied to the word count element."
+          }
+        ],
+        "sourcePath": "libs/neural-editor/editor.types.ts"
+      }
+    ],
+    "relatedComponents": [
+      "editor-ai-review-template",
+      "editor-bubble-menu-template",
+      "editor-floating-menu-template",
+      "editor-link-popover-template",
+      "editor-slash-menu-template",
+      "editor-mention-menu-template",
+      "editor-command-palette-template",
+      "editor-toolbar-template"
+    ],
+    "resources": {
+      "contract": "neural://components/neural-editor/contract",
+      "readme": "neural://components/neural-editor/readme",
+      "llms": "neural://components/neural-editor/llms"
+    },
+    "sourceDirectory": "libs/neural-editor",
+    "readme": "# Editor\n\nStatus: **Beta**. The canonical standalone export is `NeuralEditor`;\n`EditorComponent` remains a deprecated compatibility alias.\n\nSignal-first structured rich-text editing for Angular 22+. NeuralNg Editor uses\nTiptap 3 and ProseMirror internally, while its canonical form value remains a\n`NeuralEditorDocument` JSON tree. HTML is derived output, never the model.\n\n## Install\n\nInstall the complete Editor runtime with one command:\n\n```bash\nnpm install @neural-ng/editor\n```\n\nThe package installs Tiptap, ProseMirror, Floating UI, Yjs, and the required\nNeuralNg core runtime. Applications do not install those Editor internals\nindividually. A realtime collaboration transport such as `y-websocket` or a\nHocuspocus provider remains application-owned and is only needed when that\nfeature is enabled.\n\n```ts\nimport {\n  NeuralEditor,\n  type NeuralEditorDocument,\n} from '@neural-ng/editor';\n\nreadonly document = signal<NeuralEditorDocument>({\n  type: 'doc',\n  content: [{ type: 'paragraph' }],\n});\n```\n\n```html\n<neural-editor [(value)]=\"document\" ariaLabel=\"Article body\" placeholder=\"Write the article...\" showCharacterCount showWordCount [maxCharacters]=\"5000\" fluid />\n```\n\nEditor implements `FormValueControl<NeuralEditorDocument>`. Use the same\ncomponent with `[(value)]`, `[formField]`, `[formControl]`, or `[(ngModel)]`.\nDo not implement a second `ControlValueAccessor`.\n\n`EditorComponent` remains a deprecated compatibility alias. New code should\nimport the canonical `NeuralEditor` runtime.\n\n## Public API contract\n\nThe standalone package contract is documented in [`API_FREEZE.md`](./API_FREEZE.md).\nImport only from `@neural-ng/editor`; deep imports and internal rendering\ncomponents are unsupported. The freeze document is the source of truth for\ncomponent inputs/outputs, controller methods, template contexts, class slots,\nutilities, and package asset entry points.\n\n### Theme\n\nImport the matching Core and Editor token files:\n\n```css\n@import '@neural-ng/core/themes/neutral.css';\n@import '@neural-ng/editor/themes/neutral.css';\n```\n\nExperimental presets follow the same two-file rule: import the matching Core\npreset first, then the Editor preset. The optional Tailwind bridge remains\n`@neural-ng/core/themes/tailwind.css`.\n\n## Ownership boundary\n\nEditor owns structured editing, toolbar commands, selection state, undo/redo,\nJSON output, HTML/text derivation, accessibility, and Angular Forms\nintegration. It does not save documents, call HTTP APIs, upload image files,\ninvoke AI models, connect collaboration providers, or sanitize backend output. Those\nresponsibilities belong to application services or explicit extensions.\n\n## Canonical value\n\nThe model is never HTML, Markdown, or a format-dependent union:\n\n```ts\nexport interface NeuralEditorDocument {\n  readonly type: 'doc';\n  readonly content?: readonly NeuralEditorNode[];\n}\n```\n\nThe current Beta schema and interaction layer includes:\n\n- paragraph and heading alignment: `left`, `center`, `right`, `justify`\n- text color through a `textStyle` mark\n- multicolor highlight marks\n- `taskList` and `taskItem` nodes\n- `table`, `tableRow`, `tableHeader`, and `tableCell` nodes\n- `image` nodes containing persistent URLs, alt text, title, width, and height\n- BubbleMenu, FloatingMenu, and a selection-aware link popover\n- slash commands, async mentions, and a searchable command palette\n\nPersist a schema version beside long-lived documents:\n\n```ts\nconst stored = {\n  schemaVersion: 1,\n  document: document(),\n} satisfies NeuralEditorStoredDocument;\n```\n\nUse the serializers for external representations:\n\n```ts\nconst html = editorDocumentToHtml(document());\nconst restored = editorDocumentFromHtml(html);\nconst text = editorDocumentToText(document());\n```\n\nThe default serializers include the current Beta schema, including image and\nmention nodes. Pass the matching custom extension set when converting documents\nwith additional nodes or marks.\n\n## Stable node IDs and structured operations\n\nThe Beta contract enables Tiptap `UniqueID` by default. Identified nodes receive a\n`neuralId` attribute in canonical JSON. The default list covers block nodes,\nlist items, tables and cells, images, and horizontal rules. Configure this at\ninitialization time:\n\n```html\n<neural-editor [(value)]=\"document\" nodeIdAttribute=\"neuralId\" [identifiedNodeTypes]=\"['paragraph', 'heading', 'image']\" />\n```\n\nUse `nodeIdGenerator` only when the application requires a custom ID strategy.\nThe generator must return a non-empty, globally unique, stable string. Disable\nthe feature with `[enableNodeIds]=\"false\"` only when the document will never use\nstructured operations, AI review, comments, or collaboration adapters.\n\nThe controller exposes a document-only revision signal and node lookup:\n\n```ts\nconst revision = controller.revision();\nconst paragraph = controller.getNodeById('paragraph-a1b2');\nconst nodeId = controller.getNodeIdAt(selection.from);\n```\n\nBuild and apply atomic, schema-checked operation batches through the controller:\n\n```ts\nconst batch = controller.createOperationBatch(\n  [\n    {\n      type: 'replace',\n      target: { nodeId: 'paragraph-a1b2' },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Rewritten content' }],\n        },\n      ],\n    },\n  ],\n  { id: 'rewrite-1', metadata: { source: 'application' } },\n);\n\nconst validation = controller.validateOperations(batch);\nif (validation.valid) {\n  const result = controller.applyOperations(batch);\n}\n```\n\nSupported operations are `insert`, `replace`, `delete`, and `update-node`.\nPrefer `nodeId` targets. Numeric `from`/`to` targets are accepted for captured\nselection ranges and are mapped across earlier operations in the same batch.\nA batch is built fully before dispatch, so one invalid operation rejects the\nwhole batch without partial document changes.\n\n`baseRevision` prevents stale edits. If the document changes after a batch is\ncreated, `applyOperations()` returns `status: 'conflict'` and emits\n`operationConflict`. Successful and rejected batches emit `operationsApplied`\nand `operationsRejected` respectively.\n\nNode IDs are protected identity. Inserted content cannot choose IDs;\n`UniqueID` assigns them. A compatible single-node replacement preserves the\ntarget ID by default. `update-node` cannot change the configured ID attribute.\n\nInternal IDs are excluded from HTML by default:\n\n```ts\nconst publicHtml = editorDocumentToHtml(document);\nconst diagnosticHtml = editorDocumentToHtml(document, {\n  includeNodeIds: true,\n});\n\nconst identified = editorDocumentWithNodeIds(legacyDocument);\n```\n\nPersist canonical JSON with IDs. Do not use generated HTML as the source of\ntruth for operations.\n\n## AI requests and reviewable proposals\n\nEditor remains provider-neutral. It never calls OpenAI, Anthropic, or any other\nmodel directly. Request work through the controller and handle the event in\napplication code:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"controller = $event\" (aiRequest)=\"handleAiRequest($event)\" (aiProposalAccepted)=\"saveAcceptedProposal($event)\" />\n```\n\n```ts\nasync handleAiRequest(event: NeuralEditorAiRequestEvent) {\n  const proposal = await aiService.edit(event.request);\n  event.controller.previewAiProposal(proposal);\n}\n```\n\n`requestAi()` captures the canonical JSON document, document revision, current\nselection range, selected text, selected JSON content, and stable node IDs. The\napplication service returns a `NeuralEditorAiProposal` containing only the\nstructured operations from the current Beta contract.\n\nPreview is non-destructive. Insertions, deletions, replacements, and attribute\nupdates are rendered as ProseMirror decorations while `[(value)]` remains\nunchanged. Only `acceptAiProposal()` applies the complete operation batch in one\ntransaction. `rejectAiProposal()` removes the preview without touching the\nmodel.\n\n```ts\nconst request = controller.requestAi('rewrite', {\n  instruction: 'Make this paragraph concise.',\n});\n\ncontroller.previewAiProposal({\n  id: 'proposal-1',\n  requestId: request.id,\n  baseRevision: request.baseRevision,\n  summary: 'Rewrite the introduction',\n  operations: [\n    {\n      type: 'replace',\n      target: { nodeId: request.selection.nodeIds[0] },\n      content: [\n        {\n          type: 'paragraph',\n          content: [{ type: 'text', text: 'Concise replacement.' }],\n        },\n      ],\n    },\n  ],\n});\n```\n\nA proposal is rejected as a conflict when its `baseRevision` no longer matches\nthe editor revision. Editing the document while a preview is active also clears\nthe preview and emits `aiOperationConflict`. Do not silently overwrite the base\nrevision or force stale operations onto new content.\n\nThe default review bar appends to `menuAppendTo` and supports previous/next,\naccept, reject, Escape, mobile layout, themes, and `unstyled`. Replace it with a\ntyped template when needed:\n\n```html\n<ng-template neuralEditorAiReview let-review=\"review\" let-previous=\"previous\" let-next=\"next\" let-accept=\"accept\" let-reject=\"reject\">\n  @if (review(); as state) {\n  <span>{{ state.activeOperationIndex + 1 }} / {{ state.operationCount }}</span>\n  <button type=\"button\" (click)=\"previous()\">Previous</button>\n  <button type=\"button\" (click)=\"next()\">Next</button>\n  <button type=\"button\" (click)=\"reject()\">Reject</button>\n  <button type=\"button\" (click)=\"accept()\">Accept</button>\n  }\n</ng-template>\n```\n\n`controller.aiReview()` exposes the active review state and\n`controller.aiRequestPending()` reports unresolved requests. The Beta contract keeps a\nsingle active proposal; `getActiveAiProposals()` therefore returns zero or one\nproposal while preserving room for a future multi-proposal adapter.\n\n## Slash commands, mentions, and command palette\n\nType `/` in a paragraph to open the default slash menu. The default commands\ninsert headings, lists, tasks, quotes, code blocks, tables, images, and dividers.\nReplace the defaults with `slashCommands`, or provide `slashCommandProvider` for\nasync or remote filtering. Providers receive an `AbortSignal`; stop stale work\nwhen it is aborted.\n\nMentions are enabled only when `mentionProvider` is present:\n\n```ts\nreadonly mentionProvider: NeuralEditorSuggestionProvider<NeuralEditorMentionItem> =\n  (query, { signal }) => peopleService.search(query, { signal });\n```\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\" (mentionSelected)=\"mentionSelected($event)\" />\n```\n\nThe canonical mention node persists only stable identity and display data:\n\n```ts\n{\n  type: 'mention',\n  attrs: { id: 'user-42', label: 'Beyza' },\n}\n```\n\nProvider-only `metadata` is not written to the document. Keep authorization,\nprofiles, and mutable user data in application services.\n\nPress `Ctrl+K` or `Cmd+K`, or call `controller.openCommandPalette()`, to open the\nsearchable command palette. Set `commandPaletteItems` to replace its defaults.\nSlash, mention, command-palette, bubble, floating, link, and toolbar overlays are\ncoordinated so only the relevant layer remains open. Suggestion menus and the\npalette use the same `menuAppendTo` target; `body` remains the default to avoid\noverflow clipping.\n\nProject complete menu UIs when needed:\n\n```html\n<neural-editor [(value)]=\"document\" [mentionProvider]=\"mentionProvider\">\n  <ng-template neuralEditorSlashMenu let-editor let-items=\"items\" let-activeIndex=\"activeIndex\" let-select=\"select\" let-optionId=\"optionId\">\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" role=\"option\" [id]=\"optionId(index)\" [attr.aria-selected]=\"activeIndex() === index\" (pointerdown)=\"$event.preventDefault()\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n\n  <ng-template neuralEditorCommandPalette let-query=\"query\" let-setQuery=\"setQuery\" let-items=\"items\" let-select=\"select\">\n    <input type=\"search\" [value]=\"query()\" (input)=\"setQuery(inputValue($event))\" />\n    @for (item of items(); track item.id; let index = $index) {\n    <button type=\"button\" (click)=\"select(index)\">{{ item.label }}</button>\n    }\n  </ng-template>\n</neural-editor>\n```\n\nUse the supplied context callbacks. Do not query the editor DOM, manually\nposition suggestion panels, or insert mention HTML yourself.\n\n## Controller\n\n`editorReady` exposes a stable NeuralNg controller instead of the raw Tiptap\ninstance:\n\n```html\n<neural-editor [(value)]=\"document\" (editorReady)=\"editor = $event\" />\n```\n\n```ts\neditor?.setTextAlign('center');\neditor?.setTextColor('#2563eb');\neditor?.setHighlight('#fef08a');\neditor?.toggleTaskList();\neditor?.insertTable({ rows: 3, cols: 3, withHeaderRow: true });\n```\n\nTable commands are contextual. Row, column, cell, and delete commands become\navailable when the current selection is inside a table. Use controller commands\ninstead of mutating JSON nodes or editing the `contenteditable` DOM.\n\n## Toolbar\n\nToolbar palettes and table actions use NeuralNg Popover rather than native `details` menus. Popover renders through the browser top layer, so panels are not clipped by editor or card overflow. Opening one toolbar popover closes the previously open auto popover; no `appendTo=\"body\"` option or DOM reparenting is needed.\n\nThe default toolbar contains:\n\n- undo and redo\n- paragraph and H1-H3\n- bold, italic, underline, strike, and inline code\n- text-color and highlight palettes\n- left, center, right, and justified alignment\n- bullet, ordered, and task lists\n- blockquote and code block\n- link editing\n- table insertion and contextual table commands\n- horizontal rule and clear formatting\n\nCustomize the palettes without changing the document type:\n\n```ts\nreadonly textColors = [\n  { value: '#111827', label: 'Ink' },\n  { value: '#2563eb', label: 'Brand' },\n] as const;\n```\n\n```html\n<neural-editor [(value)]=\"document\" [textColors]=\"textColors\" [highlightColors]=\"highlightColors\" />\n```\n\nReplace the toolbar model with `toolbarItems`, or project a complete toolbar:\n\n```html\n<neural-editor [(value)]=\"document\">\n  <ng-template neuralEditorToolbar let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n    <button type=\"button\" (click)=\"editor.toggleTaskList()\">Tasks</button>\n    <button type=\"button\" (click)=\"editor.insertTable()\">Table</button>\n  </ng-template>\n</neural-editor>\n```\n\n## Images and FileUpload\n\nThe toolbar and floating menu emit `imageInsertRequest`; Editor never uploads a\n`File`. Application code selects and validates the file with FileUpload, sends\nit to a media service, then inserts only the persistent URL:\n\n```html\n<neural-editor [(value)]=\"document\" (imageInsertRequest)=\"openImageUpload($event)\" />\n```\n\n```ts\nconst uploaded = await mediaService.upload(file);\nrequest.controller.insertImage({\n  src: uploaded.url,\n  alt: file.name,\n});\n```\n\nBase64 sources are rejected by the controller and default Image extension.\nEnable `allowBase64Images` only for a deliberate application requirement. Do\nnot persist `File`, blob URLs, or temporary object URLs in editor JSON.\n\n## Context menus and positioning\n\nBubble, floating, and link menus use Tiptap's Floating UI-based extensions.\n`menuAppendTo` defaults to `body`, which avoids clipping by editor, card, dialog,\nor overflow containers. Use `menuAppendTo=\"editor\"` only when the menu must stay\ninside the editor stacking context, or bind a specific `HTMLElement`.\n\n```html\n<neural-editor [(value)]=\"document\" menuAppendTo=\"body\" [showBubbleMenu]=\"true\" [showFloatingMenu]=\"true\" [showLinkPopover]=\"true\">\n  <ng-template neuralEditorBubbleMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleBold()\">Bold</button>\n  </ng-template>\n\n  <ng-template neuralEditorFloatingMenu let-editor>\n    <button type=\"button\" (click)=\"editor.toggleHeading(2)\">H2</button>\n  </ng-template>\n</neural-editor>\n```\n\nUse `ng-template[neuralEditorLinkPopover]` for a custom link form. Default menus\nare keyboard reachable, expose toolbar/dialog roles, stay within the viewport,\nand switch to compact horizontally scrollable layouts on narrow screens.\n\n## Extensions\n\n`extensions` appends Tiptap extensions. Top-level extension names are\nlast-write-wins. To replace the default schema, set\n`includeDefaultExtensions=\"false\"` and provide the complete extension set.\nExtension configuration is initialization-time in this Beta release.\n\n## Security and persistence\n\nJSON is not a security boundary. Validate the document schema, URLs, colors,\ntable attributes, pasted content, and custom node attributes on the server.\nSanitize generated HTML for its final rendering context. Do not trust content\nsolely because the editor accepted it.\n\n## Styling\n\nUse the neutral, glass, mist, or futuristic themes, or set `unstyled` locally or\nglobally. Structural `*-root` hooks remain while visual `*-base` classes are\nremoved. `NeuralEditorClasses` includes typed slots for toolbar menus, palette\noptions, slash and mention suggestions, the command palette, BubbleMenu,\nFloatingMenu, link popover controls, the editing surface, content, footer, and\ncounters.\n\n## Collaboration and review\n\nEditor collaboration is provider-neutral. The component receives an initialized\nYjs document and, optionally, a provider that exposes awareness and connection\nevents. NeuralNg does not create rooms, authenticate users, or persist Yjs\nupdates.\n\n```ts\nimport { Doc } from 'yjs';\nimport type {\n  NeuralEditorCollaborationConfig,\n  NeuralEditorCollaborationUser,\n  NeuralEditorSnapshot,\n} from '@neural-ng/editor';\n\nreadonly collaboration: NeuralEditorCollaborationConfig = {\n  document: new Doc(),\n  provider: appCollaborationProvider,\n  field: 'article-body',\n  commentsField: 'article-comments',\n  waitForSync: true,\n};\n\nreadonly user: NeuralEditorCollaborationUser = {\n  id: 'user-42',\n  name: 'Ada Lovelace',\n  color: '#2563eb',\n};\n\nreadonly snapshots = signal<readonly NeuralEditorSnapshot[]>([]);\n```\n\n```html\n<neural-editor [collaboration]=\"collaboration\" [collaborationUser]=\"user\" enableComments trackedChangesMode=\"suggesting\" enableSnapshots [(snapshots)]=\"snapshots\" />\n```\n\nWhen `collaboration` is present:\n\n- The Yjs document is the live collaborative source of truth.\n- Editor waits for provider sync by default before mounting.\n- StarterKit undo/redo is disabled because Collaboration owns history.\n- External `value` writes are not pushed into the collaborative document.\n- `editorUpdate.source` is `remote` for collaboration-origin transactions.\n- Presence is read from the provider awareness `user` field and is never\n  persisted as document content.\n- `disconnectOnDestroy` is opt-in because provider lifetime normally belongs to\n  the application.\n\n### Provider contract\n\nThe optional provider is structural, so Hocuspocus, y-websocket, or another Yjs\nprovider can be adapted without making it a NeuralNg dependency. It may expose\n`connect`, `disconnect`, `synced`, `on`, `off`, and `awareness`.\n\nTreat `document`, `provider`, `field`, and `fragment` as initialization-only.\nWhen the room or collaborative field changes, destroy and recreate the Editor\ninstance instead of mutating the collaboration config in place.\n\nFor providers with custom event names, pass `whenSynced` and resolve it when the\ninitial room synchronization is complete. Do not seed `value` before sync. Seed\nan empty Yjs fragment in application code after synchronization instead.\n\n### Comments\n\nComments use a lightweight inline `neuralComment` mark and thread data stored in\na dedicated Yjs map. Without collaboration, the same API uses an in-memory\nrepository. The default panel supports creating, replying, resolving, reopening,\nselecting, and deleting threads through `NeuralEditorController`.\n\nComments in the Beta contract are plain-text thread messages. Authentication,\nauthorization, mentions, notifications, and server-side moderation remain\napplication responsibilities.\n\n### Tracked changes\n\nSet `trackedChangesMode=\"suggesting\"` to track local text insertions and\ndeletions. Remote Yjs transactions are ignored, so each client attributes only\nits own edits. Changes can be accepted or rejected individually or as a batch.\n\nThe Beta contract tracks text insertions and deletions. Mark changes, complex block\nreplacement, overlapping suggestions, and production audit policy are not part\nof this Beta contract.\n\n### Version snapshots\n\n`snapshots` is a controlled model containing portable JSON checkpoints:\n\n```ts\ninterface NeuralEditorSnapshot {\n  schemaVersion: 1;\n  id: string;\n  label?: string;\n  createdAt: string;\n  revision: number;\n  document: NeuralEditorDocument;\n  comments: readonly NeuralEditorCommentThread[];\n}\n```\n\nThe built-in snapshot model intentionally does not persist Yjs binary updates.\nStore snapshots in application code, and use a provider/backend-specific Yjs\nhistory service when exact CRDT history, branching, or audit-grade restoration\nis required.\n\n### Collaboration controller methods\n\n```ts\ncontroller.updateCollaborationUser(user);\ncontroller.addComment('Review this paragraph.');\ncontroller.replyToComment(threadId, 'Updated.');\ncontroller.resolveComment(threadId);\ncontroller.acceptTrackedChange(changeId);\ncontroller.rejectTrackedChange(changeId);\ncontroller.createSnapshot('Before legal review');\ncontroller.restoreSnapshot(snapshotId);\n```\n\nThe default collaboration panel is enabled whenever collaboration, comments,\ntracked changes, or snapshots are enabled. Set `showCollaborationPanel=\"false\"`\nto render an application-owned review surface using the controller signals.\n",
+    "llms": "# @neural-ng/editor\n\nImport canonical `NeuralEditor` from `@neural-ng/editor`. `EditorComponent` is\na deprecated compatibility alias. The selector remains `<neural-editor>`.\n\n## Public API boundary\n\n- Treat `API_FREEZE.md` as the authoritative standalone package contract.\n- Import only from `@neural-ng/editor`. Never deep-import source files.\n- Use `NeuralEditor`, the exported template directives, public types,\n  constants, serializers, pure helpers, and `NeuralEditorController`.\n- Internal toolbar, menu, review, and collaboration-panel renderer components\n  are not public API. Customize through class slots and template directives.\n- Do not use raw Tiptap/ProseMirror operation or tracked-change helpers. Use the\n  controller methods so revisions, events, forms, and collaboration rules stay\n  consistent.\n\n## Canonical rules\n\n- Install only `@neural-ng/editor`. Tiptap, ProseMirror, Floating UI, Yjs, and the required NeuralNg core runtime are package-managed dependencies.\n- Install a realtime collaboration transport/provider separately only when collaboration is enabled.\n- Import `NeuralEditor` from `@neural-ng/editor`.\n- Bind only `NeuralEditorDocument` JSON to `[(value)]`, `[formField]`,\n  `[formControl]`, or `[(ngModel)]`. Never bind HTML or Markdown strings and\n  never create a string-or-JSON value union.\n- The empty value is a `doc` containing an empty paragraph. Do not use `null` as\n  the normal empty state.\n- Treat editor values as immutable. Do not mutate node, mark, attribute, or\n  content arrays in place.\n\n## Beta schema, identity, menus, AI review, and collaboration\n\n- Text alignment is stored on paragraph or heading attributes as `textAlign`.\n- Text color is stored in a `textStyle` mark with a `color` attribute.\n- Highlight is stored in a `highlight` mark and may include a `color` attribute.\n- Tasks use `taskList` and `taskItem`; task state is the boolean `checked`\n  attribute on `taskItem`.\n- Tables use `table`, `tableRow`, `tableHeader`, and `tableCell` nodes.\n- Images use an `image` node. Persist a stable HTTP(S) URL and optional alt,\n  title, width, and height attributes. Never persist File objects, blob URLs,\n  or temporary object URLs.\n- Mentions use `mention` nodes with stable `id` and `label` attributes. Provider-only\n  metadata is not persisted. Do not copy avatars, permissions, or mutable profile\n  objects into editor JSON.\n- Do not invent HTML-only state that cannot be represented by the configured\n  JSON schema.\n\n## Commands\n\n- Use the `NeuralEditorController` from `editorReady` for all programmatic\n  edits. Do not query, replace, or mutate the `contenteditable` DOM.\n- Use `setTextAlign()`, `setTextColor()`, `setHighlight()`,\n  `toggleTaskList()`, `insertTable()`, `insertImage()`, and menu controller\n  methods for Alpha 2.3 features.\n- Table row, column, merge, split, header, and delete commands are contextual;\n  call `controller.can(command)` before presenting a custom enabled action.\n- Use `toolbarItems` for the built-in toolbar or project\n  `ng-template[neuralEditorToolbar]` with `let-editor` for a custom toolbar.\n- Built-in color and table menus use NeuralNg Popover in the browser top layer. Do not replace them with native `details`, custom absolute-positioned panels, or `appendTo=\"body\"` logic. Only one auto popover remains open at a time.\n- Use `(imageInsertRequest)` to open FileUpload or an application media picker.\n  Upload outside Editor, then call `event.controller.insertImage()` with the\n  persistent URL. Editor must not send HTTP requests.\n- BubbleMenu appears for a text or image selection. FloatingMenu appears for an\n  empty paragraph. Link editing uses the same contextual bubble layer so only\n  one contextual menu is active.\n- Context menus append to `body` by default. Use `menuAppendTo=\"editor\"` or a\n  concrete HTMLElement only when the containing stacking context is required.\n- Customize menus with `neuralEditorBubbleMenu`, `neuralEditorFloatingMenu`,\n  and `neuralEditorLinkPopover` templates. Use the supplied controller and link\n  context callbacks; do not access the raw Tiptap instance or position menus\n  manually.\n- `textColors` and `highlightColors` configure UI palettes only. They do not\n  constrain externally loaded JSON; validate allowed values in application and\n  server code when a restricted palette is required.\n\n## Node identity and structured operations\n\n- Node IDs are enabled by default. Canonical JSON stores the configured\n  `nodeIdAttribute` (`neuralId` by default) on identified nodes.\n- Keep node IDs stable and unique. Do not derive IDs from array indexes,\n  document positions, visible text, or mutable labels.\n- Use `identifiedNodeTypes` and `nodeIdGenerator` only as initialization-time\n  configuration. Disable `enableNodeIds` only when no operation, AI review,\n  comment, or collaboration layer will address nodes.\n- Prefer `controller.getNodeById()` and `controller.getNodeIdAt()` over walking\n  the `contenteditable` DOM or assuming ProseMirror positions remain stable.\n- Create batches with `controller.createOperationBatch()`. It captures the\n  current document-only revision. Validate with `validateOperations()` and\n  apply with `applyOperations()`.\n- Supported operation types are `insert`, `replace`, `delete`, and\n  `update-node`. Prefer `{ nodeId }` targets. Use `{ from, to }` only for a\n  captured selection range from the same base revision.\n- Operation batches are atomic. Never apply operations one by one in\n  application code. One invalid target, node, attribute, or schema placement\n  rejects the whole batch without partial changes.\n- Treat `status: 'conflict'` as a required rebase/retry boundary. Never force a\n  stale batch onto a newer document or silently replace its `baseRevision`.\n- Inserted operation content cannot choose internal node IDs. Compatible\n  single-node replacements preserve the target ID by default. The protected ID\n  attribute cannot be changed with `update-node`.\n- Listen to `operationsApplied`, `operationsRejected`, and `operationConflict`\n  for application side effects. The form model changes only after a successful\n  atomic dispatch.\n- `editorDocumentToHtml()` omits node IDs by default. Use\n  `{ includeNodeIds: true }` only for diagnostics or explicit round trips.\n  Persist canonical JSON, not generated HTML, as the addressable source.\n- Use `editorDocumentWithNodeIds()` to migrate legacy JSON before storing or\n  sending it to an AI operation service.\n\n## Slash, mention, and command-palette behavior\n\n- Type `/` in a paragraph for the slash menu. Configure static commands through\n  `slashCommands` or use `slashCommandProvider`; a provider replaces default\n  filtering for that request.\n- Enable mentions with `mentionProvider`. It may return synchronously or\n  asynchronously. Honor the provider context `AbortSignal` and discard stale\n  network work when it aborts.\n- Press `Ctrl+K`/`Cmd+K` or call `controller.openCommandPalette()` for global\n  editor commands. Configure `commandPaletteItems`; do not create document-wide\n  key listeners in application code.\n- Listen to `commandExecuted` and `mentionSelected` only for user-action side\n  effects. The canonical model still changes through normal editor transactions.\n- Use `neuralEditorSlashMenu`, `neuralEditorMentionMenu`, and\n  `neuralEditorCommandPalette` for custom rendering. Use the supplied signals,\n  selection callbacks, and close callbacks. Do not access Tiptap plugin state or\n  manually mount/reposition overlays.\n- Suggestion and context overlays are mutually coordinated. Keep\n  `menuAppendTo=\"body\"` unless a deliberate editor-local stacking context is\n  required.\n- Slash commands and palette items execute local controller operations. They do\n  not imply HTTP, AI, upload, or persistence behavior.\n\n## AI request and review rules\n\n- NeuralNg Editor does not call AI providers. Use `controller.requestAi()` and\n  handle `(aiRequest)` in application code.\n- Send the request's structured document, selection snapshot, stable node IDs,\n  schema version, and base revision to the application-owned AI service. Do not\n  scrape the `contenteditable` DOM and do not send generated HTML as the\n  canonical source.\n- AI services must return `NeuralEditorAiProposal` values containing only\n  supported structured operations. Never return raw executable JavaScript,\n  mutate the editor directly, or inject unsanitized HTML.\n- Call `controller.previewAiProposal()` before applying a proposal. Preview uses\n  ephemeral ProseMirror decorations and must not change `[(value)]`.\n- Apply changes only after explicit user approval with\n  `controller.acceptAiProposal()`. Reject with `rejectAiProposal()`; rejection\n  removes decorations and leaves the canonical JSON unchanged.\n- Respect `baseRevision`. Treat `aiOperationConflict` as a required rebase or\n  fresh-request boundary. Never replace a stale proposal's revision with the\n  current revision.\n- A normal document edit invalidates the active preview. Do not keep stale\n  visual suggestions visible after user edits.\n- Use `(aiProposalPreviewed)`, `(aiProposalAccepted)`,\n  `(aiProposalRejected)`, `(aiOperationConflict)`, and\n  `(aiRequestCancelled)` for side effects and analytics.\n- Customize the review UI with `ng-template[neuralEditorAiReview]`. Use the\n  supplied callbacks and signals; do not mount another overlay, duplicate\n  accept/reject state, or apply operations outside the controller.\n- The default review UI follows `menuAppendTo`, supports mobile layout, and is\n  part of the shared overlay coordination model.\n\n## Conversion and persistence\n\n- Use `editorDocumentFromHtml()` to import HTML and\n  `editorDocumentToHtml()`/`editorDocumentToText()` for derived output.\n- The default serializers understand the current Beta schema, including images and mentions. Pass the\n  exact custom extension set when the document contains additional nodes or\n  marks.\n- Save documents in application code and persist a schema version beside\n  long-lived JSON.\n- Editor does not save data, upload files, call AI models, open collaboration\n  connections, or perform backend sanitization.\n\n## Security\n\n- JSON is not a security boundary. Validate document structure, links, colors,\n  table attributes, pasted content, and custom node attributes on the server.\n- Sanitize generated HTML for its final destination.\n- Never treat client-side toolbar palettes or schema checks as authorization or\n  backend validation.\n\n## Integration\n\n- `extensions` are initialization-time in the alpha API and append to the\n  defaults with top-level last-write-wins behavior.\n- To replace StarterKit or the default schema, disable\n  `includeDefaultExtensions` and provide every required extension.\n- `readonly` keeps content readable and selectable while blocking edits.\n  `disabled` also removes the editor from normal keyboard interaction.\n- Use `unstyled` or global unstyled mode for headless rendering. Structural\n  classes and ARIA relationships remain.\n\n## Collaboration, comments, tracked changes, and snapshots\n\nUse `NeuralEditorCollaborationConfig` with an application-owned `Y.Doc`.\nNeuralNg does not create a collaboration backend, room, token, or provider.\nThe optional provider must expose the small structural provider contract.\n\nWhen collaboration is enabled, the Yjs document is the live source of truth.\nDo not initialize the editor with remote content before the provider has synced.\nDo not bind autosave logic to every remote update without throttling and origin\nchecks. Collaboration disables StarterKit history and uses Yjs collaboration\nundo/redo.\nTreat `collaboration.document`, `provider`, `field`, and `fragment` as\ninitialization-only. Recreate the Editor when the room or field changes.\n\nPass `collaborationUser` with stable `id`, `name`, and `color` values. Presence\ncomes from provider awareness and is ephemeral. Never persist awareness state as\ncanonical editor content.\n\nUse `enableComments` for inline plain-text comment threads. Thread data is stored\nin the configured Yjs comments map when collaboration is active. Authentication,\npermissions, notifications, moderation, and server persistence belong to the\napplication.\n\nUse `trackedChangesMode=\"suggesting\"` to record local text insertions and\ndeletions as review marks. Remote collaboration transactions are deliberately\nignored. Alpha 4 tracked changes are not an audit log and do not cover every\npossible structural or formatting edit.\n\nUse `[(snapshots)]` for portable JSON checkpoints. Snapshot creation does not\nupload or persist anything. Save snapshots in application code. For exact CRDT\nhistory or compliance-grade versioning, use a backend/provider history system.\n\nNever combine independent Yjs documents for the same room. Never seed content on\nan unsynchronized collaborative document. Do not mutate `Y.Doc` content and the\nEditor `value` independently.\n"
+  },
+  {
+    "schemaVersion": 2,
     "id": "neural-field",
     "name": "NeuralField",
     "className": "NeuralField",
     "kind": "component",
     "selector": "neural-field",
     "entryPoint": "@neural-ng/core/field",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
     "inputs": [
@@ -12976,6 +19489,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralFieldControl]",
     "entryPoint": "@neural-ng/core/field",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
     "inputs": [],
@@ -13080,6 +19595,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralFieldError]",
     "entryPoint": "@neural-ng/core/field",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
     "inputs": [
@@ -13192,6 +19709,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralFieldHint]",
     "entryPoint": "@neural-ng/core/field",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
     "inputs": [],
@@ -13296,6 +19815,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "label[neuralFieldLabel]",
     "entryPoint": "@neural-ng/core/field",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Composable, form-agnostic field accessibility infrastructure for Angular 22+.",
     "inputs": [],
@@ -13400,6 +19921,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-file-upload",
     "entryPoint": "@neural-ng/core/file-upload",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first file selection and client-side validation control for Angular 22+. FileUpload owns native file picking, drag and drop, immutable selection state, removal, clearing, and deterministic rejection events. It does not send HTTP requests.",
     "formContract": "FormValueControl<NeuralFileUploadValue>",
@@ -13862,6 +20385,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "input[neuralInput]",
     "entryPoint": "@neural-ng/core/input",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Native, Signal Forms-ready text input enhancement for Angular 22+.",
     "inputs": [
@@ -14074,6 +20599,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-input-group",
     "entryPoint": "@neural-ng/core/input",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Native, Signal Forms-ready text input enhancement for Angular 22+.",
     "inputs": [
@@ -14287,6 +20814,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-input-mask",
     "entryPoint": "@neural-ng/core/input-mask",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Current component maturity: **beta**.",
     "formContract": "FormValueControl<string>",
@@ -14553,6 +21082,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-input-number",
     "entryPoint": "@neural-ng/core/input-number",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Current component maturity: **beta**.",
     "formContract": "FormValueControl<number | null>",
@@ -14932,6 +21463,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-input-otp",
     "entryPoint": "@neural-ng/core/input-otp",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Beta one-time-code input for Angular 22+ with one string model, native autofill semantics, paste distribution, deterministic keyboard navigation, localization, SSR-safe IDs, and complete Angular Forms support.",
     "formContract": "FormValueControl<string>",
@@ -15203,6 +21736,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralLoadingIndicator]",
     "entryPoint": "@neural-ng/core/loading-overlay",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible container and viewport loading blockers for Angular 22+.",
     "inputs": [],
@@ -15321,6 +21856,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-loading-overlay",
     "entryPoint": "@neural-ng/core/loading-overlay",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible container and viewport loading blockers for Angular 22+.",
     "inputs": [
@@ -15557,6 +22094,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-menu",
     "entryPoint": "@neural-ng/core/menu",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
     "inputs": [
@@ -15814,6 +22353,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-menu-group",
     "entryPoint": "@neural-ng/core/menu",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
     "inputs": [
@@ -16026,6 +22567,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-menu-item",
     "entryPoint": "@neural-ng/core/menu",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
     "inputs": [
@@ -16333,6 +22876,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-menu-separator",
     "entryPoint": "@neural-ng/core/menu",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
     "inputs": [
@@ -16510,6 +23055,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralMenuTriggerFor]",
     "entryPoint": "@neural-ng/core/menu",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Status: **Beta**. Canonical standalone exports are `NeuralMenu`, `NeuralMenuItem`, `NeuralMenuGroup`, `NeuralMenuSeparatorItem`, and `NeuralMenuTrigger`; legacy `*Component` and `*Directive` names remain deprecated compatibility aliases.",
     "inputs": [
@@ -16693,6 +23240,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-message",
     "entryPoint": "@neural-ng/core/message",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "`@neural-ng/core/message` contains two deliberately separate contracts:",
     "inputs": [
@@ -16949,6 +23498,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-meter-group",
     "entryPoint": "@neural-ng/core/meter-group",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "`NeuralMeterGroup` displays multiple scalar measurements within one known range. Each segment remains an independently named ARIA meter.",
     "inputs": [
@@ -17168,6 +23719,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralMultiSelectEmpty]",
     "entryPoint": "@neural-ng/core/multi-select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, accessible multiple selection for Angular 22+.",
     "inputs": [],
@@ -17419,6 +23972,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralMultiSelectFooter]",
     "entryPoint": "@neural-ng/core/multi-select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, accessible multiple selection for Angular 22+.",
     "inputs": [],
@@ -17670,6 +24225,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralMultiSelectGroup]",
     "entryPoint": "@neural-ng/core/multi-select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, accessible multiple selection for Angular 22+.",
     "inputs": [],
@@ -17921,6 +24478,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralMultiSelectHeader]",
     "entryPoint": "@neural-ng/core/multi-select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, accessible multiple selection for Angular 22+.",
     "inputs": [],
@@ -18172,6 +24731,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralMultiSelectLoading]",
     "entryPoint": "@neural-ng/core/multi-select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, accessible multiple selection for Angular 22+.",
     "inputs": [],
@@ -18423,6 +24984,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralMultiSelectOption]",
     "entryPoint": "@neural-ng/core/multi-select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, accessible multiple selection for Angular 22+.",
     "inputs": [],
@@ -18674,6 +25237,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralMultiSelectValue]",
     "entryPoint": "@neural-ng/core/multi-select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, accessible multiple selection for Angular 22+.",
     "inputs": [],
@@ -18925,6 +25490,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-paginator",
     "entryPoint": "@neural-ng/core/paginator",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, standalone, localized, and headless-friendly pagination for Angular 22+.",
     "inputs": [
@@ -19211,6 +25778,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-panel-menu",
     "entryPoint": "@neural-ng/core/panel-menu",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Signals-first hierarchical navigation and command panels for Angular 22+. PanelMenu is an inline Accordion + Tree pattern. It is not a Sidebar/Drawer and does not require a popup trigger.",
     "inputs": [
@@ -19461,6 +26030,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-panel-menu-item",
     "entryPoint": "@neural-ng/core/panel-menu",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Signals-first hierarchical navigation and command panels for Angular 22+. PanelMenu is an inline Accordion + Tree pattern. It is not a Sidebar/Drawer and does not require a popup trigger.",
     "inputs": [
@@ -19785,6 +26356,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-panel-menu-separator",
     "entryPoint": "@neural-ng/core/panel-menu",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Signals-first hierarchical navigation and command panels for Angular 22+. PanelMenu is an inline Accordion + Tree pattern. It is not a Sidebar/Drawer and does not require a popup trigger.",
     "inputs": [
@@ -19958,6 +26531,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-password",
     "entryPoint": "@neural-ng/core/password",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Signal-first password control for Angular 22+ with native password-manager semantics, accessible visibility controls, optional strength feedback, and headless class ownership.",
     "formContract": "FormValueControl<string>",
@@ -20344,6 +26919,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-progress-bar",
     "entryPoint": "@neural-ng/core/progress-bar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Accessible determinate and indeterminate progress for Angular 22+.",
     "inputs": [
@@ -20587,6 +27164,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-progress-spinner",
     "entryPoint": "@neural-ng/core/progress-spinner",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Accessible indeterminate SVG progress for Angular 22+.",
     "inputs": [
@@ -20837,6 +27416,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-radio",
     "entryPoint": "@neural-ng/core/radio",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Native, Signal-first RadioGroup and Radio components for Angular 22+.",
     "inputs": [
@@ -20987,6 +27568,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-sidebar",
     "entryPoint": "@neural-ng/core/sidebar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "inputs": [
@@ -21305,6 +27888,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-sidebar-content",
     "entryPoint": "@neural-ng/core/sidebar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "inputs": [
@@ -21417,6 +28002,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-sidebar-footer",
     "entryPoint": "@neural-ng/core/sidebar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "inputs": [
@@ -21529,6 +28116,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-sidebar-header",
     "entryPoint": "@neural-ng/core/sidebar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "inputs": [
@@ -21641,6 +28230,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralSidebarInitialFocus]",
     "entryPoint": "@neural-ng/core/sidebar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "inputs": [],
@@ -21745,6 +28336,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralSidebarLabel]",
     "entryPoint": "@neural-ng/core/sidebar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "inputs": [],
@@ -21849,6 +28442,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-sidebar-layout",
     "entryPoint": "@neural-ng/core/sidebar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "inputs": [
@@ -21976,6 +28571,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralSidebarMain]",
     "entryPoint": "@neural-ng/core/sidebar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "inputs": [
@@ -22089,6 +28686,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralSidebarTrigger]",
     "entryPoint": "@neural-ng/core/sidebar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Responsive application-shell navigation that composes with `NeuralMenu` and `NeuralPanelMenu`.",
     "inputs": [
@@ -22200,6 +28799,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-skeleton",
     "entryPoint": "@neural-ng/core/skeleton",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "`NeuralSkeleton` provides a lightweight, decorative placeholder for content that is still loading.",
     "inputs": [
@@ -22337,6 +28938,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableCell]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [
@@ -22866,6 +29469,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableEditor]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [
@@ -23395,6 +30000,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableEmpty]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [],
@@ -23917,6 +30524,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableError]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [],
@@ -24439,6 +31048,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableExpansion]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [],
@@ -24961,6 +31572,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableFilter]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [
@@ -25490,6 +32103,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableFooter]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [
@@ -26019,6 +32634,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableFooterGroup]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [
@@ -26548,6 +33165,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableGroupFooter]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [],
@@ -27070,6 +33689,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableGroupHeader]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [],
@@ -27592,6 +34213,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableHeader]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [
@@ -28121,6 +34744,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableHeaderGroup]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [
@@ -28650,6 +35275,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTableLoading]",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [],
@@ -29172,6 +35799,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralToastTemplate]",
     "entryPoint": "@neural-ng/core/toast",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Modern Angular 22+ Toast renderer for the headless Signal store in `@neural-ng/core/message`. Toast is standalone, SSR-safe, direction-aware, themeable, and fully consumer-stylable.",
     "inputs": [],
@@ -29379,6 +36008,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTreeEmpty]",
     "entryPoint": "@neural-ng/core/tree",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first hierarchical data foundation for Angular 22+.",
     "inputs": [],
@@ -29589,6 +36220,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTreeIcon]",
     "entryPoint": "@neural-ng/core/tree",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first hierarchical data foundation for Angular 22+.",
     "inputs": [
@@ -29807,6 +36440,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTreeLoading]",
     "entryPoint": "@neural-ng/core/tree",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first hierarchical data foundation for Angular 22+.",
     "inputs": [],
@@ -30017,6 +36652,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTreeNode]",
     "entryPoint": "@neural-ng/core/tree",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first hierarchical data foundation for Angular 22+.",
     "inputs": [
@@ -30235,6 +36872,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTreeSelectNode]",
     "entryPoint": "@neural-ng/core/tree-select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first hierarchical selection composed from NeuralNg Tree and Popover.",
     "inputs": [],
@@ -30388,6 +37027,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTreeSelectValue]",
     "entryPoint": "@neural-ng/core/tree-select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first hierarchical selection composed from NeuralNg Tree and Popover.",
     "inputs": [],
@@ -30541,6 +37182,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralTreeToggler]",
     "entryPoint": "@neural-ng/core/tree",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first hierarchical data foundation for Angular 22+.",
     "inputs": [
@@ -30759,6 +37402,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralVirtualScrollerEmpty]",
     "entryPoint": "@neural-ng/core/virtual-scroller",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Fixed-size, SSR-safe collection windowing for Angular Signals applications.",
     "inputs": [],
@@ -30888,6 +37533,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralVirtualScrollerItem]",
     "entryPoint": "@neural-ng/core/virtual-scroller",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Fixed-size, SSR-safe collection windowing for Angular Signals applications.",
     "inputs": [
@@ -31024,6 +37671,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "ng-template[neuralVirtualScrollerLoading]",
     "entryPoint": "@neural-ng/core/virtual-scroller",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Fixed-size, SSR-safe collection windowing for Angular Signals applications.",
     "inputs": [],
@@ -31153,6 +37802,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-option",
     "entryPoint": "@neural-ng/core/select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible, Signal-first combobox/listbox for Angular 22+.",
     "inputs": [
@@ -31336,6 +37987,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-popover",
     "entryPoint": "@neural-ng/core/popover",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "`@neural-ng/core/popover` renders arbitrary Angular content in a non-modal, trigger-anchored top-layer panel. It composes the shared Overlay positioner and does not impose Menu item or Dialog layout semantics.",
     "inputs": [
@@ -31607,6 +38260,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralPopoverClose]",
     "entryPoint": "@neural-ng/core/popover",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "`@neural-ng/core/popover` renders arbitrary Angular content in a non-modal, trigger-anchored top-layer panel. It composes the shared Overlay positioner and does not impose Menu item or Dialog layout semantics.",
     "inputs": [],
@@ -31716,6 +38371,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralPopoverInitialFocus]",
     "entryPoint": "@neural-ng/core/popover",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "`@neural-ng/core/popover` renders arbitrary Angular content in a non-modal, trigger-anchored top-layer panel. It composes the shared Overlay positioner and does not impose Menu item or Dialog layout semantics.",
     "inputs": [],
@@ -31825,6 +38482,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralPopoverTriggerFor]",
     "entryPoint": "@neural-ng/core/popover",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "`@neural-ng/core/popover` renders arbitrary Angular content in a non-modal, trigger-anchored top-layer panel. It composes the shared Overlay positioner and does not impose Menu item or Dialog layout semantics.",
     "inputs": [
@@ -31973,6 +38632,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-radio-group",
     "entryPoint": "@neural-ng/core/radio",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Native, Signal-first RadioGroup and Radio components for Angular 22+.",
     "formContract": "FormValueControl<TValue | null>",
@@ -32282,6 +38943,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-select",
     "entryPoint": "@neural-ng/core/select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible, Signal-first combobox/listbox for Angular 22+.",
     "formContract": "FormValueControl<TValue | null>",
@@ -32724,6 +39387,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-slider",
     "entryPoint": "@neural-ng/core/slider",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Native, accessible numeric slider for Angular 22+ with Signal Forms, Reactive Forms, template-driven Forms, horizontal/vertical orientation, and headless styling.",
     "formContract": "FormValueControl<NeuralSliderValue>",
@@ -33043,6 +39708,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-switch",
     "entryPoint": "@neural-ng/core/switch",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "alpha",
     "summary": "Native, Signal-first boolean switch for Angular 22+.",
     "formContract": "FormCheckboxControl",
@@ -33309,6 +39976,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-tab",
     "entryPoint": "@neural-ng/core/tabs",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
     "inputs": [
@@ -33465,6 +40134,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-tab-list",
     "entryPoint": "@neural-ng/core/tabs",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
     "inputs": [
@@ -33614,6 +40285,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-tab-panel",
     "entryPoint": "@neural-ng/core/tabs",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
     "inputs": [
@@ -33763,6 +40436,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-tab-panels",
     "entryPoint": "@neural-ng/core/tabs",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
     "inputs": [
@@ -33898,6 +40573,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-table",
     "entryPoint": "@neural-ng/core/table",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first, native-table data presentation for Angular 22+. Import only the secondary entry point:",
     "inputs": [
@@ -35001,6 +41678,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-tabs",
     "entryPoint": "@neural-ng/core/tabs",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Composable, Signal-first and headless-friendly tabs for Angular 22+.",
     "inputs": [
@@ -35179,6 +41858,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-tag",
     "entryPoint": "@neural-ng/core/tag",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Text-first classification and status labels for Angular 22+.",
     "inputs": [
@@ -35368,6 +42049,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "textarea[neuralTextarea]",
     "entryPoint": "@neural-ng/core/textarea",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Native, Signal Forms-ready multiline text enhancement for Angular 22+.",
     "inputs": [
@@ -35507,6 +42190,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-toast",
     "entryPoint": "@neural-ng/core/toast",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Modern Angular 22+ Toast renderer for the headless Signal store in `@neural-ng/core/message`. Toast is standalone, SSR-safe, direction-aware, themeable, and fully consumer-stylable.",
     "inputs": [
@@ -35831,6 +42516,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-toolbar",
     "entryPoint": "@neural-ng/core/toolbar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
     "inputs": [
@@ -35988,6 +42675,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-toolbar-center",
     "entryPoint": "@neural-ng/core/toolbar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
     "inputs": [
@@ -36079,6 +42768,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-toolbar-end",
     "entryPoint": "@neural-ng/core/toolbar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
     "inputs": [
@@ -36170,6 +42861,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-toolbar-separator",
     "entryPoint": "@neural-ng/core/toolbar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
     "inputs": [
@@ -36261,6 +42954,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-toolbar-start",
     "entryPoint": "@neural-ng/core/toolbar",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible, standalone action grouping for Angular 22+.",
     "inputs": [
@@ -36352,6 +43047,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "directive",
     "selector": "[neuralTooltip]",
     "entryPoint": "@neural-ng/core/tooltip",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Accessible, text-only tooltips for Angular 22+. Beta.",
     "inputs": [
@@ -36505,6 +43202,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-tree",
     "entryPoint": "@neural-ng/core/tree",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first hierarchical data foundation for Angular 22+.",
     "inputs": [
@@ -36968,6 +43667,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-tree-select",
     "entryPoint": "@neural-ng/core/tree-select",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Signal-first hierarchical selection composed from NeuralNg Tree and Popover.",
     "formContract": "FormValueControl<NeuralTreeSelectValue<TValue>>",
@@ -37441,6 +44142,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-tri-state-checkbox",
     "entryPoint": "@neural-ng/core/checkbox",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Checkbox Beta provides native, Signal-first binary and tri-state controls for Angular 22+. The two value contracts are intentionally separate so every Angular Forms adapter sees one stable model type.",
     "formContract": "FormValueControl<boolean | null>",
@@ -37703,6 +44406,8 @@ export const GENERATED_COMPONENTS = [
     "kind": "component",
     "selector": "neural-virtual-scroller",
     "entryPoint": "@neural-ng/core/virtual-scroller",
+    "packageName": "@neural-ng/core",
+    "packageVersion": "0.1.0-beta.8",
     "status": "beta",
     "summary": "Fixed-size, SSR-safe collection windowing for Angular Signals applications.",
     "inputs": [
@@ -38151,6 +44856,28 @@ export const GENERATED_PACKAGE_CATALOG = {
     "./tree/README.md",
     "./virtual-scroller/llms.txt",
     "./virtual-scroller/README.md"
+  ],
+  "companionPackages": [
+    {
+      "packageName": "@neural-ng/editor",
+      "version": "0.1.0-beta.2",
+      "runtimeEntryPoints": [
+        "@neural-ng/editor"
+      ],
+      "documentedExports": [
+        "./API_FREEZE.md",
+        "./LICENSE",
+        "./llms.txt",
+        "./MIGRATION.md",
+        "./README.md",
+        "./themes/experimental/futuristic.css",
+        "./themes/experimental/glass.css",
+        "./themes/experimental/mist.css",
+        "./themes/neutral.css",
+        "./themes/tailwind.css",
+        "./THIRD_PARTY_NOTICES.md"
+      ]
+    }
   ]
 } satisfies NeuralPackageCatalog;
 

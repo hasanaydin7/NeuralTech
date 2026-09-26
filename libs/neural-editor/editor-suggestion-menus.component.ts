@@ -364,6 +364,11 @@ export interface NeuralEditorSuggestionViewProps<T> {
       text-align: center;
       opacity: var(--neural-editor-suggestion-state-opacity, 0.72);
     }
+    /* Author display rules override the browser's default [hidden] rule.
+       Keep dismissal structural, including in unstyled mode and after reparenting. */
+    :where(.neural-editor-command-palette-root[hidden]) {
+      display: none !important;
+    }
     :where(.neural-editor-command-palette-root) {
       position: fixed;
       inset: 0;

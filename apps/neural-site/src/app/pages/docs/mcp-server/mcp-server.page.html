@@ -237,6 +237,29 @@
       <section id="agent-intelligence" class="scroll-mt-28 pt-16">
         <h2 class="text-2xl font-black">Angular UI agent intelligence</h2>
         <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Core and Editor APIs are generated from their public source contracts.
+          Each contract includes <code>packageName</code> and
+          <code>packageVersion</code>; <code>neural-editor</code> resolves to
+          <code>&#64;neural-ng/editor</code>. Omit the component search query to
+          browse up to 20 results in stable order.
+        </p>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Pass <code>imports</code> and <code>providers</code> as native arrays.
+          Legacy JSON-string inputs remain supported; conflicting
+          representations are rejected. Inspection separates scan coverage from
+          heuristic confidence and reports installed Editor version mismatches
+          independently of Core. AST validation does not replace Angular
+          compilation or browser tests.
+        </p>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          CSS hints flag possible hidden/display conflicts (<code>NNP011</code>)
+          and root token <code>!important</code> risks (<code>NNP012</code>).
+          They inspect bounded external CSS with static selectors, not computed
+          styles or the full cascade. <code>:where(:root)</code> alone is not an
+          error. Inline component styles, dynamic classes and actual Appearance
+          behavior still require browser verification.
+        </p>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
           These tools turn requirements into contract-backed compositions,
           validate generated Angular templates and preserve conventions already
           present in a project. The server remains deterministic and does not
@@ -302,6 +325,12 @@
 
       <section id="theme-tools" class="scroll-mt-28 pt-16">
         <h2 class="text-2xl font-black">Compact theme tools</h2>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          Send <code>options</code>, <code>recipe</code>, <code>patch</code>,
+          <code>left</code> and <code>right</code> as JSON objects, without
+          double encoding. Legacy <code>*_json</code> strings still work. If
+          both forms are provided, they must describe equivalent objects.
+        </p>
         <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
           Theme tools operate on a small schema-versioned recipe rather than
           sending the complete resolved Core and Editor token graph through
@@ -426,6 +455,12 @@
       <section id="results" class="scroll-mt-28 pt-16">
         <h2 class="text-2xl font-black">Results and domain errors</h2>
         <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          All 20 tools advertise an <code>outputSchema</code>. Successful
+          structured results are validated before delivery; a broken output
+          contract becomes a tool error. Additive fields are allowed, so clients
+          should tolerate unknown fields.
+        </p>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
           Successful tools return pretty-printed JSON plus machine-readable
           <code>structuredContent</code>. Invalid component references,
           malformed JSON and rejected theme values return
@@ -482,14 +517,15 @@
         <h2 class="text-2xl font-black">Keep package versions aligned</h2>
         <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
           The generated catalog describes the version shipped inside the MCP
-          package. Pin the same NeuralNg prerelease family in the project and
-          restart the MCP process after upgrades so the agent does not reason
-          from an older contract.
+          package. Core and Editor are independently versioned: match each
+          installed package to its catalog version, not to the MCP version
+          number. Restart the MCP process after upgrades so the agent uses the
+          new contracts.
         </p>
         <div
           class="mt-5 rounded-2xl border border-amber-400/20 bg-amber-500/10 p-5 text-sm leading-6"
         >
-          The current release candidate is <strong>1.0.0-rc.3</strong> and
+          The current release candidate is <strong>1.0.0-rc.4</strong> and
           requires Node <strong>&gt;=24 &lt;25</strong>. Public tool names and
           result envelopes remain prerelease contracts; pin the exact RC in
           shared repositories until the 1.0 acceptance scenario is completed.

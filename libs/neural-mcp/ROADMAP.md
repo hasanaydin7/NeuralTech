@@ -13,7 +13,7 @@ packaged-host verification where applicable.
 7. [x] Read-only `inspect_project`
 8. [x] `suggest_consistent_ui`
 9. [x] Evaluation package
-10. [ ] `1.0.0-rc.1`
+10. [x] `1.0.0-rc.1`
 
 Step 5 parses Angular templates with `@angular/compiler`, returns parser
 metadata in usage-validation schema v2, recognizes element and attribute
@@ -44,11 +44,19 @@ existing-project user-management chain: version/theme/pattern detection,
 contract-backed planning, exact imports, valid template acceptance, and
 rejection of invented APIs, inaccessible icon actions, and missing providers.
 
-Step 10 is in progress. `1.0.0-rc.1` package, registry and runtime metadata are
-aligned, release notes are drafted, and a packed artifact is verified locally.
-The checkbox remains open until that exact artifact completes the acceptance
-scenario inside a separately launched coding-agent host and the branch CI is
-green. Preparation does not authorize npm publication or a merge to `main`.
+Step 10 completed: see HOST_ACCEPTANCE.md for the historical rc.1 real-agent
+user-management run. RC releases through rc.3 are published; the old host report
+does not certify later artifacts or every UI scenario.
+
+## Stable release gates after rc.3 feedback
+
+- [x] Verify Editor contracts and independent package compatibility in packed-host tests.
+- [x] Verify native theme objects and bounded empty-query discovery over stdio.
+- [x] Document and test CSS hints without promising cascade/runtime correctness.
+- [ ] Run a fresh real coding-agent acceptance against the candidate artifact.
+- [ ] Verify icon rendering, Appearance switching and overlay close behavior in a browser.
+- [ ] Exercise additional project layouts and record explicit support limits.
+- [ ] Review evidence, pass branch CI, then approve stable 1.0 publication separately.
 
 ## Beta exit acceptance scenario
 

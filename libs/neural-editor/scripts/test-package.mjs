@@ -14,7 +14,7 @@ const packageJson = await readJson('package.json');
 
 assert(packageJson.name === '@neural-ng/editor', 'Unexpected package name.');
 assert(
-  packageJson.version === '0.1.0-beta.1',
+  packageJson.version === '0.1.0-beta.2',
   'Unexpected Editor package version.',
 );
 assert(packageJson.license === 'MIT', 'Editor package must declare MIT.');

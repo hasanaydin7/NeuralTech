@@ -13,6 +13,50 @@ afterEach(async () => {
 });
 
 describe('Neural MCP project awareness', () => {
+  it('recognizes installed Editor and warns independently for its version mismatch', async () => {
+    const root = await createWorkspace('<neural-editor />', ['NeuralEditor']);
+    const directory = join(root, 'node_modules', '@neural-ng', 'editor');
+    await mkdir(directory, { recursive: true });
+    await writeFile(
+      join(directory, 'package.json'),
+      JSON.stringify({ name: '@neural-ng/editor', version: '0.1.0-beta.2' }),
+    );
+    const result = await inspectNeuralProject(root);
+    expect(result.framework.installedEditorVersion).toBe('0.1.0-beta.2');
+    expect(
+      result.components.some(
+        (component) => component.entryPoint === '@neural-ng/editor',
+      ),
+    ).toBe(true);
+    expect(
+      result.diagnostics.some(
+        (item) => item.code === 'NNG001' || item.code === 'NNP010',
+      ),
+    ).toBe(false);
+    await writeFile(
+      join(directory, 'package.json'),
+      JSON.stringify({ name: '@neural-ng/editor', version: '0.1.0-beta.0' }),
+    );
+    expect(
+      (await inspectNeuralProject(root)).diagnostics.some(
+        (item) => item.code === 'NNP010',
+      ),
+    ).toBe(true);
+  });
+  it('surfaces CSS warnings without claiming compilation or runtime verification', async () => {
+    const root = await createWorkspace(
+      '<div class="palette" [hidden]="closed"></div>',
+    );
+    await writeFile(
+      join(root, 'src', 'styles.css'),
+      '.palette { display: grid; }',
+    );
+    const result = await inspectNeuralProject(root);
+    expect(result.diagnostics.some((item) => item.code === 'NNP011')).toBe(
+      true,
+    );
+    expect(result.analysis.compilationVerified).toBe(false);
+  });
   it('separates declaration alignment from verified installed version evidence', async () => {
     const root = await createWorkspace();
     const declared = await suggestConsistentUi('Save button', root);

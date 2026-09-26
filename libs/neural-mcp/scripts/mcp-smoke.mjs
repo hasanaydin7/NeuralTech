@@ -406,6 +406,78 @@ try {
       },
     });
     const createdThemeText = createdTheme?.content?.[0]?.text ?? '';
+    const nativeTheme = await client.request('tools/call', {
+      name: 'create_theme_recipe',
+      arguments: {
+        name: 'smoke-theme',
+        options: { primary: '#7c3aed', surface: 'slate', radius: 'large' },
+      },
+    });
+    assert(
+      JSON.stringify(nativeTheme.structuredContent) ===
+        JSON.stringify(createdTheme.structuredContent),
+      'Native and legacy theme options must agree.',
+    );
+    const recipe = nativeTheme.structuredContent.recipe;
+    for (const [name, argumentsValue] of [
+      ['validate_theme_recipe', { recipe }],
+      ['compile_theme_recipe', { recipe }],
+      ['diff_theme_recipes', { left: recipe, right: recipe }],
+      [
+        'edit_theme_recipe',
+        { recipe, patch: { set: { 'color.primary': '#2563eb' } } },
+      ],
+    ]) {
+      const result = await client.request('tools/call', {
+        name,
+        arguments: argumentsValue,
+      });
+      assert(
+        !result.isError && result.structuredContent,
+        `Native theme object failed: ${name}`,
+      );
+    }
+    const conflict = await client.request('tools/call', {
+      name: 'create_theme_recipe',
+      arguments: {
+        name: 'conflict',
+        options: { primary: 'red' },
+        options_json: '{"primary":"blue"}',
+      },
+    });
+    assert(
+      conflict.isError &&
+        conflict.structuredContent.error.message.includes('conflict'),
+      'Theme conflicts must be explicit.',
+    );
+    for (const argumentsValue of [{ limit: 3 }, { query: '', limit: 3 }]) {
+      const browse = await client.request('tools/call', {
+        name: 'search_components',
+        arguments: argumentsValue,
+      });
+      assert(
+        browse.structuredContent?.matches?.length === 3,
+        'Empty search must browse a bounded catalog.',
+      );
+    }
+    const editor = await client.request('tools/call', {
+      name: 'get_component',
+      arguments: { component: 'neural-editor' },
+    });
+    assert(
+      editor.structuredContent?.component?.entryPoint === '@neural-ng/editor',
+      'Editor must resolve from its own package.',
+    );
+    const editorUsage = await client.request('tools/call', {
+      name: 'validate_usage',
+      arguments: { template: '<neural-editor />', imports: ['NeuralEditor'] },
+    });
+    assert(
+      !editorUsage.structuredContent?.validation?.diagnostics?.some(
+        (item) => item.code === 'NNG001',
+      ),
+      'Editor must not be an unknown selector.',
+    );
     assert(
       createdThemeText.includes('smoke-theme') &&
         createdThemeText.includes('"valid": true'),
