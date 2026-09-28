@@ -6,7 +6,7 @@ test('MCP guide documents ecosystem contracts and native argument examples', asy
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/docs/mcp-server', { waitUntil: 'networkidle' });
-  await expect(page.locator('#versioning')).toContainText('1.0.0-rc.4');
+  await expect(page.locator('#versioning')).toContainText('1.0.0');
   await expect(page.locator('#agent-intelligence')).toContainText(
     '@neural-ng/editor',
   );

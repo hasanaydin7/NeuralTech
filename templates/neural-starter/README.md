@@ -13,7 +13,7 @@ suite:
 
 ```bash
 npm install @neural-ng/core@0.1.0-beta.8 @neural-ng/icons@0.1.0-beta.0 @neural-ng/editor@0.1.0-beta.2
-npm install --save-dev @neural-ng/theme@0.1.0-beta.5 @neural-ng/mcp-server@1.0.0-rc.4
+npm install --save-dev @neural-ng/theme@0.1.0-beta.5 @neural-ng/mcp-server@1.0.0
 npm install
 npm run theme:validate
 npm run build
@@ -33,7 +33,7 @@ npm install `
 
 npm install --save-dev `
   D:\NeuralTech-Packages\neural-ng-theme-0.1.0-beta.5.tgz `
-  D:\NeuralTech-Packages\neural-ng-mcp-server-1.0.0-rc.4.tgz
+  D:\NeuralTech-Packages\neural-ng-mcp-server-1.0.0.tgz
 ```
 
 No source import from the NeuralTech workspace is allowed. The template must

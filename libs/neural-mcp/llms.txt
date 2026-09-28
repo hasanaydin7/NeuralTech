@@ -1,10 +1,10 @@
 # @neural-ng/mcp-server
 
 Read-only Angular UI expert for NeuralNg contracts, composition, validation, icons and project-aware themes.
-Current release: 1.0.0-rc.4 (release candidate). Requires Node.js 24.x.
+Current release: 1.0.0 (stable MCP interface). Requires Node.js 24.x.
 
 RUN
-npx -y @neural-ng/mcp-server@1.0.0-rc.4
+npx -y @neural-ng/mcp-server@1.0.0
 
 RC.4 ADDITIONS
 - Editor contracts are generated from @neural-ng/editor with independent packageName/packageVersion evidence.
