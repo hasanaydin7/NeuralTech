@@ -11,6 +11,13 @@
     }
   },
   "targets": {
+    "browser-test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "node libs/neural-icons/scripts/browser-test.mjs"
+      }
+    },
     "generate": {
       "executor": "nx:run-commands",
       "options": {

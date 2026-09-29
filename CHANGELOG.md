@@ -1,3 +1,13 @@
+## Icons 1.0.0 - 2026-09-28
+
+- Stabilize the existing CSS entry points, 108 curated classes, 6,184 outline/filled
+  variants and motion API without changing existing artwork or selectors.
+- Validate exact category membership, embedded SVG payloads and published package
+  contents; test a clean tarball consumer in Chromium, Firefox and WebKit.
+- Document curated aliases, CSS ordering, accessibility, CSP and RTL behavior.
+- Derive generated catalog versions from the package manifest and remove stale
+  Alpha/count labels from the Icons documentation.
+
 ## MCP 1.0.0 - 2026-09-26
 
 - Release the stable Angular UI expert MCP interface with verified composition,

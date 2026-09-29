@@ -85,7 +85,7 @@ more restrictive application policy wholesale.
 
 ## Icon sets
 
-The default stylesheet remains a curated 67-icon set so applications do not
+The default stylesheet contains 108 curated icon classes so applications do not
 pay for icons they do not use:
 
 ```css
@@ -129,7 +129,9 @@ inventory count:
 import metadata from '@neural-ng/icons/metadata.json';
 ```
 
-Brand icons are opt-in because their names and logos may be protected by their
+Full outline/filled sets include brand icons; the curated set also includes
+selected aliases such as `nt-github` and `nt-brand-angular`. Import individual
+non-brand categories if you do not need brands. Their names and logos may be protected by their
 respective trademark owners. The MIT license covers the distributed artwork;
 it does not grant trademark rights or imply endorsement.
 
@@ -141,6 +143,24 @@ npx nx run neural-icons:generate
 npx nx test neural-icons
 npx nx build neural-icons
 ```
+
+## Compatibility contract
+
+The class API is framework-independent and requires CSS mask support. Icons do
+not mirror automatically in RTL layouts; choose the appropriate directional
+icon for the action. Always retain a text alternative for meaningful icons.
+
+Curated aliases are defined in `manifest.json`, while the full sets use upstream
+names. For example, curated `nt-times`, `nt-github` and `nt-desktop` correspond
+to full-set `nt-x`, `nt-brand-github` and `nt-device-desktop`. Curated `nt-menu`
+uses the `menu-2` drawing; full-set `nt-menu` uses the upstream `menu` drawing.
+When combining curated and full/category sets, import `icons.css` last to
+preserve curated artwork. Adding `filled.css` does not replace outline classes.
+
+Existing entry points, curated aliases, class names and motion custom properties
+form the public compatibility contract. Removing or renaming them requires a
+major release. New icons can be added in minor releases; rendering corrections
+can ship in patches. The upstream inventory is pinned, not downloaded at runtime.
 
 ## Source and license
 

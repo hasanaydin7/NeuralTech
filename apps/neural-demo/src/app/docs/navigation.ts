@@ -31,7 +31,6 @@ export const DOCS_NAVIGATION: readonly DocsNavigationGroup[] = [
       {
         label: 'Neural Icons',
         route: '/docs/getting-started/icons',
-        status: 'alpha',
       },
     ],
   },
