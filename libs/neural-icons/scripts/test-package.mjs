@@ -209,7 +209,7 @@ for (const css of [coreCss, outlineCss, filledCss]) {
     !/@import\s+['"]https?:|url\(['"]?https?:/i.test(css),
     'Icons must not fetch external artwork.',
   );
-  for (const match of css.matchAll(/url\("data:image\/svg\+xml,([^\"]+)"\)/g)) {
+  for (const match of css.matchAll(/url\("data:image\/svg\+xml,([^"]+)"\)/g)) {
     const svg = decodeURIComponent(match[1]);
     assert(
       svg.startsWith('<svg') && svg.endsWith('</svg>'),
