@@ -25,7 +25,7 @@
     "@angular/platform-browser": "~22.1.7",
     "@neural-ng/core": "0.1.0-beta.8",
     "@neural-ng/editor": "0.1.0-beta.2",
-    "@neural-ng/icons": "0.1.0-beta.0",
+    "@neural-ng/icons": "1.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

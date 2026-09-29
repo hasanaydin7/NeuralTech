@@ -4,6 +4,9 @@ import process from 'node:process';
 
 const workspaceRoot = process.cwd();
 const packageRoot = resolve(workspaceRoot, 'libs/neural-icons');
+const packageJson = JSON.parse(
+  await readFile(join(packageRoot, 'package.json'), 'utf8'),
+);
 const manifest = JSON.parse(
   await readFile(join(packageRoot, 'manifest.json'), 'utf8'),
 );
@@ -19,9 +22,7 @@ const upstreamMetadata = JSON.parse(
   await readFile(join(upstreamRoot, 'icons.json'), 'utf8'),
 );
 
-const layeredIcons = new Map([
-  ['loader-3', { outer: [0], inner: [1] }],
-]);
+const layeredIcons = new Map([['loader-3', { outer: [0], inner: [1] }]]);
 
 assertManifest(upstreamPackage);
 const coreCss = await generateCoreCss();
@@ -184,7 +185,7 @@ function generateMetadata(outline, filled) {
 
   return `${JSON.stringify({
     package: '@neural-ng/icons',
-    version: '0.1.0-beta.0',
+    version: packageJson.version,
     upstream: {
       package: manifest.upstream.package,
       version: manifest.upstream.version,

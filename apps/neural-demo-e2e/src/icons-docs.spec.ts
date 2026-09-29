@@ -17,7 +17,7 @@ test.describe('Neural Icons documentation', () => {
     ).toBeVisible();
 
     const navigationLink = page.getByRole('link', {
-      name: 'Neural Icons Alpha',
+      name: 'Neural Icons',
     });
     await expect(navigationLink).toHaveAttribute('aria-current', 'page');
     await expect(page.getByText('6184 icons', { exact: true })).toBeVisible();

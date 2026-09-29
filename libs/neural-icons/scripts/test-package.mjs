@@ -11,6 +11,16 @@ const metadata = await readJson('metadata.json');
 
 assert(packageJson.name === '@neural-ng/icons', 'Unexpected package name.');
 assert(
+  metadata.version === packageJson.version,
+  'Metadata version must match the package manifest.',
+);
+assert(
+  !packageJson.dependencies &&
+    !packageJson.peerDependencies &&
+    !packageJson.optionalDependencies,
+  'CSS icons must have no consumer runtime dependencies.',
+);
+assert(
   !JSON.stringify({
     dependencies: packageJson.dependencies,
     peerDependencies: packageJson.peerDependencies,
@@ -125,6 +135,89 @@ for (const category of metadata.categories) {
   if (category.filled > 0) {
     await access(
       join(packageRoot, 'categories', 'filled', `${category.name}.css`),
+    );
+  }
+}
+
+// Compare every catalog entry, not only totals or a handful of examples.
+const outlineNames = outlineClasses.filter(
+  (name) => !['spin', 'spin-reverse', 'spin-dual'].includes(name),
+);
+assert(
+  new Set(outlineNames).size === outlineNames.length,
+  'Duplicate outline classes.',
+);
+assert(
+  new Set(filledClasses).size === filledClasses.length,
+  'Duplicate filled classes.',
+);
+for (const icon of metadata.icons) {
+  assert(
+    outlineNames.includes(icon.name),
+    `Missing outline mask: ${icon.name}`,
+  );
+  if (icon.styles.includes('filled'))
+    assert(
+      filledClasses.includes(icon.name),
+      `Missing filled mask: ${icon.name}`,
+    );
+}
+for (const category of metadata.categories) {
+  for (const style of ['outline', 'filled']) {
+    if (!category[style]) continue;
+    const prefix = style === 'filled' ? 'filled-' : '';
+    const css = await read(
+      `categories/${style === 'filled' ? 'filled/' : ''}${category.name}.css`,
+    );
+    const actual = [...css.matchAll(/^\.nt-([a-z0-9-]+) \{/gm)]
+      .map((match) => match[1])
+      .filter((name) => !['spin', 'spin-reverse', 'spin-dual'].includes(name))
+      .sort();
+    const expected = metadata.icons
+      .filter(
+        (icon) =>
+          icon.category === category.name && icon.styles.includes(style),
+      )
+      .map((icon) => prefix + icon.name)
+      .sort();
+    assert(
+      JSON.stringify(actual) === JSON.stringify(expected),
+      `Category contents mismatch: ${style}/${category.name}`,
+    );
+  }
+}
+const curated = await readJson('manifest.json');
+const coreCss = await read('icons.css');
+assert(
+  curated.icons.length === 108,
+  'Curated contract changed without review.',
+);
+for (const icon of curated.icons)
+  assert(
+    coreCss.includes(`.nt-${icon.name} {`),
+    `Missing curated alias: ${icon.name}`,
+  );
+for (const file of [
+  'LICENSE',
+  'THIRD_PARTY_NOTICES.md',
+  'README.md',
+  'llms.txt',
+])
+  await access(join(packageRoot, file));
+for (const css of [coreCss, outlineCss, filledCss]) {
+  assert(
+    !/@import\s+['"]https?:|url\(['"]?https?:/i.test(css),
+    'Icons must not fetch external artwork.',
+  );
+  for (const match of css.matchAll(/url\("data:image\/svg\+xml,([^"]+)"\)/g)) {
+    const svg = decodeURIComponent(match[1]);
+    assert(
+      svg.startsWith('<svg') && svg.endsWith('</svg>'),
+      'Invalid SVG envelope.',
+    );
+    assert(
+      !/<script|<foreignObject|\son\w+=|(?:href|src)\s*=/i.test(svg),
+      'Unexpected active/external SVG content.',
     );
   }
 }

@@ -11,7 +11,7 @@
         <div class="relative max-w-3xl">
           <span
             class="inline-flex rounded-full bg-[color-mix(in_srgb,var(--neural-color-primary)_12%,transparent)] px-3 py-1 text-[.65rem] font-black tracking-[.14em] text-[var(--neural-color-primary)]"
-            >FOUNDATION</span
+            >STABLE · 1.0.0</span
           >
           <h1 class="mt-5 text-4xl font-black tracking-[-.045em] sm:text-5xl">
             Neural Icons
@@ -29,7 +29,7 @@
               ><strong class="text-[var(--site-text)]"
                 >{{ totals().icons }}</strong
               >
-              unique icons</span
+              icon variants</span
             >
             <span
               ><strong class="text-[var(--site-text)]"
@@ -73,6 +73,16 @@
         <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
           Start with the curated set, select a category for a focused product,
           or explicitly import the complete outline and filled inventory.
+        </p>
+        <p class="mt-3 leading-7 text-[var(--site-text-soft)]">
+          The curated stylesheet contains 108 classes. Its aliases follow
+          <code>manifest.json</code>, while full sets use upstream names:
+          <code>nt-times</code> becomes <code>nt-x</code>, and
+          <code>nt-github</code> becomes <code>nt-brand-github</code>. Curated
+          <code>nt-menu</code> uses the <code>menu-2</code> drawing. When
+          combining sets, load <code>icons.css</code> last to preserve curated
+          artwork. Existing class names and entry points remain compatible in
+          1.x; icons do not automatically mirror in RTL.
         </p>
         <code-view
           class="mt-6 block"

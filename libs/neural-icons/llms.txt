@@ -5,10 +5,14 @@
 ## Rules
 
 - Install `@neural-ng/icons` separately from `@neural-ng/core`.
-- Import `@neural-ng/icons/icons.css` once for the curated 67-icon set.
+- Import `@neural-ng/icons/icons.css` once for the curated 108-class set.
 - Use `outline.css`, `filled.css`, `all.css`, `brands.css`, or a
   `categories/{name}.css` entry point only when that larger set is required.
 - Filled category entry points use `categories/filled/{name}.css`.
+- Curated aliases are defined by `manifest.json`; full sets use upstream names.
+  For example, curated `nt-times` maps to full-set `nt-x`, and `nt-github`
+  maps to `nt-brand-github`. Curated `nt-menu` uses upstream `menu-2` artwork.
+  If combining sets, load `icons.css` last to preserve curated artwork.
 - Read `@neural-ng/icons/metadata.json` for names, styles, categories, and
   inventory counts; do not scrape generated CSS.
 - Render icons with `class="nt nt-{name}"`; do not generate a NeuralIconComponent.

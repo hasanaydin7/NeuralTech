@@ -4,7 +4,7 @@ import type { NeuralIconCatalog } from '../types.js';
 export const GENERATED_ICON_CATALOG = {
   schemaVersion: 1,
   packageName: '@neural-ng/icons',
-  packageVersion: '0.1.0-beta.0',
+  packageVersion: '1.0.0',
   upstream: {
     package: '@tabler/icons',
     version: '3.46.0',

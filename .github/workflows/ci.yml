@@ -77,6 +77,9 @@ jobs:
       - name: Package contract
         run: npm run package:test
 
+      - name: Icons catalog and package contract
+        run: npx nx test neural-icons
+
       - name: MCP protocol and packaged consumer smoke test
         run: npm run mcp:smoke
 
@@ -103,8 +106,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+      - name: Install browser engines
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Icons isolated package browser acceptance
+        run: npx nx run neural-icons:browser-test
+        env:
+          NEURAL_ICONS_BROWSERS: chromium,firefox,webkit
 
       - name: Run browser tests
         run: npm run e2e:chromium
