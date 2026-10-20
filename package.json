@@ -42,7 +42,7 @@
     "@angular/core": "~22.1.7",
     "@angular/forms": "~22.1.7",
     "@angular/platform-browser": "~22.1.7",
-    "@angular/platform-server": "~22.1.7",
+    "@angular/platform-server": "~22.2.3",
     "@angular/router": "~22.1.7",
     "@angular/ssr": "~22.1.8",
     "@floating-ui/dom": "^1.8.0",
