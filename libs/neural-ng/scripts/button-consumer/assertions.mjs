@@ -82,6 +82,7 @@ export async function assertButtonIntegration(page) {
   await page
     .getByRole('button', { name: 'Toggle menu loading', exact: true })
     .click();
+  await expect(trigger).toHaveAttribute('aria-busy', 'true');
   await trigger.focus();
   for (const key of ['ArrowDown', 'ArrowUp', 'Enter', 'Space']) {
     await trigger.press(key);
@@ -98,6 +99,7 @@ export async function assertButtonIntegration(page) {
   await page
     .getByRole('button', { name: 'Toggle menu loading', exact: true })
     .click();
+  await expect(trigger).not.toHaveAttribute('aria-busy', 'true');
   await trigger.focus();
   await trigger.press('ArrowDown');
   await expect(popup).toBeVisible();
