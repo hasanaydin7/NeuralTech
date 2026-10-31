@@ -120,6 +120,9 @@ jobs:
       - name: Run landing browser tests
         run: npm run e2e:site:chromium
 
+      - name: Button Firefox and WebKit acceptance
+        run: npx playwright test --config=apps/neural-site-e2e/playwright.config.mts --project=firefox --project=webkit
+
       - name: MCP installed-package Angular and browser acceptance
         run: npm run mcp:consumer:e2e
 
@@ -129,4 +132,32 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report/
+          retention-days: 7
+
+  button-consumer:
+    name: Button consumer (Angular ${{ matrix.angular }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        angular: ['22.0.0', 'latest-22']
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Installed tarball, compiler, hydration, contrast and zoom
+        run: npx nx run neural-ng:button-consumer-test
+        env:
+          NEURAL_CORE_ANGULAR_VERSION: ${{ matrix.angular }}
+      - name: Upload Button acceptance evidence
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: button-acceptance-${{ matrix.angular }}
+          path: tmp/button-acceptance/
           retention-days: 7

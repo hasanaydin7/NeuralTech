@@ -78,18 +78,19 @@ export interface NeuralButtonClasses {
       @if (loading()) {
         <span [class]="loadingIconClass()" aria-hidden="true"></span>
         <span [class]="loadingLabelClass()">{{ loadingLabel() }}</span>
+      }
+      @if (icon() && iconPosition() === 'start') {
+        <i [class]="iconClass()" [hidden]="loading()" aria-hidden="true"></i>
+      }
+      @if (label()?.trim()) {
+        <span [class]="labelClass()" [hidden]="loading()">{{ label() }}</span>
       } @else {
-        @if (icon() && iconPosition() === 'start') {
-          <i [class]="iconClass()" aria-hidden="true"></i>
-        }
-        @if (label()?.trim()) {
-          <span [class]="labelClass()">{{ label() }}</span>
-        } @else {
-          <span [class]="contentClass()"><ng-content></ng-content></span>
-        }
-        @if (icon() && iconPosition() === 'end') {
-          <i [class]="iconClass()" aria-hidden="true"></i>
-        }
+        <span [class]="contentClass()" [hidden]="loading()"
+          ><ng-content></ng-content
+        ></span>
+      }
+      @if (icon() && iconPosition() === 'end') {
+        <i [class]="iconClass()" [hidden]="loading()" aria-hidden="true"></i>
       }
     </button>
   `,
@@ -156,6 +157,26 @@ export interface NeuralButtonClasses {
 
     :where(.neural-btn-content:empty) {
       display: none;
+    }
+
+    /* Retain the content shape across loading without exposing two names. */
+    :where(.neural-btn-root) > [hidden] {
+      display: none !important;
+    }
+
+    :where(
+      .neural-btn-base:has(> .neural-btn-icon):has(> .neural-btn-content:empty)
+        > .neural-btn-loading-label
+    ) {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
     }
 
     :where(
@@ -433,10 +454,13 @@ export interface NeuralButtonClasses {
     }
 
     :where(.neural-btn-info-base) {
-      --neural-button-accent: var(--neural-color-info);
+      --neural-button-accent: var(
+        --neural-button-info-accent,
+        var(--neural-color-info)
+      );
       --neural-button-accent-hover: color-mix(
         in srgb,
-        var(--neural-color-info) 86%,
+        var(--neural-button-info-accent, var(--neural-color-info)) 86%,
         black
       );
       --neural-button-background: var(
@@ -460,10 +484,13 @@ export interface NeuralButtonClasses {
     }
 
     :where(.neural-btn-success-base) {
-      --neural-button-accent: var(--neural-color-success);
+      --neural-button-accent: var(
+        --neural-button-success-accent,
+        var(--neural-color-success)
+      );
       --neural-button-accent-hover: color-mix(
         in srgb,
-        var(--neural-color-success) 86%,
+        var(--neural-button-success-accent, var(--neural-color-success)) 86%,
         black
       );
       --neural-button-background: var(
@@ -487,10 +514,13 @@ export interface NeuralButtonClasses {
     }
 
     :where(.neural-btn-warning-base) {
-      --neural-button-accent: var(--neural-color-warning);
+      --neural-button-accent: var(
+        --neural-button-warning-accent,
+        var(--neural-color-warning)
+      );
       --neural-button-accent-hover: color-mix(
         in srgb,
-        var(--neural-color-warning) 88%,
+        var(--neural-button-warning-accent, var(--neural-color-warning)) 88%,
         black
       );
       --neural-button-background: var(
@@ -514,10 +544,13 @@ export interface NeuralButtonClasses {
     }
 
     :where(.neural-btn-error-base) {
-      --neural-button-accent: var(--neural-color-error);
+      --neural-button-accent: var(
+        --neural-button-error-accent,
+        var(--neural-color-error)
+      );
       --neural-button-accent-hover: color-mix(
         in srgb,
-        var(--neural-color-error) 86%,
+        var(--neural-button-error-accent, var(--neural-color-error)) 86%,
         black
       );
       --neural-button-background: var(

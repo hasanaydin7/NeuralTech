@@ -14,7 +14,7 @@ import type { NeuralMenuPosition } from './menu.types';
   selector: '[neuralMenuTriggerFor]',
   standalone: true,
   host: {
-    '(click)': 'handleClick()',
+    '(click)': 'handleClick($event)',
     '(keydown)': 'handleKeydown($event)',
   },
 })
@@ -47,7 +47,11 @@ export class NeuralMenuTrigger {
     });
   }
 
-  handleClick(): void {
+  handleClick(event?: MouseEvent): void {
+    if (this.activationBlocked()) {
+      event?.preventDefault();
+      return;
+    }
     this.neuralMenuTriggerFor().toggleFor(
       this.triggerElement(),
       this.menuPosition(),
@@ -55,6 +59,13 @@ export class NeuralMenuTrigger {
   }
 
   handleKeydown(event: KeyboardEvent): void {
+    // Loading buttons remain focusable. Their native keydown bubbles even when
+    // Button suppresses click, so the trigger must guard its own activation path.
+    if (!['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(event.key)) return;
+    if (this.activationBlocked()) {
+      event.preventDefault();
+      return;
+    }
     const menu = this.neuralMenuTriggerFor();
     switch (event.key) {
       case 'ArrowDown':
@@ -70,6 +81,14 @@ export class NeuralMenuTrigger {
         event.preventDefault();
         menu.toggleFor(this.triggerElement(), this.menuPosition());
     }
+  }
+
+  private activationBlocked(): boolean {
+    return (
+      !!this.neuralButton?.disabled() ||
+      !!this.neuralButton?.loading() ||
+      this.triggerElement().matches(':disabled, [aria-disabled="true"]')
+    );
   }
 
   private triggerElement(): HTMLElement {

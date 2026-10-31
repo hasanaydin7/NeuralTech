@@ -99,6 +99,13 @@
         "command": "node libs/neural-ng/scripts/test-package.mjs"
       }
     },
+    "button-consumer-test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "node libs/neural-ng/scripts/test-button-consumer.mjs"
+      }
+    },
     "lint": {
       "executor": "@nx/eslint:lint"
     }

@@ -1,5 +1,8 @@
 # NeuralNg Button
 
+Component maturity: beta candidate. Full acceptance remains pending; do not
+treat a nominal approval or automated subset as stable certification.
+
 > `NeuralButton` is a standalone Angular 22+ component that renders a native button and is imported only from `@neural-ng/core/button`.
 
 Generation rules:
@@ -11,7 +14,7 @@ Generation rules:
 - Prefer `label="Save"` for simple text and `[label]="saveLabel()"` for bound text. Project content only when rich markup is required.
 - Prefer `icon="nt nt-check"` over projecting a decorative `<i>` element. `icon` also accepts property binding.
 - Use `iconPosition="start|end"`; these are logical positions and follow RTL.
-- Icon-only styled Buttons are square automatically. Do not add manual width or padding utility classes; always provide `ariaLabel`.
+- Icon-only styled Buttons are square automatically, including while loading. Do not add manual width or padding utility classes; always provide `ariaLabel`.
 - Use `size="small|medium|large"`; the default is `medium`.
 - Use `iconSize="small|medium|large"` only to override the glyph size. When omitted, the icon follows the Button `size`; it does not change the hit target.
 - Use `outlined` for the bordered transparent treatment and `text` for the borderless transparent treatment. If both are present, `text` takes precedence.
@@ -36,7 +39,7 @@ Generation rules:
 - Configure the Badge with `badgeSeverity`, `badgeSize`, `badgeMax`, `badgeAriaLabel`, and `badgeClass`; Button delegates these to the general `NeuralBadgeDirective`.
 - Zero is a valid Badge value. Do not hide it with truthy checks.
 - Do not project a second `<neural-badge>` when the Button Badge inputs are sufficient.
-- Loading replaces both projected content and the composed Badge.
+- Loading hides normal content without recreating its nodes and removes the composed Badge until loading finishes.
 - Use `buttonClass` for the inner native button. A standard `class` targets the `neural-button` host.
 - Use `[unstyled]="true"` to remove NeuralNg's visual component layer. Do not assume that `buttonClass` disables theme styles.
 - Use `provideNeuralNg({ unstyled: true })` for application-wide unstyled mode.
@@ -44,7 +47,7 @@ Generation rules:
 - Use `data-neural-theme` for theme identity and `data-neural-mode="light|dark"` for resolved color mode; they are independent.
 - Treat Glass, Mist, and Futuristic as optional experimental token presets; do not copy their values into component CSS.
 - Do not add manual keyboard handlers, `role="button"`, or `tabindex` because the component uses native button semantics.
-- While loading, the component remains focusable, blocks activation, exposes `aria-busy="true"` and `aria-disabled="true"`, and displays `loadingLabel`.
+- While loading, the component remains focusable, blocks activation and exposes `aria-busy="true"` and `aria-disabled="true"`. `loadingLabel` supplies the loading name; it is visually hidden on styled icon-only buttons so their square geometry does not change.
 - The `clicked` payload is a `MouseEvent` and does not emit while disabled or loading.
 
 Canonical example:

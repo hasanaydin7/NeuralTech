@@ -191,12 +191,25 @@
     --neural-color-border-active
   );
   --neural-button-info-color: #ffffff;
+  --neural-button-info-accent: #0369a1;
+  --neural-button-success-accent: #15803d;
+  --neural-button-warning-accent: #92400e;
+  --neural-button-error-accent: #be123c;
   --neural-button-info-background: #0369a1;
+  --neural-button-info-background-hover: #075985;
+  --neural-button-info-background-active: #0c4a6e;
   --neural-button-success-color: #ffffff;
   --neural-button-success-background: #15803d;
+  --neural-button-success-background-hover: #166534;
+  --neural-button-success-background-active: #14532d;
   --neural-button-warning-color: #422006;
+  --neural-button-warning-background: #fbbf24;
+  --neural-button-warning-background-hover: #f59e0b;
+  --neural-button-warning-background-active: #d97706;
   --neural-button-error-color: #ffffff;
   --neural-button-error-background: #dc2626;
+  --neural-button-error-background-hover: #b91c1c;
+  --neural-button-error-background-active: #991b1b;
   --neural-badge-anchor-offset: -0.5rem;
   --neural-badge-anchor-z-index: 1;
 
@@ -1616,6 +1629,10 @@
   --neural-color-error: #fb7185;
   --neural-color-shadow: 0 0 0;
   --neural-button-info-color: #082f49;
+  --neural-button-info-accent: var(--neural-color-info);
+  --neural-button-success-accent: var(--neural-color-success);
+  --neural-button-warning-accent: var(--neural-color-warning);
+  --neural-button-error-accent: #fda4af;
   --neural-button-info-background: var(--neural-color-info);
   --neural-button-info-background-hover: color-mix(
     in srgb,

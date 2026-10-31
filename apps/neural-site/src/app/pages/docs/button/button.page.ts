@@ -136,11 +136,13 @@ export class ButtonPage {
   iconPosition="end"
 />
 
-<neural-button icon="nt nt-settings" ariaLabel="Open settings" />`;
+<neural-button icon="nt nt-settings" ariaLabel="Open settings" [loading]="saving()" (clicked)="simulateSave()" />`;
 
   readonly sizeCode = `<neural-button label="Small" size="small" />
 <neural-button label="Default" size="medium" />
 <neural-button label="Large" size="large" />
+<neural-button icon="nt nt-settings" size="small" ariaLabel="Small settings" [loading]="saving()" (clicked)="simulateSave()" />
+<neural-button icon="nt nt-settings" size="large" ariaLabel="Large settings" [loading]="saving()" (clicked)="simulateSave()" />
 
 <!-- Override only the glyph; the control remains medium. -->
 <neural-button label="Compact icon" icon="nt nt-check" iconSize="small" />`;
