@@ -2,10 +2,12 @@ import { mkdtemp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { getComponentContract } from '../src/catalog.js';
+import { getComponentContract, getPackageCatalog } from '../src/catalog.js';
 import { planUi } from '../src/composition.js';
 import { suggestConsistentUi } from '../src/project.js';
 import { validateUsage } from '../src/validation.js';
+
+const catalogCoreVersion = getPackageCatalog().version;
 
 interface EvaluationScenario {
   readonly id: string;
@@ -93,8 +95,8 @@ describe('MCP beta-exit evaluation package', () => {
     expect(suggestion.compatibility).toEqual(
       expect.objectContaining({
         status: 'aligned',
-        declaredCoreVersion: '0.1.0-beta.8',
-        catalogCoreVersion: '0.1.0-beta.8',
+        declaredCoreVersion: catalogCoreVersion,
+        catalogCoreVersion: catalogCoreVersion,
       }),
     );
     expect(suggestion.projectContext.theme).toEqual({
@@ -225,7 +227,7 @@ async function createAcceptanceWorkspace(): Promise<string> {
     JSON.stringify({
       dependencies: {
         '@angular/core': '^22.0.0',
-        '@neural-ng/core': '0.1.0-beta.8',
+        '@neural-ng/core': catalogCoreVersion,
         '@neural-ng/icons': '0.1.0-beta.0',
       },
     }),
