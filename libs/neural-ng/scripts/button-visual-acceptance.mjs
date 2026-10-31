@@ -10,6 +10,20 @@ export async function assertButtonVisualContract(page, artifacts) {
   const samples = [];
   const violations = [];
   const measure = async (button, state, mode, direction) => {
+    // Mode changes and pointer/focus changes can all start color transitions.
+    // Sample the settled state, including the first idle/loading sample after
+    // a mode switch. Ignore intentionally infinite progress animations.
+    await button.evaluate((el) =>
+      Promise.all(
+        el
+          .getAnimations()
+          .filter(
+            (animation) =>
+              animation.effect?.getComputedTiming().iterations !== Infinity,
+          )
+          .map((animation) => animation.finished),
+      ),
+    );
     const sample = await button.evaluate((el) => {
       const canvas = document.createElement('canvas');
       canvas.width = canvas.height = 1;
