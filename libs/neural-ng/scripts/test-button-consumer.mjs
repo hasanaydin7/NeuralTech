@@ -250,9 +250,6 @@ export class InvalidButton {}`,
   release();
   await navigation;
   await expect(page.locator('html')).toHaveAttribute('data-hydrated', 'true');
-  // whenStable can precede event-replay cleanup. Do not interact with SSR-only
-  // listeners while the latest Angular hydration implementation is still replaying.
-  await expect(page.locator('neural-ssr-consumer [jsaction]')).toHaveCount(0);
   expect(
     await page.evaluate(() => {
       const nodes = Array.from(

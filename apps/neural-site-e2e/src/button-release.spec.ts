@@ -1,6 +1,9 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
+// These scenarios visit multiple previews and run an axe audit in each engine.
+test.setTimeout(60_000);
+
 for (const mode of ['light', 'dark']) {
   for (const direction of ['ltr', 'rtl']) {
     test(`Button resilience: ${mode}/${direction} narrow reflow and reduced motion`, async ({
@@ -201,7 +204,18 @@ for (const mode of ['light', 'dark']) {
       const background = await disabled.evaluate(
         (button) => getComputedStyle(button).backgroundColor,
       );
-      await disabled.hover();
+      await disabled.evaluate((button) =>
+        button.scrollIntoView({ block: 'center', behavior: 'instant' }),
+      );
+      const disabledBox = await disabled.boundingBox();
+      if (!disabledBox) throw new Error('Disabled Button is not rendered');
+      await page.mouse.move(
+        disabledBox.x + disabledBox.width / 2,
+        disabledBox.y + disabledBox.height / 2,
+      );
+      await expect
+        .poll(() => disabled.evaluate((button) => button.matches(':hover')))
+        .toBe(true);
       await expect(disabled).toBeDisabled();
       await expect(disabled).toHaveCSS('background-color', background);
 
