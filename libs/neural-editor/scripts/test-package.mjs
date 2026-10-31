@@ -54,6 +54,7 @@ const runtimeDependencies = [
   '@tiptap/starter-kit',
   '@tiptap/suggestion',
   '@tiptap/y-tiptap',
+  'happy-dom',
   'yjs',
 ];
 for (const dependency of runtimeDependencies) {
@@ -66,6 +67,11 @@ for (const dependency of runtimeDependencies) {
     `Editor runtime must not remain a peer dependency: ${dependency}`,
   );
 }
+assert(
+  packageJson.dependencies?.['@tiptap/html'] === '^3.32.2' &&
+    packageJson.dependencies?.['happy-dom'] === '^21.0.4',
+  'Editor HTML conversion must require the patched Tiptap/Happy DOM dependency floor.',
+);
 for (const dependency of Object.keys({
   ...packageJson.dependencies,
   ...packageJson.peerDependencies,

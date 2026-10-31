@@ -24,16 +24,16 @@ assert(
 assert(packageJson.type === 'module', 'MCP package must publish ESM.');
 assert(packageJson.license === 'MIT', 'MCP package must declare MIT.');
 assert(
-  packageJson.dependencies?.['@modelcontextprotocol/server'] === '2.0.0',
-  'MCP server SDK must remain pinned to the verified v2 release.',
+  packageJson.dependencies?.['@modelcontextprotocol/server'] === '2.3.1',
+  'MCP server SDK must remain pinned to the security-patched v2 release.',
 );
 assert(
   packageJson.dependencies?.['@angular/compiler'] === '^22.1.7',
   'MCP validation must use the supported Angular 22 template parser.',
 );
 assert(
-  packageJson.dependencies?.zod?.startsWith('^4.'),
-  'MCP package must use Zod v4 Standard Schema inputs.',
+  packageJson.dependencies?.zod === '^4.6.6',
+  'MCP package must use the security-patched Zod v4 Standard Schema inputs.',
 );
 assert(
   packageJson.dependencies?.['@neural-ng/theme'] === '0.1.0-beta.5',

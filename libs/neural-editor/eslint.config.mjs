@@ -15,7 +15,9 @@ export default [
             '{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}',
             '{projectRoot}/**/*.spec.ts',
           ],
-          ignoredDependencies: ['@tiptap/y-tiptap', 'tslib'],
+          // Happy DOM is Tiptap HTML's runtime peer. Keep an explicit patched
+          // floor even though Editor consumes it through Tiptap, not directly.
+          ignoredDependencies: ['@tiptap/y-tiptap', 'happy-dom', 'tslib'],
         },
       ],
     },
