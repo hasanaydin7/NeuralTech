@@ -1,5 +1,8 @@
 import { APP_ID, Component, signal } from '@angular/core';
-import { provideClientHydration } from '@angular/platform-browser';
+import {
+  provideClientHydration,
+  withEventReplay,
+} from '@angular/platform-browser';
 // eslint-disable-next-line @nx/enforce-module-boundaries -- External installed-package consumer.
 import { provideNeuralNg } from '@neural-ng/core';
 import { NeuralButton, NeuralButtonGroup } from '@neural-ng/core/button';
@@ -149,6 +152,6 @@ export function createProviders() {
   return [
     { provide: APP_ID, useValue: 'button-acceptance' },
     provideNeuralNg(),
-    provideClientHydration(),
+    provideClientHydration(withEventReplay()),
   ];
 }
