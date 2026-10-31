@@ -22,5 +22,11 @@ Tiptap services.
 - License: MIT
 - Copyright: Floating UI contributors
 
+## Happy DOM
+
+- Project: Happy DOM (server-side HTML conversion)
+- License: MIT
+- Copyright and license text: see the installed `happy-dom/LICENSE` file
+
 The full license texts remain available in the installed dependency packages.
 NeuralNg's own license is provided in `LICENSE`.
