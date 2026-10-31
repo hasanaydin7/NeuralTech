@@ -55,7 +55,7 @@ describe('Neural MCP catalog', () => {
     expect(editor).toMatchObject({
       entryPoint: '@neural-ng/editor',
       packageName: '@neural-ng/editor',
-      packageVersion: '0.1.0-beta.2',
+      packageVersion: '0.1.0-beta.3',
     });
     expect(editor?.inputs.length).toBeGreaterThan(10);
     expect(

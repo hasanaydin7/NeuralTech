@@ -36,7 +36,7 @@ assert(
   'MCP package must use the security-patched Zod v4 Standard Schema inputs.',
 );
 assert(
-  packageJson.dependencies?.['@neural-ng/theme'] === '0.1.0-beta.5',
+  packageJson.dependencies?.['@neural-ng/theme'] === '0.1.0-beta.6',
   'MCP theme tools must depend on the verified @neural-ng/theme release.',
 );
 assert(

@@ -67,7 +67,7 @@ export class ShippingForm {}`;
   appendTo="body"
 />`;
 
-  readonly reportCode = `NeuralNg: 0.1.0-beta.8
+  readonly reportCode = `NeuralNg: 0.1.0-beta.9
 Angular: 22.x
 Node: <version used to build or render>
 Browser: <name and exact version>

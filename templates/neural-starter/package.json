@@ -23,8 +23,8 @@
     "@angular/core": "~22.1.7",
     "@angular/forms": "~22.1.7",
     "@angular/platform-browser": "~22.1.7",
-    "@neural-ng/core": "0.1.0-beta.8",
-    "@neural-ng/editor": "0.1.0-beta.2",
+    "@neural-ng/core": "0.1.0-beta.9",
+    "@neural-ng/editor": "0.1.0-beta.3",
     "@neural-ng/icons": "1.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
@@ -33,12 +33,12 @@
     "@angular/build": "~22.1.8",
     "@angular/cli": "~22.1.8",
     "@angular/compiler-cli": "~22.1.7",
-    "@neural-ng/mcp-server": "1.0.0",
+    "@neural-ng/mcp-server": "1.0.1",
     "@playwright/test": "^1.37.0",
     "@tailwindcss/postcss": "^4.3.3",
     "postcss": "^8.5.18",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
-    "@neural-ng/theme": "0.1.0-beta.5"
+    "@neural-ng/theme": "0.1.0-beta.6"
   }
 }

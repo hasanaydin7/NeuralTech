@@ -1,3 +1,14 @@
+## Security and Button fixes - 2026-11-01
+
+- Release Core `0.1.0-beta.9` with stable loading geometry/content identity,
+  disabled/busy menu trigger guards, unstyled grouping and neutral contrast fixes.
+- Release Editor `0.1.0-beta.3` with patched Tiptap/Happy DOM dependency floors.
+- Release Theme `0.1.0-beta.6` with the updated Button token contract.
+- Release MCP `1.0.1` with the patched SDK/Zod runtime and refreshed contracts.
+- Update workspace Angular/Nx security dependencies; keep remaining moderate
+  development-tool findings visible. Component stability status is unchanged.
+- Icons remains `1.0.0`; no unchanged package is republished.
+
 ## Icons 1.0.0 - 2026-09-28
 
 - Stabilize the existing CSS entry points, 108 curated classes, 6,184 outline/filled
