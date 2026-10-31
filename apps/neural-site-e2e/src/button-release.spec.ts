@@ -95,6 +95,11 @@ for (const mode of ['light', 'dark']) {
       );
       await expect(page.locator('html')).toHaveAttribute('dir', direction);
 
+      // Keep sequential geometry checks independent of smooth-scroll settling
+      // differences in WebKit; hover/focus transitions remain enabled.
+      await page.addStyleTag({
+        content: '* { scroll-behavior: auto !important; }',
+      });
       const sizes = [];
       const sizePreview = page.locator('#icons code-view').last();
       await expect(sizePreview).toBeAttached();
