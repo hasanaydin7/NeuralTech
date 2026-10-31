@@ -5,7 +5,7 @@ import type {
   NeuralThemeCatalogEntry,
 } from '../types.js';
 
-export const GENERATED_SOURCE_HASH = "b89209e7ad6d4ba3f98e6affb9eda23c3afc2aad880132c6f112991e61431e45";
+export const GENERATED_SOURCE_HASH = "7e661be2625f8711f941bfc2a7d1af8b10074a5879dcd2f9ea715c37a0724b5d";
 
 export const GENERATED_COMPONENTS = [
   {

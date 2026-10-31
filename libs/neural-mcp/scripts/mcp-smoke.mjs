@@ -64,6 +64,12 @@ try {
     ['install', '--ignore-scripts', '--no-audit', '--no-fund'],
     consumerRoot,
   );
+  // The workspace lock does not cover dependencies declared by the published
+  // MCP manifest. Audit the installed tarball too, before exercising stdio.
+  await runNpm(['audit', '--omit=dev', '--audit-level=high'], consumerRoot);
+  console.log(
+    'Installed MCP runtime audit passed (no high/critical findings).',
+  );
 
   const cliPath = join(
     consumerRoot,

@@ -2,8 +2,7 @@
 
 ## Supported versions
 
-NeuralNg packages are versioned independently. Core and Editor are currently
-beta software; the MCP server is a release candidate. Security fixes target
+NeuralNg packages are versioned independently. Security fixes target
 the latest supported release of each affected package, including beta and RC
 releases. Older prereleases are not maintained as separate security branches.
 
@@ -14,20 +13,36 @@ and `npm audit --omit=dev`. Development-tool findings must remain visible;
 excluding them from the production report is not a waiver or a claim that the
 entire workspace is vulnerability-free.
 
-The workspace temporarily pins `nx > smol-toml` to `1.7.1` and Verdaccio's
-Express dependencies to `4.22.3` through scoped overrides. Remove these overrides
+The workspace temporarily pins `nx > smol-toml` to `1.9.1`, `nx > undici` to
+`7.30.1`, and Verdaccio's Express dependencies to `4.22.3` through scoped overrides.
+The Undici pin replaces Nx's exact `7.29.0` dependency within the same major to
+address its HTTP/WebSocket/TLS advisories. Remove these overrides
 when their parent packages adopt fixed versions and a fresh install, audit,
 build and test run passes. Do not use forced major downgrades merely to silence
 an audit finding.
 
-Audit review on 2026-09-19: the updated lockfile has no high or critical
-findings. Five moderate package findings share one development-only chain:
-`@angular-devkit/build-angular` / `build-webpack` -> `webpack-dev-server` ->
-`sockjs` -> `uuid` ([GHSA-w5hq-g745-h8pq](https://github.com/advisories/GHSA-w5hq-g745-h8pq)).
-The installed SockJS code calls `uuid.v4`, while the advisory concerns v3/v5/v6
-buffer handling; this limits the observed exposure but does not remove the
-finding. Keep development servers private and recheck parent-package updates.
-No major-version UUID override or audit suppression is applied.
+Audit review on 2026-11-01: the updated lockfile has no high or critical
+findings, and `npm audit --omit=dev` reports zero findings. The full workspace
+still reports 45 moderate package findings sharing the development-only
+Minimatch chain below; this is not a vulnerability-free workspace claim.
+
+The remaining development-tool findings must be reviewed separately from the
+runtime graph. In particular, the Minimatch glob-amplification advisory affects
+versions below `11.0.1`
+([GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249)).
+ESLint, TypeScript ESLint, Nx and Verdaccio still consume older major versions.
+Do not globally replace their Minimatch 3/10 APIs with 11 to silence the report.
+Keep development servers private, avoid untrusted glob/config input, and recheck
+parent-package updates. No audit suppression or forced major downgrade is applied.
+
+The MCP package manifest pins the patched SDK `@modelcontextprotocol/server@2.3.1` and
+requires `zod >=4.6.6` within v4. Verify the installed tarball's protocol behavior
+and dependency audit in addition to the workspace audit when changing these pins.
+
+The Editor manifest requires Tiptap `3.32.2` or newer within v3 and Happy DOM
+`21.0.4` or newer within v21 for HTML conversion. Happy DOM is explicit because
+Tiptap's peer range also accepts older vulnerable v20 versions. These source
+manifest changes do not retroactively update already-published npm versions.
 
 ## Reporting a vulnerability
 

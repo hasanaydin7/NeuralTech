@@ -35,6 +35,7 @@
     "@tiptap/starter-kit",
     "@tiptap/suggestion",
     "@tiptap/y-tiptap",
+    "happy-dom",
     "yjs"
   ],
   "lib": {
