@@ -49,7 +49,7 @@ export interface NeuralButtonGroupClasses {
     }
 
     :where(
-      .neural-button-group-horizontal-root
+      .neural-button-group-base.neural-button-group-horizontal-root
         > neural-button:first-child
         > .neural-btn-root
     ) {
@@ -64,7 +64,7 @@ export interface NeuralButtonGroupClasses {
     }
 
     :where(
-      .neural-button-group-horizontal-root
+      .neural-button-group-base.neural-button-group-horizontal-root
         > neural-button:last-child
         > .neural-btn-root
     ) {
@@ -79,13 +79,15 @@ export interface NeuralButtonGroupClasses {
     }
 
     :where(
-      .neural-button-group-horizontal-root > neural-button + neural-button
+      .neural-button-group-base.neural-button-group-horizontal-root
+        > neural-button
+        + neural-button
     ) {
       margin-inline-start: calc(var(--neural-button-border-width, 1px) * -1);
     }
 
     :where(
-      .neural-button-group-vertical-root
+      .neural-button-group-base.neural-button-group-vertical-root
         > neural-button:first-child
         > .neural-btn-root
     ) {
@@ -100,7 +102,7 @@ export interface NeuralButtonGroupClasses {
     }
 
     :where(
-      .neural-button-group-vertical-root
+      .neural-button-group-base.neural-button-group-vertical-root
         > neural-button:last-child
         > .neural-btn-root
     ) {
@@ -114,7 +116,11 @@ export interface NeuralButtonGroupClasses {
       );
     }
 
-    :where(.neural-button-group-vertical-root > neural-button + neural-button) {
+    :where(
+      .neural-button-group-base.neural-button-group-vertical-root
+        > neural-button
+        + neural-button
+    ) {
       margin-block-start: calc(var(--neural-button-border-width, 1px) * -1);
     }
 

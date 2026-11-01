@@ -12,6 +12,9 @@ export default [
         'error',
         {
           ignoredFiles: [
+            // Installed-consumer fixtures and package tooling are development
+            // code, not dependencies of the published Core runtime.
+            '{projectRoot}/scripts/**/*',
             '{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}',
             '{projectRoot}/**/*.spec.ts',
           ],

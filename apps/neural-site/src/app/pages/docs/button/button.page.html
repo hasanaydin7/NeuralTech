@@ -1,4 +1,13 @@
 <article class="mx-auto max-w-[84rem] px-5 py-12 lg:px-10 lg:py-16">
+  <span
+    class="sr-only"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    data-button-announcer
+  >
+    {{ saving() ? '' : lastEvent() }}
+  </span>
   <neural-tabs
     tabsId="button-documentation-tabs"
     unstyled
@@ -131,7 +140,7 @@
                     />
                     <output
                       class="text-sm text-[var(--site-text-muted)]"
-                      aria-live="polite"
+                      aria-live="off"
                       >{{ lastEvent() }}</output
                     >
                   </div>
@@ -250,6 +259,8 @@
                     <neural-button
                       icon="nt nt-settings"
                       ariaLabel="Open settings"
+                      [loading]="saving()"
+                      (clicked)="simulateSave()"
                     />
                   </div>
                 </code-view>
@@ -267,6 +278,20 @@
                     <neural-button label="Small" size="small" />
                     <neural-button label="Default" size="medium" />
                     <neural-button label="Large" size="large" />
+                    <neural-button
+                      icon="nt nt-settings"
+                      size="small"
+                      ariaLabel="Small settings"
+                      [loading]="saving()"
+                      (clicked)="simulateSave()"
+                    />
+                    <neural-button
+                      icon="nt nt-settings"
+                      size="large"
+                      ariaLabel="Large settings"
+                      [loading]="saving()"
+                      (clicked)="simulateSave()"
+                    />
                     <neural-button
                       label="Compact icon"
                       icon="nt nt-check"
@@ -354,7 +379,7 @@
                     </div>
                     <output
                       class="text-sm text-[var(--site-text-muted)]"
-                      aria-live="polite"
+                      aria-live="off"
                       >{{ lastEvent() }}</output
                     >
                   </div>

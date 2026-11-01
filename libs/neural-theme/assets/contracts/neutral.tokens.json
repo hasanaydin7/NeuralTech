@@ -1,15 +1,15 @@
 {
   "version": 1,
   "preset": "neutral",
-  "sourceHash": "1f7eddd496166976c4fb61ab7099856b83bc5392fe0fbcc65d2f91aea586e52a",
+  "sourceHash": "2fcdc44ad843c375993ca4136f76ab9efe63b0332091b3b3b37173b548901bf8",
   "generatedFrom": [
     "libs/neural-ng/themes/neutral.css",
     "libs/neural-editor/themes/neutral.css",
     "libs/neural-ng/themes/tailwind.css"
   ],
   "stats": {
-    "tokens": 1470,
-    "coreTokens": 1341,
+    "tokens": 1477,
+    "coreTokens": 1348,
     "editorTokens": 129,
     "sharedTokens": 0,
     "components": 45
@@ -185,6 +185,7 @@
       "--neural-button-color-active",
       "--neural-button-color-hover",
       "--neural-button-disabled-opacity",
+      "--neural-button-error-accent",
       "--neural-button-error-background",
       "--neural-button-error-background-active",
       "--neural-button-error-background-hover",
@@ -197,6 +198,7 @@
       "--neural-button-gap",
       "--neural-button-group-radius",
       "--neural-button-icon-size",
+      "--neural-button-info-accent",
       "--neural-button-info-background",
       "--neural-button-info-background-active",
       "--neural-button-info-background-hover",
@@ -232,6 +234,7 @@
       "--neural-button-small-font-size",
       "--neural-button-small-icon-size",
       "--neural-button-small-padding",
+      "--neural-button-success-accent",
       "--neural-button-success-background",
       "--neural-button-success-background-active",
       "--neural-button-success-background-hover",
@@ -239,6 +242,10 @@
       "--neural-button-text-background",
       "--neural-button-text-shadow",
       "--neural-button-transition",
+      "--neural-button-warning-accent",
+      "--neural-button-warning-background",
+      "--neural-button-warning-background-active",
+      "--neural-button-warning-background-hover",
       "--neural-button-warning-color"
     ],
     "card": [
@@ -2856,6 +2863,15 @@
       }
     },
     {
+      "name": "--neural-button-error-accent",
+      "component": "button",
+      "source": "core",
+      "modes": {
+        "base": "#be123c",
+        "dark": "#fda4af"
+      }
+    },
+    {
       "name": "--neural-button-error-background",
       "component": "button",
       "source": "core",
@@ -2869,6 +2885,7 @@
       "component": "button",
       "source": "core",
       "modes": {
+        "base": "#991b1b",
         "dark": "color-mix( in srgb, var(--neural-color-error) 78%, white )"
       }
     },
@@ -2877,6 +2894,7 @@
       "component": "button",
       "source": "core",
       "modes": {
+        "base": "#b91c1c",
         "dark": "color-mix( in srgb, var(--neural-color-error) 88%, white )"
       }
     },
@@ -2956,6 +2974,15 @@
       }
     },
     {
+      "name": "--neural-button-info-accent",
+      "component": "button",
+      "source": "core",
+      "modes": {
+        "base": "#0369a1",
+        "dark": "var(--neural-color-info)"
+      }
+    },
+    {
       "name": "--neural-button-info-background",
       "component": "button",
       "source": "core",
@@ -2969,6 +2996,7 @@
       "component": "button",
       "source": "core",
       "modes": {
+        "base": "#0c4a6e",
         "dark": "color-mix( in srgb, var(--neural-color-info) 78%, white )"
       }
     },
@@ -2977,6 +3005,7 @@
       "component": "button",
       "source": "core",
       "modes": {
+        "base": "#075985",
         "dark": "color-mix( in srgb, var(--neural-color-info) 88%, white )"
       }
     },
@@ -3240,6 +3269,15 @@
       }
     },
     {
+      "name": "--neural-button-success-accent",
+      "component": "button",
+      "source": "core",
+      "modes": {
+        "base": "#15803d",
+        "dark": "var(--neural-color-success)"
+      }
+    },
+    {
       "name": "--neural-button-success-background",
       "component": "button",
       "source": "core",
@@ -3253,6 +3291,7 @@
       "component": "button",
       "source": "core",
       "modes": {
+        "base": "#14532d",
         "dark": "color-mix( in srgb, var(--neural-color-success) 78%, white )"
       }
     },
@@ -3261,6 +3300,7 @@
       "component": "button",
       "source": "core",
       "modes": {
+        "base": "#166534",
         "dark": "color-mix( in srgb, var(--neural-color-success) 88%, white )"
       }
     },
@@ -3295,6 +3335,39 @@
       "source": "core",
       "modes": {
         "base": "background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease"
+      }
+    },
+    {
+      "name": "--neural-button-warning-accent",
+      "component": "button",
+      "source": "core",
+      "modes": {
+        "base": "#92400e",
+        "dark": "var(--neural-color-warning)"
+      }
+    },
+    {
+      "name": "--neural-button-warning-background",
+      "component": "button",
+      "source": "core",
+      "modes": {
+        "base": "#fbbf24"
+      }
+    },
+    {
+      "name": "--neural-button-warning-background-active",
+      "component": "button",
+      "source": "core",
+      "modes": {
+        "base": "#d97706"
+      }
+    },
+    {
+      "name": "--neural-button-warning-background-hover",
+      "component": "button",
+      "source": "core",
+      "modes": {
+        "base": "#f59e0b"
       }
     },
     {

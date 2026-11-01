@@ -81,7 +81,7 @@ the application.
 | `severity`         | `NeuralButtonSeverity`                   | `'neutral'` | Semantic intent: primary, secondary, neutral, info, success, warning, or error.    |
 | `disabled`         | `boolean`                                | `false`     | Applies native disabled semantics.                                                 |
 | `loading`          | `boolean`                                | `false`     | Prevents activation while keeping the button focusable.                            |
-| `loadingLabel`     | `string`                                 | `'Loading'` | Visible content and accessible name used while loading.                            |
+| `loadingLabel`     | `string`                                 | `'Loading'` | Loading name; visually hidden on styled icon-only buttons.                         |
 | `ariaLabel`        | `string \| null`                         | `null`      | Accessible name for icon-only buttons. Prefer visible text when possible.          |
 | `ariaExpanded`     | `'true' \| 'false' \| null`              | `null`      | Disclosure state forwarded to the native button.                                   |
 | `ariaControls`     | `string \| null`                         | `null`      | ID of the disclosure surface controlled by the button.                             |
@@ -123,8 +123,10 @@ the application.
 <neural-button [loading]="isSaving()" loadingLabel="Saving" (clicked)="save()"> Save changes </neural-button>
 ```
 
-While loading, the normal content is replaced by the spinner and
-`loadingLabel`. The native button remains in the keyboard focus order and has
+While loading, normal content stays in the DOM but is hidden; the spinner and
+`loadingLabel` supply the loading feedback. On styled icon-only buttons the
+loading text is visually hidden but still names the action, preserving the
+square dimensions at every size. The native button remains in the keyboard focus order and has
 `aria-busy="true"` and `aria-disabled="true"`. Click and form submission are
 prevented until loading finishes.
 
