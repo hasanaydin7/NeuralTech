@@ -15,7 +15,7 @@ const packageJson = await readJson('package.json');
 
 assert(packageJson.name === '@neural-ng/core', 'Unexpected package name.');
 assert(
-  packageJson.version === '0.1.0-beta.8',
+  packageJson.version === '0.1.0-beta.9',
   'Unexpected beta package version.',
 );
 assert(

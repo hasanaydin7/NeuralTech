@@ -17,7 +17,7 @@ Signal-native APIs with
 strict types, accessible native semantics, SSR-safe behavior, headless styling
 and tree-shakable secondary entry points.
 
-> **Beta:** the current Core release is `0.1.0-beta.8`. Public APIs may change
+> **Beta:** the current Core release is `0.1.0-beta.9`. Public APIs may change
 > before the first stable release.
 
 ## Why NeuralNg?
@@ -74,11 +74,11 @@ for application configuration, theming and SSR setup.
 
 | Package                                                                        | Purpose                                                             | Current release |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------- | --------------- |
-| [`@neural-ng/core`](https://www.npmjs.com/package/@neural-ng/core)             | 51 accessible Angular components, services, localization and tokens | `0.1.0-beta.8`  |
-| [`@neural-ng/editor`](https://www.npmjs.com/package/@neural-ng/editor)         | Structured, AI-native and collaboration-ready editor                | `0.1.0-beta.2`  |
+| [`@neural-ng/core`](https://www.npmjs.com/package/@neural-ng/core)             | 51 accessible Angular components, services, localization and tokens | `0.1.0-beta.9`  |
+| [`@neural-ng/editor`](https://www.npmjs.com/package/@neural-ng/editor)         | Structured, AI-native and collaboration-ready editor                | `0.1.0-beta.3`  |
 | [`@neural-ng/icons`](https://www.npmjs.com/package/@neural-ng/icons)           | 6,184 framework-independent `nt nt-*` CSS mask icons                | `1.0.0`         |
-| [`@neural-ng/theme`](https://www.npmjs.com/package/@neural-ng/theme)           | Typed theme recipe compiler and Tailwind v4 bridge                  | `0.1.0-beta.5`  |
-| [`@neural-ng/mcp-server`](https://www.npmjs.com/package/@neural-ng/mcp-server) | Angular UI expert agent interface for composition and validation    | `1.0.0`         |
+| [`@neural-ng/theme`](https://www.npmjs.com/package/@neural-ng/theme)           | Typed theme recipe compiler and Tailwind v4 bridge                  | `0.1.0-beta.6`  |
+| [`@neural-ng/mcp-server`](https://www.npmjs.com/package/@neural-ng/mcp-server) | Angular UI expert agent interface for composition and validation    | `1.0.1`         |
 
 ## AI-agent workflow
 

@@ -2,12 +2,13 @@
 
 All notable changes to `@neural-ng/mcp-server` are documented here.
 
-## Unreleased
+## 1.0.1 - 2026-11-01
 
 - Pin the MCP server SDK to the security-patched v2.3.1 release and require
   Zod v4.6.6 or newer within v4.
 - Audit the installed MCP tarball's production dependencies before its stdio
   protocol smoke test, independently of the workspace dependency graph.
+- Refresh the Button and Editor contracts and depend on Theme `0.1.0-beta.6`.
 
 ## 1.0.0 - 2026-09-26
 

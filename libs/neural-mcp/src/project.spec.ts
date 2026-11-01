@@ -3,6 +3,11 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { inspectNeuralProject, suggestConsistentUi } from './project.js';
+import { getComponentContract, getPackageCatalog } from './catalog.js';
+
+const catalogCoreVersion = getPackageCatalog().version;
+const catalogEditorVersion = getComponentContract('editor')?.packageVersion;
+if (!catalogEditorVersion) throw new Error('Editor catalog is required.');
 
 const roots: string[] = [];
 
@@ -19,10 +24,13 @@ describe('Neural MCP project awareness', () => {
     await mkdir(directory, { recursive: true });
     await writeFile(
       join(directory, 'package.json'),
-      JSON.stringify({ name: '@neural-ng/editor', version: '0.1.0-beta.2' }),
+      JSON.stringify({
+        name: '@neural-ng/editor',
+        version: catalogEditorVersion,
+      }),
     );
     const result = await inspectNeuralProject(root);
-    expect(result.framework.installedEditorVersion).toBe('0.1.0-beta.2');
+    expect(result.framework.installedEditorVersion).toBe(catalogEditorVersion);
     expect(
       result.components.some(
         (component) => component.entryPoint === '@neural-ng/editor',
@@ -105,7 +113,7 @@ describe('Neural MCP project awareness', () => {
     const suggestion = await suggestConsistentUi('Save button', root);
     expect(suggestion.compatibility).toEqual(
       expect.objectContaining({
-        declaredCoreVersion: '0.1.0-beta.8',
+        declaredCoreVersion: catalogCoreVersion,
         installedCoreVersion: '0.1.0-beta.7',
         status: 'review',
       }),
@@ -202,7 +210,7 @@ describe('Neural MCP project awareness', () => {
     expect(inspection.framework.angularVersion).toBe('^22.0.0');
     expect(inspection.framework.versionSource).toBe('package.json');
     expect(inspection.framework.neuralPackages['@neural-ng/core']).toBe(
-      '0.1.0-beta.8',
+      catalogCoreVersion,
     );
     expect(inspection.themes).toContain('neutral');
     expect(inspection.appearance.providerConfigured).toBe(true);
@@ -304,7 +312,7 @@ describe('Neural MCP project awareness', () => {
     expect(suggestion.compatibility).toEqual(
       expect.objectContaining({
         declaredCoreVersion: '0.1.0-beta.7',
-        catalogCoreVersion: '0.1.0-beta.8',
+        catalogCoreVersion: catalogCoreVersion,
         status: 'review',
       }),
     );
@@ -489,7 +497,7 @@ async function createWorkspace(
     JSON.stringify({
       dependencies: {
         '@angular/core': '^22.0.0',
-        '@neural-ng/core': '0.1.0-beta.8',
+        '@neural-ng/core': catalogCoreVersion,
         '@neural-ng/icons': '0.1.0-beta.0',
       },
     }),
